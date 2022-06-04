@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "電工學/Arc/Bipolar Junction Transistors.md",
+            "file": "電工學/Arc/Field-Effect Transistors.md",
             "mode": "source"
           }
         },
@@ -21,7 +21,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "電工學/Arc/Bipolar Junction Transistors.md",
+            "file": "電工學/Arc/Field-Effect Transistors.md",
             "mode": "preview"
           }
         },
@@ -65,8 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "18e3d2e6fd5e1467",
@@ -82,7 +81,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "電工學/Arc/Bipolar Junction Transistors.md",
+                "file": "電工學/Arc/Field-Effect Transistors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +98,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "電工學/Arc/Bipolar Junction Transistors.md",
+                "file": "電工學/Arc/Field-Effect Transistors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -111,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "電工學/Arc/Bipolar Junction Transistors.md"
+                "file": "電工學/Arc/Field-Effect Transistors.md"
               }
             }
           }
@@ -124,10 +123,10 @@
   },
   "active": "6af8b2f02757bd5e",
   "lastOpenFiles": [
+    "電工學/Arc/Field-Effect Transistors.md",
     "電工學/Arc/Bipolar Junction Transistors.md",
     "unlinked files output.md",
     "電工學/Arc/Diode.md",
-    "電工學/Arc/Field-Effect Transistors.md",
     "Main Kanban.md",
     "動力學/Rigid Body.md"
   ]
