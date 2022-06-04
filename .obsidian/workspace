@@ -1,0 +1,134 @@
+{
+  "main": {
+    "id": "dab81b30d3527290",
+    "type": "split",
+    "children": [
+      {
+        "id": "8ea30ea005e91a89",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "電工學/Bipolar Junction Transistors.md",
+            "mode": "source"
+          }
+        },
+        "group": "bb3cd2a20bf364a6"
+      },
+      {
+        "id": "417d36780a05d3f2",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "電工學/Bipolar Junction Transistors.md",
+            "mode": "preview"
+          }
+        },
+        "group": "bb3cd2a20bf364a6"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4f0ca8deefc5287d",
+    "type": "split",
+    "children": [
+      {
+        "id": "46311005f66b80b5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "94e9c34647b3463e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "e64a0bf4aa648a76",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "26",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "18e3d2e6fd5e1467",
+    "type": "split",
+    "children": [
+      {
+        "id": "c1cbd6981e08489b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "07ca4a45f5bae4d1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "電工學/Bipolar Junction Transistors.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "543ee64056111132",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "電工學/Bipolar Junction Transistors.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "efb770f066dfd7fd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "電工學/Bipolar Junction Transistors.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "8ea30ea005e91a89",
+  "lastOpenFiles": [
+    "電工學/Bipolar Junction Transistors.md",
+    "unlinked files output.md",
+    "電工學/Arc/Diode.md",
+    "電工學/Arc/Field-Effect Transistors.md",
+    "Main Kanban.md",
+    "動力學/Rigid Body.md"
+  ]
+}
