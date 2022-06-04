@@ -4,28 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "8ea30ea005e91a89",
+        "id": "2667903af71842e7",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "電工學/Bipolar Junction Transistors.md",
+            "file": "電工學/Arc/Bipolar Junction Transistors.md",
             "mode": "source"
           }
         },
-        "group": "bb3cd2a20bf364a6"
+        "group": "a5aa467780dd6a17"
       },
       {
-        "id": "417d36780a05d3f2",
+        "id": "6af8b2f02757bd5e",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "電工學/Bipolar Junction Transistors.md",
+            "file": "電工學/Arc/Bipolar Junction Transistors.md",
             "mode": "preview"
           }
         },
-        "group": "bb3cd2a20bf364a6"
+        "group": "a5aa467780dd6a17"
       }
     ],
     "direction": "vertical"
@@ -82,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "電工學/Bipolar Junction Transistors.md",
+                "file": "電工學/Arc/Bipolar Junction Transistors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +99,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "電工學/Bipolar Junction Transistors.md",
+                "file": "電工學/Arc/Bipolar Junction Transistors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "電工學/Bipolar Junction Transistors.md"
+                "file": "電工學/Arc/Bipolar Junction Transistors.md"
               }
             }
           }
@@ -122,9 +122,9 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "8ea30ea005e91a89",
+  "active": "6af8b2f02757bd5e",
   "lastOpenFiles": [
-    "電工學/Bipolar Junction Transistors.md",
+    "電工學/Arc/Bipolar Junction Transistors.md",
     "unlinked files output.md",
     "電工學/Arc/Diode.md",
     "電工學/Arc/Field-Effect Transistors.md",
