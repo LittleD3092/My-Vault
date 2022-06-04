@@ -9,7 +9,7 @@ $ git clone https://github.com/LittleD3092/My-Vault.git
 
 Then use [obsidian](https://obsidian.md/) to open the folder as a vault.
 
-Be aware that the attachments have great size, it is recommended that you use [Git LFS](https://github.com/LittleD3092/My-Vault#2.-git-lfs) to speed cloning process.
+Be aware that the attachments have great size, it is recommended that you use [Git LFS](https://github.com/LittleD3092/My-Vault#2-git-lfs) to speed cloning process.
 
 # 2. Git LFS
 
