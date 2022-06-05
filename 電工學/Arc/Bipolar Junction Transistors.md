@@ -499,6 +499,152 @@ $$\underline{
 	i_c(t) = \beta i_b(t)
 }_\#$$
 
+![[small-signal equivalent circuit for the BJT.png|450]]
+
+# Common-Emitter Amplifiers
+
+![[common-emitter amplifier 2.png]]
+
+## The Small-Signal Equivalent Circuit
+
+The coupling capacitors have been replaced by short circuits, and the transistor has been replaced by its small-signal equivalent.
+
+$$\underline{
+	R_B = R_1 \vert\vert R_2 = \frac{1}{1/R_1 + 1/R_2}
+}_\#$$
+
+$$\underline{
+	R_L' = R_L \vert\vert R_C = \frac{1}{1/R_L + 1/R_C}
+}_\#$$
+
+## Voltage Gain
+
+Now, we analyze the equivalent circuit to find the voltage gain.
+
+First, the input voltage is equal to the voltage across $r_\pi$
+
+$$v_{in} = v_{be} = r_\pi i_b$$
+
+The output voltage is produced by the collector current flowing through $R'_L$
+
+$$v_o = -R'_L\beta i_b$$
+
+Therefore, the voltage gain with the load connected is
+
+$$\underline{
+	A_v = \frac{v_o}{v_{in}} = -\frac{R'_L\beta}{r_\pi}
+}_\#$$
+
+The open-circuit voltage gain can be found with $R_L$ replaced by an open circuit
+
+$$\underline{
+	A_{voc} = \frac{v_o}{v_{in}} = -\frac{R_C\beta}{r_\pi}
+}_\#$$
+
+## Input Impedance
+
+$$\underline{
+	Z_{in} = \frac{v_{in}}{i_{in}} = R_B\vert\vert r_\pi = \frac 1 {1/R_B + 1/r_\pi}
+}_\#$$
+
+## Current Gain and Power Gain
+
+Current Gain $A_i$:
+
+$$\underline{
+	A_i = \frac{i_o}{i_{in}} = A_v\frac{Z_{in}}{R_L}
+}_\#$$
+
+Power Gain $G$:
+
+$$\underline{
+	G = A_iA_v
+}_\#$$
+
+## Output Impedance
+
+$$\underline{
+	Z_o = R_C
+}_\#$$
+
+# Emitter Followers
+
+![[emitter followers.png]]
+
+The resistors $R_1$, $R_2$ and $R_E$ form the bias circuit. The collector resistor $R_C$ is not needed in this circuit. 
+
+## Small-Signal Equivalent Circuit
+
+上圖 (b)，我們把 circuit 變成 small-signal equivalent circuit
+
+$$\underline{
+	R_B = R_1 \vert\vert R_2 = \frac{1}{1/R_1 + 1/R_2}
+}_\#$$
+
+$$\underline{R_L' = R_L \vert\vert R_E = \frac{1}{1/R_L + 1/R_E}}_\#$$
+
+## Voltage Gain
+
+$$v_o = R_L'(1 + \beta)i_b$$
+
+$$v_{in} = r_\pi i_b + (1 + \beta)i_bR_L'$$
+
+$$\implies \underline{
+	A_v = \frac{(1 + \beta)R_L'}{r_\pi + (1 + \beta)R_L'}
+}_\#$$
+
+The voltage gain of the emitter follower is less than unity because the denominator of the expression is larger than the numerator. However, the voltage gain is usually only slightly less than unity.
+
+## Input Impedance
+
+The input impedance $Z_i$ can be found as the parallel combination of $R_B$ and the input impedance seen looking into the base of the transistor, which is indecated as $Z_{it}$ in figure (b).
+
+$$\underline{
+	Z_i = \frac{1}{1/R_B + 1/Z_{it}}
+}_\#$$
+
+The input impedance looking into the base can be found by dividing both sides of following equation by $i_b$
+
+> $$v_{in} = r_\pi i_b + (1 + \beta)i_bR_L'$$
+
+$$\underline{
+	Z_{it} = \frac{v_{in}}{i_b} = r_\pi + (1 + \beta)R_L'
+}_\#$$
+
+## Output Impedance
+
+The output impedance of an amplifier is the Thevenin impedance seen from the output terminals. 
+
+To find the output impedance of the emitter follower, we remove the load resistance, zero the signal source, and look back into the output terminals of the equivalent circuit. This is shown in figure (c).
+
+We have attached a test source $v_x$, which delivers a current $i_x$.
+
+$$Z_o = \frac{v_x}{i_x}$$
+
+To find this ratio, we write equations involving $v_x$ and $i_x$. For example, summing currents at the top end of $R_E$, we have
+
+$$\underline {i_b + \beta i_b + i_x = \frac{v_x}{R_E} }_{(1).}$$
+
+We denote the parallel combination of $R_s$, $R_1$ and $R_2$ as
+
+$$\underline{
+	R_s' = \frac 1 {1/R_s + 1/R_1 + 1/R_2}
+}_\#$$
+
+Then we use $R_s'$ to write second equation (relationship between $v_x$ and $i_b$) that is obtained by applying Kirchhoff's voltage law to the loop consisting of $v_x$, $r_\pi$ and $R_s'$
+
+$$\underline{v_x + r_\pi i_b + R_s'i_b = 0}_{(2).}$$
+
+Solving the two equations and substitude into $Z_o$ we obtain the output impedance
+
+$$\underline{
+	Z_o = \frac{v_x}{i_x} = \frac 1 {(1 + \beta)(R_s' + r_\pi) + 1/R_E}
+}_\#$$
+
+This can be recognized as the parallel combination of $R_E$ and the impedance $Z_{ot}$
+
+$$Z_{ot} = \frac{R_s' + r_\pi}{1 + \beta}$$
+
 ---
 
 參考資料:
