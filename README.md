@@ -27,7 +27,7 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/LittleD3092/My-Vault.git
 
 ## 2.2 Pull Attachments Missing
 
-To pull attachments missing, use `git lfs pull --include=""` to pull single file, or simply use `git lfs pull` for pull all missing attachments
+To pull attachments missing, use `git lfs pull --include=""` to pull single file, or simply use `git lfs pull` to pull all missing attachments
 
 ```bash
 git lfs pull --include=filename
