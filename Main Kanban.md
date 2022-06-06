@@ -12,18 +12,14 @@ kanban-plugin: basic
 ## 學習
 
 - [ ] 工程數學 5.5 ~ 6.3 學習@{2022-05-23}
-- [ ] 電工學 BJT 學習 @{2022-05-23}
 
 
 ## 專題
 
-- [ ] 學習hector slam 原理 @{2022-06-02}
 
 
 ## 作業＆考試
 
-- [ ] 工程數學期末考 @{2022-06-13}
-- [ ] 工程數學 project 3 @{2022-06-13}
 
 
 ## 資工雙主修
@@ -58,9 +54,11 @@ kanban-plugin: basic
 
 ## In progress
 
-- [ ] 電工學期末考 @{2022-06-06}
-- [ ] 電工學 HW12 @{2022-06-06}
 - [ ] 機械製造 期末報告 @{2022-06-09}
+- [ ] - [ ] 讀懂 hector slam 演算法<br>	- [x] xml<br>	- [x] .launch<br>	- [ ] how hector slam works<br>	- [ ] `/opt/ros/noetic/share/hector_slam_launch`<br>	- [ ] `/opt/ros/noetic/share/hector_mapping`<br>@{2022-06-09}
+- [ ] 工程數學期末考 @{2022-06-13}
+- [ ] 工程數學 project 3 @{2022-06-13}
+- [ ] python 期末 @{2022-06-16}
 
 
 ## Done
@@ -203,6 +201,9 @@ kanban-plugin: basic
 - [x] 精密機械測量期末考 @{2022-06-01}
 - [x] 動力學 5/24 線上課 @{2022-05-24}
 - [x] 動力學期末考 @{2022-06-02}
+- [x] 電工學期末考 @{2022-06-06}
+- [x] 電工學 HW12 @{2022-06-06}
+- [x] 電工學 BJT 學習 @{2022-05-23}
 
 %% kanban:settings
 ```
