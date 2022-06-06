@@ -442,7 +442,6 @@ In **complementary metal-oxide-semiconductor** technology, both NMOS and PMOS tr
 
 課本
 [Introduction to MOSFET - blog](https://www.electronicshub.org/mosfet/)
-[]
 
 ---
 
