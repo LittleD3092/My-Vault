@@ -2,7 +2,6 @@
 
 ---
 
-# Basics
 [[Inner Product]]
 [[Orthogonal]]
 [[Orthogonal Set]]
@@ -15,13 +14,11 @@
 [[Generalized Fourier Series]]
 [[Weight Function]]
 
-# Fourier Series
+---
 
 [[Fourier Series]]
-
-# Fourier Intrgral
-
 [[Fourier Integral]]
+[[Fourier Transform]]
 
 ---
 
