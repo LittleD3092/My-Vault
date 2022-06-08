@@ -2,9 +2,9 @@
 
 ---
 
-| Fourier Transform                                                                                                                                                                                              | Discrete Fourier Transform |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Fourier Inverse Transform: $$f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\hat f(w)e^{iwx}dw$$ <br> Fourier Transform of $f$: $$\hat f(w) = \frac 1 {\sqrt{2\pi}}\int_{-\infty}^{\infty}f(x)e^{-iwx}dx$$ |                            |
+| Fourier Transform                                                                                                                                                                                              | Discrete Fourier Transform                                                                                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fourier Inverse Transform: $$f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\hat f(w)e^{iwx}dw$$ <br> Fourier Transform of $f$: $$\hat f(w) = \frac 1 {\sqrt{2\pi}}\int_{-\infty}^{\infty}f(x)e^{-iwx}dx$$ | Discrete Fourier Inverse Transform: $$f_k = f(x_k) = q(x) = \sum_{n = 0}^{N - 1}c_ne^{inx_k}$$ Discrete Fourier Transform: $$\hat f_n \equiv Nc_n = \sum_{k = 0}^{N - 1}f_ke^{-inx_k} \qquad ; n = 0, 1, \dots, N - 1$$ |
 
 - $\mathcal F\{f(x)\}$ is the symbol of Fourier Transform 
 - $\mathcal F^{-1}\{\hat f(w)\}$ is the symbol of Fourier Inverse Tranform
@@ -38,8 +38,8 @@ $$\implies f(x) = \frac 1 \pi
 	\left[
 		\int_{-\infty}^\infty
 		f(v)\cos(wx - wv)dv
-	\right]dw
-}_{\text{even function}}$$
+	\right]
+}_{\text{even function}}dw$$
 
 Because it is even function
 
@@ -136,7 +136,35 @@ $$\mathcal F(f * g) = \sqrt{2\pi}\mathcal F(f)\mathcal F(g)$$
 
 # Discrete Fourier Transform
 
+$$\hat f_n = Nc_n = \sum_{k = 0}^{N - 1}f_ke^{-inx_k} \qquad ; n = 0, 1, \dots, N - 1$$
 
+$$c_n = \frac 1 N \sum_{k = 0}^{N - 1}f_ke^{-inx_k} \qquad ; n = 0, 1, \dots, N - 1$$
+
+## Motivation
+
+Previously assumed $f(x)$ is given as an equation. But realistically $f(x)$ is unknown. Instead, we measure samples of $f(x)$ at discrete points $x_1, x_2, ...$
+
+![[discrete fourier transform motivation.png]]
+
+Therefore, we have to perferm fourier transform based on discrete $f(x_1), f(x_2), f(x_3), ...$
+
+## Assumption
+
+1. $x_1, x_2, ..., x_k$ is regularly-spaced. If there are $k = N$ samples over $0 \leq x \leq 2\pi$:
+$$x_k = \frac{2\pi k}{N}$$
+2. If the spacing between two $x_k$ is $\Delta x = x_{k + 1} - x_k = \frac{2\pi}{N - 1}$, we cannot measure oscillation with wavelength smaller than $\Delta x$
+![[discrete fourier transform limitations.png]]
+
+Thus, we convert fourier integral to the summation fo frequency to $N - 1$:
+
+$$f(x) = \frac 1 {\sqrt{2\pi}}
+\int_{-\infty}^\infty \hat f(w)e^{iwx}dw$$
+
+$$\implies q(x_k) = \sum_{n = 0}^{N - 1}c_n e^{inx_k} \qquad ; k = 0, 1, \dots, N - 1$$
+
+The equation above is discrete fourier transform. $q(x_k)$ is the approximation / interpolation of an $f(x)$ which is unknown or doesn't exist.
+
+Can also call it "$f_k$"$= f(x_k)$
 
 ---
 
