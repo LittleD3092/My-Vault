@@ -6,6 +6,13 @@
 
 但是如果我們沒辦法假設 $f(x)$ 是週期性的，我們就會需要 fourier integral 了
 
+$$\underline{f(x) = \frac{ 1 }{ \pi }\int_0^\infty [A(w)\cos(wx) + 
+B(w)\sin(wx)]dw}_\#$$
+
+$$\underline{A(w) = \int_{ -\infty }^{\infty} f(v)\cos( wv )dv}_\#$$
+
+$$\underline{B(w) = \int_{ -\infty }^\infty f(v)\sin(wv)dv}_\#$$
+
 > - [[#Fourier Integral]]
 > - [[#Complex Form or Exponential Form of Fourier Integral]]
 > - [[#Fourier Cosine Integral]]
@@ -90,7 +97,11 @@ $$\frac{ 1 }{ \pi }\sum_{ n = 1 }^\infty \left( \int_{ -p }^{ p }f(t)\sin(n\Delt
 
 .
 
-when $p \rightarrow \infty$ (週期 $\rightarrow \infty$)，$\Delta \alpha \rightarrow 0$
+因為當週期無限大時，$f(x)$ 在範圍外的地方為0，可以讓我們做出 non-periodic fourier series
+
+![[how to get non-periodic function.png]]
+
+因此我們將 $p \rightarrow \infty$ (週期 $\rightarrow \infty$)，則 $\Delta \alpha \rightarrow 0$
 
 > 利用這個關係，將兩兩合併
 > $$\lim_{ \Delta \alpha \rightarrow 0 }\left[ S(0)\frac{ \Delta \alpha }{ 
@@ -107,11 +118,11 @@ $$\left.
 
 ## 定義
 
-$$f(x) = \frac{ 1 }{ \pi }\int_0^\infty [A(\alpha)\cos(\alpha x) + B( \alpha)\sin(\alpha x)]d\alpha$$
+$$\underline{f(x) = \frac{ 1 }{ \pi }\int_0^\infty [A(\alpha)\cos(\alpha x) + B( \alpha)\sin(\alpha x)]d\alpha}_\#$$
 
-$$A(\alpha) = \int_{ -\infty }^{\infty} f(x)\cos( \alpha x )dx$$
+$$\underline{A(\alpha) = \int_{ -\infty }^{\infty} f(x)\cos( \alpha x )dx}_\#$$
 
-$$B(\alpha) = \int_{ -\infty }^\infty f(x)\sin(\alpha x)dx$$
+$$\underline{B(\alpha) = \int_{ -\infty }^\infty f(x)\sin(\alpha x)dx}_\#$$
 
 ### 和 [[Fourier Series]] 不同
 
@@ -119,16 +130,6 @@ $$B(\alpha) = \int_{ -\infty }^\infty f(x)\sin(\alpha x)dx$$
 2. $\frac{ 1 }{ \pi }$
 3. $A(\alpha), B(\alpha)$ 沒有乘 $\frac{ 1 }{ p }$
 4. $a_0$ 為 $\alpha = 0$ 的情況，因為積分有包含到 $0$ 所以合併到積分裡面了
-
-# Complex Form or Exponential Form of Fourier Integral
-
-$$\underline{f(x) = \frac{ 1 }{ 2\pi }\int_{ -\infty }^\infty C(\alpha)e^{ -j\alpha x }d\alpha}_\#$$
-
-$$\underline{C(\alpha) = \int_{ -\infty }^\infty f(x)e^{ j\alpha x }d\alpha}_\#$$
-
-## Get Complex Form from Original Fourier Integral
-
-
 
 # Fourier Sine and Cosine Integral
 
@@ -149,8 +150,6 @@ $$f(x) = \frac{ 2 }{ \pi }\int_0^\infty B(\alpha)\sin(\alpha x)d\alpha$$
 $$B(\alpha) = \int_0^\infty f(x)\sin(\alpha x)dx$$
 
 適用情形: odd 或 interval: $[0, \infty)$
-
-# Others
 
 ---
 

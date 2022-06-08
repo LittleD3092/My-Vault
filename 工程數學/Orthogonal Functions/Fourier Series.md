@@ -132,6 +132,8 @@ $$\underline{a_n = \frac{ 1 }{ p }\int_{ -p }^{ p }f(x)\cos\frac{ n\pi }{ p }xdx
 
 $$\underline{b_n = \frac{ 1 }{ p }\int_{ -p }^{ p }f(x)\sin\frac{ n\pi }{ p }xdx}_\#$$
 
+$p$: 半個週期
+
 上述的 $f(x)$ 是近似，原因是 [[#Condition for Converge]] , [[#Period Extension]]
 
 ### Coefficients
@@ -280,11 +282,13 @@ $$\underline{ f_1(x + 2p) = f(x) }_{ \# }$$
 
 ## Fourier Cosine Series
 
-$$f(x) = \frac{ a_0 }{ 2 } + \sum_{ n = 1 }^{ \infty }a_n\cos\frac{ n\pi }{ p }x$$
+$$\underline{f(x) = \frac{ a_0 }{ 2 } + \sum_{ n = 1 }^{ \infty }a_n\cos\frac{ n\pi }{ p }x}_\#$$
 
-$$a_0 = \frac{ 2 }{ p }\int_0^p f(x)dx$$
+$$\underline{a_0 = \frac{ 2 }{ p }\int_0^p f(x)dx}_\#$$
 
-$$a_n = \frac{ 2 }{ p }\int_0^p f(x)\cos\frac{ n\pi }{ p }xdx$$
+$$\underline{a_n = \frac{ 2 }{ p }\int_0^p f(x)\cos\frac{ n\pi }{ p }xdx}_\#$$
+
+$p$: 半個週期
 
 ### 差異
 
@@ -296,9 +300,11 @@ $$a_n = \frac{ 2 }{ p }\int_0^p f(x)\cos\frac{ n\pi }{ p }xdx$$
 
 ## Fourier Sine Series
 
-$$f(x) = \sum_{ n = 1 }^{ \infty }b_n\sin\frac{ n\pi }{ p }x$$
+$$\underline{f(x) = \sum_{ n = 1 }^{ \infty }b_n\sin\frac{ n\pi }{ p }x}_\#$$
 
-$$b_n = \frac{ 2 }{ p }\int_0^p f(x)\sin\frac{ n\pi }{ p }xdx$$
+$$\underline{b_n = \frac{ 2 }{ p }\int_0^p f(x)\sin\frac{ n\pi }{ p }xdx}_\#$$
+
+$p$: 半個週期
 
 ### 差異
 
@@ -330,6 +336,8 @@ $$f(x) = \sum_{ n = 1 }^{ \infty } \frac{ 4(-1)^{ n + 1 } }{ n\pi }\sin\frac{ n 
 # Half-range Expansion
 
 若 function 只有一邊，如 $f(x) = x^2, \ 0 < x < L$ 只有正的地方有定義，但我們還是想要把它用 fourier series 表示的話可以使用 half-range expansion ，這會假設 $f(x)$ 是一個週期性的函數
+
+若我們假設此函數是偶函數，就可以用 cosine series，而若是奇函數則用 sine series，結果會像[[#三個結果比較|這樣]]
 
 > 如果我們沒辦法假設 $f(x)$ 是週期性的函數，就需要其他方法
 > [[Fourier Integral]]
@@ -500,7 +508,7 @@ n(64 - n^2\pi^2) }\sin\frac{ n\pi }{ p }t$$
 
 ### General Solution
 
-$$x(t) = c_1 \cos(8t) + c_2\sin(8t) + \sum_{ n = 1 }^\infty \frac{ 32(-1)^{ n - 1 } }{ n(64 - n^2\pi^2) }$$
+$$x(t) = c_1 \cos(8t) + c_2\sin(8t) + \sum_{ n = 1 }^\infty \frac{ 32(-1)^{ n - 1 } }{ n(64 - n^2\pi^2) }\sin npt$$
 
 ---
 
