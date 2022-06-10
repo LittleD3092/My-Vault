@@ -198,6 +198,22 @@ $$
 
 ## Boundary Conditions
 
+The solution above did not consider boundary conditions.
+
+On an infinite string, the initial deflections move away and never return. That's OK because the string is infinite.
+
+![[infinite string scenario.png]]
+
+When the string is tied at the ends, whatever wave traveling to the end must reflect back and in the reversed amplitude.
+
+![[string tied scenario.png]]
+
+We make $f(x)$ an odd periodic function with $P = 2L$
+
+![[periodic function with P = 2L.png]]
+
+This solves our problem.
+
 ---
 
 參考資料:

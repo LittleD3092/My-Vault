@@ -61,6 +61,26 @@
 		\right)dx
 	}_\#$$
 	- [[D'Alembert's Solution]]
+	$$
+	\underline{
+	u(x, t) = \frac 1 2\left[
+		f(x + ct) + f(x - ct)
+	\right] + \frac{1}{2c}
+	\int_{x - ct}^{x + ct} g(s)ds
+	}_\#
+	$$
+	If the initial velocity $\dot u(x, 0) = g(x) = 0$
+	$$
+	\underline{
+		u(x, t) = \frac 1 2
+		\left[
+			f(x + ct) + f(x - ct)
+		\right]
+	}_\#
+	$$
+	- Method of Characteristics
+	![[6.4b - Method of Characteristics.pdf]]
+- [[Heat Equation]]
 
 # Motivation
 
