@@ -3,6 +3,64 @@
 ---
 
 - [[Wave Equation]]
+	- Original Equation:
+	$$\underline{
+		c^2 \frac{\partial^2 u}{\partial x^2} = 
+		\frac{\partial^2 u}{\partial t^2}
+	}_\#$$
+	$$c^2 = \frac T \rho$$
+	- Solution:
+	$f(x)$: initial shape
+	$g(x)$: initial velocity
+	$$\underline{
+		u(x, t) = \sum_{n = 1}^\infty \sin
+		\left(
+			\frac{n\pi}{L}x
+		\right)
+		\left[
+			\alpha_n\cos\left(
+				\frac{cn\pi}{L}t
+			\right) +
+			\beta_n\sin\left(
+				\frac{cn\pi}{L}t
+			\right)
+		\right]
+	}_\#$$
+	$$\underline{
+		\alpha_n = 
+		\frac 2 L
+		\int_0^L f(x)\sin\left(
+			\frac{n\pi}{L}x
+		\right)dx
+	}_\#$$
+	$$\underline{
+		\beta_n = \frac 2 {cn\pi}
+		\int_0^L g(x)\sin\left(
+			\frac{n\pi}{L}x
+		\right)dx
+	}_\#$$
+	- Special case when string has zero initial velocity $g(x) = 0$
+	$$
+	\underline{
+		u(x, t) = \sum_{n = 1}^\infty
+		\sin\left(
+			\frac{n\pi}{L}x
+		\right)
+		\left[
+			\alpha_n\cos\left(
+				\frac{cn\pi}{L}t
+			\right)
+		\right]
+	}_\#
+	$$
+	$$\underline{
+		\alpha_n = \frac 2 L
+		\int_0^L f(x)\sin
+		\left(
+			\frac{n\pi}{L}x
+		\right)dx
+	}_\#$$
+	- [[D'Alembert's Solution]]
 
 # Motivation
 
