@@ -158,6 +158,16 @@ Compared to (3b), it is similar to whale's voice data. This is because the dolph
 
 <font color = "#3a86ff">e. Can you identify which region of the frequency-domain belong to the Dolphin, the Whale and the ocean background noise, respectively?</font>
 
+By trimming the audio of whale, we get the audio when whale is not making noise. We have first 1 second of the audio below:
 
+![[Pasted image 20220611210531.png|500]]
+
+And by fourier transform we have the spectrum of background noise:
+
+![[Pasted image 20220611211213.png|500]]
+
+So we know what the spectrum of noise looks like, we may suppress the frequency of noise. Also we know that dolphin's voice is $1000 \sim 17500\text{Hz}$, and whale's voice is $0 \sim 1000\text{Hz}$, therefore we may seperate dolphin, whale and background.
 
 <font color = "#3a86ff">f. Try to separate the signal in (5d-e) into Dolphin vs. Whale vs. Background in the frequency domain, then use inverse-FFT to reconstruct the time-domain audio files. Save these files and play. Was the audio manipulation successful? (I.e. did you clearly isolate Dolphin, Whale and Background sounds using FFT?)</font>
+
+Yes, it was successful.
