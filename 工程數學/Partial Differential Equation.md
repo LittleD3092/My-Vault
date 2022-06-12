@@ -79,7 +79,7 @@
 	}_\#
 	$$
 	- Method of Characteristics
-	![[6.4b - Method of Characteristics.pdf]]
+	[[6.4b - Method of Characteristics.pdf]]
 - [[Heat Equation]]
 
 # Motivation
