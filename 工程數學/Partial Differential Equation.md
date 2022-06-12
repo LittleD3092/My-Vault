@@ -81,6 +81,36 @@
 	- Method of Characteristics
 	[[6.4b - Method of Characteristics.pdf]]
 - [[Heat Equation]]
+	- $f(x)$: initial temperature
+	- $c^2 = \frac{K}{\sigma\rho}$
+	- $K$: thermal conductivity
+	- $\sigma$: specific heat
+	- $\rho$: density
+	- General Heat Equation
+	$$\implies \underline{
+	\frac{\partial u}{\partial t} = 
+	c^2\nabla^2 u
+	}_\#$$
+	- 1D Isothermal Boundary Condition
+	$$\underline{u(x, t) = \sum_{n = 1}^\infty u_n(x, t) = \sum_{n = 1}^\infty B_n\sin(\frac{n\pi x}{L})e^{-\lambda_n^2t}}_\#$$
+	$$\underline{B_n = \frac 2 L\int_0^Lf(x)\sin\frac{n\pi x}{L}dx,\ n = 1, 2\dots}_\#$$
+	$\lambda_n = \frac{cn\pi}{L}$
+	- 1D Adiabatic Boundary Condition
+	$$\therefore \underline{u_n(x, t) = A_n\cos\frac{n\pi}{L}e^{-\lambda_n^2 t}}_\#$$
+	$\lambda_n = \frac{cn\pi}{L}\ , n = 0, 1, 2, \dots$
+	$$\underline{A_0 = \frac 1 L \int_0^Lf(x)dx}_\#$$
+	$$\underline{A_n = \frac 2 L\int_0^L f(x)\cos\left(
+		\frac{n\pi x}{L}dx
+	\right)\ , n = 1, 2, \dots}_\#$$
+	- 2D Heat Equation$$\frac{\partial u}{\partial t} = c^2\nabla^2 u = c^2\left(\frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2}\right)$$
+		- Dirichlet Problem
+		![[dirichlet problem.png]]
+		$$\underline{u(x, y) = \sum_{n = 1}^\infty
+		u_n(x, y) = 
+		\sum_{n = 1}^\infty A^*_n\sin(\frac{n\pi x}{a})\sinh(\frac{n\pi y}{a})}$$
+		$$\therefore\underline{
+			A_n^* = \frac{2}{a\sinh(n\pi b / a)}\int_0^a f(x)\sin(\frac{n\pi x}{a})dx
+		}_\#$$
 
 # Motivation
 
