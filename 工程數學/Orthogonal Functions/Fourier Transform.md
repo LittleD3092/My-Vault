@@ -9,6 +9,21 @@
 - $\mathcal F\{f(x)\}$ is the symbol of Fourier Transform 
 - $\mathcal F^{-1}\{\hat f(w)\}$ is the symbol of Fourier Inverse Tranform
 
+Table of Fourier Transforms:
+
+| $$f(x)$$                                                                                                                         | $$\hat f(w) = \mathcal F(f)$$                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| $$\left\{ \begin{array}{} 1 & \text{if }-b < x < b \\ 0 & \text{otherwise} \end{array}\right.$$                                  | $$\sqrt{\frac 2 \pi}\frac{\sin bw}{w}$$                                                                   |
+| $$\left\{ \begin{array}{} 1 & \text{if }b < x < c \\ 0 & \text{otherwise} \end{array} \right.$$                                  | $$\frac{e^{-ibw} - e^{-icw}}{iw\sqrt{2\pi}}$$                                                             |
+| $$\frac{1}{x^2 + a^2} \qquad (a > 0)$$                                                                                           | $$\sqrt{\frac \pi 2}\frac{e^{-a\vert w \vert}}{a}$$                                                       |
+| $$\left\{ \begin{array}{} x & \text{if }0 < x < b \\ 2x - b & \text{if }b < x < 2b \\ 0 & \text{otherwise} \end{array} \right.$$ | $$\frac{-1 + 2e^{ibw} - e^{-2ibw}}{\sqrt{2\pi}w^2}$$                                                      |
+| $$\left\{ \begin{array}{} e^{-ax} & \text{if }x > 0 \\ 0 & \text{otherwise} \end{array} \right. \qquad (a > 0)$$                 | $$\frac 1 {\sqrt{2\pi}(a + iw)}$$                                                                         |
+| $$\left\{ \begin{array}{} e^{ax} & \text{if }b < x < c \\ 0 & \text{otherwise} \end{array} \right.$$                             | $$\frac{e^{(a - iw)c} - e^{(a - iw)b}}{\sqrt{2\pi}(a - iw)}$$                                             |
+| $$\left\{ \begin{array}{} e^{iax} & \text{if }-b < x < b \\ 0 & \text{otherwise} \end{array} \right.$$                           | $$\sqrt{\frac 2 \pi}\frac{\sin b(w - a)}{w - a}$$                                                         |
+| $$\left\{ \begin{array}{} e^{iax} & \text{if }b < x < c \\ 0 & \text{otherwise} \end{array} \right.$$                            | $$\frac{i}{\sqrt{2\pi}}\frac{e^{ib(a - w)} - e^{ic(a - w)}}{a - w}$$                                      |
+| $$e^{-ax^2}\qquad(a > 0)$$                                                                                                       | $$\frac 1 {\sqrt{2a}}e^{-w^2 / 4a}$$                                                                      |
+| $$\frac{\sin ax}{x} \qquad (a > 0)$$                                                                                             | $$\sqrt{\frac{\pi}{2}} \qquad \text{if } \vert w \vert < a;$$ $$0 \qquad \text{if }\vert w \vert > a$$ | 
+
 # Fourier Transform
 
 From [[Fourier Integral]]:
