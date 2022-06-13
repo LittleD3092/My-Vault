@@ -220,7 +220,7 @@ $$\left\{
 	\end{array}
 \right.$$
 
-Here we need to notice that because the wave equation is linear, any linear combo of solution is also a solution. Infact, in general we can write
+Here we need to notice that because the wave equation is linear, any linear combo of solution is also a solution. In fact, in general we can write
 
 $$u(x, t) = \sum_{n = 1}^\infty
 \sin\left(
