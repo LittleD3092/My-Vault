@@ -1,8 +1,8 @@
-標籤: #資料結構 
+標籤: #DataStructure 
 
 ---
 
-# [[Big-O Notation|Complexity]]
+# [[Asymptotic Notation|Complexity]]
 
 | Action    | Static Array | Dynamic Array |
 | --------- | ------------ | ------------- |

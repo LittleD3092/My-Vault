@@ -1,8 +1,10 @@
-標籤: #資料結構 
+標籤: #DataStructure 
 
 ---
 
-考慮最糟糕的情況會需要多長時間執行程式
+In [[Time Complexity]], we used steps to determine the run time of programs. However, determining the exact step count is a difficult task and expending effort to determine exact steps is not worth, since the notion of a step is itself inexact. Therefore we use "Big-O Notation".
+
+Big-O Notation 會考慮最糟糕的情況大約會需要多長時間執行程式
 
 # 概念
 
