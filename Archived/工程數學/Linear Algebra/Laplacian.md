@@ -2,7 +2,7 @@
 
 ---
 
-Laplacian 是一種對於 $f$ 微分的工具。當有一個 scalar [[field]] 依序作 gradient 與 divergence，如下
+Laplacian 是一種對於 $f$ 微分的工具。當有一個 scalar [[Field]] 依序作 gradient 與 divergence，如下
 
 $$\text{div}(\text{grad}(f))$$
 

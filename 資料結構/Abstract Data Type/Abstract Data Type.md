@@ -4,6 +4,8 @@
 
 用於表達總稱，與 [[Implement Data Type]] 相反
 
+- [[NaturalNumber]]
+
 # Example
 
 | Abstraction(ADT) | Implementation(DS)                                                    |

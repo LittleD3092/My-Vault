@@ -356,7 +356,7 @@ $$P_{ avg } = \frac{ VI }{ 2 }\cos\theta_z$$
 $$Z_s(f) = 
 j2\pi fL + R - j\frac{ 1 }{ 2\pi fC }$$
 
-the resonant frequency $f_0$ is defined to be the frequency at which the [[impedance]] is purely resistive (the reactance is zero)
+the resonant frequency $f_0$ is defined to be the frequency at which the [[Impedance]] is purely resistive (the reactance is zero)
 
 $$\implies 2\pi f_0 L = \frac{ 1 }{ 2\pi f_0 C }$$
 
@@ -383,27 +383,27 @@ $$\underline{ Z_s(f) = R\left[ 1 + jQ_s\left( \frac{ f }{ f_0 } - \frac{ f_0 }{ 
 ## Parallel
 
 A circuit containing both types of Energy Storage elements
-i.e. [[inductor]] and [[capacitor]], exhibits a distinct behavior owing to the joint effect at a specific frequency
+i.e. [[Inductor]] and [[Capacitor]], exhibits a distinct behavior owing to the joint effect at a specific frequency
 
-很像單擺的動能和位能（[[inductor]] 的磁場和 [[capacitor]] 的電場）有週期性的轉換
+很像單擺的動能和位能（[[Inductor]] 的磁場和 [[Capacitor]] 的電場）有週期性的轉換
 
 ![[parallel resonant circuit.png|550]]
 
 ### [[Impedance]]
 
-The [[impedance]] of the parallel resonance circuit is
+The [[Impedance]] of the parallel resonance circuit is
 
 $$\underline{ Z_p = \frac{ 1 }{ \frac 1 R + j2\pi fC - j\frac 1 {2\pi fL} } }_{ \# }$$
 
 ### Resonant Frequency
 
-共振頻率發生在 pure [[resistive circuit]] ，所以
+共振頻率發生在 pure [[Resistive Circuit]] ，所以
 
 $$2\pi f_0C = \frac 1 { 2\pi f_0L }$$
 
 $$\implies \underline{ f_0 = \frac 1 { 2\pi\sqrt{ LC } } }_{ \# }$$
 
-At this frequency the [[inductor]] and the [[capacitor]] shuffle energy with each other.
+At this frequency the [[Inductor]] and the [[Capacitor]] shuffle energy with each other.
 
 ### Quality Factor
 

@@ -17,7 +17,7 @@
 >   - [[singular point]]
 > - [[#tips]]
 > ---
-> [[工程數學/First Order DE/Table of Integration]]
+> [[Table of Integration]]
 
 ---
 

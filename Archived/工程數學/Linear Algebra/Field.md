@@ -36,7 +36,7 @@ $$\nabla = \frac{ \partial }{ \partial x } \hat i +
 \frac{ \partial }{ \partial y } \hat j + 
 \frac{ \partial }{ \partial z } \hat k$$
 
-Gradient turns a scalar field into a [[vector]] field.
+Gradient turns a scalar field into a [[Vector]] field.
 
 ### Directional Derivative
 
@@ -55,7 +55,7 @@ $$D_af = \frac 1 {\vert\vec a \vert}\vec a \cdot \nabla f \quad \leftarrow \text
 
 ### Divergence
 
-Let the [[vector]] field be: $\vec v(x, y, z)$
+Let the [[Vector]] field be: $\vec v(x, y, z)$
 
 $$div\vec v = \nabla \cdot \vec v = 
 \left[

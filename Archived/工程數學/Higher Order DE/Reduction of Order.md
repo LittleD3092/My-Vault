@@ -76,7 +76,7 @@ $$u = -\frac{1}{x^2 + c}$$
 .
 (Step 3)
 $$y = -\int \frac{1}{x^2 + c}$$
-[[工程數學/First Order DE/Table of Integration]]
+[[Table of Integration]]
 .
 $$=-\frac{1}{\sqrt{c}}\tan^{-1}(\frac{x}{\sqrt{c}}) + c_1$$
 

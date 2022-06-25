@@ -5,7 +5,7 @@
 有兩個 application
 
 1. Scalar Value: 沿著路線採茶，不同地方茶葉有密度的不同，最後採了多少茶葉？
-2. [[Vector]]: 發射火箭，有了火箭的路線與 [[vector]] [[field]] ，引擎[[Work|作功]]多少？
+2. [[Vector]]: 發射火箭，有了火箭的路線與 [[Vector]] [[Field]] ，引擎[[Work|作功]]多少？
 
 # Mathematical Expression
 
@@ -37,7 +37,7 @@ $$ = x(t) \hat i + y(t) \hat j$$
 
 - If $\vec r(a) = \vec r(b) \rightarrow$ closed path
 - If $\vec r(a) \neq \vec r(b) \rightarrow$ open path
-- $C$ is a smooth [[curve]] if
+- $C$ is a smooth [[Curve]] if
 $$\frac {d\vec r}{ dt } = 
 \vec r' = \text{ tangent }$$
 is unique at all points, and 

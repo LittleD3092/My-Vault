@@ -366,7 +366,7 @@ $$ =
 	- $0 \leq x \leq 4$
 	- $0 \leq z \leq 3$
 	- $y = x^2$
-- [[vector]] [[field]]:
+- [[Vector]] [[Field]]:
 	- $\vec F = \left[ \begin{array}{} 3z^2 \\ 6 \\ 6xz \end{array} \right]$
 
 #### Method 1: uv-integration
@@ -552,7 +552,7 @@ $$ = -72$$
 $$\underset S \iint g(\vec r)dA = \underset R \iint g(\vec r(u, v)) \vert \vec N(u, v) \vert dudv$$
 
 - no orientation
-- scalar [[field]] $g(\vec r(u, v))$
+- scalar [[Field]] $g(\vec r(u, v))$
 
 ---
 

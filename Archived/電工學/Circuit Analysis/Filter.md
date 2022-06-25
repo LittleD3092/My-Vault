@@ -8,7 +8,7 @@ All real-world signals are sums of sinusoidal components, Fourier analysis is a 
 
 # Filters
 
-利用 [[capacitor]] 和 [[inductor]] 的 [[impedance]] 會隨著頻率變動，將特定頻率的波濾掉
+利用 [[Capacitor]] 和 [[Inductor]] 的 [[Impedance]] 會隨著頻率變動，將特定頻率的波濾掉
 
 如 [[Inductor]] 的 [[Impedance]]
 

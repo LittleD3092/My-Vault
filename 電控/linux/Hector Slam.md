@@ -2,7 +2,15 @@
 
 ---
 
-# Install
+特色：
+- 不需要里程計
+- 可以結合 [[IMU]] 數據使用
+- 沒有[[閉環檢測]]部份，精確度高
+- 柵格地圖
+
+# Package
+
+## Install
 
 安裝 hector slam 可以用 `apt-get` 來完成
 
@@ -16,7 +24,7 @@ $ sudo apt-get install ros-noetic-hector-slam
 /opt/ros/noetic/share/hector_slam_launch
 ```
 
-# Run
+## Run
 
 ```bash
 $ roslaunch hector_slam_launch tutorial.launch
@@ -37,7 +45,7 @@ $ roslaunch ydlidar_ros_driver X4.launch
 > 因為 `tutorial.launch` 有提供載入掃描過程檔案並進行模擬的功能，因此才會有這個參數
 > 這個功能的使用可以在 [How to build a map using logged data - ROS wiki](https://wiki.ros.org/hector_slam/Tutorials/MappingUsingLoggedData) 中找到
 
-# File Structure
+## File Structure
 
 ```bash
 ls /opt/ros/noetic/share | grep "hector"
@@ -61,9 +69,13 @@ hector_slam_launch
 hector_trajectory_server
 ```
 
-## `hector_slam_launch`
+### `hector_slam_launch`
 
-## `hector_mapping`
+### `hector_mapping`
+
+# 原理
+
+利用高斯牛頓法來解決 scan-matching 問題
 
 ---
 
@@ -71,8 +83,11 @@ hector_trajectory_server
 
 [How to set up Hector slam - ROS wiki](https://wiki.ros.org/hector_slam/Tutorials/SettingUpForYourRobot)
 [How to build a map using logged data - ROS wiki](https://wiki.ros.org/hector_slam/Tutorials/MappingUsingLoggedData)
+[Hector SLAM 教學](https://ithelp.ithome.com.tw/articles/10220757)
 
 ---
 
 link:
 
+[[Gauss-Newton Method]]
+[[IMU]]

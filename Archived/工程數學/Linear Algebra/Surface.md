@@ -10,9 +10,9 @@
 
 ![[normal of surface s.png|300]]
 
-只要找到兩條 tangent，就可以利用 [[cross product]] 求出 normal
+只要找到兩條 tangent，就可以利用 [[Cross Product]] 求出 normal
 
-我們需要找到 [[curve]] 進而找到 tangent，所以我們簡化 $\vec r$ 來表示 $C$ (將 $u, v$ 變成只有 $t$)，讓底下的偏微分較好計算與表示
+我們需要找到 [[Curve]] 進而找到 tangent，所以我們簡化 $\vec r$ 來表示 $C$ (將 $u, v$ 變成只有 $t$)，讓底下的偏微分較好計算與表示
 
 $$\vec r(u(t), v(t)) = \tilde r (t)$$
 

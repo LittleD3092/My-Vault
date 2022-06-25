@@ -12,7 +12,7 @@ $$\implies \underline{ -q = \frac{ dV }{ dx } }_{ \# }$$
 $\implies$ The negative value of the load at a point equals the slope (rate of change) of shear diagram.
 $$\implies \int_{ V_1 }^{ V_2 } dV = -\int_{ x_1 }^{ x_2 } qdx$$
 $$\implies \underline{ \Delta V = -\int_{ x_1 }^{ x_2 } qdx }_{ \# }$$
-$\implies$ The change in shear between two points equals negative the area under the load [[curve]].
+$\implies$ The change in shear between two points equals negative the area under the load [[Curve]].
 
 # Moment 平衡
 

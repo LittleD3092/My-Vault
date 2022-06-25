@@ -188,13 +188,13 @@ $${ \bf a }_B =
 
 $${ \bf F } = m { \bf a }$$
 
-而 [[moment]] 等於
+而 [[Moment]] 等於
 
 $${ \bf M } = I { \bf \alpha }$$
 
-其中 $I$ 是 mass [[moment]] of inertia，$\alpha$ 是角速度
+其中 $I$ 是 mass [[Moment]] of inertia，$\alpha$ 是角速度
 
-mass [[moment]] of inertia 的計算相似於 [[Area Moment of Inertia]] ，如下
+mass [[Moment]] of inertia 的計算相似於 [[Area Moment of Inertia]] ，如下
 
 $$I = \int_m r^2 dm$$
 
@@ -228,7 +228,7 @@ $d$: 軸 1 和軸 2 的距離
 
 #### Radius of Gyration
 
-The [[moment]] of inertia of a body about a specified axis can be expressed using the radius of gyration, $k$
+The [[Moment]] of inertia of a body about a specified axis can be expressed using the radius of gyration, $k$
 
 $$I = mk^2$$
 

@@ -17,7 +17,7 @@ $$\frac{dy}{dx} = g(x)h(y)$$
 $$\implies p(y)dy = g(x)dx, \qquad where\quad p(y) = \frac{1}{h(y)}$$
 
 **step2 integrate each side:**
-> [[工程數學/First Order DE/Table of Integration]]
+> [[Table of Integration]]
 $$\int p(y)dy=\int g(x)dx$$
 $$\implies P(y)+c_1 = G(x)+c_2$$
 $$\implies P(y) = G(x)+c$$

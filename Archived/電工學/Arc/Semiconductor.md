@@ -105,9 +105,9 @@ $$n >> n_i \;\text{ or }\; p >> p_i$$
 
 > <font face = "serif">Diffusive motive force brings the free electron from n-type region to the p-type region 
 > 
-> The electrical [[field]] is built in the interface between the n-type and p-type region.
+> The electrical [[Field]] is built in the interface between the n-type and p-type region.
 > 
-> The depletion region is formed under the balance of the diffusive motive force and the drift force due to the electrical [[field]]</font>
+> The depletion region is formed under the balance of the diffusive motive force and the drift force due to the electrical [[Field]]</font>
 
 這樣的東西我們將它叫做 [[Diode]]
 
