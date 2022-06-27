@@ -4,14 +4,14 @@
 
 所有 transistor 可以分成兩類，FET 又可以分成 JFET 和 MOSFET
 
-1. Bipolar Junction Transistor BJT
+1. [[Bipolar Junction Transistors]] BJT
 2. [[Field-Effect Transistors]] FET
 	- JFET
 	- MOSFET
 
-| Bipolar Junction Transistor                                                                                                | [[Field-Effect Transistors]]                                                                    |
+| [[Bipolar Junction Transistors]]                                                                                           | [[Field-Effect Transistors]]                                                                    |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| current controlled device (current at the base of the transistor determine the current flow between collector and emitter) | voltage controlled device (voltage at gate determine the current flow between drain and source) | 
+| current controlled device (current at the base of the transistor determine the current flow between collector and emitter) | voltage controlled device (voltage at gate determine the current flow between drain and source) |
 
 ---
 
@@ -24,3 +24,4 @@
 link:
 
 [[Field-Effect Transistors]]
+[[Bipolar Junction Transistors]]
