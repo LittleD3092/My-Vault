@@ -48,6 +48,79 @@ Rectangle::Rectangle(int x, int y, int h, int w)
 
 In the first way, the constructor first initializes the data members and then assigns arguments to them in two seperate steps, while in the second way, it directly initializes the data members to the corresponding arguments in a single step. Thus, the latter approach results in a more efficient constructor.
 
+## Constructor with No Argumanets
+
+To declare an object and pass two arguments to the constructor, you might do the following:
+
+```cpp
+DayOfYear date1(12, 31);
+```
+
+However, if you want the constructor with zero arguments to be used, you declare the object as follows:
+
+```cpp
+DayOfYear date2;
+```
+
+You DO NOT declare the object as follows, since this syntax declares a function:
+
+```cpp
+DayOfYear date2(); // PROBLEM!
+```
+
+You do, however, include the parentheses when you explicitly invoke a constructor with no arguments:
+
+```cpp
+date1 = DayOfYear();
+```
+
+## Constructor delegation
+
+This allows one constructor to call another constructor.
+
+For example, the definition of class:
+
+```cpp
+class Coordinate
+{
+public:
+	Coordinate();
+	Coordinate(int x);
+	Coordinate(int x, int y);
+	int getX();
+	int getY();
+private:
+	int x = 1;
+	int y = 2;
+};
+
+Coordinate::Coordinate()
+{}
+
+Coordinate::Coordinate(int xval) : x(xval)
+{}
+
+Coordinate::Coordinate(int xval, int yval) : x(xval), y(yval)
+{}
+
+int Coordinate::getX()
+{
+	return x;
+}
+
+int Coordinate::getY()
+{
+	return y;
+}
+```
+
+We could modify the implementation of the default constructor so that it invokes the constructor with two parameters:
+
+```cpp
+Coordinate::Coordinate() : Coordinate(99, 99)
+{}
+```
+
 # Destructor
 
 If a destructor is not defined, the deletion of an object results in the freeing of memory associated with data members of the class. If a data member is a pointer to some other object, the space allocated to the pointer is returned, but the object that it was pointing to is not deleted. If we also wish to delete this object, we must define a destructor that explicitly does so.
@@ -86,6 +159,107 @@ ostream& operator<<(ostream& os, Rectangle& r)
 }
 ```
 
+# Const
+
+If you have a member function that should not change the value of a calling object, you can mark the function with the `const` modifier. The computer will then issue an error message if your function code inadvertently changes the value of the calling object.
+
+```cpp
+class BankAccount
+{
+public:
+	...
+	void output() const;
+	...
+```
+
+```cpp
+void BankAccount::output() const
+{
+	...
+```
+
+# Static
+
+Sometimes you want to have one variable that is shared by all the objects of a class. Such variables are called static variables.
+
+If a function does not access the data of any object and yet you want the function to be a member of the class, you can make it a static function.
+
+Because a static function does not need a calling object, the definition of a static function cannot use anything that depends on a calling object.
+
+Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Server
+{
+public:
+	Server(char letterName);
+	static int getTurn();
+	void serveOne();
+	static bool stillOpen();
+private:
+	static int turn;
+	static int lastServed;
+	static bool nowOpen;
+	char name;
+};
+
+// note that static variables are initialized outside the class definition
+int Server::turn = 0;
+int Server::lastServed = 0;
+bool Server::nowOpen = true;
+
+int main()
+{
+	Server s1('A'), s2('B');
+	int number, count;
+	do
+	{
+		cout << "How many in your group? ";
+		cin >> number;
+		cout << "Your turns are: ";
+		for (count = 0; count < number; count++)
+			cout << Server::getTurn() << ' ';
+		cout << endl;
+		s1.serveOne();
+		s2.serveOne();
+	} while(Server::stillOpen());
+	
+	cout << "Now closing service.\n";
+	
+	return 0;
+}
+
+Server::Server(char letterName) : name(letterName)
+{/*Intentionally empty*/}
+
+int Server::getTurn()
+{
+	turn++;
+	return turn;
+}
+
+bool Server::stillOpen()
+{
+	return nowOpen;
+}
+
+void Server::serveOne()
+{
+	if (nowOpen && lastServed < turn)
+	{
+		lastServed++;
+		cout << "Server " << name
+			 << " now serving " << lastServed << endl;
+	}
+	
+	if(lastServed >= turn) // Everyone served
+		nowOpen = false;
+}
+```
+
 ---
 
 參考資料:
@@ -97,3 +271,4 @@ Fundamentals of Data Structures in C++, 2nd edition
 link:
 
 [[Function]]
+[[Overloading]]
