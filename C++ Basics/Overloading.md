@@ -44,7 +44,7 @@ public:
 	bool operator ==(const Money& amount2) const;
 	const Money operator -() const;
 	...
-}
+};
 ...
 const Money Money::operator +(const Money& secondOperand) const
 {
@@ -58,6 +58,184 @@ const Money Money::operator +(const Money& secondOperand) const
 Note that:
 1. The first operand is "self" object, and the second operand is a parameter of the function.
 2. The function has direct access to private members of `secondOperand`, such as `secondOperand.cents` and `secondOperand.dollars`.
+
+# Overloading as Friend Functions
+
+## Advantage
+
+Assume that you have a class named `Money`, and it has overloaded constructor that takes 0, 1 or 2 `int` as parameters. Also the `+` operand is overloaded as member function of `Money`. The following works:
+
+```cpp
+Money baseAmount(100, 60), fullAmount;
+fullAmount = baseAmount + 25;
+fullAmount.output();
+```
+
+The integer `25` will be automatically converted to type `Money`, since class `Money` has a constructor for 1 `int`. This process is called "type convertion".
+
+However, the code following will not work:
+
+```cpp
+Money baseAmount(100, 60), fullAmount;
+fullAmount = 25 + baseAmount;
+fullAmount.output();
+```
+
+Because there is no way for `baseAmount` to change to type `int`, the code above will not work.
+
+But, if we overload the operator as stand-alone function, and declare it as a friend function of class `Money`, then not only the automatic type conversion works, but the operator function has access to all private members.
+
+> - One of the disadvantage of overloading stand-alone function is that it doesn't have access to private members.
+> - One of the disadvantage of overloading as member function is that the first operand does not apply auto conversion.
+> - We can use friend function and stand-alone function to avoid two disadvantage above.
+
+## Implementation
+
+```cpp
+class Money
+{
+public:
+	...
+	friend const Money operator +(const Money& amount1,
+								  const Money& amount2);
+	friend const Money operator -(const Money& amount1,
+								  const Money& amount2);
+	friend bool operator ==(const Money& amount1,
+						    const Money& amount2);
+	friend const Money operator -(const Money& amount);
+	...
+};
+...
+const Money operator +(const Money& amount1, 
+					   const Money& amount2)
+{
+	...
+	return ...;
+}
+const Money operator -(const Money& amount1, 
+					   const Money& amount2)
+{
+	...
+	return ...;
+}
+bool operator ==(const Money& amount1, 
+			     const Money& amount2)
+{
+	...
+	return ...;
+}
+const Money operator -(const Money& amount1)
+{
+	...
+	return ...;
+}
+...
+
+```
+
+A friend function is not a member function. A friend function is defined and called the same way as an ordinary function. You do not use the dot operator in a call to a friend function, and you do not use a type qualifier in the definition of a friend function.
+
+# Rules on Overloading Operators
+
+- When overloading an operator, at least one parameter (one operand) of the resulting overloaded operator must be of a class type.
+- Most operators can be overloaded as a member of the class, a friend of the class, or a nonmember, nonfriend.
+- The following operators can only be overloaded as (nonstatic) members of the class: `=`, `[]`, `->`, and `()`
+- You cannot create a new operator. All you can do is overload existing operators such as `+`, `-`, `*`, `/`, `%`, and so forth.
+- You cannot change the number of arguments that an operator takes. For example, you cannot change `%` from a binary to a unary operator when you overload `%`; you cannot change `++` from a unary to a binary operator when you overload it.
+- You cannot change the precedence of an operator. An overloaded operator has the same precedence as the ordinary version of the operator. For example, `x*y + z` always means `(x*y) + z`.
+- The following operators cannot be overloaded: the dot operator `.`, the scope resolution operator `::`, `sizeof`, `?:`, and the operator `.*`.
+- An overloaded operator cannot have default arguments.
+
+# More Operators
+
+## >> and <<
+
+```cpp
+class Money
+{
+public:
+	...
+	friend ostream& operator <<(ostream& outs, 
+								const Money& amount);
+};
+...
+ostream& operator <<(ostream& outs, const Money& amount)
+{
+	// outs << amount.element;
+	return outs;
+}
+```
+
+For extraction operator:
+
+```cpp
+istream& operator >>(istream& ins, Money& amount)
+{
+	// ins >> amount.element;
+	return ins;
+}
+```
+
+## ++ and --
+
+```cpp
+class IntPair
+{
+public:
+	IntPair operator++();		//Prefix version
+	IntPair operator++(int); 	//Postfix version
+	...
+private:
+	int first;
+	int second;
+};
+...
+IntPair IntPair::operator++(int ignoreMe)	//Postfix version
+{
+	int temp1 = first;
+	int temp2 = second;
+	first++;
+	second++;
+	return IntPair(temp1, temp2);
+}
+IntPair IntPair::operator++()	//Prefix version
+{
+	first++;
+	second++;
+	return IntPair(first, second);
+}
+...
+```
+
+## []
+
+When overloadint `[]`, the operator `[]` must be a member function.
+
+```cpp
+class CharPair
+{
+public:
+	...
+	char& operator[](int index);
+	...
+private:
+	char first;
+	char second;
+};
+...
+char& CharPair::operator[](int index)
+{
+	if(index == 1)
+		return first;
+	else if(index == 2)
+		return second;
+	else
+	{
+		cout << "Illegal index value.\n";
+		exit(1);
+	}
+}
+```
 
 ---
 
