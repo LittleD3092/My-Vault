@@ -27,3 +27,4 @@ Absolute C++, 6th edition
 
 link:
 
+[[Function]]
