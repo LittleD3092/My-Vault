@@ -206,6 +206,34 @@ A member variable (or member function) that is private in a base class is not ac
 
 Therefore, you should avoid accessing private member from base class and use public function to do so instead.
 
+# Protected
+
+`protected` is a qualifier as `private` and `public` is. If you use `protected` as a qualifier, the member variable or function acts like it is private, except that it can be accessed by derived class.
+
+Many, but not all, programming authorities say it is bad style to use protected member variables because doing so compromises the principle of hiding the class implementation. Therefore you should think twice before using it.
+
+# Access to a Redefined Base Function
+
+Consider the base class `Employee` and the derived class `HourlyEmployee`. The function `printCheck()` is defined in both classes. Suppose you have an object:
+
+```cpp
+HourlyEmployee SallyH;
+```
+
+And you use `printCheck()`:
+
+```cpp
+SallyH.printCheck();
+```
+
+You will call a function in class `HourlyEmployee`, which is `HourlyEmployee::printCheck()`.
+
+Now, what if you don't want to call `HourlyEmployee::printCheck()`, but the function defined in base class `Employee::printCheck()`? You may use the following:
+
+```cpp
+SallyH.Employee::printCheck();
+```
+
 ---
 
 參考資料:

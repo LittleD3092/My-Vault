@@ -63,7 +63,7 @@ Note that:
 
 ## Advantage
 
-Assume that you have a class named `Money`, and it has overloaded constructor that takes 0, 1 or 2 `int` as parameters. Also the `+` operand is overloaded as member function of `Money`. The following works:
+Assume that you have a class named `Money`, and it has overloaded constructor that takes 0, 1 or 2 `int` numbers as parameters. Also the `+` operand is overloaded as member function of `Money`. The following works:
 
 ```cpp
 Money baseAmount(100, 60), fullAmount;
@@ -234,6 +234,38 @@ char& CharPair::operator[](int index)
 		cout << "Illegal index value.\n";
 		exit(1);
 	}
+}
+```
+
+## =
+
+```cpp
+class PFArrayD
+{
+public:
+	...
+	PFArrayD& operator =(const PFArrayD& rightSide);
+protected:
+	double *a;
+	int capacity;
+	int used;
+};
+```
+
+```cpp
+PFArrayD& PFArrayD::operator =(const PFArrayD& rightSide)
+{
+	if (capacity != rightSide.capacity)
+	{
+		delete [] a;
+		a = new double[rightSide.capacity];
+	}
+	
+	capacity = rightSide.capacity;
+	used = rightSide.used;
+	for (int i = 0; i < used; i++)
+		a[i] = rightSide.a[i];
+	return *this;
 }
 ```
 
