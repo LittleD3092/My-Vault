@@ -50,6 +50,28 @@ ofstream outStream;
 outStream.open("important.txt", ios::app);
 ```
 
+# Fail Function
+
+You can use function `fail` to check whether the open process is successful.
+
+```cpp
+inStream.fail()
+outStream.fail()
+```
+
+The `fail` function returns a `bool` value. If the open process failed, it returns `true`.
+
+# End of File
+
+There is a function called `eof` that checks whether the input reached end of file.
+
+```cpp
+inStream.eof()
+outStream.eof()
+```
+
+Notice that `eof` does not become `true` until the program attempts to read one character and read the "end of file marker". You should avoid outputting the end of file marker.
+
 # Formatting Output
 
 There are two ways to format your output.
@@ -60,6 +82,12 @@ There are two ways to format your output.
 outStream.setf(ios::fixed);
 outStream.setf(ios::showpoint);
 outStream.precision(2);
+```
+
+Beside `setf`, there is `unsetf`, which unset the formatting flag:
+
+```cpp
+cout.unsetf(ios::showpos);
 ```
 
 2. You may use manipulators to format the output. A manipulator is a function that is called in a nontraditional way. They are placed after the insertion operator.
