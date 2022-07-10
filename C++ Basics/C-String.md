@@ -9,7 +9,7 @@ A C-string variable is the same thing as an array of characters, but it is used 
 ## Syntax
 
 ```cpp
-char Array_Name[Maximum_C-string_size] + 1];
+char Array_Name[Maximum_C-string_size + 1];
 ```
 
 ## Example
