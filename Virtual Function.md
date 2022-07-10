@@ -291,6 +291,87 @@ public:
 };
 ```
 
+# The Slicing Problem
+
+Assume that we have a base class `Pet` and a derived class `Dog`, and we have the virtual function `print()` in both classes:
+
+```cpp
+class Pet
+{
+public:
+	string name;
+	virtual void print() const;
+};
+
+class Dog : Pet
+{
+public:
+	string breed;
+	virtual void print() const;
+};
+```
+
+The following assignment is legal because the `Pet` class is an ancestor class of the `Dog` class:
+
+```cpp
+Dog vdog;
+Pet vpet;
+vpet = vdog;
+```
+
+However, `vpet` cannot be a calling object for a member function from `Dog` unless the function is also a member function of `Pet`, and all the member variables of `vdog` that are not inherited from the class `Pet` are lost. This is the slicing problem.
+
+```cpp
+Dog vdog;
+Pet vpet;
+
+vdog.name = "Tiny";
+vdog.breed = "Great Dane";
+vpet = vdog;
+...
+vpet.print()
+```
+
+We can avoid the slicing problem. In order to defeat the slicing problem, the function must be virtual and you must use pointers and dynamic variables.
+
+```cpp
+cout << "The slicing problem defeated:\n";
+Pet *ppet;
+Dog *pdog;
+pdog = new Dog;
+pdog -> name = "Tiny";
+pdog -> breed = "Great Dane";
+ppet = pdog;
+ppet -> print();
+pdog -> print();
+```
+
+# Make Destructors Virtual
+
+==You should make destructors virtual.== The reasons involve base class and derived class, and let's see what happens if we marked the destructors virtual and what happens otherwise.
+
+Let's see following code, with a base class `Base` and a derived class `Derived`.
+
+```cpp
+Base *pBase = new Derived;
+...
+delete pBase;
+```
+
+## What if the destructors are marked virtual?
+
+First let's consider that the destructors are marked `virtual`.
+
+What happens in the `delete` process is that it first called the destructor of `Derived` because the destructor is marked `virtual`, then the destructor of `Derived` called the destructor of `Base`. Then the object `pBase` is perfectly deleted because both destructors are called.
+
+## What if the destructors are NOT marked virtual?
+
+Then let's consider that the destructors are NOT marked `virtual`.
+
+This time, the `pBase` called the destructor of `Base`, then the delete process ends. This is because `pBase` is a type of `Base`, and deleting `pBase` called the destructor of class `Base`.
+
+This leads to problems that not all elements in `pBase` is deleted. `pBase` is actually a `Derived` type object and therefore should use both destructors in `Derived` and `Base`.
+
 ---
 
 參考資料:
