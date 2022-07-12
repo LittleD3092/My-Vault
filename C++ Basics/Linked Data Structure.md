@@ -25,7 +25,7 @@ private:
 typedef IntNode* IntNodePtr;
 ```
 
-## Function to Add a Node at the Head of a Linked List
+## Add a Node at the Head
 
 ![[Adding a Node to the Head of a Linked List.png]]
 
@@ -48,7 +48,7 @@ void headInsert(IntNodePtr& head, int theData)
 }
 ```
 
-## Function to Add a Node in the Middle of a Linked List
+## Insert a Node in the Middle
 
 ![[Inserting in the Middle of a Linked List.png]]
 
@@ -74,7 +74,7 @@ void insert(IntNodePtr afterMe, int theData)
 
 ![[removing a node.png]]
 
-## Function to Locate a Node in a Linked List
+## Locate a Node
 
 ![[searching a linked list.png]]
 
@@ -148,6 +148,76 @@ private:
 	DoublyLinkedIntNode *previousLink;
 };
 typedef DoublyLinkedIntNode* DoublyLinkedIntNodePtr;
+```
+
+## Adding a Node to the Front
+
+![[adding a node to the front of a doubly linked list.png]]
+
+### Function Declaration
+
+```cpp
+void headInsert(DoublyLinkedIntNode& head, int theData);
+// Precondition: The pointer variable head points to
+// the head of a linked list.
+// Postcondition: A new node containing theData
+// has been added at the head of the linked list.
+```
+
+### Function Definition
+
+```cpp
+void headInsert(DoublyLinkedIntNodePtr& head, int theData)
+{
+	DoublyLinkedIntNode* newHead = 
+		new DoublyLinkedIntNode(theData, nullptr, head);
+	
+	head -> setPreviousLink(newHead);
+	head = newHead;
+}
+```
+
+## Deleting a Node
+
+![[deleting a node from a doubly linked list.png]]
+
+### Function Declaration
+
+```cpp
+void deleteNode(DoublyLinkedIntNodePtr& head, 
+				DoublyLinkedIntNodePtr discard);
+// Precondition: The pointer variable head points to
+// the head of a linked list and discard points to the node to 
+// remove.
+// Postcondition: The node pointed to by discard is removed 
+// from the list.
+```
+
+### Function Definition
+
+```cpp
+void deleteNode(DoublyLinkedIntNodePtr& head,
+			    DoublyLinkedIntNodePtr discard)
+{
+	if(head == discard)
+	{
+		head = head -> getNextLink();
+		head -> setPreviousLink(nullptr);
+	}
+	else
+	{
+		DoublyLinkedIntNodePtr prev = 
+			discard -> getPreviousLink();
+		DoublyLinkedIntNodePtr next =
+			discard -> getNextLink();
+		prev -> setNextLink(next);
+		if(next != nullptr)
+		{
+			next -> setPreviousLink(prev);
+		}
+	}
+	delete discard;
+}
 ```
 
 ---
