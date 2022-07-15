@@ -17,7 +17,7 @@ password: `locobot-4`
 
 3. 使用 SSH 進行遠端操作
 ```bash
-ssh locobot@<IP>
+ssh -X locobot@<IP>
 ```
 
 4. 輸入 `py` 開啟機器人的 python
