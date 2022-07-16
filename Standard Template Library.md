@@ -300,7 +300,31 @@ Set contains 'C': no
 
 ### Map Class
 
-- Type name: 
+- Type name: `map<KeyType, T>` or `map<KeyType, T, Ordering>`. The `Ordering` is used to sort elements by key value for efficient storage. If no `Ordering` is given, the ordering used is the binary operator, `<`.
+- Library header: `<map>`, which places the definition in the `std` namespace.
+- Iterators:
+	- `iterator`
+	- `const_iterator`
+	- `reverse_iterator`
+	- `const_reverse_iterator`
+	- All iterators are bidirectional.
+	- Those iterators not including `const_` are neither constant nor mutable but something in between. If `p` is of type `iterator`, then you can change the key value but not the value of type `T`. Perhaps it is best, at least at first, to treat all iterators as if they were constant.
+	- Following member functions have expected behavior.
+		- `begin()`
+		- `end()`
+		- `rbegin()`
+		- `rend()`
+	- Adding or deleting elements does not affect iterators, except for an iterator located at the element removed.
+
+| Member Function (`m` is a map object) | Meaning                                                                                                                                                                                                                                                    |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `m.insert(Element)`                   | Inserts `Element` in the map. `Element` is of type `pair<KeyType, T>`. Returns a value of type `pair<iterator, bool>`. If the insertion is successful, the second part of the returned pair is `true` and the iterator is located at the inserted element. |
+| `m.erase(Target_Key)`                 | Removes the element with the key `Target_Key`.                                                                                                                                                                                                             |
+| `m.find(Target_Key)`                  | Returns an iterator located at the element with key value `Target_Key`. Returns `m.end()` if there is no such element.                                                                                                                                     |
+| `m[Target_Key]`                       | Returns a reference to the object associated with the `Target_Key`. If the map does not already contain such an object, then a default object of type `T` is inserted.                                                                                     |
+| `m.size()`                            | Returns the number of pairs in the map.                                                                                                                                                                                                                    |
+| `m.empty()`                           | Returns `true` is the map is empty; otherwise, returns `false`.                                                                                                                                                                                            |
+| `m1 == m2`                            | Returns `true` if the maps contain the same pairs; otherwise, returns `false`.                                                                                                                                                                             | 
 
 ---
 
