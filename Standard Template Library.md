@@ -298,6 +298,10 @@ A B D
 Set contains 'C': no
 ```
 
+### Map Class
+
+- Type name: 
+
 ---
 
 參考資料:
