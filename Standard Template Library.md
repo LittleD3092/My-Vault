@@ -326,6 +326,73 @@ Set contains 'C': no
 | `m.empty()`                           | Returns `true` is the map is empty; otherwise, returns `false`.                                                                                                                                                                                            |
 | `m1 == m2`                            | Returns `true` if the maps contain the same pairs; otherwise, returns `false`.                                                                                                                                                                             | 
 
+#### Example
+
+Program using the `map` template class:
+
+```cpp
+// Program to demonstrate use of the map template class.
+#include <iostream>
+#include <map>
+#include <string>
+using std::cout;
+using std::endl;
+using std::map;
+using std::string;
+int main()
+{
+	map<string, string> planets;
+
+	planets["Mercury"] = "Hot planet";
+	planets["Venus"] = "Atmosphere of sulfuric acid";
+	planets["Earth"] = "Home";
+	planets["Mars"] = "The Red Planet";
+	planets["Jupiter"] = "Largest planet in our solar system";
+	planets["Saturn"] = "Has rings";
+	planets["Uranus"] = "Tilts on its side";
+	planets["Neptune"] = "1500 mile-per-hour winds";
+	planets["Pluto"] = "Dwarf planet";
+
+	cout << "Entry for Mercury - " << planets["Mercury"]
+		 << endl << endl;
+
+	if(planets.find("Mercury") != planets.end())
+		cout << "Mercury is in the map." << endl;
+	if(planets.find("Ceres") == planets.end())
+		cout << "Ceres is not in the map." << endl << endl;
+
+	cout << "Iterating through all planets: " << endl;
+	map<string, string>::const_iterator iter;
+	for(iter = planets.begin(); iter != planets.end(); 
+		iter++)
+	{
+		cout << iter -> first << " - " 
+			 << iter -> second << endl;
+	}
+	return 0;
+}
+```
+
+Sample dialogue:
+
+```
+Entry for Mercury - Hot planet
+
+Mercury is in the map.
+Ceres is not in the map.
+
+Iterating through all planets:
+Earth - Home
+Jupiter - Largest planet in our solar system
+Mars - The Red Planet
+Mercury - Hot planet
+Neptune - 1500 mile-per-hour winds
+Pluto - Dwarf planet
+Saturn - Has rings
+Uranus - Tilts on its side
+Venus - Atmosphere of sulfuric acid
+```
+
 ---
 
 參考資料:

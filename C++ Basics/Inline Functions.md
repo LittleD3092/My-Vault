@@ -35,11 +35,74 @@ int main()
 
 > Inline functions are [[Macro]]s with type checking and conversion.
 
+# Inline Member Funciton
+
+Inline functions can also used in class. The syntax is as follow:
+
+```cpp
+double getBalance() const { return (accountDollars +
+								    accountCents * 0.01) }
+```
+
+Inline member functions are used for very short function definitions, as same as non-member inline functions.
+
+## Example
+
+Inline function definitions:
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+using namespace std;
+
+class BankAccount
+{
+public:
+	BankAccount(double balance, double rate);
+	BankAccount(int dollars, int cents, double rate);
+	BankAccount(int dollars, double rate);
+	BankAccount();
+	void update();
+	void input();
+	void output() const;
+
+	double getBalance() const { return (accountDollars + 
+								accountCents *0.01); }
+	
+	int getDollars() const { return accountDollars; }
+
+	int getCents() const { return accountCents; }
+
+	double getRate() const { return rate; }
+
+	void setBalance(double balance);
+	void setBalance(int dollars, int cents);
+	void setRate(double newRate);
+private:
+	int accountDollars; // of balance
+	int accountCents; // of balance
+	double rate; // as a percentage
+
+	int dollarsPart(double amount) const 
+	{ return static_cast<int>(amount); }
+
+	int centsPart(double amount) const;
+
+	int round(double number) const
+	{ return static_cast<int>(floor(number + 0.5)); }
+
+	double fraction(double percent) const 
+	{ return (percent / 100.0); }
+};
+```
+
 ---
 
 參考資料:
 
 [C++ Function Enhancements - youtube](https://youtu.be/VQdfD5xma0k)
+Absolute C++, 6th edition
 
 ---
 
@@ -47,3 +110,4 @@ link:
 
 [[Macro]]
 [[Function]]
+[[Class]]
