@@ -9,5 +9,6 @@
   },
   "attachmentFolderPath": "附件",
   "legacyEditor": true,
-  "livePreview": false
+  "livePreview": true,
+  "defaultViewMode": "preview"
 }
