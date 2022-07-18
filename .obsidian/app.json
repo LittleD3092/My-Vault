@@ -10,5 +10,6 @@
   "attachmentFolderPath": "附件",
   "legacyEditor": true,
   "livePreview": true,
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "fileSortOrder": "alphabetical"
 }
