@@ -2,6 +2,8 @@
 
 ---
 
+[TOC]
+
 # Constructor
 
 Let's look at a class named `Rectangle`:
@@ -47,6 +49,13 @@ Rectangle::Rectangle(int x, int y, int h, int w)
 ```
 
 In the first way, the constructor first initializes the data members and then assigns arguments to them in two seperate steps, while in the second way, it directly initializes the data members to the corresponding arguments in a single step. Thus, the latter approach results in a more efficient constructor.
+
+Constructors may be used to initialize `Rectangle` objects as follows:
+
+```cpp
+Rectangle r(1, 3, 6, 6);
+Rectangle *s = new Rectangle(0, 0, 3, 4);
+```
 
 ## Constructor with No Argumanets
 
@@ -122,6 +131,18 @@ Coordinate::Coordinate() : Coordinate(99, 99)
 ```
 
 # Destructor
+
+Destructor is a function that will be called when the object is out of scope or when the object is deleted. Its name must be identical to the name of its class prefixed with a tilde, `~`.
+
+```cpp
+class Rectangle
+{
+public:
+	...
+	~Rectangle();
+	...
+}
+```
 
 If a destructor is not defined, the deletion of an object results in the freeing of memory associated with data members of the class. If a data member is a pointer to some other object, the space allocated to the pointer is returned, but the object that it was pointing to is not deleted. If we also wish to delete this object, we must define a destructor that explicitly does so.
 
@@ -274,3 +295,4 @@ link:
 [[Overloading]]
 [[Type]]
 [[Seperate Compilation]]
+[[Pointers]]
