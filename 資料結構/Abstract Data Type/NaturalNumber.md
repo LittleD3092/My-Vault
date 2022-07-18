@@ -21,6 +21,36 @@ and where $+, -, <, ==,$ and $=$ are the usual integer operations
 | $$Successor(x)$$   | NaturalNumber | $$\begin{array}{l} \text{\bf if}(x==\text{MAXINT}) & Successor = x \\ \text{\bf else} & Successor = x + 1 \end{array}$$     |
 | $$Subtract(x, y)$$ | NaturalNumber | $$\begin{array}{l} \text{\bf if}(x < y) & Subtract = 0 \\ \text{\bf else} & Subtract = x - y \end{array}$$                                                                                                                            |
 
+# Code
+
+The following code is the interface of natural number:
+
+```cpp
+class NaturalNumber
+{
+// An ordered subrange of the integers starting at zero and ending at
+// the maximum integer (MAXINT) on the computer.
+public:
+	NaturalNumber Zero();
+	// Returns 0.
+
+	bool IsZero();
+	// If *this is 0, return true; otherwise, return false.
+
+	NaturalNumber Add(NaturalNumber y);
+	// Return the smaller of *this + y and MAXINT.
+
+	bool Equal(NaturalNumber y);
+	// Return true if *this == y; otherwise return false.
+
+	NaturalNumber Successor();
+	// If *this is MAXINT return MAXINT; otherwise return *this + 1.
+
+	NaturalNumber Subtract(NaturalNumber y);
+	// If *this < y, return 0; otherwise return *this - y.
+};
+```
+
 ---
 
 參考資料:

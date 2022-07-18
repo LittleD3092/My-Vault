@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 Inheritance is a process by which a new class (derived class) is created from another class (base class).
 
 For example, a base class `Employee` looks like this:
