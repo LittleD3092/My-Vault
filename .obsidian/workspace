@@ -4,28 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "1240e7418df0290f",
+        "id": "21ffc32727827ad9",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "電工學/Arc/Bipolar Junction Transistors.md",
-            "mode": "source"
-          }
-        },
-        "group": "1926e3dc4503860e"
-      },
-      {
-        "id": "b6d8bbc8e69a211f",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "電工學/Arc/Bipolar Junction Transistors.md",
-            "mode": "preview"
-          }
-        },
-        "group": "1926e3dc4503860e"
+          "type": "empty",
+          "state": {}
+        }
       }
     ],
     "direction": "vertical"
@@ -52,22 +36,20 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "css",
+                "query": "python dict",
                 "matchingCase": false,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "18e3d2e6fd5e1467",
@@ -83,14 +65,13 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "電工學/Arc/Bipolar Junction Transistors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -100,9 +81,8 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "電工學/Arc/Bipolar Junction Transistors.md",
                 "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -111,29 +91,35 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "電工學/Arc/Bipolar Junction Transistors.md"
-              }
+              "state": {}
+            }
+          },
+          {
+            "id": "b7f2955e05d2bbd1",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
-  "active": "b6d8bbc8e69a211f",
+  "active": "b7f2955e05d2bbd1",
   "lastOpenFiles": [
-    "電工學/Arc/Bipolar Junction Transistors.md",
-    "Archived/website/External Fonts.md",
-    "Archived/website/html.md",
-    "Archived/website/link.md",
-    "Archived/website/Property (CSS).md",
-    "工程數學/Higher Order DE/Series Solution of Linear Equation.md",
-    "電工學/Arc/Field-Effect Transistors.md",
-    "unlinked files output.md",
-    "電工學/Arc/Diode.md",
-    "Main Kanban.md"
+    "馬達切換模擬.md",
+    "流程圖.md",
+    "機電 感測器規格.md",
+    "C++ Basics/Standard Template Library.md",
+    "Archived/機器人系統與應用設計實作/LoCoBot.md",
+    "Archived/動力學/極座標.md",
+    "Archived/動力學/切線座標.md",
+    "C++ Basics/Overloading.md",
+    "C++ Basics/For.md",
+    "C++ Basics/Command-Line Arguments.md"
   ]
 }
