@@ -2,6 +2,8 @@
 
 ---
 
+[toc]
+
 # Variable Declaration
 
 A C-string variable is the same thing as an array of characters, but it is used differently. A C-string variable is declared to be an array of characters in the usual way.

@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 The difference between overloading the `+` operator and defining an ordinary function involves only a slight change in syntax: you use the symbol `+` as the function name and precede the `+` with the keyword `operator`. The operator declaration for the plus sign is as follows:
 
 ```cpp
