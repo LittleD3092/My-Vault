@@ -18,6 +18,6 @@
 
 link:
 
-[[Matrix]]
+[[Archived/工程數學/Linear Algebra/Matrix]]
 [[Basic Arrays]]
 [[Vector]]

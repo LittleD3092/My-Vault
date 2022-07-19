@@ -97,6 +97,27 @@ private:
 	int terms;       // number of nonzero terms
 ```
 
+# Adding New Term
+
+Adding a new term, doubling array size when necessary.
+
+```cpp
+void Polynomial::NewTerm(const float theCoeff, const int theExp)
+// Add a new term to the end of termArray.
+{
+	if(terms == capacity)
+	{ // double capacity of termArray
+		capacity *= 2;
+		term *temp = new term[capacity]; // new array
+		copy(termArray, termArray + terms, temp);
+		delete [] termArray;             // deallocate old memory
+		termArray = temp;
+	}
+	termArray[terms].coef = theCoeff;
+	termArray[terms++].exp = theExp;
+}
+```
+
 # Polynomial Addition
 
 ```cpp

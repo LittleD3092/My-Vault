@@ -18,7 +18,7 @@ $\vec{ a } = \vec{ b }$ means direction and magnitude are same, but it doesn't m
 
 ## Addition
 
-Same as [[Matrix#Addition|Matrix]]
+Same as [[Archived/工程數學/Linear Algebra/Matrix#Addition|Matrix]]
 
 ## Multiply
 

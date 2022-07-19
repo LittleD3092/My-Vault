@@ -106,4 +106,4 @@ $$\det(A) = 0$$
 
 link:
 
-[[Matrix]]
+[[Archived/工程數學/Linear Algebra/Matrix]]

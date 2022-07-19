@@ -2,7 +2,7 @@
 
 ---
 
-- [[Matrix]] 是一個 2D array
+- [[Archived/工程數學/Linear Algebra/Matrix]] 是一個 2D array
 - Special way to store structured data
 
 ---
