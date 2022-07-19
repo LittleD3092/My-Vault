@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "1240e7418df0290f",
+        "id": "3decbcb7e3e7576e",
         "type": "leaf",
         "state": {
           "type": "empty",
@@ -66,8 +66,9 @@
       }
     ]
   },
-  "active": "1240e7418df0290f",
+  "active": "3decbcb7e3e7576e",
   "lastOpenFiles": [
+    "C++ Basics/C-String.md",
     "Standard Template Library.md",
     "電工學/Arc/Bipolar Junction Transistors.md",
     "Archived/website/External Fonts.md",
@@ -76,7 +77,6 @@
     "Archived/website/Property (CSS).md",
     "工程數學/Higher Order DE/Series Solution of Linear Equation.md",
     "電工學/Arc/Field-Effect Transistors.md",
-    "unlinked files output.md",
-    "電工學/Arc/Diode.md"
+    "unlinked files output.md"
   ]
 }

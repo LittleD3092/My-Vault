@@ -1,0 +1,8 @@
+{
+  "baseFontSize": 16,
+  "translucency": false,
+  "enabledCssSnippets": [
+    "Obsidian gruvbox"
+  ],
+  "cssTheme": "Minimal"
+}
