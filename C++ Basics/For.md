@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 # The Range-Based for Loop
 
 C++11 includes a new type of `for` loop, the range-based for loop, that simplifies iteration over every element in an array. The syntax is shown here:

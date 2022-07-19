@@ -2,6 +2,8 @@
 
 ---
 
+[TOC]
+
 An enumeration type is very much like a list of declared constants. Enumeration types can be handy for defining a list of identifiers to use as the `case` labels in a `switch` statement.
 
 For example:

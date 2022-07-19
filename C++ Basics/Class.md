@@ -2,6 +2,8 @@
 
 ---
 
+[TOC]
+
 # Constructor
 
 Let's look at a class named `Rectangle`:
