@@ -6,6 +6,51 @@
 
 ---
 
+# String C++ Class
+
+## getline
+
+C++98:
+
+```cpp
+istream& getline(istream& is, string& str, char delim);
+istream& getline(istream& is, string& str);
+```
+
+C++11:
+
+```cpp
+istream& getline (istream&  is, string& str, char delim);
+istream& getline (istream&& is, string& str, char delim);
+istream& getline (istream&  is, string& str);
+istream& getline (istream&& is, string& str);
+```
+
+`getline` is a function that extracts characters from `is` is and store them into `str`. If used with the `delim`, it stops extracting characters when `delim` is found. If used without the `delim`, it stops when `\n` is found.
+
+No matter you use `delim` or not, `getline` stops when found `eof`.
+
+> If you used `cin` before you use `getline`, remember to clear the `\n` after your last `cin`.
+
+### Example
+
+```cpp
+// extract to string
+#include <iostream>
+#include <string>
+
+int main()
+{
+	std::string name;
+	
+	std::cout << "Please, enter your full name: ";
+	std::getline(std::cin, name);
+	std::cout << "Hello, " << name << "!\n";
+
+	return 0;
+}
+```
+
 # String Pattern Matching
 
 ## Simple Algorithm
@@ -116,6 +161,7 @@ void String::FailureFunction()
 參考資料:
 
 Fundamentals of Data Structures
+[getline - cplusplus](https://cplusplus.com/reference/string/string/getline/?kw=getline)
 
 ---
 

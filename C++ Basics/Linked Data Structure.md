@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 # Singly Linked Lists
 
 ## Node and Pointer Type Definitions

@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 To send output to a file, you must first connect the file to a (stream) object of the class `ifstream`. The classes `ifstream` and `ofstream` are defined in the `<fstream>` library:
 
 ```cpp
