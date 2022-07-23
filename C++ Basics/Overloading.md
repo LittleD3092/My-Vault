@@ -16,7 +16,9 @@ const Money operator +(const Money& amount1, const Money& amount2)
 }
 ```
 
-Note that the overloaded operators `+` are not member operators of the class `Money` and therefore do not hvae access to the private members of `Money`.
+Note that the overloaded operators `+` are not member operators of the class `Money` and therefore do not have access to the private members of `Money`.
+
+The `const` will prevent modification of the object returned.
 
 # Overloading Unary Operators
 
