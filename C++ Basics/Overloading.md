@@ -184,6 +184,11 @@ istream& operator >>(istream& ins, Money& amount)
 
 ## ++ and --
 
+- Postfix increment looks like this: `x++`
+- While prefix increment looks like this: `++x`
+
+A postfix increment operator returns the state "before" increase, and a prefix increment returns the state "after" increase.
+
 ```cpp
 class IntPair
 {
@@ -215,7 +220,8 @@ IntPair IntPair::operator++()	//Prefix version
 
 ## []
 
-When overloadint `[]`, the operator `[]` must be a member function.
+- When overloading `[]`, the operator `[]` must be a member function.
+- The indexing operator `[]` should return a reference.
 
 ```cpp
 class CharPair
@@ -244,6 +250,10 @@ char& CharPair::operator[](int index)
 ```
 
 ## =
+
+The assignment operator `=` must be overloaded as member operator. If we overload `=` using friend function, there will be two overloaded operator `=`, which is ambiguous.
+
+We often use default assignment operator without overloading `=`, but with classes with pointers, we must write and overload our own operator `=`. For example, we have a dynamic memory allocating class `PFArrayD`. In this scenario, we must overload `=`:
 
 ```cpp
 class PFArrayD
