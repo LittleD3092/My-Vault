@@ -132,6 +132,8 @@ Coordinate::Coordinate() : Coordinate(99, 99)
 
 # Destructor
 
+> You should make destructors virtual. See [[Virtual Function#Make Destructors Virtual]] for more.
+
 Destructor is a function that will be called when the object is out of scope or when the object is deleted. Its name must be identical to the name of its class prefixed with a tilde, `~`.
 
 ```cpp

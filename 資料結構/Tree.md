@@ -111,15 +111,19 @@ And the tree will be represented like this:
 
 ![[the tree representation of the left child-right sibling representation - tree.png]]
 
-## Degree-Two Tree Representation (Binary Tree)
+## Binary Tree (Degree-two Tree)
+
+This topic is important, therefore we seperate this section to [[#Binary Tree]]. Because binary tree is still a kind of representation of tree, we put this heading here for completeness.
+
+# Binary Tree
 
 - To obtain the degree-two tree representation, we simply rotate the sibling link of [[#Left Child-Right Sibling Representation]] by $45\degree$.
 - Note that the right child of the root node of the tree is empty. This is always true because the root of the tree can never have a sibling.
-- This is also known "binary trees".
+- This is also known as "degree-two tree".
 
 ![[degree-two tree representation - tree.png|300]]
 
-### Abstract Data Type
+## Abstract Data Type
 
 This specification defines only a minimal set of operations on binary trees.
 
@@ -152,7 +156,7 @@ public:
 };
 ```
 
-### Skewed Binary Trees
+## Skewed Binary Trees
 
 Skewed binary trees are like lists, they look like a straight line. The following is a skewed tree that skewed to the left:
 
@@ -160,13 +164,13 @@ Skewed binary trees are like lists, they look like a straight line. The followin
 
 Of course there are a corresponding skewed tree that skewed to the right.
 
-### Complete Binary Trees
+## Complete Binary Trees
 
 ![[complete binary tree - tree.png|500]]
 
-### Representations
+## Representations
 
-#### Array Representation
+### Array Representation
 
 We may use an ordinary 1D array to represent the tree. We use `a[n + 1]` for array declaration, with $n$ nodes starting from `a[1]` to `a[n]`.
 
@@ -178,7 +182,7 @@ To navigate through the tree, we should define where "parent", "left child" and 
 
 In this representation, there is one flaw. If the trees we are representing are [[#Skewed Binary Trees]] or something similar, there will be a lot of memory waste. Therefore this representation is only good for [[#Complete Binary Trees]].
 
-#### Linked Representation
+### Linked Representation
 
 Although the array representation is good for complete binary trees, it is wasteful for many other binary trees. Also, insertion and deletion of the nodes require a lot of time.
 
@@ -207,7 +211,7 @@ private:
 };
 ```
 
-### Traversal
+## Traversal
 
 If we let $L, V, R$ stand for moving left, visiting the node, and moving right when at a node, then there are six possible combinations of traversal:
 
@@ -227,7 +231,7 @@ In the following subsections, we will use the following binary tree as an exampl
 
 ![[binary tree with arithmetic expression - tree.png|500]]
 
-#### Inorder
+### Inorder
 
 Inorder traversal calls for moving down the tree toward the left until you can go no farther. Then you "visit" the node, move one node to the right and continue.
 
@@ -258,7 +262,7 @@ The elements of the example binary tree get output in the following order:
 
 $$A / B * C * D + E$$
 
-#### Preorder
+### Preorder
 
 ```cpp
 template<class T>
@@ -287,7 +291,7 @@ $$+**/ABCDE$$
 
 Which is prefix form of the expression.
 
-#### Postorder
+### Postorder
 
 ```cpp
 template<class T>
@@ -304,7 +308,7 @@ $$AB/C*D*E+$$
 
 Which is postfix form of the expression.
 
-#### Iterative Inorder Traversal
+### Iterative Inorder Traversal
 
 Since we want to iterate through all the elements in the tree one by one, we first need to implement the inorder traversal method without using recursion.
 
@@ -365,7 +369,7 @@ T* InorderIterator::Next()
 }
 ```
 
-#### Level-Order Traversal
+### Level-Order Traversal
 
 Whether written iteratively or recursively, the [[#Inorder]], [[#Preorder]], and [[#Postorder]] traversals all require a stack. We now turn to a traversal that requires a queue.
 
@@ -389,6 +393,132 @@ void Tree<T>::LevelOrder()
 			return;
 		currentNode = q.Front();
 		q.Pop();
+	}
+}
+```
+
+## Copying
+
+Using the recursive version of the traversals, we can easily copy a tree.
+
+```cpp
+template<class T>
+Tree<T>::Tree(const Tree<T>& s) // driver
+// Copy constructor
+{
+	root = Copy(s.root);
+}
+
+template<class T>
+TreeNode<T>* Tree<T>::Copy(TreeNode<T> *origNode) // Workhorse
+// Return a pointer to an exact copy of the binary tree 
+// rooted at origNode.
+{
+	if(!origNode)
+		return 0;
+	return new TreeNode<T>(origNode -> data,
+						   Copy(origNode -> leftChild),
+						   Copy(origNode -> rightChild));
+}
+```
+
+## Testing Equality
+
+The following example uses [[#Preorder]] traversing, but any order could be used.
+
+```cpp
+template<class T>
+bool Tree<T>::operator==(const Tree& t) const
+{
+	return Equal(root, t.root);
+}
+
+template<class T>
+bool Tree<T>::Equal(TreeNode<T>* a, TreeNode<T>* b)
+// Workhorse.
+{
+	if((!a) && (!b))
+		return true; // both a and b are 0
+	return(a && b
+	       // both and b are non-zero
+		     && (a -> data == b -> data) 
+		        // data is the same
+		     && Equal(a -> leftChild, b -> leftChild)
+		        // left subtrees equal
+		     && Equal(a -> rightChild, b -> rightChild));
+		        // right subtrees equal
+}
+```
+
+# Threaded Binary Trees
+
+We may found out that in a [[#Binary Tree]], there are more `nullptr` than actual pointers. Therefore A. J. Perlis and C. Thornton thought that they can use "threads" to replace these null pointers.
+
+A "thread" is constructed by the following rules:
+
+1. A null `rightChild` pointer will be replaced by a pointer to the node that would be visited after [[#Inorder]] traversing current node `p`.
+2. A null `leftChild` pointer will be replaced by a pointer to the node that immediately precedes current node `p` in [[#Inorder]].
+
+A thread tree will look like the following, with the dotted line representing threads:
+
+![[threaded binary tree example - tree.png]]
+
+If we traverse this tree [[#Inorder]], the nodes will be visitted in the following order:
+
+$$H, D, I, B, E, A, F, C, G$$
+
+To use threaded binary tree, we usually use boolean parameters `leftThread` and `rightThread` to our tree node. These two boolean parameters indicates whether this node's left or right child is used as a thread. Also, we add a root node and point the left-most and right-most threads to it.
+
+![[memory representation of threaded tree - tree.png]]
+
+## Traversal
+
+By using the threads, we can perform an [[#Inorder]] traversal without making the use of a stack.
+
+```cpp
+T* ThreadedInorderIterator::Next()
+// Return the inorder successor of currentNode 
+// in a threaded binary tree
+{
+	ThreadedNode<T> *temp = currentNode -> rightChild;
+	if(!currentNode -> rightThread)
+		while(!temp -> leftThread)
+			temp = temp -> leftChild;
+	currentNode = temp;
+	if(currentNode == root)
+		return 0;
+	else
+		return &currentNode -> data;
+}
+```
+
+## Inserting
+
+There are two scenarios:
+
+(a): the right subtree is empty
+(b): the right subtree is not empty
+
+![[insertion of r as a right child of s in a threaded binary tree - tree.png]]
+
+```cpp
+template<class T>
+void ThreadedTree<T>::InsertRight(ThreadedNode<T> *s,
+								  ThreadedNode<T> *r)
+// Insert r as the right child of s.
+{
+	r -> rightChild = s -> rightChild;
+	r -> righThread = s -> rightThread;
+	r -> leftChild = s;
+	r -> leftThread = true; // leftChild is a thread
+	s -> rightChild = r;
+	s -> rightThread = false;
+	if(!r -> rightThread)
+	{
+		// returns the inorder successor of r
+		ThreadedNode<T> *temp = InorderSucc(r);
+		
+		temp -> leftChild = r;
 	}
 }
 ```
