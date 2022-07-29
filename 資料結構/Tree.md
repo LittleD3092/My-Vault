@@ -523,6 +523,202 @@ void ThreadedTree<T>::InsertRight(ThreadedNode<T> *s,
 }
 ```
 
+# Binary Search Trees
+
+- A dictionary is a collection of pairs, each pair has a key and an associated element. We may use the key to access the correspond element.
+- Dictionary is implemented in [[Standard Template Library]].
+- A binary search tree has a better performance than any of the data structures when the functions to be performed are search, insert, and delete. Therefore it is the best to implement dictionary using binary search trees.
+
+An abstract data type of a dictionary:
+
+```cpp
+template <class K, class E>
+class Dictionary 
+{
+public:
+	// return true iff the dictionary is empty
+	virtual bool IsEmpty() const = 0;
+
+	// return pointer to the pair with specified key;
+	// return 0 if no such pair
+	virtual pair<K, E>* Get(const K&) const = 0;
+
+	// insert the given pair;
+	// if key is a duplicate update associated element
+	virtual void Insert(const pair<K, E>&) = 0;
+
+	// delete pair with specified key
+	virtual void Delete(const K&) = 0;
+};
+```
+
+## Properties
+
+A binary search tree is a [[#Binary Tree]]. It may be empty. If it is not empty then it satisfies the following properties:
+
+1. Every element has a key and no two elements have the same key (i.e. the keys are distinct).
+2. The keys (if any) in the left subtree are smaller than the key in the root.
+3. The keys (if any) in the right subtree are larger than the key in the root.
+4. The left and right subtrees are also binary search trees.
+
+## Searching
+
+The searching can be implemented using recursive function, since the [[#Properties]] of binary search trees specifies that it is recursive.
+
+- If the root is 0, then the search tree contains no elements and the search is unsuccessful.
+- Otherwise, we compare the key $k$ that we are searching with the root. 
+	- If $k$ is larger than the key in the root, then only the right subtree needs to be searched.
+	- If $k$ is smaller than the key in the root, then only the left subtree needs to be searched.
+- If $k$ equals the key in the root, the search terminates successfully.
+
+### Code for Recursive Search
+
+The following is the code for recursive search of a binary search tree:
+
+```cpp
+template<class K, class E> // Driver
+pair<K, E>* BST<K, E>::Get(const K& k)
+// Search the binary search tree (*this) for a pair with key k.
+// If such a pair is found, return a pointer to this pair;
+// otherwise, return 0.
+{
+	return Get(root, k);
+}
+
+template<class K, class E> // Workhorse
+pair<K, E>* BST<K, E>::Get(TreeNode<pair<K, E>>* p,
+						   const K& k)
+{
+	if(!p)
+		return 0;
+	if(k < p -> data.first)
+		return Get(p -> leftChild, k);
+	if(k > p -> data.first)
+		return Get(p -> rightChild, k);
+	return &p -> data;
+}
+```
+
+### Code for Iterative Search
+
+```cpp
+template<class K, class E> // Iterative version
+pair<K, E>* BST<K, E>::Get(const K&k)
+{
+	TreeNode<pair<K, E>> *currentNode = root;
+	while(currentNode)
+	{
+		if(k < currentNode -> data.first)
+			currentNode = currentNode -> leftChild;
+		else if(k > currentNode -> data.first)
+			currentNode = currentNode -> rightChild;
+		else
+			return &currentNode -> data;
+	}
+
+	// no matching pair
+	return 0;
+}
+```
+
+### Code for Search by Rank
+
+- Rank: A rank of a node is its position in order. The first node visited in [[#Inorder]] has rank 1.
+- We sometimes want to search the tree by rank. If we wish to do so, each node must have an additional field called `leftSize`, which is 1 + the number of elements in the left subtree of the node.
+
+```cpp
+template<class K, class E> // search by rank
+pair<K, E>* BST<K, E>::RankGet(int r)
+// Search the binary search tree for the rth smallest pair.
+{
+	TreeNode<pair<K, E>>* currentNode = root;
+	while(currentNode)
+	{
+		if(r < currentNode -> leftSize)
+			currentNode = currentNode -> leftChild;
+		else if(r > currentNode -> leftSize)
+		{
+			r -= currentNode -> leftSize;
+			currentNode = currentNode -> rightChild;
+		}
+		else
+			return &currentNode -> data;
+	}
+	return 0;
+}
+```
+
+## Insertion
+
+- To insert a pair, we must first search to verify that its key is different from those of existing elements.
+- If the search is unsuccessful, then the element is inserted at the point the search terminated.
+- If the dictinoary already contains a pair with the key $k$, we simply update the element associated with this key to $e$.
+
+```cpp
+template<class K, class E>
+void BST<K, E>::Insert(const pair<K, E>& thePair)
+// Insert thePair into the binary search tree.
+{
+	// search for thePair.first, pp is parent of p
+	TreeNode<pair<K, E>> *p = root, *pp = 0;
+	while(p)
+	{
+		pp = p;
+		if(thePair.first < p -> data.first)
+			p = p -> leftChild;
+		else if(thePair.first > p -> data.first)
+			p = p -> rightChild;
+		else // duplicate, update associated element
+		{
+			p -> data.second = thePair.second;
+			return;
+		}
+	}
+
+	// perform insertion
+	p = new TreeNode<pair<K, E>>(thePair);
+	if(root) // tree not empty
+	{
+		if(thePair.first < pp -> data.first)
+			pp -> leftChild = p;
+		else
+			pp -> rightChild = p;
+	}
+	else
+		root = p;
+}
+```
+
+## Deletion
+
+- The deletion of [[#Leaf]] is easy. Simply set the left or right child field to 0 will do the work.
+- The deletion of a nonleaf element that has only one child is also easy. The node containing the element to be deleted is disosed, and the single-child takes the place of the disposed node.
+- When the element to be deleted is in a nonleaf node that has two children, the element is replaced by either the largest element in its left subtree or the smallest one in its right subtree. Then we perform a deletion on this replacing element from the subtree from which it was taken. (like recursion deleting!)
+
+# Selection Tree
+
+When we are merging multiple ordered sequence, we may use selection tree. There are two kinds of selection trees:
+
+1. [[#Winner Trees]]
+2. [[#Loser Trees]]
+
+## Winner Trees
+
+- A winner tree is a complete tree.
+- Each node represent the smaller of its children.
+
+![[winner trees example - tree.png]]
+
+The "winner" `6` is output, and the tree will reconstruct with `15` in run 4.
+
+![[winner tree after one record has been output and the tree restructured - tree.png]]
+
+Note that not all tree need to be restructured, only some of them. If we keep doing this process, we will have all 8 runs sorted.
+
+## Loser Trees
+
+![[loser tree - tree.png]]
+
 ---
 
 參考資料:
@@ -536,3 +732,4 @@ link:
 [[Linked List]]
 [[Linked Data Structure]]
 [[Evaluation of Expressions]]
+[[Standard Template Library]]

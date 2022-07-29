@@ -51,6 +51,18 @@ int main()
 }
 ```
 
+## substr
+
+This is a member function of `string` object. Takes two parameters `pos` and `len`, return a string object that is a sub string of an original one.
+
+- `pos`: Indicates the starting position.
+- `len`: The length of the sub string. If the original string is shorter, as many characters as possible are used.
+
+```cpp
+// this example assigns a sub string of str that starts at position 3 and has length 5 to string str2.
+string str2 = str.substr(3, 5)
+```
+
 # String Pattern Matching
 
 ## Simple Algorithm
