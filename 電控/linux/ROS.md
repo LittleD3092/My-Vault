@@ -2,29 +2,24 @@
 
 ---
 
-ROS(Robot Operating System) 是一個平台，為了避免重複研發同一個東西而出現，這上面有許多開源的程式碼可以重複利用，加快開發的速度。
-
-它的版本順序由第一個字母排列。
-
-裡面包含 ROS 1 和 [[ROS 2]] 兩種版本，兩種差別不大
-
-在 ROS 中，最基本的單位是 Node ，譬如 master ， talker 和 listener
-
-通常 user 手動創造的連接埠是 11311
+[TOC]
 
 ---
+
+- ROS(Robot Operating System) 是一個平台，為了避免重複研發同一個東西而出現，這上面有許多開源的程式碼可以重複利用，加快開發的速度。
+- 它的版本順序由第一個字母排列。
+- 裡面包含 ROS 1 和 [[ROS 2]] 兩種版本，兩種差別不大
+- 在 ROS 中，最基本的單位是 Node ，譬如 master ， talker 和 listener
+- 通常 user 手動創造的連接埠是 11311
 
 # 安裝
 
 ## Neuron Startup Menu
 
-同時叫做 ROS menu
-
-ROS 的安裝與開啟過程繁瑣，因此通常使用這個工具
-
-開終端機時會跳出選單提供選擇
-
-[github](https://github.com/Adlink-ROS/ros_menu)
+- 同時叫做 ROS menu
+- ROS 的安裝與開啟過程繁瑣，因此通常使用這個工具
+- 開終端機時會跳出選單提供選擇
+- [ros_menu - github](https://github.com/Adlink-ROS/ros_menu)
 
 > config設定：
 > `~/ros_menu/config.yaml`
@@ -84,7 +79,88 @@ ros2 run demo_nodes_py talker
 ros2 run ros1_bridge dynamic_bridge
 ```
 
----
+# Catkin
+
+## Catkin Workspace
+
+- catkin workspace 是一種可以快速編譯與執行的 workspace 管理工具，因此可以幫我們整理 packages。
+- 他不僅可以像一般的 [[cmake]] 一樣管理單個 project，也引入了 workspace 的概念，用來管理多個 package。
+- catkin workspace 使用了 [[cmake]] 來編譯整個 workspace。
+
+### Create Catkin Workspace
+
+要創造 catkin workspace 包含了三個步驟
+
+包含三個步驟
+1. 建立 `./content/catkin_ws/src` 的目錄
+2. 移動到 `./content/catkin_ws` 目錄
+3. 使用 `catkin_make` 指令初始化
+
+如下：
+```bash
+mkdir -p /content/catkin_ws/src
+cd /content/catkin_ws
+source /opt/ros/melodic/setup.bash
+catkin_make
+```
+
+## Initialize
+
+每次要使用 catkin workspace 編譯或做任何事情前，都需要使用 `setup.bash` 。ROS 有自己的 `setup.bash` ，catkin 也有。以下是 ROS 的 `setup.bash`:
+
+```bash
+source /opt/ros/noetic/setup.bash
+```
+
+還有以下是 catkin workspace 的 `setup.bash`:
+
+```bash
+source /content/catkin_ws/devel/setup.bash
+```
+
+兩個都需要執行才可以做其他與 ROS 和 catkin workspace 有關的事。
+
+### environment.sh
+
+因為每次要跑那兩行指令很麻煩，並且如果之後你的 package 需要其他設定環境的流程，一一跑指令很容易漏掉，因此我們習慣將設定環境的部份寫成一個 script ，並且把他放在 catkin workspace 資料夾的上一層。裡面至少包含 [[#Initialize]] 中的兩行指令：
+
+```bash
+# /content/environment.sh
+source /opt/ros/noetic/setup.bash
+source /content/catkin_ws/devel/setup.bash
+```
+
+如果你的專案需要安裝其他的 package 才可以使用，建議把那些安裝流程也一併寫入這個 script ，方便其他接手的人可以迅速的架起測試與開發的環境。
+
+如此一來，就可以利用單一行的 `source` 來設定好環境：
+
+```bash
+source /content/environment.sh
+```
+
+## Create Pkg
+
+這個指令可以建立 package，後面要加上名字和 depend
+
+```bash
+cd /content/catkin_ws/src
+source /content/environment.sh
+catkin_create_pkg rospackage_first_example roscpp rospy
+```
+
+- `rospackage_first_example`: package name
+- `roscpp`: depend1
+- `rospy`: depend2
+
+## Make
+
+可以編譯（或初始化）[[#Catkin Workspace]]
+
+```bash
+cd /content/catkin_ws/src
+source /content/environment.sh
+catkin_make
+```
 
 # 通訊功能
 
@@ -203,3 +279,9 @@ catkin
 
 [專業課程 ROS 1 簡介 1](https://youtu.be/FX8HAkR7SFw)
 [[ROS暑期課程播放清單]]
+機器人系統
+
+---
+
+link:
+
