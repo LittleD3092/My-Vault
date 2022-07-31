@@ -2,9 +2,17 @@
 
 ---
 
+[TOC]
+
+---
+
 A virtual function is indicated by including the modifier `virtual` in the member function declaration (which is given in the definition of the class).
 
 If a function is virtual and a new definition of the function is given in a derived class, then for any object of the derived class, that object will always use the definition of the virtual function that was given in the derived class, even if the virtual function is used indirectly by being invoked in the definition of an inherited function. This method of deciding which definition of a virtual function to use is known as *late binding*.
+
+> Polymorphism
+> 
+> Polymorphism refores to the ability to assiciate many meanings to one function name by means of the late-binding mechanism. Thus, polymorphism, late binding, and virtual functions are really all the same topic.
 
 # Example
 

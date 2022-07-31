@@ -231,7 +231,7 @@ In the following subsections, we will use the following binary tree as an exampl
 
 ![[binary tree with arithmetic expression - tree.png|500]]
 
-### Inorder
+### Inorder Traversal of a Binary Tree
 
 Inorder traversal calls for moving down the tree toward the left until you can go no farther. Then you "visit" the node, move one node to the right and continue.
 
@@ -262,7 +262,7 @@ The elements of the example binary tree get output in the following order:
 
 $$A / B * C * D + E$$
 
-### Preorder
+### Preorder Traversal of a Binary Tree
 
 ```cpp
 template<class T>
@@ -291,7 +291,7 @@ $$+**/ABCDE$$
 
 Which is prefix form of the expression.
 
-### Postorder
+### Postorder Traversal of a Binary Tree
 
 ```cpp
 template<class T>
@@ -369,7 +369,7 @@ T* InorderIterator::Next()
 }
 ```
 
-### Level-Order Traversal
+### Level-Order Traversal of a Binary Tree
 
 Whether written iteratively or recursively, the [[#Inorder]], [[#Preorder]], and [[#Postorder]] traversals all require a stack. We now turn to a traversal that requires a queue.
 
@@ -718,6 +718,55 @@ Note that not all tree need to be restructured, only some of them. If we keep do
 ## Loser Trees
 
 ![[loser tree - tree.png]]
+
+# Forests
+
+A forest is a set of $n \geq 0$ disjoint trees.
+
+The following is a three-tree forest:
+
+![[a three tree forest - tree.png]]
+
+## Transforming a Forest into a Binary Tree
+
+To transform a forest into a single binary tree, we first obtain the binary tree representation of each of the trees in the forest and then link these binary trees together through the `rightChild` field of the root nodes.
+
+![[binary tree representation of forest - tree.png]]
+
+## Traversals
+
+### Preorder Traversal of a Forest
+
+The preorder traversal of a forest is similar to the [[#Preorder Traversal of a Binary Tree]]. We visit the trees in forest one by one, and we visit the nodes in a tree preorderly.
+
+1. If forest $F$ is empty then return.
+2. Visit the root of the first tree of $F$
+3. Traverse the subtrees of the first tree in forest preorder.
+4. Traverse the remaining trees of $F$ in forest preorder.
+
+### Inorder Traversal of a Forest
+
+Inorder traversal of tree $T$ is equivalent to visiting the nodes of forest $F$ in forest inorder. The steps are as follows:
+
+1. If $F$ is empty then return.
+2. Traverse the subtrees of the first tree in forest inorder.
+3. Visit the root of the first tree.
+4. Traverse the remaining trees in forest inorder.
+
+### Postorder Traversal of a Forest
+
+There is no natural analog for postorder traversal of the corresponding binary tree of a forest. Nevertheless, we can define the postorder traversal of a forest as follows:
+
+1. If $F$ is empty then return.
+2. Traverse the subtrees of the first tree of $F$ in forest postorder.
+3. Traverse the remaining trees of $F$ in forest postorder.
+4. Visit the root of the first tree of $F$.
+
+### Level-Order Traversal of a Forest
+
+In level-order traversal of a forest, nodes are visitted level by level. Note that the level-order traversal of a forest and [[#Level-Order Traversal of a Binary Tree]] do not necessarily yield the same result.
+
+
 
 ---
 
