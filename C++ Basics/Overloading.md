@@ -285,6 +285,12 @@ PFArrayD& PFArrayD::operator =(const PFArrayD& rightSide)
 }
 ```
 
+Note that we return reference from assignment. It's because returning reference allows chaining.
+
+```cpp
+a = b = c; // shorter than the equivalent "b = c; a = b;"
+```
+
 ---
 
 參考資料:
