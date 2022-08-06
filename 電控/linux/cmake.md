@@ -306,6 +306,50 @@ Use the following command to configure the parameter:
 cmake .. -D USE_MYMATH=OFF
 ```
 
+## Step 3: Adding Usage Requirements for a Library
+
+> This step is the modern way to implement [[#Options]] in [[#Step 2 Adding a Library]]. Note that we use `EXTRA_INCLUDES` to keep track of the directories. We can do better when using the method in this section.
+
+Usage requirements allow better control over a library. The primary commands that leverage usage requirements are:
+
+- `target_compile_definitions()`
+- `target_compile_options()`
+- `target_include_directories()`
+- `target_link_libraries()`
+
+In the following steps, we will see the example of the use of `target_include_directories()`.
+
+1. Add the following lines to the end of the `MathFunctions/CMakeLists.txt` (which is the `CMakeLists.txt` in the library folder).
+
+```cmake
+target_include_directories(MathFunctions
+						   INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+						   )
+```
+
+The `INTERFACE` means things that consumers (the one who USES the library) require but the producer (the one who WRITES the library) doesn't. Therefore this line will execute only when the cosumer is using the library (in our case, in the `Tutorial`'s `CMakeLists.txt`)
+
+2. Omit our uses of the `EXTRA_INCLUDES` in the root `CMakeLists.txt`.
+
+Change the corresponding lines to this:
+
+```cmake
+if(USE_MATH)
+	add_subdirectory(MathFunctions)
+	list(APPEND EXTRA_LIBS MathFunctions)
+endif()
+```
+
+And this:
+
+```cmake
+target_include_directories(Tutorial PUBLIC
+						   "${PROJECT_BINARY_DIR}"
+						   )
+```
+
+Once these two steps are done, there is no need to keep track of every library using `EXTRA_INCLUDES`. The `MathFunctions/CMakeLists.txt` automatically handles it.
+
 ---
 
 參考資料:
