@@ -4,6 +4,8 @@
 
 [TOC]
 
+---
+
 # Constructor
 
 Let's look at a class named `Rectangle`:
@@ -280,6 +282,36 @@ void Server::serveOne()
 	
 	if(lastServed >= turn) // Everyone served
 		nowOpen = false;
+}
+```
+
+# Friend
+
+You can declare other classes or functions as a friend of the current class. If you declare a class or a function as a friend, it can access all private members of the current class.
+
+In the below example, we declare class `a` as a friend  of class `b`. This means that the class `a` have full access to the private element `ele`.
+
+```cpp
+class a; // forward declaration
+
+class b
+{
+friend a;
+private:
+	int ele;
+}
+```
+
+In the below example, we declare a function `f` as a friend of class `b`. This means that the function `f` may change or access the private element `ele`.
+
+```cpp
+void f(); // forward declaration
+
+class b
+{
+friend void f();
+private:
+	int ele;
 }
 ```
 
