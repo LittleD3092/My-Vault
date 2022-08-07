@@ -409,4 +409,4 @@ link:
 
 [[Class]]
 [[Linked List]]
-[[Linked Data Structure]]
+[[Linked Lists]]

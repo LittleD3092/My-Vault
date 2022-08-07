@@ -779,6 +779,6 @@ Fundamental of Data Structure in C++, 2nd edition
 link:
 
 [[Linked List]]
-[[Linked Data Structure]]
+[[Linked Lists]]
 [[Evaluation of Expressions]]
 [[Standard Template Library]]
