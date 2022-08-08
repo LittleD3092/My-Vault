@@ -408,5 +408,4 @@ Absolute C++, 6th edition
 link:
 
 [[Class]]
-[[Linked List]]
 [[Linked Lists]]

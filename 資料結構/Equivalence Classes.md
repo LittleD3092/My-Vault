@@ -144,5 +144,5 @@ Fundamental of Data Structures, 2nd edition
 
 link:
 
-[[Linked List]]
-[[Singly Linked Lists]]
+[[Linked Lists]]
+[[Linked Lists#Singly Linked Lists]]
