@@ -350,6 +350,115 @@ target_include_directories(Tutorial PUBLIC
 
 Once these two steps are done, there is no need to keep track of every library using `EXTRA_INCLUDES`. The `MathFunctions/CMakeLists.txt` automatically handles it.
 
+## Step 4: Installing and Testing
+
+### Install Rules
+
+The install command of cmake will create another directory, building the whole package and include the dependencies in the specified folder. For example, our `Tutorial` package will be built into `bin` folder, and the `MathFunction` package will be built into `lib` folder. Also, the header file `MathFunctions.h` will be built to `include` folder.
+
+For a install of dependencies, you need to append these lines to `MathFunctions/CMakeLists.txt`:
+
+```cmake
+install(TARGETS MathFunctions DESTINATION lib)
+install(FILES MathFunctions.h DESTINATION include)
+```
+
+The syntax of these two lines are:
+
+```cmake
+install(TARGETS targets... DESTINATION <dir>)
+install(FILES MathFunctions.h DESTINATION <dir>)
+```
+
+- We use the first line to specify where our library will be installed, which we specified `lib` folder.
+- We use the second line to specify where our header file will be installed, which is the folder `include`.
+
+And for a install of package, we append these lines to the end of the top-level `CMakeLists.txt`:
+
+```cmake
+install(TARGETS Tutorial DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+        DESTINATION include
+        )
+```
+
+For the two lines that we just appended to top-level `CMakeLists.txt`:
+
+- We use the first line to specify the `bin` folder for our main build binary folder.
+- We use the second line to configure header files.
+
+After we configure the install settings, we may now run the following lines and install our package:
+
+```bash
+# run the cmake executable
+cmake .
+# install
+cmake --install .
+```
+
+You can configure the variable `CMAKE_INSTALL_PREFIX` to specify the root of where the files will be installed. You may also use the `--prefix` option while building. The `--prefix` option will override the variable `CMAKE_INSTALL_PREFIX`.
+
+```bash
+cmake --install . --prefix "/home/myuser/installdir"
+```
+
+### Testing Support
+
+We can use the testing in cmake to test whether our package works.
+
+```cmake
+enable_testing()
+
+# does the application run
+add_test(NAME Runs COMMAND Tutorial 25)
+
+# does the usage message work?
+add_test(NAME Usage COMMAND Tutorial)
+set_tests_properties(Usage
+  PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number"
+  )
+
+# define a function to simplify adding tests
+function(do_test target arg result)
+  add_test(NAME Comp${arg} COMMAND ${target} ${arg})
+  set_tests_properties(Comp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result}
+    )
+endfunction()
+
+# do a bunch of result based tests
+do_test(Tutorial 4 "4 is 2")
+do_test(Tutorial 9 "9 is 3")
+do_test(Tutorial 5 "5 is 2.236")
+do_test(Tutorial 7 "7 is 2.645")
+do_test(Tutorial 25 "25 is 5")
+do_test(Tutorial -25 "-25 is (-nan|nan|0)")
+do_test(Tutorial 0.0001 "0.0001 is 0.01")
+```
+
+- The first test `add_test(NAME Runs COMMAND Tutorial 25)` simply verify that the application runs. The `NAME` field is the test name, and the `COMMAND` field is the command that need to run.
+- The second test tests for the usage message. Note that the command is run without an argument, therefore the usage message will be printed.
+- Lastly, we define a function `do_test` to verify that the output is correct for the given input. For every function call, a new test with a target, an argument, and a expected result is passed.
+
+Use `ctest` to test the executable:
+
+```bash
+cd ./bin
+# option -N list the tests that would be run, but not actually run them.
+ctest -N
+# option -VV show more output from tests.
+ctest -VV
+```
+
+For multi-config generators, the configuraion type must be specified with the option `-C <mode>`. For example:
+
+```bash
+# use the debug mode
+ctest -C Debug -VV
+# use the release mode
+ctest -C Release -VV
+```
+
 ---
 
 參考資料:
