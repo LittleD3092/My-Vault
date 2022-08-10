@@ -523,6 +523,245 @@ void ThreadedTree<T>::InsertRight(ThreadedNode<T> *s,
 }
 ```
 
+# Huffman Tree
+
+Huffman tree is a method to compress data stream. This method convert the data into a new data stream, with its first part of Huffman code table and the compressed file.
+
+![[Huffman compressing - tree.png]]
+
+For example, we have a data stream represented in alphabets (only a portion of them is shown):
+
+```
+AABBCDEFF...
+```
+
+## Building a Huffman Tree
+
+We follow the steps below to build the Huffman tree:
+
+1. Count how many times the alphabets occur in the data stream. For example, we have the following frequency of each alphabet:
+
+| Alphabet | How many of it in data? |
+| -------- | ----------------------- |
+| A        | 2                       |
+| B        | 3                       |
+| C        | 5                       |
+| D        | 7                       |
+| E        | 9                       |
+| F        | 13                      |
+
+2. Then, we sort them by key value:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+C["C: 5"]
+D["D: 7"]
+E["E: 9"]
+F["F: 13"]
+```
+
+3. We merge the nodes, and calculate its parent. The parent is the sum of its children:
+
+We merge the `A` node and the `B` node:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+
+five((5))
+
+five --- A
+five --- B
+
+C["C: 5"]
+D["D: 7"]
+E["E: 9"]
+F["F: 13"]
+```
+
+Then we merge the node generated on last step and merge it with `C`:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+D["D: 7"]
+E["E: 9"]
+F["F: 13"]
+```
+
+Then we merge `E` and `D`:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+F["F: 13"]
+```
+
+Then we merge `F` and `10`:
+
+```mermaid
+flowchart TD
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+twentythree((23))
+
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+F["F: 13"]
+
+twentythree --- ten
+twentythree --- F
+```
+
+At last, we merge the remaining two trees.
+
+```mermaid
+flowchart TD
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+twentythree((23))
+
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+F["F: 13"]
+
+twentythree --- ten
+twentythree --- F
+
+thirtynine((39))
+thirtynine --- sixteen
+thirtynine --- twentythree
+```
+
+This is how you build a Huffman tree.
+
+## Using Huffman Tree
+
+Now we have a Huffman tree, but how do we use it? Huffman tree is used as a code table to encode and decode the characters. First let's look at the tree we just built:
+
+```mermaid
+flowchart TD
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+twentythree((23))
+
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+F["F: 13"]
+
+twentythree --- ten
+twentythree --- F
+
+thirtynine((39))
+thirtynine --- sixteen
+thirtynine --- twentythree
+```
+
+We can use several bits to encode the alphabets. If we need to traverse left to get to the alphabet, we use a `0`. Otherwise, we use a `1`. For example, the alphabet `D` requires us to first go left to `16`, then go right to `D`. Therefore the bits representing `D` will be `0b01`.
+
+| Alphabet | Code     |
+| -------- | -------- |
+| `E`      | `0b00`   |
+| `D`      | `0b01`   |
+| `A`      | `0b1000` |
+| `B`      | `0b1001` |
+| `C`      | `0b101`  |
+| `F`      | `0b11`   | 
+
+Note that we get a data stream of codes with each code using 4 bits of space. We would need 8 bits to represent a character, but with Huffman tree, we only need 4!
+
+Now we save the Huffman code table and the compressed code as a file. This is how to use Huffman tree to compress files.
+
+![[Huffman compressing - tree.png]]
+
+Note that this compress method only works when we only have a few kinds of alphabets. Otherwise, we might get a bigger compressed file compared to the original one!
+
 # Binary Search Trees
 
 - A dictionary is a collection of pairs, each pair has a key and an associated element. We may use the key to access the correspond element.
@@ -623,8 +862,68 @@ pair<K, E>* BST<K, E>::Get(const K&k)
 
 ### Code for Search by Rank
 
-- Rank: A rank of a node is its position in order. The first node visited in [[#Inorder]] has rank 1.
-- We sometimes want to search the tree by rank. If we wish to do so, each node must have an additional field called `leftSize`, which is 1 + the number of elements in the left subtree of the node.
+#### What is rank?
+
+Ranks in binary tree represent how big or small a value in the node is. For a tree that puts its smaller node leftside, we have the smallest node rank 1. Then the second smallest node is rank 2, and so on.
+
+For example, the tree below
+
+```mermaid
+flowchart TD
+thirty((30))
+five((5))
+fourty((40))
+two((2))
+thirtytwo((32))
+fourtyfive((45))
+null((null))
+
+thirty --- five
+       --- two
+five --- null
+thirty --- fourty
+       --- thirtytwo
+fourty --- fourtyfive
+```
+
+will have a rank and corresponding key like the chart below.
+
+| Rank | Key |
+| ---- | --- |
+| 1    | 2   |
+| 2    | 5   |
+| 3    | 30  |
+| 4    | 32  |
+| 5    | 40  |
+| 6    | 45  | 
+
+#### Searching by rank
+
+We sometimes want to search the tree by rank. If we wish to do so, each node must have an additional field called `leftSize`, which is 1 + the number of elements in the left subtree of the node. The tree we see in the section above will therefore have the field `leftSize` like this:
+
+```mermaid
+flowchart TD
+thirty["30, leftSize=3"]
+five["5, leftSize=2"]
+fourty["40, leftSize=2"]
+two["2, leftSize=1"]
+thirtytwo["32, leftSize=1"]
+fourtyfive["45, leftSize=1"]
+null((null))
+
+thirty --- five
+       --- two
+five --- null
+thirty --- fourty
+       --- thirtytwo
+fourty --- fourtyfive
+```
+To search by rank, we compare the rank to the element `leftSize` of the current node we are looking. If the current rank is bigger, we go right and reduce rank by `leftSize`. If the current rank is smaller, we go left. For example, we need to find rank `5`:
+
+1. Compare to node `30`, rank `5` is greater than `leftSize` `3`. We go right to node `40`, and the rank reduced to `2`.
+2. In node `40`, `leftSize` `2` is equal to the current rank `2`. This means we found the node correspond to rank `5`.
+
+#### Code
 
 ```cpp
 template<class K, class E> // search by rank
