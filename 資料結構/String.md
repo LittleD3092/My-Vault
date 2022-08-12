@@ -179,3 +179,12 @@ Fundamentals of Data Structures
 
 link:
 
+
+
+---
+
+keywords:
+
+- KMP algorithm
+- text finding algorithm
+- text searching algorithm
