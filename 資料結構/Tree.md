@@ -1016,6 +1016,8 @@ Note that not all tree need to be restructured, only some of them. If we keep do
 
 ## Loser Trees
 
+Loser trees are often used with winner tree. This is because we need to compare a node to its right or left node of winner tree, and it is hard to find its corresponding right or left node. Therefore we construct a loser tree, so we can easily find the node to compare.
+
 ![[loser tree - tree.png]]
 
 # Forests
