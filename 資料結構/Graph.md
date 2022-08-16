@@ -228,6 +228,112 @@ MatrixWGraph --- MatrixGraph
 
 Note that only [[#Adjacency Matrices]] and [[#Adjacency Lists]] is shown in the graph.
 
+# Elementary Operations
+
+Given a graph $G = (V, E)$, we wish to visit all vertices is $G$ that are reachable from a vertex $v$. We have two ways of doing it:
+
+- [[#Depth-First Search]]
+- [[#Breadth-First Search]]
+
+## Depth-First Search
+
+```cpp
+virtual void Graph::DFS() // Driver
+{
+	// visited is declared as a bool* data member of Graph
+	visited = new bool [n];
+	fill(visited, visited + n, false);
+	DFS(0); // start search at vertex 0
+	delete [] visited;
+}
+
+virtual void Graph::DFS(const int v) // Workhorse
+// Visit all previously unvisited vertices that are reachable from vertex v.
+{
+	visited[v] = true;
+	for(each vertex w adjacent to v) // actual code uses an iterator
+		if(!visited[w])    DFS(w);
+}
+```
+
+## Breadth-First Search
+
+```cpp
+virtual void Graph::BFS(int v)
+// A breadth first search of the graph is carried out beginning at vertex v.
+// visited[i] is set to true when v is visited. The function uses a queue
+{
+	visited = new bool [n];
+	fill(visited, visited + n, false);
+	visited[v] = true;
+	Queue<int> q;
+	q.Push(v);
+	while(!q.IsEmpty())
+	{
+		v = q.Front();
+		q.Pop();
+		for(all vertices w adjacent to v) // actual code uses an iterator
+		{
+			if(!visited[w])
+			{
+				q.Push(w);
+				visited[w] = true;
+			}
+		} // end of for loop
+	} // end of while loop
+	delete [] visited;
+}
+```
+
+## Conected Components
+
+To find all components in the undirected graph $G$, we use the code:
+
+```cpp
+virtual void Graph::Components()
+// Determine the connected components of the graph.
+{
+	// visited is assumed to be declared as a bool* data member of Graph
+	visited = new bool [n];
+	fill(visited, visited + n, false);
+	for(i = 0; i < n; i++)
+	{
+		if(!visited[i])
+		{
+			DFS(i); // find a component
+			OutputNewComponent();
+		}
+	}
+	delete [] visited;
+}
+```
+
+# Spanning Trees
+
+When doing a [[#Depth-First Search]] or a [[#Breadth-First Search]], not all the edges will be traversed. The edges being traversed form a tree, which is a spanning tree.
+
+
+![[a spanning tree example - graph.jpeg|500]]
+
+- A spanning tree constructed using a [[#Depth-First Search]] is called a depth-first spanning tree.
+- A spanning tree constructed using a [[#Breadth-First Search]] is called a broad-first spanning tree.
+- If any nontree edge $(v, w)$ is added on a spanning tree, a cycle is formed. The cycle contains the edge $(v, w)$ and the path from $v$ to $w$ in the spanning tree.
+
+# Biconneced Components
+
+- A vertex $v$ of $G$ is an ==articulation point== iff the deletion of $v$, together with the deletion of all edges incident to $v$, leaves behind a graph that has at least two connected components.
+- A ==biconnected graph== is a connected graph that has no articulation points.
+- A ==biconnected component== of a connected graph $G$ is a maximal biconnected subgraph $H$ of $G$.
+
+![[biconnected components example - graph.jpeg|400]]
+
+- The number that represent the sequence in which the vertices are visited during the [[#Depth-First Search]] is called ==depth-first number==. The graph $(b)$ below shows the depth-first number of each vertex.
+
+![[depth-first spanning tree with depth-first number - graph.jpeg|500]]
+
+- The broken lines are non-tree edges. Edges like this are called ==back edge.== A back edge $(u, v)$ is non-tree edge, and either $u$ is $v$'s ancestor or $v$ is $u$'s ancestor.
+- A non-tree edge that is not a back edge is called a ==cross edge==.
+
 ---
 
 參考資料:

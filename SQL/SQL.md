@@ -25,7 +25,7 @@ There are two types of database:
 - Non-Relational (noSQL/not just SQL)
 	- All other types that is not SQL
 	- JSON, BLOB, XML
-	- [[Graph]]
+	- [[資料結構/Graph]]
 	- Key-Value Hash
 
 # Basics
