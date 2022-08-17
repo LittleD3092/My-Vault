@@ -1067,7 +1067,148 @@ There is no natural analog for postorder traversal of the corresponding binary t
 
 In level-order traversal of a forest, nodes are visitted level by level. Note that the level-order traversal of a forest and [[#Level-Order Traversal of a Binary Tree]] do not necessarily yield the same result.
 
+# AVL Tree
 
+AVL tree is a kind of [[#Binary Search Trees]] that have a feature of self balancing. A normal binary tree has a problem that in worse case, it becomes [[Linked Lists]]. This phenomenon is illustrated below.
+
+## Problem of [[#Binary Search Trees]]
+
+If we have `20, 10, 30` three nodes to insert, the tree looks like this:
+
+```mermaid
+flowchart TB
+
+twenty(("20"))
+ten(("10"))
+thirty(("30"))
+
+twenty --- ten
+twenty --- thirty
+```
+
+However, if we insert them using different order, say `10, 20, 30`, the tree becomes like this:
+
+```mermaid
+flowchart TD
+
+null1(("null"))
+null2(("null"))
+ten(("10"))
+twenty(("20"))
+thirty(("30"))
+
+ten --- twenty --- null1
+ten --- null2
+twenty --- thirty
+```
+
+Traversing it becomes less time efficient. Therefore, organizing the binary search tree is important.
+
+## Four Operations
+
+The AVL tree uses four operations to organize the [[#Binary Search Trees]]. There are four scenarios, each correspond to an operation.
+
+> We say a node is imbalanced if the height of the left subtree $h_L$ and the height of the right subtree $h_R$ has a difference of $\geq 2$.
+> $$\vert h_L - h_R \vert \geq 2$$
+
+- [[#LL Rotation]]: The node which is imbalance to the node inserted has a path "left and left". The tree below has imbalance node `30` and the inserted node `10`.
+```mermaid
+flowchart TB
+
+thirty(("30"))
+twenty(("20"))
+null1(("null"))
+ten(("10"))
+null2(("null"))
+
+thirty --- twenty
+thirty --- null1
+twenty --- ten
+twenty --- null2
+```
+
+- [[#LR Rotation]]: Inserted "left and right". The tree has imbalance node `30` and inserted node `20`.
+```mermaid
+flowchart TB
+
+thirty(("30"))
+ten(("10"))
+null1(("null"))
+null2(("null"))
+twenty(("20"))
+
+thirty --- ten
+thirty --- null1
+ten --- null2
+ten --- twenty
+```
+
+- [[#RL Rotation]]: Inserted "right and left".
+```mermaid
+flowchart TB
+
+ten(("10"))
+null1((null))
+thirty(("30"))
+twenty(("20"))
+null2((null))
+
+ten --- null1
+ten --- thirty
+thirty --- twenty
+thirty --- null2
+```
+
+- [[#RR Rotation]]
+```mermaid
+flowchart TB
+
+ten(("10"))
+null1(("null"))
+twenty(("20"))
+null2(("null"))
+thirty(("30"))
+
+ten --- null1
+ten --- twenty
+twenty --- null2
+twenty --- thirty
+```
+
+### LL Rotation
+
+If an imbalanced node has LL Rotation, we rotate it to the right.
+
+![[LL rotation - tree.jpeg|400]]
+
+### LR Rotation
+
+If an imbalanced node has LR Rotation, we first rotate its children to the left, then we rotate them to the right.
+
+![[LR rotation - tree.jpeg]]
+
+### RL Rotation
+
+If an imbalanced node has RL Rotation, we first rotate its children to the right, then we rotate them to the left.
+
+![[RL rotation - tree.jpeg]]
+
+### RR Rotation
+
+If an imbalanced node has RR Rotation, we rotate it to the left.
+
+![[RR rotation formula - tree.jpeg|400]]
+
+### Formula
+
+You may wonder how about the children of the three nodes? There are some formulae.
+
+| Operation        | Figure                                              |
+| ---------------- | --------------------------------------------------- |
+| [[#LL Rotation]] | ![[LL rotation formula - tree.jpeg\|400]] |
+| [[#LR Rotation]] | ![[LR rotation formula - tree.jpeg\|400]] |
+| [[#RL Rotation]] | ![[RL rotation formula - tree.jpeg\|400]] |
+| [[#RR Rotation]] | ![[RR rotation - tree.jpeg\|400]] |
 
 ---
 
