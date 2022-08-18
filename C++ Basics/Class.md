@@ -50,7 +50,7 @@ Rectangle::Rectangle(int x, int y, int h, int w)
 {}
 ```
 
-In the first way, the constructor first initializes the data members and then assigns arguments to them in two seperate steps, while in the second way, it directly initializes the data members to the corresponding arguments in a single step. Thus, the latter approach results in a more efficient constructor.
+In the first way, the constructor first initializes the data members and then assigns arguments to them in two seperate steps, while in the second way, it directly initializes the data members to the corresponding arguments in a single step. ==Thus, the latter approach results in a more efficient constructor.==
 
 Constructors may be used to initialize `Rectangle` objects as follows:
 
