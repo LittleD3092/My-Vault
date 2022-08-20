@@ -18,6 +18,12 @@ Every web browser can run javascript. You may write the following block in your 
 
 In google chrome, you can open console by pressing `ctrl + shift + J`
 
+Or, you can use terminal:
+
+```bash
+node file.js
+```
+
 # Comments
 
 The comments of javascript is similar to C++, you use `//` and `/**/` to write single line comment and multiline comments.
@@ -43,9 +49,97 @@ In javascript, there are several types of variable:
 - `number`
 - `object`
 
+### Object
+
+The declaration of object and its usage is like the `dictionary` in python. We declare object like this:
+
+```js
+var ourDog = 
+{
+	"name" : "Camper",
+	"legs" : 4,
+	"tails" : 1,
+	"friends" : ["everything"]
+};
+```
+
+And we may access the elements using two ways:
+
+```js
+ourDog.name; // this works!
+outDog["name"]; // this works too!
+```
+
+#### Spaces in Element Names
+
+Note that we may use `""` when implementing the object's elements. The object's element name can have spaces!
+
+```js
+var testObj = 
+{
+	"an entree" : "hamburger",
+	"my side" : "veggies",
+	"the drink" : "water"
+};
+```
+
+But we cannot use `.` to access our elements if the element's name contains space, we can only use `[]`:
+
+```js
+var entreeValue = testObj["an entree"];
+```
+
+#### Append an Element
+
+If you are assigning an element that is not in the object, the object will add it.
+
+```js
+var ourDog = 
+{
+	"name" : "Camper",
+	"legs" : 4,
+	"tails" : 1,
+	"friends" : ["everything!"]
+};
+
+ourDog.bark = "woof";
+```
+
+#### Delete an Element
+
+You can delete an element using keyword `delete`:
+
+```js
+var ourDog = 
+{
+	"name" : "Camper",
+	"legs" : 4,
+	"tails" : 1,
+	"friends" : ["everything!"]
+};
+
+ourDog.bark = "woof";
+delete ourDog.bark;
+```
+
+#### Testing whether Object has Element
+
+Sometimes it is useful to test whether the object has a specific element. We can use a element function `hasOwnProperty()`:
+
+```js
+var myObj = 
+{
+	gift : "pony",
+	pet : "kitten",
+	bed : "sleigh"
+};
+
+myObj.hasOwnProperty("gift"); // this will be true
+```
+
 ## Variables
 
-You can declare global variable by using `var`:
+You can declare function scope variable by using `var`:
 
 ```js
 var myName = "Daniel";
@@ -58,13 +152,13 @@ var myName = "Daniel";
 myName = 8;
 ```
 
-You can declare local variable by using `let`:
+You can declare block scope variable by using `let`:
 
 ```js
 let ourName = "NYCU";
 ```
 
-To declare a constant variable, use `const`:
+To declare a constant variable (it is block scope), use `const`:
 
 ```js
 const PI = 3.14;
@@ -183,6 +277,82 @@ A function declaration is as follows:
 function f(param)
 {
 	return param + 1;
+}
+```
+
+- If the function does not have a return value, a parameter with type `undefined` is returned.
+
+# Equality
+
+We have normal equality:
+
+```js
+3 == 3
+3 == '3'
+```
+
+Both these statements is true.
+
+But javascript has another equality `===`, called "strictly equal":
+
+```js
+3 === 3
+3 === '3'
+```
+
+The lower statement doesn't evaluate to true. This is because normal equality has automatic type conversion, and strictly equal doesn't.
+
+# Conditions
+
+## And
+
+We use `&&` just like C++.
+
+## Or
+
+We use `||` just like C++.
+
+# If-Else
+
+We use if-else like C++.
+
+```js
+if()
+{
+
+}
+else if()
+{
+
+}
+else
+{
+
+}
+```
+
+# Switch
+
+We use switch like C++.
+
+```js
+switch(val)
+{
+case 1:
+	...
+	break;
+	
+case 2:
+	...
+	break;
+
+case 3:
+	...
+	break;
+
+default:
+	...
+	break;
 }
 ```
 

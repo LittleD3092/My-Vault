@@ -508,6 +508,43 @@ In the C++ file, we use `#if` and `#else` to switch between using `std::exp, std
   double result = x;
 ```
 
+## Step 6: Adding a Custom Command and Generated File
+
+To add a custom file, in this case we want to add `Table.h`, we add the following lines to the subdirectory cmake file:
+
+```cmake
+# To add the executable for compilation:
+add_executable(MakeTable MakeTable.cxx)
+```
+
+```cmake
+# Convert the file to Table.h
+add_custom_command(
+	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+	COMMAND MakeTable ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+	DEPENDS MakeTable
+)
+```
+
+```cmake
+# To include the generated Table.h
+add_library(MathFunctions
+	        mysqrt.cxx
+	        ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+	        )
+```
+
+```cmake
+# Include the build directory of Table.h, 
+# so that cmake can find Table.h
+target_include_directories(MathFunctions
+	INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+	PRIVATE ${CMAKE_CURRENT_BINARY_DIR}
+	)
+```
+
+Now we can use `#include "Table.h"` anywhere.
+
 ---
 
 參考資料:
