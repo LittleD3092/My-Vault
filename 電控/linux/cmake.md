@@ -459,6 +459,55 @@ ctest -C Debug -VV
 ctest -C Release -VV
 ```
 
+## Step 5: Adding System Introspection
+
+Sometimes we would like to use a function, and we don't know whether the platform which our package will run on contains the essential functions that we need. In this case, we assume some platform may not have `std::log` and `std::exp`.
+
+We first add the checking procedure in `CMakeLists.txt`. We add an example code and check whether it passes compilation. We store the result using constant `HAVE_LOG` and `HAVE_EXP`.
+
+```cmake
+target_include_directories(MathFunctions
+          INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+          )
+
+# does this system provide the log and exp functions?
+include(CheckCXXSourceCompiles)
+check_cxx_source_compiles("
+  #include <cmath>
+  int main() {
+    std::log(1.0);
+    return 0;
+  }
+" HAVE_LOG)
+check_cxx_source_compiles("
+  #include <cmath>
+  int main() {
+    std::exp(1.0);
+    return 0;
+  }
+" HAVE_EXP)
+```
+
+To pass the result to our C++ program, we use an if statement to define the keywords for C++. The if statement is also appended in `CMakeLists.txt`.
+
+```cmake
+if(HAVE_LOG AND HAVE_EXP)
+  target_compile_definitions(MathFunctions
+                             PRIVATE "HAVE_LOG" "HAVE_EXP")
+endif()
+```
+
+In the C++ file, we use `#if` and `#else` to switch between using `std::exp, std::log` and not using them.
+
+```cpp
+#if defined(HAVE_LOG) && defined(HAVE_EXP)
+  double result = std::exp(std::log(x) * 0.5);
+  std::cout << "Computing sqrt of " << x << " to be " << result
+            << " using log and exp" << std::endl;
+#else
+  double result = x;
+```
+
 ---
 
 參考資料:
