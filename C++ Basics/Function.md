@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 # Overload
 
 C++ allows you to give two or more different definitions to the same function name, which means you can reuse names that have strong intuitive appeal across a variety of situations.
