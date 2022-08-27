@@ -1,5 +1,11 @@
 標籤: #arduino 
 
+---
+
+[TOC]
+
+---
+
 函式庫，可以用ps2搭配arduino 使用
 
 ![[ps2x_lib.h 手把按鍵對應圖.png]]
