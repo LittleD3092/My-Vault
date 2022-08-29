@@ -11,7 +11,8 @@
 ![[ps2x_lib.h 手把按鍵對應圖.png]]
 
 ```arduino
-#include <PS2X_lib.h>           //include ps2 console library 
+//include ps2 console library 
+#include <PS2X_lib.h>
 
 //ps2 port setting
 //from left to right
@@ -28,7 +29,7 @@
                                         //port 9: ACK response
 
 //feature setting
-#define supportAnalogJoystick true      //does it support anolog joystick?
+#define supportAnalogJoystick true      //does it support anolog pressure?
 #define supportVibration true           //does it support vibration?
 
 //initializing data
