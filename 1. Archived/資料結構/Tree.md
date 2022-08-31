@@ -994,6 +994,97 @@ void BST<K, E>::Insert(const pair<K, E>& thePair)
 - The deletion of a nonleaf element that has only one child is also easy. The node containing the element to be deleted is disosed, and the single-child takes the place of the disposed node.
 - When the element to be deleted is in a nonleaf node that has two children, the element is replaced by either the largest element in its left subtree or the smallest one in its right subtree. Then we perform a deletion on this replacing element from the subtree from which it was taken. (like recursion deleting!)
 
+# Trie
+
+- Trie is a type of k-ary search tree.
+- Nodes in a trie do not store their associated key.
+	- [[#Binary Search Trees]] store the key reference in the node.
+	- Unlike [[#Binary Search Trees]], the position of the node in a trie indicates the key.
+- The children of the node have a common prefix of the string associated with the parent node.
+- The root is associated with the empty string.
+
+```mermaid
+flowchart TD
+
+empty((" "))
+t(("t"))
+A(("A"))
+i(("i"))
+to(("to"))
+te(("te"))
+in(("in"))
+tea(("tea"))
+ted(("ted"))
+ten(("ten"))
+inn(("inn"))
+
+empty --- t
+    t --- to
+    t --- te
+        te --- tea
+        te --- ted
+        te --- ten
+empty --- A
+empty --- i
+    i --- in
+        in --- inn
+```
+
+## Radix Tree
+
+- Radix tree is a space-optimized trie.
+	- In a trie, the children of a node stores the same prefix of the parent node.
+	- A radix tree store text in edges, and each edge doesn't contain the prefix string.
+
+```mermaid
+flowchart TD
+
+empty1((" "))
+empty2((" "))
+empty3((" "))
+empty4((" "))
+three(("3"))
+empty5((" "))
+one(("1"))
+two(("2"))
+empty6((" "))
+empty7((" "))
+four(("4"))
+five(("5"))
+six(("6"))
+seven(("7"))
+
+empty1 ---|r| empty2
+    empty2 ---|om| empty3
+        empty3 ---|ulus| three
+        empty3 ---|an| empty5
+            empty5 ---|e| one
+            empty5 ---|us| two
+    empty2 ---|ub| empty4
+        empty4 ---|e| empty6
+            empty6 ---|ns| four
+            empty6 ---|r| five
+        empty4 ---|ic| empty7
+            empty7 ---|on| six
+            empty7 ---|undus| seven
+```
+
+> The radix tree above stores the following data:
+> 1. romane
+> 2. romanus
+> 3. romulus
+> 4. rubens
+> 5. ruber
+> 6. rubicon
+> 7. rubicundus
+
+- Radix tree is good at small sets and for sets that share long prefixes.
+- The label of edges can be stored in constant size by using two pointers to a string.
+
+### Operations
+
+All the following operators have a time complexity of $O(k)$, where $k$ is the length of the longest string in the set.
+
 # Selection Tree
 
 When we are merging multiple ordered sequence, we may use selection tree. There are two kinds of selection trees:
@@ -1210,11 +1301,23 @@ You may wonder how about the children of the three nodes? There are some formula
 | [[#RL Rotation]] | ![[RL rotation formula - tree.jpeg\|400]] |
 | [[#RR Rotation]] | ![[RR rotation - tree.jpeg\|400]] |
 
+# Suffix Tree
+
+`TODO`
+
+## Generalized Suffix Tree
+
+Generalized suffix tree is a suffix tree for a set of strings.
+
 ---
 
 參考資料:
 
 Fundamental of Data Structure in C++, 2nd edition
+[Generalized Suffix Tree - wiki](https://en.wikipedia.org/wiki/Generalized_suffix_tree)
+[Suffix Tree - wiki](https://en.wikipedia.org/wiki/Suffix_tree)
+[Trie - wiki](https://en.wikipedia.org/wiki/Trie)
+[Radix Tree - wiki](https://en.wikipedia.org/wiki/Radix_tree)
 
 ---
 
