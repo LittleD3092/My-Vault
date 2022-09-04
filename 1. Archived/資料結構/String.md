@@ -91,7 +91,7 @@ int String::Find(String pat)
 
 ## The Knuth-Morris-Pratt Algorithm
 
-Also known as "KMP Algorithm"
+Also known as "KMP Algorithm".
 
 Knuth-Morris-Pratt algorithm iterates through the string just like [[#Simple Algorithm]]. However, this algorithm employs the observation that when a mismatch occurs, the pattern `pat` itself embodies sufficient informationto determine where the next match could begin, thus bypassing re-examination of previously matched characters.
 
