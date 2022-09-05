@@ -545,6 +545,55 @@ target_include_directories(MathFunctions
 
 Now we can use `#include "Table.h"` anywhere.
 
+## Step 7: Packaging an Installer
+
+In the previous [[#Step 4 Installing and Testing]] section, we installed the binaries built from the source code.
+
+But in some cases, open source sharing for instance, we want to provide both binary and source distribution. Also we want to provide the distribution that is compatible on a variety of platform, so the other people can use it.
+
+In this section, we will use CPack to accomplish this.
+
+At the bottom of the file `CMakeLists.txt`, append the following lines:
+
+```cmake
+include(InstallRequiredSystemLibraries)
+set(CPACK_RESOURCE_FILE_LICENSE 
+    "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set(CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
+set(CPACK_SOURCE_GENERATOR "TGZ")
+include(CPack)
+```
+
+- `InstallRequiredSystemLibraries`: This is all the runtime libraries that are needed by the project for the current platform.
+- `set(CPACK_PACKAGE_VERSION_MAJOR ...)` and `set(CPACK_PACKAGE_VERSION_MINOR ...)`: The two lines will set the major and minor versions for cpack. The variables `Tutorial_VERSION_MAJOR` and `Tutorial_VERSION_MINOR` are set in section [[#Adding a Version Number and Configured Header File]].
+- `set(CPACKE_SOURCE_GENERATOR "TGZ")`: This line will select a file format. See the wiki for cmake for more options.
+- `include(CPack)`: Include the cpack functionality.
+
+After modifying the `CMakeLists.txt`, we will build our package.
+
+To build binary distribution, from the binary directory run:
+
+```bash
+cpack
+```
+
+To specify generator, use `-G` option. For multi-config builds, use `-C` to specify the configuration.
+
+```bash
+cpack -G ZIP -C Debug
+```
+
+> `-G` option has a lot of generators available. The code block above shows how to create a `ZIP` package. 
+> 
+> To see all generators available, run `cpack --help`.
+
+To create an archive of the full source tree:
+
+```bash
+cpack --config CPackSourceConfig.cmake
+```
+
 ---
 
 參考資料:
