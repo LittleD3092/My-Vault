@@ -293,15 +293,6 @@ Which is prefix form of the expression.
 
 ### Postorder Traversal of a Binary Tree
 
-```cpp
-template<class T>
-void Tree<T>::Postorder()
-// Driver.
-{
-	Postorder(root);
-}
-```
-
 The elements of the example binary tree get output in the following order:
 
 $$AB/C*D*E+$$
