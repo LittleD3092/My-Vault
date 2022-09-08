@@ -300,7 +300,7 @@ But javascript has another equality `===`, called "strictly equal":
 3 === '3'
 ```
 
-The lower statement doesn't evaluate to true. This is because normal equality has automatic type conversion, and strictly equal doesn't.
+The second statement doesn't evaluate to true. This is because normal equality has automatic type conversion, and strictly equal doesn't.
 
 # Conditions
 
