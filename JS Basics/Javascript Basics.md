@@ -139,6 +139,8 @@ myObj.hasOwnProperty("gift"); // this will be true
 
 ## Variables
 
+### var
+
 You can declare function scope variable by using `var`:
 
 ```js
@@ -152,11 +154,17 @@ var myName = "Daniel";
 myName = 8;
 ```
 
+### let
+
 You can declare block scope variable by using `let`:
 
 ```js
 let ourName = "NYCU";
 ```
+
+> Apart from scope, another difference between `let` and `var` is that `let` does not allow duplicate declaration. `var` does.
+
+### const
 
 To declare a constant variable (it is block scope), use `const`:
 
@@ -247,6 +255,20 @@ Like C++, javascript use escape characters to represent special characters:
 | `\t`             | Tab                                 |
 | `\b`             | Backspace                           |
 | `\f`             | Form feed (change page for printer) | 
+
+## Convert to Int
+
+We may have a number represented in string type, like `"56"`. There is a convenient function `parseInt()` that can convert this type of string to an integer type. Below is an example.
+
+```js
+result = parseInt("56");
+```
+
+`parseInt()` can also convert a string in binary representation to an integer. You only need to pass a parameter `2` at the second position. This parameter specifies that the string is written in binary representation.
+
+```js
+result = parseInt("10011", 2);
+```
 
 # Array
 
@@ -356,6 +378,44 @@ default:
 }
 ```
 
+# While Loop
+
+We have `while` and `do-while` loop like C++.
+
+```js
+var myArray = [];
+var i = 0;
+while(i < 5)
+{
+    myArray.push(i);
+    i++;
+}
+```
+
+```js
+var myArray = [];
+var i = 0;
+do
+{
+    myArray.push(i);
+    i++;
+}while(i < 5)
+```
+
+# For Loop
+
+The for loop is similar to the one in C++.
+
+```js
+var ourArray = [];
+for(var i = 0; i < 5; i++)
+{
+    ourArray.push(i);
+}
+```
+
+
+
 ---
 
 參考資料:
@@ -366,3 +426,4 @@ default:
 
 link:
 
+[[Random]]
