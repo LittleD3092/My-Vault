@@ -18,7 +18,7 @@ We focus on a very small section of the overall problem.
 
 ![[modeling of small section of string.png]]
 
-- $T_1, T_2$: tension forces at $P, Q$, respectively
+- $T_1, T_2$: Tension forces at $P, Q$, respectively
 - $T_1, T_2$ are tangential to the local slope
 
 Equation of motion (horizontal):

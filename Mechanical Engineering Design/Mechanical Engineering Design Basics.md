@@ -43,6 +43,21 @@ $$R = \prod_{i = 1}^{n} R_i, \quad R_i\text{ is the reliability of each componen
 
 We should avoid using too many components while designing a series system, because the more components you use, the less reliability you got.
 
+# [[Design Process]]
+
+![[Design Process]]
+
+# Resilience
+
+Resilience means the capacity of a material to absorb energy within its elastic range. The resilience of a material is represented as modulus of resilience, $u_R$.
+
+- $u_R$ is the energy absorbed per unit volume without permanent deformation.
+- $u_R$ equals the area of the gray part of the following diagram:
+
+![[resilience area - mechanical engineering design basics.png|250]]
+
+- $u_R$ is calculated using the area before $el$ by definition. But the elastic point is not too easy to measure, therefore yield point $y$ is often used.
+
 ---
 
 參考資料:
