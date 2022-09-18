@@ -345,9 +345,9 @@ To verify whether the cycle is formed, we place the component into multiple sets
 	- $\{4\}$
 2. We look for the edge, see whether it is in the same set or not. If the edge is in the same set, it forms a cycle. In this case, edge $(3, 6)$ is in the same set $\{1, 2, 3, 6\}$, therefore forms a cycle and should be discarded.
 
-#### Pseudocode
+#### [[Pseudocode]]
 
-The pseudocode of Kruskals's algorithm is demonstrated in the code block below.
+The [[Pseudocode]] of Kruskals's algorithm is demonstrated in the code block below.
 
 ```cpp
 T = {};
@@ -371,9 +371,9 @@ The [[#Kruskal's Algorithm]] forms a forest. Prim's algorithm is like growing a 
 
 ![[Prim's algorithm example - graph.jpeg|500]]
 
-#### Pseudocode
+#### [[Pseudocode]]
 
-The pseudocode of this algorithm is as shown:
+The [[Pseudocode]] of this algorithm is as shown:
 
 ```cpp
 // Assume that G has at least one vertex

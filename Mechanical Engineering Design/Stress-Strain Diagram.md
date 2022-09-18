@@ -20,9 +20,9 @@ There are two types of material, ductile and brittle. The stress-strain diagrams
 
 There are some important points on the curve of the diagram above:
 
-- $pl$: Before this point, the curve is linear and obey [[Hooke's Law]].
+- $pl$: This point is called proportional limit. Before this point, the curve is linear and obey [[Hooke's Law]].
 $$\sigma = E\varepsilon$$
-- $el$: From $pl$ to $el$, the curve is no longer linear, but no permanent deformation is formed. After this point, there will be plastic deformation, which means that if release stress, the sample will not go back to the original length.
+- $el$: This point is called elastic limit. From $pl$ to $el$, the curve is no longer linear, but no permanent deformation is formed. After this point, there will be plastic deformation, which means that if release stress, the sample will not go back to the original length.
 - $y$: This point is the yield point.
 	- If the stress is released on this point, the strain will be $0.2\%$.
 	- The stress on this point is called yield stress.

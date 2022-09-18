@@ -58,6 +58,37 @@ Resilience means the capacity of a material to absorb energy within its elastic 
 
 - $u_R$ is calculated using the area before $el$ by definition. But the elastic point is not too easy to measure, therefore yield point $y$ is often used.
 
+# Design Considerations
+
+Sometimes some characteristics is crucial to your design. In this case, we make design considerations. Some important design considerations are listed:
+
+1. Functionality
+2. Strength / stress
+3. Distortion / deflection / stiffness
+4. Wear
+5. Corrosion
+6. Safety
+7. Reliability
+8. Manufacturability
+9. Utility
+10. Cost
+11. Friction
+12. Weight
+13. Life
+14. Noise
+15. Styling
+16. Shape
+17. Size
+18. Control
+19. Thermal properties
+20. Surface
+21. Lubrication
+22. Marcketability
+23. Maintenance
+24. Volume
+25. Liability
+26. Remanufacturing / resource recovery
+
 ---
 
 參考資料:

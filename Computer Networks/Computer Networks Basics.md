@@ -27,11 +27,13 @@ The internet is consisted with four things:
 
 The internet is basically a network of smaller networks.
 
-## Protocals
+## Protocols
 
-The devices need a way of communicating with others, this communication method is called protocals. Protocals control sending and receiving of messages.
+The devices need a way of communicating with others, this communication method is called protocols. Protocols control sending and receiving of messages. All communication activities in internet are governed by protocols.
 
-Some common protocals:
+Protocols define the format, order of messages sent and received among network entities, and actions taken on message transmission and receipt.
+
+Some common protocols:
 
 - http
 - streaming video
@@ -41,6 +43,50 @@ Some common protocals:
 - wifi
 - 4G
 - Ethernet
+
+## Access Networks
+
+### Cable-Based Access
+
+![[cable based access - computer network basics.png]]
+
+The cable-based access is usually established using the television cable. DIfferent homes shares a cable, therefore one's internet bandwidth is dependent on whether others is using the cable too.
+
+One cable can be splitted to different channels by frequency. In this way, the bandwidth will be larger. This technology is called "frequency division multiplexing", "FDM".
+
+### Digital Subscriber Line (DSL)
+
+![[digital subscriber line - computer network basics.png]]
+
+The DSL access is usually established using telephone cables. Each house has a dedicated cable, therefore your bandwidth does not share with other houses.
+
+### Home Networks
+
+![[home networks - computer networks basics.png]]
+
+### Enterprise Networks
+
+![[enterprise networks - computer networks basics.png]]
+
+This kind of networks is used in companies and universities, places that need both wireless and wired access, also have a wide range.
+
+Enterprise networks are mixed of wired, wireless link technologies, and connects a mix of switches and routes.
+
+## Wireless Access Networks
+
+### Wireless Local Area Networks (WLANs)
+
+![[wireless local area networks - computer networks basics.png]]
+
+Wifi is this type of networks. This network has a very short range, but the speed is better than [[#Wide-Area Cellular Access Networks]].
+
+### Wide-Area Cellular Access Networks
+
+![[wide-area cellular access networks.png]]
+
+This kind of networks is provided by mobile or cellular network operator. 4G cellular networks is this type of network.
+
+Wide-area cellular access networks have higher range than [[#Wireless Local Area Networks WLANs]], however the bandwidth is smaller.
 
 ---
 

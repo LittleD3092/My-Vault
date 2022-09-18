@@ -6,7 +6,7 @@
 
 ---
 
-Also known as strain hardened. Create a longer linear elastic curve by doing the following steps.
+Also known as strain hardened. This process creates a longer linear elastic curve, and therefore prevent fatigue failures. The process contains following steps.
 
 # Steps
 
