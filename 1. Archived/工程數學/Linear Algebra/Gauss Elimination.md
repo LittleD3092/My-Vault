@@ -1,4 +1,4 @@
-標籤: #工程數學 
+標籤: #工程數學 #linear-algebra 
 
 ---
 
@@ -58,7 +58,7 @@ $$
 \right]
 $$
 
-Step 3. Row Operation
+Step 3. Elementary Row Operation
 [[Row Reduction]]
 
 $$\text{ 目標: } \widetilde{ A } = 
@@ -140,7 +140,7 @@ x_3 = 1
 
 ---
 
-What is allowed:
+# What is allowed
 
 1. Interchange two rows
 2. Add multiples of one row to another row
@@ -154,6 +154,32 @@ What is allowed:
 	- Undetermined: $m < n$
 	$m$: number of equations
 	$n$: number of variables
+
+# Strict Triangular Form
+
+It is the best to obtain strict triangular form. A system is said to be in ==strict triangular form== if in the $k$-th equation where the coefficients of the first $k - 1$ variables are all zero and the coefficient of $x_k$ is not zero.
+
+In the example above, we obtain the strict triangular form:
+
+$$=
+\left[
+\begin{array}{}
+1 & -2 & 3 \\
+0 & 7 & -8 \\
+0 & 0 & \frac{ 40 }{ 7 }
+\end{array}
+\right\vert
+\left.
+\begin{array}{}
+2 \\
+-1 \\
+\frac{ 40 }{ 7 }
+\end{array}
+\right]$$
+
+from which we obtain the value of $x_1, x_2, x_3$ easily.
+
+- The process of solving the strict triangular form is called ==back substitution==.
 
 ---
 

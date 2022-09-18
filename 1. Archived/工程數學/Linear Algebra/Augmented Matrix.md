@@ -1,6 +1,8 @@
-標籤: #工程數學 
+標籤: #工程數學 #linear-algebra 
 
 ---
+
+Augmented matrix is some matrix that looks like the below one:
 
 $$\widetilde{ A } = 
 \left[
@@ -20,12 +22,15 @@ b_m
 \end{array}
 \right]$$
 
+It is usually used to solve system of linear equations.
+
 ---
 
 參考資料:
 
 工程數學上課 2022-02-21
 工程數學上課 2022-02-23
+Linear Algebra class
 
 ---
 

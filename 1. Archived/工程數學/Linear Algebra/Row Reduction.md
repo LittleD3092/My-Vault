@@ -1,8 +1,8 @@
-標籤: #工程數學 
+標籤: #工程數學 #linear-algebra 
 
 ---
 
-嘗試將矩陣變為以下的樣子，有一個三角形的 $0$
+嘗試將矩陣變為以下的樣子，有一個三角形的 $0$ 。Also known as back substitution.
 
 $$\text{ 目標: } \widetilde{ A } = 
 \left[
@@ -98,6 +98,52 @@ What is allowed:
 	$m$: number of equations
 	$n$: number of variables
 
+# Strict Triangular Form
+
+![[Gauss Elimination#Strict Triangular Form]]
+
+# Pivot and Pivotal Row
+
+Suppose that we have a [[Augmented Matrix]]:
+
+$$
+\left[
+	\begin{array}{}
+		1 & 2 & 1 \\
+		3 & -1 & -3 \\
+		2 & 3 & 1
+	\end{array}
+\right\vert
+\left.
+	\begin{array}{}
+		3 \\
+		-1 \\
+		4
+	\end{array}
+\right]
+$$
+
+We try to do row reduction based on the first row:
+
+$$
+\left[
+	\begin{array}{}
+		1 & 2 & 1 \\
+		0 & -7 & -6 \\
+		0 & -1 & -1
+	\end{array}
+\right\vert
+\left.
+	\begin{array}{}
+		3 \\
+		-10 \\
+		-2
+	\end{array}
+\right]
+$$
+
+In this row reduction, the first row $1 \quad 2 \quad 1 \ \vert\ 3$ is called ==pivotal row==, and the first element that is not $0$ is called ==pivot==.
+
 ---
 
 參考資料:
@@ -105,6 +151,7 @@ What is allowed:
 工程數學上課 2022-02-21
 工程數學上課 2022-02-23
 工程數學刷題 2022-03-03 (7.4-1)
+Linear Algebra class
 
 ---
 
