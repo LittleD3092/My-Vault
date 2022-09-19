@@ -13,7 +13,7 @@ A control system has a structure like so:
 ![[control system - automatic control basics.png|500]]
 
 - Plant: Physical object to be controlled.
-- Control Variables: The quantity or conditions that is measured or controlled.
+- Control Variables: The quantity or conditions that is measured or controlled. Normally the output of the system.
 - Control Signal (input): The quantity or condition varied by the controller so as to affect the values of control variables.
 - Disturbance: A signal that tends to adversely affect the output of a system. There are internal disturbance and external disturbance.
 	- Internal disturbance: disturbance generated inside the system.
