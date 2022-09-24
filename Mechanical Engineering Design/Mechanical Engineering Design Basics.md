@@ -20,11 +20,11 @@ As the image above, there is a point where the profit of the automatic method ex
 
 | Stress                                                                                                                                                      | [[Strength]]                                                                                                                                                      | 
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Represent a force that is applied to an object, often represented using pressure $(N/m^2)$ <br> $\sigma$ for [[Normal Stress]], $\tau$ for [[Shear Stress]] | A property of a material, <br> ex. ultimate [[strength]], yield [[strength]] <br> Often represented using $S$ with a subscript. For example, yield [[strength]] will be $S_y$ |
+| Represent a force that is applied to an object, often represented using pressure $(N/m^2)$ <br> $\sigma$ for [[Normal Stress]], $\tau$ for [[Shear Stress]] | A property of a material, <br> ex. ultimate [[Strength]], yield [[Strength]] <br> Often represented using $S$ with a subscript. For example, yield [[Strength]] will be $S_y$ |
 
 # Uncertainty
 
-Their are many factors that cause the [[strength]] of a material to decrease, like corrosion. The "uncertainty" of a material means that the [[strength]] of a material is decreasing.
+Their are many factors that cause the [[Strength]] of a material to decrease, like corrosion. The "uncertainty" of a material means that the [[Strength]] of a material is decreasing.
 
 To prevent uncertainty, we have two methods:
 
