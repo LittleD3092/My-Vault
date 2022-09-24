@@ -36,6 +36,21 @@ $$
 - The set of all solutions to a linear system is called the ==solution set==.
 - For a $2\times 2$ system of equation, each equation means a line on a plane.
 - Two systems are said to be ==equivalent== if they have the same solution set.
+- A linear system is ==overdetermined== if there are more equations than unknowns.
+- A linear system is ==underdetermined== if there are fewer equations than unknowns.
+- The set of all $n \times 1$ matrices of real numbers is called ==Euclidean n-space== and is denoted by $R^n$.
+
+For a system like this:
+
+$$\begin{array}{}
+	x_1 & + & x_2 & + & x_3 & + & x_4 & + & x_5 & = & 1 \\
+	&&&&x_3 & + & x_4 & + & 2x_5 & = & 0 \\
+	&&&&&&&& x_5& = & 3
+\end{array}$$
+
+- $x_1, x_3, x_5$ are the ==lead variables== (the first non-zero elements)
+- $x_2, x_4$ are the ==free variables== (the remaining variables)
+- Let's set $x_2 = \alpha, x_4 = \beta$, the solution set is $(4 - \alpha, \alpha, -6 - \beta, \beta, 3)$
 
 # [[Augmented Matrix]]
 
@@ -341,6 +356,14 @@ $$
 $$rank(A) < n$$
 
 $$rank(A) = rank(\widetilde{ A })$$
+
+# Row Echelon Form
+
+![[Row Echelon Form]]
+
+# Homogeneous System
+
+![[Homogeneous System]]
 
 ---
 
