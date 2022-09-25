@@ -93,6 +93,14 @@ Sometimes some characteristics is crucial to your design. In this case, we make 
 
 ![[Material Numbering Systems]]
 
+# Hardness
+
+![[Hardness]]
+
+# Dimension
+
+![[Dimension]]
+
 ---
 
 參考資料:
