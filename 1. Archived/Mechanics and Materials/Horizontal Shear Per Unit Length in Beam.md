@@ -24,7 +24,7 @@ $$\Delta H = \frac{ M_D - M_C }{ I }\int_A ydA$$
 
 $$\Delta H = \frac{ VQ }{ I } \Delta x$$
 
-則 Horizontal Shear per Unit Strength $q$ 為
+則 Horizontal Shear per Unit [[Strength]] $q$ 為
 
 $$q = \frac{ \Delta H }{ \Delta x } = \frac{ VQ }{ I }$$
 

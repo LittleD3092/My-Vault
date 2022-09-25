@@ -1,4 +1,4 @@
-標籤: #Mechanics-and-Materials 
+標籤: #Mechanics-and-Materials #Mechanical-Engineering-Design 
 
 ---
 
@@ -7,6 +7,8 @@ $$\tau = \frac{V}{A}$$
 $\tau$: shear stress
 $V$: shear force
 $A$: cross area
+
+We often represent shear stress with subscript. For example, a shear stress that is on $y-z$ plane will be $\tau_{yz}$. Note that $\tau_{yz} = \tau_{zy}$ so the system can reach equilibrium.
 
 # Shear Stress on Inclined Planes
 
