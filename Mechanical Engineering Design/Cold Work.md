@@ -6,7 +6,13 @@
 
 ---
 
-Also known as strain hardened. This process creates a longer linear elastic curve, and therefore prevent fatigue failures. The process contains following steps.
+Also known as strain hardened. This process creates a longer linear elastic curve, and therefore prevent fatigue failures. The process contains following [[#Steps]].
+
+The changes made to a metal by cold working can be reversed by subjecting that metal to a particular temperature for a particular amount of time. This process is known as ==annealing==.
+
+To measure how much cold work a material received, we use the change in cross-sectional area of specimen. This measurement is known as "percent cold work".
+
+$$\% CW = [A_0 - A_f] / A_0 \times 100\%$$
 
 # Steps
 

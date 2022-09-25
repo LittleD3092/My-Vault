@@ -22,6 +22,12 @@ There are two kind of stress:
 
 ![[Plane Stress]]
 
+# Singularity Functions
+
+A [[Beam]]'s [[Shear Force and Bending Moment Diagram]] can be represented in singularity functions.
+
+![[Singularity Functions]]
+
 ---
 
 參考資料:

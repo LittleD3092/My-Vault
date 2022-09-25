@@ -1,4 +1,4 @@
-標籤: #Mechanics-and-Materials 
+標籤: #Mechanics-and-Materials #Mechanical-Engineering-Design 
 
 ---
 
@@ -27,7 +27,36 @@ $$\frac{ d }{ dx }<x - x_0>^n = n<x - x_0>^{ n - 1 } \qquad \text{ for } n \geq 
 
 $$\int <x - x_0>^n dx = \frac{ 1 }{ n + 1 }<x - x_0>^{ n + 1 } + c \qquad \text{ for } n \geq 0$$
 
-# 將力與 moment 用 singularity function 表示
+# Shear Force Represented in Singularity Functions
+
+## Generalized
+
+$$F\frac{ <x - x_{ load }>^n }{ n! }$$
+
+$F$: magnitude of the load
+$x_{ load }$: where load is applied
+$n$: integer which describes the load
+
+## Applied Moment
+
+$$M_a <x - a>^{-1}$$
+
+## Point Load
+
+$$P_b\frac{ <x - b>^0 }{ 0! }$$
+
+## Distributed load
+
+$$w\frac{ <x - c_1>^1 }{ 1! } - w \frac{<x - c_2>^1}{1!}$$
+
+- $c_1$ is the start point ($x$ coordinate) of the distributed load.
+- $c_2$ is the end point ($x$ coordinate) of the distributed load.
+
+## Ramp Load
+
+$$\frac{\Delta w}{\Delta x}\frac{ <x - d>^2 }{ 2! }$$
+
+# Moment Represented in Singularity Functions
 
 ## Generalized
 
@@ -47,7 +76,10 @@ $$P_b\frac{ <x - b>^1 }{ 1! }$$
 
 ## Distributed load
 
-$$w\frac{ <x - c>^2 }{ 2! }$$
+$$w\frac{ <x - c_1>^2 }{ 2! } - w \frac{<x - c_2>^2}{2!}$$
+
+- $c_1$ is the start point ($x$ coordinate) of the distributed load.
+- $c_2$ is the end point ($x$ coordinate) of the distributed load.
 
 ## Ramp Load
 

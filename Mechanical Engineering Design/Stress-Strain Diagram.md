@@ -50,6 +50,12 @@ However, it is good to know what a true stress-strain diagram looks like. It tur
 
 ![[2. Attachments/brittle diagram - stress-strain diagram.png|350]]
 
+# Resilience
+
+The area below the stress-strain curve is called [[Resilience]].
+
+![[Resilience]]
+
 ---
 
 參考資料:

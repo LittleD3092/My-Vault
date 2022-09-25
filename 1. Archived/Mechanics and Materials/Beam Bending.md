@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 ![[Beam Bending.jpg]]
 
 $$\kappa = \text{ curvature } = \frac{ 1 }{ \rho }$$
@@ -27,48 +31,63 @@ $$ = \underline{ -\kappa y }_{ \# }$$
 - (+) elongation
 - (-) shortening
 
-# content
+# ch 4 Pure Bending
+## Beam Bending Content
+- [[Beam]]
+- [[Differential Beam Element]]
+- [[Plastic and Elastic of Bending]]
+- [[Pure Beam Bending]]
+- [[Non - Uniform Beam Bending]]
+- [[Plastic and Elastic of Bending]]
 
-> # ch 4 Pure Bending
-> Beam Bending Content:
-> - [[Beam]]
-> - [[Differential Beam Element]]
-> - [[Plastic and Elastic of Bending]]
-> - [[Pure Beam Bending]]
-> - [[Non - Uniform Beam Bending]]
-> - [[Plastic and Elastic of Bending]]
-> 
-> Relationship:
-> - [[Moment Curvature Relationship of Bending]]
-> - [[Strain - Curvature Relationship of Bending]]
-> - [[Stress - Strain Relationship of Bending]]
-> 
-> Constants:
-> - [[Fluxtural Rigidity of Bending]]
-> - [[Section Modulus]]
-> - [[First Moment of Area]]
-> - [[First Moment of Outward Area]]
-> 
-> Important:
-> - [[Elastic Fluxtural Formula of Beam Bending]]
-> - [[Location of Neutral Axis]]
-> - [[Area Moment of Inertia]]
-> - [[Shear Force in Non - Uniform Beam Bending]]
-> 
-> Example:
-> - [[Bridge Bending Problem]]
-> - [[Full Plastic Example]]
-> - [[Beam Compose with Different Material Problem]]
-> 
-> # Ch 6 Shearing Stress in Beams and Thin-Walled Members
-> ## Horizontal Shearing Stress in Beams
-> ### Shear on the Horizontal Face of a Beam Element
-> - [[Horizontal Shear Per Unit Length in Beam]]
-> ### Shearing Stresses in a Beam
-> - [[Horizontal Shearing Stress in a Beam]]
-> ### Unsymmetric Loading of Thin-Walled Members and Shear Center
-> - [[Shear Center]]
+## Relationship
+- [[Moment Curvature Relationship of Bending]]
+- [[Strain - Curvature Relationship of Bending]]
+- [[Stress - Strain Relationship of Bending]]
 
+## Constants
+- [[Fluxtural Rigidity of Bending]]
+- [[Section Modulus]]
+- [[First Moment of Area]]
+- [[First Moment of Outward Area]]
+
+## Important
+### Elastic Fluxtural Formula of Beam Bending
+
+![[Elastic Fluxtural Formula of Beam Bending]]
+
+### Location of Neutral Axis
+
+![[Location of Neutral Axis]]
+
+### Area Moment of Inertia
+
+![[Area Moment of Inertia]]
+
+### Shear Force in Non - Uniform Beam Bending
+
+![[Shear Force in Non - Uniform Beam Bending]]
+
+## Example
+- [[Bridge Bending Problem]]
+- [[Full Plastic Example]]
+- [[Beam Compose with Different Material Problem]]
+
+# Ch 6 Shearing Stress in Beams and Thin-Walled Members
+## Horizontal Shearing Stress in Beams
+### Shear on the Horizontal Face of a Beam Element
+
+#### Horizontal Shear Per Unit Length in Beam
+
+![[Horizontal Shear Per Unit Length in Beam]]
+
+### Shearing Stresses in a Beam
+
+- [[Horizontal Shearing Stress in a Beam]]
+
+### Unsymmetric Loading of Thin-Walled Members and Shear Center
+
+- [[Shear Center]]
 
 ---
 
