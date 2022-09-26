@@ -18,6 +18,8 @@ only for isotropic material
 
 $$E = 2(1 + \nu)G$$
 
+$G$: modulus of rigidity
+
 ---
 
 參考資料:
