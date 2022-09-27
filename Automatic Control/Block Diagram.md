@@ -167,6 +167,32 @@ There is a matlab function for feedback control:
 [num, den] = feedback(num1, den1, num2, den2, ...)
 ```
 
+# Block Diagram Reduction
+
+The below example shows a complex system, and the procedure to simplify it. The process we are using is called reduction.
+
+## Approach 1: Graphical method
+
+We have input $R$ and output $C$, we want to find $C(s)/R(s)$.
+
+![[AACE75B7-3AE0-4EB9-9C82-839776AB1B26.jpeg]]
+
+![[841D3843-A4F3-440C-90F5-2A8AC4FAF2CE.jpeg]]
+
+> Another approach of simplifying block diagram is using "Mason's gain formula". See automatic control textbook 7-1.
+
+## Approach 2: Solving edge by edge
+
+This method is faster than approach 1, because this method does not require you to generate new block diagram and draw it. Instead, you calculate the signal transmitted through each edge one by one, and you will get the equation.
+
+![[C1003421-1FCF-4CF9-80D6-322408BFDFA6.jpeg]]
+
+From the above picture, you will get the following equation:
+
+$$\implies G_1(R - C + \frac{CH_1}{G_3}) - CH_2 = \frac{C}{G_3G_2}$$
+
+Then you only need to solve for $C$.
+
 ---
 
 參考資料:

@@ -57,7 +57,7 @@ The system often uses differential equation to analysis.
 There are two ways of analysis:
 
 - [[#Transfer Function]]
-- State Space
+- [[#State Space]]
 
 ### Transfer Function
 
@@ -155,6 +155,10 @@ $$ = \int_0^t g(\tau) x(t - \tau)d\tau$$
 where $g(t), x(t) = 0$ for $t < 0$
 
 $\implies$ In a LTI system, the output response is a convolution of input function and impulse response of the system.
+
+### State Space
+
+To model using state space, we use something like a matrix.
 
 ---
 
