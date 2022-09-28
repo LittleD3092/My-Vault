@@ -50,5 +50,5 @@ Mechanics of Materials online course - coursera
 link:
 
 [[Moment Curvature Relationship of Bending]]
-[[Elastic Fluxtural Formula of Beam Bending]]
+[[Elastic Formula of Beam Bending]]
 [[Location of Neutral Axis]]

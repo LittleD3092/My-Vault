@@ -8,7 +8,7 @@
 
 $$\Delta H + \int_A (\sigma_C - \sigma_D)dA = 0$$
 
-> [[Elastic Fluxtural Formula of Beam Bending]]
+> [[Elastic Formula of Beam Bending]]
 > $$\sigma = \frac{ My }{ I }$$
 
 帶入並且移項

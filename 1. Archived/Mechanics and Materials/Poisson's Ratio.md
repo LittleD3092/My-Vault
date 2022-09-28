@@ -1,6 +1,8 @@
-標籤: #Mechanics-and-Materials 
+標籤: #Mechanics-and-Materials #Mechanical-Engineering-Design 
 
 ---
+
+Poisson's ratio is the ratio of traverse elongation and longitutional elongation. Below we demonstrate the poisson's ratio using two strains in different axis.
 
 $W_0$: Short side of specimen
 $L_0$: Long side of specimen

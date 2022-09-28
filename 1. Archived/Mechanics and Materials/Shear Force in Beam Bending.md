@@ -9,7 +9,7 @@
 $$\sum F_x = 0$$
 $$\int_y^c \sigma_2 dA = \int_y^c \sigma_1 dA + \tau b dx \qquad b = \text{ width }$$
 
-> from [[Elastic Fluxtural Formula of Beam Bending]]
+> from [[Elastic Formula of Beam Bending]]
 > $$\sigma = \frac{ My }{ I }$$
 
 $$\int_y^c \frac{ ( M + dM ) y }{ I } dA = \int_y^c \frac{ My }{ I } dA + \tau b dx$$
@@ -42,6 +42,14 @@ $$
 \frac{ d }{ b } \approx 1 & 12 \text{ or } 13\% \text{ error }
 \end{array}
 $$
+
+# Shear Force of Regular Shapes
+| Shapes                                   | Formula                                                                        |
+| ---------------------------------------- | ------------------------------------------------------------------------------ |
+| Rectangle                                | $$\tau_{max} = \frac{3V}{2V}$$ $$\tau = \frac{3V}{2A}(1 - \frac{y_1^2}{c^2})$$ | 
+| Cylinder                                 | $$\tau_{max} = \frac{4V}{3A}$$                                                 |
+| Cylinder with hollow center, thin walled | $$\tau_{max} = \frac{2V}{A}$$                                                  |
+| I-beam (thin walled)                     | $$\tau_{max} \dot = \frac{V}{A_{web}}$$                                        |
 
 ---
 

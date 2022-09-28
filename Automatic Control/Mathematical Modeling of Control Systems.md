@@ -158,7 +158,139 @@ $\implies$ In a LTI system, the output response is a convolution of input functi
 
 ### State Space
 
-To model using state space, we use something like a matrix.
+To model using state space, we use something like a matrix. For a nonlinear $n$-state, $r$-input, $m$-output system described in state space form.
+
+$$
+\begin{array}{}
+	\dot x_1 & = & f_1(x_1, & x_2, & \dots, & x_n, & u_1, & u_2, & \dots, & u_r, & t) \\
+	\dot x_2 & = & f_2(x_1, & x_2, & \dots, & x_n, & u_1, & u_2, & \dots, & u_r, & t) \\
+	\vdots \\
+	\dot x_n & = & f_n(x_1, & x_2, & \dots, & x_n, & u_1, & u_2, & \dots, & u_r, & t) \\
+	y_1(t) & = & g_1(x_1, & x_2, & \dots, & x_n, & u_1, & u_2, & \dots, & u_r, & t) \\
+	y_2(t) & = & g_2(x_1, & x_2, & \dots, & x_n, & u_1, & u_2, & \dots, & u_r, & t) \\
+	\vdots \\
+	y_m(t) & = & g_m(x_1, & x_2, & \dots, & x_n, & u_1, & u_2, & \dots, & u_r, & t)
+\end{array}
+$$
+
+- $x_1, x_2, \dots, x_n$ are the states (or state variables) of the system. They are the smallest set of variables that completely determine the behavior of the system.
+
+> State variables need NOT be measurable nor represent physical quantities.
+
+- The state space representation can be written in a vector form.
+
+$$\left[
+	\begin{array}{}
+		\dot x_1 \\
+		\dot x_2 \\
+		\vdots \\
+		\dot x_n
+	\end{array}
+\right]_{n \times 1} = 
+\left[
+	\begin{array}{}
+		f_1(\dots) \\
+		f_2(\dots) \\
+		\vdots \\
+		f_n(\dots)
+	\end{array}
+\right]$$
+
+$$\left[
+	\begin{array}{}
+		\dot y_1 \\
+		\dot y_2 \\
+		\vdots \\
+		\dot y_m
+	\end{array}
+\right]_{m \times 1} = 
+\left[
+	\begin{array}{}
+		g_1(\dots) \\
+		g_2(\dots) \\
+		\vdots \\
+		g_m(\dots)
+	\end{array}
+\right]$$
+
+If the above equations are linearized at an operation point, we can use four matrix ${\bf A}(t), {\bf B}(t), {\bf C}(t), {\bf D}(t)$ to represent $f$ and $g$:
+
+$$\implies 
+\begin{array}{}
+	\left[
+		\begin{array}{}
+			\dot x_1 \\
+			\dot x_2 \\
+			\vdots \\
+			\dot x_n
+		\end{array}
+	\right] = 
+	{\bf A}(t) \cdot \left[
+		\begin{array}{}
+			x_1 \\
+			x_2 \\
+			\vdots \\
+			x_n
+		\end{array}
+	\right] +
+	{\bf B}(t) \cdot
+	\left[
+		\begin{array}{}
+			u_1 \\
+			u_2 \\
+			\vdots \\
+			u_r
+		\end{array}
+	\right] \\ \\
+	\left[
+		\begin{array}{}
+			y_1 \\
+			y_2 \\
+			\vdots \\
+			y_m
+		\end{array}
+	\right] = 
+	{\bf C}(t) \cdot
+	\left[
+		\begin{array}{}
+			x_1 \\
+			x_2 \\
+			\vdots \\
+			x_n
+		\end{array}
+	\right] + {\bf D}(t) \cdot
+	\left[
+		\begin{array}{}
+			u_1 \\
+			u_2 \\
+			\vdots \\
+			u_r
+		\end{array}
+	\right]
+\end{array}$$
+
+Let's use $\dot x(t), u(t), y(t)$ to simplify the above representation:
+
+$$\begin{array}{}
+	\dot x(t) = {\bf A}(t) X(t) + {\bf B}(t) u(t) \\
+	y(t) = {\bf C}(t)X(t) + {\bf D}(t)u(t)
+\end{array}$$
+
+- ${\bf A}(t)$: state matrix
+- ${\bf B}(t)$: input matrix
+- ${\bf C}(t)$: Output matrix
+- ${\bf D}(t)$: Direct transmission matrix
+
+If the above system is time-invariant, the matrix ${\bf A}, {\bf B}, {\bf C}, {\bf D}$ can be constant:
+
+$$
+\begin{array}{}
+	\dot x(t) = {\bf A}X(t) + {\bf B}u(t) \\
+	y(t) = {\bf C}X(t) + {\bf D}u(t)
+\end{array}
+$$
+
+Where ${\bf A}, {\bf B}, {\bf C}, {\bf D}$ are constant matrix.
 
 ---
 

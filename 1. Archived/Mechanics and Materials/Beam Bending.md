@@ -49,12 +49,15 @@ $$ = \underline{ -\kappa y }_{ \# }$$
 - [[Fluxtural Rigidity of Bending]]
 - [[Section Modulus]]
 - [[First Moment of Area]]
-- [[First Moment of Outward Area]]
+
+### First Moment of Outward Area
+
+![[First Moment of Outward Area]]
 
 ## Important
 ### Elastic Fluxtural Formula of Beam Bending
 
-![[Elastic Fluxtural Formula of Beam Bending]]
+![[Elastic Formula of Beam Bending]]
 
 ### Location of Neutral Axis
 
@@ -66,7 +69,7 @@ $$ = \underline{ -\kappa y }_{ \# }$$
 
 ### Shear Force in Non - Uniform Beam Bending
 
-![[Shear Force in Non - Uniform Beam Bending]]
+![[Shear Force in Beam Bending]]
 
 ## Example
 - [[Bridge Bending Problem]]

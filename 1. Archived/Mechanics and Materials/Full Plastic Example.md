@@ -114,5 +114,5 @@ link:
 
 [[Plastic and Elastic of Bending]]
 [[Area Moment of Inertia]]
-[[Elastic Fluxtural Formula of Beam Bending]]
+[[Elastic Formula of Beam Bending]]
 [[Location of Neutral Axis]]

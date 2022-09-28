@@ -16,6 +16,12 @@ $$\implies \underline{ \sigma_x = -\frac{ My }{ I } }_{ \# }$$
 
 $$\underline{ \sigma_{ \text{ max } } = \frac{ Mc }{ I } }_{ \# } \qquad \text{ (c is the furthest distance on the cross section from the neutral axis) }$$
 
+# Two-plane Bending
+
+For a beam that has two axis of stress applied on it, the formula becomes the following.
+
+$$\sigma_x = -\frac{M_zy}{I_z} + \frac{M_yz}{I_y}$$
+
 ---
 
 參考資料:

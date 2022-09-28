@@ -35,4 +35,4 @@ Mechanics and Materials online course - coursera
 link:
 
 [[Area Moment of Inertia]]
-[[Elastic Fluxtural Formula of Beam Bending]]
+[[Elastic Formula of Beam Bending]]
