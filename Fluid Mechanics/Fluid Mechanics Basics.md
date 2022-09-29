@@ -6,6 +6,16 @@
 
 ---
 
+# Basic Equations
+
+The fluid mechanics have 5 basic laws included. The five laws are applicable to any fluid.
+
+1. The conservation of mass: The mass of a system is constant by definition.
+3. Newton's second law of motion (also termed the principle of linear momentum): The net force acting on a system is directly proportional to the product of the system times its acceleration.
+4. The principle of angular momentum: The net torque acting on a system is equal to the rate of change of angular momentum of the system.
+5. The first law of thermodynamics: The change is stored energy of a system equals the net energy added to the system as heat and work.
+6. The second law of thermodynamics: The entropy of any isolated system cannot decrease during any process between equilibrium states.
+
 # Steady Flow
 
 When the properties of the fluid at every point in a flow field do not change with time, we say the fluid has steady flow.
@@ -52,6 +62,10 @@ $$\implies \gamma = \rho g$$
 # Viscosity
 
 ![[Viscosity]]
+
+# Surface Tension
+
+![[Surface Tension]]
 
 ---
 

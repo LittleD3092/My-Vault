@@ -5,7 +5,9 @@
 $$E$$
 
 Modulus of Elasticity, 
-Also called Young's Modulus
+Also called Young's Modulus. This is the scalar used in [[Hooke's Law]].
+
+![[Hooke's Law]]
 
 ---
 
