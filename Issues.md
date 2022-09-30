@@ -1,0 +1,5 @@
+- load unload
+- alphabet multiple
+- main_control full
+- dot recognize message type
+- final check attitude

@@ -24,16 +24,7 @@ $$\frac{\partial \eta}{\partial t} = 0, \qquad \eta \text{ represents any fluid 
 
 # Fluid as a Continuum
 
-The field representation is given by $\rho(x, y, z, t)$.
-
-There are four lines that can represent the fluid flow:
-
-- Timelines: lines formed by adjacent fluid particles at a given constant
-- Pathlines: the actual path travelled by an individual fluid particle over some time interval.
-- Streaklines: lines joining different particles passing through a point
-- Streamlines: lines that at a given instant are tangent to the direction of flow at every point in the flow field.
-
-When the fluid is in [[#Steady Flow]], the four lines are identical.
+![[Continuum Lines]]
 
 # Stress Field
 
@@ -66,6 +57,10 @@ $$\implies \gamma = \rho g$$
 # Surface Tension
 
 ![[Surface Tension]]
+
+# Velocity Gradient
+
+![[Velocity Gradient]]
 
 ---
 
