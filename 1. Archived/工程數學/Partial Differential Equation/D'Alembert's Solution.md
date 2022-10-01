@@ -4,7 +4,7 @@
 
 # Motivation
 
-Our previous solution for $\dot u(x, 0) = 0$ case
+Our previous solution in note [[Wave Equation]] for $\dot u(x, 0) = 0$ case
 
 $$
 \underline{

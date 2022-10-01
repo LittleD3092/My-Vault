@@ -74,11 +74,27 @@ $$\tau_{yx} = k \left\vert
 
 The trick here is that the term $\eta = k\vert du / dy \vert^{n - 1}$ is dependent on the shear rate. In this way, $\eta$ does a better job than $\mu$ when it comes to non-Newtonian fluids.
 
+# Inviscid Flow and Viscous Flow
+
+## d'Alembert's Paradox
+
+![[D'Alembert's Paradox]]
+
+# Solving Density Using Viscosity
+
+You can use viscosity to solve density. The relationship is as follow:
+
+$$\rho = \frac \mu \nu$$
+
+- $\rho$: density
+- $\mu$: absolute viscosity
+- $\nu$: kinematic viscosity
+
 ---
 
 參考資料:
 
-Introduction to Fluid Mechanics. 10th edition
+Introduction to Fluid Mechanics, 10th edition
 
 ---
 

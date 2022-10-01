@@ -1,4 +1,4 @@
-標籤: #fluid-mechanics
+標籤: #fluid-mechanics #list 
 
 ---
 
@@ -61,6 +61,10 @@ $$\implies \gamma = \rho g$$
 # Velocity Gradient
 
 ![[Velocity Gradient]]
+
+# Laminar and Turbulent
+
+![[Laminar and Turbulent]]
 
 ---
 

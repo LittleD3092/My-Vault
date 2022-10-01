@@ -14,6 +14,13 @@ The following chart list some usit systems that are common used.
 | FLtT                 | British Gravitational (BG)      | $\text{lbf}$ | $\text{slug}$ | $\text {ft}$ | $\text{s}$ | $\degree \text R$ |
 | FMLtT                | English Engineering (EE)        | $\text{lbf}$ | $\text{lbm}$  | $\text{ft}$  | $\text{s}$ | $\degree \text R$ | 
 
+The four most common dimensions in mechanical engineering are:
+
+1. Mass
+2. Length
+3. Time
+4. Temperature
+
 ---
 
 參考資料:
