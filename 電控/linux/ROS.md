@@ -237,7 +237,7 @@ Feedback
 
 ## Parameter Server
 
-像是一片黑板上面寫滿變數，大家有共用的變數空間
+![[Parameter Server]]
 
 ---
 

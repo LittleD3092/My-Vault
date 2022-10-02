@@ -1,5 +1,7 @@
-- load unload
-- alphabet multiple
-- main_control full
-- dot recognize message type
-- final check attitude
+- [x] load unload
+- [ ] alphabet multiple
+	- [ ] pending: waiting for the algorithm of dot_recognize
+- [ ] main_control write script
+- [ ] dot recognize message type
+- [ ] final check attitude
+- [ ] modify main_control
