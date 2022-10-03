@@ -15,7 +15,7 @@ There are four lines that can represent the fluid flow:
 - Streaklines: lines joining different particles passing through a point
 - Streamlines: lines that at a given instant are tangent to the direction of flow at every point in the flow field.
 
-When the fluid is in [[Fluid Mechanics Basics#Steady Flow|steady flow]], the four lines are identical.
+When the fluid is in [[Fluid Mechanics Basics#Steady Flow|steady flow]], pathlines, streaklines, and streamlines are identical.
 
 ## Calculate Pathlines
 
