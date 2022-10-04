@@ -1,4 +1,6 @@
-- [x] load unload
+- [ ] load unload
+	- [ ] The service is called `bowling_load`
+	- [ ] The srv structure is in `/quick-food/src/motor_communicate/srv/bowling.srv`
 - [ ] alphabet multiple
 	- [ ] pending: waiting for the algorithm of dot_recognize
 - [ ] main_control write script
