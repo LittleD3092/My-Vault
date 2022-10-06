@@ -16,6 +16,10 @@ This note contains various sorting algorithms.
 
 ![[Heap Sort]]
 
+# Sleep Sort
+
+![[Sleep Sort]]
+
 ---
 
 參考資料:
