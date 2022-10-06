@@ -20,6 +20,10 @@ This note contains various sorting algorithms.
 
 ![[Sleep Sort]]
 
+# Quicksort
+
+![[Quicksort]]
+
 ---
 
 參考資料:
