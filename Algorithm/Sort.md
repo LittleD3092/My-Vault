@@ -6,7 +6,14 @@
 
 ---
 
+Input: A sequence of $n$ numbers $<a_1, a_2,\dots, a_n>$.
+Output: A permutation (reordering) $<a_1', a_2', \dots, a_n'>$.
+
 This note contains various sorting algorithms.
+
+# Insertion Sort
+
+![[Insertion Sort]]
 
 # Merge Sort
 
