@@ -120,6 +120,100 @@ $$
 
 ![[Recursion#Asymptotic Notation of Recursion Functions]]
 
+# Little o Notation
+
+We use $o$-notation to denote an upper bound that is not asymptotically tight.
+
+$$o(g(n)) = \left\{
+	\begin{array}{l}
+		f(n): & \text{for any positive constant }c > 0, \\
+		& \text{there exitsts a constant } n_0 > 0 \\
+		& \text{such that } 0 \leq f(n) < cg(n) \\
+		& \text{for all } n \geq n_0.
+	\end{array}
+\right\}$$
+
+For example, $2n = o(n^2)$, but $2n^2 \neq o(n^2)$. The relation $f(n) = o(g(n))$ implies that
+
+$$\lim_{n \rightarrow \infty}\frac{f(n)}{g(n)} = 0$$
+
+# Little omega Notation
+
+We use $\omega$-notation to denote a lower bound that is not asymptotically tight.
+
+$$\omega(g(n)) = \left\{
+	\begin{array}{l}
+		f(n) : & \text{for any positive constant } c > 0, \\
+		& \text{there exists a constant } n_0 > 0 \\
+		& \text{such that } 0 \leq cg(n) < f(n) \\
+		& \text{for all } n \geq n_0.
+	\end{array}
+\right\}$$
+
+For example, $n^2 / 2 = \omega(n)$, but $n^2 / 2 \neq \omega(n^2)$. The relation $f(n) = \omega(g(n))$ implies that
+
+$$\lim_{n \rightarrow \infty}\frac{f(n)}{g(n)} = \infty$$
+
+# Comparing Notations
+
+There are some relational properties that helps with comparing asymptotic notations:
+
+- [[#Transistivity]]
+- [[#Reflexivity]]
+- [[#Symmetry]]
+- [[#Transpose Symmetry]]
+
+Because the above properties hold, we can use two real numbers $a$ and $b$ to represent the properties since they are similar.
+
+$$
+\begin{array}{}
+	f(n) = O(g(n)) & \text{is like} & a \leq b. \\
+	f(n) = \Omega(g(n)) & \text{is like} & a \geq b. \\
+	f(n) = \Theta(g(n)) & \text{is like} & a = b. \\
+	f(n) = o(g(n)) & \text{is like} & a < b. \\
+	f(n) = \omega(g(n)) & \text{is like} & a > b.
+\end{array}
+$$
+
+## Transistivity
+
+$$
+\begin{array}{}
+	f(n) = \Theta(g(n)) & \text{and} & g(n) = \Theta(h(n)) & \text{imply} & f(n) = \Theta(h(n)), \\
+	f(n) = O(g(n)) & \text{and} & g(n) = O(h(n)) & \text{imply} & f(n) = O(h(n)), \\
+	f(n) = \Omega(g(n)) & \text{and} & g(n) = \Omega(h(n)) & \text{imply} & f(n) = \Omega(h(n)), \\
+	f(n) = o(g(n)) & \text{and} & g(n) = o(h(n)) & \text{imply} & f(n) = o(h(n)), \\
+	f(n) = \omega(g(n)) & \text{and} & g(n) = \omega(h(n)) & \text{imply} & f(n) = \omega(h(n)).
+\end{array}
+$$
+
+## Reflexivity
+
+$$
+\begin{array}{}
+	f(n) = \Theta(f(n)), \\
+	f(n) = O(f(n)), \\
+	f(n) = \Omega(f(n)).
+\end{array}
+$$
+
+## Symmetry
+
+$$
+\begin{array}{}
+	f(n) = \Theta(g(n)) & \text{if and only if} & g(n) = \Theta(f(n)).
+\end{array}
+$$
+
+## Transpose Symmetry
+
+$$
+\begin{array}{}
+	f(n) = O(g(n)) & \text{if and only if} & g(n) = \Omega(f(n)), \\
+	f(n) = o(g(n)) & \text{if and only if} & g(n) = \omega(f(n))
+\end{array}
+$$
+
 ---
 
 參考資料:

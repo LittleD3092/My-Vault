@@ -6,12 +6,13 @@
 
 ---
 
-# [[Asymptotic Notation]] of Recursion Functions
+# Solving
 
-To solve [[#Big-O Notation]] of a recursion function, we have two methods:
+To solve [[#Big-O Notation]] of a recursion function, we have three methods:
 
-1. [[#Substitution Method]]
-2. [[#Recursion Tree Method]]
+1. [[#Substitution Method]]: We guess a bound and then use mathematical induction to prove our guess correct.
+2. [[#Recursion Tree Method]]: This method converts the recurrence into a [[Tree]] whose nodes represent the costs incurred at various levels of the recursion. We use techniques for bounding summations to solve the recurrence.
+3. [[#Master Method]]: This method provides bounds for recurrence of the form $T(n) = aT(n / b) + f(n)$.
 
 The first one is used to prove your answer, and the second one is used to guess an answer. Therefore, you are probably going to use both of them.
 
@@ -112,11 +113,13 @@ Each node has an approx value:
 
 The tree has a depth of $\log_2 n$. Each layer takes $n$ time, therefore the toral cost is $O(n\log_2 n)$.
 
+## Master Method
+
 ---
 
 參考資料:
 
-
+Fundamentals of Data Structure, 2nd edition
 
 ---
 
