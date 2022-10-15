@@ -6,7 +6,9 @@
 
 ---
 
-The algorithm `Quicksort` is for sorting an array `A` with size `n`. The pseudo-code is as follows:
+The algorithm `Quicksort` is for sorting an array `A` with size `n`. This method uses an element in an array, which is called "pivot", to split the array into a subarray which is smaller than or equal to pivot, and a subarray which is bigger than pivot. 
+
+The pseudo-code is as follows:
 
 ```cpp
 Quicksort(A, n)
@@ -18,6 +20,17 @@ Quicksort(A, n)
 	Quicksort(S, |S|); Quicksort(L, |L|);
 }
 ```
+
+# Time Complexity
+
+If the array is extremely unbalanced, meaning that we choose the biggest or smallest element as pivot:
+
+$$
+T(n) = 
+\left\{
+	
+\right.
+$$
 
 ---
 
