@@ -69,7 +69,7 @@ $$ = \underline{ -\kappa y }_{ \# }$$
 
 ### Shear Force in Non - Uniform Beam Bending
 
-![[Shear Force in Beam Bending]]
+![[Traverse Shear Stress]]
 
 ## Example
 - [[Bridge Bending Problem]]

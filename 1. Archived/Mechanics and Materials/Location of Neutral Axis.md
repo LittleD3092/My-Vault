@@ -4,6 +4,16 @@
 
 ![[Location of Neutral Axis 1.jpg]]
 
+The location of the neutral axis is given by the following formula:
+
+$$\bar y = \frac{\sum A_i \bar y_i}{\sum A_i}$$
+
+- $\bar y$: neutral axis
+- $A_i$: the area of each decomposed shape
+- $\bar y_i$: the neutral axis of each decomposed shape
+
+You may decompose the complicated shape into single rectangles and circles, and use the formula above to calculate neutral axis.
+
 # $\sum F_x = 0$
 
 $$\int_A \sigma_x dA = 0$$

@@ -26,6 +26,11 @@ $$\tau = \frac{ dM }{ dx } \frac{ Q }{ Ib }$$
 
 $$\underline{ \tau = \frac{ VQ }{ Ib } }_{ \# }$$
 
+- $V$: Shear force. You can get this in [[Shear Force and Bending Moment Diagram|shear force diagram]].
+- $Q$: [[First Moment of Outward Area]].
+- $I$: [[Area Moment of Inertia]].
+- $b$: Width.
+
 # Limitations
 
 > $$\tau = \frac{ VQ }{ Ib }$$
@@ -50,12 +55,12 @@ $$
 | Cylinder                                 | $$\tau_{max} = \frac{4V}{3A}$$                                                 |
 | Cylinder with hollow center, thin walled | $$\tau_{max} = \frac{2V}{A}$$                                                  |
 | I-beam (thin walled)                     | $$\tau_{max} \dot = \frac{V}{A_{web}}$$                                        |
-
+shear force diagram
 ---
 
 參考資料:
 
-
+Mechanical Engineering Design, 11th edition
 
 ---
 

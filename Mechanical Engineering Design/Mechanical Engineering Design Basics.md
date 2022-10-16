@@ -1,4 +1,4 @@
-標籤: #Mechanical-Engineering-Design
+標籤: #Mechanical-Engineering-Design #list 
 
 ---
 
@@ -93,6 +93,10 @@ Sometimes some characteristics is crucial to your design. In this case, we make 
 # Dimension
 
 ![[Dimension]]
+
+# Failure
+
+![[Failure Theories]]
 
 ---
 
