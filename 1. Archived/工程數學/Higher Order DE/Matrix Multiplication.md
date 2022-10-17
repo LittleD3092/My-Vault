@@ -194,6 +194,87 @@ T(n) =
 \right.
 $$
 
+## Strassen's Method
+
+The strassen's method uses 7 multiplications for two $2\times 2$ matrix multiplication, instead of eight. However, it uses more addition (still only a constant number).
+
+It has four steps:
+
+1. Divide each of the matrices into four submatrices:
+
+$$
+\left(
+	\begin{array}{}
+		C_{11} & C_{12} \\
+		C_{21} & C_{22}
+	\end{array}
+\right) = 
+\left(
+	\begin{array}{}
+		A_{11} & A_{12} \\
+		A_{21} & A_{22}
+	\end{array}
+\right)
+\cdot
+\left(
+	\begin{array}{}
+		B_{11} & B_{12} \\
+		B_{21} & B_{22}
+	\end{array}
+\right)
+$$
+
+2. Create 10 matrices $S_1, S_2, \dots, S_{10}$, each of which is the sum or difference of two matrices created in step 1.
+
+$$
+\begin{array}{}
+	S_1 & = & B_{12} - B_{22} \\
+	S_2 & = & A_{11} + A_{12} \\
+	S_3 & = & A_{21} + A_{22} \\
+	S_4 & = & B_{21} - B_{11} \\
+	S_5 & = & A_{11} + A_{22} \\
+	S_6 & = & B_{11} + B_{22} \\
+	S_7 & = & A_{12} - A_{22} \\
+	S_8 & = & B_{21} + B_{22} \\
+	S_9 & = & A_{11} - A_{21} \\
+	S_{10} & = & B_{11} + B_{12}
+\end{array}
+$$
+
+3. Using the submatrices created in step 1 and 10 matrices created in step 2, compute 7 matrix products $P_1, P_2, \dots, P_7$:
+
+$$
+\begin{array}{l}
+	P_1 & = & 
+	A_{11} \cdot S_1 & = & 
+	A_{11} \cdot B_{12} - A_{11} \cdot B_{22} \\
+	
+	P_2 & = & 
+	S_2 \cdot B_{22} & = & 
+	A_{11} \cdot B_{22} + A_{12} \cdot B_{22} \\
+	
+	P_3 & = & 
+	S_3 \cdot B_{11} & = &
+	A_{21} \cdot B_{11} + A_{22} \cdot B_{11} \\
+
+	P_4 & = & 
+	A_{22} \cdot S_4 & = &
+	A_{22} \cdot B_{21} - A_{22} \cdot B_{11} \\
+
+	P_5 & = & 
+	S_5 \cdot S_6 & = &
+	A_{11} \cdot B_{11} + A_{11} \cdot B_{22} + A_{22} \cdot B_{11} + A_{22} \cdot B_{22} \\
+
+	P_6 & = & 
+	S_7 \cdot S_8 & = &
+	A_{12} \cdot B_{21} + A_{12} \cdot B_{22} - A_{22} \cdot B_{21} - A_{22} \cdot B_{22} \\
+
+	P_7 & = &
+	S_9 \cdot S_{10} & = &
+	A_{11} \cdot B_{11} + A_{11} \cdot B_{12} - A_{21} \cdot B_{11} - A_{21} \cdot B_{12}
+\end{array}
+$$
+
 ---
 
 參考資料:
