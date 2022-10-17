@@ -45,6 +45,7 @@ This section show some algorithms and problems that use divide-and-conquer appro
 - [[53. Maximum Subarray]]
 - [[121. Best Time to Buy and Sell Stock]]
 - [[Matrix Multiplication]]
+- [[Rod Cutting Problem]]
 
 ---
 

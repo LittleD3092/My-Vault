@@ -139,6 +139,7 @@ $$T(n) = aT(n / b) + f(n)$$
 參考資料:
 
 Fundamentals of Data Structure, 2nd edition
+Introduction to Algorithm, 3rd edition
 
 ---
 

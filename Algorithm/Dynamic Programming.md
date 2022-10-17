@@ -1,4 +1,4 @@
-標籤: #fluid-mechanics 
+標籤: #algorithm #list 
 
 ---
 
@@ -6,13 +6,18 @@
 
 ---
 
+# Related Problem
 
+This section lists a series of problems that involve dynamic programming.
+
+- [[53. Maximum Subarray]]
+- [[Rod Cutting Problem]]
 
 ---
 
 參考資料:
 
-Fluid Mechanics class
+Introduction to Algorithm class
 
 ---
 
