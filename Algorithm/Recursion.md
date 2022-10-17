@@ -1,4 +1,4 @@
-標籤: #DataStructure #algorithm 
+標籤: #DataStructure #algorithm #list 
 
 ---
 
@@ -23,6 +23,13 @@ $$T(n) = T(\lfloor n / 2 \rfloor) + T(\lceil n / 2 \rceil) + c_1n$$
 operations where $T(1) = c_2$.
 
 ## Substitution Method
+
+The substitution method for solving recurrences comprises two steps:
+
+1. Guess the form of the solution. We can do it using [[#Recursion Tree Method]].
+2. Use mathematical induction to find the constants and show that the solution works. See the example below.
+
+### Example
 
 Assume we guessed that 
 
@@ -114,6 +121,18 @@ Each node has an approx value:
 The tree has a depth of $\log_2 n$. Each layer takes $n$ time, therefore the toral cost is $O(n\log_2 n)$.
 
 ## Master Method
+
+The master method is the faster way for solving recurrences of the form
+
+$$T(n) = aT(n / b) + f(n)$$
+
+> The master theorem:
+> Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be an asymptotically positive function, and let $T(n)$ be defined on the nonnegative integers by the recurrence
+> $$T(n) = aT(n/b) + f(n)$$
+> Where we interpret $n/b$ to mean either $\lfloor n/ b \rfloor$ or $\lceil n/b \rceil$. Then $T(n)$ has the following asymtotic bounds:
+> 1. If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \Theta(n^{\log_b a})$.
+> 2. If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a}\lg n)$.
+> 3. If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $af(n/b)\leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.
 
 ---
 

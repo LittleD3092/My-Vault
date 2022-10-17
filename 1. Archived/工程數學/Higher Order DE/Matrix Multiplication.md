@@ -279,6 +279,32 @@ $$
 \end{array}
 $$
 
+4. Compute the desired submatrices $C_1, C_2, C_3, C_4$.
+
+$$
+\begin{array}{l}
+	C_{11} & = & P_5 + P_4 - P_2 + P_6 \\
+	C_{12} & = & P_1 + P_2 \\
+	C_{21} & = & P_3 + P_4 \\
+	C_{22} & = & P_5 + P_1 - P_3 - P_7
+\end{array}
+$$
+
+This algorithm has time complexity:
+
+| Steps  | Time Complexity     |
+| ------ | ------------------- |
+| Step 1 | $\Theta(1)$         |
+| Step 2 | $\Theta(n^2)$       |
+| Step 3 | $\Theta(n^{\lg 7})$ |
+| Step 4 | $\Theta(n^2)$       | 
+
+> For step 3:
+> We have the recurrence for the running time $T(n)$ of Strassen's algorithm:
+> $$T(n) = \left\{ \begin{array}{l} \Theta(1) & \text{if } n = 1 \\ 7T(n/2) + \Theta(n^2) & \text{if } n > 1 \end{array} \right.$$
+> By master's theorem, the time complexity is:
+> $$T(n) = \Theta(n^{\lg 7})$$
+
 ---
 
 參考資料:
