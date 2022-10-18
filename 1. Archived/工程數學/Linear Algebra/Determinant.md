@@ -1,4 +1,8 @@
-標籤: #工程數學 
+標籤: #工程數學 #linear-algebra 
+
+---
+
+[TOC]
 
 ---
 
@@ -95,6 +99,12 @@ $$\det(B) = c\det(A)$$
 4. $\det(A^T) = \det(A)$
 5. If one row/col is a multiple of another row/col, 
 $$\det(A) = 0$$
+
+### Special Case for [[Inverse of Matrix]]
+
+The determinant of the inverse of an invertible matrix is the inverse of the determinant of the original matrix.
+
+$$\det(\textbf A^{-1}) = \frac{1}{\det(\textbf A)}$$
 
 ---
 
