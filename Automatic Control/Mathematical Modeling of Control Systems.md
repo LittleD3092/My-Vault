@@ -158,6 +158,8 @@ $\implies$ In a LTI system, the output response is a convolution of input functi
 
 ### State Space
 
+The modern engineering systems have greater complexity. To analyze system like this, a new way has been developed since around 1960. This new approach is based on the concept of state.
+
 To model using state space, we use something like a matrix. For a nonlinear $n$-state, $r$-input, $m$-output system described in state space form.
 
 $$
@@ -291,6 +293,106 @@ $$
 $$
 
 Where ${\bf A}, {\bf B}, {\bf C}, {\bf D}$ are constant matrix.
+
+# Problems
+
+This section shows the essential problems for this topic. You should master all these problems.
+
+## Simplify Block Diagram
+
+### Question
+
+Simplify the block diagram shown in figure below. Then obtain the closed-loop transfer function $C(s) / R(s)$.
+
+![[Pasted image 20221019212454.png]]
+
+### Answer
+
+Move $H_3$:
+
+![[Pasted image 20221019220645.png]]
+
+> Recall for feedback:
+> ![[Block Diagram#Feedback]]
+
+Using [[Block Diagram#Feedback]]:
+
+![[Pasted image 20221019220834.png]]
+
+Using another [[Block Diagram#Feedback]], we can get the transfer function:
+
+$$\frac{C(s)}{R(s)} = \frac{
+\frac{G_1G_2}{1 + H_1G_1G_2} \times \frac{G_3G_4}{1 + G_3G_4H_2}
+}{
+1 - \frac{G_1G_2}{1 + H_1G_1G_2} \times
+\frac{G_3G_4}{1 + G_3G_4H_2} \times
+\frac{H_3}{G_1G_4}
+}$$
+
+After organizing:
+
+$$\underline{
+	\frac{C(s)}{R(s)} = 
+	\frac{
+		G_1G_2G_3G_4
+	}{
+		(1 + H_1G_1G_2)
+		(1 + G_3G_4H_2) - 
+		G_2G_3H_3
+	}
+}$$
+
+## Transfer Function with Disturbance
+
+### Question
+
+Obtain transfer functions $C(s) / R(s)$ and $C(s) / D(s)$ of the system shown in figure below.
+
+![[Pasted image 20221019223738.png]]
+
+### Answer
+
+From the above diagram, you can get the following relationship:
+
+$$
+\left\{
+	\begin{array}{l}
+		E(s) & = & R(s) & - & HC(s) \\
+		U(s) & = & G_fR(s) & + & G_cE(s) \\
+		C(s) & = & (G_1U(s) & + & D(s)) & \times & G_p
+	\end{array}
+\right.
+$$
+
+Substitude $E(s)$ and $U(s)$ for the last equation, we can get:
+
+$$C(s) = G_1G_fG_pR(s) + G_1G_cG_pR(s) - HG_1G_cG_pC(s) + G_pD(s)$$
+
+We may organize this a little, and get a cleaner $C(s)$, $R(s)$, and $D(s)$ relationship:
+
+$$(1 + HG_1G_cG_p)C(s) = (G_1G_fG_p + G_1G_cG_p)R(s) + G_pD(s)$$
+
+To find transfer function $C(s) / R(s)$, we let $D(s) = 0$:
+
+$$\underline{
+	\frac{C(s)}{R(s)} = 
+	\frac{
+		G_1G_p(G_f + G_c)
+	}{
+		1 + HG_1G_cG_p
+	}
+}_\#$$
+
+To find transfer function $C(s) / D(s)$, we let $R(s) = 0$:
+
+$$
+\underline{
+	\frac{C(s)}{D(s)} = 
+	\frac{G_p}{
+		1 + HG_1G_cG_p
+	}
+}_\#
+$$
 
 ---
 
