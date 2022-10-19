@@ -93,6 +93,10 @@ $$
 }_\#
 $$
 
+# Yield Envelope
+
+![[Pasted image 20221019210515.png|400]]
+
 ---
 
 參考資料:
