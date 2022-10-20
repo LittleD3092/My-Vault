@@ -110,7 +110,157 @@ $$\begin{array}{r}
 	\textbf{CX}(s) + DU(s)
 \end{array}$$
 
-Since the transfer fuction is defined as the laplace transform of input and output when initial conditinos are zero, $\textbf x(0)$
+Since the transfer fuction is defined as the laplace transform of input and output when initial conditinos are zero, $\textbf x(0) = 0$.
+
+$$\begin{array}{r}
+	s\textbf X(s)& = & 
+	\textbf{AX}(s) + \textbf B U(s) \\
+	Y(s) & = &
+	\textbf{CX}(s) + DU(s)
+\end{array}$$
+
+From the first equation, we can get $\textbf X(s)$:
+
+$$\textbf X(s) = \frac{\textbf BU(s)}{s\textbf I - \textbf A}$$
+
+Substituting this to the second equation, we get:
+
+$$Y(s) = 
+\left[
+	\frac{\textbf{BC}}{s\textbf I - \textbf A} +
+	D
+\right]
+U(s)$$
+
+$$\implies \underline{G(s) = \frac{\textbf{BC}}{s\textbf I - \textbf A} + D}_\#$$
+
+# State Space of Linear Differential Equation
+
+Consider the following $n$-th order system
+
+$$y^{(n)} + 
+a_1y^{(n - 1)} + 
+\dots + 
+a_{n - 1}\dot y + 
+a_ny = u$$
+
+Let us define the state variables:
+
+$$
+\left\{
+	\begin{array}{}
+		x_1 & = & y \\
+		x_2 & = & \dot y \\
+		\vdots \\
+		x_n & = & y^{(n - 1)}
+	\end{array}
+\right.
+$$
+
+Then the $n$-th order system can be written as:
+
+$$
+\left\{
+	\begin{array}{l}
+		\dot x_1 & = & x_2 \\
+		\dot x_2 & = & x_3 \\
+		& \vdots \\
+		\dot x_{n - 1} & = & x_n \\
+		\dot x_n & = & -a_nx_1 - \dots - a_1x_n + u
+	\end{array}
+\right.
+$$
+
+or
+
+$$
+\begin{array}{}
+	\dot{\textbf x} = \textbf{Ax} + \textbf B u \\ \\
+	\begin{array}{}
+		\textbf x = 
+		\left[
+			\begin{array}{}
+				x_1 \\
+				x_2 \\
+				\vdots \\
+				x_n
+			\end{array}
+		\right], & 
+		\textbf A = \left[
+			\begin{array}{}
+				0 & 1 & 0 & \dots & 0 \\
+				0 & 0 & 1 & \dots & 0 \\
+				\vdots & \vdots & \vdots & \ddots & \vdots \\
+				0 & 0 & 0 & \dots & 1 \\
+				-a_n & -a_{n - 1} & -a_{n - 2} & \dots & -a_1
+			\end{array}
+		\right], &
+		\textbf B = \left[
+			\begin{array}{}
+				0 \\
+				0 \\
+				\vdots \\
+				0 \\
+				1
+			\end{array}
+		\right]
+	\end{array} \\ \\
+	y = \textbf{Cx} \\ \\
+	\textbf C = [
+		\begin{array}{}
+			1  & 0 & \dots & 0
+		\end{array}
+	]
+\end{array}
+$$
+
+The state-space representation for the transfer function system
+
+$$\frac{Y(s)}{U(s)} = 
+\frac{1}{s^n + 
+a_1s^{n - 1} +
+\dots +
+a_{n - 1}s +
+a_n}$$
+
+## Forcing Involves Derivative
+
+Consider the differential equation system that involves derivatives of the forcing function, such as:
+
+$$y^{(n)} +
+a_1y^{(n - 1)} +
+\dots +
+a_{n - 1} \dot y +
+a_n y = 
+b_0u^{(n)} +
+b_1u^{(n - 1)} +
+\dots +
+b_{n - 1}\dot u + 
+b_n u$$
+
+The main problem of this modelling is in the defining of the state variables. In fact, there are a lot of ways of defining the state variables. This section will show one way.
+
+One way to obtain a state equation and output equation for this case is to define the following $n$ variables as a set of $n$ state variables:
+
+$$
+\begin{array}{l}
+	x_1 & = & y - \beta_0u \\
+	x_2 & = & \dot y - \beta_0\dot u - \beta_1u & = & \dot x_1 - \beta_1u \\
+	x_3 & = & \ddot y - \beta_0 \ddot u - \beta_1\dot u - \beta_2u & = & \dot x_2 - \beta_2u \\
+	& \vdots \\
+	x_n & = & y^{(n - 1)} - \beta_0u^{(n - 1)} - \beta_1 u^{(n - 2)} - \dots - \beta_{n - 2}\dot u - \beta_{n - 1}u & = & \dot x_{n - 1} - \beta_{n - 1}u \\ \\
+	\beta_0 & = & b_0 \\
+	\beta_1 & = & b_1 - a_1\beta_0 \\
+	\beta_2 & = & b_2 - a_1\beta_1 - a_2\beta_0 \\
+	\beta_3 & = & b_3 - a_1\beta_2 - a_2\beta_1 - a_3\beta_0 \\
+	 & \vdots \\
+	 \beta_{n - 1} & = & b_{n - 1} - a_1\beta_{n - 2} - \dots - a_{n - 2}\beta_1 - a_{n - 1} \beta_0
+\end{array}
+$$
+
+With the present choice of state variables, we obtain
+
+#TODO
 
 # Example
 
