@@ -260,7 +260,175 @@ $$
 
 With the present choice of state variables, we obtain
 
-#TODO
+$$
+\begin{array}{l}
+	\dot x_1 & = & x_2 + \beta_1u \\
+	\dot x_2 & = & x_3 + \beta_2u \\
+	& \vdots \\
+	\dot x_{n - 1} & = & x_n + \beta_{n - 1}u \\
+	\dot x_n & = & -a_nx_1 - a_{n - 1}x_2 - \dots - a_1x_n + \beta_n u \\ \\
+	\beta_n & = & b_n - a_1\beta_{n - 1} - \dots - a_{n - 1}\beta_1 - a_{n - 1}\beta_0
+\end{array}
+$$
+
+The equations can be written in terms of vector-matrix equations:
+
+$$
+\begin{array}{}
+	\left[
+		\begin{array}{}
+			\dot x_1 \\
+			\dot x_2 \\
+			\vdots \\
+			\dot x_{n - 1} \\
+			\dot x_n
+		\end{array}
+	\right] =
+	\left[
+		\begin{array}{}
+			0 & 1 & 0 & \dots & 0 \\
+			0 & 0 & 1 & \dots & 0 \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \dots & 1 \\
+			-a_n & -a_{n - 1} & -a_{n - 2} & \dots & -a_1
+		\end{array}
+	\right]
+	\left[
+		\begin{array}{}
+			x_1 \\
+			x_2 \\
+			\vdots \\
+			x_{n - 1} \\
+			x_n
+		\end{array}
+	\right] +
+	\left[
+		\begin{array}{}
+			\beta_1 \\
+			\beta_2 \\
+			\vdots \\
+			x_{n - 1} \\
+			x_n
+		\end{array}
+	\right]u \\ \\
+	y = \left[
+		\begin{array}{}
+			1 & 0 & \dots & 0
+		\end{array}
+	\right]
+	\left[
+		\begin{array}{}
+			x_1 \\
+			x_2 \\
+			\vdots \\
+			x_n
+		\end{array}
+	\right] +
+	\beta_0u
+\end{array}
+$$
+
+Or:
+
+$$
+\begin{array}{}
+	\dot{\textbf x} = \textbf{Ax} + \textbf Bu \\
+	y = \textbf{Cx} + Du \\ \\
+	\textbf x = \left[
+		\begin{array}{}
+			x_1 \\
+			x_2 \\
+			\vdots \\
+			x_{n - 1} \\
+			x_n
+		\end{array}
+	\right], &
+	\textbf A = \left[
+		\begin{array}{}
+			0 & 1 & 0 & \dots & 0 \\
+			0 & 0 & 1 & \dots & 0 \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \dots & 1 \\
+			-a_n & -a_{n - 1} & -a_{n - 2} & \dots & -a_1
+		\end{array}
+	\right], \\
+	\textbf B = \left[
+		\begin{array}{}
+			\beta_1 \\
+			\beta_2 \\
+			\vdots \\
+			\beta_{n - 1} \\
+			\beta_n
+		\end{array}
+	\right], &
+	\textbf C = \left[\
+		\begin{array}{}
+			1 & 0 & \dots & 0
+		\end{array}
+	\right], &
+	D = \beta_0 = b_0
+\end{array}
+$$
+
+Note that the state-space representation for the transfer function:
+
+$$\frac{Y(s)}{U(s)} = 
+\frac{b_0s^n + b_1s^{n - 1} + \dots + b_{n - 1}s + b_n}
+{s^n + a_1s^{n - 1} + \dots + a_{n - 1}s + a_n}$$
+
+# Linearization of Nonlinear Systems
+
+A system can be nonlinear. If the system operates around an equilibrium point and if the signals involved are small signals, then it is possible to approximate the nonlinear system by a linear system.
+
+This section show the procedure of linearization of nonlinear systems using Taylor series. Note that because we neglect higher-order terms of the Taylor series expansion, these neglected terms must be small enough.
+
+Consider a system whose input is $x(t)$ and output is $y(t)$. The relationship between them is given by
+
+$$y = f(x)$$
+
+If the normal operating condition corresponds to $\bar x, \bar y$:
+
+$$
+\begin{array}{}
+	\implies y = f(\bar x) + \frac{df}{dx}(x - \bar x) + \frac{1}{2!}\frac{d^2f}{dx^2}(x - \bar x)^2 + \dots \\ \\
+	\text{where the derivatives are evaluated at }x = \bar x
+\end{array}
+$$
+
+We assume the system operates around an equilibrium point and the signals are small enough:
+
+$$
+\begin{array}{l}
+	\implies y = \bar y + K(x - \bar x) \\ \\
+	\begin{array}{l}
+		\text{where} & \underline{ \bar y = f(\bar x) }_\# \\
+		& \underline{ K = \left.
+			\frac{df}{dx}
+		\right\vert_{x = \bar x} }_\#
+	\end{array}
+\end{array}
+$$
+
+The equation can be written in proportional model. Note that $K$ is a constant.
+
+$$\underline{y - \bar y = K(x - \bar x)}_\#$$
+
+For 2 inputs, we have a similar equation to the one above:
+
+$$
+\begin{array}{}
+	y - \bar y = K_1(x_1 - \bar x_1) + K_2(x_2 - \bar x_2) \\ \\
+	\begin{array}{l}
+		\text{where} & \bar y = f(\bar x_1, \bar x_2) \\
+		& K_1 = \left.
+			\frac{\partial f}{\partial x_1}
+		\right\vert_{x_1 = \bar x_1, x_2 = \bar x_2} \\
+		& K_2 = \left.
+			\frac{\partial f}{\partial x_2}
+		\right\vert_{x_1 = \bar x_1, x_2 = \bar x_2}
+	\end{array}
+\end{array}
+$$
 
 # Example
 
