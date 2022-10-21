@@ -63,7 +63,7 @@ $$= \frac{1}{s^2}$$
 | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
 | Differentiation $$f^{(n)}(t)$$                                           | $$s^nF(s) - s^{n - 1}f(0) - s^{n - 2}f'(0) - \dots - sf^{(n - 2)}(0) - f^{(n - 1)}(0)$$ |
 | [[Derivatives of Transforms\|Multiplication by]] $t$ $$t^nf(t)$$         | $$(-1)^n\frac{d^n}{ds^n}F(s)$$                                                          |
-| [[Integration with Laplace\|Integration]] $$\int_0^tf(\tau)d\tau$$       | $$\frac{F(s)}{ds}$$                                                                     |
+| [[Integration with Laplace\|Integration]] $$\int_0^tf(\tau)d\tau$$       | $$\frac{F(s)}{s}$$                                                                     |
 | Multiplication by exp $$e^{at}f(t)$$                                     | $$F(s - a)$$                                                                            |
 | Translation $$f(t - a)u(t - a)$$ $$g(t)u(t - a)$$ $$u(t - a)$$           | $$e^{-as}F(s)$$ $$e^{-as}L\{g(t + a)\}$$ $$\frac{ e^{ as } }{ s }$$                                                |
 | [[Convolution Theorem\|Convolution]] $$\int_0^tf(\tau)g(t - \tau)d\tau$$ | $$F(s)G(s)$$                                                                            |
