@@ -93,9 +93,34 @@ This kind of networks is provided by mobile or cellular network operator. 4G cel
 
 Wide-area cellular access networks have higher range than [[#Wireless Local Area Networks WLANs]], however the bandwidth is smaller.
 
-# Packet Switching
+# Core of Network
+
+The core of network is the approaches to moving data through a network of links and switches. There are two fundamental approaches:
+
+- [[#Packet Switching]]
+- [[#Circuit Switching]]
+
+## Packet Switching
 
 ![[Packet Switching]]
+
+## Circuit Switching
+
+![[Circuit Switching]]
+
+# Network of Networks
+
+As we see in [[#Types of Networks]], we know that end systems connect into the Internet via an access ISP. But to acheive a world-wide Internet, the access ISPs themselves must be interconnected. This is done by creating a ==network of networks==.
+
+- There may be a ==regional ISP== to which the access ISPs in the region connect.
+- Each regional ISP connects to ==tier-1 ISPs==. Note that no tier-1 ISP cover every city in the world.
+- Providers provide a group of one or more routers (at the same location) for customers to directly connect. The group of routers is called ==Points of Presence (PoP)==.
+- In case of a higher tier failure, a access ISP may connect to multiple regional ISPs, or even tier-1 ISPs. This is called ==multi-home==.
+- To reduce the cost that a customer ISP pays a provider ISP, customer ISPs can ==peer==. 
+	- This means that they directly connect their networks together so that all the traffic between them passes over the direct connection.
+- A third-party company can create an ==Internet Exchange Point (IXP)==, which is a meeting point where multiple ISPs can peer together.
+- Content providers build its own networks, ==content-provider networks==, to reduce the cost of paying ISPs.
+	- Google has its private network, which spans the entire globe.
 
 ---
 

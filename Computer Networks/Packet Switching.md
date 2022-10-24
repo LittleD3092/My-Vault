@@ -1,4 +1,4 @@
-標籤: #computer-networks 
+標籤: #computer-networks #list 
 
 ---
 
@@ -39,6 +39,8 @@ Since the first packet takes $NL / R$ time, and each packet after it takes anoth
 
 # Queuing Delays and Packet Loss
 
+> To calculate delays, see [[Delay]].
+
 ![[Pasted image 20221024115228.png]]
 
 Each packet switch has multiple links attached to it. For each attached link, the packet switch has an ==output buffer== (==output queue==). If multiple packets are needed to be sent through a link, they goes into output buffer, and then be sent one by one.]
@@ -46,6 +48,23 @@ Each packet switch has multiple links attached to it. For each attached link, th
 Because the packet cannot be sent immediately due to queuing delay, in addition to [[#Store-and-Forward Transmission]] delay, there is also ==queuing delays==.
 
 If the buffer space is completly full but more packets are coming in, ==packet loss== will occur.
+
+# Forwarding Tables and Routing Protocols
+
+In the Internet, every end system has an address called an IP address. As with postal addresses, this address has a hierarchical structure. Each router has a ==forwarding table== that maps destination addresses to that router's outbound links.
+
+The Internet has a number of special ==routing protocols== that are used to automatically set the forwarding tables.
+
+# Delay
+
+![[Delay]]
+
+# Throughput
+
+In addition to [[#Delay]] and packet loss, another critical performance is the throughput. It is the file size $F$ divided by times taken to transfer $T$, $F / T$.
+
+- The ==instantaneous throughput== at any instant of time is the rate at which host $\text B$ is receiving the file.
+- The ==average throughput== of the file transfer is $F / T \text{bits/sec}$.
 
 ---
 
