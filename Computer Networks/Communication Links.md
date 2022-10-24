@@ -18,6 +18,27 @@ We've seen some most important network access technologies in the [[Internet]]. 
 - It has been used by telephone networks.
 - The wires are twisted together to reduce the electrical interference from similar pairs close by.
 
+# Coaxial Cable
+
+Like twisted pair, coaxial cable consists of two copper conductors, but the two conductors are concentric rather than parallel. With this construction and special insulation and shielding, coaxial cable can achieve high data transmission rates.
+
+# Fiber Optics
+
+An optical fiber is a thin, flexible medium that conducts pulses of light, with each pulse representing a bit. They are immune to electromagnetic interference, and have very low signal attenuation up to 100 kilometers.
+
+These characteristics have made fiber optics the preferred long-haul guided transmission media.
+
+# Terrestrial Radio Channels
+
+Radio channels carry signals in the electromagnetic spectrum. They require no physical wire to be installed, and can penetrate walls.
+
+# Satellite Radio Channels
+
+Two types of satellites are used in communications:
+
+- ==geostationary satellites==
+- ==low-earth orbiting (LEO) satellites==
+
 ---
 
 參考資料:

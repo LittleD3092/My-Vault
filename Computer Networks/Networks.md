@@ -1,4 +1,4 @@
-標籤: #computer-networks 
+標籤: #computer-networks #list 
 
 ---
 
@@ -6,9 +6,11 @@
 
 ---
 
-# Access Networks
+# Types of Networks
 
-## Cable-Based Access
+## Access Networks
+
+### Cable-Based Access
 
 ![[Pasted image 20221023202019.png]]
 
@@ -24,7 +26,7 @@ The cable-based access is usually established using the television cable. DIffer
 
 One cable can be splitted to different channels by frequency. In this way, the bandwidth will be larger. This technology is called "frequency division multiplexing", "FDM".
 
-## Digital Subscriber Line (DSL)
+### Digital Subscriber Line (DSL)
 
 ![[digital subscriber line - computer network basics.png|400]]
 
@@ -38,7 +40,7 @@ The residential telephone line carries both data and triditional telephone signa
 
 Due to this, the speed for downstream and upstream is different, which we called ==asymmetric==.
 
-## Fiber to the Home (FTTH)
+### Fiber to the Home (FTTH)
 
 Although [[#Digital Subscriber Line (DSL)]] and [[#Cable-Based Access]] represent the majority of residential broadband access, an up-and-coming technology that provides even higher speeds is ==fiber to the home (FTTH)==.
 
@@ -50,24 +52,24 @@ There are two competing optical-distribution network architectures that perform 
 - active optical networks (AONs)
 - [[#Passive Optical Networks (PONs)]]
 
-### Passive Optical Networks (PONs)
+#### Passive Optical Networks (PONs)
 
 ![[Pasted image 20221023203404.png|500]]
 
 - Each home has an optical network terminator (ONT).
 - The splitter combines a number of homes (typically less than 100) on to a single, shared optical fiber, which connect to an optical line terminator (OLT) in the telco's CO.
 
-## 5G Fixed Wireless
+### 5G Fixed Wireless
 
 5G fixed wireless is a new way of network access. It not only promises high-speed residential access, but will do so without installing costly and failure-prone cabling from the telco's CO to the home.
 
 Data is sent wirelessly from a provider's base station to the modem in the home. A WiFi wireless router is connected to the modem, similar to how a WiFi wireless router is connected to a cable or DSL modem.
 
-## Home Networks
+### Home Networks
 
 ![[home networks - computer networks basics.png|400]]
 
-## Enterprise Networks
+### Enterprise Networks
 
 ![[enterprise networks - computer networks basics.png|400]]
 
@@ -75,21 +77,25 @@ This kind of networks is used in companies and universities, places that need bo
 
 Enterprise networks are mixed of wired, wireless link technologies, and connects a mix of switches and routes.
 
-# Wireless Access Networks
+## Wireless Access Networks
 
-## Wireless Local Area Networks (WLANs)
+### Wireless Local Area Networks (WLANs)
 
 ![[wireless local area networks - computer networks basics.png|300]]
 
 Wifi is this type of networks. This network has a very short range, but the speed is better than [[#Wide-Area Cellular Access Networks]].
 
-## Wide-Area Cellular Access Networks
+### Wide-Area Cellular Access Networks
 
 ![[wide-area cellular access networks.png|300]]
 
 This kind of networks is provided by mobile or cellular network operator. 4G cellular networks is this type of network.
 
 Wide-area cellular access networks have higher range than [[#Wireless Local Area Networks WLANs]], however the bandwidth is smaller.
+
+# Packet Switching
+
+![[Packet Switching]]
 
 ---
 
