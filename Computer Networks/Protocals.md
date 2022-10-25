@@ -23,6 +23,18 @@ Some common protocols:
 - 4G
 - Ethernet
 
+# Layers
+
+To provide structure to the design of network protocols, network designers organize protocols in ==layers==.
+
+There are five layers:
+
+- Application
+- Transport
+- Network
+- Link
+- Physical
+
 ---
 
 參考資料:

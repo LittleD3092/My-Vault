@@ -13,12 +13,13 @@ There are many kinds of delays. The most important of these delays are
 - [[#Transmission Delay]]
 - [[#Propagation Delay]]
 
-# Nodal Processing Delay
-
 These delays accumulate to give a ==total nodal delay==.
 
 $$d_{\rm nodal} = d_{\rm proc} + d_{\rm queue} + d_{\rm trans} + d_{\rm prop}$$
 
+# Nodal Delay
+
+## Nodal Processing Delay
 
 The time required to examine the packet's header and determine where to direct the packet. Also include the error checking time.
 

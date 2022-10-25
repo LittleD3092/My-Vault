@@ -61,10 +61,7 @@ The Internet has a number of special ==routing protocols== that are used to auto
 
 # Throughput
 
-In addition to [[#Delay]] and packet loss, another critical performance is the throughput. It is the file size $F$ divided by times taken to transfer $T$, $F / T$.
-
-- The ==instantaneous throughput== at any instant of time is the rate at which host $\text B$ is receiving the file.
-- The ==average throughput== of the file transfer is $F / T \text{bits/sec}$.
+![[Throughput]]
 
 ---
 
