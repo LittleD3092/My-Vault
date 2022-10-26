@@ -5,7 +5,7 @@
 # Derivatives
 
 - [[#Scalar Field]]
-	- Gradient
+	- [[#Gradient]]
 - [[#Vector Field]]
 	- Divergence
 	- Curl
@@ -14,29 +14,7 @@
 
 ### Gradient
 
-假設有一個 Scalar Field $f(x, y, z)$
-
-$$
-\underbrace{grad}_{ \text{ gradient } }(f) = \nabla f = 
-\left[
-	\begin{array}{}
-		df / dx \\
-		df / dy \\
-		df / dz
-	\end{array}
-\right]
-$$
-
-$$
-= \frac{ \partial f }{ \partial x } \hat i + \frac{ \partial f }{ \partial y } \hat j + 
-\frac{ \partial f }{ \partial z } \hat k
-$$
-
-$$\nabla = \frac{ \partial }{ \partial x } \hat i + 
-\frac{ \partial }{ \partial y } \hat j + 
-\frac{ \partial }{ \partial z } \hat k$$
-
-Gradient turns a scalar field into a [[Vector]] field.
+![[Gradient]]
 
 ### Directional Derivative
 
