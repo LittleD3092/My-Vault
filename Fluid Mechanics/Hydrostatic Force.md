@@ -80,7 +80,7 @@ $$\underline{
 
 # Direction
 
-
+Of course, the direction is perpendicular to the plane.
 
 ---
 
