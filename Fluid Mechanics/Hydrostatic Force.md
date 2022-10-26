@@ -52,7 +52,31 @@ $$ = y_cF_R + \rho g \sin \theta I_{\hat x\hat x}$$
 
 Finally, we obtain for $y'$:
 
-$$\underline{y' = y_c + \frac{\rho g\sin \theta I_{\hat x\hat x}}{F_R}}_\#$$
+$$\underline{y' = y_c + \frac{\rho g\sin \theta I_{\hat x\hat x}}{F_R}
+\qquad \text{for different ambient pressure on each side}}_\#$$
+
+If we have the same ambient pressure acting on the other side of the surface we can neglect $p_0$ to compute the net force:
+
+$$F_R = p_{c_{\rm gage}}A = \rho gh_cA = \rho g y_c \sin\theta A$$
+
+And we substitude in the $y'$ above:
+
+$$\underline{
+	y' = y_c + \frac{I_{\hat x\hat x}}{Ay_c} \qquad
+	\text{for same ambient pressure on both sides}
+}_\#$$
+
+A similar analysis can be done to compute $x'$:
+
+$$\underline{x' F_R = \int_A xpdA}_\#$$
+
+$$\underline{x' = x_c + \frac{\rho g\sin \theta I_{\hat x\hat y}}{F_R}
+\qquad \text{for different ambient pressure on each side}}_\#$$
+
+$$\underline{
+	x' = x_c + \frac{I_{\hat x\hat y}}{Ay_c} \qquad
+	\text{for same ambient pressure on both sides}
+}_\#$$
 
 # Direction
 
