@@ -23,7 +23,7 @@ $$
 \left\{
 	\begin{array}{l}
 		PV = mRT \\
-		P = \rho RT \\
+		p = \rho RT \\
 		P \nu = RT
 	\end{array}
 \right.
