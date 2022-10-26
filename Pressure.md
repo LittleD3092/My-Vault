@@ -32,7 +32,7 @@ $$\underline{p - p_0 = \Delta p = \rho gh}_\#$$
 
 參考資料:
 
-
+Introduction to Fluid Mechanics, 10th edition
 
 ---
 
