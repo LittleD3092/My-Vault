@@ -116,23 +116,35 @@ $$\underline{
 
 # Buoyancy
 
-If an object is immersed in a liquid, or floating on its surface, the net vertical force acting on it due to liquid pressure is termed ==buoyancy==.
+![[Buoyancy]]
 
-![[Pasted image 20221027012018.png]]
+# Fluids in Rigid-Body Motion
 
-We can compute the pressure $p$ at depth $h$ in a liquid:
+Fluids in rigid-body motion is motion in which the entire fluid moves as if it were a rigid body, individual fluid particles, although they may be in motion, are not deforming.
 
-$$p = p_0 + \rho g h$$
+To start, we recall from [[#Total Force]], we derived that
 
-The net vertical pressure force on the element is then
+$$d\vec F = (-\nabla p + \rho \vec g)dV$$
 
-$$dF_z = (p_0 + \rho g h_2)dA - (p_0 + \rho g h_1)dA = \rho g(h_2 - h_1)dA$$
+or
 
-And because $(h_2 - h_1)dA = dV$
+$$\frac{d\vec F}{dV} = -\nabla p + \rho \vec g$$
 
-$$F_z = \int dF_z = \int_V \rho gdV = \rho g V$$
+Another equation we need is Newton's second law.
 
-$$\underline{F_{\text{buoyancy}} = \rho g V}_\#$$
+$$d\vec F = \vec a dm = \vec a \rho dV \quad\text{ or } \quad \frac{d\vec F}{dV} = \rho \vec a$$
+
+Using the two equations above, we obtain
+
+$$-\nabla p + \rho \vec g = \rho \vec a$$
+
+$$\implies -\nabla p + \rho (\vec g - \vec a) = 0$$
+
+If the acceleration $\vec a$ is constant, we can combine it with $\vec g$ and obtain an effective "acceleration of gravity", $\vec g_{\text{eff}} = \vec g - \vec a$, so that the equation has the same form as our basic equation for pressure distribution in a static fluid.  
+
+$$-\nabla p + \rho \vec g_{\text{eff}} = 0$$
+
+==This means that we can use the results of previous sections of this note as long as we use $\vec g_{\text{eff}}$ in place of $\vec g$.==
 
 ---
 
@@ -144,6 +156,7 @@ Introdection to Fluid Mechanics, 10th edition
 
 link:
 
+[[Rigid Body]]
 
 ---
 
