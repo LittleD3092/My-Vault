@@ -1,4 +1,4 @@
-標籤: #fluid-mechanics 
+標籤: #fluid-mechanics #list 
 
 ---
 
@@ -99,10 +99,16 @@ $$\underline{
 	\frac{dp}{dz} = -\rho g \equiv -\gamma
 }_\#$$
 
+- $\gamma$: specific weight
+
 > Restrictions:
 > 1. Static fluid.
 > 2. Gravity is the only body force.
 > 3. The $z$ axis is vertical and upward.
+
+# Pressure
+
+![[Pressure#Static Fluid]]
 
 ---
 

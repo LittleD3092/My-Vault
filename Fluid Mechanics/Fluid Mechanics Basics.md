@@ -66,6 +66,10 @@ $$\implies \gamma = \rho g$$
 
 ![[Laminar and Turbulent]]
 
+# Fluid Statics
+
+![[Fluid Statics]]
+
 ---
 
 參考資料:
