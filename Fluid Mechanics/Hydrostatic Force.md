@@ -84,7 +84,30 @@ Of course, the direction is perpendicular to the plane.
 
 # Curved Surface
 
+![[Pasted image 20221027005645.png]]
 
+The pressure force acting on the element of area, $d\vec A$, is given by
+
+$$
+d\vec F = -pd\vec A
+$$
+
+The resultant force is given by
+
+$$\vec F_R = -\int_A pd\vec A$$
+
+By investigating the horizontal force, we found out that the horizontal force and its location are the same as for an imaginary vertical plane surface of the same projected area.
+
+$$\underline{F_H = p_c A}_\#$$
+
+- $F_H$: Horizontal force.
+- $p_c$: Absolute pressure at the location of the centroid of area $A$.
+- $A$: A vertical plane surface of the same projected area.
+
+With atmospheric pressure at the free surface and on the other side of the curved surface, the net vertical force will be equal to the weight of fluid directly above the surface.
+
+$$\underline{F_V = \rho gV}_\#$$
+![[Pasted image 20221027010750.png]]
 
 ---
 
