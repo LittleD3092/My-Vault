@@ -109,6 +109,16 @@ We have five equations evaluating $M, \vec P, \vec H, E$, and $S$. One by one, w
 $$N_{\text{system}} = \int_{M(\text{system})} \eta dm = 
 \int_{V(\text{system})}\eta \rho dV$$
 
+Comparing [[#Basic Laws]] and the equation above, we see that if:
+
+$$\begin{array}{l}
+	N = M ,& \text{then }\eta = 1 \\
+	N = \vec P, & \text{then }\eta = \vec V \\
+	N = \vec H, & \text{then }\eta = \vec r\times \vec V \\
+	N = E , & \text{then }\eta = e \\
+	N = S , & \text{then }\eta = s
+\end{array}$$
+
 ---
 
 參考資料:
