@@ -24,11 +24,11 @@ $$\frac{\partial \eta}{\partial t} = 0, \qquad \eta \text{ represents any fluid 
 
 # Fluid as a Continuum
 
-![[Continuum Lines]]
+See [[Continuum Lines]].
 
 # Stress Field
 
-![[Stress Field]]
+See [[Stress Field]].
 
 # Specific Gravity
 
@@ -48,27 +48,40 @@ $$\implies \gamma = \rho g$$
 
 # Velocity Field
 
-![[Velocity Field]]
+See [[Velocity Field]].
 
 # Viscosity
 
-![[Viscosity]]
+See [[Viscosity]].
 
 # Surface Tension
 
-![[Surface Tension]]
+See [[Surface Tension]].
 
 # Velocity Gradient
 
-![[Velocity Gradient]]
+See [[Velocity Gradient]].
 
 # Laminar and Turbulent
 
-![[Laminar and Turbulent]]
+See [[Laminar and Turbulent]].
 
 # Fluid Statics
 
-![[Fluid Statics]]
+See [[Fluid Statics]].
+
+# Fluid in Motion
+
+There are two ways of examining a flowing fluid:
+
+1. [[#Integral Form for Control Volume]]: Study a region of space.
+2. [[#Differential Analysis]]: Study the motion of an individual fluid particle.
+
+## Integral Form for Control Volume
+
+See [[Control Volume]].
+
+## Differential Analysis
 
 ---
 
