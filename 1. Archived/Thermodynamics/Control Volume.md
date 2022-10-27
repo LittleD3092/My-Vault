@@ -119,6 +119,28 @@ $$\begin{array}{l}
 	N = S , & \text{then }\eta = s
 \end{array}$$
 
+After some derivation $\frac{dN}{dt}$ (the details are not included in this node, see Introduction to Fluid Mechanics, 10th edition), we can get the following equation which is called ==Reynolds Transport Theorem==:
+
+$$
+\underline{
+	\left.
+		\frac{dN}{dt}
+	\right)_{\text{system}} = 
+	\frac{\partial}{\partial t}\int_{CV}\eta \rho dV +
+	\int_{CS}\eta\rho\vec V \cdot d\vec A
+}_\#$$
+
+We can now substitude $N$ and $\eta$ for various of [[#Basic Laws]].
+
+## Conservation of Mass
+
+Using the equation we derived above, we have the control volume formulation of the conservation of mass:
+
+$$\underline{
+	\frac{\partial}{\partial t}\int_{CV}\rho dV +
+	\int_{CS} \rho \vec V \cdot d\vec A = 0
+}_\#$$
+
 ---
 
 參考資料:
