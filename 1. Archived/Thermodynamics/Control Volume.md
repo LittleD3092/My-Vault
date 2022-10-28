@@ -35,6 +35,8 @@ where the linear momentum of the system is given by
 $$\vec P_{\text{system}} = \int_{M(\text{system})}\vec Vdm = 
 \int_{V(\text{system})}\vec V \rho dV$$
 
+- $\vec V$: Velocity 
+
 ## Angular-Momentum Principle
 
 The angular-momentum priciple states that the rate of change of angular momentum is equal to the sum of all torques acting on the system.
