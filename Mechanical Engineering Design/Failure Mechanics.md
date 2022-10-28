@@ -70,6 +70,42 @@ $$
 \end{array}
 $$
 
+It is a common practice to define a factor $K$ called the ==stress intensity factor== given by
+
+$$K_I = \sigma\sqrt{\pi a}$$
+
+Thus the system of equations above can be rewritten as
+
+$$
+\begin{array}{}
+	\sigma_x & = & \displaystyle
+	\frac{K_I}{\sqrt{2\pi r}}\cos\frac \theta 2
+	\left(
+		1 - \sin\frac\theta 2\sin\frac{3\theta}{2} \\
+	\right) \\
+	\sigma_y & = & \displaystyle
+	\frac{K_I}{\sqrt{2\pi r}}\cos\frac \theta 2
+	\left(
+		1 + \sin\frac\theta 2\sin\frac{3\theta}{2} \\
+	\right) \\
+	\tau_{xy} & = & \displaystyle
+	\frac{K_I}{\sqrt{2\pi r}} \sin\frac \theta 2 \cos \frac \theta 2 \cos \frac{3\theta}{2} \\
+	\sigma_z & = & \left\{
+		\begin{array}{l}
+			0 & \text{(for plane stress)} \\
+			\nu(\sigma_x + \sigma_y) & \text{(for plane strain)}
+		\end{array}
+	\right.
+\end{array}
+$$
+
+The stress intensity factor is a function of many factors. Therefore, for various load and geometric configurations, $K_I$ can be written as
+
+$$K_I = \beta \sigma\sqrt{\pi a}$$
+
+- $\beta$: ==stress intensity modification factor==. Can be obtained from tables or chart like this:
+![[Pasted image 20221029005305.png]]
+
 ---
 
 參考資料:
