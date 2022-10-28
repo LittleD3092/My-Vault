@@ -189,7 +189,66 @@ $$\underline{
 	\text{steady, compressible fluid}
 \end{array}$$
 
+## Momentum Equation
 
+From the control volume equation, we substitude $N$ with $\vec P$ and $\eta$ with $\vec V$.
+
+$$\underline{
+	\left.
+		\vec F = \vec F_S + \vec F_B = \frac{d\vec P}{dt}
+	\right)_{\text{system}} = 
+	\frac{\partial}{\partial t}\int_{CV}\vec V \rho dV +
+	\int_{CS}\vec V\rho \vec V \cdot d\vec A
+}_\#$$
+
+$$\underline{
+	\left\{
+		\begin{array}{}
+			F_x & = & F_{S_x} + F_{B_x} & = & 
+			\frac{\partial}{\partial t} \int_{\text{CV}} u\rho dV 
+			+ \int_{\text{CS}} u\rho \vec V \cdot d \vec A \\
+			
+			F_y & = & F_{S_y} + F_{B_y} & = & 
+			\frac{\partial}{\partial t} \int_{\text{CV}} v\rho dV 
+			+ \int_{\text{CS}} v\rho \vec V \cdot d \vec A \\
+			
+			F_z & = & F_{S_z} + F_{B_z} & = & 
+			\frac{\partial}{\partial t} \int_{\text{CV}} w\rho dV 
+			+ \int_{\text{CS}} w\rho \vec V \cdot d \vec A
+		\end{array}
+	\right.
+}_\#$$
+
+- $u, v, w$: Vector components of $\vec V$.
+
+For cases when we have uniform flow at each inlet and exit, we can use
+
+$$
+\underline{
+	\vec F = \vec F_S + \vec F_B = 
+	\frac{\partial}{\partial t}\int_{\text{CV}}\vec V \rho dV +
+	\sum_{\text{CS}} \vec V \rho \vec V \cdot \vec A
+}_\#$$
+
+$$\underline{
+	\left\{
+		\begin{array}{}
+			F_x & = & F_{S_x} + F_{B_x} & = & 
+			\frac{\partial}{\partial t} \int_{\text{CV}} u\rho dV 
+			+ \sum_{\text{CS}} u\rho \vec V \cdot d \vec A \\
+			
+			F_y & = & F_{S_y} + F_{B_y} & = & 
+			\frac{\partial}{\partial t} \int_{\text{CV}} v\rho dV 
+			+ \sum_{\text{CS}} v\rho \vec V \cdot d \vec A \\
+			
+			F_z & = & F_{S_z} + F_{B_z} & = & 
+			\frac{\partial}{\partial t} \int_{\text{CV}} w\rho dV 
+			+ \sum_{\text{CS}} w\rho \vec V \cdot d \vec A
+		\end{array}
+	\right.
+}_\#$$
+
+- $u, v, w$: Vector components of $\vec V$.
 
 ---
 
