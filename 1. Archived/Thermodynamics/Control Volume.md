@@ -172,6 +172,25 @@ $$\underline{\sum_{\text{CS}} \vec V\cdot \vec A = 0}_\# \qquad
 
 - $\vec V$: Velocity
 
+For steady, compressible flow through a fixed control volume, we need to take $\rho$ into account.
+
+$$\underline{
+	\int_{\text{CS}} \rho \vec V \cdot d\vec A = 0
+}_\# \qquad 
+\begin{array}{}
+	\text{for steady, compressible fluid}
+\end{array}$$
+
+$$\underline{
+	\sum_{\text{CS}} \rho \vec V \cdot \vec A = 0
+}_\# \qquad 
+\begin{array}{l}
+	\text{for uniform velocity and} \\
+	\text{steady, compressible fluid}
+\end{array}$$
+
+
+
 ---
 
 參考資料:
