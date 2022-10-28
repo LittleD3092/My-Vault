@@ -75,10 +75,15 @@ Packets can lost due to many reasons (see [[Packet Switching]] for more). Some p
 
 - Some applications need a guaranteed throughput of $r \text{ bits/sec}$.
 - Applications that have throughput requirements are said to be ==bandwidth-sensitive applications==.
+- While bandwidth-sensitive applications have specific throughput requirements, ==elastic applications== can make use of as much, or as little, throughput as happens to be available. Like file transfer for example.
 
 ### Timing
 
+A transport-layer protocol can also provide timing guarantees. An example guarantee might be that every bit that the sender pumps into the socket arrives at the receiver's socket no more than $100 \text{ msec}$ later.
+
 ### Security
+
+A transport protocol can provide an application with one or more security services.
 
 ---
 

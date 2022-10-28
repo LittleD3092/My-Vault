@@ -35,6 +35,14 @@ There are five layers:
 - Link
 - Physical
 
+# TCP Services
+
+See note [[TCP]].
+
+# UDP Services
+
+See note [[UDP]].
+
 ---
 
 參考資料:
