@@ -141,6 +141,27 @@ $$\underline{
 	\int_{CS} \rho \vec V \cdot d\vec A = 0
 }_\#$$
 
+### Special Cases
+
+In special cases it is possible to simplify the equation above. When $\rho$ is constant (incompressible fluids), the above equation can be written as
+
+$$\frac{\partial V}{\partial t} + \int_{\rm CS} \vec V\cdot d\vec A = 0 \qquad \text{for incompressible fluid}$$
+
+And for nondeformable control volume of fixed size and shape, $V = \text{constant}$. Thus the conservation of mass for incompressible flow through a fixed control volume becomes
+
+$$\underline{
+	\int_{\text{CS}} \vec V \cdot d\vec A = 0
+}_\# \qquad \text{for incompressible, nondeformable C.V.}$$
+
+When we have uniform velocity at each inlet and exit, the above equation becomes
+
+$$\underline{\sum_{\text{CS}} \vec V\cdot \vec A = 0}_\# \qquad
+\begin{array}{l}
+	\text{for incompressible, nondeformable,} \\
+	\text{and uniform velocity at} \\ 
+	\text{each inlet and exit}
+\end{array}$$
+
 ---
 
 參考資料:
