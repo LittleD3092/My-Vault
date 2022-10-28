@@ -96,7 +96,7 @@ Sometimes some characteristics is crucial to your design. In this case, we make 
 
 # Failure
 
-![[Failure Theories]]
+![[Failure]]
 
 ---
 
