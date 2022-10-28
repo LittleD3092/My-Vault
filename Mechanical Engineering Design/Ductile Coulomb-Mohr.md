@@ -6,6 +6,14 @@
 
 ---
 
+Not all materials have compressive strengths equal to their corresponding tensile values. Therefore, Coulomb-Mohr assumes that the material have different compressive and tensile strength.
+
+The idea of Mohr is based on three "simple" tests:
+
+1. Tension
+2. Compression
+3. Shear
+
 
 
 ---
