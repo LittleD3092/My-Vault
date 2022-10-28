@@ -39,7 +39,11 @@ For design equations, incorporating the [[Factor of Safety(FoS)]] $n$, divide al
 
 $$\frac{\sigma_1}{S_t} - \frac{\sigma_3}{S_c} = \frac 1 n$$
 
+Since for the Coulomb-Mohr theory we do not need the torsional shear strength circle we can deduce it from one of the equation above
 
+$$\frac{\sigma_1}{S_t} - \frac{\sigma_3}{S_c} = 1$$
+
+For pure shear $\tau$, $\sigma_1 = -\sigma_3$
 
 ---
 
