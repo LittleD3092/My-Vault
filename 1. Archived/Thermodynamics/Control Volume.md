@@ -197,8 +197,8 @@ $$\underline{
 	\left.
 		\vec F = \vec F_S + \vec F_B = \frac{d\vec P}{dt}
 	\right)_{\text{system}} = 
-	\frac{\partial}{\partial t}\int_{CV}\vec V \rho dV +
-	\int_{CS}\vec V\rho \vec V \cdot d\vec A
+	\frac{\partial}{\partial t}\int_{\rm CV}\vec V \rho dV +
+	\int_{\rm CS}\vec V\rho \vec V \cdot d\vec A
 }_\#$$
 
 $$\underline{
