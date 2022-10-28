@@ -43,6 +43,15 @@ See note [[TCP]].
 
 See note [[UDP]].
 
+# Application-Layer Protocols
+
+An application-layer protocol defines:
+
+- The types of messages exchanged, for example, request messages and response messages.
+- The syntax of the various message types, such as the fields in the message and how the fields are delineated.
+- The semantics of the fields, that is, the meaning of the information in the fields.
+- Rules for determining when and how a process sends messages and responds to messages.
+
 ---
 
 參考資料:
@@ -54,6 +63,7 @@ Computer Networking, A Top-Down Approach, 8th edition.
 link:
 
 [[Internet]]
+[[Application]]
 
 ---
 
