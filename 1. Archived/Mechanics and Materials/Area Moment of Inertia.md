@@ -39,6 +39,8 @@ $$I_{y}={\frac {\pi }{4}}\left({r_{2}}^{4}-{r_{1}}^{4}\right)$$
   
 $$I_{z}={\frac {\pi }{2}}\left({r_{2}}^{4}-{r_{1}}^{4}\right)$$
 
+See more in [[Polar Moment of Inertia]].
+
 ---
 
 參考資料:

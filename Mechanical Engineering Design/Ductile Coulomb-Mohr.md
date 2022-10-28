@@ -43,7 +43,9 @@ Since for the Coulomb-Mohr theory we do not need the torsional shear strength ci
 
 $$\frac{\sigma_1}{S_t} - \frac{\sigma_3}{S_c} = 1$$
 
-For pure shear $\tau$, $\sigma_1 = -\sigma_3$
+For pure shear $\tau$, $\sigma_1 = -\sigma_3 = \tau$. The torsional yield strength occurs when $\tau_{\rm max} = S_{sy}$. Substituting $\sigma_1 = -\sigma_3 = S_{sy}$ into the equation above and simplifying gives
+
+$$S_{sy} = \frac{S_{yt}S_{yc}}{S_{yt} + S_{yc}}$$
 
 ---
 
