@@ -45,6 +45,37 @@
 		1. the choice of transport protocol
 		2. perhaps the ability to fix a few transport-layer parameters such as miximum buffer and maximum segment sizes.
 
+## Addressing Processes
+
+- The host is identified by its ==IP address==.
+- A destination ==port number== is used to identify the receiving socket.
+
+## Transport Services
+
+There are a lot of transport protocols. Like choosing train or airplane for travel, developers should pick a protocol that satisfy their needs.
+
+Some factors that one may consider is:
+
+1. [[#Reliable Data Transfer]]
+2. [[#Throughput]]
+3. [[#Timing]]
+4. [[#Security]]
+
+### Reliable Data Transfer
+
+Packets can lost due to many reasons (see [[Packet Switching]] for more). Some protocols can handle these problems.
+
+- If a protocol provides a guaranteed data delivery service, it is said to provide ==reliable data transfer==.
+- Some packet lost may be acceptable for ==lost-tolerant applications== like multimedia applications.
+
+### Throughput
+
+
+
+### Timing
+
+### Security
+
 ---
 
 參考資料:
