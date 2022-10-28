@@ -16,7 +16,7 @@ The generally accepted theories are:
 	- [[Ductile Coulomb-Mohr]]
 - Brittle materials (fracture criteria)
 	- [[Maximum Normal Stress]]
-	- [[Brittle Coulob-Mohr]]
+	- [[Brittle Coulomb-Mohr]]
 	- [[Modified Mohr]]
 
 ---
