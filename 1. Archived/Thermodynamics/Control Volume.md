@@ -35,7 +35,7 @@ where the linear momentum of the system is given by
 $$\vec P_{\text{system}} = \int_{M(\text{system})}\vec Vdm = 
 \int_{V(\text{system})}\vec V \rho dV$$
 
-- $\vec V$: Velocity 
+- $\vec V$: Velocity
 
 ## Angular-Momentum Principle
 
@@ -132,6 +132,8 @@ $$
 	\int_{CS}\eta\rho\vec V \cdot d\vec A
 }_\#$$
 
+- $\vec V$: Velocity
+
 We can now substitude $N$ and $\eta$ for various of [[#Basic Laws]].
 
 ## Conservation of Mass
@@ -142,6 +144,8 @@ $$\underline{
 	\frac{\partial}{\partial t}\int_{CV}\rho dV +
 	\int_{CS} \rho \vec V \cdot d\vec A = 0
 }_\#$$
+
+- $\vec V$: Velocity
 
 ### Special Cases
 
@@ -155,6 +159,8 @@ $$\underline{
 	\int_{\text{CS}} \vec V \cdot d\vec A = 0
 }_\# \qquad \text{for incompressible, nondeformable C.V.}$$
 
+- $\vec V$: Velocity
+
 When we have uniform velocity at each inlet and exit, the above equation becomes
 
 $$\underline{\sum_{\text{CS}} \vec V\cdot \vec A = 0}_\# \qquad
@@ -163,6 +169,8 @@ $$\underline{\sum_{\text{CS}} \vec V\cdot \vec A = 0}_\# \qquad
 	\text{and uniform velocity at} \\ 
 	\text{each inlet and exit}
 \end{array}$$
+
+- $\vec V$: Velocity
 
 ---
 
