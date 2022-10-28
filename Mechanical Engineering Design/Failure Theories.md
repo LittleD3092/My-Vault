@@ -19,6 +19,10 @@ The generally accepted theories are:
 	- [[Brittle Coulomb-Mohr]]
 	- [[Modified Mohr]]
 
+To choose which theory you should use, follow the flowchart below.
+
+![[Pasted image 20221028221725.png]]
+
 ---
 
 參考資料:
