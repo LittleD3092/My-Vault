@@ -250,6 +250,31 @@ $$\underline{
 
 - $u, v, w$: Vector components of $\vec V$.
 
+### Rectilinear Acceleration
+
+The rectilinear acceleration introduced acceleration into the equation we derived above.
+
+$$
+\underline{
+	\vec F_S + \vec F_B - \int_{\rm CV} \vec a_{rf} \rho dV = 
+	\frac{\partial}{\partial t} \int_{\rm CV} \vec V_{xyz} \rho dV + \int_{\rm CS} \vec V_{xyz} \rho \vec V_{xyz} \cdot d\vec A
+}_\#$$
+
+The vector equation can be written in the scalar component equations form:
+
+$$\underline{
+	\begin{array}{}
+		F_{S_x} + F_{B_x} - \int_{\text{CV}} a_{rf_x}\rho dV = 
+		\frac{\partial}{\partial t} \int_{\text{CV}} u_{xyz} \rho dV + \int_{\text{CS}} u_{xyz}\rho\vec V_{xyz} \cdot d\vec A \\
+
+		F_{S_y} + F_{B_y} - \int_{\text{CV}} a_{rf_y}\rho dV = 
+		\frac{\partial}{\partial t} \int_{\text{CV}} v_{xyz} \rho dV + \int_{\text{CS}} v_{xyz}\rho\vec V_{xyz} \cdot d\vec A \\
+		
+		F_{S_z} + F_{B_z} - \int_{\text{CV}} a_{rf_z}\rho dV = 
+		\frac{\partial}{\partial t} \int_{\text{CV}} w_{xyz} \rho dV + \int_{\text{CS}} w_{xyz}\rho\vec V_{xyz} \cdot d\vec A
+	\end{array}
+}_\#$$
+
 # Differential Control Volume Analysis
 
 The [[#Control Volume Equations]] are very useful. Now, we can apply these equations to a differential control volume.
