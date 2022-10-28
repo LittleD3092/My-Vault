@@ -52,6 +52,10 @@ An application-layer protocol defines:
 - The semantics of the fields, that is, the meaning of the information in the fields.
 - Rules for determining when and how a process sends messages and responds to messages.
 
+## HTTP
+
+See note [[HTTP]].
+
 ---
 
 參考資料:
