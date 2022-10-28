@@ -14,6 +14,8 @@ The idea of Mohr is based on three "simple" tests:
 2. Compression
 3. Shear
 
+Based on these tests, you may construct [[Mohr's Circle]]:
+
 
 
 ---
