@@ -70,7 +70,11 @@ Packets can lost due to many reasons (see [[Packet Switching]] for more). Some p
 
 ### Throughput
 
+> See note [[Throughput]].
+> Throughput is the transmission rate.
 
+- Some applications need a guaranteed throughput of $r \text{ bits/sec}$.
+- Applications that have throughput requirements are said to be ==bandwidth-sensitive applications==.
 
 ### Timing
 
