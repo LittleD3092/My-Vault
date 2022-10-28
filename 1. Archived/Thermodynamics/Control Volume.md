@@ -250,6 +250,23 @@ $$\underline{
 
 - $u, v, w$: Vector components of $\vec V$.
 
+# Differential Control Volume Analysis
+
+The [[#Control Volume Equations]] are very useful. Now, we can apply these equations to a differential control volume.
+
+![[Pasted image 20221028190126.png]]
+
+The process is not included in this note. See Introduction to "Fluid Mechanics, 10th edition" for full process of deriving the equation. The equation derived is called ==Bernoulli equation==:
+
+$$\underline{\frac p \rho + \frac{V_S^2}{2} + gz = \text{constant}}_\#$$
+
+This equation is subject to the restrictions:
+
+1. Steady flow.
+2. No friction.
+3. Flow along a streamline.
+4. Incompressible flow.
+
 ---
 
 參考資料:
