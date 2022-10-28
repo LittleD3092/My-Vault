@@ -58,8 +58,15 @@ $$
 	\right) \\
 	\tau_{xy} & = & \sigma\sqrt{
 		\displaystyle
-		\frac{a}{2r} \sin\frac{\theta}{2}
-	}
+		\frac{a}{2r}
+	} \displaystyle
+	\sin\frac{\theta}{2} \cos\frac \theta 2 \cos \frac{3\theta}{2} \\
+	\sigma_z & = & \left\{
+		\begin{array}{l}
+			0 & \text{(for plane stress)} \\
+			\nu(\sigma_x + \sigma_y) & \text{(for plane strain)}
+		\end{array}
+	\right.
 \end{array}
 $$
 
