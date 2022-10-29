@@ -171,6 +171,10 @@ Server: Apache/1.3.0 (Unix)
 (empty entity body)
 ```
 
+# HTTP/2
+
+The HTTP/1.1 we discussed has a ==head of line (HOL) blocking== problem.
+
 ---
 
 參考資料:
