@@ -21,6 +21,24 @@ Quicksort(A, n)
 }
 ```
 
+# Partition
+
+The key to the algorithm is the $\text{PARITION}$ procedure, which rearranges the subarray $A[p, r]$ inplace.
+
+$$
+\begin{array}{l}
+	& \text{PARTITION}(A, p, r) \\
+	1 & x = A[r] \\
+	2 & i = p - 1 \\
+	3 & \textbf{for } j = p \textbf{ to } r - 1 \\
+	4 & \qquad \textbf{if } A[j] \leq x \\
+	5 & \qquad \qquad i = i + 1 \\
+	6 & \qquad \qquad \text{exchange } A[i] \text{ with } A[j] \\
+	7 & \text{exchange } A[i + 1] \text{ with } A[r] \\
+	8 & \textbf{return }i + 1
+\end{array}
+$$
+
 # Time Complexity
 
 If the array is extremely unbalanced, meaning that we always choose the biggest or smallest element as pivot:
