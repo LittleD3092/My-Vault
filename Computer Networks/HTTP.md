@@ -103,6 +103,37 @@ Content-Type: text/html
 		- `Content-Type`: The object in the body is a HTML file.
 	- The ==entity body==.
 
+# Cookies
+
+Because HTTP server maintains no information about the clients, HTTP is said to be a stateless protocol. However, it is often desirable for a web site to identify users.
+
+Cookies allow sites to keep track of users, and major commecial web sites use cookies today.
+
+Cookie technology has four components:
+
+1. A cookie header line in the HTTP response message.
+2. A cookie header line in the HTTP request message.
+3. A cookie file kept on the user's end system and managed by the user's browser.
+4. A back-end database at the web site.
+
+The sequence graph is as shown:
+
+![[Pasted image 20221029153924.png]]
+
+In this way, the server host is able to track client's activity. Although server does not know the name of the client, it knows that `ID 1678` comes and visit its site.
+
+# Web Caching
+
+==Web cache== (also called a ==proxy== server) is a network entity that satisfies HTTP requests on the behalf an origin web server. It acts like a server, and can handle requests. If a client request a file that the proxy has, the proxy send response immediately. However, if proxy server doesn't have the file, the proxy server send request to the original server.
+
+![[Pasted image 20221029154558.png|400]]
+
+- Web cahe is purchased and installed by an ISP. 
+	- For example, a university might install a cache on its campus network and configure all of the compus browsers to point to the cache.
+- Reasons that proxy server exist:
+	- A web cache can reduce the response time for a client request.
+	- Web cache can reduce traffic on an institution's access link to the Internet.
+
 ---
 
 參考資料:
