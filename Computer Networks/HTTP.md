@@ -134,6 +134,43 @@ In this way, the server host is able to track client's activity. Although server
 	- A web cache can reduce the response time for a client request.
 	- Web cache can reduce traffic on an institution's access link to the Internet.
 
+## Conditional GET
+
+One problem of web caching is that the object stored on the proxy server might be outdated. Thankfully, HTTP has a mechanism ==conditional GET== to solve this.
+
+Let's see how this works:
+
+1. Client request for an object.
+2. Proxy sends a request to the original server.
+```
+GET /fruit/kiwi.gif HTTP/1.1
+Host: www.exotiquecuisine.com
+```
+3. Original server respond with object to proxy. Proxy then respond the object for the client, also saves a cache on the proxy server.
+```
+HTTP/1.1 200 OK
+Date: Sat, 3 Oct 2015 15:39:29
+Server: Apache/1.3.0
+Last-Modified: Wed, 9 Sep 2015 09:23:24
+Content-Type: image/gif
+
+(data data data)...
+```
+4. If another browser request the same object, proxy server first ask original server whether the object is modified.
+```
+GET /fruit/kiwi.gif HTTP/1.1
+Host: www.exotiquecuisine.com
+If-modified-since: Wed, 9 Sep 2015 09:23:24
+```
+5. The web server sends a response message to the cache that specifies `304 Not Modified`. In other cases which the object is modified, original server will include the object in the entity body.
+```
+HTTP/1.1 304 Not Modified
+Data: Sat, 10 Oct 2015 15:39:29
+Server: Apache/1.3.0 (Unix)
+
+(empty entity body)
+```
+
 ---
 
 參考資料:
