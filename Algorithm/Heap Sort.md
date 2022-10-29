@@ -6,6 +6,8 @@
 
 ---
 
+It is recommended that you first understand [[Heap]] before studying this note.
+
 The heap sort contains the following concepts:
 
 - [[#Heapification]]
@@ -20,9 +22,27 @@ After you understand these concepts, go to [[#Heap Sort]]. You will find out tha
 Max_Heapify(A, i)
 ```
 
-The max heapify process changes an array into a heap. It uses the following process.
+The $\text{MAX-HEAPIFY}$ process assumes that the binary trees rooted at $\text{LEFT}(i)$ and $\text{RIGHT}(i)$ are max-heaps, but that $A[i]$ might be smaller than its children. It uses the following process:
 
-If the root is greater than two of its children, it's done. Otherwise, swap the bigger child with parent.
+> If the root is greater than two of its children, it's done. Otherwise, swap the bigger child with parent.
+
+$$
+\begin{array}{l}
+	& \text{MAX-HEAPIFY}(A, i) \\ 
+	1 & l = \text{LEFT}(i) \\
+	2 & r = \text{RIGHT}(i) \\
+	3 & \textbf{if } l \leq A.heap\text-size \text{ and } A[l] > A[i] \\
+	4 & \qquad largest = l \\
+	5 & \textbf{else } largest = i \\
+	6 & \textbf{if } r \leq A.heap\text-size \text{ and } A[r] > A[largest] \\
+	7 & \qquad largest = r \\
+	8 & \textbf{if } largest \neq i \\
+	9 & \qquad \text{exchange } A[i] \text{ with } A[largest] \\
+	10 & \qquad \text{MAX-HEAPIFY}(A, largest)
+\end{array}
+$$
+
+This method lets the value at $A[i]$ "float down" in the max-heap so that the subtree rooted at index $i$ obeys the max-heap property.
 
 The time complexity of it is equal to the height of the tree:
 
