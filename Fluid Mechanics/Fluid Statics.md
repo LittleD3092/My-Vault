@@ -144,6 +144,8 @@ If the acceleration $\vec a$ is constant, we can combine it with $\vec g$ and ob
 
 $$-\nabla p + \rho \vec g_{\text{eff}} = 0$$
 
+$$\underline{\vec g_{\rm eff} = \vec g - \vec a}_\#$$
+
 ==This means that we can use the results of previous sections of this note as long as we use $\vec g_{\text{eff}}$ in place of $\vec g$.==
 
 ---
