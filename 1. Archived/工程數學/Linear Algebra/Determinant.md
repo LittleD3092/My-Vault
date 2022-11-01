@@ -100,7 +100,9 @@ $$\det(B) = c\det(A)$$
 5. If one row/col is a multiple of another row/col, 
 $$\det(A) = 0$$
 
-### Special Case for [[Inverse of Matrix]]
+### Special Case for Inverse of Matrix
+
+> [[Inverse of Matrix]]
 
 The determinant of the inverse of an invertible matrix is the inverse of the determinant of the original matrix.
 
