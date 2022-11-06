@@ -27,7 +27,18 @@ $$
 $$
 
 - ==Fatigue ductility coefficient== $\varepsilon_f'$ is the ordinate intercept (at 1 reversal, $2N = 1$) of the plastic-strain line. It is approximately equal to the true fracture strain.
-- ==Fatigue==
+- ==Fatigue strength coefficient== $\sigma_f'$ is approximately equal to the true fracture strength. $\sigma_f' / E$ is the ordinate intercept of the elastic-strain line.
+- ==Fatigue ductility exponent== $c$ is the slope of the plastic-strain line.
+- ==Fatigue strength exponent== $b$ is the slope of the elastic-strain line.
+
+From the above two equations, we can get the total-strain amplitude
+
+$$\frac{\Delta\tilde\varepsilon}{2} = \frac{\Delta\tilde\varepsilon_e}{2} + \frac{\Delta\tilde \varepsilon_p}{2} = 
+\frac{\sigma'_f}{E}(2N)^b +
+\varepsilon_f'(2N)^c
+$$
+
+The above equation is the ==strain-life relation==.
 
 ---
 
