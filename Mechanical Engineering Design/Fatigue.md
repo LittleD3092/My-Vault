@@ -68,7 +68,18 @@ Beside the methods of predicting fatigue failure, there are some design philosop
 
 ## Fail-Safe Design
 
+- Requires that if one part fails, the system does not fail.
+- Uses load paths, load transfer between members, crack stoppers, and scheduled inspections.
+- For aircrafts.
+- This approach does not attempt to entirely prevent crack initiation and growth.
 
+## Damage-Tolerant Design
+
+- A refinement of [[#Fail-Safe Design]].
+- Assumes the existence of a crack, due to material processing, manufacturing, or nucleation.
+- Uses [[Linear-Elastic Fracture Mechanics Method]] to predict growth of crack.
+- Based on the growth of crack, we can determine the inspection and replacement schedule.
+- Materials that exhibit slow crack growth and high fracture toughness are best for this criterion.
 
 ---
 
