@@ -6,7 +6,7 @@
 
 ---
 
-Also known as strain hardened. This process creates a longer linear elastic curve, and therefore prevent fatigue failures. The process contains following [[#Steps]].
+Also known as strain hardened. This process creates a longer linear elastic curve, and therefore prevent [[Fatigue]] failures. The process contains following [[#Steps]].
 
 The changes made to a metal by cold working can be reversed by subjecting that metal to a particular temperature for a particular amount of time. This process is known as ==annealing==.
 
