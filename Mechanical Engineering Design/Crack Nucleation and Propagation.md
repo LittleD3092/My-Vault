@@ -31,6 +31,15 @@ A fatigue failure is characterized by three stages.
 	- Occurs during the final stress cycle when the material of the remaining cross section cannot support the loads, resulting in a sudden, fast fracture.
 	- A stage III fracture can be brittle, ductile, or a combination of both.
 
+# Crack Propagation
+
+![[Pasted image 20221106164647.png|400]]
+
+The above figure shows a representative graph of the crack nucleation, growth, and fracture on a plot of cycling stress amplitude versus the fatigue life in number of cycles.
+
+- At higher stress levels a crack initiates quickly, and most of the fatigue life is used in growing the crack.
+- At lower stress levels a large fraction of the fatigue life is spent to nucleate a crack, followed by a quick crack growth.
+
 ---
 
 參考資料:
