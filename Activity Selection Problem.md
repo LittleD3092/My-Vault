@@ -80,6 +80,25 @@ Therefore the optimal choice will be $a_1$. Also, we have find out that this pro
 
 Consider any nonempty subproblem $S_k$, and let $a_m$ be an activity in $S_k$ with the earliest finish time. Then $a_m$ is included in some maximum-size subset of mutually compatible activities of $S_k$.
 
+# Pseudocode
+
+$$
+\begin{array}{l}
+	& \text{RECURSIVE-ACTIVITY-SELECTOR}(s, f, k, n) \\
+	1 & m = k + 1 \\
+	2 & \textbf{while } m \leq n \text{ and } s[m] < f[k] \qquad \text{// find the first activity in } S_k \text{ to finish} \\
+	3 & \qquad m = m + 1 \\
+	4 & \textbf{if } m \leq n \\
+	5 & \qquad \textbf{return } \{a_m\} \cup \text{RECURSIVE-ACTIVITY-SELECTOR}(s, f, m, n) \\
+	6 & \textbf{else return }\varnothing
+\end{array}
+$$
+
+- $s$: array of starting time
+- $f$: array of finishing time
+- $k$: defines the subproblem $S_k$, which is max activities after activity $a_k$
+- $n$: total number of tasks
+
 ---
 
 參考資料:
