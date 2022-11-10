@@ -524,3 +524,4 @@ Fundamental of Data Structures in C++, 2nd edition
 
 link:
 
+[[Greedy Algorithm]]
