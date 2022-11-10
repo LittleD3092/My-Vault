@@ -50,6 +50,40 @@ $$A_{ij} = A_{ik} \cup \{a_k\} \cup A_{kj}$$
 $$\implies \vert A_{ij} \vert = \vert A_{ik}\vert + 
 \vert A_{kj} \vert + 1$$
 
+If we denote the size of an optimal solution for the set $S_{ij}$ by $c[i, j]$, then it will be
+
+$$
+c[i, j] = 
+\left\{
+	\begin{array}{l}
+		0 & \text{if } S_{ij} \neq \varnothing \\
+		\displaystyle \underset{a_k \in S_{i, j}}{\text{max}} \{c[i, k] + c[k, j] + 1\} &
+		\text{if } S_{ij} \neq \varnothing
+	\end{array}
+\right.
+$$
+
+At this point, we can use [[Divide-and-Conquer Approach]] to get our solution. But is there a better way than [[Divide-and-Conquer Approach]]?
+
+# Making the Greedy Choice
+
+What if we could choose an activity without solving all the subproblems?
+
+We can choose the activity that leaves the resource available for as many other activities as possible. Which is the one with ==earliest finish time==.
+
+> At the beginning of the note:
+> We assume that the activities are sorted in monotonically increasing order of finish time.
+
+Therefore the optimal choice will be $a_1$. Also, we have find out that this problem has [[#Optimal Substructure]], so the next choice will be in $S_{1j}$.
+
+## Theorem
+
+Consider any nonempty subproblem $S_k$, and let $a_m$ be an activity in $S_k$ with the earliest finish time. Then $a_m$ is included in some maximum-size subset of mutually compatible activities of $S_k$.
+
+## Proof
+
+
+
 ---
 
 參考資料:
