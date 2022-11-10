@@ -80,10 +80,6 @@ Therefore the optimal choice will be $a_1$. Also, we have find out that this pro
 
 Consider any nonempty subproblem $S_k$, and let $a_m$ be an activity in $S_k$ with the earliest finish time. Then $a_m$ is included in some maximum-size subset of mutually compatible activities of $S_k$.
 
-## Proof
-
-
-
 ---
 
 參考資料:
