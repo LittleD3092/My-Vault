@@ -22,7 +22,33 @@ For example, $S$ may be
 
 # Optimal Substructure
 
+In this section, we will show that this problem has a optimal substructure.
 
+We say $S_{ij}$ is the set of activities that start after activity $a_i$ finishes and that finish before activity $a_j$ starts.
+
+Suppose $A_{ij}$ is the maximum set of mutually compatible activities in set $S_{ij}$, and $A_{ij}$ include some activity $a_k$.
+
+By including $a_k$ in an optimal solution, we have two subproblems:
+1. Find mutually compatible activities $A_{ik}$ in the set $S_{ik}$.
+2. Find mutually compatible activities $A_{kj}$ in the set $S_{kj}$.
+
+So that
+
+$$
+\left\{
+	\begin{array}{}
+		A_{ik} = A_{ij} \cap S_{ik} \\
+		A_{kj} = A_{ij} \cap S_{kj}
+	\end{array}
+\right.
+$$
+
+Thus, the optimal solution will be
+
+$$A_{ij} = A_{ik} \cup \{a_k\} \cup A_{kj}$$
+
+$$\implies \vert A_{ij} \vert = \vert A_{ik}\vert + 
+\vert A_{kj} \vert + 1$$
 
 ---
 
