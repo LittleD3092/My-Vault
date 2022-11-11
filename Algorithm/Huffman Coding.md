@@ -1,0 +1,281 @@
+標籤: #DataStructure #algorithm 
+
+---
+
+[TOC]
+
+---
+
+Huffman tree is a method to compress data stream. This method convert the data into a new data stream, with its first part of Huffman code table and the compressed file.
+
+![[Huffman compressing - tree.png]]
+
+For example, we have a data stream represented in alphabets (only a portion of them is shown):
+
+```
+AABBCDEFF...
+```
+
+# Building a Huffman Tree
+
+We follow the steps below to build the Huffman tree:
+
+1. Count how many times the alphabets occur in the data stream. For example, we have the following frequency of each alphabet:
+
+| Alphabet | How many of it in data? |
+| -------- | ----------------------- |
+| A        | 2                       |
+| B        | 3                       |
+| C        | 5                       |
+| D        | 7                       |
+| E        | 9                       |
+| F        | 13                      |
+
+2. Then, we sort them by key value:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+C["C: 5"]
+D["D: 7"]
+E["E: 9"]
+F["F: 13"]
+```
+
+3. We merge the nodes with lowest frequency, and calculate its parent. The parent is the sum of its children:
+
+We merge the `A` node and the `B` node:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+
+five((5))
+
+five --- A
+five --- B
+
+C["C: 5"]
+D["D: 7"]
+E["E: 9"]
+F["F: 13"]
+```
+
+Then we merge the root generated on last step and merge it with `C`, since these two have lowest frequencies:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+D["D: 7"]
+E["E: 9"]
+F["F: 13"]
+```
+
+Then we merge `E` and `D`, because these two nodes have two lowest frequencies:
+
+```mermaid
+flowchart TD
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+F["F: 13"]
+```
+
+Then we merge `F` and `10`:
+
+```mermaid
+flowchart TD
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+twentythree((23))
+
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+F["F: 13"]
+
+twentythree --- ten
+twentythree --- F
+```
+
+At last, we merge the remaining two trees.
+
+```mermaid
+flowchart TD
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+twentythree((23))
+
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+F["F: 13"]
+
+twentythree --- ten
+twentythree --- F
+
+thirtynine((39))
+thirtynine --- sixteen
+thirtynine --- twentythree
+```
+
+This is how you build a Huffman tree.
+
+## Pseudocode
+
+$$
+\begin{array}{l}
+	& \text{Huffman}(C) \\
+	1 & n = \vert C \vert \\
+	2 & Q = C \\
+	3 & \textbf{for } i = 1 \textbf{ to } n - 1 \\
+	4 & \qquad \text{allocate a new node }z \\
+	5 & \qquad z.left = x = \text{Extract-Min}(Q) \\
+	6 & \qquad z.right = y = \text{Extract-Min}(Q) \\
+	7 & \qquad z.freq = x.freq + y.freq \\
+	8 & \qquad \text{Insert}(Q, z) \\
+	9 & \textbf{return } \text{Extract-Min}(Q)\qquad \text{// return the root of the tree}
+\end{array}
+$$
+
+- $C$: a set of $n$ characters
+
+# Using Huffman Tree
+
+Now we have a Huffman tree, but how do we use it? Huffman tree is used as a code table to encode and decode the characters. First let's look at the tree we just built:
+
+```mermaid
+flowchart TD
+E["E: 9"]
+D["D: 7"]
+
+sixteen((16))
+
+sixteen --- E
+sixteen --- D
+
+twentythree((23))
+
+A["A: 2"]
+B["B: 3"]
+five((5))
+
+five --- A
+five --- B
+
+ten((10))
+C["C: 5"]
+
+ten --- five
+ten --- C
+
+F["F: 13"]
+
+twentythree --- ten
+twentythree --- F
+
+thirtynine((39))
+thirtynine --- sixteen
+thirtynine --- twentythree
+```
+
+We can use several bits to encode the alphabets. If we need to traverse left to get to the alphabet, we use a `0`. Otherwise, we use a `1`. For example, the alphabet `D` requires us to first go left to `16`, then go right to `D`. Therefore the bits representing `D` will be `0b01`.
+
+| Alphabet | Code     |
+| -------- | -------- |
+| `E`      | `0b00`   |
+| `D`      | `0b01`   |
+| `A`      | `0b1000` |
+| `B`      | `0b1001` |
+| `C`      | `0b101`  |
+| `F`      | `0b11`   | 
+
+Note that we get a data stream of codes with each code using 4 bits of space. We would need 8 bits to represent a character, but with Huffman tree, we only need 4!
+
+Now we save the Huffman code table and the compressed code as a file. This is how to use Huffman tree to compress files.
+
+![[Huffman compressing - tree.png]]
+
+Note that this compress method only works when we only have a few kinds of alphabets. Otherwise, we might get a bigger compressed file compared to the original one!
+
+---
+
+參考資料:
+
+Fundamental of Data Structure in C++, 2nd edition
+Introduction to Algorithms, 3rd edition
+
+---
+
+link:
+
+[[Tree]]
+[[Greedy Algorithm]]
+
+---
+
+This note is included in github repository [My-Vault](https://github.com/LittleD3092/My-Vault.git). Clone this repository and open it in [obsidian](https://obsidian.md/) to enable utilities like wikilinks and graph view.
