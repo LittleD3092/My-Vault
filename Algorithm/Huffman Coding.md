@@ -204,6 +204,83 @@ $$
 
 - $C$: a set of $n$ characters
 
+## Correctness of Huffman's Algorithm
+
+### Proof of greedy-choice property
+
+> *Lemma*
+> 
+> Let $C$ be an alphabet in which each character $c \in C$ has frequency $c.freq$. Let $x$ and $y$ be two characters in $C$ having the lowest frequencies. Then there exists an optimal prefix code for $C$ in which ==the codewords for $x$ and $y$ have the same length and differ only in the last bit==.
+
+We start with an arbitrary optimal prefix code tree $T$.
+
+Let $a$ and $b$ be two characters that are sibling leaves of maximum depth in $T$.
+
+Without loss of generality, we assume that
+
+$$
+\begin{array}{}
+	a.freq \leq b.freq \\
+	x.freq \leq y.freq
+\end{array}
+$$
+
+Since $x.freq$ and $y.freq$ are two lowest leaf frequencies, and $a.freq$ and $b.freq$ are two arbitrary frequencies,
+
+$$
+\begin{array}{}
+	x.freq \leq a.freq \\
+	y.freq \leq b.freq
+\end{array}
+$$
+
+If $x.freq = b.freq$, then we would have $x.freq = y.freq = a.freq = b.freq$, and the lemma would be trivially true. Thus, we will assume that 
+
+$$x.freq \neq b.freq$$
+
+As the figure below shows, we exchange $a, x$ and then $b, y$, and we analyze the difference in cost.
+
+![[Pasted image 20221111174557.png]]
+
+$$\begin{array}{l}
+	B(T) - B(T') \\
+	= \displaystyle \sum_{c\in C} c.freq \cdot d_T(c) - 
+	\sum_{c \in C} c.freq \cdot d_{T'}(c) \\
+	= x.freq \cdot d_T(x) + a.freq \cdot d_{T}(a) - 
+	x.freq \cdot d_{T'}(x) - a.freq \cdot d_{T'}(a) \\
+	= x.freq \cdot d_T(x) + a.freq \cdot d_{T}(a) - 
+	x.freq \cdot d_{T}(a) - a.freq \cdot d_{T}(x) \\
+	= (a.freq - x.freq)(d_T(a) - d_T(x)) \\
+	\geq 0
+\end{array}$$
+
+Similarly, $B(T') - B(T'')$ is non-negative. Thus, 
+
+$$B(T) \geq B(T'')$$
+
+And since $T$ is an optimal tree,
+
+$$B(T'') \geq B(T)$$
+
+Which implies 
+
+$$B(T'') = B(T)$$
+
+Thus, $T''$ is an optimal tree in which $x$ and $y$ appear as sibling leaves of maximum depth, from which the lemma follows.
+
+### Proof of optimal-substructure property
+
+> *Lemma*
+> 
+> Let $C$ be a given alphabet with frequency $c.freq$ defined for each character $c \in C$. 
+> Let $x$ and $y$ be two characters in $C$ with minimum frequency. 
+> Let $C'$ be the alphabet $C$ with the characters $x$ and $y$ removed and a new character $z$ added, 
+> $$C' = C - \{x, y\}\cup z$$
+> Define $freq$ for $C'$ as for $C$, except that 
+> $$z.freq = x.freq + y.freq$$
+> Let $T'$ be any tree representing an optimal prefix code for the alphabet $C'$.
+> And $T$ obtained from $T'$ by replacing the leaf node for $z$ with an internal node having $x$ and $y$ as children, represents an optimal prefix code for the alphabet $C$.
+
 # Using Huffman Tree
 
 Now we have a Huffman tree, but how do we use it? Huffman tree is used as a code table to encode and decode the characters. First let's look at the tree we just built:
