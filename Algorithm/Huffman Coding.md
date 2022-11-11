@@ -279,7 +279,41 @@ Thus, $T''$ is an optimal tree in which $x$ and $y$ appear as sibling leaves of 
 > Define $freq$ for $C'$ as for $C$, except that 
 > $$z.freq = x.freq + y.freq$$
 > Let $T'$ be any tree representing an optimal prefix code for the alphabet $C'$.
-> And $T$ obtained from $T'$ by replacing the leaf node for $z$ with an internal node having $x$ and $y$ as children, represents an optimal prefix code for the alphabet $C$.
+> And $T$ obtained from $T'$ by replacing the leaf node for $z$ with an internal node having $x$ and $y$ as children, ==represents an optimal prefix code for the alphabet ==$C$.
+
+Since 
+
+$$d_T(x) = d_T(y) = d_{T'}(z) + 1$$
+
+We have 
+
+$$x.freq \cdot d_T(c) = (x.freq + y.freq)(d_{T'}(z) + 1)$$
+
+$$ = z.freq \cdot d_{T'}(z) + (x.freq + y.freq)$$
+
+From which we conclude that
+
+$$B(T) = B(T') + x.freq + y.freq$$
+
+$$\implies B(T') = B(T) - x.freq - y.freq$$
+
+We now prove the lemma by contradiction.
+Suppose that $T$ does not represent an optimal prefix code for $C$.
+There exists an optimal tree $T''$ that $B(T'') < B(T)$.
+Without loss of generality (by [[#Proof of greedy-choice property]]) $T''$ has $x$ and $y$ as siblings.
+Let $T'''$ be the tree $T''$ with the common parent of $x$ and $y$ replaced by a leaf $z$ with frequency 
+
+$$z.freq = x.freq + y.freq$$
+
+Then 
+
+$$
+\begin{array}{l}
+	B(T''') & = & B(T'') - x.freq - y.freq \\
+	& < & B(T) - x.freq - y.freq \\
+	& = & B(T')
+\end{array}
+$$
 
 # Using Huffman Tree
 
