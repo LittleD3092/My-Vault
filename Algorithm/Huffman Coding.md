@@ -315,6 +315,8 @@ $$
 \end{array}
 $$
 
+yielding a contradiction to the assumption that $T'$ represents an optimal prefix code for $C'$. Thus, $T$ must represent an optimal prefix code for the alphabet $C$.
+
 # Using Huffman Tree
 
 Now we have a Huffman tree, but how do we use it? Huffman tree is used as a code table to encode and decode the characters. First let's look at the tree we just built:
