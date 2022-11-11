@@ -22,10 +22,6 @@ We may see from [[#Activity Selection Problem]] that developing a greedy algorit
 2. Prove that there is always an optimal solution to the original problem that makes the greedy choice, so that the greedy choice is always safe.
 3. Demonstrate optimal substructure by showing that, having made the greedy choice, what remains is a subproblem with the property that if we combine an optimal solution to the subproblem with the greedy choice we have made, we arrive at an optimal solution to the original problem.
 
-## Greedy-Choice Property
-
-
-
 ---
 
 參考資料:
