@@ -19,6 +19,67 @@ Inputs:
 ## Matroid Model
 
 We said that a set $A$ of tasks is ==independent== if there exists a schedule for these tasks such that no tasks are late.
+Let $\mathcal I$ denote the set of all independent sets of tasks.
+
+For $t = 0, 1, 2, \dots, n$, let $N_t(A)$ denote the number of tasks in $A$ whose deadline is $t$ or earlier.
+
+For any set of tasks $A$, the following statements are equivalent.
+1. The set $A$ is independent.
+2. For $t = 0, 1, 2, \dots, n$, we have $N_t(A) \leq t$.
+3. If the tasks in $A$ are scheduled in order of monotonically increasing deadlines, then no task is late.
+
+> To prove the exchange property of $\mathcal I$, suppose that $B$ and $A$ are independent sets of tasks and that $\vert B \vert > \vert A \vert$.
+> 
+> Let $k$ be the largest $t$ that 
+> 
+> $$N_t(B) \leq N_t(A)$$
+> 
+> Since
+> 
+> $$N_n(B) = \vert B \vert$$
+> $$N_n(A) = \vert A \vert$$
+> but
+> $$\vert B \vert > \vert A \vert$$
+> $$\implies N_n(B) > N_n(A)$$
+> We must have $k < n$.
+> 
+> Therefore,
+> $$N_{k + 1}(B) > N_{k + 1}(A)$$
+> Let $a_i$ be the task in $B - A$ with deadline $k + 1$.
+> Let $A' = A \cup \{a_i\}$.
+> It is obvious that $A'$ is also an independent set.
+> Therefore, this is a matroid.
+
+By the above proof, we see that if $S$ is a set of unit-time tasks with deadlines, and $\mathcal I$ is the set of all independent sets of tasks, then the corresponding system $(S, \mathcal I)$ is a [[Matroid]].
+
+We can use $\text{Greedy}(M, w)$ as our algorithm, which $w$ is the penalty array.
+
+$$
+\begin{array}{l}
+	& \text{Greedy}(M, w) \\
+	1 & A = \varnothing \\
+	2 & \text{sort } M.S \text{ into monotonically decreasing order by weight }w \\
+	3 & \textbf{for } \text{each } x \in M.S, \text{ taken in monotonically decreasing order by weight }w(x) \\
+	4 & \qquad \textbf{if } A\cup \{x\} \in M.\mathcal I \\
+	5 & \qquad \qquad A = A \cup \{x\} \\
+	6 & \textbf{return } A
+\end{array}
+$$
+
+## Example
+
+Input: 
+
+| $a_i$ | $1$  | $2$  | $3$  | $4$  | $5$  | $6$  | $7$  |
+| ----- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| $d_i$ | $4$  | $2$  | $4$  | $3$  | $1$  | $4$  | $6$  |
+| $w_i$ | $70$ | $60$ | $50$ | $40$ | $30$ | $20$ | $10$ | 
+
+1. Accept $a_1$ to $a_4$.
+2. Reject $a_5$ because $N_4(\{a_1, a_2, a_3, a_4, a_5\}) = 5$. 
+3. Reject $a_6$ because $N_4(\{a_1, a_2, a_3, a_4, a_6\}) = 5$. 
+4. Accept $a_7$.
+5. The final optimal schedule is $<a_2, a_4, a_1, a_3, a_7, a_5, a_6>$ with total penalty $w_5 + w_6 = 50$.
 
 ---
 
