@@ -82,6 +82,8 @@ Consider any nonempty subproblem $S_k$, and let $a_m$ be an activity in $S_k$ wi
 
 # Pseudocode
 
+## Recursive
+
 $$
 \begin{array}{l}
 	& \text{RECURSIVE-ACTIVITY-SELECTOR}(s, f, k, n) \\
@@ -98,6 +100,22 @@ $$
 - $f$: array of finishing time
 - $k$: defines the subproblem $S_k$, which is max activities after activity $a_k$
 - $n$: total number of tasks
+
+## Iterative
+
+$$
+\begin{array}{l}
+	& \text{GREEDY-ACTIVITY-SELECTOR}(s, f) \\
+	1 & n = s.length \\
+	2 & A = \{a_1\} \\
+	3 & k = 1 \\
+	4 & \textbf{for } m = 2 \textbf{ to } n \\
+	5 & \qquad \textbf{if } s[m] \geq f[k] \\
+	6 & \qquad \qquad A = A \cup \{a_m\} \\
+	7 & \qquad \qquad k = m \\
+	8 & \textbf{return }A
+\end{array}
+$$
 
 ---
 
