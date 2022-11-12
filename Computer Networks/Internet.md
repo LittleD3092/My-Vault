@@ -37,7 +37,7 @@ More concepts:
 
 # Protocals
 
-![[Protocals]]
+See note [[Protocals]].
 
 # Internet Standards
 

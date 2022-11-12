@@ -25,15 +25,7 @@ Some common protocols:
 
 # Layers
 
-To provide structure to the design of network protocols, network designers organize protocols in ==layers==.
-
-There are five layers:
-
-- [[Application]]
-- Transport
-- Network
-- Link
-- Physical
+See note [[Layers]].
 
 # TCP Services
 
