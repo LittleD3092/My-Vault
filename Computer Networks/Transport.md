@@ -48,6 +48,21 @@ The port numbers ranging from 0 to 1023 are called ==well-known port numbers== a
 - [[TCP]]
 - [[UDP]]
 
+## Applications and Their Transport Protocols
+
+| Application                   | Application-Layer Protocol | Underlying Transport Protocol    |
+| ----------------------------- | -------------------------- | -------------------------------- |
+| e-mail                        | SMTP                       | TCP                              |
+| Remote terminal access        | Telnet                     | TCP                              |
+| Secure remote terminal access | SSH                        | TCP                              |
+| Web                           | HTTP, HTTP/3               | TCP (for HTTP), UDP (for HTTP/3) |
+| File transfer                 | FTP                        | TCP                              |
+| Remote file server            | NFS                        | Typicaly UDP                     |
+| Streaming multimedia          | DASH                       | TCP                              |
+| Internet telephony            | typically proprietary      | UDP or TCP                       |
+| Network management            | SNMP                       | Typically UDP                    |
+| Name translation              | DNS                        | Typically UDP                    | 
+
 ---
 
 參考資料:

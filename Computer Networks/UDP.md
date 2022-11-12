@@ -10,6 +10,7 @@ UDP is a no-frills, lightweight transport protocol, providing minimal services. 
 
 - There is no handshaking. Because of this, UDP is said to be ==connecitonless==.
 - Finer application-level control over what data is sent, and when.
+- Small packet header overhead. (The TCP segment has 20 bytes of header overhead in every segment, while UDP has only 8.)
 
 ---
 
