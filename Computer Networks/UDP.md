@@ -8,6 +8,9 @@
 
 UDP is a no-frills, lightweight transport protocol, providing minimal services. This provides developers more freedom to implement the features in [[Application]] layer.
 
+- There is no handshaking. Because of this, UDP is said to be ==connecitonless==.
+- Finer application-level control over what data is sent, and when.
+
 ---
 
 參考資料:
