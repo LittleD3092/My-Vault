@@ -17,6 +17,11 @@
 | -------------------------------------------------- | ----------------------------------------------- |
 | Provides logical communication between *processes*. | Provides logical communication between *hosts*. |
 
+# Some Transport Protocols
+
+- [[TCP]]
+- [[UDP]]
+
 ---
 
 參考資料:
