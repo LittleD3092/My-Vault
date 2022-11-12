@@ -19,7 +19,29 @@
 
 # Multiplexing and Demultiplexing
 
+A process can have one or more sockets. The transport layer in the receiving host deliver data to an intermediary socket.
 
+The job of delivering the data in a transport-layer segment to the correct socket is called ==demultiplexing==.
+
+The job of gathering, encapsulating, and passing the data segments to the [[Networks]] layer is called ==multiplexing==.
+
+## Ports
+
+To do the multiplexing and demultiplexing, 
+
+1. the sockets must have unique identifier, and 
+2. each segment have special fields that indicate the socket to which the segment is to be delivered.
+
+The unique identifiers are called ports.
+
+The special fields in the segment are ==source port number field== and ==destination port number field==.
+
+![[Pasted image 20221112161411.png]]
+
+The port numbers ranging from 0 to 1023 are called ==well-known port numbers== and are restricted, which means that they are reserved for use by well-known application protocols such as
+
+- HTTP uses port 80
+- FTP uses port 21
 
 # Some Transport Protocols
 
