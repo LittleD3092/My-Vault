@@ -17,6 +17,10 @@
 | -------------------------------------------------- | ----------------------------------------------- |
 | Provides logical communication between *processes*. | Provides logical communication between *hosts*. |
 
+# Multiplexing and Demultiplexing
+
+
+
 # Some Transport Protocols
 
 - [[TCP]]
