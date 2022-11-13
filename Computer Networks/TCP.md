@@ -60,6 +60,82 @@ For example, host A has received all bytes numbered 0 through 535, then the ackn
 
 Note that the acknowledgement numbers are **cumulative acknowledgements**, meaning that the bytes before the acknowledgement number are received perfectly.
 
+# Timeout
+
+TCP, like our [[RDT]] protocol, uses a timeout/retransmit mechanism to recover from lost segments. Clearly, the timeout should depend on the round-trip time.
+
+## Estimating the Round-Trip Time
+
+Instread of measuring a `SampleRTT` for every transmitted segment, most TCP implementations take only one `SampleRTT` at a time. At any point in time, the `SampleRTT` is being estimated for only one of the transmitted but currently unacknowledged segments.
+
+Also, TCP never computes a `SampleRTT` for a segment that has been retransmitted, it only measures `SampleRTT` for those that have been transmitted once.
+
+TCP maintains an average, called the `EstimatedRTT`. It is calculated using the formula below.
+
+$$\text{EstimatedRTT} = (1 - \alpha) \cdot \text{EstimatedRTT} + \alpha \cdot \text{SampleRTT}$$
+
+> The new value of **EstimatedRTT** is a weighted combination of the previous value of **EstimatedRTT** and the new value for **SampleRTT**.
+
+- $\alpha$: A weight. The recommended value of $\alpha$ is $\alpha = 0.125$.
+
+This formula puts more weight on recent samples than old samples. In statistics, such an average is called an **exponential weighted moving average (EWMA)**.
+
+In addition to estimating RTT, it is also valuable to have a measure of the variability of the RTT.
+
+$$\text{DevRTT} = (1 - \beta) \cdot \text{DevRTT} + \vert \text{SampleRTT} - \text{EstimatedRTT} \vert$$
+
+- $\beta$: The weight for $\text{DevRTT}$. The recommended value is $0.25$.
+
+## Setting Timeout
+
+It is desireable to set the timeout equal to the `EstimatedRTT` plus some margin.
+
+$$\text{TimeoutInterval} = \text{EstimatedRTT} + 4 \cdot \text{DevRTT}$$
+
+- An initial $\text{TimeoutInterval}$ of $1\text{ s}$ is recommended.
+
+# Reliable Data Transfer
+
+A simplified version:
+
+$$
+\begin{array}{l}
+	1 & \text{/* Assume sender is not constrained by} \\
+	& \text{TCP flow or congestion control,} \\
+	& \text{that data from above is less than MSS in size,} \\
+	& \text{and that data transfer is in one direction only. */} \\
+	2 \\
+	3 & NextSeqNum = InitialSeqNumber \\
+	4 & SendBase = InitialSeqNumber \\
+	5 \\
+	6 & \text{loop}(forever) \\
+	7 & \qquad \text{switch}(event) \\
+	8 \\
+	9 & \qquad \qquad event\text{: data received from application above} \\
+	10 & \qquad \qquad \qquad \text{create TCP }segment\text{ with sequence number } NextSeqNum \\
+	11 & \qquad \qquad \qquad \text{if} (timer \text{ currently not running}) \\
+	12 & \qquad \qquad \qquad \qquad \text{start } timer \\
+	13 & \qquad \qquad \qquad \text{pass } segment \text{ to } IP \\
+	14 & \qquad \qquad \qquad NextSeqNum = NextSeqNum + length(data) \\
+	15 & \qquad \qquad \qquad \text{break} \\
+	16 \\
+	17 & \qquad \qquad event \text{: } timer \text{ timeout} \\
+	18 & \qquad \qquad \qquad \text{retransmit not-yet-acknowledged } segment \text{ with} \\
+	& \qquad \qquad \qquad \qquad \text{smallest sequence number} \\
+	19 & \qquad \qquad \qquad \text{start } timer \\
+	20 & \qquad \qquad \qquad \text{break} \\
+	21 \\
+	22 & \qquad \qquad event \text{: } \text{ACK received, with ACK field value of }y \\
+	23 & \qquad \qquad \qquad \text{if}(y > SendBase) \\
+	24 & \qquad \qquad \qquad \qquad SendBase = y \\
+	25 & \qquad \qquad \qquad \qquad \text{if}(\text{there are currently any not-yet-acknowledged segments}) \\
+	26 & \qquad \qquad \qquad \qquad \qquad \text{start } timer \\
+	27 & \qquad \qquad \qquad \text{break}
+\end{array}
+$$
+
+The timer management is hard. Thus, the TCP timer management procedures use only a *single* retransmission timer.
+
 ---
 
 參考資料:
