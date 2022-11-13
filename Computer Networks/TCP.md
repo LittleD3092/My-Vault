@@ -8,7 +8,8 @@
 
 The TCP service model includes a connection-oriented service and a reliable data transfer service.
 
-- Connection-oriented service.
+
+- Connection-oriented== service.
 	- TCP has the client and server exchange transport-layer control information with each other before the application-level messages begin to flow. This is called handshaking procedure.
 	- After handshaking, a ==TCP connection== is established between the sockets of the two processes.
 - Reliable data transfer service.
