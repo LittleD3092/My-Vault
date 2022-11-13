@@ -117,6 +117,14 @@ In [[#Go-Back-N]], a single packet error can cause it to retransmit a large numb
 
 As the name suggests, selective-repeat protocols avoid unnecessary transmissions by having te sender retransmit only those packets that it suspects were received in error at the receiver.
 
+![[Pasted image 20221113172049.png]]
+
+The SR receiver wil acknowledge a correctly received packet whether or not it is in order. Out-of-order packets are buffered until any missing packets are received.
+
+| SR sender events and actions | SR receiver events and actions |
+| ---------------------------- | ------------------------------ |
+| <ol><li>Data received from above. The SR sender checks the next available sequence number for the packet. If the sequence number is within the sender's window, the data is packetized and sent. Otherwise, it is either buffered or returned to the upper layer for later transmission.<li>Timeout. Each packet must now have its own logical timer, since only a single packet will be transmitted on timeout. A single hardware timer can be used to mimic the operation of multiple logical timers.<li>ACK received. The sender marks the packet as received. If the packet's sequence number is equal to the first packet in the window, the window base is moved forward to the unacknowledged packet with the smallest sequence number.</ol>                             | <ol><li><li><li></ol>                               |
+
 ---
 
 參考資料:
