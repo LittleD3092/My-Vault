@@ -137,6 +137,61 @@ $$
 
 The timer management is hard. Thus, the TCP timer management procedures use only a *single* retransmission timer.
 
+## Fast Retransmit
+
+Because a sender often sends a large number of segments back to back, if one segment is lost, there will likely be many back-to-back duplicate ACKs.
+
+If the sender receives three duplicate ACKs for the same data, it can take this as an indication that the segment following the segment that has been ACKed three times has been lost.
+
+In the case that three duplicate ACKs are received, the sender performs a **fast retransmit**, retransmitting the missing segment *before* the timer expires.
+
+Using fast retransmit, one of the event is replaced:
+
+$$
+\begin{array}{l}
+	1 & \text{/* Assume sender is not constrained by} \\
+	& \text{TCP flow or congestion control,} \\
+	& \text{that data from above is less than MSS in size,} \\
+	& \text{and that data transfer is in one direction only. */} \\
+	2 \\
+	3 & NextSeqNum = InitialSeqNumber \\
+	4 & SendBase = InitialSeqNumber \\
+	5 \\
+	6 & \text{loop}(forever) \\
+	7 & \qquad \text{switch}(event) \\
+	8 \\
+	9 & \qquad \qquad event\text{: data received from application above} \\
+	10 & \qquad \qquad \qquad \text{create TCP }segment\text{ with sequence number } NextSeqNum \\
+	11 & \qquad \qquad \qquad \text{if} (timer \text{ currently not running}) \\
+	12 & \qquad \qquad \qquad \qquad \text{start } timer \\
+	13 & \qquad \qquad \qquad \text{pass } segment \text{ to } IP \\
+	14 & \qquad \qquad \qquad NextSeqNum = NextSeqNum + length(data) \\
+	15 & \qquad \qquad \qquad \text{break} \\
+	16 \\
+	17 & \qquad \qquad event \text{: } timer \text{ timeout} \\
+	18 & \qquad \qquad \qquad \text{retransmit not-yet-acknowledged } segment \text{ with} \\
+	& \qquad \qquad \qquad \qquad \text{smallest sequence number} \\
+	19 & \qquad \qquad \qquad \text{start } timer \\
+	20 & \qquad \qquad \qquad \text{break} \\
+	21 \\
+	22 & \qquad \qquad event \text{: } \text{ACK received, with ACK field value of }y \\
+	23 & \qquad \qquad \qquad \text{if}(y > SendBase) \\
+	24 & \qquad \qquad \qquad \qquad SendBase = y \\
+	25 & \qquad \qquad \qquad \qquad \text{if}(\text{there are currently any not-yet-acknowledged segments}) \\
+	26 & \qquad \qquad \qquad \qquad \qquad \text{start } timer \\
+	27 & \qquad \qquad \qquad \text{else // a duplicate ACK for already ACKed segment} \\
+	28 & \qquad \qquad \qquad \qquad \text{number of duplicate ACKs received for }y \text{+=1} \\
+	29 & \qquad \qquad \qquad \qquad \text{if (number of duplicate ACKs for }y==3) \\
+	30 & \qquad \qquad \qquad \qquad \qquad \text{// TCP fast retransmit} \\
+	31 & \qquad \qquad \qquad \qquad \qquad \text{resend segment with sequence number }y \\
+	32 & \qquad \qquad \qquad \text{break}
+\end{array}
+$$
+
+## Selective Acknowledgement
+
+
+
 ---
 
 參考資料:
