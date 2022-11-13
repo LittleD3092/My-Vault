@@ -93,6 +93,7 @@ It is desireable to set the timeout equal to the `EstimatedRTT` plus some margin
 $$\text{TimeoutInterval} = \text{EstimatedRTT} + 4 \cdot \text{DevRTT}$$
 
 - An initial $\text{TimeoutInterval}$ of $1\text{ s}$ is recommended.
+- If timeout occurs, the $\text{TimeoutInterval}$ will be doubled regardless of $\text{EstimatedRTT}$ and $\text{DevRTT}$.
 
 # Reliable Data Transfer
 
