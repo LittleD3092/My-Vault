@@ -173,7 +173,7 @@ Server: Apache/1.3.0 (Unix)
 
 # HTTP/2
 
-The HTTP/1.1 we discussed has a ==head of line (HOL) blocking== problem.
+The HTTP/1.1 we discussed has a ==head of line (HOL) blocking== problem because of [[#Persistent Connections]]. The link is occupied by client, and other hosts cannot use it.
 
 ---
 
