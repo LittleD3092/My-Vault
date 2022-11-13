@@ -71,7 +71,51 @@ Two additional concers must now be addressed by the protocol
 1. How to detect packet loss.
 2. What to do when packet loss occurs.
 
+There is a simple solution to this. If an ACK is not received within this time, the packet is retransmitted.
+However, this introduces the possibility of ==duplicate data packets==. [[#rdt2.2]] already has enough functionality to handle the case of duplicate packets.
 
+Using a ==countdown timer==, the sender will thus need to be able to
+
+1. Start the timer each time a packet is sent.
+2. Respond to a timer interrupt.
+3. Stop the timer.
+
+![[Pasted image 20221113154339.png]]
+
+Because packet sequence numbers alternate between 0 and 1, protocol rdt3.0 is sometimes known as the ==alternating-bit protocol==.
+
+# Pipelined RDT
+
+Protocol [[#rdt3.0]] is a functionally correct protocol, but it is a stop-and-wait protocol. The flaws of a stop-and-wait protocol is illustrated in the figure below.
+
+![[Pasted image 20221113154724.png]]
+
+As you can see, the ==utilization== of the channel is small.
+
+The solution to this is simple. Rather than operate in a stop-and-wait manner, the sender is allowed to send multiple packets without waiting for acknowledgments. This technique is known as ==pipelining==.
+
+There are two basic approaches toward pipelined error recovery:
+
+1. [[#Go-Back-N]]
+2. [[#Selective Repeat]]
+
+## Go-Back-N
+
+Go-back-n is simple. 
+
+1. There is a window. The sender can send all packets in the window.
+2. If there is an ACK with a sequence number, the window moves to the right of the corresponding packet.
+3. If timeout, sender send all packets in the window again.
+4. The receiver only receive the packet that equals to the `expectedseqnum`. Other packets that skipped some number will be ignored.
+5. The ACK sent from the receiver is a ==cumulative acknowledgement==, meaning that all packets with a sequence number up to and including $n$ have been correctly received at the receiver.
+
+![[Pasted image 20221113160720.png]]
+
+## Selective Repeat
+
+In [[#Go-Back-N]], a single packet error can cause it to retransmit a large number of packets, many unnecessarily.
+
+As the name suggests, selective-repeat protocols avoid unnecessary transmissions by having te sender retransmit only those packets that it suspects were received in error at the receiver.
 
 ---
 
