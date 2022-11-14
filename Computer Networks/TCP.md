@@ -190,7 +190,19 @@ $$
 
 ## Selective Acknowledgement
 
+We discussed about [[RDT#Go-Back-N]] and [[RDT#Selective Repeat]]. 
 
+The TCP sender need only maintain the smallest sequence number of a transmitted but unacknowledged byte and the next number to be sent. This sounds like **go-back N**.
+
+But many TCP implementations will buffer correctly received but out-of-order segments. And the go-back N protocol will transmit **all** packets in the window when timeout, but TCP would transmit at most one segment.
+
+A new protocol type is therefore defined for TCP. It is called **selective acknowledgement**.
+
+# Flow Control
+
+Recall that the hosts on each side of a TCP connection set aside a receive buffer for the connection. If the application is relatively slow at reading the data, the sender can very easily overflow the connection's receive buffer by sending data too quickly.
+
+TCP provides a **flow control service** to prevent the problem. TCP let the *sender* maintain a variable $receiveWindow$ which indicates the free buffer space at the receiver.
 
 ---
 
