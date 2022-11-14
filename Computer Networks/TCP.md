@@ -204,6 +204,44 @@ Recall that the hosts on each side of a TCP connection set aside a receive buffe
 
 TCP provides a **flow control service** to prevent the problem. TCP let the *sender* maintain a variable $receiveWindow$ which indicates the free buffer space at the receiver.
 
+## Procedure
+
+Let's look at an example which host A is sending a large file to host B. Host B denote its buffersize $RcvBuffer$. Define the following variables:
+
+- $LastByteRead$: The number of the last byte read by the application.
+- $LastByteRcvd$: The number of the last byte arrived from the link.
+
+To not overflow the buffer, 
+
+$$LastByteRcvd - LastByteRead \leq RcvBuffer$$
+
+We define 
+
+$$rwnd = RcvBuffer - (LastByteRcvd - LastByteRead)$$
+
+Host B will include $rwnd$ in the ACK segment. Host A need to record $LastByteSent$ and $LastByteAcked$, and make sure that
+
+$$LastByteSent - LastByteAcked \leq rwnd$$
+
+### Technical Problem
+
+If the $rwnd$ is currently $0$, the receiver informs the sender to not send more data. However, after receiver clears the buffer, receiver never have a chance to send ACK to sender because no data is received. And **sender will never send more data**.
+
+To solve this problem, the TCP specification requires host A to **continue to send segments with one data byte**. These segments will be acknowledged by the receiver, and the problem is solved.
+
+# Connection Management
+
+This section talks about how TCP connection is established and torn down.
+
+The TCP connection is established following the steps:
+
+1. The client-side TCP send a special segment which has the **SYN** bit set to $1$. Also, the client randomly chooses an initial sequence number $client\_isn$ and put this in the **sequence number** field.
+2. The server host receives the segment, and sends a connection-granted segment with no application-layer data. This segment is also called the **SYNACK segment**.
+	- The **SYN** bit of the connection-granted segment is set to $1$.
+	- The **acknowledgment** field of the connection-granted segment is set to $client\_isn + 1$.
+	- The server chooses its own initial sequence number and puts it in the **sequence number** field of connection-granted segment.
+3. Receiving the SYNACK segment, the client allocates buffers and variables for the connection.
+
 ---
 
 參考資料:
