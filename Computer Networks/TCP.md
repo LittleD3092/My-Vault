@@ -233,6 +233,8 @@ To solve this problem, the TCP specification requires host A to **continue to se
 
 This section talks about how TCP connection is established and torn down.
 
+## Establishing Connection
+
 The TCP connection is established following the steps:
 
 1. The client-side TCP send a special segment which has the **SYN** bit set to $1$. Also, the client randomly chooses an initial sequence number $client\_isn$ and put this in the **sequence number** field.
@@ -241,6 +243,23 @@ The TCP connection is established following the steps:
 	- The **acknowledgment** field of the connection-granted segment is set to $client\_isn + 1$.
 	- The server chooses its own initial sequence number and puts it in the **sequence number** field of connection-granted segment.
 3. Receiving the SYNACK segment, the client allocates buffers and variables for the connection.
+
+Because three packets are sent during the connection process, this procedure is often referred to as a **three-way handshake**.
+
+![[Pasted image 20221115172939.png]]
+
+## Closing the Connection
+
+1. The application process issues a close command. The TCP client send a special packet to server which has the **FIN** bit set to $1$.
+2. The server sends an ACK in return.
+3. The server then sends its own shutdown segment with the **FIN** bit set to $1$.
+4. The client acknowledges the shutdown segment.
+
+![[Pasted image 20221115173434.png]]
+
+## States
+
+During the life of a TCP connection, the TCP protocol running in each host makes transitions through various **TCP states**.
 
 ---
 
