@@ -261,6 +261,16 @@ Because three packets are sent during the connection process, this procedure is 
 
 During the life of a TCP connection, the TCP protocol running in each host makes transitions through various **TCP states**.
 
+The figure below illustrates a typical sequence of TCP states that are visited by the client TCP.
+
+![[Pasted image 20221115174744.png]]
+
+The figure below illustrates the series of states typically visited by the server-side TCP.
+
+![[Pasted image 20221115174842.png]]
+
+
+
 ---
 
 參考資料:
