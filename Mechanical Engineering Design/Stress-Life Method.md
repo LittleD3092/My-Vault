@@ -22,6 +22,16 @@ $$\sigma_a = \left\vert
 
 $$\sigma_m = \frac{\sigma_{\rm max} + \sigma_{\rm min}}{2}$$
 
+# S-N Diagram
+
+We can plot the complete reversed alternating stress versus the life in cycles on a semi-log or log-log scale.
+
+![[Pasted image 20221116171156.png]]
+
+This plot is called a *Wohler curve*, a *stress-life diagram*, or an *S-N diagram*.
+
+- $S_e$:endurance limit. Below this stress, the material will not fatigue.
+
 ---
 
 參考資料:
