@@ -83,6 +83,10 @@ Fatigue strength fraction $f$ can be obtained by the diagram below.
 
 [[Endurance Limit]]
 
+# Fatigue Strength Concentration Factor
+
+[[Fatigue Strength-Concentration Factor]]
+
 ---
 
 參考資料:
