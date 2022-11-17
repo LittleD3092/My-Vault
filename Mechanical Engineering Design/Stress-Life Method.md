@@ -106,6 +106,12 @@ $$S_e = k_ak_bk_ck_dk_eS_e'$$
 
 Represented by $k_a$.
 
+In laboratory, the specimen is polished. In practical situation, the parts have surface roughness, which cause localized stress concentration. This creates an environment that is prone to crack initiation.
+
+Lipson and Noll collected data from studies and organize them into several common commercial surface finishes. An example is the diagram below.
+
+![[Pasted image 20221117153316.png]]
+
 ## Size Factor
 
 Represented by $k_b$.
