@@ -204,11 +204,40 @@ $$k_c =
 
 Represented by $k_d$.
 
+$$k_d = S_T / S_{RT} = 
+\left\{
+	\begin{array}{l}
+		0.98 & + & 3.5(10^{-4})T_F & - & 6.3(10^{-7})T_F^2 \\
+		0.99 & + & 5.9(10^{-4})T_C & - & 2.1(10^{-6})T_C^2
+	\end{array}
+\right.$$
 
+- $k_d$: Temperature factor. If the endurance limit for the desired operation temperature is available, you should set $k_d$ to $1$ instead of using the formula above.
+- $S_T$: Ultimate strength at the operating temperature.
+- $S_{UT}$: Ultimate strength at the room temperature.
+- $T_F$: The operating temperature in degrees Fahrenheit.
+- $T_C$: The operating temperature in degrees Celsius.
 
 ## Reliability Factor
 
 Represented by $k_e$.
+
+Sometimes you find out that the tested data scattered a lot. In this case, you may use a reliability factor to be more conservative.
+
+Based on the reliability, you can get **transformation variate** $z_a$ using the chart. Then using the below formula, you can obtain reliability factor $k_e$.
+
+$$k_e = 1 - 0.08z_a$$
+
+The chart for transformation variate $z_a$ can be found in a full and complete table. The table below shows some of the useful rows.
+
+| Reliability, $\%$ | Transformation Variate $z_a$ | Reliability Factor $k_e$ |
+| ----------------- | ---------------------------- | ------------------------ |
+| $50$              | $0$                          | $1.000$                  |
+| $90$              | $1.288$                      | $0.897$                  |
+| $95$              | $1.645$                      | $0.868$                  |
+| $99$              | $2.326$                      | $0.814$                  |
+| $99.9$            | $3.091$                      | $0.753$                  |
+| $99.99$           | $3.719$                      | $0.702$                  | 
 
 ---
 
