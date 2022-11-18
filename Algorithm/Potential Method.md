@@ -43,9 +43,112 @@ The algorithm of stack operations includes the following operations:
 
 ### Analysis
 
-We define the potential function $\Phi$ on a stack to be the number of objects in the stack. $D_0$ has $\Phi(D_0) = 0$, because it is empty.
+We define the potential function $\Phi$ on a stack to be the number of objects in the stack. $D_0$ has $\Phi(D_0) = 0$, because it is an empty stack.
 
-Since the number of objects 
+Since the number of objects in the stack is never negative, the stack $D_i$ that results after the $i$th operation has nonnegative potential, and thus
+
+$$\Phi(D_i) \geq 0$$
+
+For $\text{Push}$ operation, 
+
+$$\Phi(D_i) - \Phi(D_{i - 1}) = (s + 1) - s = 1$$
+
+The amortized cost is
+
+$$\hat c_i = c_i + \Phi(D_i) - \Phi(D_{i - 1})$$
+$$ = 1 + 1 = 2$$
+
+For $\text{Multipop}$ operation,
+
+$$\Phi(D_i) - \Phi(D_{i - 1}) = -k'$$
+
+The amortized cost is
+
+$$\hat c_i = c_i + \Phi(D_i) - \Phi(D_{i - 1})$$
+
+$$ = k' - k'  = 0$$
+
+Similarly, the amortized cost for $\text{Pop}$ operation is $0$.
+
+The amortized cost of each of the three operations is $O(1)$, and thus the total amortized cost of a sequence of $n$ operations is $O(n)$. Since we proved that $\Phi(D_i) \geq \Phi(D_0)$, the worst-case cost of $n$ operations is therefore $O(n)$.
+
+## Incrementing a Binary Counter
+
+### Algorithm
+
+To add $1$ to the counter, we use the following procedure
+
+$$
+\begin{array}{l}
+	& \text{Increment}(A) \\
+	1 & i = 0 \\
+	2 & \textbf{while } i < A.\textit{length} \text{ and } A[i] == 1 \\
+	3 & \qquad A[i] = 0 \\
+	4 & \qquad i = i + 1 \\
+	5 & \textbf{if } i < A.\textit{length} \\
+	6 & \qquad A[i] = 1
+\end{array}
+$$
+
+The increment process should look like this:
+
+$$
+\begin{array}{}
+	\begin{array}{}
+		\text{Counter} \\
+		\text{value}
+	\end{array} &
+	A[7] & A[6] & A[5] & A[4] & 
+	A[3] & A[2] & A[1] & A[0] & 
+	\begin{array}{}
+		\text{Total} \\
+		\text{cost}
+	\end{array} \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+	2 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 3 \\
+	3 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 4 \\
+	4 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 7 \\
+	5 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 8 \\
+	6 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 10 \\
+	7 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 11 \\
+	8 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 15 \\
+	9 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 16 \\
+	10 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 18 \\
+	11 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 19 \\
+	12 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 22 \\
+	13 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 23 \\
+	14 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 25 \\
+	15 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 26 \\
+	16 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 31
+\end{array}
+$$
+
+### Analysis
+
+Suppose the $i$th operation has a potential $b_i$ and resets $t_i$ bits. $b_i$ is the number of ones after the operation.
+
+The actual cost is at most $t_i + 1$, since in addition to resetting $t_i$ bits, it sets at most one bit to $1$.
+
+If $b_i = 0$, then the $i$th operation resets all $k$ bits, and so $b_{i - 1} = t_i = k$.
+If $b_i > 0$, then $b_i = b_{i - 1} - t_i + 1$.
+In either case, $b_i \leq b_{i - 1} - t_i + 1$.
+So the total difference is
+
+$$\Phi(D_i) - \Phi(D_{i - 1}) \leq (b_{i - 1} - t_i + 1) - b_{i - 1} = 1 - t_i$$
+
+The amortized cost is therefore
+
+$$\hat c_i = c_i + \Phi(D_i) - \Phi(D_{i - 1})$$
+$$\leq (t_i + 1) + (1 - t_i)$$
+$$ = 2$$
+
+If the counter start at $0$, $\Phi(D_0) = 0$. 
+Because the counter never has negative number of ones, $\Phi(D_i)\geq 0$.
+Because the above condition, the amortized cost is an upper bound.
+The worst case of $n$ operations is
+
+$$O(n)$$
 
 ---
 
