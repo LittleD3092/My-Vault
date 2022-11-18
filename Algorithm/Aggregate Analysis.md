@@ -40,7 +40,91 @@ The $O(n^2)$ is correct, but it is not tight. Can we do better?
 
 #### Aggregate Analysis
 
+Although a single $\text{Multipop}$ operation can be expensive, because we can pop each object from the stack at most once for each time we have pushed it onto the stack, an initially empty stack can cost at most $O(n)$.
 
+The average cost of an operation is 
+
+$$O(n) / n = O(1)$$
+
+Therefore, all three stack operations have an amortized cost of $O(1)$.
+
+## Incrementing a Binary Counter
+
+- We implement a $k$-bit binary counter that counts upward from $0$.
+- The counter is represented by an array $A[0\dots k - 1]$, with a length $k$.
+	- Lowest-order bit is in $A[0]$ and highest-order bit is in $A[k - 1]$.
+
+### Algorithm
+
+To add $1$ to the counter, we use the following procedure
+
+$$
+\begin{array}{l}
+	& \text{Increment}(A) \\
+	1 & i = 0 \\
+	2 & \textbf{while } i < A.\textit{length} \text{ and } A[i] == 1 \\
+	3 & \qquad A[i] = 0 \\
+	4 & \qquad i = i + 1 \\
+	5 & \textbf{if } i < A.\textit{length} \\
+	6 & \qquad A[i] = 1
+\end{array}
+$$
+
+The increment process should look like this:
+
+$$
+\begin{array}{}
+	\begin{array}{}
+		\text{Counter} \\
+		\text{value}
+	\end{array} &
+	A[7] & A[6] & A[5] & A[4] & 
+	A[3] & A[2] & A[1] & A[0] & 
+	\begin{array}{}
+		\text{Total} \\
+		\text{cost}
+	\end{array} \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+	2 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 3 \\
+	3 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 4 \\
+	4 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 7 \\
+	5 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 8 \\
+	6 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 10 \\
+	7 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 11 \\
+	8 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 15 \\
+	9 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 16 \\
+	10 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 18 \\
+	11 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 19 \\
+	12 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 22 \\
+	13 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 23 \\
+	14 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 25 \\
+	15 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 26 \\
+	16 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 31
+\end{array}
+$$
+
+### Analysis
+
+#### Worst Case
+
+A single execution of $\text{Increment}$ takes time $\Theta(k)$ in the worst case, in which array $A$ contains all $1$s. Thus, a sequence of $n$ $\text{Increment}$ operations on an initially zero counter takes time $O(nk)$ in the worst case.
+
+As with the [[#Stack Operations]] example, we can do better.
+
+#### Analysis
+
+$A[0]$ is flipped each time. $A[1]$ flips only every other time. Similarly, bit $A[2]$ flips only every fourth time.
+
+With the above observation, we can get the number of flips for each bit $A[i]$:
+
+| Bit      | Time of Flips for Given $n$                              |
+| -------- | -------------------------------------------------------- |
+| $A[0]$   | $n$                                                      |
+| $A[1]$   | $\displaystyle \left\lfloor \frac n 2 \right\rfloor$     |
+| $A[2]$   | $\displaystyle \left\lfloor \frac n 4 \right\rfloor$     |
+| $\vdots$ | $\vdots$                                                 |
+| $A[i]$   | $\displaystyle \left\lfloor \frac n {2^i} \right\rfloor$ | 
 
 ---
 
