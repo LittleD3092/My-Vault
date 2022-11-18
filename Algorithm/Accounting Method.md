@@ -6,7 +6,9 @@
 
 ---
 
+In the accounting method of amortized analysis, we assign differing charges to different operations, with some operations charged more or less than they actually cost. The amount we charge an operation is called its **amortized cost**.
 
+When an operation's amortized cost exceeds its actual cost, we assign the difference to specific objects in the data structure as **credit**.
 
 ---
 
