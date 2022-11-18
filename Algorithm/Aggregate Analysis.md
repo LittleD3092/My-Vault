@@ -126,6 +126,21 @@ With the above observation, we can get the number of flips for each bit $A[i]$:
 | $\vdots$ | $\vdots$                                                 |
 | $A[i]$   | $\displaystyle \left\lfloor \frac n {2^i} \right\rfloor$ | 
 
+The total number of flips in the sequence is thus
+
+$$
+\sum_{i = 0}^{k - 1} \left\lfloor
+	\frac{n}{2!}
+\right\rfloor <
+n \sum_{i = 0}^{\infty} \frac{1}{2^i} = 2n
+$$
+
+The average cost of each operation, which is the amortized cost per operation, is
+
+$$
+\frac{O(n)}{n} = O(1)
+$$
+
 ---
 
 參考資料:
