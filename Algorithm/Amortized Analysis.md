@@ -1,4 +1,4 @@
-標籤: #algorithm 
+標籤: #algorithm #list 
 
 ---
 
@@ -7,6 +7,12 @@
 ---
 
 In an **amortized analysis**, we average the time required to perform a sequence of data-structure operations over all the operations performed. An amortized analysis guarantees the *average performance of each operation in the worst case*.
+
+The three most common techniques used in amortized analysis includes
+
+1. [[Aggregate Analysis]]
+2. [[Accounting Method]]
+3. [[Potential Method]]
 
 ---
 
