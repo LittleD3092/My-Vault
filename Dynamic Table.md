@@ -6,6 +6,8 @@
 
 ---
 
+Dynamic tables is a table that dynamically expands and contracts. Using [[Amortized Analysis]], we will see that the amortized cost of insertion and deletion is only $O(1)$.
+
 
 
 ---
