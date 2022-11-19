@@ -213,6 +213,18 @@ For example, the figure below shows the strongly connected components in gray gr
 
 ![[Pasted image 20221119180757.png]]
 
+We can compute the strongly connected components by using the following procedure:
+
+$$
+\begin{array}{l}
+	& \text{Strongly-Connected-Components}(G) \\
+	1 & \text{call DFS}(G) \text{ to compute finishing times }u.f \text{ for each vertex }u \\
+	2 & \text{compute }G^T \\
+	3 & \text{call DFS}(G^T), \text{ but consider the vertices in order of decreasing } u.f \\
+	4 & \text{output the vertices of each tree generated in line 3. each tree is SCC.}
+\end{array}
+$$
+
 # Topological Sort
 
 [[Topological Sort]]
