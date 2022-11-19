@@ -89,6 +89,22 @@ virtual void Graph::BFS(int v)
 }
 ```
 
+# Print Path
+
+The following procudre prints out the vertices on a shortest path from $s$ to $v$, assuming that $\text{BFS}$ has already computed a breadth-first tree:
+
+$$
+\begin{array}{l}
+	& \text{Print-Path}(G, s, v) \\
+	1 & \textbf{if } v == s \\
+	2 & \qquad \text{print }s \\
+	3 & \textbf{else if }v.\pi == \text{NIL} \\
+	4 & \qquad \text{print "no path from" } s \text{ "to" } v \text{ "exists"} \\
+	5 & \textbf{else } \text{Print-Path}(G, s, v.\pi) \\
+	6 & \qquad \text{print }v
+\end{array}
+$$
+
 ---
 
 參考資料:
