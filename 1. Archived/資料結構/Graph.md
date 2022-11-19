@@ -205,6 +205,14 @@ virtual void Graph::Components()
 }
 ```
 
+## Strongly Connected Components
+
+A strongly connected cmoponent of a directed graph $G = (V, E)$ is a maximal set of vertices $C$ that for every pair of vertices $u$ and $v$ in $C$, we have both paths $u \rightarrow v$ and $v \rightarrow u$.
+
+# Topological Sort
+
+[[Topological Sort]]
+
 # Spanning Trees
 
 When doing a [[#Depth-First Search]] or a [[#Breadth-First Search]], not all the edges will be traversed. The edges being traversed form a tree, which is a spanning tree.
