@@ -32,7 +32,7 @@ The TCP service model includes a connection-oriented service and a reliable data
 - *Options*: When a sender and receiver negotiate the maximum segment size or as a window scaling factor for use in high-speed networks. A time-stamping option is also defined.
 - *flag field*: Contains 8 bits.
 	- *ACK*: Indicate that the segment contains an acknowledgment.
-	- *RST*, *SYN*, *FIN*: Used for connection setup and teardown.
+	- *RST*, *SYN*, *FIN*: Used for [[#Connection Management]].
 	- *CWR*, *ECE*: Used in explicit congestion notification.
 	- *PSH*: Indicates that the receiver should pass the data to the upper layer immediately.
 	- *URG*: Used to indicate that there is data in this segment that the sending-side upper-layer has marked as "urgent".
@@ -238,11 +238,14 @@ This section talks about how TCP connection is established and torn down.
 The TCP connection is established following the steps:
 
 1. The client-side TCP send a special segment which has the **SYN** bit set to $1$. Also, the client randomly chooses an initial sequence number $client\_isn$ and put this in the **sequence number** field.
+> If the port is not accepting connections, a special reset segment (with RST flag equals 1) is sent by host.
 2. The server host receives the segment, and sends a connection-granted segment with no application-layer data. This segment is also called the **SYNACK segment**.
 	- The **SYN** bit of the connection-granted segment is set to $1$.
 	- The **acknowledgment** field of the connection-granted segment is set to $client\_isn + 1$.
 	- The server chooses its own initial sequence number and puts it in the **sequence number** field of connection-granted segment.
 3. Receiving the SYNACK segment, the client allocates buffers and variables for the connection.
+
+> SYN stands for "synchronize sequence number".
 
 Because three packets are sent during the connection process, this procedure is often referred to as a **three-way handshake**.
 
@@ -268,8 +271,6 @@ The figure below illustrates a typical sequence of TCP states that are visited b
 The figure below illustrates the series of states typically visited by the server-side TCP.
 
 ![[Pasted image 20221115174842.png]]
-
-
 
 ---
 
