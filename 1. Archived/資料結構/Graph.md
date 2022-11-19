@@ -209,6 +209,10 @@ virtual void Graph::Components()
 
 A strongly connected cmoponent of a directed graph $G = (V, E)$ is a maximal set of vertices $C$ that for every pair of vertices $u$ and $v$ in $C$, we have both paths $u \rightarrow v$ and $v \rightarrow u$.
 
+For example, the figure below shows the strongly connected components in gray groups $abe, cd, fg,$ and $h$.
+
+![[Pasted image 20221119180757.png]]
+
 # Topological Sort
 
 [[Topological Sort]]
