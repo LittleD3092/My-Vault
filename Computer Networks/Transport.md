@@ -48,6 +48,7 @@ The port numbers ranging from 0 to 1023 are called ==well-known port numbers== a
 - [[UDP]]
 - [[RDT]]: RDT is an example transfer protocol for designing a reliable data transfer protocol. It is similar to TCP.
 - [[TCP]]
+- [[QUIC]]: A new [[Application]]-layer protocol based on UDP.
 
 ## Applications and Their Transport Protocols
 
