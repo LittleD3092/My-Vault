@@ -297,6 +297,12 @@ TCP defines these guiding principles to provide congestion control:
 - An acknowledged segment indicates that the network is delivering the sender's segments to the receiver, and hence, the sender's rate can be increased when an ACK arrives for a previously unacknowledged segment.
 - By using ACKs, we can probe the bandwidth.
 
+More specifically, the details of the **TCP congestion-control algorithm** contains three major components:
+
+1. **Slow Start**: The value of $cwnd$ (congestion window) begins at 1 MSS, and plus 1 for every ACKed segment.
+![[Pasted image 20221120102759.png|400]]
+2. **Congestion Avoidance**: Instead of exponential growth in **slow start**, we increase $cwnd$ by just a single MSS every RTT. Thus the growth of $cwnd$ is linear growth.
+
 ---
 
 參考資料:
