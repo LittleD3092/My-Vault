@@ -274,6 +274,21 @@ The figure below illustrates the series of states typically visited by the serve
 
 # Congestion Control
 
+## Costs of Congestion
+
+If congestion control is not performed, there are some disadvantage listed below:
+
+1. The sender must perform retransmissions in order to compensate for dropped (lost) packets due to buffer overflow.
+2. Uneeded retransmissions by the sender in the face of large delays may cause a router to use its link bandwidth to forward unneeded copies of a packet.
+3. When a packet is dropped along a path, the transmission capacity that was used at each of the upstream links to forward that packet to the point at which it is dropped ends up having been wasted.
+
+## Approaches
+
+At highest level, we may classify congestion-control approaches to the two types below:
+
+1. End-to-end congestion control: The [[Networks]] layer provides no explicit support to the [[Transport]] layer for congestion-control purposes.
+2. Network-assisted congestion control: Routers provide explicit feedback to the sender and receiver regarding the congestion state of the network.
+
 
 
 ---
