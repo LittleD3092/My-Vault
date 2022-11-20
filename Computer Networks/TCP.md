@@ -289,7 +289,13 @@ At highest level, we may classify congestion-control approaches to the two types
 1. End-to-end congestion control: The [[Networks]] layer provides no explicit support to the [[Transport]] layer for congestion-control purposes.
 2. Network-assisted congestion control: Routers provide explicit feedback to the sender and receiver regarding the congestion state of the network.
 
+### Classic TCP Congestion Control
 
+TCP defines these guiding principles to provide congestion control:
+
+- A lost segment implies congestion, and hence, the TCP sender's rate should be decreased when a segment is lost.
+- An acknowledged segment indicates that the network is delivering the sender's segments to the receiver, and hence, the sender's rate can be increased when an ACK arrives for a previously unacknowledged segment.
+- By using ACKs, we can probe the bandwidth.
 
 ---
 
