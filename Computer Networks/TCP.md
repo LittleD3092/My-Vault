@@ -299,9 +299,16 @@ TCP defines these guiding principles to provide congestion control:
 
 More specifically, the details of the **TCP congestion-control algorithm** contains three major components:
 
-1. **Slow Start**: The value of $cwnd$ (congestion window) begins at 1 MSS, and plus 1 for every ACKed segment.
+1. **Slow Start**: The value of $cwnd$ (congestion window) begins at 1 MSS, and plus 1 for every ACKed segment. If $cwnd \geq ssthresh$ where $ssthresh$ is a variable meaning "slow start threshold", it enters **congestion avoidance** state.
 ![[Pasted image 20221120102759.png|400]]
-2. **Congestion Avoidance**: Instead of exponential growth in **slow start**, we increase $cwnd$ by just a single MSS every RTT. Thus the growth of $cwnd$ is linear growth.
+2. **Congestion Avoidance**: Instead of exponential growth in **slow start**, we increase $cwnd$ by just a single MSS every RTT. Thus the growth of $cwnd$ is linear growth. If received three duplicate ACKs, it enters **fast recovery** state.
+3. **Fast Recovery**: The value of $cwnd$ is increased by 1 MSS for every duplicate ACK received for the missing segment that caused TCP to enter the fast-recovery state. Fast recovery is a recommended, but not required component of TCP.
+
+The above three states can be illustrated by the state diagram below.
+
+![[Pasted image 20221120105026.png]]
+
+
 
 ---
 
