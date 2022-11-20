@@ -135,6 +135,8 @@ To do the job, two important network-layer functions can be defined:
 > 
 > The forwarding table determines the outgoing link interface at each router in order to flow the packet to the destination.
 
+The network layer provides a **best-effort service**, meaning that packets are neither guaranteed to be received in the order nor is their eventual delivery guaranteed.
+
 The network layer can be decomposed into two interacting parts.
 
 1. [[Data Plane]]: For forwarding.
