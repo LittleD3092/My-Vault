@@ -340,7 +340,30 @@ This means that cubic quickly ramps up the sending rate to get close to the pre-
 
 ### Network Assisted Congestion-Control
 
+Recall that in [[#Segment Structure]] we have two bits *CWR*, *ECE*. These two bits are for Explicit Congestion Notification (ECN).
 
+1. When the TCP receiving host receives an ECN congestion indication, the receiver informs the sender using field **ECE (ECN Echo)** in ACK segment to tell sender to slow down.
+2. The TCP sender then halfs the $cwnd$, and sets the **CWR (Congestion Window Reduced)** field to 1 in the next sender-to-receiver segment.
+
+# Fairness
+
+When two connections is sharing a single bottleneck link
+
+![[Pasted image 20221120114049.png]]
+
+If the sum throughput exceeds the bottleneck capacity $R$, the speed is reduced in half.
+
+The one with higher speed decreases more, and the one with lower speed decreases less.
+
+Eventually, they will reach the equal bandwidth share.
+
+![[Pasted image 20221120114501.png|500]]
+
+> In the scenario above, we assumed 
+> 1. Only TCP connections traverse the bottleneck link
+> 2. The connections have the same $RTT$ value.
+> 3. Only a single TCP connection is associated with a host-destination pair.
+> In practice, these conditions are not met. When multiple connections share a common bottleneck, those sessions with a smaller RTT are able to grab the available bandwidth at the lnk more quickly as it becomes free.
 
 ---
 
