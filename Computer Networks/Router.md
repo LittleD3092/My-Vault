@@ -18,7 +18,7 @@ Four router components can be identified:
 	- Performs lookup function and consult the forwarding table.
 - [[#Switching Fabric]]
 	- Connects the router's input ports to its output ports.
-- *Output ports*
+- [[#Output Ports]]
 	- Store and transmit the packets on the outgoing link.
 	- When a link is bidirectional (carries traffic in both directions), an output port is paired with an input port.
 - *Routing processor*
@@ -58,7 +58,21 @@ Switching can be accomplished in a number of ways:
 	- The input and output ports are done under direct control of CPU.
 	- Note that different packets cannot be forwarded at the same time since only one memory read/write can done at a time.
 - *Switching via a bus*
-	- 
+	- A label is added to the packet, and all output will receive this packet. But, only the output port that matches the label will keep the packet.
+	- Only one packet can cross the bus at the same time.
+- *Switching via an interconnection network*
+	- Uses a crossbar switch. Consists of $2N$ buses for $N$ input and $N$ output. 
+	- The switch controller closes the corresponding intersection and open other intersections when a packet enters.
+	- This is **non-blocking**, and multiple packets can be forwarded at the same time.
+	- However, if two packets from two different input has the same output port, then one will have to wait.
+
+![[Pasted image 20221120171155.png]]
+
+# Output Ports
+
+Output port processing is shown in the figure below.
+
+![[Pasted image 20221120171404.png]]
 
 ---
 
