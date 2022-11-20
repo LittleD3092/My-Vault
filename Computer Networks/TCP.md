@@ -308,6 +308,38 @@ The above three states can be illustrated by the state diagram below.
 
 ![[Pasted image 20221120105026.png]]
 
+### AIMD (TCP Reno)
+
+Viewing the diagram, we observed that the TCP congestion control consists of 
+
+1. linear (additive) increase in $cwnd$ of 1 MSS per RTT and then 
+2. a halving (multiplicative decrease) of $cwnd$ on a triple duplicate-ACK event.
+
+![[Pasted image 20221120110040.png]]
+
+For this reason, TCP congestion control is ofen referred to as an **additive-increase, multiplicative-decrease (AIMD)** form of congestion control.
+
+The average throughput of a TCP reno connection is
+
+$$\text{average throughput of a connection} = \frac{0.75 \cdot W}{RTT}$$
+
+### TCP Cubic
+
+Cutting the sending rate in half may be over cautious. 
+
+If the state of the congested link hasn't changed much, then perhaps it's better to more quickly ramp up the sending rate and then probe cautiously for bandwidth.
+
+![[Pasted image 20221120110549.png|500]]
+
+TCP cubic differs only slightly from the TCP in [[#AIMD (TCP Reno)]]. It only changes the congestion avoidance phase as follows:
+
+1. Let $W_{\rm max}$ be the $cwnd$ when loss was last detected. And $K$ is the estimated time when $cwnd$ will reach $W_{\max}$ again.
+2. Cubic increases the $cwnd$ as a function of *cube* of the distance between current time $t$ and $K$. 
+This means that cubic quickly ramps up the sending rate to get close to the pre-loss rate $W_{\max}$, and probes cautiously for bandwidth as it approaches $W_{\max}$.
+3. When $t$ exceeds $K$ and no packet loss occurs, $cwnd$ first has small increases, and then increase rapidly.
+
+### Network Assisted Congestion-Control
+
 
 
 ---
