@@ -32,7 +32,7 @@ The TCP service model includes a connection-oriented service and a reliable data
 - *Options*: When a sender and receiver negotiate the maximum segment size or as a window scaling factor for use in high-speed networks. A time-stamping option is also defined.
 - *flag field*: Contains 8 bits.
 	- *ACK*: Indicate that the segment contains an acknowledgment.
-	- *RST*, *SYN*, *FIN*: Used for connection setup and teardown.
+	- *RST*, *SYN*, *FIN*: Used for [[#Connection Management]].
 	- *CWR*, *ECE*: Used in explicit congestion notification.
 	- *PSH*: Indicates that the receiver should pass the data to the upper layer immediately.
 	- *URG*: Used to indicate that there is data in this segment that the sending-side upper-layer has marked as "urgent".
@@ -238,11 +238,14 @@ This section talks about how TCP connection is established and torn down.
 The TCP connection is established following the steps:
 
 1. The client-side TCP send a special segment which has the **SYN** bit set to $1$. Also, the client randomly chooses an initial sequence number $client\_isn$ and put this in the **sequence number** field.
+> If the port is not accepting connections, a special reset segment (with RST flag equals 1) is sent by host.
 2. The server host receives the segment, and sends a connection-granted segment with no application-layer data. This segment is also called the **SYNACK segment**.
 	- The **SYN** bit of the connection-granted segment is set to $1$.
 	- The **acknowledgment** field of the connection-granted segment is set to $client\_isn + 1$.
 	- The server chooses its own initial sequence number and puts it in the **sequence number** field of connection-granted segment.
 3. Receiving the SYNACK segment, the client allocates buffers and variables for the connection.
+
+> SYN stands for "synchronize sequence number".
 
 Because three packets are sent during the connection process, this procedure is often referred to as a **three-way handshake**.
 
@@ -269,7 +272,98 @@ The figure below illustrates the series of states typically visited by the serve
 
 ![[Pasted image 20221115174842.png]]
 
+# Congestion Control
 
+## Costs of Congestion
+
+If congestion control is not performed, there are some disadvantage listed below:
+
+1. The sender must perform retransmissions in order to compensate for dropped (lost) packets due to buffer overflow.
+2. Uneeded retransmissions by the sender in the face of large delays may cause a router to use its link bandwidth to forward unneeded copies of a packet.
+3. When a packet is dropped along a path, the transmission capacity that was used at each of the upstream links to forward that packet to the point at which it is dropped ends up having been wasted.
+
+## Approaches
+
+At highest level, we may classify congestion-control approaches to the two types below:
+
+1. End-to-end congestion control: The [[Networks]] layer provides no explicit support to the [[Transport]] layer for congestion-control purposes.
+2. Network-assisted congestion control: Routers provide explicit feedback to the sender and receiver regarding the congestion state of the network.
+
+### Classic TCP Congestion Control
+
+TCP defines these guiding principles to provide congestion control:
+
+- A lost segment implies congestion, and hence, the TCP sender's rate should be decreased when a segment is lost.
+- An acknowledged segment indicates that the network is delivering the sender's segments to the receiver, and hence, the sender's rate can be increased when an ACK arrives for a previously unacknowledged segment.
+- By using ACKs, we can probe the bandwidth.
+
+More specifically, the details of the **TCP congestion-control algorithm** contains three major components:
+
+1. **Slow Start**: The value of $cwnd$ (congestion window) begins at 1 MSS, and plus 1 for every ACKed segment. If $cwnd \geq ssthresh$ where $ssthresh$ is a variable meaning "slow start threshold", it enters **congestion avoidance** state.
+![[Pasted image 20221120102759.png|400]]
+2. **Congestion Avoidance**: Instead of exponential growth in **slow start**, we increase $cwnd$ by just a single MSS every RTT. Thus the growth of $cwnd$ is linear growth. If received three duplicate ACKs, it enters **fast recovery** state.
+3. **Fast Recovery**: The value of $cwnd$ is increased by 1 MSS for every duplicate ACK received for the missing segment that caused TCP to enter the fast-recovery state. Fast recovery is a recommended, but not required component of TCP.
+
+The above three states can be illustrated by the state diagram below.
+
+![[Pasted image 20221120105026.png]]
+
+### AIMD (TCP Reno)
+
+Viewing the diagram, we observed that the TCP congestion control consists of 
+
+1. linear (additive) increase in $cwnd$ of 1 MSS per RTT and then 
+2. a halving (multiplicative decrease) of $cwnd$ on a triple duplicate-ACK event.
+
+![[Pasted image 20221120110040.png]]
+
+For this reason, TCP congestion control is ofen referred to as an **additive-increase, multiplicative-decrease (AIMD)** form of congestion control.
+
+The average throughput of a TCP reno connection is
+
+$$\text{average throughput of a connection} = \frac{0.75 \cdot W}{RTT}$$
+
+### TCP Cubic
+
+Cutting the sending rate in half may be over cautious. 
+
+If the state of the congested link hasn't changed much, then perhaps it's better to more quickly ramp up the sending rate and then probe cautiously for bandwidth.
+
+![[Pasted image 20221120110549.png|500]]
+
+TCP cubic differs only slightly from the TCP in [[#AIMD (TCP Reno)]]. It only changes the congestion avoidance phase as follows:
+
+1. Let $W_{\rm max}$ be the $cwnd$ when loss was last detected. And $K$ is the estimated time when $cwnd$ will reach $W_{\max}$ again.
+2. Cubic increases the $cwnd$ as a function of *cube* of the distance between current time $t$ and $K$. 
+This means that cubic quickly ramps up the sending rate to get close to the pre-loss rate $W_{\max}$, and probes cautiously for bandwidth as it approaches $W_{\max}$.
+3. When $t$ exceeds $K$ and no packet loss occurs, $cwnd$ first has small increases, and then increase rapidly.
+
+### Network Assisted Congestion-Control
+
+Recall that in [[#Segment Structure]] we have two bits *CWR*, *ECE*. These two bits are for Explicit Congestion Notification (ECN).
+
+1. When the TCP receiving host receives an ECN congestion indication, the receiver informs the sender using field **ECE (ECN Echo)** in ACK segment to tell sender to slow down.
+2. The TCP sender then halfs the $cwnd$, and sets the **CWR (Congestion Window Reduced)** field to 1 in the next sender-to-receiver segment.
+
+# Fairness
+
+When two connections is sharing a single bottleneck link
+
+![[Pasted image 20221120114049.png]]
+
+If the sum throughput exceeds the bottleneck capacity $R$, the speed is reduced in half.
+
+The one with higher speed decreases more, and the one with lower speed decreases less.
+
+Eventually, they will reach the equal bandwidth share.
+
+![[Pasted image 20221120114501.png|500]]
+
+> In the scenario above, we assumed 
+> 1. Only TCP connections traverse the bottleneck link
+> 2. The connections have the same $RTT$ value.
+> 3. Only a single TCP connection is associated with a host-destination pair.
+> In practice, these conditions are not met. When multiple connections share a common bottleneck, those sessions with a smaller RTT are able to grab the available bandwidth at the lnk more quickly as it becomes free.
 
 ---
 

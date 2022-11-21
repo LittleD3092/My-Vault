@@ -122,6 +122,28 @@ As we see in [[#Types of Networks]], we know that end systems connect into the I
 - Content providers build its own networks, ==content-provider networks==, to reduce the cost of paying ISPs.
 	- Google has its private network, which spans the entire globe.
 
+# Network Layer
+
+The role of the network layer is simple, it needs to move packets from a sending host to a receiving host.
+
+To do the job, two important network-layer functions can be defined:
+
+1. **Forwarding**: When the packet arrives at a router's input link, it moves the packet to the appropriate output link.
+2. **Routing**: The network must determine a route or path for the packet to flow to a destination. The algorithms for this purpose are referred to as **routing algorithms**.
+
+> A key element in every network router is its **forwarding table**. 
+> 
+> The forwarding table determines the outgoing link interface at each router in order to flow the packet to the destination.
+
+The network layer provides a **best-effort service**, meaning that packets are neither guaranteed to be received in the order nor is their eventual delivery guaranteed.
+
+The network layer can be decomposed into two interacting parts.
+
+1. [[Data Plane]]: For forwarding.
+2. [[Control Plane]]: For routing.
+
+![[Pasted image 20221120152634.png]]
+
 ---
 
 參考資料:
