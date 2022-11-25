@@ -10,7 +10,11 @@
 
 ![[Pasted image 20221125182416.png]]
 
-The above is an low-pass filter with 
+The above is an [[Filter#Low Pass Filter|Low Pass Filter]] with an [[Amplifier#Voltage Follower (Unit Gain Buffer)|Voltage Follower]].
+It should output a sine wave that has smaller amplitude than original one.
+But, it outputs a strange wave as the blue waveform in the above figure.
+
+This is called crossover distortion.
 
 ---
 
