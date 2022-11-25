@@ -8,8 +8,10 @@
 
 We have a set $S = \{a_1, a_2, \dots, a_n\}$ of $n$ proposed activities, which we can do one at a time. Each activity $a_i$ has a start time $s_i$ and a finish time $f_i$. Select a maximum-size subset of activities that do not overlap.
 
-- We assume that the activities are sorted in monotonically increasing order of finish time
+- We assume that **the activities are sorted in monotonically increasing order of finish time**
 $$f_1 \leq f_2 \leq f_3 \leq \dots \leq f_{n - 1} \leq f_n$$
+
+> The activities sorted in increasing order of finish time is important.
 
 # Example Input
 
