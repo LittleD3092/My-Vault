@@ -155,7 +155,123 @@ $$
 			\frac{\partial v}{\partial y}
 		\right)
 	\right]dxdydz \\
+	\text{Top} & = & 
+	\displaystyle
+	\left[
+		\rho + \left(
+			\frac{\partial \rho}{\partial y}
+		\right)\frac{dy}{2}
+	\right]
+	\left[
+		v + \left(
+			\frac{\partial v}{\partial y}
+		\right)\frac{dy}{2}
+	\right]dxdz & = & 
+	\displaystyle
+	\rho vdxdz + \frac 1 2 \left[
+		v \left(
+			\frac{\partial\rho}{\partial y}
+		\right) + \rho\left(
+			\frac{\partial v}{\partial y}
+		\right)
+	\right]dxdydz \\
+	\text{Back} & = & 
+	\displaystyle
+	-\left[
+		\rho - \left(
+			\frac{\partial \rho}{\partial z}
+		\right)\frac{dz}{2}
+	\right]
+	\left[
+		w - \left(
+			\frac{\partial w}{\partial z}
+		\right)\frac{dz}{2}
+	\right]dxdy & = & 
+	\displaystyle
+	-\rho wdxdy + \frac 1 2 \left[
+		w \left(
+			\frac{\partial\rho}{\partial z}
+		\right) + \rho\left(
+			\frac{\partial w}{\partial z}
+		\right)
+	\right]dxdydz \\
+	\text{Front} & = & 
+	\displaystyle
+	\left[
+		\rho + \left(
+			\frac{\partial \rho}{\partial z}
+		\right)\frac{dz}{2}
+	\right]
+	\left[
+		w + \left(
+			\frac{\partial w}{\partial z}
+		\right)\frac{dz}{2}
+	\right]dxdy & = & 
+	\displaystyle
+	\rho wdxdy + \frac 1 2 \left[
+		w \left(
+			\frac{\partial\rho}{\partial z}
+		\right) + \rho\left(
+			\frac{\partial w}{\partial z}
+		\right)
+	\right]dxdydz
 \end{array}
+$$
+
+Adding the six surfaces, we obtain the control surface.
+
+$$\underline{\int_{CS} \rho \vec V \cdot d \vec A = \left[
+	\frac{\partial \rho u}{\partial x} +
+	\frac{\partial \rho v}{\partial y} +
+	\frac{\partial \rho w}{\partial z}
+\right]dxdydz}$$
+
+Also, we calculate control volume:
+
+$$\frac{\partial}{\partial t}\int_{CV} \rho dV = \frac{\partial}{\partial t}
+\left[
+	\rho dxdydz
+\right] = 
+\underline{
+	\frac{\partial \rho}{\partial t}dxdydz
+}$$
+
+Adding those together:
+
+$$\frac{\partial}{\partial t}\int_{CV}\rho dV +\int_{CS} \rho \vec V \cdot d\vec A = \left[
+	\frac{\partial \rho u}{\partial x} +
+	\frac{\partial \rho v}{\partial y} +
+	\frac{\partial \rho w}{\partial z}
+\right]dxdydz + \frac{\partial \rho}{\partial t}dxdydz = 0$$
+
+$$\implies \underline{
+	\frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} + \frac{\partial \rho}{\partial t} = 0
+}_\#$$
+
+The equation above is called **continuity equation**.
+
+Also, the continuity equation can be written as
+
+$$\underline{\nabla \cdot \rho \vec V + \frac{\partial \rho}{\partial t} = 0}_\#$$
+
+For *incompressible fluid*, the continuity equation can be simplified to:
+
+$$\underline{
+	\frac{\partial u}{\partial x} +
+	\frac{\partial v}{\partial y} +
+	\frac{\partial w}{\partial z} =
+	\nabla \cdot \vec V = 0 \qquad \text{for incompressible fluid}
+}_\#$$
+
+For *steady flow*, all properties are independent of time. The continuity equation can be simplified to
+
+$$
+\underline{
+	\frac{\partial \rho u}{\partial x} +
+	\frac{\partial \rho v}{\partial y} +
+	\frac{\partial \rho w}{\partial z} = 
+	\nabla \cdot \rho \vec V = 0
+}_\#
 $$
 
 ## Cylindrical Coordinate System
