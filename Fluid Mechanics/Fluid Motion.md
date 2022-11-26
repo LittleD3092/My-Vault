@@ -271,7 +271,8 @@ $$
 	\frac{\partial \rho v}{\partial y} +
 	\frac{\partial \rho w}{\partial z} = 
 	\nabla \cdot \rho \vec V = 0
-}_\#
+	\qquad \text{for steady flow}
+}_\# 
 $$
 
 ## Cylindrical Coordinate System
