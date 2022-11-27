@@ -277,7 +277,123 @@ $$
 
 ## Cylindrical Coordinate System
 
+A suitable differential control volume for cylindrical coordinates is shown in the figure below.
 
+![[Pasted image 20221127145927.png]]
+
+- The density at center $O$ is $\rho$.
+- The velocity of $O$ is $\vec V = \hat e_r V_r + \hat e_{\theta} V_{\theta} + \hat k V_z$.
+
+The control surface is evaluated:
+
+![[Pasted image 20221127150255.png]]
+
+And we can see that the net mass flux of control surface is
+
+$$
+\int_{CS}\rho \vec V \cdot d\vec A = 
+\left[
+	\rho V_r + 
+	r\frac{\partial \rho V_r}{\partial r} +
+	\frac{\partial \rho V_{\theta}}{\partial \theta} +
+	r \frac{\partial \rho V_z}{\partial z}
+\right]drd\theta dz$$
+
+The mass inside the control volume is $\rho r d\theta dr dz$, and the rate of change is
+
+$$\frac{\partial}{\partial t}\int_{CV} \rho dV = \frac{\partial \rho}{\partial t}r d\theta dr dz$$
+
+Using [[Control Volume#Conservation of Mass]] equation and substitude the above two expression:
+
+$$\frac{\partial}{\partial t}\int_{CV}\rho dV + \int_{CS} \rho \vec V \cdot d \vec A = 0$$
+
+$$\implies \left[
+	\rho V_r + 
+	r\frac{\partial \rho V_r}{\partial r} +
+	\frac{\partial \rho V_{\theta}}{\partial \theta} +
+	r \frac{\partial \rho V_z}{\partial z}
+\right]drd\theta dz + \frac{\partial \rho}{\partial t}r d\theta dr dz = 0$$
+
+Divide $drd\theta dz$ for both sides:
+
+$$\implies \rho V_r + 
+r\frac{\partial \rho V_r}{\partial r} +
+\frac{\partial \rho V_{\theta}}{\partial \theta} +
+r \frac{\partial \rho V_z}{\partial z} + 
+r \frac{\partial \rho}{\partial t} = 0$$
+
+$$\implies \frac{\partial(r\rho V_r)}{\partial r} + \frac{\partial \rho V_{theta}}{\partial \theta} + r\frac{\partial \rho V_z}{\partial z} +
+r \frac{\partial \rho}{\partial t} = 0$$
+
+Dividing by $r$:
+
+$$
+\underline{
+	\frac{1}{r}
+	\frac{\partial (r \rho V_r)}{\partial r} +
+	\frac 1 r 
+	\frac{\partial (\rho V_{\theta})}
+	{\partial \theta} +
+	\frac{\partial (\rho V_z)}{\partial z} +
+	\frac{\partial \rho}{\partial t} = 0
+}_\#
+$$
+
+Can be represented in [[Field#Gradient]]:
+
+$$\underline{
+	\nabla \cdot \rho \vec V + 
+	\frac{\partial \rho}{\partial t} = 0
+}_\#$$
+
+For *incompressible fluid*, $\rho = \text{constant}$
+
+$$\underline{
+	\frac 1 r\frac{\partial (r V_r)}{\partial r} +
+	\frac 1 r
+	\frac{\partial V_{\theta}}{\partial \theta} +
+	\frac{\partial V_z}{\partial z} = 
+	\nabla \cdot \vec V = 0
+}_\# \qquad \text{for incompressible fluid}$$
+
+For *steady flow*, 
+
+$$\underline{
+	\frac 1 r 
+	\frac{\partial (r \rho V_r)}{\partial r} +
+	\frac 1 r
+	\frac{\partial (\rho V_\theta)}
+	{\partial \theta} +
+	\frac{\partial (\rho V_z)}{\partial z} = 
+	\nabla \cdot \rho \vec V = 0
+}_\#
+\qquad \text{for steady flow}$$
+
+# Stream Function
+
+> Recall that in [[Continuum Lines]], streamlines are lines tangent to the velocity vectors:
+> $$\left.\frac{dy}{dx}\right\vert_{\rm streamline} = \frac v u$$
+
+We first use [[#Rectangular Coordinate System]] equation of incompressible flow:
+
+$$\frac{\partial u}{\partial x} +
+\frac{\partial v}{\partial y} = 0$$
+
+*Stream function* will allow us to represent two entities $u$ and $v$ by one entity $\psi$. 
+We define *stream function* $\psi$ as below, so that it satisfy the equation above.
+
+$$\underline{
+	\left\{
+		\begin{array}{l}
+			\displaystyle
+			u \equiv 
+			\frac{\partial \psi}{\partial y} \\
+			\displaystyle
+			v \equiv 
+			-\frac{\partial \psi}{\partial x}
+		\end{array}
+	\right.
+}_\#$$
 
 ---
 
