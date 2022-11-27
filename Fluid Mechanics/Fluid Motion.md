@@ -736,7 +736,34 @@ $$\text{Rate of angular deformation}_{zx} =
 \frac{\partial w}{\partial x} +
 \frac{\partial u}{\partial z}$$
 
+# Momentum Equation
 
+Note that Newton's second law is given by
+
+$$\vec F = 
+\left.
+	\frac{d\vec P}{dt}
+\right)_{\rm system}$$
+
+where linear momentum $\vec P$ is given by
+
+$$\vec P_{\rm system} = 
+\int_{\text{mass(system)}} \vec V dm$$
+
+Then, for a system of mass $dm$, Newton's second law can be written
+
+$$d\vec F = dm 
+\left.
+	\frac{d\vec V}{dt}
+\right)_{\text{system}}$$
+
+$$ = dm \frac{D \vec V}{Dt} = dm
+\left[
+	u \frac{\partial \vec V}{\partial x} +
+	v \frac{\partial \vec V}{\partial y} +
+	w \frac{\partial \vec V}{\partial z} +
+	\frac{\partial \vec V}{\partial t}
+\right]$$
 
 ---
 
