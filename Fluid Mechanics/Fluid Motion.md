@@ -433,8 +433,8 @@ We can decompose the fluid particle's motion into four components:
 
 1. [[#Translation]].
 2. [[#Rotation]].
-3. Linear deformation.
-4. Angular deformation.
+3. [[#Linear Deformation]].
+4. [[#Angular Deformation]].
 
 ![[Pasted image 20221127161949.png]]
 
@@ -545,7 +545,179 @@ $$
 
 ## Rotation
 
+The rotation and angular deformation can be decomposed into:
 
+![[Pasted image 20221127195008.png]]
+
+We define that
+
+- The horizontal displacement of top surface with respect to bottom surface $\Delta \xi$.
+- The vertical displacement of right surface with respect to left surface $\Delta \eta$.
+
+$$\Delta \xi = 
+\left(
+	u + \frac{\partial u}{\partial y} \Delta y
+\right) \Delta t - u \Delta t = 
+\frac{\partial u}{\partial y}\Delta y\Delta t$$
+
+$$\Delta \eta = \left(
+	v + \frac{\partial v}{\partial x} \Delta x
+\right) \Delta t - v\Delta t = 
+\frac{\partial v}{\partial x}\Delta x\Delta t$$
+
+Computing the angular velocity:
+
+$$\omega_z = \lim_{\Delta t \rightarrow 0}
+\frac{
+	\displaystyle
+	\frac 1 2 (\Delta\alpha - \Delta \beta)
+}
+{\Delta t}$$
+
+> For small angle, 
+> $$\Delta \alpha = \Delta \eta / \Delta x$$
+> $$\Delta \beta = \Delta \xi / \Delta y$$
+
+Substitude $\Delta \alpha$ and $\Delta \beta$:
+
+$$= \lim_{\Delta t \rightarrow 0} 
+\frac{
+	\displaystyle
+	\frac 1 2 \left(
+		\frac{\Delta \eta}{\Delta x} - 
+		\frac{\Delta \xi}{\Delta y}
+	\right)
+}
+{\Delta t}$$
+
+Substitude $\Delta \eta$ and $\Delta \xi$:
+
+$$
+= \lim_{\Delta t \rightarrow 0} 
+\frac{
+	\displaystyle
+	\frac 1 2 \left(
+		\frac{\partial v}{\partial x}
+		\frac{\Delta x}{\Delta x}\Delta t - 
+		\frac{\partial u}{\partial y}
+		\frac{\Delta y}{\Delta y}
+		\Delta t
+	\right)
+}
+{\Delta t} = 
+\frac{1}{2}\left(
+	\frac{\partial v}{\partial x} - 
+	\frac{\partial u}{\partial y}
+\right)
+$$
+
+By considering other planes for other rotation axes:
+
+$$
+\left\{
+	\begin{array}{}
+		\displaystyle
+		\omega_x = \frac 1 2 \left(
+			\frac{\partial w}{\partial y} - 
+			\frac{\partial v}{\partial z}
+		\right) \\
+		\displaystyle
+		\omega_y = \frac 1 2 \left(
+			\frac{\partial u}{\partial z} - 
+			\frac{\partial w}{\partial x}
+		\right) \\
+		\displaystyle
+		\omega_z = \frac 1 2 \left(
+			\frac{\partial v}{\partial x} - 
+			\frac{\partial u}{\partial y}
+		\right)
+	\end{array}
+\right.
+$$
+
+Then $\vec \omega$ becomes
+
+$$\vec \omega = \hat i \omega_x + \hat j \omega_y + \hat k \omega_z$$
+
+$$ = \frac 1 2
+\left[
+	\hat i
+	\left(
+		\frac{\partial w}{\partial y} - 
+		\frac{\partial v}{\partial z}
+	\right) + 
+	\hat j
+	\left(
+		\frac{\partial u}{\partial z} - 
+		\frac{\partial w}{\partial x}
+	\right) +
+	\hat k
+	\left(
+		\frac{\partial v}{\partial x} - 
+		\frac{\partial u}{\partial y}
+	\right)
+\right]$$
+
+The term in the square brackets is [[Field#Curl]].
+
+$$\underline{
+	\vec \omega = \frac 1 2 \nabla \times \vec V
+}_\#$$
+
+The *vorticity* $\vec \zeta$ is defined to be twice the rotation
+
+$$\underline{
+	\vec \zeta \equiv 2 \vec \omega = 
+	\nabla \times \vec V
+}_\#
+$$
+
+In cylindrical coordinates
+
+$$\underline{
+	\vec \zeta = \hat e_r
+	\left(
+		\frac 1 r 
+		\frac{\partial V_z}{\partial \theta} - 
+		\frac{\partial V_\theta}{\partial z}
+	\right) +
+	\hat e_\theta
+	\left(
+		\frac{\partial V_r}{\partial z} - 
+		\frac{\partial V_z}{\partial r}
+	\right) +
+	\hat k
+	\left(
+		\frac 1 r 
+		\frac{\partial (r V_\theta)}{\partial r} - 
+		\frac 1 r 
+		\frac{\partial V_r}{\partial \theta}
+	\right)
+}_\#$$
+
+The *circulation* $\Gamma$ is defined as 
+
+$$\underline{
+	\Gamma = \oint_{c} \vec V \cdot d\vec s
+}_\#$$
+
+## Linear Deformation
+
+## Angular Deformation
+
+Recall that in [[#Rotation]], 
+
+$$\Delta \xi = \frac{\partial u}{\partial y}\Delta y\Delta t$$
+$$\Delta \eta = \frac{\partial v}{\partial x} \Delta x \Delta t$$
+$$\Delta \alpha = \Delta \eta / \Delta x$$
+$$\Delta \beta = \Delta \xi / \Delta y$$
+
+Rate of angular deformation in $xy$ plane is
+
+$$\lim_{\Delta t \rightarrow 0} 
+\frac{(\Delta \alpha + \Delta \beta)}{\Delta t} $$
+
+Substitude 
 
 ---
 
