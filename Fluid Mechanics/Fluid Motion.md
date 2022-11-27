@@ -432,7 +432,7 @@ $$\underline{V_\theta \equiv -\frac{\partial \psi}{\partial r}}_\#$$
 We can decompose the fluid particle's motion into four components:
 
 1. [[#Translation]].
-2. Rotation.
+2. [[#Rotation]].
 3. Linear deformation.
 4. Angular deformation.
 
@@ -542,6 +542,10 @@ $$
 	\end{array}
 \right.
 $$
+
+## Rotation
+
+
 
 ---
 

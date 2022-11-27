@@ -85,6 +85,13 @@ See [[Control Volume]].
 
 See [[Fluid Motion]].
 
+# Eularian vs Lagrange
+
+| Eularian                                                                                                                                                                                                    | Lagrange                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| Use the whole field for analysis.                                                                                                                                                                           | Follow a specific particle for analysis. |
+| The equation in [[Fluid Motion#Translation]]. $$d\psi = \frac{\partial \psi}{\partial t}dt + \frac{\partial \psi}{\partial x}dx + \frac{\partial \psi}{\partial y}dy + \frac{\partial \psi}{\partial z}dz$$ | $$d\psi = \frac{d\psi}{dt}dt$$           | 
+
 ---
 
 參考資料:
