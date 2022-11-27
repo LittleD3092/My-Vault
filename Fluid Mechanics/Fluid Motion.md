@@ -431,12 +431,117 @@ $$\underline{V_\theta \equiv -\frac{\partial \psi}{\partial r}}_\#$$
 
 We can decompose the fluid particle's motion into four components:
 
-1. Translation.
+1. [[#Translation]].
 2. Rotation.
 3. Linear deformation.
 4. Angular deformation.
 
 ![[Pasted image 20221127161949.png]]
+
+## Translation
+
+> For a velocity field $\vec V = \vec V(x, y, z, t)$, it might seem that acceleration field is $\vec a = \partial \vec V / \partial t$.
+> This is **incorrect**, since the field describe the velocity of a **position**, not an **individual particle**.
+
+$$\left.
+	\vec V_p
+\right\vert_{t} = \vec V(x, y, z, t)$$
+
+$$\implies \left.
+	\vec V_p
+\right\vert_{t + dt} = \vec V(x + dx, y + dy, z + dz, t + dt)$$
+
+Then the change of velocity of the particle $d\vec V_p$ is given by the chain rule
+
+$$d\vec V_p = \frac{\partial \vec V}{\partial x} dx_p + \frac{\partial \vec V}{\partial y}dy_p + \frac{\partial \vec V}{\partial z}dz_p + \frac{\partial \vec V}{\partial t}dt$$
+
+The acceleration of the particle $\vec a_p$:
+
+$$\vec a_p = \frac{d\vec V_p}{dt} = \frac{\partial \vec V}{\partial x}\frac{d x_p}{dt} + \frac{\partial \vec V}{\partial y}\frac{dy_p}{dt} + \frac{\partial \vec V}{\partial z}\frac{dz_p}{dt} + \frac{\partial \vec V}{\partial t}$$
+
+$$\implies \underline{
+	\underbrace{
+		\frac{D\vec V}{Dt}
+	}_{
+		\begin{array}{}
+			\text{total} \\
+			\text{acceleration} \\
+			\text{of a particle}
+		\end{array}
+	} \equiv \vec a_p
+	= 
+	\underbrace{
+		u\frac{\partial \vec V}{\partial x} + v \frac{\partial \vec V}{\partial y} + w \frac{\partial \vec V}{\partial z}
+	}_{\text{convective acceleration}} +
+	\underbrace{
+		\frac{\partial \vec V}{\partial t}
+	}_{
+		\begin{array}{}
+			\text{local} \\
+			\text{acceleration}
+		\end{array}
+	}
+}_\#$$
+
+May also be written as
+
+$$\implies \underline{
+	\frac{D\vec V}{Dt} \equiv
+	\vec a_p = 
+	(\vec V \cdot \nabla)\vec V +
+	\frac{\partial \vec V}{\partial t}
+}_\#$$
+
+The scalar components for $xyz$ coordinate system and cylindrical coordinates system can be written as
+
+$$
+\left\{
+	\begin{array}{l}
+		\displaystyle
+		a_{x_p} = \frac{Du}{Dt} = 
+		u\frac{\partial u}{\partial x} +
+		v\frac{\partial u}{\partial y} +
+		w\frac{\partial u}{\partial z} +
+		\frac{\partial u}{\partial t} \\
+		\displaystyle
+		a_{y_p} = \frac{Dv}{Dt} = 
+		u\frac{\partial v}{\partial x} +
+		v\frac{\partial v}{\partial y} +
+		w\frac{\partial v}{\partial z} +
+		\frac{\partial v}{\partial t} \\
+		\displaystyle
+		a_{z_p} = \frac{Dw}{Dt} = 
+		u\frac{\partial w}{\partial x} +
+		v\frac{\partial w}{\partial y} +
+		w\frac{\partial w}{\partial z} +
+		\frac{\partial w}{\partial t}
+	\end{array}
+\right.
+$$
+
+$$
+\left\{
+	\begin{array}{l}
+		\displaystyle
+		a_{r_p} = 
+		V_r\frac{\partial V_r}{\partial r} +
+		\frac{V_{\theta}}{r}\frac{\partial V_r}{\partial \theta} - 
+		\frac{V_{\theta}^2}{r} +
+		V_z \frac{\partial V_r}{\partial z} + \frac{\partial V_r}{\partial t} \\
+		\displaystyle
+		a_{\theta_p} = 
+		V_r\frac{\partial V_\theta}{\partial r} +
+		\frac{V_{\theta}}{r}\frac{\partial V_\theta}{\partial \theta} +
+		\frac{V_r V_{\theta}}{r} +
+		V_z \frac{\partial V_\theta}{\partial z} + \frac{\partial V_\theta}{\partial t} \\
+		\displaystyle
+		a_{z_p} = 
+		V_r\frac{\partial V_z}{\partial r} +
+		\frac{V_{\theta}}{r}\frac{\partial V_z}{\partial \theta} +
+		V_z \frac{\partial V_z}{\partial z} + \frac{\partial V_z}{\partial t} \\
+	\end{array}
+\right.
+$$
 
 ---
 
