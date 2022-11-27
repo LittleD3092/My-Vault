@@ -738,6 +738,8 @@ $$\text{Rate of angular deformation}_{zx} =
 
 # Momentum Equation
 
+## Force Acting on a Particle
+
 Note that Newton's second law is given by
 
 $$\vec F = 
@@ -764,6 +766,191 @@ $$ = dm \frac{D \vec V}{Dt} = dm
 	w \frac{\partial \vec V}{\partial z} +
 	\frac{\partial \vec V}{\partial t}
 \right]$$
+
+To obtain the net force in the $x$ direction, $dF_{S_x}$, we sum the forces in the $x$ direction.
+
+$$dF_{S_x} = 
+\left(
+	\sigma_{xx} + 
+	\frac{\partial \sigma_{xx}}{\partial x}
+	\frac{dx}{2}
+\right)dydz - 
+\left(
+	\sigma_{xx} - 
+	\frac{\partial \sigma_{xx}}{\partial x}
+	\frac{dx}{2}
+\right)dydz +
+\left(
+	\tau_{yx} + 
+	\frac{\partial \tau_{yx}}{\partial y}
+	\frac{dy}{2}
+\right)dxdz - 
+\left(
+	\tau_{yx} - 
+	\frac{\partial \tau_{yx}}{\partial y}
+	\frac{dy}{2}
+\right)dxdz +
+\left(
+	\tau_{zx} + 
+	\frac{\partial \tau_{zx}}{\partial z}
+	\frac{dz}{2}
+\right)dxdy - 
+\left(
+	\tau_{zx} - 
+	\frac{\partial \tau_{zx}}{\partial z}
+	\frac{dz}{2}
+\right)dxdy$$
+
+$$ = \left(
+	\frac{\partial \sigma_{xx}}{\partial x} +
+	\frac{\partial \tau_{yx}}{\partial y} +
+	\frac{\partial \tau_{zx}}{\partial z}
+\right)dxdydz$$
+
+The force $dF_x, dF_y, dF_z$ is the sum of body force and surface force:
+
+$$
+\left\{
+	\begin{array}{l}
+		\displaystyle
+		dF_x = dF_{B_x} + dF_{S_x} = 
+		\left(
+			\rho g_x + 
+			\frac{\partial \sigma_{xx}}
+			{\partial x} +
+			\frac{\partial \tau_{yx}}
+			{\partial y} +
+			\frac{\partial \tau_{zx}}
+			{\partial z}
+		\right)dxdydz \\
+		\displaystyle
+		dF_y = dF_{B_y} + dF_{S_y} = 
+		\left(
+			\rho g_y + 
+			\frac{\partial \tau_{xy}}
+			{\partial x} +
+			\frac{\partial \sigma_{yy}}
+			{\partial y} + 
+			\frac{\partial \tau_{zy}}
+			{\partial z}
+		\right)dxdydz \\
+		\displaystyle
+		dF_z = dF_{B_z} + dF_{S_z} = 
+		\left(
+			\rho g_z + 
+			\frac{\partial \tau_{xz}}
+			{\partial x} +
+			\frac{\partial \tau_{yz}}
+			{\partial y} +
+			\frac{\partial \sigma_{zz}}
+			{\partial z}
+		\right)dxdydz
+	\end{array}
+\right.
+$$
+
+## Differential Momentum Equation
+
+If we substitude [[#Force Acting on a Particle]]
+
+$$
+\left\{
+	\begin{array}{l}
+		\displaystyle
+		dF_x = dF_{B_x} + dF_{S_x} = 
+		\left(
+			\rho g_x + 
+			\frac{\partial \sigma_{xx}}
+			{\partial x} +
+			\frac{\partial \tau_{yx}}
+			{\partial y} +
+			\frac{\partial \tau_{zx}}
+			{\partial z}
+		\right)dxdydz \\
+		\displaystyle
+		dF_y = dF_{B_y} + dF_{S_y} = 
+		\left(
+			\rho g_y + 
+			\frac{\partial \tau_{xy}}
+			{\partial x} +
+			\frac{\partial \sigma_{yy}}
+			{\partial y} + 
+			\frac{\partial \tau_{zy}}
+			{\partial z}
+		\right)dxdydz \\
+		\displaystyle
+		dF_z = dF_{B_z} + dF_{S_z} = 
+		\left(
+			\rho g_z + 
+			\frac{\partial \tau_{xz}}
+			{\partial x} +
+			\frac{\partial \tau_{yz}}
+			{\partial y} +
+			\frac{\partial \sigma_{zz}}
+			{\partial z}
+		\right)dxdydz
+	\end{array}
+\right.
+$$
+
+to Newton's second law in section [[#Force Acting on a Particle]]
+
+$$ = dm \frac{D \vec V}{Dt} = dm
+\left[
+	u \frac{\partial \vec V}{\partial x} +
+	v \frac{\partial \vec V}{\partial y} +
+	w \frac{\partial \vec V}{\partial z} +
+	\frac{\partial \vec V}{\partial t}
+\right]$$
+
+We get 
+
+$$
+\left\{
+	\begin{array}{}
+		\displaystyle
+		\rho g_x + 
+		\frac{\partial \sigma_{xx}}{\partial x} +
+		\frac{\partial \tau_{yx}}{\partial y} + 
+		\frac{\partial \tau_{zx}}{\partial z} 
+		&=&
+		\rho \left(
+			\frac{\partial u}{\partial t} +
+			u\frac{\partial u}{\partial x} +
+			v\frac{\partial u}{\partial y} +
+			w\frac{\partial u}{\partial z}
+		\right) \\
+		\displaystyle
+		\rho g_y + 
+		\frac{\partial \tau_{xy}}{\partial x} +
+		\frac{\partial \sigma_{yy}}{\partial y} +
+		\frac{\partial \tau_{zy}}{\partial z} 
+		&=& 
+		\rho \left(
+			\frac{\partial v}{\partial t} +
+			u\frac{\partial v}{\partial x} +
+			v\frac{\partial v}{\partial y} +
+			w\frac{\partial v}{\partial z}
+		\right) \\
+		\displaystyle
+		\rho g_z + 
+		\frac{\partial \tau_{xz}}{\partial x} +
+		\frac{\partial \tau_{yz}}{\partial y} +
+		\frac{\partial \sigma_{xx}}{\partial z} 
+		&=&
+		\rho\left(
+			\frac{\partial w}{\partial t} +
+			u\frac{\partial w}{\partial x} +
+			v\frac{\partial w}{\partial y} +
+			w\frac{\partial w}{\partial z}
+		\right)
+	\end{array}
+\right.
+$$
+
+## Navier-Stokes Equations
+
+[[Navier-Stokes Equations]]
 
 ---
 
