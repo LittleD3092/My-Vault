@@ -403,6 +403,41 @@ Substitude $u, v$ of the above into the streamline equation:
 
 $$\implies \frac{\partial \psi}{\partial x}dx + \frac{\partial \psi}{\partial y}dy = 0$$
 
+> By math, we know that
+> $$\left\{\begin{array}{} \partial \psi = u\partial y \\ \partial \psi = -v\partial x \end{array}\right. \implies \left\{ \begin{array}{} d\psi = udy + f(x) \\ d\psi = -vdx + f(y) \end{array} \right.$$
+> $$\implies d\psi = udy + udx$$
+
+$$\implies d\psi = \frac{\partial \psi}{\partial x}dx + \frac{\partial \psi}{\partial y}dy = 0$$
+
+By the above result, we find out that
+
+1. $\psi$ is a constant along a streamline.
+2. We can specify individual streamlines by their stream function values $\psi = 0, 1, 2 \dots$
+3. The volume flow rate between two streamlines is given by the difference between the two stream function values $\psi_2 - \psi_1$.
+
+Using 2D incompressible flow equation in [[#Cylindrical Coordinate System]], 
+
+$$\frac{\partial (rV_r)}{\partial r} +
+\frac{\partial V_{\theta}}{\partial \theta} = 0$$
+
+and define a stream function $\psi$ to satisfy the equation above:
+
+$$\underline{V_r \equiv 
+\frac 1 r\frac{\partial \psi}{\partial \theta}}_\#$$
+
+$$\underline{V_\theta \equiv -\frac{\partial \psi}{\partial r}}_\#$$
+
+# Kinematics
+
+We can decompose the fluid particle's motion into four components:
+
+1. Translation.
+2. Rotation.
+3. Linear deformation.
+4. Angular deformation.
+
+![[Pasted image 20221127161949.png]]
+
 ---
 
 參考資料:
