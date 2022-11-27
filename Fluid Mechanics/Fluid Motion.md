@@ -395,6 +395,14 @@ $$\underline{
 	\right.
 }_\#$$
 
+> From [[Continuum Lines]]:
+> $$\left.\frac{dy}{dx}\right)_{\text{streamline}} = \frac v u$$
+> $$\implies udy - vdx = 0$$
+
+Substitude $u, v$ of the above into the streamline equation:
+
+$$\implies \frac{\partial \psi}{\partial x}dx + \frac{\partial \psi}{\partial y}dy = 0$$
+
 ---
 
 參考資料:
