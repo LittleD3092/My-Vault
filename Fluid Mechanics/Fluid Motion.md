@@ -717,7 +717,22 @@ Rate of angular deformation in $xy$ plane is
 $$\lim_{\Delta t \rightarrow 0} 
 \frac{(\Delta \alpha + \Delta \beta)}{\Delta t} $$
 
-Substitude 
+Substitude $\Delta \alpha, \Delta \beta, \Delta \xi, \Delta \eta$ yields
+
+$$\text{Rate of angular deformation}_{xy} = 
+\frac{\partial v}{\partial x} + 
+\frac{\partial u}{\partial y}$$
+
+Using the same way, we can get similar expressions for $yz$ and $zx$ planes:
+
+$$\text{Rate of angular deformation}_{yz} = 
+\frac{\partial w}{\partial y} + 
+\frac{\partial v}{\partial z}$$
+$$\text{Rate of angular deformation}_{zx} = 
+\frac{\partial w}{\partial x} +
+\frac{\partial u}{\partial z}$$
+
+
 
 ---
 
