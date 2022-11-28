@@ -709,7 +709,7 @@ $$\underline{
 
 Change in length of the sides may produce changes in volume of the element. The rate of local instantaneous *volume dilation* is given by
 
-$$\text{Volume dilation rate} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = \nabla \cdot \vec V$$
+$$\underline{\text{Volume dilation rate} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = \nabla \cdot \vec V}_\#$$
 
 ## Angular Deformation
 
