@@ -32,7 +32,16 @@ $$c(t) = c_{\rm tr} + c_{\rm ss}(t)$$
 - **Stable**: If the output eventually comes back to its equilibrium state when subjected to an initial condition.
 - **Critically stable**: The oscillation continues forever.
 - **Unstable**: The output diverges without bound from its equilibrium state.
-- 
+
+# First-Order Systems
+
+![[Pasted image 20221128152511.png]]
+
+The input-output relationship is
+
+$$\frac{C(s)}{R(s)} = \frac{1}{Ts + 1}$$
+
+
 
 ---
 
