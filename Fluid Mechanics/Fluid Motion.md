@@ -664,6 +664,8 @@ $$\underline{
 	\vec \omega = \frac 1 2 \nabla \times \vec V
 }_\#$$
 
+### Vorticity
+
 The *vorticity* $\vec \zeta$ is defined to be twice the rotation
 
 $$\underline{
@@ -694,6 +696,8 @@ $$\underline{
 		\frac{\partial V_r}{\partial \theta}
 	\right)
 }_\#$$
+
+### Circulation
 
 The *circulation* $\Gamma$ is defined as 
 
