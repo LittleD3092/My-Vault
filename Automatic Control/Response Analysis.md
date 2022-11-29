@@ -185,11 +185,11 @@ $$
 \end{array}
 $$
 
-We use [[Inverse Laplace Transform]]:
+We use [[Inverse Laplace Transform]] to obtain $c(t)$:
 
 $$
 \begin{array}{l}
-	\mathcal L^{-1}[C(s)] & = & c(t) \\
+	c(t) & = & \mathcal L^{-1}[C(s)] \\
 	& = & 
 	\displaystyle
 	1 - e^{-\zeta \omega_n t}
@@ -203,8 +203,36 @@ $$
 	1 - 
 	\frac{e^{-\zeta \omega_n t}}
 	{\sqrt{1 - \zeta^2}}
+	\sin\left(
+		\omega_d t + 
+		\tan^{-1}
+		\frac{\sqrt{1 - \zeta^2}}{\zeta}
+	\right)
 \end{array}
 $$
+
+> It can be seen that the frequency of transient oscillation is the damped naturaal frequency $\omega_d$ and thus varies with the damping ratio $\zeta$.
+> $$\omega_d = \omega_n\sqrt{1 - \zeta^2}$$
+
+The error signal is
+
+$$
+\begin{array}{l}
+	e(t) & = & r(t) - c(t) \\
+	 & = & 
+	 \displaystyle
+	 e^{-\zeta \omega_n t}
+	 \left(
+		 \cos\omega_d t + 
+		 \frac{\zeta}{\sqrt{1 - \zeta^2}}
+		 \sin\omega_d t
+	 \right)
+\end{array}
+$$
+
+> This error signal exhibits a damped sinusoidal oscillation. At steady state $t =\infty$, no error exists between the input and output.
+
+
 
 ---
 
