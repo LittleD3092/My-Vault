@@ -11,15 +11,16 @@
 
 [[Laplace Transform]] 是怎麼算的，Inverse Laplace Transform 就算回去
 
-| $$F(s)$$                 | $$L^{-1}\{F(s)\}$$ |
-| ------------------------ | ------------------ |
-| $$\frac{1}{s}$$          | $$1$$              |
-| $$\frac{n!}{s^{n + 1}}$$ | $$t^n$$            |
-| $$\frac{1}{s - a}$$      | $$e^{at}$$         |
-| $$\frac{k}{s^2 + k^2}$$  | $$\sin(kt)$$       |
-| $$\frac{s}{s^2 + k^2}$$  | $$\cos(kt)$$       |
-| $$\frac{k}{s^2 - k^2}$$  | $$\sinh(kt)$$      |
-| $$\frac{s}{s^2 - k^2}$$  | $$\cosh(kt)$$      | 
+| $$F(s)$$                 | $$L^{-1}\{F(s)\}$$                           |
+| ------------------------ | -------------------------------------------- |
+| $$\frac{1}{s}$$          | $$1$$                                        |
+| $$\frac{n!}{s^{n + 1}}$$ | $$t^n$$                                      |
+| $$\frac{1}{s - a}$$      | $$e^{at}$$                                   |
+| $$\frac{k}{s^2 + k^2}$$  | $$\sin(kt)$$                                 |
+| $$\frac{s}{s^2 + k^2}$$  | $$\cos(kt)$$                                 |
+| $$\frac{k}{s^2 - k^2}$$  | $$\sinh(kt)$$                                |
+| $$\frac{s}{s^2 - k^2}$$  | $$\cosh(kt)$$                                |
+| $$e^{-t_0s}$$            | [[Dirac Delta Function]] $$\delta(t - t_0)$$ |
 
 > if $\mathcal{ L }^{ -1 }\{ F(s) \} = f(t)$ then $$\mathcal{ L }^{ -1 }\{F(s - a)\} = e^{ at }f(t)$$
 > Example:

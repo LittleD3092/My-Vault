@@ -41,7 +41,170 @@ The input-output relationship is
 
 $$\frac{C(s)}{R(s)} = \frac{1}{Ts + 1}$$
 
+| Input        | Output $\displaystyle C(s)$                                      | Output $c(t)$                          | Error $e(t)$      | Steady state error $e(\infty)$ |
+| ------------ | ---------------------------------------------------------------- | -------------------------------------- | ----------------- | ------------------------------ |
+| Unit-step    | $\displaystyle \frac{1}{s} - \frac{1}{s+(1/T)}$                  | $\displaystyle 1 - e^{-t / T}$         | $e^{-t / T}$      | $0$                            |
+| Unit-ramp    | $\displaystyle \frac{1}{s^2} - \frac{T}{s} + \frac{T^2}{Ts + 1}$ | $t - T + Te^{-t / T}$                  | $T(1 - e^{-t/T})$ | $T$                            |
+| Unit-impulse | $\displaystyle \frac{1}{Ts + 1}$                                 | $\displaystyle \frac{1}{T} e^{-t / T}$ |                   |                                |
 
+## Unit-Step Response
+
+For unit-step response, the [[Laplace Transform]] of it is $1/s$, 
+
+$$C(s) = \frac{1}{Ts + 1}\frac 1 s = \frac 1 s - \frac{1}{s + (1/T)}$$
+
+Using [[Inverse Laplace Transform]],
+
+$$c(s) = 1 - e^{-t/T}$$
+
+According to the output, we can draw the diagram:
+
+![[Pasted image 20221129210856.png|400]]
+
+## Unit-Ramp Response
+
+The [[Laplace Transform]] of unit-ramp function is $1/s^2$, therefore
+
+$$C(s) = \frac{1}{Ts+1}\frac{1}{s^2}$$
+
+Expanding into partial fractions:
+
+$$C(s) = \frac{1}{s^2} - \frac{T}{s} + \frac{T^2}{Ts + 1}$$
+
+Taking [[Inverse Laplace Transform]]:
+
+$$c(t) = t - T + Te^{-t / T}$$
+
+The error $e(t)$ is:
+
+$$e(t) = r(t) - c(t) = T(1 - e^{-t/T})$$
+
+The steady state error $e(\infty)$:
+
+$$e(\infty) = T$$
+
+![[Pasted image 20221129213039.png|400]]
+
+## Unit-Impulse Response
+
+For unit-impulse ([[Dirac Delta Function]]) input, the [[Laplace Transform]] of it is $1$, and the output is
+
+$$C(s) = \frac{1}{Ts + 1}$$
+
+The [[Inverse Laplace Transform]]:
+
+$$c(s) = \frac{1}{T} e^{-t / T}$$
+
+![[Pasted image 20221129213058.png|400]]
+
+# Second-Order Systems
+
+A second-order system has a transfer function:
+
+$$\frac{C(s)}{R(s)} = \frac{K}{Js^2 + Bs + K}$$
+
+$$\implies \frac{C(s)}{R(s)} = 
+\frac{
+	\displaystyle \frac{K}{J}
+}
+{
+	\displaystyle 
+	\left[
+		s + \frac{B}{2J} + 
+		\sqrt{
+			\left(
+				\frac{B}{2J}
+			\right)^2 - \frac K J
+		}
+	\right]
+	\left[
+		s +
+		\frac B {2J} - 
+		\sqrt{
+			\left(
+				\frac B {2J}
+			\right)^2 - \frac K J
+		}
+	\right]
+}$$
+
+We can simplify the above equation by
+
+- $\omega_n$: undamped natural frequency
+- $\sigma$: attenuation
+- $\zeta$: damping ratio
+	- $B$: actual damping
+	- $B_c$: critical damping
+- $\displaystyle \frac K J = \omega_n^2$
+- $\displaystyle \frac B J = 2\zeta \omega_n = 2\sigma$
+- $\displaystyle \zeta = \frac B {B_c} = \frac B {2 \sqrt{JK}}$
+
+$$\implies \frac{C(s)}{R(s)} = \frac{\omega_n^2}{s^2 + 2\zeta \omega_n s + \omega_n^2}$$
+
+This form of second-order systems is called the **standard form**.
+
+According to the damping ratio $\zeta$, there are several dynamic behavior:
+
+1. $0 < \zeta < 1$: Underdamped. The transient response is oscillatory.
+2. $\zeta = 0$: The transient response does not die out.
+3. $\zeta = 1$: Critically damped.
+4. $\zeta > 1$: Overdamped.
+
+## Step Response
+
+To solve the step response, we shall consider 3 cases.
+
+### Underdamped
+
+In this case, transfer function can be written as
+
+$$\frac{C(s)}{R(s)} = \frac{\omega_n^2}{(s + \zeta \omega_n + j \omega_d)(s + \zeta \omega_n - j\omega_d)}$$
+
+- $\omega_d = \omega_n\sqrt{1 - \zeta^2}$. $\omega_d$ is called the **damped natural frequency**.
+
+For a unit-step input,
+
+$$
+\begin{array}{l}
+	C(s) & = & 
+	\displaystyle
+	\frac{\omega_n^2}
+	{(s^2 + 2 \zeta \omega_n s + \omega_n^2)s} \\
+	& = & 
+	\displaystyle
+	\frac{1}{s} - 
+	\frac{s + 2 \zeta \omega_n}
+	{s^2 + 2\zeta \omega_n s + \omega_n^2} \\
+	& = & 
+	\displaystyle
+	\frac{1}{s} - 
+	\frac{s + \zeta\omega_n}
+	{(s + \zeta\omega_n)^2 + \omega_d^2} - 
+	\frac{\zeta \omega_n}
+	{(s + \zeta\omega_n)^2 + \omega_d^2}
+\end{array}
+$$
+
+We use [[Inverse Laplace Transform]]:
+
+$$
+\begin{array}{l}
+	\mathcal L^{-1}[C(s)] & = & c(t) \\
+	& = & 
+	\displaystyle
+	1 - e^{-\zeta \omega_n t}
+	\left(
+		\cos \omega_d t + 
+		\frac{\zeta}{\sqrt{1 - \zeta^2}}
+		\sin \omega_d t
+	\right) \\
+	& = & 
+	\displaystyle
+	1 - 
+	\frac{e^{-\zeta \omega_n t}}
+	{\sqrt{1 - \zeta^2}}
+\end{array}
+$$
 
 ---
 
