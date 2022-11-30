@@ -155,8 +155,12 @@ According to the damping ratio $\zeta$, there are several dynamic behavior:
 To solve the step response, we shall consider 3 cases.
 
 - [[#Underdamped]]
+- [[#Critically Damped]]
+- [[#Overdamped]]
 
 ### Underdamped
+
+> Underdamped: $0 < \zeta < 1$.
 
 In this case, transfer function can be written as
 
@@ -234,7 +238,73 @@ $$
 
 > This error signal exhibits a damped sinusoidal oscillation. At steady state $t =\infty$, no error exists between the input and output.
 
+### Critically Damped
 
+> Critically damped: $\zeta = 1$.
+
+For a unit-step input, $R(s) = 1 / s$ and $C(s)$ can be written as
+
+$$C(s) = \frac{\omega_n^2}{(s + \omega_n)^2 s}$$
+
+Using [[Inverse Laplace Transform]]:
+
+$$c(t) = 1 - e^{-\omega_n t}(1 + \omega_n t)$$
+
+### Overdamped
+
+> Overdamped: $\zeta > 1$.
+
+For a unit-step input, $R(s) = 1 / s$ and $C(s)$ can be written:
+
+$$C(s) = 
+\frac{\omega_n^2}
+{
+	(
+		s + 
+		\zeta \omega_n + 
+		\omega_n \sqrt{\zeta^2 - 1}
+	)
+	(
+		s +
+		\zeta \omega_n -
+		\omega \sqrt{\zeta^2 - 1}
+	)s
+}$$
+
+Use [[Inverse Laplace Transform]]:
+
+$$
+\begin{array}{l}
+	c(t) & = & 
+	\displaystyle
+	1 + 
+	\frac{1}
+	{
+		2 \sqrt{\zeta^2 - 1}
+		(
+			\zeta + \sqrt{\zeta^2 - 1}
+		)
+	} e^{-(\zeta + \sqrt{\zeta^2 - 1})\omega_n t} - 
+	\frac{1}
+	{
+		2 \sqrt{\zeta^2 - 1}
+		(\zeta - \sqrt{\zeta^2 - 1})
+	}e^{-(\zeta - \sqrt{\zeta^2 - 1})\omega_n t} \\
+	& = & 
+	\displaystyle
+	1 + \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}}
+	\left(
+		\frac{e^{-s_1t}}{s_1} - 
+		\frac{e^{-s_2t}}{s_2}
+	\right)
+\end{array}
+$$
+
+- $s_1 = (\zeta + \sqrt{\zeta^2 - 1})\omega_n$
+- $s_2 = (\zeta - \sqrt{\zeta^2 - 1})\omega_n$
+
+Consider a case which $\zeta >> 1$, $\vert s_1 \vert >> \vert 
+s_2 \vert$ 
 
 ---
 
