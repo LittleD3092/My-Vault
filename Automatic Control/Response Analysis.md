@@ -344,6 +344,7 @@ The sections below is the process of obtaining the specifications, and their equ
 | [[#Peak Time]]         | $\displaystyle t_p = \frac{\pi}{\omega_d}$                                                                                                                                                                               |                                           |
 | [[#Maximum Overshoot]] | $\displaystyle \begin{array}{} \\ \displaystyle e^{-(\sigma / \omega_d)\pi} \\ \\ \displaystyle e^{-(\zeta / \sqrt{1 - \zeta^2})\pi} \\ \end{array}$                                                                     |                                           |
 | [[#Settling Time]]     | $\begin{array}{} \displaystyle t_s = 4T = \frac 4 \sigma = \frac{4}{\zeta \omega_n} & \text{(2\% criterion)} \\ \displaystyle t_s = 3T = \frac 3 \sigma = \frac 3 {\zeta \omega_n} & \text{(5\% criterion)} \end{array}$ |                                           |
+| Delay Time             | $\displaystyle t_d = \frac{1 + 0.7\zeta}{\omega_n}$                                                                                                                                                                      |                                           |
 
 ### Rise Time
 
