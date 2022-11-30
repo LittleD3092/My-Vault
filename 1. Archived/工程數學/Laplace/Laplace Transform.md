@@ -18,15 +18,16 @@ Laplace Transform 是一種 [[Integral Transform]]
 
 底下這個東西要背起來
 
-| $$f(t)$$      | $$F(s)$$                 | 算法                                   |
-| ------------- | ------------------------ | -------------------------------------- |
-| $$1$$         | $$\frac{1}{s}$$          | [[#L 1 frac 1 s \| link (1)]]          |
-| $$t^n$$       | $$\frac{n!}{s^{n + 1}}$$ | [[#mathcal L t frac 1 s 2\| link (t)]] | 
-| $$\exp(at)$$  | $$\frac{1}{s - a}$$      |                                        |
-| $$\sin(kt)$$  | $$\frac{k}{s^2 + k^2}$$  |                                        |
-| $$\cos(kt)$$  | $$\frac{s}{s^2 + k^2}$$  | see [[Table of Integration]]                                       |
-| $$\sinh(kt)$$ | $$\frac{k}{s^2 - k^2}$$  |                                        |
-| $$\cosh(kt)$$ | $$\frac{s}{s^2 - k^2}$$  |                                        |
+| $$f(t)$$                                      | $$F(s)$$                 | 算法                                   |
+| --------------------------------------------- | ------------------------ | -------------------------------------- |
+| $$1$$                                         | $$\frac{1}{s}$$          | [[#L 1 frac 1 s \| link (1)]]          |
+| $$t^n$$                                       | $$\frac{n!}{s^{n + 1}}$$ | [[#mathcal L t frac 1 s 2\| link (t)]] |
+| $$\exp(at)$$                                  | $$\frac{1}{s - a}$$      |                                        |
+| $$\sin(kt)$$                                  | $$\frac{k}{s^2 + k^2}$$  |                                        |
+| $$\cos(kt)$$                                  | $$\frac{s}{s^2 + k^2}$$  | see [[Table of Integration]]           |
+| $$\sinh(kt)$$                                 | $$\frac{k}{s^2 - k^2}$$  |                                        |
+| $$\cosh(kt)$$                                 | $$\frac{s}{s^2 - k^2}$$  |                                        |
+| [[Dirac Delta Function]] $$\delta (t - t_0)$$ | $$e^{-t_0s}$$                         |                                        |
 
 ### $\mathcal{L}\{1\} = \frac{1}{s}$
 
