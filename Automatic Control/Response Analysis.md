@@ -317,6 +317,43 @@ The time response is then
 
 $$c(t) = 1 - e^{-(\zeta - \sqrt{\zeta^2 - 1})\omega_n t} \qquad \text{for } \zeta >> 1$$
 
+## Impulse Response
+
+For unit-impulse, $R(s) = 1$. The unit-impulse response $C(s)$ of the second-order system is
+
+$$C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$$
+
+The [[Inverse Laplace Transform]]:
+
+$$
+\begin{array}{l}
+	\text{For } 0 \leq \zeta < 1 &
+	\displaystyle
+	c(t) = \frac{\omega_n}{\sqrt{1 - \zeta^2}} e^{-\zeta \omega_n t}\sin \omega_n \sqrt{1 - \zeta^2}t \\
+	\displaystyle
+	\text{For } \zeta = 1 &
+	\displaystyle
+	c(t) = \omega_n^2 te^{-\omega_n t} \\
+	\text{For } \zeta > 1 &
+	\displaystyle
+	c(t) = \frac{\omega_n}{2\sqrt{\zeta^2 - 1}} e^{-(\zeta - \sqrt{\zeta^2 - 1})\omega_n t} - 
+	\frac{\omega_n}{2\sqrt{\zeta^2 - 1}}
+	e^{-(\zeta + \sqrt{\zeta^2 - 1})\omega_n t}
+\end{array}
+$$
+
+The [[#Maximum Overshoot]] occurs at
+
+$$t = \frac{\tan^{-1} \frac{\displaystyle\sqrt{1 - \zeta^2}}{\displaystyle \zeta}}{\omega_n \sqrt{1 - \zeta^2}} \qquad \text{where } 0 < \zeta < 1$$
+
+And the value is
+
+$$c(t)_{\max} = \omega_n \exp
+\left(
+	-\frac{\zeta}{\sqrt{1 - \zeta^2}} \tan^{-1}
+	\frac{\sqrt{1 - \zeta^2}}{\zeta}
+\right) \qquad \text{where } 0 < \zeta < 1$$
+
 ## Transient-Response Specifications
 
 To specify the characteristics of a control system, it is custom to specify the following:
@@ -457,6 +494,10 @@ The settling time of a second-order system is some approximate value.
 $$
 \begin{array}{} \displaystyle t_s = 4T = \frac 4 \sigma = \frac{4}{\zeta \omega_n} & \text{(2\% criterion)} \\ \displaystyle t_s = 3T = \frac 3 \sigma = \frac 3 {\zeta \omega_n} & \text{(5\% criterion)} \end{array}
 $$
+
+# Higher-Order Systems
+
+
 
 ---
 
