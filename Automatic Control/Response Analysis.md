@@ -319,7 +319,22 @@ $$c(t) = 1 - e^{-(\zeta - \sqrt{\zeta^2 - 1})\omega_n t} \qquad \text{for } \zet
 
 ## Transient-Response Specifications
 
+To specify the characteristics of a control system, it is custom to specify the following:
 
+1. **Delay time** $t_d$: The time required to reach $50\%$ response.
+2. **Rise time** $t_r$: The time required from $10\% \sim 90\%$, $5\% \sim 95\%$, or $0\% \sim 100\%$ response. 
+	- For *underdamped second-order systems*, $0\% \sim 100\%$ is commonly used.
+	- For *overdamped systems*, $10\% \sim 90\%$ is commonly used.
+3. **Peak time** $t_p$: The time required for the response to reach the first peak.
+4. **Maximum overshoot** $M_p$: Maximum peak value of the response measured from unity.
+$$\text{Maximum percent overshoot} = \frac{c(t_p) - c(\infty)}{c(\infty)} \times 100 \%$$
+5. **Setting time** $t_s$: The time required for the response to reach and stay within a range.
+
+![[Pasted image 20221130202521.png]]
+
+- For a *desirable transient response*, damping ratio $\zeta$ must be between $0.4$ and $0.8$.
+- $\zeta < 0.4$ yield *excessive overshoot* in the transient response.
+- System with $\zeta > 0.8$ responds sluggishly.
 
 ---
 
