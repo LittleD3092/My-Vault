@@ -338,10 +338,11 @@ $$\text{Maximum percent overshoot} = \frac{c(t_p) - c(\infty)}{c(\infty)} \times
 
 The sections below is the process of obtaining the specifications, and their equations are listed below:
 
-| Specification  | Equation                                                                                                               | Comments                             |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| [[#Rise Time]] | $\displaystyle t_r = \frac{1}{\omega_d} \tan^{-1}\left(\frac{\omega_d}{-\sigma}\right) = \frac{\pi - \beta}{\omega_d}$ | ![[Pasted image 20221130205830.png\|300]] |
-| [[#Peak Time]] | $\displaystyle t_p = \frac{\pi}{\omega_d}$                                                                             |                                      |
+| Specification          | Equation                                                                                                                                    | Comments                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| [[#Rise Time]]         | $\displaystyle t_r = \frac{1}{\omega_d} \tan^{-1}\left(\frac{\omega_d}{-\sigma}\right) = \frac{\pi - \beta}{\omega_d}$                      | ![[Pasted image 20221130205830.png\|300]] |
+| [[#Peak Time]]         | $\displaystyle t_p = \frac{\pi}{\omega_d}$                                                                                                  |                                           |
+| [[#Maximum Overshoot]] | $\displaystyle \begin{array}{} \displaystyle e^{-(\sigma / \omega_d)\pi} \\ \displaystyle e^{-(\zeta / \sqrt{1 - \zeta^2})\pi} \end{array}$ |                                           |
 
 ### Rise Time
 
@@ -436,9 +437,22 @@ $$
 		\frac{\zeta}{\sqrt{1 - \zeta^2}}
 		\sin\pi
 	\right) \\
-	
+	& = & 
+	\displaystyle
+	\underline{ e^{-(\sigma / \omega_d) \pi} }_\# \\
+	& = & \underline{e^{-(\zeta / \sqrt{1 - \zeta^2})\pi}}_\#
 \end{array}
 $$
+
+**If the final value of the output is not unity**, then we need to use the following equation:
+
+$$M_p = \frac{c(t_p) - c(\infty)}{c(\infty)}$$
+
+### Settling Time
+
+Referring to the $c(t)$ equation in section [[#Underdamped]]:
+
+
 
 ---
 
