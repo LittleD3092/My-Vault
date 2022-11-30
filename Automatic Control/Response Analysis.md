@@ -338,11 +338,12 @@ $$\text{Maximum percent overshoot} = \frac{c(t_p) - c(\infty)}{c(\infty)} \times
 
 The sections below is the process of obtaining the specifications, and their equations are listed below:
 
-| Specification          | Equation                                                                                                                                    | Comments                                  |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| [[#Rise Time]]         | $\displaystyle t_r = \frac{1}{\omega_d} \tan^{-1}\left(\frac{\omega_d}{-\sigma}\right) = \frac{\pi - \beta}{\omega_d}$                      | ![[Pasted image 20221130205830.png\|300]] |
-| [[#Peak Time]]         | $\displaystyle t_p = \frac{\pi}{\omega_d}$                                                                                                  |                                           |
-| [[#Maximum Overshoot]] | $\displaystyle \begin{array}{} \displaystyle e^{-(\sigma / \omega_d)\pi} \\ \displaystyle e^{-(\zeta / \sqrt{1 - \zeta^2})\pi} \end{array}$ |                                           |
+| Specification          | Equation                                                                                                                                                                                                                 | Comments                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| [[#Rise Time]]         | $\displaystyle t_r = \frac{1}{\omega_d} \tan^{-1}\left(\frac{\omega_d}{-\sigma}\right) = \frac{\pi - \beta}{\omega_d}$                                                                                                   | ![[Pasted image 20221130205830.png\|300]] |
+| [[#Peak Time]]         | $\displaystyle t_p = \frac{\pi}{\omega_d}$                                                                                                                                                                               |                                           |
+| [[#Maximum Overshoot]] | $\displaystyle \begin{array}{} \\ \displaystyle e^{-(\sigma / \omega_d)\pi} \\ \\ \displaystyle e^{-(\zeta / \sqrt{1 - \zeta^2})\pi} \\ \end{array}$                                                                     |                                           |
+| [[#Settling Time]]     | $\begin{array}{} \displaystyle t_s = 4T = \frac 4 \sigma = \frac{4}{\zeta \omega_n} & \text{(2\% criterion)} \\ \displaystyle t_s = 3T = \frac 3 \sigma = \frac 3 {\zeta \omega_n} & \text{(5\% criterion)} \end{array}$ |                                           |
 
 ### Rise Time
 
@@ -450,9 +451,11 @@ $$M_p = \frac{c(t_p) - c(\infty)}{c(\infty)}$$
 
 ### Settling Time
 
-Referring to the $c(t)$ equation in section [[#Underdamped]]:
+The settling time of a second-order system is some approximate value.
 
-
+$$
+\begin{array}{} \displaystyle t_s = 4T = \frac 4 \sigma = \frac{4}{\zeta \omega_n} & \text{(2\% criterion)} \\ \displaystyle t_s = 3T = \frac 3 \sigma = \frac 3 {\zeta \omega_n} & \text{(5\% criterion)} \end{array}
+$$
 
 ---
 
