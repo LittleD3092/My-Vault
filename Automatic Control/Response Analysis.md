@@ -495,9 +495,9 @@ $$
 \begin{array}{} \displaystyle t_s = 4T = \frac 4 \sigma = \frac{4}{\zeta \omega_n} & \text{(2\% criterion)} \\ \displaystyle t_s = 3T = \frac 3 \sigma = \frac 3 {\zeta \omega_n} & \text{(5\% criterion)} \end{array}
 $$
 
-# Higher-Order Systems
+# Routh's Stability Criterion
 
-
+[[Routh's Stability Criterion]]
 
 ---
 
