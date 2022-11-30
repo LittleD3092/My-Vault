@@ -78,6 +78,32 @@ $$s = \hat s - \sigma$$
 
 Then apply Routh's stability criterion for $\hat s$.
 
+# Application
+
+Consider the system with transfer function
+
+$$\frac{C(s)}{R(s)} = \frac{K}{s(s^2 + s + 1)(s + 2) + K}$$
+
+The characteristic equation is
+
+$$s^4 + 3s^3 + 3s^2 + 2s + K = 0$$
+
+The array becomes
+
+$$
+\begin{array}{}
+	s^4 & 1 & 3 & K \\
+	s^3 & 3 & 2 & 0 \\
+	s^2 & \displaystyle \frac 7 3 & K \\
+	s^1 & \displaystyle 2 - \frac 9 7 K \\
+	s^0 & K
+\end{array}
+$$
+
+For stability, all coefficients in the first column must be positive.
+
+$$\frac{14}{9} > K > 0$$
+
 ---
 
 參考資料:
