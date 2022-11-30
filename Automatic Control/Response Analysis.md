@@ -303,8 +303,19 @@ $$
 - $s_1 = (\zeta + \sqrt{\zeta^2 - 1})\omega_n$
 - $s_2 = (\zeta - \sqrt{\zeta^2 - 1})\omega_n$
 
-Consider a case which $\zeta >> 1$, $\vert s_1 \vert >> \vert 
-s_2 \vert$ 
+Consider a case which $\zeta >> 1$, $\vert s_1 \vert >> \vert s_2\vert$, $C(s) / R(s)$ may be approximated by
+
+$$\frac{C(s)}{R(s)} = 
+\frac{\zeta\omega_n - \omega_n \sqrt{\zeta^2 - 1}}{s + \zeta\omega_n - \omega_n \sqrt{\zeta^2 - 1}} = 
+\frac{s_2}{s + s_2} \qquad \text{for } \zeta >> 1$$
+
+The unit-step response of $\zeta >> 1$ is
+
+$$C(s) = \frac{\zeta \omega_n - \omega_n \sqrt{\zeta^2 - 1}}{(s + \zeta \omega_n - \omega_n \sqrt{\zeta^2 - 1})s} \qquad \text{for } \zeta >> 1$$
+
+The time response is then 
+
+$$c(t) = 1 - e^{-(\zeta - \sqrt{\zeta^2 - 1})\omega_n t} \qquad \text{for } \zeta >> 1$$
 
 ---
 
