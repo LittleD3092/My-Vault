@@ -317,6 +317,10 @@ The time response is then
 
 $$c(t) = 1 - e^{-(\zeta - \sqrt{\zeta^2 - 1})\omega_n t} \qquad \text{for } \zeta >> 1$$
 
+## Transient-Response Specifications
+
+
+
 ---
 
 參考資料:
