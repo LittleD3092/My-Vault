@@ -154,6 +154,8 @@ According to the damping ratio $\zeta$, there are several dynamic behavior:
 
 To solve the step response, we shall consider 3 cases.
 
+- [[#Underdamped]]
+
 ### Underdamped
 
 In this case, transfer function can be written as
