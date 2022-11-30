@@ -336,6 +336,110 @@ $$\text{Maximum percent overshoot} = \frac{c(t_p) - c(\infty)}{c(\infty)} \times
 - $\zeta < 0.4$ yield *excessive overshoot* in the transient response.
 - System with $\zeta > 0.8$ responds sluggishly.
 
+The sections below is the process of obtaining the specifications, and their equations are listed below:
+
+| Specification  | Equation                                                                                                               | Comments                             |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| [[#Rise Time]] | $\displaystyle t_r = \frac{1}{\omega_d} \tan^{-1}\left(\frac{\omega_d}{-\sigma}\right) = \frac{\pi - \beta}{\omega_d}$ | ![[Pasted image 20221130205830.png\|300]] |
+| [[#Peak Time]] | $\displaystyle t_p = \frac{\pi}{\omega_d}$                                                                             |                                      |
+
+### Rise Time
+
+Referring to equation $c(t)$ in [[#Underdamped]], we obtain the rise time $t_r$ by letting $c(t_r) = 1$.
+
+$$c(t_r) = 1 = 1 - e^{-\zeta\omega_n t_r}
+\left(
+	\cos \omega_d t_r +
+	\frac{\zeta}{\sqrt{1 - \zeta^2}}
+	\sin\omega_d t_r
+\right)$$
+
+Simplifying:
+
+$$\cos\omega_d t_r +\frac{\zeta}{\sqrt{1 - \zeta^2}} \sin \omega_d t_r = 0$$
+
+Since $\omega_n\sqrt{1 - \zeta^2} = \omega_d$ and $\zeta \omega_n = \sigma$, 
+
+$$\tan \omega_d t_r = -\frac{\sqrt{1 - \zeta^2}}{\zeta} = -\frac{\omega_d}{\sigma}$$
+
+Thus, the rise time $t_r$ is
+
+$$
+\underline{
+t_r = \frac{1}{\omega_d} \tan^{-1}
+\left(
+	\frac{\omega_d}{-\sigma}
+\right) = 
+\frac{\pi - \beta}{\omega_d}
+}_\#
+$$
+
+Where angle $\beta$ is defined as:
+
+![[Pasted image 20221130205830.png|250]]
+
+### Peak Time
+
+Referring to $c(t)$ equation in section [[#Underdamped]], we may obtain the peak time by differentiating $c(t)$ and letting this derivative equal zero.
+
+$$
+\frac{dc}{dt} = 
+\zeta \omega_n e^{-\zeta \omega_n t}
+\left(
+	\cos\omega_d t + 
+	\frac{\zeta}{\sqrt{1 - \zeta^2}}
+	\sin \omega_d t
+\right) + 
+e^{-\zeta \omega_n t}
+\left(
+	\omega_d \sin \omega_d t - 
+	\frac{\zeta \omega_d}{\sqrt{1 - \zeta^2}}
+	\cos\omega_d t
+\right)
+$$
+
+Simplifying by cancelling cosine terms:
+
+$$
+\begin{array}{l}
+	&
+	\displaystyle
+	\left.
+		\frac{dc}{dt}
+	\right\vert_{t = t_p} = 
+	(\sin \omega_d t_p)
+	\frac{\omega_n}{\sqrt{1 - \zeta^2}}
+	e^{-\zeta \omega_n t_p} = 0 \\
+	\implies & \sin\omega_d t_p = 0 \\
+	\implies & \omega_d t_p = 0, \pi, 2\pi, 3\pi \dots
+\end{array}
+$$
+
+Since the peak time corresponds to first peak, $\omega_d t_p = \pi$
+
+$$\underline{
+	t_p = \frac{\pi}{\omega_d}
+}_\#$$
+
+### Maximum Overshoot
+
+The maximum overshoot occurs at the [[#Peak Time]] $t = t_p = \pi / \omega_d$. Referring to the $c(t)$ equation in section [[#Underdamped]]:
+
+$$
+\begin{array}{l}
+	M_p & = & c(t_p) - 1 \\
+	& = & 
+	\displaystyle
+	-e^{-\zeta \omega_n (\pi / \omega_d)}
+	\left(
+		\cos \pi + 
+		\frac{\zeta}{\sqrt{1 - \zeta^2}}
+		\sin\pi
+	\right) \\
+	
+\end{array}
+$$
+
 ---
 
 參考資料:
