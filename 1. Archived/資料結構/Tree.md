@@ -916,7 +916,7 @@ In level-order traversal of a forest, nodes are visitted level by level. Note th
 
 # AVL Tree
 
-AVL tree is a kind of [[#Binary Search Trees]] that have a feature of self balancing. A normal binary tree has a problem that in worse case, it becomes [[Linked Lists]]. This phenomenon is illustrated below.
+AVL tree is a kind of [[#Binary Search Trees]] that have a feature of self balancing. A normal binary tree has a problem that in worse case, it becomes [[Linked List]]. This phenomenon is illustrated below.
 
 ## Problem of [[#Binary Search Trees]]
 
@@ -1079,6 +1079,6 @@ Fundamental of Data Structure in C++, 2nd edition
 
 link:
 
-[[Linked Lists]]
+[[Linked List]]
 [[Evaluation of Expressions]]
 [[Standard Template Library]]
