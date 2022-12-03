@@ -12,7 +12,7 @@ When building spanning trees, we can sum all the weights of the edges. This is t
 2. [[#Prim's Algorithm]]
 3. [[#Sollin's Algorithm]]
 
-The three algorithms above are ==greedy methods==. This means that they choose their best choice, and never change the choice after decision.
+The three algorithms above are [[Greedy Algorithm]]s. This means that they choose their best choice, and never change the choice after decision.
 
 # Kruskal's Algorithm
 
