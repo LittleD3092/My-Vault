@@ -50,6 +50,26 @@ if(T contains fewer than n - 1 edges)
 	cout << "no spanning tree" << endl;
 ```
 
+The real implementation will be efficient if we use the concept of `sets`.
+
+```cpp
+kruskal(G = (V, E)):
+	Sort E by weight in non-decreasing order
+	// initialize an empty tree
+	MST = {}                      
+	for v in V:
+		// put each vertex in its own tree in the forest
+		makeSet(v)                
+	// go through the edges in sorted order
+	for (u, v) in E:
+		// if u and v are not in the same tree
+		if find(u) != find(v):
+			add(u, v) to MST
+			// merge u's tree with v's tree
+			union(u, v)
+	return MST
+```
+
 # Prim's Algorithm
 
 The [[#Kruskal's Algorithm]] forms a forest. Prim's algorithm is like growing a tree. We first choose a vertex, `0` in the example below. We choose the edge that has least weight and is adjacent to the tree.
@@ -72,6 +92,23 @@ for(T = {}; T contains fewer than n - 1 edges; add (u, v) to T)
 if(T contains fewer than n - 1 edges)
 	cout << "no spanning tree" << endl;
 ```
+
+An efficient implementation is to let each vertex `v` keeps
+
+- The distance from itself to the growing spanning tree `k[v]`.
+- How to get there (the parent of the vertex) `p[v]`.
+
+```cpp
+Until all the vertices are reached:
+	Activate the unreached vertex u with the smallest key.
+	for each of u's neighbors v:
+		k[v] = min(k[v], weight(u, v))
+		if k[v] updated, p[v] = u
+```
+
+> The running time:
+> - $O(m\log(n))$ using a Red-Black [[Tree]] as a priority queue.
+> - $O(m + n\log(n))$ amortized time if we use a Fibonacci Heap.
 
 # Sollin's Algorithm
 
