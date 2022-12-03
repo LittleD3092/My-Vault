@@ -74,6 +74,8 @@ Output port processing is shown in the figure below.
 
 ![[Pasted image 20221120171404.png]]
 
+- The output queueing is where **packet loss** will occur.
+
 ---
 
 參考資料:
