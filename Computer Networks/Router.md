@@ -127,6 +127,14 @@ Selects packets for link transmission in the same order in which they arrived at
 
 ## Priority Queuing
 
+The packets are classified into high priority and low priority. When choosing a packet to transmit, the priority queuing discipline will transmit a packet from the highest priority class that has a nonempty queue.
+
+![[Pasted image 20221204154905.png]]
+
+![[Pasted image 20221204154914.png]]
+
+> Note that the transmission of packet 2 is not interrupted by higher priority packet 4. This is called **non-preemptive priority queuing**.
+
 ## Round Robin and Weighted Fair Queuing (WFQ)
 
 ---
