@@ -137,7 +137,13 @@ The packets are classified into high priority and low priority. When choosing a 
 
 ## Round Robin and Weighted Fair Queuing (WFQ)
 
-
+- In round robin queuing discipline, packets are sorted into classes.
+- The round robin scheduler *alternates service among the classes*. 
+	- In the simplest form of round robin scheduling, a class 1 packet is transmitted, followed by a class 2 packet, and so on.
+- **Work-conserving queuing** discipline is used, and it will *never allow the link to remain idle* whenever there are packets of any class queued for transmission.
+- A generalized form, **weighted fair queuing (WFQ) discipline** is widely implemented.
+	- Each class is assigned a weight.
+	- Each class may receive a differential 
 
 ---
 
