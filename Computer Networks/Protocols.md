@@ -48,6 +48,12 @@ An application-layer protocol defines:
 
 See note [[HTTP]].
 
+# Internet Protocol
+
+The note below shows protocols about [[Networks]] layer.
+
+[[Internet Protocol]]
+
 ---
 
 參考資料:
@@ -60,6 +66,7 @@ link:
 
 [[Internet]]
 [[Application]]
+[[Internet Protocol]]
 
 ---
 

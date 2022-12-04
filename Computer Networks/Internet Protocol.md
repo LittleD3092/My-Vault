@@ -6,13 +6,9 @@
 
 ---
 
-# Router
+# IPv4
 
-[[Router]]
-
-# Internet Protocol
-
-[[Internet Protocol]]
+[[IPv4]]
 
 ---
 
@@ -24,6 +20,7 @@ Computer Networking, A Top-Down Approach, 8th edition
 
 link:
 
+[[Data Plane]]
 
 ---
 

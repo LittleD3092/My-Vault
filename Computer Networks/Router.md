@@ -142,8 +142,13 @@ The packets are classified into high priority and low priority. When choosing a 
 	- In the simplest form of round robin scheduling, a class 1 packet is transmitted, followed by a class 2 packet, and so on.
 - **Work-conserving queuing** discipline is used, and it will *never allow the link to remain idle* whenever there are packets of any class queued for transmission.
 - A generalized form, **weighted fair queuing (WFQ) discipline** is widely implemented.
-	- Each class is assigned a weight.
-	- Each class may receive a differential 
+	- Each class $i$ is assigned a weight $w_i$.
+	- Each class may receive a differential amount of service in any interval of time.
+	- Class $i$ will be guaranteed to receive a fraction $\displaystyle \frac{w_i}{\sum w_j}$ of the bandwidth.
+
+![[Pasted image 20221204220937.png]]
+
+![[Pasted image 20221204220945.png]]
 
 ---
 

@@ -6,7 +6,7 @@
 
 ---
 
-- Transport-layer [[Protocals]] provides for ==logical communication== between different hosts.
+- Transport-layer [[Protocols]] provides for ==logical communication== between different hosts.
 	- *Logical communication*: From an application's percpective, it is as if the hosts were directly connected.
 - Implemented in the end systems but not in network routers.
 - Converts the sending message into transport-layer ==segments==.
