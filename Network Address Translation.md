@@ -1,4 +1,4 @@
-標籤: #computer-networks #list 
+標籤: #computer-networks 
 
 ---
 
@@ -6,13 +6,7 @@
 
 ---
 
-# IPv4
 
-[[IPv4]]
-
-# Network Address Translation (NAT)
-
-[[Network Address Translation]]
 
 ---
 
@@ -24,7 +18,7 @@ Computer Networking, A Top-Down Approach, 8th edition
 
 link:
 
-[[Data Plane]]
+[[Networks]]
 
 ---
 

@@ -92,7 +92,24 @@ For a newly arriving host, the DHCP protocol is a four-step process:
 	- Using a UDP packet to port 67.
 	- Because host does not know the DHCP server address, a destination address of `255.255.255.255` (broadcast address) is used.
 	- Because host has not been assigned an address, source IP address `0.0.0.0` is used.
-2. **
+2. *DHCP server offers(s)*.
+	- DHCP server reponds the DHCP discover message with a **DHCP offer message**.
+	- Using the `255.255.255.255` (broadcast address) to respond.
+	- Multiple DHCP servers on the same subnet can response.
+	- Contains:
+		- Transaction ID of the received discover message.
+		- The proposed IP address for the client.
+		- The network mask.
+		- An IP **address lease time**. This is the time for which the IP address will be valid.
+3. *DHCP request*.
+	- The newly arriving client will choose from among one or more server offers and respond to its selected offer.
+	- The message is called **DHCP request message**.
+	- Contains configuration parameters.
+4. *DHCP ACK*.
+	- The server responds to the DHCP request.
+	- The message is called **DHCP ACK message**.
+
+![[Pasted image 20221205160554.png]]
 
 ---
 

@@ -144,6 +144,10 @@ The network layer can be decomposed into two interacting parts.
 
 ![[Pasted image 20221120152634.png]]
 
+## Internet Protocol
+
+[[Internet Protocol]]
+
 ---
 
 參考資料:
