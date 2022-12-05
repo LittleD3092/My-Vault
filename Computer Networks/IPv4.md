@@ -68,10 +68,30 @@ The key fields in the IPv4 datagram are the following:
 	- The most significant `x` bits of an address are called **prefix**.
 	- The ability to use a single prefix to advertise multiple networks is often referred to as **address aggregation**. (or **route aggregation** or **route summarization**).
 		- ![[Pasted image 20221205135039.png]]
+	- When a host sends a datagram with destination address `255.255.255.255` (the **IP broadcast address**), the message is delivered to all hosts on the same subnet.
 - Before CIDR, an addressing scheme known as **classful addressing** is used.
 	- The network portions of an IP address were constrained to be *8, 16 or 24 bits* in length.
 	- 8-, 16- and 24-bit subnet addresses were known as *class A, B, and C* networks.
 	- A class B address supports too many hosts (65534 hosts) and class A address supports too few (254 hosts). This cause *poor utilization* of the assigned address space.
+
+## Obtaining a Host Address: DHCP
+
+- The organization assign individual IP addresses to the host using **Dynamic Host Configuration Protocol (DHCP)**.
+	- Allows a host to obtain an IP address automatically.
+- Can be configured to give host a static IP address or **temporary IP address**.
+- Allow host to learn additional information.
+	- Subnet mask.
+	- The address of its first-hop router.
+	- The address of its local DNS server.
+- Is a **plug-and-play** or **zeroconf** protocol.
+
+For a newly arriving host, the DHCP protocol is a four-step process:
+
+1. *DHCP server discovery*.
+	- Using a **DHCP discover message**.
+	- Using a UDP packet to port 67.
+	- Because host does not know the DHCP server address, a destination address of `255.255.255.255` (broadcast address) is used.
+	- Because host has not been assigned an address, source IP address `0.0.0.0` is used.
 
 ---
 
