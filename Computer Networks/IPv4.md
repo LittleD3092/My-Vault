@@ -48,6 +48,31 @@ The key fields in the IPv4 datagram are the following:
 
 # Addressing
 
+- The boundary between the host and the physical link is called an **interface**.
+- Each IP address is 32 bits long.
+- The addresses are written in **dotted-decimal notation**.
+	- For example, `193.32.216.9`.
+
+![[Pasted image 20221205132353.png]]
+
+- The network interconnecting three host interfaces and one router interface forms a **subnet**.
+	- In the above example, the address of the subnet is `223.1.1.0/24`.
+	- `/24` is the **subnet mask**, indicating that the leftmost 24 bits define the subnet addresses.
+	- The *link between the routers* is also a subnet.
+	- ![[Pasted image 20221205133121.png|500]]
+
+## Addressing Strategy
+
+- The internet assignment strategy is **Classless Interdomain Routing (CIDR)**.
+	- An address of a subnet is in the form `a.b.c.d/x`.
+	- The most significant `x` bits of an address are called **prefix**.
+	- The ability to use a single prefix to advertise multiple networks is often referred to as **address aggregation**. (or **route aggregation** or **route summarization**).
+		- ![[Pasted image 20221205135039.png]]
+- Before CIDR, an addressing scheme known as **classful addressing** is used.
+	- The network portions of an IP address were constrained to be *8, 16 or 24 bits* in length.
+	- 8-, 16- and 24-bit subnet addresses were known as *class A, B, and C* networks.
+	- A class B address supports too many hosts (65534 hosts) and class A address supports too few (254 hosts). This cause *poor utilization* of the assigned address space.
+
 ---
 
 參考資料:
