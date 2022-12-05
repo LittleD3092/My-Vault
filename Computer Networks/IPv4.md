@@ -92,6 +92,7 @@ For a newly arriving host, the DHCP protocol is a four-step process:
 	- Using a UDP packet to port 67.
 	- Because host does not know the DHCP server address, a destination address of `255.255.255.255` (broadcast address) is used.
 	- Because host has not been assigned an address, source IP address `0.0.0.0` is used.
+2. **
 
 ---
 
