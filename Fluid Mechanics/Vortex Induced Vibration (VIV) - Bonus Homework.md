@@ -31,10 +31,23 @@
 3. 當靜止圓柱放置於自由流流場中，圓柱後方尾流區內的渦旋 (Vortex) 會交替地從表面脫落 (Shedding)，導致圓柱受力不均，進而開始振動，整個過程即稱為渦旋誘發振動現象 (Vortex induced vibration)。請參考以下文獻，舉例當發生渦旋誘發振動現象後，圓柱尾流區的渦旋模式 (Vortex mode) 為何?
 https://www.annualreviews.org/doi/abs/10.1146/annurev.fluid.36.050802.122128
 
+有三種渦旋模式：
+1. 2S mode: 兩個單一的渦旋組成。
+2. 2P mode: 兩對渦旋組成。
+3. P+S mode: 一個單一的渦旋與一對渦旋組成。
 
+![[Pasted image 20221210101957.png]]
 
 ---
 
 4. 當渦旋誘發振動現象 (Vortex induced vibration) 發生時，在一定的流速區間下，圓柱的振動頻率 (Oscillation frequency)、渦旋脫落頻率(Vortex sheddingfrequency) 會保持與自然頻率 (Natural frequency) 接近，同時使得圓柱產生較大振幅。該流速區間又稱為鎖定區間 (Lock in range)。請參考以下文獻，寫下鎖定區間末端流速與何者有關，以及其關係式 。
 https://www.annualreviews.org/doi/abs/10.1146/annurev.fluid.36.050802.122128
 
+$$U^*_{\textit{end of synchronization}} = 9.25 \sqrt{\frac{m + 1}{m - 0.54}}$$
+
+- $U^*$: Velocity ratio, $\displaystyle U^* = \frac{U}{f_N D}$.
+- $f_N$: Natural frequency.
+- $D$: Characteristic diameter.
+- $m$: Mass.
+
+鎖定區間末端流速和質量、自然頻率與特徵直徑有關。
