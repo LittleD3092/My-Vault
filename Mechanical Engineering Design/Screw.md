@@ -6,8 +6,6 @@
 
 ---
 
-
-
 # Terminology
 
 The terminology of screws is explaned as follows:
@@ -26,6 +24,10 @@ The terminology of screws is explaned as follows:
 	- *Single threads*: Standardized screws, bolts and nuts.
 	- *Double-threaded*: Has a lead equal to twice the pitch.
 	- *Triple-threaded*: Has a lead equal to 3 times the pitch.
+
+# Power Screw
+
+[[Power Screw]]
 
 ---
 
