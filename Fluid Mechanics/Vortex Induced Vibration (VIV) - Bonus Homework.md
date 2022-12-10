@@ -35,6 +35,8 @@ https://www.annualreviews.org/doi/abs/10.1146/annurev.fluid.36.050802.122128
 1. 2S mode: 兩個單一的渦旋組成。
 2. 2P mode: 兩對渦旋組成。
 3. P+S mode: 一個單一的渦旋與一對渦旋組成。
+4. 2T: 每個半週期內有三重渦流。
+5. 2C: 每半個週期包含兩個共旋渦旋。
 
 ![[Pasted image 20221210101957.png]]
 
