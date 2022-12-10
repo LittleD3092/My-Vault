@@ -116,6 +116,8 @@ $$e = \frac{T_0}{T_R} = \frac{Fl}{2\pi T_R}$$
 
 ## For Square Threads
 
+![[Pasted image 20221210221936.png]]
+
 For square threads, thread angle $2\alpha$ is considered, but the lead angle $\lambda$ is small and neglected. The effect of the angle $\alpha$ is to increase the frictional force by the wedging action of the threads.
 
 Therefore the frictional terms in equation $T_R$ must be divided by $\cos \alpha$.
@@ -124,6 +126,23 @@ $$T_R = \frac{F d_m}{2}
 \left(
 	\frac{l + \pi f d_m \sec \alpha}{\pi d_m - fl \sec \alpha}
 \right)$$
+
+> Note that this is an approximation because the effect of the lead angle has been neglected.
+
+When the screw is loaded axially like the right of the figure, the torque required is
+
+$$T_c = \frac{F f_c d_c}{2}$$
+
+- $f_c$: The coefficient of collar friction.
+- $d_c$: The frictional diameter of thrust collar.
+
+The maximum nominal shear stress $\tau$ is
+
+$$\tau = \frac{16T}{\pi d_r^3}$$
+
+The compressive axial stress $\sigma$ in the body of the screw due to load $F$ is
+
+$$\sigma = -\frac F A = -\frac{4F}{\pi d_r^2}$$
 
 ---
 
