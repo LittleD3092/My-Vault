@@ -144,6 +144,37 @@ The compressive axial stress $\sigma$ in the body of the screw due to load $F$ i
 
 $$\sigma = -\frac F A = -\frac{4F}{\pi d_r^2}$$
 
+![[Pasted image 20221210223315.png]]
+
+The stress element at the outer radius of the screw body is
+
+$$
+\begin{array}{l}
+	\displaystyle
+	\sigma_x = \frac{6F}{\pi d_r n_t p} &
+	\tau_{xy} = 0 \\
+	\displaystyle
+	\sigma_y = -\frac{4F}{\pi d_r^2} &
+	\displaystyle
+	\tau_{yz} = \frac{16T}{\pi d_r^3} \\
+	\sigma_z = 0 &
+	\displaystyle
+	\tau_{zx} = \frac{4T}{\pi d_r^2 n_t p}
+\end{array}
+$$
+
+The von Mises stress $\sigma'$ (used in [[Distortion Energy]]) is found by substituting these stresses into equation.
+
+- The equations above assume all engaged threads are equally sharing the load, which actually is not true.
+	- A power screw lifting a load is in compression and its thread pitch is *shortened*.
+	- Its engaging nut is in tension and its thread pitch is *lengthened*.
+- Experiments show that
+	- The first engaged thread carries 0.38 of the load.
+	- The second carries 0.25.
+	- The third 0.18.
+	- The seventh is free of load.
+- In estimating thread stresses, we should substitute $0.38F$ for $F$ and setting $n_t$ to $1$ to give the largest level of stresses in the *thread-nut combination*.
+
 ---
 
 參考資料:
