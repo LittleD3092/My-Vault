@@ -114,6 +114,17 @@ The thread efficiency is defined as
 
 $$e = \frac{T_0}{T_R} = \frac{Fl}{2\pi T_R}$$
 
+## For Square Threads
+
+For square threads, thread angle $2\alpha$ is considered, but the lead angle $\lambda$ is small and neglected. The effect of the angle $\alpha$ is to increase the frictional force by the wedging action of the threads.
+
+Therefore the frictional terms in equation $T_R$ must be divided by $\cos \alpha$.
+
+$$T_R = \frac{F d_m}{2}
+\left(
+	\frac{l + \pi f d_m \sec \alpha}{\pi d_m - fl \sec \alpha}
+\right)$$
+
 ---
 
 參考資料:
