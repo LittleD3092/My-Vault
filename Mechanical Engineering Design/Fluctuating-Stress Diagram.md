@@ -224,6 +224,15 @@ $$
 \end{array}
 $$
 
+For steels,
+
+$$
+\begin{array}{l}
+	\gamma = -0.0002 S_{ut} + 0.8818 & (S_{ut} \text{ in MPa}) \\
+	\gamma = -0.0014 S_{ut} + 0.8818 & (S_{ut} \text{ in kpsi})
+\end{array}
+$$
+
 ---
 
 參考資料:
