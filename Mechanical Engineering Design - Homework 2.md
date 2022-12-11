@@ -10,81 +10,77 @@ Smith-Dolan locus is represented by:
 
 $$\frac{S_a}{S_e} = \frac{1 - S_m / S_{ut}}{1 + S_m / S_{ut}}$$
 
-For a load line of slope $r$, we substitute $S_a / r$ for $S_m$ to obtain the intersect:
+For the second quadrant, we may use a straight line which has the equation
 
-$$
-\begin{array}{l}
-	&
-	\displaystyle
-	\frac{S_a}{S_e} = \frac{
-		\displaystyle
-		1 - \frac{S_a}{rS_{ut}}
-	}{
-		\displaystyle
-		1 + \frac{S_a}{rS_{ut}}
-	} \\
-	\implies &
-	\displaystyle
-	\frac{S_a}{S_e} + \frac{S_a^2}{rS_eS_{ut}} = 1 - \frac{S_a}{rS_{ut}} \\
-	\implies & 
-	\displaystyle
-	\frac{1}{rS_eS_{ut}} \cdot S_a^2 + 
-	\left(
-		\frac{1}{S_e} + \frac{1}{rS_{ut}}
-	\right)S_a - 1 = 0 \\
-	\implies &
-	S_a^2 + (rS_{ut} + S_e)S_a - rS_eS_{ut} = 0
-\end{array}
-$$
+$$S_a = S_e + 
+\left(
+	\frac{S_e}{S_{ut}} - 1
+\right)S_m$$
 
-Solving for $S_a$:
+The load line with slope $r$ can be represented by the following equation:
 
-$$
-S_a =
-\displaystyle
-\frac{-(rS_{ut} + S_e) \pm \sqrt{(rS_{ut} + S_e)^2 + 4rS_eS_{ut}}}{2}
-$$
+$$S_m = \frac{S_a}{r}$$
 
-Because $S_a$ is positive,
-
-$$
-S_a =
-\displaystyle
-\frac{-(rS_{ut} + S_e) + \sqrt{(rS_{ut} + S_e)^2 + 4rS_eS_{ut}}}{2}
-$$
-
-Simplify:
+By solving the two equations above,
 
 $$
 \begin{array}{l}
 	\implies &
 	\displaystyle
-	S_a = -\frac{rS_{ut} + S_e}{2} +
-	\sqrt{
-		\frac{(rS_{ut} + S_e)^2}{4} + rS_eS_{ut}
-	} \\
-	\implies & 
-	\displaystyle
-	\underline{ 
-		S_a = \frac{rS_{ut} + S_e}{2}
-		\left[
-			-1 + \sqrt{1 + \frac{4rS_eS_{ut}}{(rS_{ut} + S_e)^2}}
-		\right]
-	}_\#
-\end{array}
-$$
-
-Since $S_m = S_a / r$, 
-
-$$\underline{
-	S_m = 
-	\frac{rS_{ut} + S_e}{2r}
 	\left[
-		-1 + \sqrt{1 + \frac{4rS_eS_{ut}}{(rS_{ut} + S_e)^2}}
-	\right]
-}_\#$$
+		1 - 
+		\left(
+			\frac{S_e}{S_{ut}} - 1
+		\right)\frac{1}{r}
+	\right]S_a = S_e \\
+	\implies & 
+	[rS_{ut} - S_e + S_{ut}]S_a = rS_{ut}S_e \\
+	\implies &
+	\displaystyle
+	S_a = \frac{rS_{ut}S_e}{S_{ut}(r + 1) - S_e}
+\end{array}
+$$
+
+we obtain the intersection $(S_m, S_a)$:
+
+$$\underline{(S_m, S_a) = \left(
+	\frac{S_{ut}S_{e}}{S_{ut}(r + 1) - S_e}, 
+	\frac{rS_{ut}S_{e}}{S_{ut}(r + 1) - S_e}
+\right)}_\#$$
 
 ## 2.
 
-### (a).
+- Bar of steel.
+- $S_e = 40 \text{ kpsi}$
+- $S_y = 60 \text{ kpsi}$
+- $S_{ut} = 80 \text{ kpsi}$
+- Torsional stress $\tau = 15 \text{ kpsi}$
+- Completely reversed bending stress $\sigma = 25 \text{ kpsi}$
+
+### (a), (b), (c), (d)
+
+Because there is no axial stress, the von Mises stresses for the two stress elements can be written as
+
+$$
+\left\{
+	\begin{array}{l}
+		\sigma_a' = \{
+			[
+				(K_f)_{\text{bending}}
+				(\sigma_{a0})_{\text{bending}}
+			]^2 + 3[
+				(K_{fs})_{\rm torsion}
+				(\tau_{a0})_{\rm torsion}
+			]^2
+		\}^{\frac 1 2} \\
+		\sigma_m' = 
+		\{
+			[
+				(K_f)_{\rm bending}
+				(\sigma_{m0})_{\rm bending}
+			]^2 + 3[(K_{fs})_{\rm torsion}(\tau_{a0})_{\rm torsion}]^2
+		\}^{\frac{1}{2}}
+	\end{array}
+\right.
+$$
 
