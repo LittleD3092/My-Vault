@@ -335,3 +335,52 @@ $$S_e = k_ak_bk_cS_e' = \underline{13.5596 {\ \rm kpsi}}_\#$$
 
 ### (i)
 
+For a pure shear case,
+
+$$S_{su} = 0.67S_{ut} = \underline{44.354{\ \rm kpsi}}_\#$$
+
+### (j)
+
+Modified Goodman fatigue failure criterion:
+
+$$
+\begin{array}{l}
+	n_f & = & 
+	\displaystyle
+	\left(
+		\frac{\tau_a}{S_e} + \frac{\tau_m}{S_{su}}
+	\right)^{-1} \\
+	 & = & 
+	 \displaystyle
+	 \left(
+		 \frac{3977.11 \cdot 10^{-3}}{13.5596} +
+		 \frac{7386.05 \cdot 10^{-3}}{44.354}
+	 \right)^{-1} \\
+	 & = & \underline{2.17}_\#
+\end{array}
+$$
+
+### (k)
+
+Gerber fatigue failure criterion:
+
+$$
+\begin{array}{l}
+	n_f & = & 
+	\displaystyle
+	\frac 1 2 \left(
+		\frac{S_{su}}{\tau_m}
+	\right)^2
+	\left(
+		\frac{\tau_a}{S_e}
+	\right)
+	\left[
+		-1 + \sqrt{
+			1 + \left(
+				\frac{2\tau_mS_e}{S_{su}\tau_a}
+			\right)^2
+		}
+	\right] \\
+	 & = & \underline{2.71}_\#
+\end{array}
+$$
