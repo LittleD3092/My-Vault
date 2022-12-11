@@ -40,7 +40,125 @@ We saw how to draw Goodman line above. However, there are many options other tha
 ## Goodman
 
 - Simple, conservative and good for design purposes.
-- It is only applicable for positive mean stress, because it is not conservative for negative mean stress.
+- It is only applicable for positive mean stress, because it is *not conservative for negative mean stress*.
+
+$$
+\begin{array}{l}
+	\text{Failure criterion: } & 
+	\displaystyle
+	\frac{\sigma_a}{S_e} + \frac{\sigma_m}{S_{ut}} = 1 \\
+	\text{Design equation: } & 
+	\displaystyle
+	n_f = 
+	\left(
+		\frac{\sigma_a}{S_e} + \frac{\sigma_m}{S_{ut}}
+	\right)^{-1} & 
+	\sigma_m \geq 0
+\end{array}
+$$
+
+## Morrow
+
+- Identical to [[#Goodman]].
+- Replace ultimate strength with true fracture strength $\tilde\sigma_f$ or the fatigue strength coefficient $\sigma_f'$.
+- Disadvantage: $\tilde\sigma_f$ and $\sigma_f'$ can be hard to find.
+
+For steels ($\text{HB}\leq 500$),
+
+$$\sigma_f' = S_{ut} + 50 \text{ kpsi}
+\qquad \text{or} \qquad 
+\sigma_f' = S_{ut} + 345\text{ MPa}$$
+
+The equations for the Morrow criterion are
+
+$$
+\begin{array}{l}
+	\text{Failure criterion: } &
+	\displaystyle
+	\frac{\sigma_a}{S_e} + \frac{\sigma_m}{\tilde \sigma_f} = 1 & 
+	\text{or} &
+	\displaystyle 
+	\frac{\sigma_a}{S_e} + \frac{\sigma_m}{\sigma_f'} = 1 \\
+	\text{Design equation: } &
+	\displaystyle
+	n_f = 
+	\left(
+		\frac{\sigma_a}{S_e} +
+		\frac{\sigma_m}{\tilde\sigma_f}
+	\right)^{-1} &
+	\text{or} &
+	\displaystyle
+	n_f = 
+	\left(
+		\frac{\sigma_a}{S_e} +
+		\frac{\sigma_m}{\sigma_f'}
+	\right)^{-1}
+\end{array}
+$$
+
+## Gerber
+
+- A parabolic equation to better pass through the middle of the fatigue points.
+- Fits the data better than [[#Goodman]].
+- Slightly nonconservative.
+- Only applies to positive mean stress. Too conservative if applied to negative mean stress.
+
+$$
+\begin{array}{l}
+	\text{Failure criterion: } &
+	\displaystyle
+	\frac{\sigma_a}{S_e} +
+	\left(
+		\frac{\sigma_m}{S_{ut}}
+	\right)^2 = 1 \\
+	\text{Design equation: } &
+	\displaystyle
+	n_f = \frac 1 2 
+	\left(
+		\frac{S_{ut}}{\sigma_m}
+	\right)^2
+	\left(
+		\frac{\sigma_a}{S_e}
+	\right)
+	\left[
+		-1 +
+		\sqrt{
+			1 +
+			\left(
+				\frac{2\sigma_m S_e}{S_{ut}\sigma_a}
+			\right)^2
+		}
+	\right] &
+	\sigma_m \geq 0
+\end{array}
+$$
+
+## Soderberg
+
+- Replace the ultimate strength in [[#Goodman]] with the yield strength.
+- Makes the line *ultra-conservative*.
+- Provide a simple, conservative line that *checks for infinite-life fatigue and yielding at the same time*.
+
+$$
+\begin{array}{l}
+	\text{Failure criterion: } &
+	\displaystyle
+	\frac{\sigma_a}{S_e} +
+	\frac{\sigma_m}{S_y} = 1 \\
+	\text{Design equation: } &
+	\displaystyle
+	n = 
+	\left(
+		\frac{\sigma_a}{S_e} +
+		\frac{\sigma_m}{S_y}
+	\right)^{-1} &
+	\sigma_m \geq 0
+\end{array}
+$$
+
+## ASME-Elliptic
+
+
 
 ---
 
