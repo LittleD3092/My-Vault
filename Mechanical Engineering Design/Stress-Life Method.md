@@ -87,6 +87,10 @@ Fatigue strength fraction $f$ can be obtained by the diagram below.
 
 [[Fatigue Strength-Concentration Factor]]
 
+# Fluctuating-Stress Diagram
+
+[[Fluctuating-Stress Diagram]]
+
 ---
 
 參考資料:

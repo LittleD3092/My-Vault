@@ -48,6 +48,7 @@ The above figure shows a representative graph of the crack nucleation, growth, a
 	- [[Linear-Elastic Fracture Mechanics Method]]: Focus on crack propagation (stage II).
 	- [[Strain-Life Method]]: Focus on crack nucleation (stage I).
 	- [[Stress-Life Method]]: Merges all three stages together.
+		- [[Fluctuating-Stress Diagram]]
 - [[Surface Fatigue]]
 
 # Fatigue Design
