@@ -54,7 +54,7 @@ $$\underline{(S_m, S_a) = \left(
 - $S_e = 40 \text{ kpsi}$
 - $S_y = 60 \text{ kpsi}$
 - $S_{ut} = 80 \text{ kpsi}$
-- Torsional stress $\tau = 15 \text{ kpsi}$
+- Static torsional stress $\tau = 15 \text{ kpsi}$
 - Completely reversed bending stress $\sigma = 25 \text{ kpsi}$
 
 ### (a), (b), (c), (d)
@@ -78,9 +78,44 @@ $$
 			[
 				(K_f)_{\rm bending}
 				(\sigma_{m0})_{\rm bending}
-			]^2 + 3[(K_{fs})_{\rm torsion}(\tau_{a0})_{\rm torsion}]^2
+			]^2 + 3[(K_{fs})_{\rm torsion}(\tau_{m0})_{\rm torsion}]^2
 		\}^{\frac{1}{2}}
 	\end{array}
 \right.
+$$
+
+Assume no stress concentration, $(K_f)_{\rm bending} = (K_{fs})_{\rm torsion} = 1$.
+
+$$
+\left\{
+	\begin{array}{l}
+		\sigma_a' = \{
+			[
+				(\sigma_{a0})_{\text{bending}}
+			]^2 + 3[
+				(\tau_{a0})_{\rm torsion}
+			]^2
+		\}^{\frac 1 2} \\
+		\sigma_m' = 
+		\{
+			[
+				(\sigma_{m0})_{\rm bending}
+			]^2 + 3[(\tau_{m0})_{\rm torsion}]^2
+		\}^{\frac{1}{2}}
+	\end{array}
+\right.
+$$
+
+Substituting $(\sigma_{a0})_{\rm bending} = 25$, $(\sigma_{m0})_{\text{bending}} = 0$, $(\tau_{a0})_{\rm torsion} = 0$, $(\tau_{m0})_{\rm torsion} = 15$.
+
+$$
+\underline{
+	\left\{
+		\begin{array}{l}
+			\sigma_a' = 25 \text{ kpsi}\\
+			\sigma_m' = 25.98 \text{ kpsi}
+		\end{array}
+	\right.
+}_\#
 $$
 
