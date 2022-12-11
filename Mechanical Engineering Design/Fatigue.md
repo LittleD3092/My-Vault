@@ -49,6 +49,7 @@ The above figure shows a representative graph of the crack nucleation, growth, a
 	- [[Strain-Life Method]]: Focus on crack nucleation (stage I).
 	- [[Stress-Life Method]]: Merges all three stages together.
 		- [[Fluctuating-Stress Diagram]]
+		- [[Constant-Life Curves]]
 - [[Surface Fatigue]]
 
 # Fatigue Design
