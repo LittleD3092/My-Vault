@@ -180,7 +180,7 @@ $$n_f =
 - $F_\min = 0\text{ kN}$
 - $F_\max = 28\text{ kN}$
 
-### (a)
+### (a), (b), (c)
 
 Since there is only axial load, the von Mises stresses for the two stress elements can be written as:
 
@@ -197,9 +197,9 @@ $$
 \left\{
 	\begin{array}{l}
 		\displaystyle
-		(\sigma_{a0})_{\rm axial} = \frac{14\text{ kN}}{(25\text{ mm} - 6 \text{ mm}) \cdot 10\text{ mm}} = 0.07368\text{ MPa} \\
+		(\sigma_{a0})_{\rm axial} = \frac{14\text{ kN}}{(25\text{ mm} - 6 \text{ mm}) \cdot 10\text{ mm}} = 73.68\text{ MPa} \\
 		\displaystyle
-		(\sigma_{m0})_{\rm axial} = \frac{14 \text{ kN}}{(25 \text{ mm} - 6 \text{ mm}) \cdot 10 \text{ mm}} = 0.07368\text{ MPa}
+		(\sigma_{m0})_{\rm axial} = \frac{14 \text{ kN}}{(25 \text{ mm} - 6 \text{ mm}) \cdot 10 \text{ mm}} = 73.68\text{ MPa}
 	\end{array}
 \right.
 $$
@@ -209,9 +209,29 @@ Then, we may obtain the von Mises stresses for the axial load:
 $$
 \left\{
 	\begin{array}{l}
-		\sigma_a' = 2.2 \cdot 0.07368 = 0.162096 \\
-		\sigma_m' = 2.2 \cdot 0.07368 = 0.162096
+		\sigma_a' = 2.2 \cdot 0.07368 = 162.096 \\
+		\sigma_m' = 2.2 \cdot 0.07368 = 162.096
 	\end{array}
 \right.
 $$
 
+![[Figure_2.png]]
+
+### (d)
+
+Based on modified Goodman criterion, it will have fatigue failure.
+
+### (e)
+
+The equivalent completely reversed stress:
+
+$$\sigma_{ar} = \frac{192.096}{1 - 192.096 / 590} = 284.83$$
+
+Using the Basquin's equation, 
+
+$$
+\begin{array}{l}
+	\displaystyle
+	a = \frac{}{}
+\end{array}
+$$

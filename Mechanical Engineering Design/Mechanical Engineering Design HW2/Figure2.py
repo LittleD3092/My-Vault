@@ -5,8 +5,8 @@ import numpy as np
 S_e = 208.6
 S_y = 490
 S_ut = 590
-sigma_a = 0.162096
-sigma_m = 0.162096
+sigma_a = 162.096
+sigma_m = 162.096
 
 # x-axis
 x_max = 700
