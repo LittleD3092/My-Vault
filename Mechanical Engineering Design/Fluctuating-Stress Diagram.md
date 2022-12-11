@@ -233,6 +233,30 @@ $$
 \end{array}
 $$
 
+## Smith-Dolan Locus (for brittle)
+
+For many *brittle* materials, the first quadrant fatigue failure criterion follows a concave:
+
+$$\frac{S_a}{S_e} = \frac{1 - S_m / S_{ut}}{1 + S_m / S_{ut}}$$
+
+or as a design equation
+
+$$\frac{n\sigma_a}{S_e} = \frac{1 - n\sigma_m / S_{ut}}{1 + n\sigma_m / S_{ut}}$$
+
+For a radial load line of slope $r$, we substitute $S_a / r$ for $S_m$ and solve for $S_a$, obtaining the intersect:
+
+$$S_a = 
+\frac{rS_{ut} + S_e}{2}
+\left[
+	-1 + \sqrt{1 + \frac{4rS_{ut}S_e}{(rS_{ut} + S_e)^2}}
+\right]$$
+
+Note that for brittle material:
+
+- Yielding is not involved because the material may not have a yield strength.
+- The compressive ultimate strength exceeds the ultimate tensile strength.
+- First-quadrant fatigue failure locus is concave-upward, and as flat as Goodman.
+
 ---
 
 參考資料:

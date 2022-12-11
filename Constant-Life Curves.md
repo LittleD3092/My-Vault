@@ -51,6 +51,22 @@ $$\sigma_{ar} = \sqrt{\sigma_{\max}\sigma_a} =
 
 - The best to match experimental predictions when the material fitting parameter $\gamma$ is known.
 
+The equivalent completely reversed stress $\sigma_{ar}$:
+
+$$\sigma_{ar} = \sigma_{\max}^{1 - \gamma}\sigma_a^\gamma = 
+(\sigma_m + \sigma_a)^{1 - \gamma}\sigma_a^\gamma$$
+
+For aluminum, $\gamma$ is close to $0.5$.
+
+For steel,
+
+$$
+\begin{array}{l}
+	\gamma = -0.0002S_{ut} + 0.8818 & (S_{ut} \text{ in MPa}) \\
+	\gamma = -0.0014 S_{ut} + 0.8818 & (S_{ut} \text{ in kpsi})
+\end{array}
+$$
+
 ---
 
 參考資料:
