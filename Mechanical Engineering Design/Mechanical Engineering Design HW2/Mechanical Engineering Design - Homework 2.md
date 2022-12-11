@@ -250,7 +250,7 @@ $$
 ## 4.
 
 - AISI 1020 hot-rolled steel
-	- $S_{ut} = 66.2\text{ kpsi}$
+	- $S_{ut} = 66.2\text{ kpsi}$ (from table A-22)
 - $K_{ts} = 1.6$
 - The length $L = 2\text{ ft}$
 - Load $F$ cycles from $150 \sim 500 \text{ lbf}$
