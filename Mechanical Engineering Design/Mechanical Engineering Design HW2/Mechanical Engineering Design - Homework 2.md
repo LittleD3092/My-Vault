@@ -119,3 +119,99 @@ $$
 }_\#
 $$
 
+![[Mechanical Engineering Design/Mechanical Engineering Design HW2/Figure_1.png]]
+
+### (e)
+
+Modified Goodman criterion.
+
+### (f)
+
+$$n_{\rm fos}(\sigma_a' + \sigma_m') = 60$$
+
+$$\implies \underline{
+	n_{\rm fos} = 1.18
+}_\#$$
+
+### (g)
+
+$$n_f = \left(
+	\frac{\sigma_a'}{S_e} +
+	\frac{\sigma_m'}{S_{ut}}
+\right)^{-1} = \underline{1.05}_\#$$
+
+### (h)
+
+$$n_f = \frac{1}{2}
+\left(
+	\frac{S_{ut}}{\sigma_m'}
+\right)^2
+\left(
+	\frac{\sigma_a'}{S_e}
+\right)
+\left[
+	-1 + \sqrt{
+		1 +
+		\left(
+			\frac{2\sigma_m' S_e}{S_{ut}\sigma_a'}
+		\right)^2
+	}
+\right] = \underline{1.31}_\#$$
+
+### (i)
+
+$$n_f = 
+\left[
+	\left(
+		\frac{\sigma_a'}{S_e}
+	\right)^2 +
+	\left(
+		\frac{\sigma_m'}{S_y}
+	\right)^2
+\right]^{-1/2} = \underline{1.32}_\#$$
+
+## 3.
+
+- Cold-drawn AISI 1040 steel bar
+- $S_{ut} = 590 \text{ MPa}$
+- $S_y = 490\text{ MPa}$
+- $S_e = 208.6 \text{ MPa}$
+- $K_f = 2.2$
+- $F_\min = 0\text{ kN}$
+- $F_\max = 28\text{ kN}$
+
+### (a)
+
+Since there is only axial load, the von Mises stresses for the two stress elements can be written as:
+
+$$\left\{
+	\begin{array}{l}
+		\sigma_a' = (K_f)_{\rm axial}(\sigma_{a0})_{\rm axial} \\
+		\sigma_m' = (K_f)_{\rm axial}(\sigma_{m0})_{\rm axial}
+	\end{array}
+\right.$$
+
+The axial stresses elements can be obtained by the cross section area and axial load:
+
+$$
+\left\{
+	\begin{array}{l}
+		\displaystyle
+		(\sigma_{a0})_{\rm axial} = \frac{14\text{ kN}}{(25\text{ mm} - 6 \text{ mm}) \cdot 10\text{ mm}} = 0.07368\text{ MPa} \\
+		\displaystyle
+		(\sigma_{m0})_{\rm axial} = \frac{14 \text{ kN}}{(25 \text{ mm} - 6 \text{ mm}) \cdot 10 \text{ mm}} = 0.07368\text{ MPa}
+	\end{array}
+\right.
+$$
+
+Then, we may obtain the von Mises stresses for the axial load:
+
+$$
+\left\{
+	\begin{array}{l}
+		\sigma_a' = 2.2 \cdot 0.07368 = 0.162096 \\
+		\sigma_m' = 2.2 \cdot 0.07368 = 0.162096
+	\end{array}
+\right.
+$$
+
