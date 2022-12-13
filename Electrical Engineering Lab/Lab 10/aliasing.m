@@ -24,7 +24,7 @@ plot(t1,data1)
 hold on
 plot(t2,data2)
 xlabel('t'); ylabel('value'); axis([0 3 0 500])
-legend('sampling frequency = 100Hz', 'sampling frequency = 8.33Hz’)
+legend('sampling frequency = 100Hz', 'sampling frequency = 8.33Hz')
 
 %do fast fourier transform
 y1 = fft(data1);

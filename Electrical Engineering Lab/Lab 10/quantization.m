@@ -1,6 +1,6 @@
 close all; clc; clear;
 
-osc_voltage_resolution = 0.5; %單位:V 
+osc_voltage_resolution = 1; %單位:V 
 osc_time_resolution = 0.5; %單位:sec(固定不變，為了跟Arduino一樣取5sec的資料)
 frequency = 7;
 
@@ -28,9 +28,9 @@ t1 = 0:t_range/10000:t_range-t_range/10000; %示波器輸出資料10000筆
 data1_sampling = data1(1:20:10000); %將資料從10000變成500筆
 
 %對位，調整oscilloscope_displacement.Arduino_displacement
-oscilloscope_displacement = 14; 
+oscilloscope_displacement = 10; 
 osc_bias = 0.008;
-Arduino_displacement = 5;
+Arduino_displacement = 2;
 Arduino_bias = -0.007;
 t = 0:Ts:3;
 ideal_sin = sin(2*pi*frequency*t - (pi/2) )+1 % ideal sin
@@ -39,14 +39,14 @@ data3 = A_oscilloscope*data1_sampling(oscilloscope_displacement:1:300+oscillosco
 data4 = A_arduino*data2(Arduino_displacement:1:300+Arduino_displacement) + Arduino_bias; %將Arduino資料平移
 ideal_sin = ideal_sin'; %ideal_sin 轉置
 
-figure;                                  %41~48
-plot(t, ideal_sin);
-grid on; hold on; 
-plot(t, data3); 
-figure;
-plot(t, ideal_sin);
-grid on; hold on; 
-plot(t, data4);
+%figure;                                  %41~48
+%plot(t, ideal_sin);
+%grid on; hold on; 
+%plot(t, data3); 
+%figure;
+%plot(t, ideal_sin);
+%grid on; hold on; 
+%plot(t, data4);
 
 %plot the osc quantization error                     50~72
 osc_err = ideal_sin - data3;
