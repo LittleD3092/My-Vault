@@ -73,6 +73,14 @@ Then we go through the following steps:
 8. Determine closed-loop poles.
 	- The value $K$ corresponding to any point $s$ on a root locus can be obtained using $$K = \frac{\text{product of lengths between }s \text{ to poles}}{\text{product of lengths between } s \text{ to zeros}}$$
 
+# Root Loci of Configurations
+
+This is a table that shows several root loci for reference.
+
+![[Pasted image 20221215004733.png]]
+
+![[Pasted image 20221215004909.png]]
+
 ---
 
 參考資料:
