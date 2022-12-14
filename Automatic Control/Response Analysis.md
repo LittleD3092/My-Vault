@@ -1,4 +1,4 @@
-標籤: #automatic-control 
+標籤: #automatic-control #list 
 
 ---
 
@@ -498,6 +498,10 @@ $$
 # Routh's Stability Criterion
 
 [[Routh's Stability Criterion]]
+
+# Root-Locus Method
+
+[[Root-Locus Method]]
 
 ---
 
