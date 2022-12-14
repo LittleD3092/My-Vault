@@ -20,7 +20,7 @@
 
 # Meaning of Root-Locus Plot
 
-
+![[Screenshot from 2022-12-14 21-59-57.png]]
 
 ---
 
