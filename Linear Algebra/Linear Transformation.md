@@ -23,15 +23,86 @@ The above definition can be seperated into two parts:
 
 # Notation
 
-A mapping $L$ from a vector space $V$ into a vector space $W$ will be denoeted
+- A mapping $L$ from a vector space $V$ into a vector space $W$ will be denoeted $$L: V \rightarrow W$$
+- If $V$ and $W$ are the same, the following is called a **linear operator**: $$L: V \rightarrow V$$
+- A linear transformation $L_A({\bf x})$ can be represented by a matrix $A$: $$L_A({\bf x}) = A{\bf x}$$
 
-$$L: V \rightarrow W$$
+## Examples
 
-If $V$ and $W$ are the same, the following is called a **linear operator**:
+### Linear Operators on $\rm R^2$
 
-$$L: V \rightarrow V$$
+The operator $L$ defined by
 
+$$L({\bf x}) = (-x_2, x_1)^T$$
 
+Since 
+
+$$
+\begin{array}{}
+	L(\alpha {\bf x} + \beta{\bf y}) & = & 
+	\left[
+		\begin{array}{}
+			-(\alpha x_2 + \beta y_2) \\
+			\alpha x_1 + \beta y_1
+		\end{array}
+	\right] \\
+	& = & 
+	\alpha\left[
+		 \begin{array}{}
+		 -x_2 \\
+		 x_1
+		 \end{array}
+	\right] +
+	\beta\left[
+		\begin{array}{}
+			 -y_2 \\
+			 y_1
+		\end{array}
+	\right] \\
+	& = & 
+	\alpha L({\bf x}) +
+	\beta L({\bf y})
+\end{array}
+$$
+
+It is a linear operator.
+
+### Linear Transformation from ${\rm R}^n$ to ${\rm R}^m$
+
+The mapping from ${\rm R}^2$ to ${\rm R}^3$ is defined by
+
+$$L({\bf x}) = (x_2, x_1, x_1 + x_2)^T$$
+
+Since 
+
+$$L(\alpha {\bf x}) = (\alpha x_2, \alpha x_1, \alpha x_1 + \alpha x_2)^T = \alpha L({\bf x})$$
+
+and
+
+$$
+\begin{array}{l}
+	L({\bf x} + {\bf y}) & = &
+	(x_2 + y_2, x_1 + y_1, x_1 + y_1 + x_2 + y_2)^T \\
+	& = & (x_2, x_1, x_1 + x_2)^T + (y_2, y_1, y_1 + y_2)^T \\
+	& = & L({\bf x}) + L({\bf y})
+\end{array}
+$$
+
+It is linear transformation.
+
+### Linear Transformation from $V$ to $W$
+
+Let $L$ be a mapping from $C[a, b]$ to $R^1$ defined by:
+
+$$L(f) = \int_a^b f(x)dx$$
+
+$L$ is linear transformation since
+
+$$
+\begin{array}{}
+	
+\end{array}
+$$
 
 ---
 
