@@ -65,7 +65,7 @@ Then we go through the following steps:
 		- ![[Pasted image 20221215002758.png]]
 	- For a departure from a complex pole: $$\text{Angle of departure} = 180\degree - \sum\theta_i + \sum\phi_j$$
 	- For an arrival at a complex zero: $$\text{Angle of arrival} = 180\degree - \sum\phi_j + \sum\theta_i$$
-6. Find the points where the root lici may cross the imaginary axis.
+6. Find the points where the root loci may cross the imaginary axis.
 	- You have two ways:
 		- [[Routh's Stability Criterion]]
 		- Let $s = j\omega$, and let characteristic equation equal to $0$ to solve $s$ and $\omega$.
