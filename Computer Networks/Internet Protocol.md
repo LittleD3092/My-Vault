@@ -14,6 +14,10 @@
 
 [[Network Address Translation]]
 
+# IPv6
+
+[[IPv6]]
+
 ---
 
 參考資料:

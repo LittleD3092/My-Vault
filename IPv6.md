@@ -1,5 +1,5 @@
-Tag: 
-Previous: 
+Tag: #computer-networks 
+Previous: [[Internet Protocol]]
 Link: 
 
 ---
@@ -14,6 +14,7 @@ Link:
 
 參考資料:
 
+Computer Networking, A Top-Down Approach, 8th edition
 
 ---
 
