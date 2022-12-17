@@ -9,6 +9,8 @@ Link: [[Network Address Translation]]
 
 # Datagram Format
 
+![[Pasted image 20221217150558.png]]
+
 The key fields in the IPv4 datagram are the following:
 
 - *Version number*.
