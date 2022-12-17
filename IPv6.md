@@ -8,7 +8,12 @@ Link:
 
 ---
 
+- The [[IPv4]] addresses would be completely allocated, and hence no new networks could attach to the Internet.
+- [[IPv6]] is for solving this problem.
 
+# Datagram Format
+
+![[Pasted image 20221217144949.png]]
 
 ---
 
