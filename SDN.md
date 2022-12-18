@@ -43,6 +43,24 @@ As we can see, the process contains two steps:
 	- Transport layer
 	- #TODO Figure 4.29
 - OpenFlow-enabled device can perform as a router ([[Networks]] Layer) and as a switch (Link layer).
+- Flow table entries may have wild cards.
+	- For example, `128.119.*.*` will match the corresponding address field of any datagram that has `128.119`.
+	- If a packet matches multiple entries, the highest priority entry will be used.
+
+# Action
+
+- Each flow table entry has a list of zero or more actions.
+- If there are multiple actions, they are performed in the order specified in the list.
+
+Among the most important possible actions are:
+
+- *Forwarding*.
+	- Forward a packet to a particular port.
+	- Broadcast a packet over all ports.
+	- Multicast a packet over a selected set of ports.
+- *Dropping*.
+- *Modify-field*.
+	- The values in 10 packet-header can be modified before forwarding.
 
 ---
 
