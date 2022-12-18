@@ -23,6 +23,26 @@ Each entry in the flow table includes:
 	- The counter includes 
 		- The number of packets that have been matched by the table entry.
 		- The time since the table entry was last updated.
+- *A set of actions to be taken* when a packet matches a flow table entry.
+	- Example:
+		- Forward the packet to a given output port.
+		- Drop the packet.
+		- Make copies of the packet and sent then to multiple output ports.
+		- Rewrite selected header fields.
+
+As we can see, the process contains two steps:
+
+1. [[#Match]]
+2. [[#Action]]
+
+# Match
+
+- OpenFlow 1.0 allows for a match to be made on selected fields from *three* layers.
+	- Link layer
+	- Network layer
+	- Transport layer
+	- #TODO Figure 4.29
+- OpenFlow-enabled device can perform as a router ([[Networks]] Layer) and as a switch (Link layer).
 
 ---
 
