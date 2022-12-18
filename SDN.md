@@ -41,7 +41,7 @@ As we can see, the process contains two steps:
 	- Link layer
 	- Network layer
 	- Transport layer
-	- #TODO Figure 4.29
+	- ![[Pasted image 20221218134009.png]]
 - OpenFlow-enabled device can perform as a router ([[Networks]] Layer) and as a switch (Link layer).
 - Flow table entries may have wild cards.
 	- For example, `128.119.*.*` will match the corresponding address field of any datagram that has `128.119`.
@@ -61,6 +61,33 @@ Among the most important possible actions are:
 - *Dropping*.
 - *Modify-field*.
 	- The values in 10 packet-header can be modified before forwarding.
+
+# Example
+
+The following examples are based on the figure below.
+
+![[Pasted image 20221218134230.png]]
+
+## 1. Simple Forwarding
+
+For a simple forwarding purpose, the flow table of `s1`, `s2` and `s3` is
+
+- `s1` Flow Table:
+
+| Match                                                    | Action      |
+| -------------------------------------------------------- | ----------- |
+| `Ingress Port = 1; IP Src = 10.3.*,*; IP Dst = 10.2.*.*` | Forward (4) |
+- `s3` Flow Table:
+
+| Match                                  | Action      |
+| -------------------------------------- | ----------- |
+| `IP Src = 10.3.*.*; IP Dst = 10.2.*.*` | Forward (3) |
+- `s2` Flow Table:
+
+| Match                                 | Action      |
+| ------------------------------------- | ----------- |
+| `Ingress Port = 2; IP Dst = 10.2.0.3` | Forward (3) |
+| `Ingress Port = 2; IP Dst = 10.2.0.4` | Forward (4) | 
 
 ---
 
