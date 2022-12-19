@@ -22,9 +22,18 @@ No. If two packets from two different input has the same output port, then one w
 
 # P10
 
+#TODO
+
 | Prefix              | Link Interface |
 | ------------------- | -------------- |
 | `11100000 00000000` | `0`            |
 | `11100000 00000001` | `1`            |
 | `1110000`  | `2`            |
 | Otherwise           | `3`            |
+
+# P16
+
+The subnet has the beginning 26 bits fixed, meaning that the last 8 bits must be `10xxxxxx`. Therefore the range of the addresses is `192.168.56.128` to `192.168.56.192`.
+
+==One example is `192.168.56.128`.==
+
