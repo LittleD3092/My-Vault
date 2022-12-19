@@ -61,7 +61,23 @@ Therefore the prefixes are
 
 # P19
 
-#TODO 
+For a 1600-byte datagram, we have actual data of 1580 bytes. 
+
+The link has an MTU of 500 bytes, so the maximum data size that is permissible to be sent is 480 bytes.
+
+So, there would be ==4 fragments==:
+
+1. data size = 480 bytes, ==offset = 0==, and MF ==flag = 1==
+2. data size = 480 bytes, ==offset = 60==, and MF ==flag = 1==
+3. data size = 480 bytes, ==offset = 120==, and MF ==flag = 1==
+4. data size = 140 bytes, ==offset = 180==, and MF ==flag = 0==
+
+The identification number will be the same which is ==291==.
+
+The fields listed below is also changed:
+
+- The ==total length== is changed to the size of the fragment (==500, 500, 500, 160==).
+- The ==header checksum== is re-calculated.
 
 # P28
 
