@@ -81,3 +81,12 @@ The fields listed below is also changed:
 
 # P28
 
+| k   | u        | v   | x   | y        | z   |
+| --- | -------- | --- | --- | -------- | --- |
+| 1   | $\infty$ | 6   | 2   | $\infty$ | 0   |
+| 2   | 7        |     |     |          |     |
+| 3   |          |     |     |          |     |
+| 4   |          |     |     |          |     |
+
+# P29
+
