@@ -25,7 +25,7 @@ For a newly arriving host, the DHCP protocol is a four-step process:
 	- Because host does not know the DHCP server address, a destination address of `255.255.255.255` (broadcast address) is used.
 	- Because host has not been assigned an address, source IP address `0.0.0.0` is used.
 2. *DHCP server offers(s)*.
-	- DHCP server reponds the DHCP discover message with a **DHCP offer message**.
+	- DHCP server responds the DHCP discover message with a **DHCP offer message**.
 	- Using the `255.255.255.255` (broadcast address) to respond.
 	- Multiple DHCP servers on the same subnet can response.
 	- Contains:

@@ -323,6 +323,8 @@ The average throughput of a TCP reno connection is
 
 $$\text{average throughput of a connection} = \frac{0.75 \cdot W}{RTT}$$
 
+- $W$: Window size.
+
 ### TCP Cubic
 
 Cutting the sending rate in half may be over cautious. 

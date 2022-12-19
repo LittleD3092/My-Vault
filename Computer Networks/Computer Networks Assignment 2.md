@@ -98,3 +98,38 @@ The distance table entries at node z is:
 
 Assume that a network has $n$ nodes, the maximum number of iterations is $n - 1$.
 
+Note that for distance-vector algorithm, only the neighbors are updated. Assume that we are finding the distance from $s$ and $d[u]$ means the distance between $u$ and $s$ after $i$ iterations. After $i$ iterations:
+
+- If $d[u]$ is not $\infty$, then there exists a path of length $d[u]$ from $s$ to $u$.
+- If there is a path from $s$ to $u$ with at most $i$ edges, then $d[u]$ is the length of the shortest path with at most $i$ edges.
+
+Since the edges from $s$ to $u$ can only have a maximum number of $n - 1$, the two guarantees imply that after $n - 1$ iterations, the shortest path is found.
+
+# P41
+
+- Congestion control is used by a network to control congestion in the network, and flow control is used by sender and receiver to control the traffic between them. 
+- Congestion control solves packet drops along the path, and flow control prevent receiver's buffer from overflow.
+- A variable `Receive Window` is used at the sender side.
+
+# P44
+
+## a.
+
+Since `cwnd` increases by 1 per RTT, it takes `6` RTT for `cwnd` to increase from 6 MSS to 12 MSS.
+
+## b.
+
+The average throughout is
+
+$$\frac{0.75 \cdot 12 {\ \rm MSS}}{6\ {\rm RTT}} = \underline{\frac{1.5 {\ \rm MSS}}{{\rm RTT}}}_\#$$
+
+# R18
+
+The five PCs are assigned IP addresses via DHCP protocol.
+
+1. The connecting PC uses a DHCP discover message to discover the DHCP server.
+2. The DHCP servers responds the DHCP discover with a DHCP offer message.
+3. The PC will request one of the servers using a DHCP request message.
+4. The server will respond to the DHCP request using a DHCP ACK message.
+
+The router is only assigned one IP address, therefore NAT is required for five PCs to connect. The IP addresses assigned to the five PCs are provided by the NAT-enabled router.
