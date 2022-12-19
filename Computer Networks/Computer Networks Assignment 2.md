@@ -22,7 +22,7 @@ No. If two packets from two different input has the same output port, then one w
 
 # P10
 
-#TODO
+## a.
 
 | Prefix              | Link Interface |
 | ------------------- | -------------- |
@@ -30,6 +30,12 @@ No. If two packets from two different input has the same output port, then one w
 | `11100000 00000001` | `1`            |
 | `1110000`  | `2`            |
 | Otherwise           | `3`            |
+
+## b.
+
+- `11111000 10010001 01010001 01010101`: Since it does not match any of the prefix, it goes to link interface `3`.
+- `11100000 00000000 11000011 00111100`: It matches 1st and 3rd entry. The longest prefix is the 1st one, therefore it goes to link interface `0`.
+- `11100001 10000000 00010001 01110111`: It matches 3rd entry, so it goes to link interface `2`.
 
 # P16
 
