@@ -26,5 +26,5 @@ No. If two packets from two different input has the same output port, then one w
 | ------------------- | -------------- |
 | `11100000 00000000` | `0`            |
 | `11100000 00000001` | `1`            |
-| `11100000 0000001`  | `2`            |
+| `1110000`  | `2`            |
 | Otherwise           | `3`            |
