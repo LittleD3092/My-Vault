@@ -63,7 +63,7 @@ Switching can be accomplished in a number of ways:
 	- A label is added to the packet, and all output will receive this packet. But, only the output port that matches the label will keep the packet.
 	- Only one packet can cross the bus at the same time.
 - *Switching via an interconnection network*
-	- Uses a crossbar switch. Consists of $2N$ buses for $N$ input and $N$ output. 
+	- Uses a **crossbar** switch. Consists of $2N$ buses for $N$ input and $N$ output. 
 	- The switch controller closes the corresponding intersection and open other intersections when a packet enters.
 	- This is **non-blocking**, and multiple packets can be forwarded at the same time.
 	- However, if two packets from two different input has the same output port, then one will have to wait.
