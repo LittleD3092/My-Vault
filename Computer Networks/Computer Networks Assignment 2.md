@@ -84,9 +84,17 @@ The fields listed below is also changed:
 | k   | u        | v   | x   | y        | z   |
 | --- | -------- | --- | --- | -------- | --- |
 | 1   | $\infty$ | 6   | 2   | $\infty$ | 0   |
-| 2   | 7        |     |     |          |     |
-| 3   |          |     |     |          |     |
-| 4   |          |     |     |          |     |
+| 2   | 7        | 5   | 2   | 5        | 0   |
+| 3   | 6        | 5   | 2   | 5        | 0   |
+| 4   | 6        | 5   | 2   | 5        | 0   |
+
+The distance table entries at node z is:
+
+|          | u   | v   | x   | y   |
+| -------- | --- | --- | --- | --- |
+| distance | 6   | 5   | 2   | 5   | 
 
 # P29
+
+Assume that a network has $n$ nodes, the maximum number of iterations is $n - 1$.
 
