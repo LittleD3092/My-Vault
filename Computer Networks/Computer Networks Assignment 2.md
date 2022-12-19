@@ -37,3 +37,25 @@ The subnet has the beginning 26 bits fixed, meaning that the last 8 bits must be
 
 ==One example is `192.168.56.128`.==
 
+For the block of addresses `192.168.56.32/27`, the last 8 bits must be `001xxxxx`. Therefore the range of the addresses is `192.168.56.32` to `192.168.56.63`, having a total of `32` addresses.
+
+Dividing the `32` addresses for 4 subnets, each can get `8` addresses. The addresses of the 4 subnets are:
+
+- Subnet 1: `192.168.56.32` to `192.168.56.39`
+- Subnet 2: `192.168.56.40` to `192.168.56.47`
+- Subnet 3: `192.168.56.48` to `192.168.56.55`
+- Subnet 4: `192.168.56.56` to `192.168.56.63`
+
+Therefore the prefixes are
+
+- ==Subnet 1: `192.168.56.32/29`==
+- ==Subnet 2: `192.168.56.40/29`==
+- ==Subnet 3: `192.168.56.48/29`==
+- ==Subnet 4: `192.168.56.56/29`==
+
+# P19
+
+#TODO 
+
+# P28
+

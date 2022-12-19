@@ -1,4 +1,5 @@
 標籤: #computer-networks 
+Previous: [[Internet Protocol]]
 Link: [[Network Address Translation]]
 
 ---
