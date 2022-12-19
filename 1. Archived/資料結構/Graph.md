@@ -291,7 +291,7 @@ In a directed weighed graph, we wish to find a shortest path from a vertex (we c
 2. [[Bellman-Ford Algorithm]]: Can solve negative weighed graph. Use a table and a list of edges.
 3. [[Floyd-Warshall Algorithm]]: Can solve negative weighed graph and calculate all pairs of starting and ending point at the same time. Use matrices.
 
-Before we jump into the algorithms, we must know what ==relaxation== means. Relaxation compares the current recoded distance with the new possible distance, and choose the smaller one. Like this:
+Before we jump into the algorithms, we must know what ==relaxation== means. Relaxation compares the current recorded distance with the new possible distance, and choose the smaller one. Like this:
 
 ```cpp
 // d[] is the current distance in record
