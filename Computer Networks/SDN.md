@@ -89,6 +89,28 @@ For a simple forwarding purpose, the flow table of `s1`, `s2` and `s3` is
 | `Ingress Port = 2; IP Dst = 10.2.0.3` | Forward (3) |
 | `Ingress Port = 2; IP Dst = 10.2.0.4` | Forward (4) | 
 
+## 2. Load Balancing
+
+For load balancing, the datagrams from different ingress port should be forwarded to different link:
+
+`s2` Flow Table:
+
+| Match                                 | Action      |
+| ------------------------------------- | ----------- |
+| `Ingress port = 3; IP Dst = 10.1.*.*` | Forward (2) |
+| `Ingress port = 4; IP Dst = 10.1.*.*` | Forward (1) | 
+
+## 3. Firewalling
+
+For a scenario that `s2` wants only to receive traffic sent from hosts attached to `s3`:
+
+`s2` Flow Table:
+
+| Match                                  | Action      |
+| -------------------------------------- | ----------- |
+| `IP Src = 10.3.*.*; IP Dst = 10.2.0.3` | Forward (3) |
+| `IP Src = 10.3.*.*; IP Dst = 10.2.0.4` | Forward (4) | 
+
 ---
 
 參考資料:
