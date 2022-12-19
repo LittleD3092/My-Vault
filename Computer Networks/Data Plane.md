@@ -1,4 +1,5 @@
 標籤: #computer-networks #list 
+Previous: [[Networks]]
 
 ---
 
@@ -13,6 +14,10 @@
 # Internet Protocol
 
 [[Internet Protocol]]
+
+# Generalized Forwarding and SDN
+
+[[SDN]]
 
 ---
 
