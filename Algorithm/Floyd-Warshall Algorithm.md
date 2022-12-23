@@ -6,7 +6,7 @@
 
 ---
 
-This algorithm generates matrices $A_0, A_1, A_2, A_3, A_4, A_5, A_6$. Actually, the first matrix $A_0$ is the same as [[#Adjacency Matrices]]. The remaining matrices are using the current number $i$ in $A_i$ as a midpoint vertex, and see if the distance is shorter.
+This algorithm generates matrices $A_0, A_1, A_2, A_3, A_4, A_5, A_6$. Actually, the first matrix $A_0$ is the same as [[Adjacency Matrices]]. The remaining matrices are using the current number $i$ in $A_i$ as a midpoint vertex, and see if the distance is shorter.
 
 See [Floyd-Warchall Algorithm - youtube](https://youtu.be/oNI0rf2P9gE) for more.
 
