@@ -76,9 +76,18 @@ The steps are:
 2. Highlight the distance that has smallest node, and determine the distance of its neighbors.
 3. Go to 2.
 
+It appears that oscillations may happen:
+
+![[Pasted image 20221224230010.png]]
+
+To solve oscillation, the routers can randomize the time it sends out a link advertisement.
+
 ## Distance-Vector (DV) Routing Algorithm
 
-
+- *Iterative*: This process continues on until no more information is exchanged between the nodes.
+- *Asynchronous*: Does not require all of the nodes to operate in lockstep with each other.
+- *Distributed*: Each node receives some information from one or more of its *directly attached neighbors*.
+- Same as [[Bellman-Ford Algorithm]].
 
 ---
 
