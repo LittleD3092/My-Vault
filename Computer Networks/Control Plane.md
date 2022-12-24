@@ -26,6 +26,9 @@ To determine good paths, routing algorithms are needed.
 	- An edge with end points $x$ and $y$ is represented by $(x, y)$.
 	- Node $y$ is said to be a **neighbor** of $x$ if $(x, y)$ belongs to $E$.
 	- The cost of the edge is $c(x, y)$.
+	- A path is a sequence of nodes $(x_1, x_2, \dots, x_p)$.
+	- The cost of a path is $c(x_1, x_2) + c(x_2, x_3) + \dots + c(x_{p - 1}, x_p)$.
+- We want to find the **least-cost path**.
 
 ---
 
