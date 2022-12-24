@@ -33,7 +33,52 @@ To determine good paths, routing algorithms are needed.
 Based on the information required to use the algorithm, there are two types:
 
 - **Centralized routing algorithm**: Requires complete, global knowledge about the network.
-- **Decentralized routing algorithm**: 
+	- [[#Link-State (LS) Routing Algorithm]]
+- **Decentralized routing algorithm**: The calculation is iterative, the router can first calculate based on closer routers, then further routers.
+	- [[#Distance-Vector (DV) Routing Algorithm]]
+
+Based on dynamic or static, we can also classify the algorithms into:
+
+- **Static routing algorithm**: Change very slowly, often as a result of human intervention.
+- **Dynamic routing algorithm**: Change the paths as the network traffic loads or topology change.
+
+Based on whether they are load-sensitive or not, we can also classify the algorithms into:
+
+- **Load-sensitive algorithm**: The algorithm tend to choose routes around such a congested link.
+	- ARPAnet routing algorithms.
+	- There are a number of difficulties.
+- **Load-insensitive**: The link's cost does not explicitly reflect its current level of congestion.
+
+## Link-State (LS) Routing Algorithm
+
+- All link costs are known.
+- In practice, all nodes broadcast its edges and weights.
+	- Accomplished by a **link-state broadcast** algorithm.
+- The same as [[Dijkstra Algorithm]].
+
+Given the following graph:
+
+![[Pasted image 20221224223858.png|400]]
+
+The running of the graph is:
+
+| step | u     | v     | w     | x     | y        | z        |
+| ---- | ----- | ----- | ----- | ----- | -------- | -------- |
+| 0    | ==0== | 2     | 5     | 1     | $\infty$ | $\infty$ |
+| 1    | ==0== | 2     | 4     | ==1== | 2        | $\infty$ |
+| 2    | ==0== | ==2== | 4     | ==1== | 2        | $\infty$ |
+| 3    | ==0== | ==2== | 3     | ==1== | ==2==    | 4        |
+| 4    | ==0== | ==2== | ==3== | ==1== | ==2==    | 4        |
+
+The steps are:
+
+1. List the distance. The starting node has a highlighted 0, and its neighbor has distance equal to weight.
+2. Highlight the distance that has smallest node, and determine the distance of its neighbors.
+3. Go to 2.
+
+## Distance-Vector (DV) Routing Algorithm
+
+
 
 ---
 
