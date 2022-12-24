@@ -8,7 +8,24 @@ Link:
 
 ---
 
+For computing the forwarding and flow tables, we have two possible approaches:
 
+- *Per-router control*: The routing algorithm runs in each and every router. They communicate with each other to compute the values for its forwarding table.
+	- ![[Pasted image 20221224163826.png]]
+	- [[OSPF]]
+	- [[BGP]]
+- *Logically centralized control*: A logically centralized controller computes and distributes the forwarding tables to be used by each and every router.
+	- ![[Pasted image 20221224164121.png]]
+
+# Routing Algorithms
+
+To determine good paths, routing algorithms are needed.
+
+- A weighted, undirected [[Graph]] is used to represent the routers and links.
+- Edges $E$ is the set of all links.
+	- An edge with end points $x$ and $y$ is represented by $(x, y)$.
+	- Node $y$ is said to be a **neighbor** of $x$ if $(x, y)$ belongs to $E$.
+	- The cost of the edge is $c(x, y)$.
 
 ---
 
