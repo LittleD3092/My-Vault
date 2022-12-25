@@ -1,4 +1,5 @@
 標籤: #algorithm #DataStructure 
+Previous: [[Graph]]
 
 ---
 
