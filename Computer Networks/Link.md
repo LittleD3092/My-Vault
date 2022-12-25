@@ -116,7 +116,6 @@ $$R = \text{remainder } \frac{D \cdot 2^r}{G}$$
 	- [[#ALOHA]]
 	- [[#Carrier Sense Multiple Access (CSMA)]]
 	- [[#Carrier Sense Multiple Access with Collision Detection (CSMA/CD)]]
-	- [[#CSMA/CD Efficiency]]
 
 ### Slotted ALOHA
 
@@ -151,13 +150,42 @@ The maximum efficiency is $0.37$.
 
 ### Carrier Sense Multiple Access (CSMA)
 
+- Operation:
+	- *Listen before speaking*: **carrier sensing**.
+- Although the protocol has **carrier sensing**, collision can still occur. 
+	- The following figure shows the nodes B and D started transmition at different time.
+	- During the start of D's transmission, it does not know B is transmitting.
+	- You can see that **channel propagation delay** plays an important role.
 
+![[Pasted image 20221225181528.png]]
 
 ### Carrier Sense Multiple Access with Collision Detection (CSMA/CD)
 
-### CSMA/CD Efficiency
+- [[#Carrier Sense Multiple Access (CSMA)|CMSA]], but with collision detection.
+	- *If someone else begins talking at the same time, stop talking*: **collision detection**.
+- Take the figure above as an example, CSMA/CD will stop B and D from transmitting when they receive each other's frame.
+- Operation:
+	1. The adapter obtains a datagram from [[Networks]] layer.
+	2. If the adapter senses that the channel is idle, it start to transmit. If the channel is busy, it waits until the channel is available.
+	3. While transmitting, the adapter monitors other signals.
+	4. If the adapter transmits the entire frame, the adapter is finished with the frame. If other signals are detected, it aborts the transmission.
+	5. After aborting, the adapter waits a random amount of time. Then go to step 2.
+- Delay:
+	- How to determine the random delay time?
+	- Too long is inefficient, too short makes the nodes collide.
+	- **Binary exponential backoff** algorithm solve this.
+		- Suppose the transmition of the same frame experienced $n$ collisions.
+		- Choose a random value $K$ from $0\sim 2^{n - 1}$.
+		- Wait $K\cdot 512\text{ bit}$ times.
+		- The maximum $n$ is 10.
+- Efficiency: $$\text{Efficiency} = \frac{1}{1 + 5d_{\rm prop} / d_{\rm trans}}$$
 
 ## Taking-Turns Protocols
+
+- There are many taking-turns protocols.
+- Two of the more important protocols:
+	- **Polling protocol**
+		- A master node **polls** each of the nodes in a round-robin fashion.
 
 ---
 
