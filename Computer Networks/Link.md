@@ -212,6 +212,16 @@ The maximum efficiency is $0.37$.
 - 6 bytes long, $2^{48}$ possibilities.
 - Bind to an adapter.
 - Does not change no matter where the adapter goes.
+- A **broadcast address**, `FF-FF-FF-FF-FF-FF` is used to broadcast a frame.
+
+### Address Resolution Protocol (ARP)
+
+- Used to translate MAC address and IP address.
+- Operation:
+	- Each host and router has an **ARP table** that maps IP addresses to MAC addresses.
+		- The ARP table has a time-to-live (TTL) value.
+	- If the ARP table does not currently have the entry, sender constructs an **ARP packet** and query all other hosts and routers.
+	- The hosts or routers that contain the entry responds with another ARP packet.
 
 ---
 
