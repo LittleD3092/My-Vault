@@ -68,7 +68,9 @@ The above is not good enough. We have a better version, **two-dimensional parity
 
 ![[Pasted image 20221225155606.png]]
 
-- Assume the sender and receiver agree on an $r + 1$ bit pattern, $G$.
+- Assume the sender and receiver agree on an $r + 1$ bit pattern, **generator** $G$.
+	- There are standards for 8-, 12-, 16-, and 32-bit generators.
+	- $G_{\text{CRC-32}}=100000100110000010001110110110111$
 - CRC bits $R$ are appended to the data to satisfy the following condition:
 $$D\cdot 2^r {\ \rm XOR\ } R = n G$$
 
@@ -86,6 +88,11 @@ $$R = \text{remainder } \frac{D \cdot 2^r}{G}$$
 
 ![[Pasted image 20221225160809.png]]
 
+# Multiple Access Problem
+
+- **Multiple access problem**: How to coordinate the access of multiple sending and receiving nodes to a shared broadcast channel?
+	- The transmitted frame may **collide** at all of the receivers.
+- **Multiple access protocols**: The protocols for this problem.
 ---
 
 參考資料:
