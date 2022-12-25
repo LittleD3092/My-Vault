@@ -120,6 +120,8 @@ $$R = \text{remainder } \frac{D \cdot 2^r}{G}$$
 
 ### Slotted ALOHA
 
+![[Pasted image 20221225173658.png]]
+
 - Operation:
 	- Time is divided into slots.
 	- Nodes send its frame in one slot.
@@ -132,9 +134,24 @@ $$R = \text{remainder } \frac{D \cdot 2^r}{G}$$
 	- **Successful slot**: The slot which only one node transmits.
 	- **Efficiency**: The long-run fraction of successful slots when there are a large number of active nodes.
 
+The possibility of a successful slot is:
+
+$$Np(1 - p)^{N - 1}$$
+
+The maximum efficiency is $0.37$.
+
 ### ALOHA
 
+- [[#Slotted ALOHA]], but slots are not required.
+- Operation:
+	- If collision happens, the node wait for a frame transmission time.
+- How efficient:
+	- The probability of a successful transmission is $$p(1 - p)^{2(N - 1)}$$
+	- The efficiency is $$\frac{1}{2e}$$
+
 ### Carrier Sense Multiple Access (CSMA)
+
+
 
 ### Carrier Sense Multiple Access with Collision Detection (CSMA/CD)
 
