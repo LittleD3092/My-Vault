@@ -185,7 +185,26 @@ The maximum efficiency is $0.37$.
 - There are many taking-turns protocols.
 - Two of the more important protocols:
 	- **Polling protocol**
-		- A master node **polls** each of the nodes in a round-robin fashion.
+		- Operation:
+			- A master node **polls** each of the nodes in a round-robin fashion.
+			- The master tells other nodes it is their turn to transmit.
+		- Disadvantage:
+			- The time used to notify a node, **polling delay**.
+			- Master node cannot fail.
+	- **Token-passing protocol**
+		- Operation:
+			- A **token** is exchanged among the nodes.
+			- The order of passing the token is fixed.
+			- The node that currently has token can transmit a maximum number of frames.
+			- Then the token is passed.
+		- Disadvantage:
+			- The failure of one node can crash the entire channel.
+
+# Switched Networks
+
+![[Pasted image 20221225194412.png]]
+
+
 
 ---
 
