@@ -54,6 +54,18 @@ The above is not good enough. We have a better version, **two-dimensional parity
 - Can detect and correct single error.
 - Can also detect two errors (but *not correct*).
 
+## Checksumming Methods
+
+- **Internet checksum** is based on this approach.
+- Steps:
+	1. The data is treated as 16-bit integers, and summed.
+	2. The 1s complement of the sum is stored.
+	3. While checking, the 1s complement and the 16-bit integers should sum up to `0b11111111 11111111`.
+
+## Cyclic Redundancy Check (CRC)
+
+- Also known as **polynomial codes**.
+
 ---
 
 參考資料:
