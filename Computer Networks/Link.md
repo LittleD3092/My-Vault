@@ -93,6 +93,55 @@ $$R = \text{remainder } \frac{D \cdot 2^r}{G}$$
 - **Multiple access problem**: How to coordinate the access of multiple sending and receiving nodes to a shared broadcast channel?
 	- The transmitted frame may **collide** at all of the receivers.
 - **Multiple access protocols**: The protocols for this problem.
+	- Categories:
+		- [[#Channel Partitioning Protocols]]
+		- [[#Random Access Protocols]]
+		- [[#Taking-Turns Protocols]]
+
+## Channel Partitioning Protocols
+
+> Recall that we have two partitioning techniques: [[Circuit Switching#Time-Division Multiplexing (TDM)|TDM]] and [[Circuit Switching#Frequency-Division Multiplexing (FDM)|FDM]].
+
+- A third protocol is **code division multiple access (CDMA)**.
+	- CDMA assign different *code* to each node.
+	- Each node uses its code to encode the data bits it sends.
+	- Nodes can *simultaneously* send frames.
+
+## Random Access Protocols
+
+- A transmitting node always transmits at the full rate of the channel $R$.
+- When a node experiences a collision, *it waits a random delay before retransmitting the frame*.
+- Few most commonly used:
+	- [[#Slotted ALOHA]]
+	- [[#ALOHA]]
+	- [[#Carrier Sense Multiple Access (CSMA)]]
+	- [[#Carrier Sense Multiple Access with Collision Detection (CSMA/CD)]]
+	- [[#CSMA/CD Efficiency]]
+
+### Slotted ALOHA
+
+- Operation:
+	- Time is divided into slots.
+	- Nodes send its frame in one slot.
+	- If there is a collision, the node retransmits its frame with probability $p$ until the frame is transmitted without a collision.
+	- At each slot, the node has probability $p$ of sending, and probability $1 - p$ to skip this slot.
+- Advantage:
+	- Allows a node to transmit at the full rate $R$ when it is the only node.
+	- Decentralized.
+- How efficient:
+	- **Successful slot**: The slot which only one node transmits.
+	- **Efficiency**: The long-run fraction of successful slots when there are a large number of active nodes.
+
+### ALOHA
+
+### Carrier Sense Multiple Access (CSMA)
+
+### Carrier Sense Multiple Access with Collision Detection (CSMA/CD)
+
+### CSMA/CD Efficiency
+
+## Taking-Turns Protocols
+
 ---
 
 參考資料:
