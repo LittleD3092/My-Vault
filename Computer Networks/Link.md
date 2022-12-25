@@ -204,7 +204,14 @@ The maximum efficiency is $0.37$.
 
 ![[Pasted image 20221225194412.png]]
 
+## Addressing
 
+### MAC Addresses
+
+- **Link-layer address**, **physical address**, **LAN address**.
+- 6 bytes long, $2^{48}$ possibilities.
+- Bind to an adapter.
+- Does not change no matter where the adapter goes.
 
 ---
 
