@@ -66,6 +66,26 @@ The above is not good enough. We have a better version, **two-dimensional parity
 
 - Also known as **polynomial codes**.
 
+![[Pasted image 20221225155606.png]]
+
+- Assume the sender and receiver agree on an $r + 1$ bit pattern, $G$.
+- CRC bits $R$ are appended to the data to satisfy the following condition:
+$$D\cdot 2^r {\ \rm XOR\ } R = n G$$
+
+> The above formula means that "the $d+r$ bits are divisible by $G$".
+
+- The receiver divides the $d + r$ bits by $G$. If the remainder is nonzero, there is an error.
+
+---
+
+- The $R$ is determined by the following formula:
+
+$$R = \text{remainder } \frac{D \cdot 2^r}{G}$$
+
+- An example:
+
+![[Pasted image 20221225160809.png]]
+
 ---
 
 參考資料:
