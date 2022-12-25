@@ -1,4 +1,6 @@
-標籤: #computer-networks #list 
+Tag: #computer-networks 
+Previous: [[Layers]]
+Link: 
 
 ---
 
@@ -6,26 +8,17 @@
 
 ---
 
-To provide structure to the design of network protocols, network designers organize protocols in ==layers==.
+# Terminology
 
-There are five layers:
-
-- [[Application]]
-- [[Transport]]
-- [[Networks]]
-- [[Computer Networks/Link|Link]]
-- Physical
+- **Node**: Any device that runs a link-layer protocol.
+- **Links**: The channels that connect adjacent nodes.
+- **Link-layer frame**: The encapsulated **datagram**.
 
 ---
 
 參考資料:
 
 Computer Networking, A Top-Down Approach, 8th edition
-
----
-
-link:
-
 
 ---
 
