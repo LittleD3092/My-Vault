@@ -82,7 +82,7 @@ This formula puts more weight on recent samples than old samples. In statistics,
 
 In addition to estimating RTT, it is also valuable to have a measure of the variability of the RTT.
 
-$$\text{DevRTT} = (1 - \beta) \cdot \text{DevRTT} + \vert \text{SampleRTT} - \text{EstimatedRTT} \vert$$
+$$\text{DevRTT} = (1 - \beta) \cdot \text{DevRTT} + \beta \cdot \vert \text{SampleRTT} - \text{EstimatedRTT} \vert$$
 
 - $\beta$: The weight for $\text{DevRTT}$. The recommended value is $0.25$.
 
