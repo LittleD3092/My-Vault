@@ -80,7 +80,14 @@ Therefore the optimal choice will be $a_1$. Also, we have find out that this pro
 
 ## Theorem
 
-Consider any nonempty subproblem $S_k$, and let $a_m$ be an activity in $S_k$ with the earliest finish time. Then $a_m$ is included in some maximum-size subset of mutually compatible activities of $S_k$.
+For subproblem $S_k$, the activity that has the earliest finish time $a_m$ is in our answer.
+
+### Proof
+
+- Let $A_k$ be the answer in $S_k$, and $a_j$ is the activity of earliest finish time in $A_k$, $a_j \neq a_m$.
+- Let $A_k'$ be $A_k - \{a_j\} \cup \{a_m\}$.
+
+Since $\vert A_k' \vert = \vert A_k \vert$, $A_k'$ is also an answer.
 
 # Pseudocode
 
