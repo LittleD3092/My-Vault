@@ -14,8 +14,8 @@ Link: [[Elementary Matrix]]
 Elementary row operation contains the following 3 operations:
 
 1. Interchange two rows.
-2. Add multiples of one row to another row.
-3. Multiplying a row by a constant $(\neq 0)$.
+2. Multiplying a row by a constant $(\neq 0)$.
+3. Add multiples of one row to another row.
 
 ---
 

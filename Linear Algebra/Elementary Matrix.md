@@ -26,6 +26,10 @@ Link:
 			- $E_3A$ adds a multiple of the row to the other row. $$E_3A = \left[ \begin{array}{} a_{11} + 3a_{31} & a_{12} + 3a_{32} & a_{13} + 3a_{33} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{array} \right]$$
 			- $AE_3$ adds a multiple of the column to the other column. $$AE_3 = \left[ \begin{array}{} a_{11} & a_{12} & 3a_{11} + a_{13} \\ a_{21} & a_{22} & 3a_{21} + a_{23} \\ a_{31} & a_{32} & 3a_{31} + a_{33} \end{array} \right]$$
 
+# Triangular Factorization
+
+[[LU Factorization]]
+
 ---
 
 參考資料:
