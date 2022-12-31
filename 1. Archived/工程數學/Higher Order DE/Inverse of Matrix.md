@@ -38,7 +38,7 @@ a_{ 11 } a_{ 22 } - a_{ 12 } a_{ 21 }$$
 
 $$A^{ -1 } = \frac{ 1 }{ \det A }\text{adj}(A)$$
 
-> $\text{adj}(A)$: transpose of cofactor matrix
+> $\text{adj}(A)$: [[Adjoint]].Transpose of cofactor matrix.
 > $$\text{adj}A = C^T$$
 > ---
 > $C$: cofactor matrix
