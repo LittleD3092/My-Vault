@@ -24,10 +24,7 @@ then $S$ is said to be a **subspace** of $V$.
 
 ## Fundamental Subspaces Theorem
 
-If $A$ is an $m \times n$ matrix, then [[Null Space]] $N(A) = R(A^T)^\perp$.
-
-> $A^T$: [[Matrix Transposition]]
-> $A^\perp$: [[Orthogonal Complement]]
+[[Fundamental Subspaces Theorem]]
 
 ---
 

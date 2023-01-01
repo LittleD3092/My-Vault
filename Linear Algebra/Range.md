@@ -8,11 +8,17 @@ Link:
 
 ---
 
+# Definition
+
 The range $R(A)$ of a matrix $A$ is defined by
 
 $$R(A) = \{ {\bf b}\in \text R^m \ \vert\ {\bf b} = A{\bf x} \quad \text{for some } {\bf x}\in R^n \}$$
 
 Which is the column space of $A$.
+
+# Fundamental Subspaces Theorem
+
+[[Fundamental Subspaces Theorem]]
 
 ---
 
