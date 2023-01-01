@@ -124,6 +124,51 @@ $$L(S) = \{ {\bf w} \in W \vert {\bf w} = L({\bf v}) \quad \text{for some } {\bf
 
 > Like transformation of a subspace $S$ from $V$ to $W$.
 
+# Matrix Representation
+
+## Same Basis
+
+We can use a matrix to represent linear transformation.
+
+### Example
+
+Let $L$ be a linear transformation mapping $\rm R^2$ into itself defined by
+
+$$L(\alpha {\bf b}_1 + \beta {\bf b}_2) = (\alpha + \beta){\bf b}_1 + 2 \beta {\bf b}_2$$
+
+Find the matrix $A$ representing $L$ with respect to $\{{\bf b}_1, {\bf b}_2\}$.
+
+---
+
+$$
+A\left[
+	\begin{array}{}
+		\alpha \\
+		\beta
+	\end{array}
+\right] = 
+\left[
+	\begin{array}{}
+		\alpha + \beta \\
+		2\beta
+	\end{array}
+\right]
+$$
+
+Therefore
+
+$$A = 
+\left[
+	\begin{array}{}
+		1 & 1 \\
+		0 & 2
+	\end{array}
+\right]$$
+
+## Different Basis
+
+
+
 ---
 
 參考資料:
