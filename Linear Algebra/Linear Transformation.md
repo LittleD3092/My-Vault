@@ -27,9 +27,9 @@ The above definition can be seperated into two parts:
 - If $V$ and $W$ are the same, the following is called a **linear operator**: $$L: V \rightarrow V$$
 - A linear transformation $L_A({\bf x})$ can be represented by a matrix $A$: $$L_A({\bf x}) = A{\bf x}$$
 
-## Examples
+# Examples
 
-### Linear Operators on $\rm R^2$
+## Linear Operators on $\rm R^2$
 
 The operator $L$ defined by
 
@@ -67,7 +67,7 @@ $$
 
 It is a linear operator.
 
-### Linear Transformation from ${\rm R}^n$ to ${\rm R}^m$
+## Linear Transformation from ${\rm R}^n$ to ${\rm R}^m$
 
 The mapping from ${\rm R}^2$ to ${\rm R}^3$ is defined by
 
@@ -90,7 +90,7 @@ $$
 
 It is linear transformation.
 
-### Linear Transformation from $V$ to $W$
+## Linear Transformation from $V$ to $W$
 
 Let $L$ be a mapping from $C[a, b]$ to $R^1$ defined by:
 
