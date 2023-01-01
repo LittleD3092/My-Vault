@@ -10,7 +10,7 @@
 1. 2nd Order
 2. linear
 3. homogeneous
-4. One of the **nontrivial** solution $y_1(x)$ has been known
+4. One of the [[Nontrivial Solution]] $y_1(x)$ has been known
 
 $$a_2(x)y'' + a_1(x)y' + a_0(x)y = 0$$
 
