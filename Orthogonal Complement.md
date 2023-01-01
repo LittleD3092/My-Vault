@@ -1,6 +1,6 @@
 Tag: #linear-algebra 
 Previous: 
-Link: [[Subspace]], [[Orthogonal]]
+Link: [[Orthogonal]]
 
 ---
 
@@ -10,7 +10,11 @@ Link: [[Subspace]], [[Orthogonal]]
 
 # Definition
 
-Two subspaces $X$ and $Y$ are said to be **orthogonal** if ${\bf x}^T{\bf y} = 0$ for every ${\bf x} \in X$ and every ${\bf y}\in Y$. If $X$ and $Y$ are orthogonal, we write $X\perp Y$.
+Let $Y$ be a subspace of $R^n$. The set of all vectors in $R^n$ that are orthogonal to every vector in $Y$ will be denoted $Y^\perp$. Thus,
+
+$$Y^\perp = \{{\bf x} \in R^n \ \vert\  {\bf x}^T{\bf y} = 0 \quad \text{for every }{\bf y}\in Y\}$$
+
+The set $Y^\perp$ is called the **orthogonal complement** of $Y$.
 
 ---
 
