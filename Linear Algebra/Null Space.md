@@ -15,6 +15,9 @@ $$N(A) = \{
 	A {\bf x} = {\bf 0}
 \}$$
 
+- Note that:
+	- $AN(A) = {\bf 0}$
+
 # Example
 
 Determine $N(A)$ if 
