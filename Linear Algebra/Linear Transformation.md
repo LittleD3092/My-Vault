@@ -245,6 +245,20 @@ $$
 	\right]
 }_\#$$
 
+# Similarity
+
+This section consider different matrix representations of linear transformation $L$ with different [[Basis]].
+
+If
+
+- $B$ is the matrix representing $L$ with respect to $\{ {\bf u}_1, {\bf u}_2 \}$,
+- $A$ is the matrix representing $L$ with respect to $\{ {\bf e}_1, {\bf e}_2 \}$,
+- $U$ is the transition matrix corresponding to the change of basis from $\{ {\bf u}_1, {\bf u}_2 \}$ to $\{ {\bf e}_1, {\bf e}_2 \}$,
+
+then 
+
+$$B = U^{-1}AU$$
+
 ---
 
 參考資料:
