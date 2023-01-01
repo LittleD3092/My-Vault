@@ -259,6 +259,10 @@ then
 
 $$B = U^{-1}AU$$
 
+## Definition
+
+Let $A$ and $B$ be $n \times n$ matrices. $B$ is said to be **similar** to $A$ if there exists a nonsingular matrix $S$ such that $$B = S^{-1}AS$$
+
 ---
 
 參考資料:
