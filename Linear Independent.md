@@ -13,7 +13,7 @@ Link:
 Assume there are [[Vector]]s ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_n$ that [[Span]] [[Vector Space]] $V$,
 
 1. If one of the [[Vector]]s can be written as a linear combination of the other $n - 1$ [[Vector]]s, then those $n - 1$ [[Vector]]s [[Span]] $V$.
-2. If it is possible to have scalars $c_1, c_2, \dots, c_{n}$ (not all zero) that $$c_1 {\bf v}_1 + c_2 {\bf v}_2 + \dots + c_n {\bf v}_n = {\bf 0}$$, then it is not linear independent.
+2. If it is possible to have scalars $c_1, c_2, \dots, c_{n}$ (not all zero) that $$c_1 {\bf v}_1 + c_2 {\bf v}_2 + \dots + c_n {\bf v}_n = {\bf 0}$$, then it is linear dependent.
 
 # Definition
 
