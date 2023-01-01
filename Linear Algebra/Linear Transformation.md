@@ -114,8 +114,6 @@ Let $L$ be the linear transformation from [[Subspace]] $V$ to $W$, the kernal is
 
 $$\ker(L) = \{{\bf v} \in V \vert L({\bf v}) = {\bf 0}_W\}$$
 
-[[Kernel]]
-
 > The set of vectors that transform to ${\bf 0}$.
 
 # Image
@@ -123,8 +121,6 @@ $$\ker(L) = \{{\bf v} \in V \vert L({\bf v}) = {\bf 0}_W\}$$
 Let $L$ be the linear transformation from [[Subspace]] $V$ to $W$, and $S$ is a subspace of $V$. The image $L(S)$ is defined by
 
 $$L(S) = \{ {\bf w} \in W \vert {\bf w} = L({\bf v}) \quad \text{for some } {\bf v}\in S\}$$
-
-[[Image]]
 
 > Like transformation of a subspace $S$ from $V$ to $W$.
 
