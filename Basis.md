@@ -1,5 +1,5 @@
 Tag: #linear-algebra 
-Previous: [[Span]]
+Previous: [[Spanning Set]]
 Link: 
 
 ---
@@ -10,14 +10,7 @@ Link:
 
 # Definition
 
-- Assume a [[Vector Space]] $V$.
-- If [[Span]] $\text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n) = V$, the set $\{{\bf v}_1, {\bf v}_2, \dots, {\bf v}_n\}$ is the **spanning set** of $V$.
-
-# Basis
-
-A minimum spanning set is called a *basis*.
-
-[[Basis]]
+A minimum [[Spanning Set]] is called a **basis**.
 
 ---
 
