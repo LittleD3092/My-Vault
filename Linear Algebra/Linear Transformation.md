@@ -167,7 +167,83 @@ $$A =
 
 ## Different Basis
 
+The linear transform $L$ from [[Basis]] $\{{\bf u}_1, {\bf u}_2, \dots, {\bf u}_n\}$ to [[Basis]] $\{{\bf b}_1, {\bf b}_2, \dots, {\bf b}_m\}$ have a matrix representation $A$:
 
+The reduced row echelon form of 
+
+$$({\bf b}_1, {\bf b}_2, \dots, {\bf b}_m\vert L({\bf u}_1), L({\bf u}_2), \dots, L({\bf u}_n))$$
+
+is 
+
+$$(I\vert A)$$
+
+### Example
+
+Let $L: R^2 \rightarrow R^3$ be the linear transformation defined by
+
+$$L({\bf x}) = (x_2, x_1 + x_2, x_1 - x_2)^T$$
+
+Find the matrix representations of $L$ with respect to the ordered bases $\{{\bf u}_1, {\bf u}_2\}$ and $\{{\bf b}_1, {\bf b}_2, {\bf b}_3\}$, where
+
+$${\bf u}_1 = (1, 2)^T, \qquad {\bf u}_2 = (3, 1)^T$$
+
+and
+
+$${\bf b}_1 = (1, 0, 0)^T, \qquad {\bf b}_2 = (1, 1, 0)^T, \qquad {\bf b}_3 = (1, 1, 1)^T$$
+
+---
+
+We first find $L({\bf u}_1), L({\bf u}_2)$:
+
+$$L({\bf u}_1) = (2, 3, -1)^T \qquad L({\bf u}_2) = (1, 4, 2)^T$$
+
+Then we construct the [[Augmented Matrix]] and transform it to [[Reduced Row Echelon Form]]:
+
+$$
+\left[
+	\begin{array}{}
+		1 & 1 & 1 \\
+		0 & 1 & 1 \\
+		0 & 0 & 1
+	\end{array}
+\right\vert
+\left.
+	\begin{array}{}
+		2 & 1 \\
+		3 & 4 \\
+		-1 & 2
+	\end{array}
+\right]
+\implies
+\left[
+	\begin{array}{}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1
+	\end{array}
+\right\vert
+\left.
+	\begin{array}{}
+		-1 & -3 \\
+		4 & 2 \\
+		-1 & 2
+	\end{array}
+\right]
+$$
+
+We found $A$:
+
+$$
+\underline{
+	A = 
+	\left[
+		\begin{array}{}
+			-1 & -3 \\
+			4 & 2 \\
+			-1 & 2
+		\end{array}
+	\right]
+}_\#$$
 
 ---
 
