@@ -74,29 +74,10 @@ $$A =
 
 ---
 
-Step 1: Column 1.
+> You should try the process on your own, the process is complicated.
+> I recommend that you calculate one column and check whether you are right.
 
-$$
-\begin{array}{l}
-	r_{11} & = & \vert\vert {\bf a}_1 \vert\vert & = & 5 \\
-	{\bf q}_1 & = & 
-	\displaystyle
-	\frac{1}{r_{11}} {\bf a}_1 & = & 
-	\displaystyle
-	\left(
-		\frac 1 5, \frac 2 5, \frac 2 5, \frac 4 5
-	\right)^T
-\end{array}
-$$
-
-Step 2: Column 2:
-
-$$
-\begin{array}{}
-	r_{12} & = & {\bf q}_1^T {\bf a}_2 & = & -2 \\
-	{\bf p}_1 & = & 
-\end{array}
-$$
+![[Pasted image 20230102171055.png]]
 
 ---
 
