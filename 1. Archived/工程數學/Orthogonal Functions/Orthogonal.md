@@ -25,6 +25,20 @@ $$ = \frac{ 1 - 1 }{ k + 1 } = 1$$
 
 $$ = 0$$
 
+# Orthogonal Stuffs
+
+- [[Orthogonal Complement]]
+- [[Orthogonal Functions]]
+- [[Orthogonal Matrix]]
+- [[Orthogonal Set]]
+- [[Orthogonal Subspaces]]
+
+# Gram-Schmidt Orthogonalization
+
+A method to use projections to transform an ordinary basis into an [[Orthonormal Set|orthonormal basis]].
+
+[[Gram-Schmidt Orthogonalization]]
+
 ---
 
 參考資料:
