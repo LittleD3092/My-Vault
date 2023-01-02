@@ -1,6 +1,13 @@
-標籤: #工程數學 
+標籤: #工程數學 #linear-algebra 
+Previous: [[Orthogonal]]
 
 ---
+
+# Definition
+
+An $n \times n$ matrix $Q$ is said to be an **orthogonal matrix** if the column vectors of $Q$ form an [[Orthonormal Set|orthonormal set]] in $\text R^n$.
+
+# Properties
 
 ![[a vector b vector.jpg|100]]
 
@@ -8,7 +15,7 @@ $$\theta = \cos^{ -1 }\left( \frac{ \vec{ a } \cdot \vec{ b } }{ \vert \vec{ a }
 
 $$\vert \vec{ a } \vert = \sqrt{ a_1^2 + a_2^2 + \dots + a_n^2 }$$
 
-For an $n \times n$ orhtogonal matrix $A$ and $\vec{ a }, \vec{ b }$
+For an $n \times n$ orthogonal matrix $A$ and $\vec{ a }, \vec{ b }$
 
 $$
 \left.
