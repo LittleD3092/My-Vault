@@ -16,6 +16,10 @@ Link:
 
 # Obtaining Steady-State Outputs to Sinusoidal Inputs
 
+> This section shows that a linear, time-invariant system can change only two elements of a signal:
+> 1. Phase.
+> 2. Magnitude.
+
 Assume a stable, linear, time-invariant system:
 
 ![[322310945_721262436014921_8284414598110107962_n.jpg]]
