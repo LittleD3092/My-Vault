@@ -13,7 +13,7 @@ There are five layers:
 - [[Application]]
 - [[Transport]]
 - [[Networks]]
-- Link
+- [[Computer Networks/Link|Link]]
 - Physical
 
 ---

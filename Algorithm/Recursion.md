@@ -126,13 +126,33 @@ The master method is the faster way for solving recurrences of the form
 
 $$T(n) = aT(n / b) + f(n)$$
 
-> The master theorem:
-> Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be an asymptotically positive function, and let $T(n)$ be defined on the nonnegative integers by the recurrence
-> $$T(n) = aT(n/b) + f(n)$$
-> Where we interpret $n/b$ to mean either $\lfloor n/ b \rfloor$ or $\lceil n/b \rceil$. Then $T(n)$ has the following asymtotic bounds:
-> 1. If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \Theta(n^{\log_b a})$.
-> 2. If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a}\lg n)$.
-> 3. If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $af(n/b)\leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.
+Where
+
+$$a \geq 1, \quad b > 1, \quad f(n) = \Theta(n^K \log^Pn)$$
+
+We have three cases
+
+$$
+\begin{array}{l}
+	\text{Case 1: } & \text{if } \log_ba > K &
+	\text{then } \Theta(n^{\log_ba}) \\
+	\text{Case 2: } & \text{if } \log_ba = K & 
+	\left\{
+		\begin{array}{l}
+			\text{if } P > -1 & \Theta(n^K \log^{P + 1}n) \\
+			\text{if } P = -1 & \Theta(n^K \log\log n) \\
+			\text{if } P < -1 & \Theta(n^K)
+		\end{array}
+	\right. \\
+	\text{Case 3: } & \text{if }\log_ba < K &
+	\left\{
+		\begin{array}{l}
+			\text{if } P \geq 0 & \Theta(n^K \log^Pn) \\
+			\text{if } P < 0 & O(n^K)
+		\end{array}
+	\right.
+\end{array}
+$$
 
 ---
 
