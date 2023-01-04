@@ -83,8 +83,6 @@ $$\text{Magnitude} = 20\log\left\vert \frac{1}{1 + j\omega T} \right\vert = -20\
 
 $$\text{Phase } \phi = -\tan^{-1}\omega T$$
 
-
-
 ## Quadratic Factors
 
 ---
