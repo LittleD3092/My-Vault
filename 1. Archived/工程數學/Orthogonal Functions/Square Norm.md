@@ -1,6 +1,9 @@
 標籤: #工程數學 
+Previous: [[Norm]]
 
 ---
+
+[[Norm]], but with square.
 
 $$\vert\vert f(x) \vert\vert^2 = (f(x), f(x)) = \int_a^b f(x)f^*(x)dx$$
 
