@@ -8,7 +8,11 @@ Link:
 
 ---
 
-
+- Bode diagram consists of two graphs:
+	- Plot of magnitude of a sinusoidal transfer function in logarithmic scale.
+	- Plot of the phase angle.
+- Representation of logarithmic magnitude: $20\log\vert G(j\omega) \vert$
+	- Which is decibels, $\rm dB$.
 
 ---
 
