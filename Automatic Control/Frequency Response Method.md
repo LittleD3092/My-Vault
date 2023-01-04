@@ -88,6 +88,10 @@ $$\implies \underline{
 
 ![[321955019_1200947804189875_190573821288069323_n.jpg]]
 
+# Bode Diagram
+
+[[Bode Diagram]]
+
 ---
 
 參考資料:
