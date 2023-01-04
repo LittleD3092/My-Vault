@@ -38,9 +38,55 @@ $$\implies Y(s) = G(s)X(s) = \frac{p(s)}{q(s)}X(s)$$
 > From the [[Laplace Transform|laplace transform table]], 
 > $$X(s) = \frac{\omega X}{s^2 + \omega^2}$$
 
-Substituting $X(s)$ for $Y(s)$:
+Substituting $X(s)$:
 
 $$\implies Y(s) = G(s)X(s) = G(s)\frac{\omega X}{s^2 + \omega^2}$$
+
+Substituting $G(s)$:
+
+$$\implies Y(s) = \frac{p(s)\cdot \omega X}{(s + s_1)(s + s_2) \dots (s + s_n) \cdot (s^2 + \omega^2)}$$
+
+Partial fraction expansion:
+
+$$\implies Y(s) = \frac{a}{s + j\omega} + \frac{\bar a}{s - j\omega} + \frac{b_1}{s + s_1} + \frac{b_2}{s + s_2} + \dots + \frac{b_n}{s + s_n}$$
+
+> We use $a$, $\bar a$ and $b_i$ for convenience. $b_i$ will be eliminated in the following steps.
+
+Doing [[Inverse Laplace Transform]]:
+
+$$\implies y(t) = ae^{-j\omega t} + \bar a e^{j\omega t} + b_1 e^{-s_1 t} + b_2 e^{-s_2 t} + \dots + b_n e^{-s_n t}$$
+
+For steady state response, $t \rightarrow \infty$:
+
+$$\implies y_{\rm ss}(t) = ae^{-j\omega t} + \bar a e^{j\omega t}$$
+
+> The constant $a$ and $\bar a$ can be evaluated as follows:
+> $$a = \left. G(s)\frac{\omega X}{s^2 + \omega^2}(s + j\omega)\right\vert_{s = -j\omega} = -\frac{XG(-j\omega)}{2j}$$
+> $$\bar a = \left. G(s)\frac{\omega X}{s^2 + \omega^2}(s - j\omega) \right\vert_{s = j\omega} = \frac{XG(j\omega)}{2j}$$
+> > We want to seperate the complex quantity from $G(j\omega)$, therefore:
+> > $$G(j\omega) = \vert G(j\omega) \vert e^{j\phi}$$
+> > where $\vert G(j\omega) \vert$ is the magnitude and $\phi$ is the angle. Note that the angle is
+> > $$\phi = \angle G(j\omega) = \tan^{-1}\left[ \frac{\text{imaginary part of } G(j\omega)}{\text{real part of }G(j\omega)} \right]$$
+> > Similarly, $G(-j\omega)$ is:
+> > $$G(-j\omega) = \vert G(-j\omega) \vert e^{-j\phi} = \vert G(j\omega) \vert e^{-j\phi}$$
+> Seperating the complex quentity from $G(j\omega)$:
+> $$a = -\frac{X\vert G(j\omega) \vert e^{-j\phi}}{2j}, \quad \bar a = \frac{X\vert G(j\omega) \vert e^{j\phi}}{2j}$$
+
+Substitute $a$ and $\bar a$ with the value in the box above:
+
+$$\implies y_{\rm ss}(t) = X\vert G(j\omega) \vert\frac{e^{j(\omega t + \phi)} - e^{-j(\omega t + \phi)}}{2j}$$
+
+By [[Euler Formula]]:
+
+$$\implies \underline{y_{\rm ss}(t) = X\vert G(j\omega) \vert \sin(\omega t + \phi)}_\#$$
+
+which is equivalent to:
+
+$$\implies \underline{
+	y_{\rm ss}(t) = Y\sin(\omega t + \phi)
+}_\#$$
+
+![[321955019_1200947804189875_190573821288069323_n.jpg]]
 
 ---
 
