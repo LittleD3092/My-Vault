@@ -95,6 +95,12 @@ $$
 }_\#
 $$
 
+## Simplify: Equation of Motion along Streamline
+
+- For simplicity, we sometimes wish to have a equation along a streamline.
+- We assume direction $s$ as the direction *along* the streamline.
+- We assume direction $n$ as the direction *normal* to the streamline.
+
 
 
 ---
