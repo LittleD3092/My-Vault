@@ -101,7 +101,88 @@ $$
 - We assume direction $s$ as the direction *along* the streamline.
 - We assume direction $n$ as the direction *normal* to the streamline.
 
+![[Pasted image 20230106171650.png]]
 
+### Along Streamline Direction
+
+Apply Newton's second law:
+
+$$
+\underbrace{
+	\left(
+		p - \frac{\partial p}{\partial s}
+		\frac{ds}{2}
+	\right)dn dx - 
+	\left(
+		p + \frac{\partial p}{\partial s}\frac{ds}{2}
+	\right)dndx
+}_{\displaystyle F_s \text{ (surface force)}} - 
+\underbrace{
+	\rho g \sin \beta ds dn dx
+}_{\displaystyle F_B \text{ (body force)}} = \underbrace{\rho a_s ds dn dx}_{M a}
+$$
+
+- $p$: Pressure at center.
+- $dsdndx$: The volume of the particle.
+
+Simplifying:
+
+$$\implies -\frac{\partial p}{\partial s} - 
+\rho g \sin \beta = \rho a_s$$
+
+Substitute $\displaystyle \sin\beta = \frac{\partial z}{\partial s}$:
+
+$$-\frac 1 \rho\frac{\partial p}{\partial s} - g \frac{\partial z}{\partial s} = a_s$$
+
+> For acceleration along a streamline, 
+> $$a_s = \frac{DV}{Dt} = \frac{\partial V}{\partial t} + V\frac{\partial V}{\partial s}$$
+
+Substitute $a_s$:
+
+$$\underline{-\frac 1 \rho \frac{\partial p}{\partial s} - g\frac{\partial z}{\partial s} = \frac{\partial V}{\partial t} + V\frac{\partial V}{\partial s}}_\#$$
+
+For steady flow, $\displaystyle\frac{\partial V}{\partial t} = 0$
+
+$$\underline{
+	\frac{1}{\rho}\frac{\partial p}{\partial s} = -g\frac{\partial z}{\partial s} - V\frac{\partial V}{\partial s} \qquad \text{for steady flow}
+}_\#$$
+
+In some cases that there is no gravity (or the flow is in $xy$ plane):
+
+$$\underline{
+	\frac 1 \rho\frac{\partial p}{\partial s} = -V\frac{\partial V}{\partial s} \qquad \text{for steady flow, no gravity}
+}_\#$$
+
+### Normal to Streamline Direction
+
+Similar in [[#Along Streamline Direction]] section, we apply Newton's second law in normal direction:
+
+$$
+\left(
+	p - \frac{\partial p}{\partial n}
+	\frac{dn}{2}
+\right)dsdx - 
+\left(
+	p + \frac{\partial p}{\partial n}
+	\frac{dn}{2}
+\right)dsdx - 
+\rho g \cos\beta dndxds = \rho a_n dndxds
+$$
+
+Simplify:
+
+$$-\frac{\partial p}{\partial n} - \rho g \cos \beta = \rho a_n$$
+
+Substitute $\displaystyle\cos\beta = \frac{\partial z}{\partial n}$:
+
+$$-\frac 1 \rho \frac{\partial p}{\partial n} - g\frac{dz}{\partial n} = a_n$$
+
+> Using the radius of curvature $R$, $a_n$ is:
+> $$a_n = -\frac{V^2}{R}$$
+
+Substitute $a_n$:
+
+$$$$
 
 ---
 
