@@ -81,11 +81,21 @@ $$
 				V_r\frac{\partial V_\theta}{\partial r} +
 				\frac{V_\theta}{r}\frac{\partial V_\theta}{\partial \theta} + V_z \frac{\partial V_\theta}{\partial z} +
 				\frac{V_rV_\theta}{r}
-			\right) = \rho g_\theta - \frac 1 r \frac{\partial p}{\partial \theta}
+			\right) = \rho g_\theta - \frac 1 r \frac{\partial p}{\partial \theta} \\
+			\displaystyle
+			\rho a_z = \rho
+			\left(
+				\frac{\rho V_z}{\partial t} +
+				V_r\frac{\partial V_z}{\partial r} +
+				\frac{V_\theta}{r}\frac{\partial V_z}{\partial\theta} +
+				V_z\frac{\partial V_z}{\partial z}
+			\right) = \rho g_z - \frac{\partial p}{\partial z}
 		\end{array}
 	\right.
 }_\#
 $$
+
+
 
 ---
 
