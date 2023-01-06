@@ -47,7 +47,41 @@ $$
 				u\frac{\partial v}{\partial x} + 
 				v\frac{\partial v}{\partial y} +
 				w\frac{\partial v}{\partial z}
-			\right) = \rho g_y - \frac{\partial p}{\partial y}
+			\right) = \rho g_y - \frac{\partial p}{\partial y} \\
+			\displaystyle
+			\rho\left(
+				\frac{\partial w}{\partial t} +
+				u\frac{\partial w}{\partial x} +
+				v\frac{\partial w}{\partial y} +
+				w\frac{\partial w}{\partial z}
+			\right) = \rho g_z - \frac{\partial p}{\partial z}
+		\end{array}
+	\right.
+}_\#
+$$
+
+Expressed in cylindrical coordinates:
+
+$$
+\underline{
+	\left\{
+		\begin{array}{}
+			\displaystyle
+			\rho a_r = \rho\left(
+				\frac{\partial V_r}{\partial t} +
+				V_r\frac{\partial V_r}{\partial r} +
+				\frac{V_\theta}{r}\frac{\partial V_r}{\partial \theta} +
+				V_z\frac{\partial V_r}{\partial z} -
+				\frac{V_\theta^2}{r}
+			\right) = \rho g_r - \frac{\partial p}{\partial r} \\
+			\displaystyle
+			\rho a_\theta = \rho
+			\left(
+				\frac{\partial V_\theta}{\partial t} +
+				V_r\frac{\partial V_\theta}{\partial r} +
+				\frac{V_\theta}{r}\frac{\partial V_\theta}{\partial \theta} + V_z \frac{\partial V_\theta}{\partial z} +
+				\frac{V_rV_\theta}{r}
+			\right) = \rho g_\theta - \frac 1 r \frac{\partial p}{\partial \theta}
 		\end{array}
 	\right.
 }_\#
