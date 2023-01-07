@@ -54,6 +54,38 @@ For incompressible flow, $\rho = \text{constant}$:
 
 $$\underline{ \frac p \rho + \frac{V^2}{2} + gz = \text{constant} }_\#$$
 
+## Example
+
+A pitot tube is inserted in an air flow (at STP) to measure the flow speed. The tube is inserted so that it points upstream into the flow and the pressure sensed by the tube is the stagnation pressure. The static pressure is measured at the same location in the flow, using a wall pressure tap. If the pressure difference is $30{\ \rm mm}$ of mercury, determine the flow speed.
+
+![[Pasted image 20230107160726.png|250]]
+
+---
+
+The Bernoulli's equation is given by:
+
+$$\frac p \rho + \frac{V^2}{2} + gz = \text{constant}$$
+
+Since they are measured in the same location, 
+
+$$\frac{p}{\rho} + \frac{V^2}{2} = \text{constant}$$
+
+The flow speed in the pitot tube $V_0 = 0$:
+
+$$\implies \frac{p_0}{\rho} = \frac{p}{\rho} + \frac{V^2}{2}$$
+
+- $p_0$: The stagnation pressure at the tube opening.
+
+Solve for $V$:
+
+$$V = \sqrt{\frac{2(p_0 - p)}{\rho_{\rm air}}}$$
+
+$$\implies V = \sqrt{\frac{2 \rho_{\rm H_2O}gh \cdot  {\rm SG}_{\rm Hg}}{\rho_{\rm air}}}$$
+
+Substitute the values:
+
+$$\implies V = \sqrt{2 \times 1000 \frac{\rm kg}{\rm m^3} \times 9.81 \frac{\rm m}{\rm s^2} \times 30 {\rm \ mm} \times 13.6 \times \frac{\rm m^3}{1.23 \rm \ kg} \times \frac{1\rm \ m}{1000 \rm \ mm}} = \underline{80.8 {\rm \ m/s}}_\#$$
+
 ---
 
 參考資料：

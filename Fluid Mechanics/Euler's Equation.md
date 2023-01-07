@@ -194,6 +194,48 @@ For horizontal plane (no gravity):
 
 $$\underline{\frac 1 \rho \frac{\partial p}{\partial n} = \frac{V^2}{R} \qquad \text{for no gravity} }_\#$$
 
+# Example
+
+The flow rate of air at standard conditions in a flat duct is to be determined by installing pressure taps across a bend. The duct is $0.3\ \text m$ deep and $0.1\ \text m$ wide. The inner radius of the bend is $0.25\text{ m}$. If the measured pressure difference between the taps is $40 \text{ mm}$ of water, compute the approximate flow rate.
+
+![[Pasted image 20230107154805.png|300]]
+
+---
+
+For the taps installed on position $1$ and $2$, the direction is **normal** to the streamline. Also, the flow is on a horizontal plane, so there is no gravity.
+
+$$\frac 1 \rho \frac{\partial p}{\partial n} = \frac{V^2}{R} \qquad \text{for no gravity}$$
+
+$$\implies \frac{dp}{dr} = \frac{\rho V^2}{r}$$
+
+$$\implies dp = \frac{\rho V^2 dr}{r}$$
+
+Integrating each side:
+
+$$p_2 - p_1 = \rho V^2\left.\ln r\right\vert_{r = r_1}^{r_2}$$
+
+$$\implies V = 
+\left(
+	\frac{p_2 - p_1}{\rho \ln (r_2/r_1)}
+\right)^{1/2}$$
+
+Substitute the pressure difference given:
+
+$$V = 
+\left(
+	\frac{\rho_{\text H_2\text O} g \Delta h}{\rho \ln(r_2/r_1)}
+\right)^{1/2}$$
+
+Substituting numerical values:
+
+$$V = \left(
+	999 \frac{\rm kg}{\rm m^3} \times 9.81 \frac{\rm m}{\rm s^2} \times 0.04 {\ \rm m} \times \frac{m^3}{1.23{\ \rm kg}} \times \frac{1}{\ln(0.35{\ \rm m} / 0.25{\rm \ m})}
+\right)^{1/2} = 30.8 {\ \rm m/s}$$
+
+For uniform flow:
+
+$$Q = VA = 30.8 \frac{\rm m}{\rm s} \times 0.1 {\ \rm m} \times 0.3 {\rm \ m} = \underline{0.924 {\rm \ m^3/s}}_\#$$
+
 ---
 
 參考資料:
