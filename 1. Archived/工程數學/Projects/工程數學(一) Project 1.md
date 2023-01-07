@@ -474,6 +474,6 @@ $$\text{However, it will become uncomfortable.}$$
 
 links:
 
-[[Bernoulli's Equations Substitution]]
+[[Bernoulli's Equations]]
 [[Separable Variables]]
 [[First Order Differential Equation]]

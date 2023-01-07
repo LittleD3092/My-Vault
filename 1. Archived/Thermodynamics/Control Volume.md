@@ -281,7 +281,7 @@ The [[#Control Volume Equations]] are very useful. Now, we can apply these equat
 
 ![[Pasted image 20221028190126.png]]
 
-The process is not included in this note. See Introduction to "Fluid Mechanics, 10th edition" for full process of deriving the equation. The equation derived is called ==Bernoulli equation==:
+The process is not included in this note. See Introduction to "Fluid Mechanics, 10th edition" for full process of deriving the equation. The equation derived is called [[Bernoulli's Equations]]:
 
 $$\underline{\frac p \rho + \frac{V_S^2}{2} + gz = \text{constant}}_\#$$
 

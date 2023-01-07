@@ -14,7 +14,6 @@ Link:
 	- Incompressible.
 	- Inviscid.
 
-
 # Equation
 
 From [[Navier-Stokes Equations]], we remove the viscous terms:
@@ -182,7 +181,18 @@ $$-\frac 1 \rho \frac{\partial p}{\partial n} - g\frac{dz}{\partial n} = a_n$$
 
 Substitute $a_n$:
 
-$$$$
+$$
+\underline{
+	\frac 1 \rho \frac{\partial p}{\partial n} +
+	g \frac{\partial z}{\partial n} = 
+	\frac{V^2}{R} \qquad
+	\text{for steady flow}
+}_\#
+$$
+
+For horizontal plane (no gravity):
+
+$$\underline{\frac 1 \rho \frac{\partial p}{\partial n} = \frac{V^2}{R} \qquad \text{for no gravity} }_\#$$
 
 ---
 

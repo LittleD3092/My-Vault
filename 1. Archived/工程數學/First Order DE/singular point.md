@@ -2,7 +2,7 @@
 
 check singular point
 
-[[Bernoulli's Equations Substitution | Bernoulli's Equation]]:
+[[Bernoulli's Equations | Bernoulli's Equation]]:
 $$\frac{dy}{dx}+\frac{a_0(x)}{a_1(x)}y=\frac{g(x)}{a_1(x)}y^n$$
 $$\frac{dy}{dx} + P(x)y = f(x)y^n$$
 singular points: the locations where $a_1(x) = 0$
