@@ -21,6 +21,17 @@ $$\overset{\text{乘}\;(1-n)u^{\frac{-n}{1-n}}}{\implies}\frac{du}{dx} + P(x)(1-
 
 # Fluid Mechanics
 
+## Restrictions
+
+1. Steady flow.
+2. Incompressible flow.
+3. Frictionless flow.
+4. Flow along a streamline.
+
+> You should keep the restrictions in mind whenever you consider using the Bernoulli equation!
+
+## Derivation
+
 The Bernoulli's equation for fluid mechanics is derived using [[Euler's Equation]].
 
 > Recall that [[Euler's Equation]] for steady flow along a streamline:
@@ -31,7 +42,17 @@ The Bernoulli's equation for fluid mechanics is derived using [[Euler's Equation
 
 By multiplying [[Euler's Equation]] by $s$:
 
-$$-\frac{dp}{}$$
+$$-\frac{dp}{\rho} - gdz = VdV \qquad \text{(along }s)$$
+
+$$\implies \frac{dp}{\rho} + V dV + g dz = 0 \qquad (\text{along }s)$$
+
+Integrating the equation, we get:
+
+$$\int \frac{dp}{\rho} + \frac{V^2}{2} + gz = \text{constant}$$
+
+For incompressible flow, $\rho = \text{constant}$:
+
+$$\underline{ \frac p \rho + \frac{V^2}{2} + gz = \text{constant} }_\#$$
 
 ---
 
