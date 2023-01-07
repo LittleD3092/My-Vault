@@ -19,6 +19,17 @@ $$
 
 $$\implies \frac{D \vec V}{Dt} = -\frac 1 \rho \nabla p - g \hat k$$
 
+We can convert the equation above to a scalar equation by taking the dot product with $d\vec s$:
+
+$$\frac{D \vec V}{Dt} \cdot d \vec s = \frac{DV}{Dt}ds = V\frac{\partial V}{\partial s}ds + \frac{\partial V}{\partial t}ds = -\frac 1 \rho \nabla p \cdot d\vec s - g \hat k \cdot d\vec s$$
+
+> Note that
+> $$\begin{array}{l} \displaystyle \frac{\partial V}{\partial s}ds &=& dV & (\text{the change in }V \text{ along }s) \\ \nabla p \cdot d\vec s &=& dp & (\text{the change in pressure along }s) \\ \hat j \cdot d\vec s &=& dz & (\text{the change in }z\text{ along }s)\end{array}$$
+
+Substituting, we get
+
+$$VdV + \frac{\partial V}{\partial t}ds = -\frac{dp}{\rho} - gdz$$
+
 
 
 ---
