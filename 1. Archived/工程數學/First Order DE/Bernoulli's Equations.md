@@ -29,6 +29,12 @@ $$\overset{\text{乘}\;(1-n)u^{\frac{-n}{1-n}}}{\implies}\frac{du}{dx} + P(x)(1-
 4. Flow along a streamline.
 
 > You should keep the restrictions in mind whenever you consider using the Bernoulli equation!
+> 
+> The Bernoulli's equation cannot be used *through*:
+> 1. Propeller.
+> 2. Pump.
+> 3. Turbine.
+> 4. Windmill.
 
 ## Derivation
 
