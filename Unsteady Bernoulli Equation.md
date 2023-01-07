@@ -8,6 +8,17 @@ Link:
 
 ---
 
+# Equation
+
+SImilar to [[Bernoulli's Equations]], we start from [[Euler's Equation]]:
+
+$$
+\rho\frac{D\vec V}{Dt} = 
+\rho \vec g - \nabla p
+$$
+
+$$\implies \frac{D \vec V}{Dt} = -\frac 1 \rho \nabla p - g \hat k$$
+
 
 
 ---
