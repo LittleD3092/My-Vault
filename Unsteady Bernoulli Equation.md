@@ -8,7 +8,13 @@ Link:
 
 ---
 
-# Equation
+# Restriction
+
+1. Incompressible flow.
+2. Frictionless flow.
+3. Flow along a streamline.
+
+# Derivation
 
 SImilar to [[Bernoulli's Equations]], we start from [[Euler's Equation]]:
 
@@ -30,7 +36,16 @@ Substituting, we get
 
 $$VdV + \frac{\partial V}{\partial t}ds = -\frac{dp}{\rho} - gdz$$
 
+Integrating:
 
+$$\int_1^2 \frac{dp}{\rho} + \frac{V_2^2 - V_1^2}{2} + g(z_2 - z_1) + \int_1^2\frac{\partial V}{\partial t}ds = 0$$
+
+For incompressible flow, the density is constant:
+
+$$\underline{\frac{p_1}{\rho} + \frac{V_1^2}{2} + gz_1 = \frac{p_2}{\rho} + \frac{V_2^2}{2} + gz_2 + \int_1^2\frac{\partial V}{\partial t}ds}_\#$$
+
+> It differs from the [[Bernoulli's Equations]] by the factor
+> $$\int_1^2\frac{\partial V}{\partial t}ds$$
 
 ---
 
