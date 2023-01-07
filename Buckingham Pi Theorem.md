@@ -49,7 +49,150 @@ More formally, we write:
 
 $$g(F, D, \rho, \mu, V) = 0$$
 
+1. *List all the dimensional parameters involved.*
 
+$$F, V, D, \rho, \mu$$
+
+- $n = 5$ dimensional parameters.
+
+2. *Select a set of fundamental (primary) dimensions.*
+
+$$M, L, t$$
+
+3. *List the dimensions of all parameters in terms of primary dimensions*.
+
+| $F$                            | $V$                       | $D$ | $\rho$                        | $\mu$          |
+| ------------------------------ | ------------------------- | --- | ----------------------------- | -------------- |
+| $\displaystyle \frac{ML}{t^2}$ | $\displaystyle \frac L t$ | $L$ | $\displaystyle \frac{M}{L^3}$ | $\displaystyle \frac{M}{Lt}$ | 
+
+- $r= 3$ primary dimensions.
+
+4. *Select a set of $r$ dimensional parameters that includes all the primary dimensions.* 
+
+$$\rho, V, D$$
+
+- $m = r = 3$ repeating parameters.
+
+5. *Set up dimensional equations, combining the parameters selected in Step 4 with each of the other parameters in turn, to form dimensionless groups*.
+
+- $n - m = 2$, there will be two groups.
+
+For $\Pi_1$:
+
+$$
+\left\{
+	\begin{array}{rml}
+		\Pi_1 &=& p^aV^bD^cF \\
+		\displaystyle
+		\left(
+			\frac{M}{L^3}
+		\right)^a
+		\left(
+			\frac{L}{t}
+		\right)^b
+		(L)^c
+		\left(
+			\frac{ML}{t^2}
+		\right) &=&
+		M^0L^0t^0
+	\end{array}
+\right.
+$$
+
+$$\implies 
+\left\{
+	\begin{array}{l}
+		M: & a & + &&&&& 1 & = & 0 \\
+		L: & -3a & + & b & + & c & + & 1 & = & 0 \\
+		t: &&& -b &&& - & 2 & = & 0
+	\end{array}
+\right.$$
+
+$$\implies \left\{
+	\begin{array}{}
+		a = -1 \\
+		b = -2 \\
+		c = -2
+	\end{array}
+\right.$$
+
+$$\implies \Pi_1 = \frac{F}{\rho V^2 D^2}$$
+
+For $\Pi_2$:
+
+$$
+\left\{
+	\begin{array}{rml}
+		\Pi_2 & = & \rho^dV^eD^f\mu \\
+		\displaystyle
+		\left(
+			\frac{M}{L^3}
+		\right)^d
+		\left(
+			\frac{L}{t}
+		\right)^e
+		(L)^f
+		\left(
+			\frac{M}{Lt}
+		\right) & = & 
+		M^0L^0t^0
+	\end{array}
+\right.
+$$
+
+$$
+\implies
+\left\{
+	\begin{array}{l}
+		d &&&&&+& 1 &=& 0 \\
+		-3d &+& e &+& f &-& 1 &=& 0 \\
+		&& -e &&& - & 1 & = & 0
+	\end{array}
+\right.
+$$
+
+$$
+\implies 
+\left\{
+	\begin{array}{}
+		d & = & -1 \\
+		f & = & -1 \\
+		e & = & -1
+	\end{array}
+\right.
+$$
+
+$$\implies \Pi_2 = \frac{\mu}{\rho VD}$$
+
+6. *Check to see that each group obtained is dimensionless.*
+
+$$
+\left\{
+	\begin{array}{}
+		[\Pi_1] & = & 
+		\displaystyle
+		\left[
+			\frac{F}{\rho V^2D^2}
+		\right] & = &
+		\displaystyle
+		F\frac{L^4}{Ft^2}
+		\left(
+			\frac t L
+		\right)^2 \frac{1}{L^2} & = & 1 \\
+		[\Pi_2] & = & 
+		\displaystyle
+		\left[
+			\frac{\mu}{\rho VD}
+		\right] & = & 
+		\displaystyle
+		\frac{Ft}{L^2}\frac{L^4}{Ft^2}\frac t L \frac 1 L & = & 1
+	\end{array}
+\right.
+$$
+
+The functional relationship is $\Pi_1 = f(\Pi_2)$:
+
+$$\frac{F}{\rho V^2 D^2} = f\left(\frac{\mu}{\rho VD}\right)$$
 
 ---
 
