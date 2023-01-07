@@ -92,6 +92,32 @@ Substitute the values:
 
 $$\implies V = \sqrt{2 \times 1000 \frac{\rm kg}{\rm m^3} \times 9.81 \frac{\rm m}{\rm s^2} \times 30 {\rm \ mm} \times 13.6 \times \frac{\rm m^3}{1.23 \rm \ kg} \times \frac{1\rm \ m}{1000 \rm \ mm}} = \underline{80.8 {\rm \ m/s}}_\#$$
 
+## Energy Grade Line and Hydraulic Grade Line
+
+For convenience, we define some value using Bernoulli's equation:
+
+*Energy grade line (EGL)*:
+
+$$\underline{EGL = \frac{p}{\rho g} + \frac{V^2}{2g} + z}_\#$$
+
+*Hydraulic grade line (HGL)*:
+
+$$\underline{HGL = \frac{p}{\rho g} + z}_\#$$
+
+The difference between EGL and HGL is always the dynamic pressure term:
+
+$$EGL - HGL = \frac{V^2}{2g}$$
+
+The physical meaning:
+
+- EGL:
+	- Can be measured by pitot tube.
+	- Is constant for incompressuble, inviscid flow in the absence of work devices.
+- HGL:
+	- Can be measured by static pressure tap.
+
+
+
 ---
 
 參考資料：
