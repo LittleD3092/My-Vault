@@ -115,8 +115,15 @@ The physical meaning:
 	- Is constant for incompressuble, inviscid flow in the absence of work devices.
 - HGL:
 	- Can be measured by static pressure tap.
+	- Always lower than EGL by $V^2 / 2g$.
 
+![[Pasted image 20230107170804.png]]
 
+## Unsteady Bernoulli Equation
+
+Bernoulli equation is useful, however it is for steady flow. Can we have an unsteady version?
+
+[[Unsteady Bernoulli Equation]]
 
 ---
 
