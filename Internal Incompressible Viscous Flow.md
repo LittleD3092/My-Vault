@@ -233,6 +233,14 @@ $$\underline{
 	\right)a^3
 }_\#$$
 
+## In a Pipe
+
+![[Pasted image 20230108165152.png]]
+
+### Velocity Profile
+
+
+
 # Flows in Pipes and Ducts
 
 # Flow Measurement
