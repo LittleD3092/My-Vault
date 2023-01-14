@@ -27,6 +27,8 @@ cmake_minimum_required(VERSION 3.10)
 project(Tutorial)
 
 # add the executable
+# first variable ("Tutorial") specify the output executable name
+# second variable ("tutorial.cxx") specify the source file
 add_executable(Tutorial tutorial.cxx)
 ```
 
