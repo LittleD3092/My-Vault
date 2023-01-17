@@ -99,10 +99,89 @@ int main()
 }
 ```
 
+# Geometry Example
+
+The script below shows how to use `Eigen` to use various rotation methods.
+
+- Use an angle and an axis (`AngleAxisd`)
+- Use a [[Matrix]]
+- Generate euler angles (in yaw pitch roll form)
+- Use isometry matrix
+- Use quaternion
+
+```cpp
+#include <iostream>
+#include <cmath>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
+int main()
+{
+    Eigen::Matrix3d rotation_matrix = Eigen::Matrix3d::Identity();
+
+    // rotate z-axis by 45 degrees
+    Eigen::AngleAxisd rotation_vector(M_PI/4, Eigen::Vector3d(0, 0, 1));
+    cout.precision(3);
+    cout << "rotation_matrix = \n"
+         << rotation_vector.matrix() << endl;
+    
+    // generate rotation matrix by AngleAxisd
+    rotation_matrix = rotation_vector.toRotationMatrix();
+
+    // use AngleAxisd to convert vector
+    Eigen::Vector3d v(1, 0, 0);
+    Eigen::Vector3d v_rotated = rotation_vector * v;
+    cout << "(1, 0, 0) after rotation = " << v_rotated.transpose() << endl;
+
+    // use matrix to convert vector
+    v_rotated = rotation_matrix * v;
+    cout << "(1, 0, 0) after rotation = " << v_rotated.transpose() << endl;
+
+    // convert matrix to euler angles
+    Eigen::Vector3d euler_angles = rotation_matrix.eulerAngles(2, 1, 0); // yaw pit roll order
+    cout << "yaw pitch roll = " << euler_angles.transpose() << endl;
+
+    // generate Eigen::Isometry
+    Eigen::Isometry3d T = Eigen::Isometry3d::Identity();
+    T.rotate(rotation_vector);
+    T.pretranslate(Eigen::Vector3d(1, 3, 4));
+    cout << "Transform matrix = \n"
+         << T.matrix() << endl;
+
+    // Use isometry matrix to do rotation and translation
+    Eigen::Vector3d v_transformed = T * v;
+    cout << "v transformed = " << v_transformed.transpose() << endl;
+
+    // quaternion
+    Eigen::Quaterniond q = Eigen::Quaterniond(rotation_vector);
+    // CAUTION: the order of output is (x, y, z, w)
+    cout << "quaternion = \n"
+         << q.coeffs() << endl;
+
+    // generate quaternion using rotation matrix
+    q = Eigen::Quaterniond(rotation_matrix);
+    cout << "quaternion = \n"
+         << q.coeffs() << endl;
+
+    // using a quaternion to rotate a vector
+    // CAUTION: q * v is actually qvq^{-1} in math
+    v_rotated = q * v;
+    cout << "(1, 0, 0) after rotation = " << v_rotated.transpose() << endl;
+
+    return 0;
+}
+```
+
 ---
 
 參考資料:
 
+視覺SLAM十四講 從理論到實踐
 
 ---
 
