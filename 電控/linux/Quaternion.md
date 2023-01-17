@@ -71,6 +71,42 @@ $$\left\{
 	\end{array}
 \right.$$
 
+# 旋轉矩陣的轉換
+
+假設 ${\bf q} = q_0 + q_1i + q_2j + q_3 k$，則對應的旋轉矩陣 ${\bf R}$ 為
+
+$${\bf R} = 
+\left[
+	\begin{array}{}
+		1 - 2q_2^2 - 2q_3^2 & 2q_1q_2 - 2q_0q_3 & 2q_1q_3 + 2q_0q_2 \\
+		2q_1q_2 + 2q_0q_3 & 1 - 2q_1^2 - 2q_3^2 & 2q_2q_3 - 2q_0q_1 \\
+		2q_1q_3 - 2q_0q_2 & 2q_2q_3 + 2q_0q_1 & 1 - 2q_1^2 - 2q_2^2
+	\end{array}
+\right]$$
+
+反過來，假設矩陣為 ${\bf R} = \{m_{ij}\}, \ i, j\in [1, 2, 3]$，則對應的四元數為
+
+$$\left\{
+	\begin{array}{}
+		q_0 & = & 
+		\displaystyle
+		\frac{\sqrt{{\rm tr}({\bf R}) + 1}}{2} \\
+		q_1 & = & 
+		\displaystyle
+		\frac{m_{23} - m_{32}}{4q_0} \\
+		q_2 & = & 
+		\displaystyle
+		\frac{m_{31} - m_{13}}{4q_0} \\
+		q_3 & = &
+		\displaystyle
+		\frac{m_{12} - m_{21}}{4q_0}
+	\end{array}
+\right.$$
+
+- ${\rm tr}({\bf R})$: 矩陣 ${\bf R}$ 的跡 (trace)，也就是主對角線的和
+
+> 除了上述轉換外，也有別的算法
+
 # 運算
 
 ## 加減
@@ -93,6 +129,57 @@ $$
 也可以寫成向量形式
 
 $${\bf q}_a{\bf q}_b = [s_as_b - {\bf v}_a^T {\bf v}_b, s_a{\bf v_b} + s_b {\bf v}_a + {\bf v}_a \times {\bf v}_b]$$
+
+> 四元數的乘法不可交換
+> $${\bf q}_a {\bf q}_b \neq {\bf q}_b {\bf q}_a$$
+
+## 共軛
+
+共軛是把虛部取負號：
+
+$${\bf q}_a^* = s_a - x_ai - y_aj - z_ak = [s_a, -{\bf v}_a]$$
+
+> ${\bf q}^*$ 與 ${\bf q}$ 相乘會得到一個實四元數：
+> $${\bf q}^*{\bf q} = {\bf q}{\bf q}^* = [s_a^2 + {\bf v}^T{\bf v}, {\bf 0}]$$
+> 並且實部為 $\vert\vert {\bf q} \vert\vert^2$
+
+## 模長
+
+$$\vert\vert{\bf q}_a\vert\vert = \sqrt{s_a^2 + x_a^2 + y_a^2 + z_a^2}$$
+
+> 從上述結果可以發現
+> $$\vert\vert{\bf q}_a{\bf q}_b\vert\vert = \vert\vert{\bf q}_a\vert\vert\ \vert\vert{\bf q}_b\vert\vert$$
+
+## 逆
+
+一個四元數的逆為
+
+$${\bf q}^{-1} = \frac{{\bf q}^*}{\vert\vert{\bf q}\vert\vert^2}$$
+
+乘積的逆有類似矩陣的性質
+
+$$({\bf q}_a{\bf q}_b)^{-1} = {\bf q}_b^{-1}{\bf q}_a^{-1}$$
+
+## 用四元數運算旋轉
+
+題目：假設一個在三維空間中的點 ${\bf p} = [x, y, z] \in {\rm R}^3$，求繞著軸 ${\bf n}$ 旋轉 $\theta$ 角度後的點 ${\bf p}'$
+
+---
+
+首先可以把三維空間用一個虛四元數表達
+
+$${\bf p} = [0, x, y, z] = [0, {\bf v}]$$
+
+參考[[#旋轉向量的轉換]]，旋轉的四元數可以表示為
+
+$${\bf q} = [\cos\frac{\theta}{2}, {\bf n}\sin\frac{\theta}{2}]$$
+
+${\bf p}'$ 即為
+
+$${\bf p}' = {\bf q}{\bf p}{\bf q}^{-1}$$
+
+> 長得有點像 [[Diagonalization]]：
+> $$A = XDX^{-1}$$
 
 ---
 
