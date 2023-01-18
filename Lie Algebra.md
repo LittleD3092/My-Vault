@@ -40,7 +40,53 @@ $$G = (A, \cdot)$$
 - 整數群 $\mathbb{Z}$ 是離散的，不屬於李群
 - 而 ${\rm SO}(n)$ 和 ${\rm SE}(n)$ 在空間上是連續的，屬於李群
 
+# 李代數
 
+## 推導
+
+考慮任意旋轉矩陣 ${\bf R}$:
+
+$${\bf R}{\bf R}^T = {\bf I}$$
+
+對兩邊微分：
+
+$$\dot{\bf R}(t){\bf R}(t)^T + {\bf R}(t)\dot{\bf R}(t)^T = 0$$
+
+整理得到
+
+$$\dot{\bf R}(t){\bf R}(t)^T = -\left(
+	\dot{\bf R}(t){\bf R}(t)^T
+\right)^T$$
+
+由此可以得到 $\dot{R}(t){\bf R}(t)^T$ 為反對稱矩陣
+
+> 回憶在外積中我們會用符號 $\wedge$ 將向量變成反對稱矩陣
+> $${\bf a} \times {\bf b} = {\bf a}^\wedge {\bf b}$$
+> 同理，反對稱矩陣也可以轉換為向量，我們以 $\vee$ 表示
+> $${\bf a}^\wedge = {\bf A} = \left[ \begin{array}{} 0 & -a_3 & a_2 \\ a_3 & 0 & -a_1 \\ -a_2 & a_1 & 0 \end{array} \right], \quad {\bf A}^\vee = {\bf a}$$
+
+我們定義 ${\phi}(t)$ 為對應 $\dot{\bf R}(t){\bf R}(t)^T$ 的向量
+
+$$\dot{\bf R}(t){\bf R}(t)^T = \phi(t)^\wedge$$
+
+並且我們發現
+
+$$\dot{\bf R}(t) = \phi(t)^\wedge {\bf R}(t)$$
+
+因此若要對旋轉矩陣做微分，只需要前面乘上 $\phi(t)^\wedge$ 即可。其實 $\phi(t)$ 就是 ${\rm SO}(3)$ 的李代數 $\mathfrak{so}(3)$。
+
+## 定義
+
+李代數的定義如下：
+
+李代數由一個集合 $\mathbb{V}$ ，一個數域 $\mathbb{F}$ 和一個二元運算 $[,]$ 組成，並滿足以下性質。我們稱 $(\mathbb{V}, \mathbb{F}, [,])$ 為一個李代數，寫作 $\mathfrak{g}$
+
+1. 封閉性 $$\forall {\bf X}, {\bf Y} \in \mathbb{V}, \quad [{\bf X}, {\bf Y}] \in \mathbb V$$
+2. 雙線性 $$\forall {\bf X}, {\bf Y}, {\bf Z}\in \mathbb V, \quad a, b\in \mathbb F$$ 符合 $$[a{\bf X} + b{\bf Y}, {\bf Z}] = a[{\bf X, {\bf Z}}] + b[{\bf Y}, {\bf Z}]$$ $$[{\bf Z}, [a{\bf X} + b{\bf Y}]] = a[{\bf Z}, {\bf X}] + b[{\bf Z}, {\bf Y}]$$
+3. 自反性 $$\forall {\bf X}\in \mathbb V, \quad [{\bf X}, {\bf X}] = {\bf 0}$$
+4. 雅可比等價 $$\forall {\bf X}, {\bf Y}, {\bf Z}\in \mathbb V, \quad [{\bf X}, [{\bf Y}, {\bf Z}]] + [{\bf Z}, [{\bf X}, {\bf Y}]] + [{\bf Y}, [{\bf Z}, {\bf X}]] = {\bf 0}$$
+
+其中二元運算 $[,]$ 被稱為李括號。舉個例子， $\mathfrak g = (\mathbb R^3, \mathbb R, \times)$ 構成一個李代數。
 
 ---
 
