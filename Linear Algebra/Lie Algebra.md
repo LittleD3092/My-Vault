@@ -44,6 +44,16 @@ $$G = (A, \cdot)$$
 
 李代數是一個向量 $\phi$ ，並且其外積符號 $\phi^\wedge$
 
+$$\phi^\wedge = \left[
+	\begin{array}{}
+		0 & -\phi_3 & \phi_2 \\
+		\phi_3 & 0 & -\phi_1 \\
+		-\phi_2 & \phi_1 & 0
+	\end{array}
+\right]$$
+
+可以用來微分
+
 ## 推導
 
 考慮任意旋轉矩陣 ${\bf R}$:
