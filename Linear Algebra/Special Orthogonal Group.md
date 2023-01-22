@@ -32,8 +32,6 @@ $${\rm SO}(3) = \{
 
 $$\mathfrak{so}(3) = \{\phi \in \mathbb R^3, \Phi = \phi^\wedge \in \mathbb R^{3 \times 3}\}$$
 
-
-
 ---
 
 參考資料:
