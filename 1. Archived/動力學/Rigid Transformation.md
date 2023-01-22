@@ -36,7 +36,7 @@ $$
 
 $${\bf Q}^T{\bf Q} = {\bf I}$$
 
-我們對兩邊同乘 $[{\bf e}_1, {\bf e}_2, {\bf e}_3]^T$：
+所以我們對兩邊同乘 $[{\bf e}_1, {\bf e}_2, {\bf e}_3]^T$：
 
 $$
 \left[
@@ -62,7 +62,7 @@ $$
 \right] \overset \Delta = {\bf R}{\bf a}'
 $$
 
-因此我們將此矩陣定義為旋轉矩陣 ${\bf R}$，此矩陣代表著旋轉的動作。旋轉矩陣是一個行列式為 $1$ 的[[Orthogonal Matrix|正交矩陣]]，所以我們將旋轉矩陣的集合定義為特殊正交群（Special Orthogonal Group），用來代表三維矩陣的旋轉。
+我們將式中的矩陣定義為旋轉矩陣 ${\bf R}$，此矩陣代表著旋轉的動作。旋轉矩陣是一個行列式為 $1$ 的[[Orthogonal Matrix|正交矩陣]]，所以我們將旋轉矩陣的集合定義為特殊正交群（Special Orthogonal Group），用來代表三維矩陣的旋轉。
 
 $${\rm SO}(n) = \{
 	{\bf R} \in \mathbb R^{n \times n} \vert
@@ -70,6 +70,54 @@ $${\rm SO}(n) = \{
 \}$$
 
 # Rotation and Translation
+
+在歐氏變換中，除了旋轉還有平移。考慮世界座標系中的向量 ${\bf a}$，經過一次旋轉和一次平移後可以得到 ${\bf a}'$：
+
+$${\bf a}' = {\bf R}{\bf a} + {\bf t}$$
+
+為了用一個變換矩陣 ${\bf T}$ 來表示，我們利用齊次座標將上式變為以下的式子：
+
+$$
+\left[
+	\begin{array}{}
+		{\bf a}' \\
+		1
+	\end{array}
+\right] = 
+\left[
+	\begin{array}{}
+		{\bf R} & {\bf t} \\
+		{\bf 0}^T & 1
+	\end{array}
+\right]
+\left[
+	\begin{array}{}
+		{\bf a} \\
+		1
+	\end{array}
+\right] \overset \Delta = {\bf T}\left[
+	\begin{array}{}
+		{\bf a} \\
+		1
+	\end{array}
+\right]
+$$
+
+如同我們上面定義了旋轉矩陣的集合，我們一樣定義變換矩陣 ${\bf T}$ 的集合為特殊歐氏群（Special Euclidean Group）：
+
+$$
+{\rm SE}(3) = 
+\left\{
+	{\bf T} = 
+	\left[
+		\begin{array}{}
+			{\bf R} & {\bf t} \\
+			{\bf 0}^T & 1
+		\end{array}
+	\right] \in 
+	\mathbb R^{4 \times 4}
+\right\}
+$$
 
 ---
 
