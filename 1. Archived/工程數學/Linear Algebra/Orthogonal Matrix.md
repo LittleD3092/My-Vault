@@ -9,7 +9,7 @@ An $n \times n$ matrix $Q$ is said to be an **orthogonal matrix** if the column 
 
 Also, an $n \times n$ matrix $Q$ is orthogonal if and only if 
 
-$$Q^TQ = I$$
+$${\bf Q}^T{\bf Q} = {\bf I}$$
 
 # Properties
 
