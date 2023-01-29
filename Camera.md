@@ -10,7 +10,7 @@ Link:
 
 # Pinhole Camera
 
-
+[[Pinhole Camera]]
 
 ---
 
