@@ -16,7 +16,7 @@ Link:
 	- $y$ 向下
 - $O$ 為光心，也就是針孔
 - $P$ 為現實世界的任意空間點，座標為 $[X, Y, Z]^T$
-- $P'$ 為 $P$ 的成像點，座標為 $[X', Y', Z']^T$
+這- $P'$ 為 $P$ 的成像點，座標為 $[X', Y', Z']^T$
 - 成像平面到小孔的距離為焦距 $f$
 
 # 投影
@@ -40,7 +40,7 @@ $$
 \right.
 $$
 
-# 像素座標系
+## 像素座標系
 
 - 在相機中，我們獲得的是一點一點的像素
 - 因此我們架一個像素平面 $o-u-v$
@@ -55,6 +55,67 @@ $$
 	- 在 $u$ 軸上縮放 $\alpha$ 倍
 	- 在 $v$ 軸上縮放 $\beta$ 倍
 	- 原點平移 $[c_x, c_y]^T$
+
+從以上定義可以得到
+
+$$
+\left\{
+	\begin{array}{}
+		u & = & \alpha X' + c_x \\
+		v & = & \beta Y' + c_y
+	\end{array}
+\right.
+$$
+
+利用 [[#投影]] 中的結果代入
+
+$$
+\left\{
+	\begin{array}{}
+		u & = & 
+		\displaystyle
+		f_x \frac X Z + c_x \\
+		v & = & 
+		\displaystyle
+		f_y \frac Y Z + c_y
+	\end{array}
+\right.
+$$
+
+利用齊次座標寫成矩陣
+
+$$
+Z
+\left(
+	\begin{array}{}
+		u \\
+		v \\
+		1
+	\end{array}
+\right) = 
+\left(
+	\begin{array}{}
+		f_x & 0 & c_x \\
+		0 & f_y & c_y \\
+		0 & 0 & 1
+	\end{array}
+\right)
+\left(
+	\begin{array}{}
+		X \\
+		Y \\
+		Z
+	\end{array}
+\right) 
+\overset \Delta =
+{\bf KP}
+$$
+
+- 中間的矩陣稱為相機的**內參數矩陣**（Camera Intrinsics）
+
+## 加入旋轉與平移
+
+> 這裡我們加入了 [[Rigid Transformation]] 中的概念
 
 
 
