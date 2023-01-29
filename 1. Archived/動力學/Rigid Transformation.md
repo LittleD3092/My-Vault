@@ -115,7 +115,7 @@ $$
 			{\bf 0}^T & 1
 		\end{array}
 	\right] \in 
-	\mathbb R^{4 \times 4}
+	\mathbb R^{4 \times 4} \vert {\bf R} \in {\rm SO}(3), {\bf t} \in \mathbb R^3
 \right\}
 $$
 
