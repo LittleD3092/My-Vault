@@ -117,7 +117,25 @@ $$
 
 > 這裡我們加入了 [[Rigid Transformation]] 中的概念
 
+上面提到的 ${\bf P}$ 是指相機座標系下的座標，這裡我們轉換為世界座標 ${\bf P}_w$ ，並且利用旋轉矩陣 ${\bf R}$ 與平移向量 ${\bf t}$ 來表示相機的位姿。
 
+$$
+Z{\bf P}_{uv} = Z 
+\left[
+	\begin{array}{}
+		u \\
+		v \\
+		1
+	\end{array}
+\right] = 
+{\bf K}({\bf R}{\bf P}_{w} + {\bf t}) = {\bf K}{\bf T}{\bf P}_w
+$$
+
+- 相機的位姿 ${\bf R}, {\bf t}$ 右稱為相機的**外參數**（Camera Extrinsics）。
+
+因為齊次座標乘上非零常數後表達同樣的含意，所以可以把 $Z$ 去掉：
+
+$${\bf P}_{uv} = {\bf K}{\bf T}{\bf P}_w$$
 
 ---
 
