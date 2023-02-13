@@ -119,7 +119,7 @@ $$
 }_\#
 $$
 
-![[Mechanical Engineering Design/Mechanical Engineering Design HW2/Figure_1.png]]
+![[1. Archived/Mechanical Engineering Design/Mechanical Engineering Design HW2/Figure_1.png]]
 
 ### (e)
 
