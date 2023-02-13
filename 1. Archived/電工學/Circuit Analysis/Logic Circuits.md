@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 # Basic Logic Circuits Concepts
 
 ## Advantage of the Digital Approach
