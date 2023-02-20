@@ -1,9 +1,10 @@
-標籤: #Thermodynamics 
+標籤: #Thermodynamics #heat-transfer 
 
 ---
 
-輻射
-transfer of heat due to electromagnetic waves
+- 輻射
+- transfer of heat due to electromagnetic waves
+- All surfaces of finite temperature emit energy in this form.
 
 # Law of Transfer
 

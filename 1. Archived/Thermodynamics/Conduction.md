@@ -2,8 +2,10 @@
 
 ---
 
-傳導
-Transfer of heat between molecules
+- 傳導
+- Transfer of heat between molecules
+- [[Fourier's Law]]
+	- $\displaystyle q_x'' = -k \frac{dT}{dx}$
 
 ---
 
