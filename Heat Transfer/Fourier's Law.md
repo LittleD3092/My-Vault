@@ -24,12 +24,16 @@ $$\frac{dT}{dx} = \frac{T_2 - T_1}{L}$$
 
 Therefore the heat flux can be simplified to
 
-
+$$
+\underline{q_x'' = k \frac{T_1 - T_2}{L} = 
+k\frac{\Delta T}{L}}_\#
+$$
 
 ---
 
 參考資料:
 
+Incropera's Heat and Mass Transfer
 
 ---
 

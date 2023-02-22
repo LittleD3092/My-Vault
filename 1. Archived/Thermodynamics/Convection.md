@@ -2,8 +2,11 @@
 
 ---
 
-對流
-transfer of heat from a [[Surface]] to a ==flowing== media
+- 對流
+- Transfer of heat from a [[Surface]] to a ==flowing== media.
+- Two mechanisms:
+	- Random molecular motion.
+	- Macroscopic motion of fluid.
 
 ---
 
