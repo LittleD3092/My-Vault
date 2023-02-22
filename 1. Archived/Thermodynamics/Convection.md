@@ -7,6 +7,9 @@
 - Two mechanisms:
 	- Random molecular motion.
 	- Macroscopic motion of fluid.
+- Recall that there is boundary layer:
+	- ![[Pasted image 20230222201813.png]]
+- Rate equation: $q'' = h(T_s - T_\infty)$
 
 ---
 
