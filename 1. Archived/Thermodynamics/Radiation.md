@@ -6,6 +6,10 @@
 - transfer of heat due to electromagnetic waves
 - All surfaces of finite temperature emit energy in this form.
 
+# Stefan-Boltzmann Law
+
+[[Stefan-Boltzmann Law]]
+
 # Law of Transfer
 
 $$\dot{ Q } = \varepsilon \sigma A T_s^4$$
@@ -20,6 +24,7 @@ $$\dot{ Q } = \varepsilon \sigma A T_s^4$$
 參考資料:
 
 熱力學 Ch3 OCW
+Incropera's Principles of Heat and Mass Transfer
 
 ---
 
