@@ -8,7 +8,14 @@ Link:
 
 ---
 
+- Prescribe the emissive power.
+	- Emissive power $E$: Energy released per unit area $(\rm W/m^2)$ by [[Radiation]].
+- The equation is for an ideal radiator, [[Black Body]].
 
+$$E_b = \sigma T_s^4$$
+
+- $T_s$: Absilute temperature $(\rm K)$ of the surface.
+- $\sigma$: Stefan-Boltzmann constant.
 
 ---
 
