@@ -30,23 +30,9 @@ $$\dot{ Q } = \frac{ \delta Q }{ dt }$$
 $$q = \frac{ Q }{ m }$$
 $m$: mass
 
-# Heat Transfer Modes
+# Heat Transfer
 
-- [[Conduction]]: transfer of heat between molecules
-- [[Convection]]: transfer of heat from a [[Surface]] to a ==flowing== media
-- [[Radiation]]: transfer of heat due to electromagnetic waves
-
-![[Pasted image 20230224153221.png]]
-
-For a surface and its surroundings, [[Convection]] and [[Radiation]] can happen simultaneously.
-
-$$q = q_{\rm conv} + q_{\rm rad} = hA(T_s - T_\infty) + \varepsilon A \sigma (T_s^4 - T_{\rm sur}^4)$$
-
-## Laws of Heat Transfer
-
-> - [[Fouriers Law of Heat Conduction]]
-> - [[Newton's Law of Cooling]]
-> - [[Radiation]]
+[[Heat Transfer]]
 
 ---
 
