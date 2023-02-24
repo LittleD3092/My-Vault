@@ -11,6 +11,14 @@
 $$\text{ cyclic integral of the heat (Q) } = \text{ cyclic integral of the work (W) }$$
 $$\implies \oint \delta Q = \oint \delta W$$
 
+Can also be written as
+
+$$\Delta E^{\rm tot}_{\rm st} = Q - W$$
+
+- $\Delta E^{\rm tot}_{\rm st}$: The change in the total energy stored.
+- $Q$: Net heat transferred to the system.
+- $W$: Net work done by the system.
+
 ## $\delta Q - \delta W$ is a point function
 
 ![[First Law of Thermodynamics Example.png]]
