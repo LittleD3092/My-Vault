@@ -6,7 +6,7 @@
 
 ---
 
-![[standard tensile test - standard tensile test.png]]
+![[standard tensile test - standard tensile test.png|200]]
 
 This is a way to analysis in [[Design Process#4 Analysis and Optimization]].
 
