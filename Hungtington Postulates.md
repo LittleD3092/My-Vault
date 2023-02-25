@@ -1,5 +1,5 @@
 Tag: #digital-design
-Previous: 
+Previous: [[Boolean Algebra]]
 Link: 
 
 ---
