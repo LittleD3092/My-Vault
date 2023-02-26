@@ -1,12 +1,22 @@
 Tag: #digital-design 
 Previous: 
-Link: [[Boolean Algebra]]
+Link: [[Boolean Algebra]] [[Logic Circuits]]
 
 [TOC]
 
 ---
 
+There are 16 functions of two binary variables, derived using truth table:
 
+![[Pasted image 20230227000958.png]]
+
+The functions can be categorized into three categories:
+
+1. Two functions with constant output 0 or 1.
+2. Four functions with unary operators, complement and transfer.
+3. Ten functions with binary operators.
+
+![[Pasted image 20230227001210.png]]
 
 ---
 
