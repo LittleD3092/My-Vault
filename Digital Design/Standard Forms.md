@@ -23,8 +23,6 @@ Link: [[Canonical Forms]]
 | Two-level implementation             | Two-level implementation         |
 | ![[Pasted image 20230226232200.png]] | ![[Pasted image 20230226232207.png]]                                 |
 
-
-
 ---
 
 參考資料:
