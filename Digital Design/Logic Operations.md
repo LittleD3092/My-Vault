@@ -12,6 +12,7 @@ Link: [[Boolean Algebra]]
 
 參考資料:
 
+Digital Design, 6th edition
 
 ---
 
