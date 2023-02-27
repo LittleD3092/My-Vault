@@ -1,21 +1,12 @@
-Tag: #discrete-mathematics
-Previous: 
+Tag: #discrete-mathematics 
+Previous: [[Proposition]]
 Link: 
 
 [TOC]
 
 ---
 
-- A declarative sentence that is either true or false.
-- Propositions that cannot be move simpler are called atomic propositions.
 
-# Compound Proposition
-
-[[Compound Proposition]]
-
-# Equivalences
-
-[[Equivalences]]
 
 ---
 
