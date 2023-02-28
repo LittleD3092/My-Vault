@@ -8,6 +8,8 @@ Link:
 
 - A declarative sentence that is either true or false.
 - Propositions that cannot be move simpler are called atomic propositions.
+- Terms:
+	- [[Satisfiability]]
 
 # Compound Proposition
 

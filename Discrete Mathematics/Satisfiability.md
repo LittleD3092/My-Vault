@@ -1,16 +1,13 @@
 Tag: #discrete-mathematics 
-Previous: [[Proposition]]
+Previous: 
 Link: 
 
 [TOC]
 
 ---
 
-- When two [[Proposition]]s have the same truth value, they are equivalent.
-
-![[Pasted image 20230228165114.png|400]]
-
-![[Pasted image 20230228165131.png|600]]
+- Satisfiable: the result can be true.
+- Unsatisfiable: the result can never be true.
 
 ---
 
