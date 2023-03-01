@@ -35,6 +35,11 @@ The duality property is used in [[#Basic Theorems]].
 | Theorem 5, DeMorgan                        | $(x + y)' = x'y'$           | $(xy)' = x' + y'$         |
 | [[#Theorem 6]], absorption                             | $x + xy = x$                | $x(x + y) = x$            |
 
+# Ways of Representing Function
+
+- [[Canonical Forms]]
+- [[Karnaugh Maps]]
+
 ---
 
 參考資料:

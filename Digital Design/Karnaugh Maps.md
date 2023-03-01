@@ -131,6 +131,39 @@ $$F = A'C + A'B + AB'C + BC$$
 
 $$ = \sum(1, 2, 3, 5, 7) = F = C + A'B$$
 
+# Four-Variable K-Map
+
+![[Pasted image 20230301190958.png|500]]
+
+- 4 binary variables ($w, x, y, z$)
+- The rows and columns are numbered in a [[Grey Code]] sequence.
+- Rules:
+	- 1 square: 1 minterm, 1 term with 4 literals.
+	- 2 adjacent squares: 1 term with 3 literals.
+	- 4 adjacent squares: 1 term with 2 literals.
+	- 8 adjacent squares: 1 term with 1 literal.
+	- 16 adjacent squares: Constant 1.
+
+---
+
+Example:
+
+$$F(w, x, y, z) = \sum(0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)$$
+
+![[Pasted image 20230301191650.png|500]]
+
+$$ = y' + w'z' + xz'$$
+
+---
+
+Example:
+
+$$F = A'B'C' + B'CD' + A'BCD' + AB'C'$$
+
+![[Pasted image 20230301191905.png|500]]
+
+$$ = B'C' + B'D' + A'CD'$$
+
 # Examples
 
 > Recall:

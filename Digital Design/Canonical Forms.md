@@ -11,8 +11,8 @@ Link: [[Boolean Algebra]] [[Standard Forms]]
 - Used to represent a boolean function.
 - We use [[Standard Forms]] more.
 - Include two ways of representation:
-	- [[#Minterms]]
-	- [[#Maxterms]]
+	- [[Minterms]]
+	- [[Maxterms]]
 
 # By Term
 
