@@ -164,6 +164,13 @@ $$F = A'B'C' + B'CD' + A'BCD' + AB'C'$$
 
 $$ = B'C' + B'D' + A'CD'$$
 
+# Prime Implicant
+
+- A product term with maximum number of adjacent squares.
+- If a square is covered by only 1 prime implicant, the prime implicant is **essential**.
+
+![[Pasted image 20230301192444.png|500]]
+
 # Examples
 
 > Recall:
