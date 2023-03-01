@@ -271,63 +271,7 @@ $$
 
 # Minimization of Logic Circuits
 
-## Karnaugh Maps
-
-我們可以利用 Karnaugh maps 來化簡運算式
-
-1. 根據輸入端的個數畫一個正方形或長方形
-2. 在旁邊標上輸入端的字母與輸入訊號，輸入訊號使用 gray signal
-3. 將輸出訊號填到格子裡
-4. 用大括號將 $A, B, C, D$ 為 1 的地方括起來
-5. 嘗試用 $A, B, C, D$ 表示運算式
-
-![[karnaugh maps.png]]
-
-### SOP Example
-
-> A logic circuit has inputs $A, B, C, D$. The output of the circuit is given by
-> $$E = \sum m(1, 3, 4, 5, 7, 10, 12, 13)$$
-> Find the minimum SOP form for $E$
-
-convert the numbers of the minterms to binary numbers
-
-$$
-\begin{array}{}
-	\text{ number } & \text{ binary } \\
-	1 & 0001 \\
-	3 & 0011 \\
-	4 & 0100 \\
-	5 & 0101 \\
-	7 & 0111 \\
-	10 & 1010 \\
-	12 & 1100 \\
-	13 & 1101
-\end{array}
-$$
-
-Construct Karnaugh maps
-
-![[Karnaugh maps SOP example.png|300]]
-
-draw squares on the map and get SOP expression
-
-$$E = \overline A D + B \overline C + A \overline B C \overline D$$
-
-### POS Example
-
-> Find the minimum POS for the logic variable $E$ of last example
-
-draw Karnaugh maps
-
-![[Karnaugh maps for POS example.png|300]]
-
-obtain expression
-
-$$\overline E = ABC + A \overline B D + \overline A C \overline D + \overline B\, \overline C\, \overline D$$
-
-apply De Morgan's laws
-
-$$E = (\overline A + \overline B + \overline C)(\overline A + B + \overline D)(A + \overline C + D)(B + C + D)$$
+[[Karnaugh Maps]]
 
 # Sequential Logic Circuits
 
