@@ -9,10 +9,12 @@ Link:
 ---
 
 - The heat equation of [[Conduction]].
-- Equation: $\displaystyle q_x'' = -k \frac{dT}{dx}$
-	- $q_x''$: Heat flux. ${\rm W}/{\rm m^2}$.
-	- $dT/dx$: Temperature gradient.
-	- $k$: Thermal conductivity. ${\rm W/m \cdot K}$.
+- Equation:
+	- Heat rate: $\displaystyle q_x = -kA \frac{dT}{dx}$
+	- Heat flux: $\displaystyle q_x'' = -k \frac{dT}{dx}$
+		- $q_x''$: Heat flux. ${\rm W}/{\rm m^2}$.
+		- $dT/dx$: Temperature gradient.
+		- $k$: Thermal conductivity. ${\rm W/m \cdot K}$.
 
 # For Steady State Conditions
 

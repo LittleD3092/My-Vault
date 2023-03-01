@@ -10,7 +10,7 @@ Link:
 
 ---
 
-參考資料:
+Reference:
 
 
 ---
