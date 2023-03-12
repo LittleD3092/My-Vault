@@ -1,4 +1,4 @@
-Tag: 
+Tag: #digital-design #list 
 Previous: 
 Link: 
 
@@ -6,12 +6,18 @@ Link:
 
 ---
 
-
+- [[Boolean Algebra]]
+- [[Logic Operations]]
+- [[Logic Gates]]
+- Forms of representation:
+	- [[Canonical Forms]]
+	- [[Standard Forms]]
 
 ---
 
 # Reference
 
+Digital Design, 6th edition
 
 ---
 

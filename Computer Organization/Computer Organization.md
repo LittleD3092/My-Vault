@@ -1,4 +1,4 @@
-Tag: 
+Tag: #computer-organization #list 
 Previous: 
 Link: 
 
@@ -6,15 +6,14 @@ Link:
 
 ---
 
-
-
----
-
-# Reference
-
+- [[Instructions]]: Computer's language.
 
 ---
 
-# Note
+Reference:
+
+Computer Organization and Design, 5th edition
+
+---
 
 This note is included in github repository [My-Vault](https://github.com/LittleD3092/My-Vault.git). Clone this repository and open it in [obsidian](https://obsidian.md/) to enable utilities like wikilinks and graph view.

@@ -1,4 +1,4 @@
-標籤: #Thermodynamics 
+標籤: #Thermodynamics #heat-transfer #list 
 
 ---
 
@@ -49,6 +49,16 @@ $$
 - Properties:
 	- [[Thermal Conductivity]] $k$
 	- [[Thermal Diffusivity]] $\alpha$
+
+# Heat Diffusion Equation
+
+- [[Heat Diffusion Equation]]
+
+# Thermal Resistance
+
+Similar to electrical resistance, we can use the concept of [[Thermal Resistance]].
+
+- [[Thermal Resistance]]
 
 ---
 

@@ -1,4 +1,4 @@
-Tag: #digital-design 
+Tag: #digital-design #list 
 Previous: [[Logic Circuits]]
 Link: [[Logic Operations]]
 
@@ -6,25 +6,17 @@ Link: [[Logic Operations]]
 
 ---
 
-## AND Gate
+| Name           | Representation          | Gate                                 |
+| -------------- | ----------------------- | ------------------------------------ |
+| AND Gate       | $A \text{ and } B = AB$ | ![[and gate.png]]                    |
+| Logic Inverter | $\bar A$                | ![[logic inverter.png]]              |
+| OR Gate        | $A + B$                 | ![[or gate.png]]                     |
+| [[NAND]] Gate      | $\overline{AB}$         | ![[Pasted image 20230312174902.png]] |
+| [[NOR]] Gate       | $\overline{(A + B)}$    | ![[Pasted image 20230312174948.png]] |
+| XOR Gate       | $A \oplus B$            | ![[Pasted image 20230312175029.png]] |
+| Buffer         | $A$                     | ![[Pasted image 20230312175054.png]]                                     |
 
-$A$ AND $B$ 寫作 $AB$
-
-![[and gate.png|200]]
-
-## Logic Inverter
-
-作 NOT 運算， $A$ 的 NOT 寫作 $\overline A$
-
-![[logic inverter.png|200]]
-
-## OR Gate
-
-$A$ OR $B$ 寫作 $A + B$
-
-![[or gate.png|200]]
-
-## De Morgan's Laws
+# De Morgan's Laws
 
 $$\overline{AB} = \overline A + \overline B$$
 
@@ -35,25 +27,6 @@ De Morgan's laws can be extended to three variables as follows:
 $$\overline{ABC} = \overline A + \overline B + \overline C$$
 
 $$\overline{A + B + C} = \overline A \, \overline B \, \overline C$$
-
-## Additional Logic Gate
-
-![[nand, nor, xor, buffer, equivalence gate symbols.png]]
-
-### XOR Gate
-
-$$0 \oplus 0 = 0$$
-$$1 \oplus 0 = 1$$
-$$0 \oplus 1 = 1$$
-$$1 \oplus 1 = 0$$
-
-XOR operation is also known as modulo-two addition
-
-### Buffer
-
-A buffer has a single input and produces an output with the same value as the input.
-
-Buffers are commonly used to provide large currents when a logic signal must be applied to a low-impedance load.
 
 ---
 

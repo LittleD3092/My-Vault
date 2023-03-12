@@ -1,4 +1,4 @@
-Tag: 
+Tag: #discrete-mathematics 
 Previous: 
 Link: 
 
@@ -6,12 +6,15 @@ Link:
 
 ---
 
-
+- [[Proposition]]
+- [[Statement]]
+- [[Quantifiers]]
 
 ---
 
 # Reference
 
+Discrete Mathematics and Its Applications, 8th edition
 
 ---
 
