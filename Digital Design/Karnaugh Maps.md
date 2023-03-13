@@ -1,4 +1,4 @@
-Tag: #電工學 
+Tag: #電工學 #digital-design 
 Previous: 
 Link: [[Logic Circuits]]
 
@@ -175,7 +175,7 @@ $$ = B'C' + B'D' + A'CD'$$
 
 > Recall:
 > - SOP stands for sum of product.
-> - POS stands for product of sum.
+> - POS stands for [[Product of Sums]].
 
 ## SOP Example
 
