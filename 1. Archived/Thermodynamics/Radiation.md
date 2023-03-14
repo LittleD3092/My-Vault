@@ -35,6 +35,7 @@ $$E = \varepsilon \sigma T_s^4$$
 - $\sigma$: Stefan-Boltzmann constant.
 - $\varepsilon$: Emissivity, a radiative property of the surface.
 	- Range: $0 \leq \varepsilon \leq 1$.
+- $E$: Heat flux by radiation.
 
 ## Irradiation
 
@@ -42,8 +43,8 @@ $$G_{\rm abs} = \alpha G$$
 
 - $\alpha$: The portion of the irradiation absorbed by the surface.
 	- $0 \leq \alpha \leq 1$
-- $G$: Irradiation.
-- $G_{\rm abs}$: Irradiation absorbed.
+- $G$: Irradiation (heat flux).
+- $G_{\rm abs}$: Irradiation heat flux absorbed.
 
 ## With Surrounding Area
 
