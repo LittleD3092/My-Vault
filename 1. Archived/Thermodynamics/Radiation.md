@@ -31,7 +31,7 @@ $$E_b = \sigma T_s^4$$
 
 $$E = \varepsilon \sigma T_s^4$$
 
-- $T_s$: Absilute temperature $(\rm K)$ of the surface.
+- $T_s$: Abselute temperature $(\rm K)$ of the surface.
 - $\sigma$: Stefan-Boltzmann constant.
 - $\varepsilon$: Emissivity, a radiative property of the surface.
 	- Range: $0 \leq \varepsilon \leq 1$.
