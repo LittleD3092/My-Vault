@@ -1,8 +1,10 @@
-標籤: #工程數學 
+標籤: #工程數學 #linear-algebra 
 
 ---
 
-有一組 functions
+# Functions
+
+Suppose we have a set of functions
 
 $$\phi_0(x), \ \phi_1(x), \ \phi_2(x), \ \phi_3(x) \dots$$
 
@@ -12,7 +14,7 @@ $$\text{ 若 } \int_a^b \phi_m(x)\phi_n^*(x)dx = 0 \qquad \text{ for } m \neq n$
 
 $$\text{ 則 } \phi_0(x), \phi_1(x), \phi_2(x), \phi_3(x) \dots \text{ 被稱作 orthogonal set on interval } [a, b]$$
 
-# 例子
+## 例子
 
 > Show that the set $\{ 1, \cos x, \cos 2x, \cos 3x, \dots \}$ is an orthogonal set on the interval $[-\pi, \pi]$
 
@@ -41,6 +43,27 @@ $$ = 0 \qquad (\because
 	\sin(m - n)\pi
 \end{array}
  = 0)$$
+
+# Vectors
+
+## Definition
+
+Let ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_n$ be nonzero vectors in an [[Inner Product]] space $V$. If $<{\bf v}_i, {\bf v}_j> = 0$ whenever $i \neq j$, then $\{ {\bf v}_1, {\bf v}_2, \dots, {\bf v}_n \}$ is said to be an **orthogonal set** of vectors.
+
+## Example
+
+The set $\{(1, 1, 1)^T, (2, 1, -3)^T, (4, -5, 1)^T\}$ is an orthogonal set in $R^3$, since
+
+$$
+\begin{array}{}
+	(1, 1, 1)(2, 1, -3)^T & = & 0 \\
+	(1, 1, 1)(4, -5, 1)^T & = & 0 \\
+	(2, 1, -3)(4, -5, 1)^T & = & 0
+\end{array}$$
+
+## Notes
+
+- If $\{{\bf v}_1, {\bf v}_2, \dots, {\bf v}_n\}$ is an orthogonal set of nonzero vectors in an [[Inner Product]] space $V$, then the vectors are [[Linear Independent|linearly independent]].
 
 ---
 

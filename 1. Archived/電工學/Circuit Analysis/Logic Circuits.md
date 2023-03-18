@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 # Basic Logic Circuits Concepts
 
 ## Advantage of the Digital Approach
@@ -256,163 +260,18 @@ $$
 - overflow: 加太多加到上限以上
 - underflow: 減太多減到下限以下
 
-# Combinational Logic Circuits
+# Logic Gates
 
-## AND Gate
+[[Logic Gates]]
 
-$A$ AND $B$ 寫作 $AB$
+# Canonical Forms and Standard Forms
 
-![[and gate.png]]
-
-## Logic Inverter
-
-作 NOT 運算， $A$ 的 NOT 寫作 $\overline A$
-
-![[logic inverter.png]]
-
-## OR Gate
-
-$A$ OR $B$ 寫作 $A + B$
-
-![[or gate.png]]
-
-## De Morgan's Laws
-
-$$\overline{AB} = \overline A + \overline B$$
-
-$$\overline{A + B} = \bar A \bar B$$
-
-De Morgan's laws can be extended to three variables as follows:
-
-$$\overline{ABC} = \overline A + \overline B + \overline C$$
-
-$$\overline{A + B + C} = \overline A \, \overline B \, \overline C$$
-
-## Additional Logic Gate
-
-![[nand, nor, xor, buffer, equivalence gate symbols.png]]
-
-### XOR Gate
-
-$$0 \oplus 0 = 0$$
-$$1 \oplus 0 = 1$$
-$$0 \oplus 1 = 1$$
-$$1 \oplus 1 = 0$$
-
-XOR operation is also known as modulo-two addition
-
-### Buffer
-
-A buffer has a single input and produces an output with the same value as the input.
-
-Buffers are commonly used to provide large currents when a logic signal must be applied to a low-impedance load.
-
-# Synthesis of Logic Circuits
-
-## Sum-of-Products Implementation
-
-> ### Minterms
-> Product terms that include all of the input variables (or their inverses) are called minterms
-
-我們可以用 minterms 作 or 運算來將 input 與 output 的關係寫成算式，譬如我們希望一個 circuit 的運算如下
-
-| 編號 | $A$ | $B$ | $C$ | $D$ (output) |
-| ---- | --- | --- | --- | ------------ |
-| 0    | 0   | 0   | 0   | 1            |
-| 1    | 0   | 0   | 1   | 0            |
-| 2    | 0   | 1   | 0   | 1            |
-| 3    | 0   | 1   | 1   | 0            |
-| 4    | 1   | 0   | 0   | 0            |
-| 5    | 1   | 0   | 1   | 0            |
-| 6    | 1   | 1   | 0   | 1            |
-| 7    | 1   | 1   | 1   | 1            | 
-
-我們將 output 為 1 的部份相加 (or 運算)
-
-$$D = \overline A\, \overline B\, \overline C + \overline A B \overline C + AB \overline C + ABC$$
-
-> 也可以寫成 $$D = \sum m(0, 2, 6, 7)$$
-
-將算式寫成 circuit:
-
-![[sum of products logic circuits.png]]
-
-## Product-of-Sums Implementation
-
-另外一種方法是用 output 為 0 的部份相乘 (and 運算)
-
-$$D = (A + B + \overline C)
-(A + \overline B + \overline C)
-(\overline A + B + C)
-(\overline A + B + \overline C)$$
-
-這個稱為 product of sums (POS) ，也可以寫成
-
-$$D = \prod M(1, 3, 4, 5)$$
-
-> $M$ indicates the maxterms corresponding to the rows enumerated.
-
-![[product-of-sums logic circuit.png]]
+- [[Canonical Forms]]
+- [[Standard Forms]]
 
 # Minimization of Logic Circuits
 
-## Karnaugh Maps
-
-我們可以利用 Karnaugh maps 來化簡運算式
-
-1. 根據輸入端的個數畫一個正方形或長方形
-2. 在旁邊標上輸入端的字母與輸入訊號，輸入訊號使用 gray signal
-3. 將輸出訊號填到格子裡
-4. 用大括號將 $A, B, C, D$ 為 1 的地方括起來
-5. 嘗試用 $A, B, C, D$ 表示運算式
-
-![[karnaugh maps.png]]
-
-### SOP Example
-
-> A logic circuit has inputs $A, B, C, D$. The output of the circuit is given by
-> $$E = \sum m(1, 3, 4, 5, 7, 10, 12, 13)$$
-> Find the minimum SOP form for $E$
-
-convert the numbers of the minterms to binary numbers
-
-$$
-\begin{array}{}
-	\text{ number } & \text{ binary } \\
-	1 & 0001 \\
-	3 & 0011 \\
-	4 & 0100 \\
-	5 & 0101 \\
-	7 & 0111 \\
-	10 & 1010 \\
-	12 & 1100 \\
-	13 & 1101
-\end{array}
-$$
-
-Construct Karnaugh maps
-
-![[Karnaugh maps SOP example.png|300]]
-
-draw squares on the map and get SOP expression
-
-$$E = \overline A D + B \overline C + A \overline B C \overline D$$
-
-### POS Example
-
-> Find the minimum POS for the logic variable $E$ of last example
-
-draw Karnaugh maps
-
-![[Karnaugh maps for POS example.png|300]]
-
-obtain expression
-
-$$\overline E = ABC + A \overline B D + \overline A C \overline D + \overline B\, \overline C\, \overline D$$
-
-apply De Morgan's laws
-
-$$E = (\overline A + \overline B + \overline C)(\overline A + B + \overline D)(A + \overline C + D)(B + C + D)$$
+[[Karnaugh Maps]]
 
 # Sequential Logic Circuits
 

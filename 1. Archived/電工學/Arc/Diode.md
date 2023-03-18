@@ -123,6 +123,8 @@ full-wave rectifier 多提供了 half-wave rectifier 零電壓的部份，如下
 
 $$\underline{ C = \frac{ I_L T }{ 2V_r } }_{ \# }$$
 
+- $T$: 週期
+
 # Reverse Breakdown
 
 在負方向的電壓高過一定程度時，diode 無法阻止電流，就會 breakdown

@@ -9,7 +9,7 @@
 > - [[Exact Equations]]
 >   - Modified Exact Equation
 > - [[Homogeneous Substitution]]
-> - [[Bernoulli's Equations Substitution]]
+> - [[Bernoulli's Equations]]
 > - [[Substitution Ax By C]]
 > ---
 > - Extra step

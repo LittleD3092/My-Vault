@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"db242bf4ca1874b3","x":427,"y":-86,"width":250,"height":60,"type":"text","text":"大砲本體"},
+		{"id":"d027af02fd271513","x":-445,"y":-510,"width":437,"height":219,"type":"text","text":"# 辨識目標\n- yolo\n\t- 訓練將標靶框出來\n- 也可以用apriltag，減少訓練所需時間"},
+		{"id":"383365965c0c232c","x":-939,"y":-116,"width":250,"height":60,"type":"text","text":"標靶設計"},
+		{"id":"cb4d89c852b9d567","x":-969,"y":213,"width":280,"height":60,"type":"text","text":"砲塔俯仰及旋轉機構"},
+		{"id":"64a76f74dd9c36a5","x":-445,"y":-257,"width":250,"height":60,"type":"text","text":"標靶車"},
+		{"id":"e986336a539c5aea","x":-445,"y":-116,"width":250,"height":50,"type":"text","text":"自動填彈機構"},
+		{"id":"2ba23a36c5ff8734","x":-445,"y":25,"width":250,"height":60,"type":"text","text":"反後座力裝置"},
+		{"id":"524ad0c28b9476c6","x":-445,"y":243,"width":446,"height":144,"type":"text","text":"# 控制軟體\n- 利用四元數表示姿態（eigen 函式庫）\n- 撰寫底層控制軟體"},
+		{"id":"4cf77527a9c7d4c8","x":-954,"y":387,"width":250,"height":60,"type":"text","text":"擊發裝置"}
+	],
+	"edges":[
+		{"id":"f316ff5860ecdc6d","fromNode":"383365965c0c232c","fromSide":"right","toNode":"d027af02fd271513","toSide":"left"},
+		{"id":"6c66b9b9a9b446f3","fromNode":"d027af02fd271513","fromSide":"right","toNode":"db242bf4ca1874b3","toSide":"left"},
+		{"id":"9a914d7668b3aaab","fromNode":"e986336a539c5aea","fromSide":"right","toNode":"db242bf4ca1874b3","toSide":"left"},
+		{"id":"0e4d1e4e15e1ecf3","fromNode":"2ba23a36c5ff8734","fromSide":"right","toNode":"db242bf4ca1874b3","toSide":"left"},
+		{"id":"590b8a84f52b8521","fromNode":"383365965c0c232c","fromSide":"right","toNode":"64a76f74dd9c36a5","toSide":"left"},
+		{"id":"a70225f5c61e68ee","fromNode":"524ad0c28b9476c6","fromSide":"right","toNode":"db242bf4ca1874b3","toSide":"left"},
+		{"id":"0a9393989f6ea5a2","fromNode":"cb4d89c852b9d567","fromSide":"right","toNode":"524ad0c28b9476c6","toSide":"left"},
+		{"id":"4dcd8ebef34f089d","fromNode":"4cf77527a9c7d4c8","fromSide":"right","toNode":"524ad0c28b9476c6","toSide":"left"}
+	]
+}

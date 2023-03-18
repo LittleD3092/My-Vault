@@ -23,3 +23,4 @@ Mechanics of Materials online course - coursera
 
 link:
 
+[[Area Moment of Inertia]]

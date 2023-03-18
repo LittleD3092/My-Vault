@@ -38,7 +38,7 @@ $$\underline{
 > We define $\alpha$ as the ratio of the collector current to the emitter current
 > $$\underline{\alpha = \frac{i_C}{i_E}}_\#$$
 
-Substitude Shockley equation into the ratio $\alpha$
+Substitute Shockley equation into the ratio $\alpha$
 
 $$\implies i_C = 
 \alpha I_{ES} \left[
@@ -352,7 +352,7 @@ $$\underline{I_C = \beta I_B}$$
 
 $$I_E = I_B + I_C$$
 
-Substitude $I_C$ into second equation
+Substitute $I_C$ into second equation
 
 $$I_E = (\beta + 1)I_B$$
 

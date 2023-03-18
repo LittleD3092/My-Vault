@@ -2,6 +2,10 @@
 
 ---
 
+[TOC]
+
+---
+
 # Concept
 
 Amplifier 是一種將訊號放大的東西

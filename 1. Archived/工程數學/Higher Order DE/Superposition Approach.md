@@ -39,6 +39,7 @@ $g(x)$ 長什麼樣子，解就要長什麼樣子
 
 > Form Rule:
 > $y_p$ should be a linear combination of $g(x)$, $g'(x)$, $g''(x)$, $g'''(x)$, $g^{(4)}(x)$, $g^{(5)}(x)$,...
+> 係數可以用這個rule，將每個微分的多項式比對
 
 # 小缺陷
 

@@ -6,7 +6,13 @@
 
 ---
 
-Heaps are frequently used to implement [[#Priority Queues]]
+- Heaps are frequently used to implement [[#Priority Queues]].
+- Heaps are usually implemented using array starting at index 1.
+	- The parent of a node will be $\lfloor i / 2 \rfloor$.
+	- The left child of a node will be $2i$.
+	- The right child of a node will be $2i + 1$.
+- A ==height== of a node in a heap is the number of edges on the longest simple downward path from the node to a leaf.
+- The height of a heap is the height of the root.
 
 # Priority Queues
 
@@ -161,3 +167,4 @@ Fundamentals of Data Structure, 2nd edition
 link:
 
 [[Tree]]
+[[Heap Sort]]

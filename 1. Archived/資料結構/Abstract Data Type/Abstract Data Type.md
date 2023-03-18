@@ -26,4 +26,4 @@
 link:
 
 [[Tree]]
-[[Linked Lists]]
+[[Linked List]]

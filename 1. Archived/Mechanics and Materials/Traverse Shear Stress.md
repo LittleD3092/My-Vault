@@ -38,7 +38,7 @@ $$\underline{ \tau = \frac{ VQ }{ Ib } }_{ \# }$$
 
 Stress is averaged across the width. Hence, this formula is only accurate if the width, $b$, is not too great.
 
-![[width and height of a beam.jpg]]
+![[width and height of a beam.jpg|100]]
 
 $$
 \begin{array}{lr}
@@ -55,7 +55,7 @@ $$
 | Cylinder                                 | $$\tau_{max} = \frac{4V}{3A}$$                                                 |
 | Cylinder with hollow center, thin walled | $$\tau_{max} = \frac{2V}{A}$$                                                  |
 | I-beam (thin walled)                     | $$\tau_{max} \dot = \frac{V}{A_{web}}$$                                        |
-shear force diagram
+
 ---
 
 參考資料:

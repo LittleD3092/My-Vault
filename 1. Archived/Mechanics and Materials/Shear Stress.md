@@ -14,7 +14,7 @@ We often represent shear stress with subscript. For example, a shear stress that
 
 ## with angle
 
-![[Shear Stress on Inclined Planes.jpg]]
+![[Shear Stress on Inclined Planes.jpg|200]]
 
 $$\tau = \frac{V}{A}$$
 .
