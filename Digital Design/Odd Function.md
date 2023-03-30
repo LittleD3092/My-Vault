@@ -1,24 +1,19 @@
-Tag: #digital-design #list 
+Tag: #digital-design 
 Previous: 
-Link: 
+Link: [[Exclusive OR]]
 
 [TOC]
 
 ---
 
-- [[Boolean Algebra]]
-- [[Logic Operations]]
-- [[Logic Gates]]
-- Forms of representation:
-	- [[Canonical Forms]]
-	- [[Standard Forms]]
-- [[Hardware Description Language]]
+- Is equivalent to multiple-input [[Exclusive OR]].
+	- Output 1 if input has odd number of 1s.
 
 ---
 
 # Reference
 
-Digital Design, 6th edition
+Digital Design, 6th edition.
 
 ---
 

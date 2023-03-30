@@ -17,7 +17,7 @@ Link:
 		- $p \vee q$
 		- "p or q"
 		- also called "inclusive or"
-	- Exclusive or
+	- [[Exclusive OR]]
 		- $p \oplus q$
 		- "p xor q"
 	- Conditional Statement

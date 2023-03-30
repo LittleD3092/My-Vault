@@ -117,7 +117,7 @@ int main(){
 		}
 
 		// Delay for 1 sec
-		delay_without_interrupt(1000);
+		delay_without_interrupt(500);
 	}
 
 #endif

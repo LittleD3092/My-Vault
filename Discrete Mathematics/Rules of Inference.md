@@ -1,24 +1,20 @@
-Tag: #digital-design #list 
-Previous: 
+Tag: #discrete-mathematics 
+Previous: [[Discrete Mathematics]]
 Link: 
 
 [TOC]
 
 ---
 
-- [[Boolean Algebra]]
-- [[Logic Operations]]
-- [[Logic Gates]]
-- Forms of representation:
-	- [[Canonical Forms]]
-	- [[Standard Forms]]
-- [[Hardware Description Language]]
+A logical form that consists of a function and a conclusion.
+
+![[Pasted image 20230329220602.png]]
 
 ---
 
 # Reference
 
-Digital Design, 6th edition
+Discrete Mathematics and Its Applications, 8th edition
 
 ---
 

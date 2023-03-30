@@ -9,6 +9,7 @@ Link:
 - [[Proposition]]
 - [[Statement]]
 - [[Quantifiers]]
+- [[Rules of Inference]]
 
 ---
 

@@ -1,4 +1,4 @@
-Tag: #digital-design 
+Tag: #digital-design #list 
 Previous: 
 Link: [[Boolean Algebra]] [[Logic Circuits]]
 
@@ -17,6 +17,8 @@ The functions can be categorized into three categories:
 3. Ten functions with binary operators.
 
 ![[Pasted image 20230227001210.png]]
+
+- [[Exclusive OR]]
 
 ---
 
