@@ -1,5 +1,5 @@
 Tag: #digital-design 
-Previous: [[Digital Design]]
+Previous: [[Digital Design/Digital Design]]
 Link: 
 
 [TOC]
