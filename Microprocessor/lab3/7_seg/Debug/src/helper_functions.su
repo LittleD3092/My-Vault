@@ -1,0 +1,5 @@
+../src/helper_functions.c:3:5:read_gpio	16	static
+../src/helper_functions.c:6:6:set_gpio	16	static
+../src/helper_functions.c:9:6:reset_gpio	16	static
+../src/helper_functions.c:12:6:toggle_output	16	static
+../src/helper_functions.c:21:6:delay_without_interrupt	24	static

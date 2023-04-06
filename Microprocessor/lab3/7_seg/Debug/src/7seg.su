@@ -1,0 +1,3 @@
+../src/7seg.c:7:5:init_7seg	32	static
+../src/7seg.c:35:6:send_7seg	40	static
+../src/7seg.c:73:5:print_7seg	48	static

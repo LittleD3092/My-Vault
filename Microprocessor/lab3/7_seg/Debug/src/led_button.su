@@ -1,0 +1,2 @@
+../src/led_button.c:5:5:init_led	16	static
+../src/led_button.c:28:5:init_button	16	static
