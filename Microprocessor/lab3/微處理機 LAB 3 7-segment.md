@@ -196,11 +196,11 @@ void send_7seg(GPIO_TypeDef* gpio, int DIN, int CS, int CLK, int address, int da
 
 109611066:
 
-<img src = "pics/109611066.jpg" width = 50%>
+![[109611066.jpg|400]]
 
 109611030:
 
-<img src = "pics/109611030.jpg" width = 50%>
+![[109611030.jpg|400]]
 
 ## PART 2. 實作題
 
@@ -573,7 +573,7 @@ void display_7seg(GPIO_TypeDef* gpio, int DIN, int CS, int CLK, int number);
 
 執行的成果截圖如下：
 
-<img src = "pics/fibonacci.jpg" width = 50%>
+![[fibonacci.jpg|400]]
 
 執行的成果錄影放在 `media/fibonacci.mp4` 中
 
