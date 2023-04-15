@@ -13,6 +13,7 @@ from bert import BERT, BERTDataset
 from rnn import RNN, RNNDataset
 from ngram import Ngram
 from preprocess import preprocessing_function
+from preprocess import remove_stopwords
 
 from transformers import AutoModel, AutoTokenizer
 
@@ -70,7 +71,7 @@ def second_part(model_type, df_train, df_test, N):
         'data_size': 200000,
         'embedding_dim': 300,
         'hidden_size': 128,
-        'num_layers': 1,
+        'num_layers': 2,
         'bidirectional': True,
         'num_classes': 2,
     }
@@ -145,7 +146,7 @@ def train(model_type, model, train_dataloader, test_dataloader, optimizer, loss_
     '''
     # TO-DO 2-2: Implement the training function
     # BEGIN YOUR CODE
-    for epoch in range(config['epochs']):
+    for epoch in tqdm(range(config['epochs'])):
         
         model.train()
 
@@ -154,7 +155,7 @@ def train(model_type, model, train_dataloader, test_dataloader, optimizer, loss_
         pred = []
 
         # training stage
-        for batch, (X, y) in tqdm(enumerate(train_dataloader)):
+        for batch, (X, y) in tqdm(enumerate(train_dataloader), mininterval=5):
             X, y = X.to(config['device']), y.to(config['device'])
 
             batch_pred = model.forward(X)
@@ -172,9 +173,10 @@ def train(model_type, model, train_dataloader, test_dataloader, optimizer, loss_
         model.eval()
         test_loss, correct = 0, 0
         with torch.no_grad():
-            for X, y in tqdm(test_dataloader):
+            for X, y in tqdm(test_dataloader, mininterval=5):
                 X, y = X.to(config['device']), y.to(config['device'])
                 batch_pred = model.forward(X)
+                
                 test_loss += loss_fn(batch_pred, y).item()
                 correct += (batch_pred.argmax(1) == y).type(torch.float).sum().item()
 
@@ -203,7 +205,11 @@ if __name__ == '__main__':
     df_test['sentiment'] = df_test['sentiment'].map(label_mapping)
 
     # feel free to add more text preprocessing method
-    if preprocessed:
+    print('Preprocessing data...')
+    if preprocessed == 1:
+        df_train['review'] = df_train['review'].apply(remove_stopwords)
+        df_test['review'] = df_test['review'].apply(remove_stopwords)
+    elif preprocessed == 2:
         df_train['review'] = df_train['review'].apply(preprocessing_function)
         df_test['review'] = df_test['review'].apply(preprocessing_function)
 

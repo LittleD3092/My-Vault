@@ -40,7 +40,9 @@ class Ngram:
         model = defaultdict(lambda: defaultdict(lambda: 0))
         features = Counter()
 
-        for document in corpus_tokenize:
+        print('Computing the co-occurrence of each pair...')
+
+        for document in tqdm(corpus_tokenize):
             twograms = nltk.ngrams(document, self.n)
             for w1, w2 in twograms:
                 model[w1][w2] += 1
@@ -56,7 +58,8 @@ class Ngram:
         '''
         Train n-gram model.
         '''
-        corpus = [['[CLS]'] + self.tokenize(document) for document in df['review']]     # [CLS] represents start of sequence
+        print("Reading data...")
+        corpus = [['[CLS]'] + self.tokenize(document) for document in tqdm(df['review'])]     # [CLS] represents start of sequence
         
         # You may need to change the outputs, but you need to keep self.model at least.
         self.model, self.features = self.get_ngram(corpus)
@@ -72,12 +75,14 @@ class Ngram:
         Compute the perplexity of n-gram model.
         Perplexity = 2^(-entropy)
         '''
+
         if self.model is None:
             raise NotImplementedError("Train your model first")
 
         corpus = [['[CLS]'] + self.tokenize(document) for document in df_test['review']]
         perplexity = 0
-        for document_tokenize in corpus:
+        print("Computing perplexity...")
+        for document_tokenize in tqdm(corpus):
             twograms = nltk.ngrams(document_tokenize, self.n)
             N = len(list(nltk.ngrams(document_tokenize, self.n)))
             probabilities = []
@@ -125,15 +130,17 @@ class Ngram:
         train_corpus_embedding = []
         test_corpus_embedding = []
 
-        for document in df_train['review']:
-            twograms = nltk.ngrams(self.tokenize(document), self.n)
+        print("Converting training data to embedding...")
+        for document in tqdm(df_train['review']):
+            twograms = list(nltk.ngrams(self.tokenize(document), self.n))
             embedding = []
             for feature in selected_features:
                 embedding.append(twograms.count(feature))
             train_corpus_embedding.append(embedding)
 
-        for document in df_test['review']:
-            twograms = nltk.ngrams(self.tokenize(document), self.n)
+        print("Converting testing data to embedding...")
+        for document in tqdm(df_test['review']):
+            twograms = list(nltk.ngrams(self.tokenize(document), self.n))
             embedding = []
             for feature in selected_features:
                 embedding.append(twograms.count(feature))

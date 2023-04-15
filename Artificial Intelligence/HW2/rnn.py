@@ -76,8 +76,9 @@ class YourModel(nn.Module):
         # BEGIN YOUR CODE
 
         self.embedding = nn.Embedding(num_embeddings=config["data_size"], embedding_dim=config["embedding_dim"], device = config["device"])
-        self.rnn = nn.RNN(input_size=config["embedding_dim"], hidden_size=config["hidden_size"], num_layers=config["num_layers"], device = config["device"], bidirectional=config["bidirectional"], batch_first=True)
-        self.linear = nn.Linear(in_features=config["hidden_size"]*2, out_features=config["num_classes"], device = config["device"])
+        # self.rnn = nn.RNN(input_size=config["embedding_dim"], hidden_size=config["hidden_size"], num_layers=config["num_layers"], device = config["device"], bidirectional=config["bidirectional"])
+        self.rnn = nn.LSTM(input_size=config["embedding_dim"], hidden_size=config["hidden_size"], num_layers=config["num_layers"], device = config["device"], bidirectional=config["bidirectional"])
+        self.linear = nn.Linear(in_features=config["hidden_size"], out_features=config["num_classes"], device = config["device"])
 
         # END YOUR CODE
         
@@ -92,13 +93,20 @@ class YourModel(nn.Module):
         # TO-DO 3-3: Determine how the model generates output based on input
         # BEGIN YOUR CODE
 
-        # print("original:",text.shape)
+        print("original:",text.shape)
         x = self.embedding(text)
-        # print("after embedding:",x.shape)
-        x, _ = self.rnn(x)
-        # print("after rnn:",x.shape)
-        x = self.linear(x)
-        # print("result:",x.shape)
+        print("embedding:",x.shape)
+        x, (hn, cn) = self.rnn(x)
+        print("rnn:",x.shape)
+        print("hn:",hn.shape)
+        hidden = hn[-1]
+        hidden = torch.squeeze(hidden, 0)
+        x = self.linear(hidden)
+        print("Output:",x.shape)
+
+        if len(x.shape) == 1:
+            x = x.unsqueeze(0)
+
         return x
 
         # END YOUR CODE
