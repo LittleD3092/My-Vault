@@ -17,6 +17,9 @@ Link:
 - Instructions:
 	- [[Logical Operations]]
 	- [[Conditional Instructions]]
+	- [[Load, Store Instructions]]
+	- [[32-bit Immediate Instructions]]
+	- [[Load Link and Store Conditional Instructions]]
 - Mechanisms:
 	- [[Loop]]
 	- [[Function]]
