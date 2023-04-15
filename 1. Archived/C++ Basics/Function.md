@@ -1,4 +1,4 @@
-標籤: #cpp 
+標籤: #cpp #computer-organization 
 
 ---
 
@@ -6,7 +6,9 @@
 
 ---
 
-# Overload
+# C++
+
+## Overload
 
 C++ allows you to give two or more different definitions to the same function name, which means you can reuse names that have strong intuitive appeal across a variety of situations.
 
@@ -45,7 +47,7 @@ double ave(double n1, double n2, double n3)
 
 If you have two or more function definitions for the same function name, that is called overloading. When you overload a function name, the function definitions must have different numbers of formal parameters or some formal parameters of differnet types. When there is a function call, the compiler uses the function definition whose number of formal parameters and types of formal parameters match the arguments in the function call.
 
-## Rules for Resolving Overloading
+### Rules for Resolving Overloading
 
 The rules that the compiler uses for resolving which of multiple overloaded definitions of a function name to apply to a given function call are as follows:
 
@@ -62,7 +64,7 @@ However, the exact rules are more complicated (for reference):
 4. Matches using conversions of user-defined types.
 5. Matches using ellipses ...
 
-# Default Arguments
+## Default Arguments
 
 You can specify a default argument for one or more call-by-value parameters in a function. If the corresponding argument is omitted, then it is replaced by the default argument.
 
@@ -95,11 +97,96 @@ void showVolume(int length, int width, int height)
 
 Note that a default argument should not be given a second time.
 
+# MIPS Assembly
+
+Calling functions in MIPS assembly is achieved using `jal`, and function returning is achieved using `jr`.
+
+Also, for nested function calling, we use `$sp` to save parameters and return address `$ra`.
+
+| Name          | Assembly               | Comments                                                                                                             |
+| ------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Jump and link | `jal ProcedureAddress` | Jump to an address and save the following instruction address to a register `$ra` for link. Used to call a function. |
+| Jump register | `jr $ra`               | Unconditinally jump to an instruction saved in a register. Used to return.                                           | 
+
+## Normal Procedure
+
+For a C procedure like this, note that it does not call another procedure:
+
+```c
+int leaf_example(int g, int h, int i, int j)
+{
+    int f;
+    f = (g + h) - (i + j);
+    return f;
+}
+```
+
+> Note that for a procedure, the parameters are stored in `$a0`, `$a1`, `$a2`, `$a3`..., and the return value is stored in `$v0`.
+
+The compiled MIPS assembly code is:
+
+```s
+leaf_example: addi $sp, $sp, -12   # adjust stack to 
+                                   # store 3 items
+              sw   $t1, 8($sp)
+              sw   $t0, 4($sp)
+              sw   $s0, 0($sp)     # save the register values,
+                                   # because we are going to
+                                   # use these registers.
+              add  $t0, $a0, $a1   # $t0 = g + h
+              add  $t1, $a2, $a3   # $t1 = i + j
+              sub  $s0, $t0, $t1   # $s0 = (g+h) - (i+j)
+              add  $v0, $s0, $zero # $v0 = (g+h)-(i+j)
+              lw   $s0, 0($sp)
+              lw   $t0, 4($sp)
+              lw   $t1, 8($sp)     # restore $s0, $t0, $t1
+                                   # from stack
+              addi $sp, $sp, 12    # pop 3 items
+              jr $ra               # return
+
+```
+
+## Nested Procedure
+
+For a recursive procedure in C:
+
+```c
+int fact (int n)
+{
+    if(n < 1)    return (1);
+    else         return (n * fact(n - 1));
+}
+```
+
+The MIPS assembly is:
+
+```s
+fact: addi $sp, $sp, -8   # adjust stack to store 2 items
+      sw   $ra, 4($sp)  
+      sw   $a0, 0($sp)    # because it is recursive,
+                          # we need to save return address
+                          # and parameter.
+      slti $t0, $a0, 1    # $t0 = n < 1 ? 1 : 0
+      beq  $t0, $zero, L1 # goto L1 if n < 1 == false
+      addi $v0, $zero, 1  # $v0 = 1
+      addi $sp, $sp, 8    # pop 2 items from stack
+      jr   $ra            # return $v0 = 1
+L1:   addi $a0, $a0, -1   # if(n >= 1) $a0 = n - 1
+      jal  fact           # $v0 = fact(n - 1)
+      lw   $a0, 0($sp)
+      lw   $ra, 4($sp)
+      addi $sp, 8         # restore 2 items on stack
+                          # and pop 2 items
+      mul  $v0, $a0, $v0  # $v0 = n * fact(n - 1)
+      jr   $ra            # return $v0
+```
+
 ---
 
 參考資料:
 
 Absolute C++, 6th edition
+Computer Organization and Design, 5th edition
 
 ---
 

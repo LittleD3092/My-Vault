@@ -14,9 +14,20 @@ Link:
 
 # MIPS
 
+- Instructions:
+	- [[Logical Operations]]
+	- [[Conditional Instructions]]
+- Mechanisms:
+	- [[Loop]]
+	- [[Function]]
+
 **MIPS assemply language cheat sheet**:
 
 ![[Pasted image 20230312164252.png]]
+
+## Machine Code
+
+[[Machine Code]]
 
 # STM32
 
