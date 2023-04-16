@@ -1,4 +1,4 @@
-Tag: #computer-organization 
+Tag: #computer-organization #list 
 Previous: 
 Link: 
 
@@ -28,9 +28,9 @@ Link:
 
 ![[Pasted image 20230312164252.png]]
 
-## Machine Code
+## MIPS Fields
 
-[[Machine Code]]
+[[MIPS Fields]]
 
 # STM32
 

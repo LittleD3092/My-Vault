@@ -6,7 +6,7 @@ Link:
 
 ---
 
-In [[Machine Code#I-type Instructions]], we can see that I-type instructions have a 16-bit immediate field. What if we want bigger constant?
+In [[MIPS Fields#I-type Instructions]], we can see that I-type instructions have a 16-bit immediate field. What if we want bigger constant?
 
 The [[Load Upper Immediate Instruction]] loads the constant to the left 16 bits of the destination register, which we can use to assign bigger constant.
 

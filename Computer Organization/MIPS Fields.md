@@ -6,10 +6,6 @@ Link:
 
 ---
 
-Machine code is a sequence of 0s and 1s that tells CPU what to do.
-
-# MIPS Fields
-
 Each instruction in MIPS instruction set takes 32 bits. There are three types of instructions, each has different ways of using the 32 bits:
 
 - [[#R-type Instructions]]

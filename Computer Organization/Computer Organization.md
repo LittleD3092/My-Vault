@@ -5,14 +5,19 @@ Link:
 [TOC]
 
 ---
-
+- Some terms:
+	- [[CPI]]: Cycle per instruction. The average number of clock cycles per instruction.
+	- [[Little-endian and Big-endian Machine]]: The order that bytes are stored in memory.
 - [[Instructions]]: Computer's language.
+- [[Translating Program]]
+- [[Data Representation]]
 
 ---
 
 Reference:
 
 Computer Organization and Design, 5th edition
+[CPI - wiki](https://en.wikipedia.org/wiki/Cycles_per_instruction)
 
 ---
 
