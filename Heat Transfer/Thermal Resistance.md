@@ -34,6 +34,10 @@ For making individual thermal resistances parallel or series, see below figure:
 
 ![[Pasted image 20230312163741.png|500]]
 
+# Contact Resistance
+
+[[Contact Resistance]]
+
 ---
 
 Reference:
