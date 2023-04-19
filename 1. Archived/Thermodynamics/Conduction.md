@@ -21,7 +21,7 @@ $$q'' = -k \nabla T = -k
 	{\bf k} \frac{\partial T}{\partial z}
 \right)$$
 
-- $k$: Thermal conductivity (${\rm W/m \cdot K}$)
+- $k$: [[Thermal Conductivity]] (${\rm W/m \cdot K}$)
 - $T$: Temperature gradient
 - ${\bf i, j, k}$: Unit vectors in $x, y, z$ directions
 
