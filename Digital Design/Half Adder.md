@@ -1,21 +1,23 @@
-Tag: #digital-design #list 
-Previous: 
+Tag: #digital-design 
+Previous: [[Adder]]
 Link: 
 
 [TOC]
 
 ---
 
-- [[Boolean Algebra]]
-- [[Logic Operations]]
-- [[Logic Gates]]
-- Forms of representation:
-	- [[Canonical Forms]]
-	- [[Standard Forms]]
-- [[Hardware Description Language]]
-- Combinational Circuits:
-	- [[Adder]]
-	- [[Subtractor]]
+- Input: $x, y$
+- Output: $S$(sum), $C$(carry)
+
+$$\implies 
+\begin{array}{l}
+	S &=& x'y + xy' \\
+	C &=& xy
+\end{array}$$
+
+There are two kinds of implementations:
+
+![[Pasted image 20230424175326.png]]
 
 ---
 
