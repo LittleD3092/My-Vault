@@ -25,45 +25,191 @@
 
 // Use to decide which part of the code will run
 // Use define & ifdef to control
-// #define lab_keypad_single_key
+#define lab_keypad_single_key
 // #define lab_keypad_calculator_2_operands
 // #define lab_keypad_calculator_multi_operands
-#define lab_keypad_multi_key
+// #define lab_keypad_multi_key
+
+class SevenSegDisplay
+{
+public:
+    SevenSegDisplay(GPIO_TypeDef *gpio, int din_pin, int cs_pin, int clk_pin)
+	{
+		this->gpio = gpio;
+		this->din_pin = din_pin;
+		this->cs_pin = cs_pin;
+		this->clk_pin = clk_pin;
+	}
+
+	int init()
+	{
+		if(init_7seg(this->gpio, this->din_pin, this->cs_pin, this->clk_pin) != 0){
+			// Fail to init 7seg
+			return -1;
+		}
+
+		// Set Decode Mode to Code B decode mode
+		send_7seg(this->gpio, this->din_pin, this->cs_pin, this->clk_pin, SEG_ADDRESS_DECODE_MODE, 0xFF);
+		// Set Scan Limit to all digits
+		send_7seg(this->gpio, this->din_pin, this->cs_pin, this->clk_pin, SEG_ADDRESS_SCAN_LIMIT, 0x07);
+		// Wakeup 7seg
+		send_7seg(this->gpio, this->din_pin, this->cs_pin, this->clk_pin, SEG_ADDRESS_SHUTDOWN, 0x01);
+	}
+
+	// use only if 7seg is in decode mode and only if scan limit is set to 7
+	// print data to the 7seg display
+	// return -1 if overflow
+	int print(int number){
+		// overflow
+		if(number > 99999999 || number < -9999999)
+			return -1;
+		
+		// negative
+		int negative = 0;
+		if(number < 0)
+		{
+			negative = 1;
+			number = -number;
+		}
+
+		// print digits
+		int current_digit = 0;
+		while(number != 0)
+		{
+			int digit = number % 10;
+			send_7seg(this->gpio, this->din_pin, this->cs_pin, this->clk_pin, SEG_ADDRESS_DIGIT_0+current_digit, SEG_DATA_DECODE_0+digit);
+			number /= 10;
+			current_digit++;
+		}
+
+		// print negative sign
+		if(negative)
+		{
+			send_7seg(gpio, this->din_pin, this->cs_pin, this->clk_pin, SEG_ADDRESS_DIGIT_0+current_digit, SEG_DATA_DECODE_DASH);
+			current_digit++;
+		}
+
+		// clear remaining digits
+		while(current_digit <= 7)
+		{
+			send_7seg(gpio, this->din_pin, this->cs_pin, this->clk_pin, SEG_ADDRESS_DIGIT_0+current_digit, SEG_DATA_DECODE_BLANK);
+			current_digit++;
+		}
+
+		return 0;
+	}
+
+private:
+    GPIO_TypeDef *gpio;
+	int din_pin;
+	int cs_pin;
+	int clk_pin;
+};
+
+class Keypad
+{
+public:
+    Keypad(GPIO_TypeDef *row_gpio, int row_pin, GPIO_TypeDef *col_gpio, int col_pin)
+	{
+		this->row_gpio = row_gpio;
+		this->row_pin = row_pin;
+		this->col_gpio = col_gpio;
+		this->col_pin = col_pin;
+
+		for(int i = 0; i < 4; i++)
+			for(int j = 0; j < 4; j++)
+			{
+				this->buttons[i][j] = 0;
+				this->last_buttons[i][j] = 0;
+			}
+	}
+
+	int init()
+	{
+		if(init_keypad(this->row_gpio, this->col_gpio, this->row_pin, this->col_pin) != 0){
+			// Fail to init keypad
+			return -1;
+		}
+	}
+
+	void refresh()
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 4; j++)
+			{
+				this->last_buttons[i][j] = this->buttons[i][j];
+				this->buttons[i][j] = check_keypad_input_one(this->row_gpio, this->col_gpio, this->row_pin, this->col_pin, i, j);
+			}
+		}
+	}
+
+	int button(int row, int col)
+	{
+		return this->buttons[row][col];
+	}
+
+	int buttonPressed(int row, int col)
+	{
+		return this->buttons[row][col] && !this->last_buttons[row][col];
+	}
+
+	int buttonReleased(int row, int col)
+	{
+		return !this->buttons[row][col] && this->last_buttons[row][col];
+	}
+
+	char getChar()
+	{
+		char chars[4][4] = {
+			{'1', '2', '3', 'A'},
+			{'4', '5', '6', 'B'},
+			{'7', '8', '9', 'C'},
+			{'*', '0', '#', 'D'}
+		};
+
+		for(int i = 0; i < 4; i++)
+			for(int j = 0; j < 4; j++)
+				if(this->button(i, j))
+					return chars[i][j];
+
+		return 0;
+	}
+
+private:
+    GPIO_TypeDef *row_gpio;
+	int row_pin;
+	GPIO_TypeDef *col_gpio;
+	int col_pin;
+
+	int buttons[4][4];
+	int last_buttons[4][4];
+};
 
 int main(){
 
 #ifdef lab_keypad_single_key
 
-	if(init_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin) != 0){
-		// Fail to init 7seg
-		return -1;
-	}
+	SevenSegDisplay sevenSegDisplay(SEG_gpio, DIN_pin, CS_pin, CLK_pin);
+	if(sevenSegDisplay.init() != 0)    return -1;
 
-	// Set Decode Mode to Code B decode mode
-	send_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin, SEG_ADDRESS_DECODE_MODE, 0xFF);
-	// Set Scan Limit to all digits
-	send_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin, SEG_ADDRESS_SCAN_LIMIT, 0x07);
-	// Wakeup 7seg
-	send_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin, SEG_ADDRESS_SHUTDOWN, 0x01);
-
-	if(init_keypad(ROW_gpio, COL_gpio, ROW_pin, COL_pin) != 0){
-		// Fail to init keypad
-		return -1;
-	}
+	Keypad keypad(ROW_gpio, ROW_pin, COL_gpio, COL_pin);
+	if(keypad.init() != 0)    return -1;
 
 	while(1){
-		int input = 0;
-		for(int i=0;i<4;i++){
-			for(int j=0;j<4;j++){
-				if(check_keypad_input_one(ROW_gpio, COL_gpio, ROW_pin, COL_pin, i, j)){
-					input = 1;
-					display_number(SEG_gpio, DIN_pin, CS_pin, CLK_pin, keypad[i][j], num_digits(keypad[i][j]));
-				}
-			}
-		}
-		if(input == 0){
-			display_number(SEG_gpio, DIN_pin, CS_pin, CLK_pin, 0, 0);
-		}
+		keypad.refresh();
+		char c = keypad.getChar();
+
+		if(c >= '0' && c <= '9')
+			sevenSegDisplay.print(c-'0');
+		else if(c >= 'A' && c <= 'D')
+			sevenSegDisplay.print(c-'A'+10);
+		else if(c == '*')
+			sevenSegDisplay.print(15);
+		else if(c == '#')
+			sevenSegDisplay.print(14);
+		else
+			sevenSegDisplay.print(0);
 	}
 
 #endif
@@ -87,7 +233,7 @@ int main(){
 		return -1;
 	}
 
-	display_number(SEG_gpio, DIN_pin, CS_pin, CLK_pin, 0, 0);
+	display_number(SEG_gpio, DIN_pin, CS_pin, CLK_pin, 0, num_digits(0));
 	while(1)
 	{
 		int operand1 = 0;
@@ -96,8 +242,6 @@ int main(){
 
 		int doneFlag = 0;
 		int clearFlag = 0;
-
-
 		// Get operand1
 		while(1)
 		{
@@ -159,6 +303,7 @@ int main(){
 		}
 
 		doneFlag = 0;
+		display_number(SEG_gpio, DIN_pin, CS_pin, CLK_pin, 0, num_digits(0));
 
 		// Get operand2
 		while(1)
@@ -230,8 +375,8 @@ int main(){
 
 #ifdef lab_keypad_calculator_multi_operands
 
-	if(init_keypad(ROW_gpio, COL_gpio, ROW_pin, COL_pin) != 0){
-		// Fail to init keypad
+	if(init_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin) != 0){
+		// Fail to init 7seg
 		return -1;
 	}
 
@@ -247,6 +392,7 @@ int main(){
 		return -1;
 	}
 
+	display_number(SEG_gpio, DIN_pin, CS_pin, CLK_pin, 0, num_digits(0));
 	while(1)
 	{
 		// Initialize parameters
