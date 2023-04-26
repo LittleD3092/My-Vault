@@ -165,7 +165,7 @@ void Postfix(Expression e)
 		}
 		else // x is an operator
 		{
-			for(; isp(stack.Top()) <= icp(x); stack.Pop())
+			for(; isp(stack.Top()) >= icp(x); stack.Pop())
 				cout << stack.Top();
 			stack.Push(x);
 		}

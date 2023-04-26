@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "keypad.h": "c",
+        "cmath": "c",
+        "bit": "c",
+        "*.tcc": "c",
+        "complex": "c",
+        "random": "c"
+    }
+}
