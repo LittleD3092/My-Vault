@@ -1,0 +1,150 @@
+$date
+	Thu Apr 27 15:21:13 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module test_SeqRcng $end
+$var wire 1 ! out $end
+$var reg 1 " clk $end
+$var reg 1 # reset_ $end
+$var reg 1 $ x $end
+$scope module SR1 $end
+$var wire 1 " clk $end
+$var wire 1 # reset_ $end
+$var wire 1 $ x $end
+$var reg 3 % next_state [2:0] $end
+$var reg 1 ! out $end
+$var reg 3 & state [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 &
+b1 %
+0$
+0#
+0"
+0!
+$end
+#1000
+1"
+#1500
+b0 %
+1$
+1#
+#2000
+0"
+#3000
+1"
+#3500
+b1 %
+0$
+#4000
+0"
+#5000
+b1 &
+1"
+#5500
+b11 %
+1$
+#6000
+0"
+#7000
+b10 %
+b11 &
+1"
+#7500
+b1 %
+0$
+#8000
+0"
+#9000
+b1 &
+1"
+#9500
+b11 %
+1$
+#10000
+0"
+#11000
+b10 %
+b11 &
+1"
+#12000
+0"
+#13000
+b0 %
+b10 &
+1"
+#14000
+0"
+#15000
+b0 &
+1"
+#15500
+b1 %
+0$
+#16000
+0"
+#17000
+b1 &
+1"
+#17500
+b11 %
+1$
+#18000
+0"
+#19000
+b10 %
+b11 &
+1"
+#20000
+0"
+#21000
+b0 %
+b10 &
+1"
+#21500
+b110 %
+0$
+#22000
+0"
+#23000
+1!
+b1 %
+b110 &
+1"
+#23500
+b11 %
+1$
+#24000
+0"
+#25000
+0!
+b10 %
+b11 &
+1"
+#26000
+0"
+#27000
+b0 %
+b10 &
+1"
+#28000
+0"
+#29000
+b0 &
+1"
+#29500
+b1 %
+0$
+#30000
+0"
+#31500
+b0 %
+1$
