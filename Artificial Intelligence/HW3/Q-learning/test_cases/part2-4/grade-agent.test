@@ -1,0 +1,14 @@
+class: "EvalAgentTest"
+
+pacmanParams: "-p ApproximateQAgent -x 2000 -n 2100 -l smallClassic -q -f --fixRandomSeed -a extractor=SimpleExtractor"
+
+nonTimeoutMinimum: "0"
+nonTimeoutThresholds: "5 10"
+
+scoreThresholds: "500 1000"
+
+winsMinimum: "1"
+winsThresholds: "1 40 70 100"
+
+randomSeed: "0"
+ghosts: "[RandomGhost(1)]"
