@@ -12,6 +12,5 @@ module mux_2to1(
             default: out = 32'h0;
         endcase
     end
-);
     
 endmodule

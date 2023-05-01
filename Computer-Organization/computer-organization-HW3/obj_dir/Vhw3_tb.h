@@ -30,43 +30,30 @@ VL_MODULE(Vhw3_tb) {
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__clk;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rst;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__clk;
     CData/*0:0*/ hw3_tb__DOT__start;
-    CData/*5:0*/ hw3_tb__DOT__core_top_inst__DOT__imem_inst__DOT__addr;
-    CData/*1:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_type;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_dmem;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_regfile;
-    CData/*3:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__op;
-    CData/*1:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__ssel;
-    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs1_id;
-    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs2_id;
-    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rdst_id;
-    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs1_id;
-    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs2_id;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__we;
-    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rdst_id;
-    CData/*3:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__zero;
+    CData/*1:0*/ hw3_tb__DOT__core_top_inst__DOT__jump_type;
+    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__we_dmem;
+    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__we_regfile;
+    CData/*1:0*/ hw3_tb__DOT__core_top_inst__DOT__ssel;
+    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__rs1_id;
+    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__rs2_id;
+    CData/*4:0*/ hw3_tb__DOT__core_top_inst__DOT__rdst_id;
+    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_data_sel;
+    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__zero;
     CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__overflow;
-    CData/*5:0*/ hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__addr;
-    CData/*0:0*/ hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__we;
     IData/*31:0*/ hw3_tb__DOT__i;
     IData/*31:0*/ hw3_tb__DOT__tmp;
     IData/*31:0*/ hw3_tb__DOT__cycle_count;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__pc_in;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__instr_o;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__jump_addr;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__imm;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__rs1;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_rs2;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_rs2;
+    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__dmem_addr;
     IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__pc;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_addr;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__imm;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rdst;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs1;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs2;
     IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__unnamedblk1__DOT__i;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd;
-    IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__wdata;
     IData/*31:0*/ hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__idx;
     IData/*31:0*/ hw3_tb__DOT__golden_reg[32];
     IData/*31:0*/ hw3_tb__DOT__golden_dmem[16];
@@ -76,13 +63,9 @@ VL_MODULE(Vhw3_tb) {
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
-    CData/*3:0*/ __Vdlyvdim0__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM__v0;
-    CData/*0:0*/ __Vdlyvset__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM__v0;
-    CData/*0:0*/ __Vclklast__TOP__hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rst;
-    CData/*0:0*/ __Vclklast__TOP__hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__clk;
-    CData/*0:0*/ __Vclklast__TOP__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__clk;
+    CData/*3:0*/ hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op;
     CData/*0:0*/ __Vclklast__TOP__clk;
-    IData/*31:0*/ __Vdlyvval__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM__v0;
+    CData/*0:0*/ __Vclklast__TOP__rst;
     CData/*0:0*/ __Vm_traceActivity[5];
     
     // INTERNAL VARIABLES
@@ -132,13 +115,11 @@ VL_MODULE(Vhw3_tb) {
     static void _eval_initial(Vhw3_tb__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _eval_settle(Vhw3_tb__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _initial__TOP__1(Vhw3_tb__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _multiclk__TOP__6(Vhw3_tb__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__2(Vhw3_tb__Syms* __restrict vlSymsp);
     static void _sequent__TOP__3(Vhw3_tb__Syms* __restrict vlSymsp);
     static void _sequent__TOP__4(Vhw3_tb__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__5(Vhw3_tb__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__6(Vhw3_tb__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__7(Vhw3_tb__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__8(Vhw3_tb__Syms* __restrict vlSymsp);
-    static void _settle__TOP__2(Vhw3_tb__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _settle__TOP__5(Vhw3_tb__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
     static void traceChgSub0(void* userp, VerilatedVcd* tracep);
     static void traceChgTop0(void* userp, VerilatedVcd* tracep);

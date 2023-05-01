@@ -70,731 +70,825 @@ void Vhw3_tb::_initial__TOP__1(Vhw3_tb__Syms* __restrict vlSymsp) {
     vlTOPp->hw3_tb__DOT__start = 1U;
 }
 
-void Vhw3_tb::_settle__TOP__2(Vhw3_tb__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vhw3_tb::_settle__TOP__2\n"); );
+void Vhw3_tb::_settle__TOP__5(Vhw3_tb__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vhw3_tb::_settle__TOP__5\n"); );
     Vhw3_tb* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    if ((0x80000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)) {
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__op 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0xfU : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                           ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+        = vlTOPp->hw3_tb__DOT__core_top_inst__DOT__imem_inst__DOT__RAM
+        [(0xfU & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__pc 
+                  >> 2U))];
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__we_dmem 
+        = (1U & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                  >> 0x1fU) & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                   >> 0x1eU)) & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                  >> 0x1dU) 
+                                                 & ((~ 
+                                                     (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                      >> 0x1cU)) 
+                                                    & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                        >> 0x1bU) 
+                                                       & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                          >> 0x1aU)))))));
+    if ((0x80000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)) {
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__we_regfile 
+            = (1U & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                         >> 0x1eU)) & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                           >> 0x1dU)) 
+                                       & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                              >> 0x1cU)) 
+                                          & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                              >> 0x1bU) 
+                                             & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                >> 0x1aU))))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rdst_id 
+            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? 0U : ((0x10000000U 
+                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                           ? 0U : (
+                                                   (0x8000000U 
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                    ? 
+                                                   ((0x4000000U 
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                     ? 
+                                                    (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                     >> 0x10U)
+                                                     : 0U)
+                                                    : 0U)))));
+    } else {
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__we_regfile 
+            = (1U & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                         >> 0x1eU)) & ((0x20000000U 
+                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                        ? ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                               >> 0x1cU)) 
+                                           & ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? (~ 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x1aU))
+                                               : (~ 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x1aU))))
+                                        : ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                               >> 0x1cU)) 
+                                           & ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                  >> 0x1aU)
+                                               : ((~ 
+                                                   (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                    >> 0x1aU)) 
+                                                  & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                      >> 5U) 
+                                                     & ((~ 
+                                                         (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                          >> 4U)) 
+                                                        & ((8U 
+                                                            & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                            ? 
+                                                           ((~ 
+                                                             (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                              >> 2U)) 
+                                                            & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                                >> 1U) 
+                                                               & (~ vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)))
+                                                            : 
+                                                           ((4U 
+                                                             & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                             ? 
+                                                            ((~ 
+                                                              (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                               >> 1U)) 
+                                                             | vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                             : 
+                                                            ((2U 
+                                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                              ? 
+                                                             (~ vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                              : 
+                                                             (~ vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o))))))))))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rdst_id 
+            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? 0U : ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 0U
+                                                   : 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x10U))
+                                               : ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 0U
+                                                   : 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x10U))))
+                                  : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? 0U : ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 0x1fU
+                                                   : 0U)
+                                               : ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 0U
+                                                   : 
+                                                  ((0x20U 
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                    ? 
+                                                   ((0x10U 
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                     ? 0U
+                                                     : 
+                                                    ((8U 
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                      ? 
+                                                     ((4U 
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                       ? 0U
+                                                       : 
+                                                      ((2U 
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                        ? 
+                                                       ((1U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 0U
+                                                         : 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0xbU))
+                                                        : 0U))
+                                                      : 
+                                                     ((4U 
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                       ? 
+                                                      ((2U 
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                        ? 
+                                                       ((1U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0xbU)
+                                                         : 0U)
+                                                        : 
+                                                       ((1U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0xbU)
+                                                         : 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0xbU)))
+                                                       : 
+                                                      ((2U 
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                        ? 
+                                                       ((1U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 0U
+                                                         : 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0xbU))
+                                                        : 
+                                                       ((1U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 0U
+                                                         : 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0xbU))))))
+                                                    : 0U)))))));
+    }
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_data_sel 
+        = (1U & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                  >> 0x1fU) & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                   >> 0x1eU)) & ((~ 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x1dU)) 
+                                                 & ((~ 
+                                                     (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                      >> 0x1cU)) 
+                                                    & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                        >> 0x1bU) 
+                                                       & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                          >> 0x1aU)))))));
+    if ((0x80000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)) {
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_type = 3U;
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_addr = 0U;
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0xfU : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                           ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                ? 0xfU : ((0x8000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? ((0x4000000U 
-                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                               ? 2U : 0xfU)
                                           : 0xfU)) : 
-                          ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                            ? 0xfU : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                          ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                            ? 0xfU : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                        ? ((0x4000000U 
-                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                            ? 2U : 0xfU)
                                        : 0xfU))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs2_id 
-            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__ssel 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? ((0x4000000U 
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                          ? 3U : 0U)
+                                      : 0U)) : ((0x10000000U 
+                                                 & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                 ? 0U
+                                                 : 
+                                                ((0x8000000U 
+                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                  ? 
+                                                 ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 3U
+                                                   : 0U)
+                                                  : 0U))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__imm 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? ((0x4000000U 
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                          ? VL_EXTENDS_II(32,16, 
+                                                          (0xffffU 
+                                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o))
+                                          : 0U) : 0U))
+                         : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? ((0x4000000U 
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                          ? VL_EXTENDS_II(32,16, 
+                                                          (0xffffU 
+                                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o))
+                                          : 0U) : 0U))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1_id 
+            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                       ? 0U : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                ? ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x15U)
+                                                   : 0U)
+                                               : 0U))
+                                  : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? 0U : ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x15U)
+                                                   : 0U)
+                                               : 0U)))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs2_id 
+            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? 0U : ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                    >> 0x10U)
                                                    : 0U)
                                                : 0U))
                                   : 0U)));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__ssel = 0U;
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__imm 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                          ? VL_EXTENDS_II(32,16, 
-                                                          (0xffffU 
-                                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr))
-                                          : 0U) : 0U))
-                         : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                          ? VL_EXTENDS_II(32,16, 
-                                                          (0xffffU 
-                                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr))
-                                          : 0U) : 0U))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_type = 0U;
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_addr = 0U;
     } else {
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__op 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0xfU : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                           ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_type 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 3U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 3U : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? 3U : ((0x4000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? 3U
+                                               : 1U))
+                                  : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                      ? 2U : ((0x4000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? 3U
+                                               : ((0x20U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                   ? 3U
+                                                   : 
+                                                  ((0x10U 
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                    ? 3U
+                                                    : 
+                                                   ((8U 
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                     ? 
+                                                    ((4U 
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                      ? 3U
+                                                      : 
+                                                     ((2U 
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                       ? 3U
+                                                       : 
+                                                      ((1U 
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                        ? 3U
+                                                        : 0U)))
+                                                     : 3U))))))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_addr 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? 0U : ((0x8000000U 
+                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                           ? ((0x4000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? (0x3ffffffU 
+                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               : (0x3ffffffU 
+                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o))
+                                           : 0U))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0xfU : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                           ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                ? 0xfU : ((0x8000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? ((0x4000000U 
-                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                               ? 0xfU
                                               : 7U)
                                           : ((0x4000000U 
-                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                               ? 0xfU
                                               : 2U)))
-                           : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                               ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                           : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                               ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                    ? 0xfU : ((0x4000000U 
-                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                               ? 0xfU
                                               : 6U))
-                               : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                   ? ((0x4000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                               : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                   ? ((0x4000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                        ? 2U : 0xfU)
-                                   : ((0x4000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                   : ((0x4000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                        ? 0xfU : ((0x20U 
-                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                   ? 
                                                  ((0x10U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0xfU
                                                    : 
                                                   ((8U 
-                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                     ? 
                                                    ((4U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                      ? 0xfU
                                                      : 
                                                     ((2U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 
                                                      ((1U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0xfU
                                                        : 7U)
                                                       : 0xfU))
                                                     : 
                                                    ((4U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                      ? 
                                                     ((2U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 
                                                      ((1U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0xcU
                                                        : 0xfU)
                                                       : 
                                                      ((1U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 1U
                                                        : 0U))
                                                      : 
                                                     ((2U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 
                                                      ((1U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0xfU
                                                        : 6U)
                                                       : 
                                                      ((1U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0xfU
                                                        : 2U)))))
                                                   : 0xfU))))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs2_id 
-            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? 0U : ((0x10000000U 
-                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                           ? ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? 0U
-                                               : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 0U
-                                                   : 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x10U)))
-                                           : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? 0U
-                                               : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 0U
-                                                   : 
-                                                  ((0x20U 
-                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                    ? 
-                                                   ((0x10U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                     ? 0U
-                                                     : 
-                                                    ((8U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                      ? 
-                                                     ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                       ? 0U
-                                                       : 
-                                                      ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                        ? 
-                                                       ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                         ? 0U
-                                                         : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0x10U))
-                                                        : 0U))
-                                                      : 
-                                                     ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                       ? 
-                                                      ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                        ? 
-                                                       ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                         ? 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0x10U)
-                                                         : 0U)
-                                                        : 
-                                                       ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                         ? 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0x10U)
-                                                         : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0x10U)))
-                                                       : 
-                                                      ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                        ? 
-                                                       ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                         ? 0U
-                                                         : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0x10U))
-                                                        : 
-                                                       ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                         ? 0U
-                                                         : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0x10U))))))
-                                                    : 0U)))))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__ssel 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__ssel 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                       ? ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : 3U)
                                       : ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : 3U)))
-                         : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 0U : ((0x4000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? 0U
-                                               : ((0x20U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 
-                                                  ((0x10U 
-                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                         : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                 ? 0U : ((0x4000000U 
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                          ? 0U : 1U))
+                             : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                 ? ((0x4000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                     ? 2U : 0U) : (
+                                                   (0x4000000U 
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                     ? 0U
                                                     : 
-                                                   ((8U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   ((0x20U 
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                      ? 
-                                                    ((4U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                    ((0x10U 
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 0U
                                                       : 
-                                                     ((2U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                     ((8U 
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 
-                                                      ((1U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      ((4U 
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 0U
-                                                        : 1U)
-                                                       : 0U))
-                                                     : 
-                                                    ((4U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                      ? 
-                                                     ((2U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                       ? 
-                                                      ((1U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                        ? 1U
-                                                        : 0U)
-                                                       : 1U)
-                                                      : 
-                                                     ((2U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                       ? 
-                                                      ((1U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                        ? 0U
-                                                        : 1U)
+                                                        : 
+                                                       ((2U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 
+                                                        ((1U 
+                                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                          ? 0U
+                                                          : 1U)
+                                                         : 0U))
                                                        : 
-                                                      ((1U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                        ? 0U
-                                                        : 1U)))))
-                                                   : 0U))))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__imm 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      ((4U 
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                        ? 
+                                                       ((2U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 
+                                                        ((1U 
+                                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                          ? 1U
+                                                          : 0U)
+                                                         : 1U)
+                                                        : 
+                                                       ((2U 
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                         ? 
+                                                        ((1U 
+                                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                          ? 0U
+                                                          : 1U)
+                                                         : 
+                                                        ((1U 
+                                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                                          ? 0U
+                                                          : 1U)))))
+                                                     : 0U))))));
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__imm 
+            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? 0U : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                       ? ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : VL_EXTENDS_II(32,16, 
                                                                (0xffffU 
-                                                                & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)))
+                                                                & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)))
                                       : ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : VL_EXTENDS_II(32,16, 
                                                                (0xffffU 
-                                                                & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)))))
-                         : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                             ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                                & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)))))
+                         : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                             ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                  ? 0U : ((0x4000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : VL_EXTENDS_II(32,16, 
                                                                (0xffffU 
-                                                                & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr))))
+                                                                & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o))))
                              : 0U)));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_type 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 0U : ((0x4000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? 0U
-                                               : 1U))
-                                  : ((0x8000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 2U : 0U))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_addr 
-            = ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? 0U : ((0x8000000U 
-                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                           ? ((0x4000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? (0x3ffffffU 
-                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               : (0x3ffffffU 
-                                                  & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr))
-                                           : 0U))));
-    }
-    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_dmem 
-        = (1U & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                  >> 0x1fU) & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                   >> 0x1eU)) & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                  >> 0x1dU) 
-                                                 & ((~ 
-                                                     (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                      >> 0x1cU)) 
-                                                    & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                        >> 0x1bU) 
-                                                       & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                          >> 0x1aU)))))));
-    if ((0x80000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)) {
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_regfile 
-            = (1U & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                         >> 0x1eU)) & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                           >> 0x1dU)) 
-                                       & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                              >> 0x1cU)) 
-                                          & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                              >> 0x1bU) 
-                                             & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                >> 0x1aU))))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs1_id 
-            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1_id 
+            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                       ? 0U : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                ? ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x15U)
-                                                   : 0U)
-                                               : 0U))
-                                  : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 0U : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x15U)
-                                                   : 0U)
-                                               : 0U)))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rdst_id 
-            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? 0U : ((0x10000000U 
-                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                           ? 0U : (
-                                                   (0x8000000U 
-                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                    ? 
-                                                   ((0x4000000U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                     ? 
-                                                    (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                     >> 0x10U)
-                                                     : 0U)
-                                                    : 0U)))));
-    } else {
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_regfile 
-            = (1U & ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                         >> 0x1eU)) & ((0x20000000U 
-                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                        ? ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                               >> 0x1cU)) 
-                                           & ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? (~ 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x1aU))
-                                               : (~ 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x1aU))))
-                                        : ((~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                               >> 0x1cU)) 
-                                           & ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                  >> 0x1aU)
-                                               : ((~ 
-                                                   (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                    >> 0x1aU)) 
-                                                  & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                      >> 5U) 
-                                                     & ((~ 
-                                                         (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                          >> 4U)) 
-                                                        & ((8U 
-                                                            & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                            ? 
-                                                           ((~ 
-                                                             (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                              >> 2U)) 
-                                                            & ((vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                                >> 1U) 
-                                                               & (~ vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)))
-                                                            : 
-                                                           ((4U 
-                                                             & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                             ? 
-                                                            ((~ 
-                                                              (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                               >> 1U)) 
-                                                             | vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                             : 
-                                                            ((2U 
-                                                              & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                              ? 
-                                                             (~ vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                              : 
-                                                             (~ vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr))))))))))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs1_id 
-            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 0U : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0U
                                                    : 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                    >> 0x15U))
                                                : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0U
                                                    : 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                    >> 0x15U))))
-                                  : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                  : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                       ? ((0x8000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0U
                                                    : 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                    >> 0x15U)))
                                       : ((0x8000000U 
-                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                          & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                           ? 0U : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0U
                                                    : 
                                                   ((0x20U 
-                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                     ? 
                                                    ((0x10U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                      ? 0U
                                                      : 
                                                     ((8U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 
                                                      ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0U
                                                        : 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U))
                                                         : 0U))
                                                       : 
                                                      ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U)
                                                          : 0U)
                                                         : 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U)
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U)))
                                                        : 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U))
                                                         : 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U))))))
                                                     : 
                                                    ((0x10U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                      ? 0U
                                                      : 
                                                     ((8U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 
                                                      ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0U
                                                        : 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 0U
                                                         : 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
                                                          >> 0x15U))))
                                                       : 0U)))))))));
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rdst_id 
-            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                  ? ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 0U : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs2_id 
+            = (0x1fU & ((0x40000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                         ? 0U : ((0x20000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                  ? 0U : ((0x10000000U 
+                                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                           ? ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? 0U
+                                               : ((0x4000000U 
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0U
                                                    : 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x10U))
+                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                   >> 0x10U)))
+                                           : ((0x8000000U 
+                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
+                                               ? 0U
                                                : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 0U
-                                                   : 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x10U))))
-                                  : ((0x10000000U & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                      ? 0U : ((0x8000000U 
-                                               & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                               ? ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
-                                                   ? 
-                                                  (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                   >> 0x10U)
-                                                   : 0U)
-                                               : ((0x4000000U 
-                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                   & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                    ? 0U
                                                    : 
                                                   ((0x20U 
-                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                    & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                     ? 
                                                    ((0x10U 
-                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                     & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                      ? 0U
                                                      : 
                                                     ((8U 
-                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                      & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                       ? 
                                                      ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 0U
                                                        : 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0xbU))
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0x10U))
                                                         : 0U))
                                                       : 
                                                      ((4U 
-                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                       & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                        ? 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0xbU)
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0x10U)
                                                          : 0U)
                                                         : 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0xbU)
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0x10U)
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0xbU)))
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0x10U)))
                                                        : 
                                                       ((2U 
-                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                        & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                         ? 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0xbU))
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0x10U))
                                                         : 
                                                        ((1U 
-                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr)
+                                                         & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o)
                                                          ? 0U
                                                          : 
-                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr 
-                                                         >> 0xbU))))))
+                                                        (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__instr_o 
+                                                         >> 0x10U))))))
                                                     : 0U)))))));
     }
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 = 
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__R
+        [vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1_id];
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_rs2 
+        = vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__R
+        [vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs2_id];
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2 
+        = ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__ssel))
+            ? ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__ssel))
+                ? vlTOPp->hw3_tb__DOT__core_top_inst__DOT__imm
+                : ((IData)(4U) + vlTOPp->hw3_tb__DOT__core_top_inst__DOT__pc))
+            : ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__ssel))
+                ? vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_rs2
+                : 0U));
     vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__overflow = 0U;
-    if ((8U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))) {
-        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
-            = ((4U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))
-                ? ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))
-                    ? 0U : ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))
-                             ? 0U : (~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
-                                        | vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2))))
+    if ((8U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))) {
+        vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
+            = ((4U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))
+                ? ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))
+                    ? 0U : ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))
+                             ? 0U : (~ (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
+                                        | vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2))))
                 : 0U);
     } else {
-        if ((4U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))) {
-            if ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))) {
-                if ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))) {
-                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
-                        = (VL_LTS_III(1,32,32, vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1, vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2)
+        if ((4U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))) {
+            if ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))) {
+                if ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))) {
+                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
+                        = (VL_LTS_III(1,32,32, vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1, vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2)
                             ? 1U : 0U);
                 } else {
-                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
-                        = (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
-                           - vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2);
+                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
+                        = (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
+                           - vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2);
                     vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__overflow 
-                        = (((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
+                        = (((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
                                    >> 0x1fU)) != (1U 
-                                                  & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2 
+                                                  & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2 
                                                      >> 0x1fU))) 
-                           & ((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
+                           & ((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
                                      >> 0x1fU)) != 
-                              (1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
+                              (1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
                                      >> 0x1fU))));
                 }
             } else {
-                vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd = 0U;
+                vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr = 0U;
             }
         } else {
-            if ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))) {
-                if ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))) {
-                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd = 0U;
+            if ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))) {
+                if ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))) {
+                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr = 0U;
                 } else {
-                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
-                        = (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
-                           + vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2);
+                    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
+                        = (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
+                           + vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2);
                     vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__overflow 
-                        = (((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
+                        = (((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
                                    >> 0x1fU)) == (1U 
-                                                  & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2 
+                                                  & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2 
                                                      >> 0x1fU))) 
-                           & ((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
+                           & ((1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
                                      >> 0x1fU)) != 
-                              (1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
+                              (1U & (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
                                      >> 0x1fU))));
                 }
             } else {
-                vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd 
-                    = ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op))
-                        ? (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
-                           | vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2)
-                        : (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 
-                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2));
+                vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr 
+                    = ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op))
+                        ? (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
+                           | vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2)
+                        : (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1 
+                           & vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_rs2));
             }
         }
     }
-    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__zero 
-        = ((0U == vlTOPp->hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd)
-            ? 1U : 0U);
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__zero = 
+        ((0U == vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_addr)
+          ? 1U : 0U);
+    vlTOPp->hw3_tb__DOT__core_top_inst__DOT__pc_in 
+        = ((2U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_type))
+            ? ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_type))
+                ? ((IData)(4U) + vlTOPp->hw3_tb__DOT__core_top_inst__DOT__pc)
+                : vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_addr)
+            : ((1U & (IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__jump_type))
+                ? ((IData)(4U) + (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__pc 
+                                  + ((IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__zero)
+                                      ? ((IData)(vlTOPp->hw3_tb__DOT__core_top_inst__DOT__zero)
+                                          ? (vlTOPp->hw3_tb__DOT__core_top_inst__DOT__imm 
+                                             << 2U)
+                                          : 0U) : 0U)))
+                : vlTOPp->hw3_tb__DOT__core_top_inst__DOT__rs1));
 }
 
 void Vhw3_tb::_eval_initial(Vhw3_tb__Syms* __restrict vlSymsp) {
@@ -807,13 +901,8 @@ void Vhw3_tb::_eval_initial(Vhw3_tb__Syms* __restrict vlSymsp) {
     vlTOPp->__Vm_traceActivity[2U] = 1U;
     vlTOPp->__Vm_traceActivity[1U] = 1U;
     vlTOPp->__Vm_traceActivity[0U] = 1U;
-    vlTOPp->__Vclklast__TOP__hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rst 
-        = vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rst;
-    vlTOPp->__Vclklast__TOP__hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__clk 
-        = vlTOPp->hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__clk;
-    vlTOPp->__Vclklast__TOP__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__clk 
-        = vlTOPp->hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__clk;
     vlTOPp->__Vclklast__TOP__clk = vlTOPp->clk;
+    vlTOPp->__Vclklast__TOP__rst = vlTOPp->rst;
 }
 
 void Vhw3_tb::final() {
@@ -827,7 +916,7 @@ void Vhw3_tb::_eval_settle(Vhw3_tb__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vhw3_tb::_eval_settle\n"); );
     Vhw3_tb* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->_settle__TOP__2(vlSymsp);
+    vlTOPp->_settle__TOP__5(vlSymsp);
     vlTOPp->__Vm_traceActivity[4U] = 1U;
     vlTOPp->__Vm_traceActivity[3U] = 1U;
     vlTOPp->__Vm_traceActivity[2U] = 1U;
@@ -851,52 +940,37 @@ void Vhw3_tb::_ctor_var_reset() {
             hw3_tb__DOT__golden_dmem[__Vi0] = VL_RAND_RESET_I(32);
     }}
     hw3_tb__DOT__start = VL_RAND_RESET_I(1);
+    hw3_tb__DOT__core_top_inst__DOT__pc_in = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__instr_o = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__jump_type = VL_RAND_RESET_I(2);
+    hw3_tb__DOT__core_top_inst__DOT__jump_addr = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__we_dmem = VL_RAND_RESET_I(1);
+    hw3_tb__DOT__core_top_inst__DOT__we_regfile = VL_RAND_RESET_I(1);
+    hw3_tb__DOT__core_top_inst__DOT__ssel = VL_RAND_RESET_I(2);
+    hw3_tb__DOT__core_top_inst__DOT__imm = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__rs1_id = VL_RAND_RESET_I(5);
+    hw3_tb__DOT__core_top_inst__DOT__rs2_id = VL_RAND_RESET_I(5);
+    hw3_tb__DOT__core_top_inst__DOT__rdst_id = VL_RAND_RESET_I(5);
+    hw3_tb__DOT__core_top_inst__DOT__reg_data_sel = VL_RAND_RESET_I(1);
+    hw3_tb__DOT__core_top_inst__DOT__rs1 = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__reg_rs2 = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__alu_rs2 = VL_RAND_RESET_I(32);
+    hw3_tb__DOT__core_top_inst__DOT__zero = VL_RAND_RESET_I(1);
+    hw3_tb__DOT__core_top_inst__DOT__dmem_addr = VL_RAND_RESET_I(32);
     hw3_tb__DOT__core_top_inst__DOT__pc = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__imem_inst__DOT__addr = VL_RAND_RESET_I(6);
+    hw3_tb__DOT__core_top_inst__DOT____Vcellout__decode_inst__op = VL_RAND_RESET_I(4);
     { int __Vi0=0; for (; __Vi0<16; ++__Vi0) {
             hw3_tb__DOT__core_top_inst__DOT__imem_inst__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);
     }}
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__instr = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_type = VL_RAND_RESET_I(2);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__jump_addr = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_dmem = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__we_regfile = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__op = VL_RAND_RESET_I(4);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__ssel = VL_RAND_RESET_I(2);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__imm = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs1_id = VL_RAND_RESET_I(5);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rs2_id = VL_RAND_RESET_I(5);
-    hw3_tb__DOT__core_top_inst__DOT__decode_inst__DOT__rdst_id = VL_RAND_RESET_I(5);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__clk = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rst = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs1_id = VL_RAND_RESET_I(5);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs2_id = VL_RAND_RESET_I(5);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__we = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rdst_id = VL_RAND_RESET_I(5);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rdst = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs1 = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__rs2 = VL_RAND_RESET_I(32);
     { int __Vi0=0; for (; __Vi0<32; ++__Vi0) {
             hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__R[__Vi0] = VL_RAND_RESET_I(32);
     }}
     hw3_tb__DOT__core_top_inst__DOT__reg_file_inst__DOT__unnamedblk1__DOT__i = 0;
-    hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__op = VL_RAND_RESET_I(4);
-    hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs1 = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rs2 = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__rd = VL_RAND_RESET_I(32);
-    hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__zero = VL_RAND_RESET_I(1);
     hw3_tb__DOT__core_top_inst__DOT__alu_inst__DOT__overflow = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__clk = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__addr = VL_RAND_RESET_I(6);
-    hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__we = VL_RAND_RESET_I(1);
-    hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__wdata = VL_RAND_RESET_I(32);
     { int __Vi0=0; for (; __Vi0<16; ++__Vi0) {
             hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);
     }}
     hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__idx = VL_RAND_RESET_I(32);
-    __Vdlyvdim0__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM__v0 = 0;
-    __Vdlyvval__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM__v0 = VL_RAND_RESET_I(32);
-    __Vdlyvset__hw3_tb__DOT__core_top_inst__DOT__dmem_inst__DOT__RAM__v0 = 0;
     { int __Vi0=0; for (; __Vi0<5; ++__Vi0) {
             __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }}

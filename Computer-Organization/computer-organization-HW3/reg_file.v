@@ -35,6 +35,14 @@ reg [DWIDTH-1:0] R[0:31];
             R[rdst_id] = rdst;
         end
 
+        // reset register $zero
+        R[0] = 32'b0;
+
+    end
+
+    // when rs1_id or rs2_id change
+    always@(rs1_id or rs2_id) begin
+        
         // assign output
         assign rs1[DWIDTH-1 : 0] = R[rs1_id];
         assign rs2[DWIDTH-1 : 0] = R[rs2_id];

@@ -37,6 +37,7 @@ module core_top #(
 
     // output of decode (modified)
     wire [31:0] imm_shift_left_twice;
+    wire [31:0] branch_offset_checked_eq;
 
     // input of reg_file
     wire [31:0] rdst;
@@ -50,6 +51,9 @@ module core_top #(
 
     // input of alu
     wire [31:0] alu_rs2;
+
+    // output of alu
+    wire        zero;
 
     // input of dmem
     wire [31:0] dmem_addr;
@@ -98,7 +102,7 @@ module core_top #(
         .imm(imm),
         .rs1_id(rs1_id),
         .rs2_id(rs2_id),
-        .rdst_id(rdst_id)
+        .rdst_id(rdst_id),
 
         .reg_data_sel(reg_data_sel)
     );
@@ -129,10 +133,20 @@ module core_top #(
         .out(imm_shift_left_twice)
     );
 
+    mux_2to1 mux_2to1_inst_check_beq ( // check zero for equality // TODO
+        // input
+        .sel(zero),
+        .in0(0),
+        .in1(imm_shift_left_twice),
+
+        // output
+        .out(branch_offset_checked_eq)
+    );
+
     adder adder_inst2 ( // branch adder
         // input
         .in0(adder_inst1_out),
-        .in1(imm_shift_left_twice),
+        .in1(branch_offset_checked_eq),
 
         // output
         .out(branch_addr)
@@ -170,7 +184,7 @@ module core_top #(
 
         // output
         .rd(dmem_addr),
-        .zero(),
+        .zero(zero),
         .overflow()
     );
 

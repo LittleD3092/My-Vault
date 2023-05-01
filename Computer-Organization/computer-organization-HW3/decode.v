@@ -6,13 +6,22 @@
 
 /*
 
-| instructions     | jump_type | jump_addr | we_dmem | we_regfile | op         | ssel                | imm               | rs1_id            | rs2_id            | rdst_id           | reg_data_sel   |
-| ---------------- | --------- | --------- | ------- | ---------- | ---------- | ------------------- | ----------------- | ----------------- | ----------------- | ----------------- | -------------- |
-| add  rd, rs, rt  | NOP (11)  | None (0)  | No (0)  | Yes (1)    | add (0010) | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
-| addi rt, rs, imm | NOP (11)  | None (0)  | No (0)  | Yes (1)    | add (0010) | from immediate (11) | imm (instr[15:0]) | rs (instr[25:21]) | None (0)          | rt (instr[20:16]) | alu result (0) |
-| sub  rd, rs, rt  | NOP (11)  | None (0)  | No (0)  | Yes (1)    | sub (0110) | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
-| and  rd, rs, rt  | NOP (11)  | None (0)  | No (0)  | Yes (1)    | and (0000) | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
-| or   rd, rs, rt  | NOP (11)  | None (0)  | No (0)  | Yes (1)    | or (0001)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| instructions     | instruction type | jump_type | jump_addr               | we_dmem | we_regfile | op          | ssel                | imm               | rs1_id            | rs2_id            | rdst_id           | reg_data_sel   |
+| ---------------- | ---------------- | --------- | ----------------------- | ------- | ---------- | ----------- | ------------------- | ----------------- | ----------------- | ----------------- | ----------------- | -------------- |
+| add  rd, rs, rt  | R                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | add (0010)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| addi rt, rs, imm | I                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | add (0010)  | from immediate (11) | imm (instr[15:0]) | rs (instr[25:21]) | None (0)          | rt (instr[20:16]) | alu result (0) |
+| sub  rd, rs, rt  | R                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | sub (0110)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| and  rd, rs, rt  | R                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | and (0000)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| or   rd, rs, rt  | R                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | or (0001)   | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| nor  rd, rs, rt  | R                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | nor (1100)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| slt  rd, rs, rt  | R                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | slt (0111)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | rd (instr[15:11]) | alu result (0) |
+| slti rt, rs, imm | I                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | slt (0111)  | from immediate (11) | imm (instr[15:0]) | rs (instr[25:21]) | None (0)          | rt (instr[20:16]) | alu result (0) |
+| lw   rt, imm(rs) | I                | NOP (11)  | None (0)                | No (0)  | Yes (1)    | add (0010)  | from immediate (11) | imm (instr[15:0]) | rs (instr[25:21]) | None (0)          | rt (instr[20:16]) | dmem (1)       |
+| sw   rt, imm(rs) | I                | NOP (11)  | None (0)                | Yes (1) | No (0)     | add (0010)  | from immediate (11) | imm (instr[15:0]) | rs (instr[25:21]) | rt (instr[20:16]) | None (0)          | None (0)       |
+| beq  rs, rt, imm | I                | beq (01)  | imm (instr[15:0])       | No (0)  | No (0)     | sub (0110)  | from register (01)  | Not used (0)      | rs (instr[25:21]) | rt (instr[20:16]) | None (0)          | None (0)       |
+| jal  target_pc   | J                | j   (10)  | target_pc (instr[25:0]) | No (0)  | Yes (1)    | add (0010)  | from pc (10)        | Not used (0)      | $zero (0)         | None (0)          | $ra (31)          | alu result (0) |
+| jr   rs          | R                | jr  (00)  | None (0)                | No (0)  | No (0)     | None (0000) | not used (00)       | Not used (0)      | rs (instr[25:21]) | None (0)          | None (0)          | None (0)       | 
+| j    target_pc   | J                | j   (10)  | target_pc (instr[25:0]) | No (0)  | No (0)     | None (0000) | not used (00)       | Not used (0)      | None (0)          | None (0)          | None (0)          | None (0)       |
 
 */
 
@@ -55,310 +64,238 @@ module decode #(parameter DWIDTH = 32)
                      OP_NOT_DEFINED = 4'b1111;
 
     always @(instr) begin
-
         // case handling using opcode
         case(instr[31:26])
-            
             // R-type
             6'b000000: begin
-                
                 // handle funct
                 case(instr[5:0])
-                    
-                    // add rd, rs, rt
+                    // add
                     6'b100000: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b1;
-
-                        op = OP_ADD;
-                        ssel = 2'b01;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = instr[20:16];
-                        rdst_id = instr[15:11];
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b1;         // Yes
+                        op           = OP_ADD;       // add
+                        ssel         = 2'b01;        // from register
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = instr[20:16]; // rt
+                        rdst_id      = instr[15:11]; // rd
+                        reg_data_sel = 1'b0;         // alu result
                     end
-
-                    // sub rd, rs, rt
+                    // sub
                     6'b100010: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b1;
-
-                        op = OP_SUB;
-                        ssel = 2'b01;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = instr[20:16];
-                        rdst_id = instr[15:11];
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b1;         // Yes
+                        op           = OP_SUB;       // sub
+                        ssel         = 2'b01;        // from register
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = instr[20:16]; // rt
+                        rdst_id      = instr[15:11]; // rd
+                        reg_data_sel = 1'b0;         // alu result
                     end
-
-                    // and rd, rs, rt
+                    // and
                     6'b100100: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b1;
-
-                        op = OP_AND;
-                        ssel = 2'b01;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = instr[20:16];
-                        rdst_id = instr[15:11];
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b1;         // Yes
+                        op           = OP_AND;       // and
+                        ssel         = 2'b01;        // from register
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = instr[20:16]; // rt
+                        rdst_id      = instr[15:11]; // rd
+                        reg_data_sel = 1'b0;         // alu result
                     end
-
-                    // or rd, rs, rt
+                    // or
                     6'b100101: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b1;
-
-                        op = OP_OR;
-                        ssel = 2'b01;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = instr[20:16];
-                        rdst_id = instr[15:11];
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b1;         // Yes
+                        op           = OP_OR;        // or
+                        ssel         = 2'b01;        // from register
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = instr[20:16]; // rt
+                        rdst_id      = instr[15:11]; // rd
+                        reg_data_sel = 1'b0;         // alu result
                     end
-
-                    // nor rd, rs, rt
+                    // nor
                     6'b100111: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b1;
-
-                        op = OP_NOR;
-                        ssel = 2'b01;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = instr[20:16];
-                        rdst_id = instr[15:11];
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b1;         // Yes
+                        op           = OP_NOR;       // nor
+                        ssel         = 2'b01;        // from register
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = instr[20:16]; // rt
+                        rdst_id      = instr[15:11]; // rd
+                        reg_data_sel = 1'b0;         // alu result
                     end
-
-                    // slt rd, rs, rt
+                    // slt
                     6'b101010: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b1;
-
-                        op = OP_SLT;
-                        ssel = 2'b01;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = instr[20:16];
-                        rdst_id = instr[15:11];
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b1;         // Yes
+                        op           = OP_SLT;       // slt
+                        ssel         = 2'b01;        // from register
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = instr[20:16]; // rt
+                        rdst_id      = instr[15:11]; // rd
+                        reg_data_sel = 1'b0;         // alu result
                     end
-
-                    // jr rs
+                    // jr
                     6'b001000: begin
-
-                        jump_type = 2'b00; // jump to address in rs
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b0; // not used
-
-                        op = OP_NOT_DEFINED;
-                        ssel = 2'b00;
-
-                        imm = 32'b0; // not used
-                        rs1_id = instr[25:21];
-                        rs2_id = 5'b0; // not used
-                        rdst_id = 5'b0; // not used
-
+                        jump_type    = 2'b00;        // jr
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b0;         // No
+                        op           = OP_NOT_DEFINED; // Not defined
+                        ssel         = 2'b00;        // Not used
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = instr[25:21]; // rs
+                        rs2_id       = 5'b0;         // None
+                        rdst_id      = 5'b0;         // None
+                        reg_data_sel = 1'b0;         // None
                     end
-
-                    // default, not defined
+                    // default
                     default: begin
-                        
-                        jump_type = 2'b00; // not used
-                        jump_addr = 32'b0; // not used
-                        we_dmem = 1'b0;    // not used
-                        we_regfile = 1'b0; // not defined
-
-                        op = OP_NOT_DEFINED;
-                        ssel = 2'b00;
-                        
-                        imm = 32'b0; // not used
-                        rs1_id = 5'b0; // not used
-                        rs2_id = 5'b0; // not used
-                        rdst_id = 5'b0; // not used
-
+                        jump_type    = 2'b11;        // NOP
+                        jump_addr    = 32'b0;        // None
+                        we_dmem      = 1'b0;         // No
+                        we_regfile   = 1'b0;         // No
+                        op           = OP_NOT_DEFINED; // Not defined
+                        ssel         = 2'b00;        // Not used
+                        imm          = 32'b0;        // Not used
+                        rs1_id       = 5'b0;         // None
+                        rs2_id       = 5'b0;         // None
+                        rdst_id      = 5'b0;         // None
+                        reg_data_sel = 1'b0;         // None
                     end
-
                 endcase
-
             end
-
-            // I-type addi rt, rs, imm
+            // addi
             6'b001000: begin
-                
-                jump_type = 2'b00; // not used
-                jump_addr = 32'b0; // not used
-                we_dmem = 1'b0;    // not used
-                we_regfile = 1'b1;
-
-                op = OP_ADD;
-                ssel = 2'b11;
-
-                imm = $signed(instr[15:0]);
-                rs1_id = instr[25:21];
-                rs2_id = 5'b0; // not used
-                rdst_id = instr[20:16];
-
+                jump_type    = 2'b11;        // NOP
+                jump_addr    = 32'b0;        // None
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b1;         // Yes
+                op           = OP_ADD;       // add
+                ssel         = 2'b11;        // from immediate
+                imm          = $signed(instr[15:0]);  // imm
+                rs1_id       = instr[25:21]; // rs
+                rs2_id       = 5'b0;         // None
+                rdst_id      = instr[20:16]; // rt
+                reg_data_sel = 1'b0;         // alu result
             end
-
-            // I-type slti rt, rs, imm
+            // slti
             6'b001010: begin
-                
-                jump_type = 2'b00; // not used
-                jump_addr = 32'b0; // not used
-                we_dmem = 1'b0;    // not used
-                we_regfile = 1'b1;
-
-                op = OP_SLT;
-                ssel = 2'b11;
-
-                imm = $signed(instr[15:0]);
-                rs1_id = instr[25:21];
-                rs2_id = 5'b0; // not used
-                rdst_id = instr[20:16];
-
+                jump_type    = 2'b11;        // NOP
+                jump_addr    = 32'b0;        // None
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b1;         // Yes
+                op           = OP_SLT;       // slt
+                ssel         = 2'b11;        // from immediate
+                imm          = $signed(instr[15:0]);  // imm
+                rs1_id       = instr[25:21]; // rs
+                rs2_id       = 5'b0;         // None
+                rdst_id      = instr[20:16]; // rt
+                reg_data_sel = 1'b0;         // alu result
             end
-
-            // I-type lw rt, imm(rs)
+            // lw
             6'b100011: begin
-                
-                jump_type = 2'b00; // not used
-                jump_addr = 32'b0; // not used
-                we_dmem = 1'b0;
-                we_regfile = 1'b1;
-
-                op = OP_ADD;
-                ssel = 2'b00;
-
-                imm = $signed(instr[15:0]);
-                rs1_id = instr[25:21];
-                rs2_id = 5'b0; // not used
-                rdst_id = instr[20:16];
-
+                jump_type    = 2'b11;        // NOP
+                jump_addr    = 32'b0;        // None
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b1;         // Yes
+                op           = OP_ADD;       // add
+                ssel         = 2'b11;        // from immediate
+                imm          = $signed(instr[15:0]);  // imm
+                rs1_id       = instr[25:21]; // rs
+                rs2_id       = 5'b0;         // None
+                rdst_id      = instr[20:16]; // rt
+                reg_data_sel = 1'b1;         // memory result
             end
-
-            // I-type sw rt, imm(rs)
+            // sw
             6'b101011: begin
-                
-                jump_type = 2'b00; // not used
-                jump_addr = 32'b0; // not used
-                we_dmem = 1'b1;
-                we_regfile = 1'b0;
-
-                op = OP_ADD;
-                ssel = 2'b00;
-
-                imm = $signed(instr[15:0]);
-                rs1_id = instr[25:21];
-                rs2_id = instr[20:16];
-                rdst_id = 5'b0; // not used
-
+                jump_type    = 2'b11;        // NOP
+                jump_addr    = 32'b0;        // None
+                we_dmem      = 1'b1;         // Yes
+                we_regfile   = 1'b0;         // No
+                op           = OP_ADD;       // add
+                ssel         = 2'b11;        // from immediate
+                imm          = $signed(instr[15:0]);  // imm
+                rs1_id       = instr[25:21]; // rs
+                rs2_id       = instr[20:16]; // rt
+                rdst_id      = 5'b0;         // None
+                reg_data_sel = 1'b0;         // None
             end
-
-            // I-type beq rs, rt, imm
+            // beq
             6'b000100: begin
-                
-                jump_type = 2'b01;
-                jump_addr = 32'b0; // not used
-                we_dmem = 1'b0;    // not used
-                we_regfile = 1'b0; // not defined
-
-                op = OP_SUB;
-                ssel = 2'b00;
-
-                imm = $signed(instr[15:0]);
-                rs1_id = instr[25:21];
-                rs2_id = instr[20:16];
-                rdst_id = 5'b0; // not used
-
+                jump_type    = 2'b01;        // branch
+                jump_addr    = 32'b0;        // Not used
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b0;         // No
+                op           = OP_SUB;       // sub
+                ssel         = 2'b01;        // from register
+                imm          = $signed(instr[15:0]); // Not used
+                rs1_id       = instr[25:21]; // rs
+                rs2_id       = instr[20:16]; // rt
+                rdst_id      = 5'b0;         // None
+                reg_data_sel = 1'b0;         // None
             end
-
-            // J-type jal target_pc
+            // jal
             6'b000011: begin
-
-                jump_type = 2'b10;
-                jump_addr = instr[25:0];
-                we_dmem = 1'b0;    // not used
-                we_regfile = 1'b1;
-
-                op = OP_ADD;
-                ssel = 2'b00;
-
-                imm = 32'b0; // not used
-                rs1_id = 5'b0; // not used
-                rs2_id = 5'b0; // not used
-                rdst_id = instr[20:16];
-
+                jump_type    = 2'b10;        // jump
+                jump_addr    = instr[25:0];  // target_pc
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b1;         // Yes
+                op           = OP_ADD;       // add
+                ssel         = 2'b10;        // from pc
+                imm          = 32'b0;        // Not used
+                rs1_id       = 5'b0;         // $zero
+                rs2_id       = 5'b0;         // None
+                rdst_id      = 5'b11111;     // $ra
+                reg_data_sel = 1'b0;         // alu result
             end
-
-            // J-type j target_pc
+            // j
             6'b000010: begin
-
-                jump_type = 2'b10;
-                jump_addr = instr[25:0];
-                we_dmem = 1'b0;    // not used
-                we_regfile = 1'b0; // not defined
-
-                op = OP_NOT_DEFINED;
-                ssel = 2'b00;
-
-                imm = 32'b0; // not used
-                rs1_id = 5'b0; // not used
-                rs2_id = 5'b0; // not used
-                rdst_id = 5'b0; // not used
-
+                jump_type    = 2'b10;        // jump
+                jump_addr    = instr[25:0];  // target_pc
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b0;         // No
+                op           = OP_NOT_DEFINED; // Not defined
+                ssel         = 2'b00;        // Not used
+                imm          = 32'b0;        // Not used
+                rs1_id       = 5'b0;         // None
+                rs2_id       = 5'b0;         // None
+                rdst_id      = 5'b0;         // None
+                reg_data_sel = 1'b0;         // None
             end
-
-            // default, not defined
+            // default
             default: begin
-                
-                jump_type = 2'b00; // not used
-                jump_addr = 32'b0; // not used
-                we_dmem = 1'b0;    // not used
-                we_regfile = 1'b0; // not defined
-
-                op = OP_NOT_DEFINED;
-                ssel = 2'b00;
-                
-                imm = 32'b0; // not used
-                rs1_id = 5'b0; // not used
-                rs2_id = 5'b0; // not used
-                rdst_id = 5'b0; // not used
-
+                jump_type    = 2'b11;        // NOP
+                jump_addr    = 32'b0;        // None
+                we_dmem      = 1'b0;         // No
+                we_regfile   = 1'b0;         // No
+                op           = OP_NOT_DEFINED; // Not defined
+                ssel         = 2'b00;        // Not used
+                imm          = 32'b0;        // Not used
+                rs1_id       = 5'b0;         // None
+                rs2_id       = 5'b0;         // None
+                rdst_id      = 5'b0;         // None
+                reg_data_sel = 1'b0;         // None
             end
-
         endcase
-
     end
-
 endmodule
