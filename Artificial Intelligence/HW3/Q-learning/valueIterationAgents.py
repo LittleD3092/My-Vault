@@ -62,13 +62,27 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.discount = discount
         self.iterations = iterations
         self.values = util.Counter() # A Counter is a dict with default 0
+        self.optimalPolicy = {}
         self.runValueIteration()
 
     def runValueIteration(self):
         # Write value iteration code here
+        """
+            Precondition: A member self.values is a util.Counter()
+            Postcondition: self.values is a util.Counter() where
+                           self.values[state] is the value of the state
+        """
         "*** YOUR CODE HERE ***"
         # Begin your code
-
+        k = 0
+        while k < self.iterations:
+            updatedValues = util.Counter()
+            for state in self.mdp.getStates():
+                if self.mdp.isTerminal(state):
+                    continue
+                updatedValues[state] = max(self.getQValue(state, action) for action in self.mdp.getPossibleActions(state))
+            self.values = updatedValues
+            k += 1
         # End your code
 
 
@@ -86,7 +100,16 @@ class ValueIterationAgent(ValueEstimationAgent):
         """
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()  
+        # util.raiseNotDefined()
+
+        return (
+            self.mdp.getReward(state, action, self.mdp.getTransitionStatesAndProbs(state, action)) +
+            self.discount * sum(
+                prob * self.values[nextState]
+                for nextState, prob in self.mdp.getTransitionStatesAndProbs(state, action)
+            )
+        )
+
         # End your code
 
     def computeActionFromValues(self, state):
@@ -102,7 +125,18 @@ class ValueIterationAgent(ValueEstimationAgent):
         # Begin your code
 
         #check for terminal
-        util.raiseNotDefined() 
+        # util.raiseNotDefined() 
+
+        bestAction = None
+        bestValue = float('-inf')
+        for action in self.mdp.getPossibleActions(state):
+            value = self.getQValue(state, action)
+            if value > bestValue:
+                bestValue = value
+                bestAction = action
+
+        return bestAction
+
         # End your code
 
     def getPolicy(self, state):

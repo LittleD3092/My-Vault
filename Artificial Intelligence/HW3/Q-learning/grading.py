@@ -15,13 +15,17 @@
 "Common code for autograders"
 
 import cgi
+try:
+    from html import escape as cgi_escape
+except:
+    pass
+
 import time
 import sys
 import json
 import traceback
 from collections import defaultdict
 import util
-
 
 class Grades:
     "A data structure for project grades, along with formatting code to display them"
@@ -298,7 +302,10 @@ to follow your instructor's guidelines to receive credit on your project.
             print('*** ' + message)
             if self.mute:
                 util.mutePrint()
-            message = cgi.escape(message)
+            try:
+                message = cgi.escape(message)
+            except:
+                message = cgi_escape(message)
         self.messages[self.currentQuestion].append(message)
 
     def addMessageToEmail(self, message):

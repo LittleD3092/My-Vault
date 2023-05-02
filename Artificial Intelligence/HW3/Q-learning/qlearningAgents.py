@@ -48,7 +48,7 @@ class QLearningAgent(ReinforcementAgent):
 
         "*** YOUR CODE HERE ***"
         # Begin your code
-        
+        self.qValues = util.Counter()
         # End your code
 
 
@@ -60,7 +60,8 @@ class QLearningAgent(ReinforcementAgent):
         """
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+        return self.qValues[(state, action)]
         # End your code
 
 
@@ -73,7 +74,14 @@ class QLearningAgent(ReinforcementAgent):
         """
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+        if len(self.getLegalActions(state)) == 0:
+            return 0.0
+
+        return max(
+            self.getQValue(state, action)
+            for action in self.getLegalActions(state)
+        )
         # End your code
 
     def computeActionFromQValues(self, state):
@@ -84,7 +92,15 @@ class QLearningAgent(ReinforcementAgent):
         """
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+        bestValue = -float('inf')
+        bestAction = None
+        for action in self.getLegalActions(state):
+            value = self.getQValue(state, action)
+            if value > bestValue:
+                bestValue = value
+                bestAction = action
+        return bestAction
         # End your code
 
     def getAction(self, state):
@@ -103,7 +119,16 @@ class QLearningAgent(ReinforcementAgent):
         action = None
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+
+        if len(legalActions) == 0:
+            return None
+        
+        return (
+            random.choice(legalActions) 
+            if util.flipCoin(self.epsilon)
+            else self.getPolicy(state)
+        )
         # End your code
         
 
@@ -118,7 +143,24 @@ class QLearningAgent(ReinforcementAgent):
         """
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+
+        if len(self.getLegalActions(nextState)) == 0: # terminal state
+            self.qValues[(state, action)] = (
+                (1 - self.alpha) * self.getQValue(state, action) +
+                self.alpha * reward
+            )
+            return
+
+        self.qValues[(state, action)] = (
+            (1 - self.alpha) * self.getQValue(state, action) +
+            self.alpha * (
+                reward + self.discount * max(
+                    self.getQValue(nextState, nextAction)
+                    for nextAction in self.getLegalActions(nextState)
+                )
+            )
+        )
         # End your code
 
     def getPolicy(self, state):
@@ -188,7 +230,12 @@ class ApproximateQAgent(PacmanQAgent):
         "*** YOUR CODE HERE ***"
         # Begin your code
         # get weights and feature
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+        QValue = 0
+        w = self.getWeights()
+        featureVector = self.featExtractor.getFeatures(state, action)
+
+        return sum(w[key] * featureVector[key] for key in featureVector)
         # End your code
 
     def update(self, state, action, nextState, reward):
@@ -197,7 +244,14 @@ class ApproximateQAgent(PacmanQAgent):
         """
         "*** YOUR CODE HERE ***"
         # Begin your code
-        util.raiseNotDefined()
+        # util.raiseNotDefined()
+        correction = reward + self.discount * self.getValue(nextState) - self.getQValue(state, action)
+        w = self.getWeights()
+        featureVector = self.featExtractor.getFeatures(state, action)
+        for key in featureVector:
+            w[key] += self.alpha * correction * featureVector[key]
+
+        self.weights = w
         # End your code
 
 
