@@ -1,3 +1,9 @@
 ../Core/Src/keypad.c:13:5:init_keypad	32	static
 ../Core/Src/keypad.c:47:5:check_keypad_input_one	56	static
 ../Core/Src/keypad.c:62:5:check_keypad_input_multiple	128	static
+../Core/Src/keypad.c:93:6:Keypad__construct	32	static
+../Core/Src/keypad.c:107:5:Keypad__init	16	static
+../Core/Src/keypad.c:115:6:Keypad__refresh	40	static
+../Core/Src/keypad.c:128:6:Keypad__getChar	40	static
+../Core/Src/keypad.c:145:6:Keypad__getCharPressed	40	static
+../Core/Src/keypad.c:162:6:Keypad__getCharReleased	40	static

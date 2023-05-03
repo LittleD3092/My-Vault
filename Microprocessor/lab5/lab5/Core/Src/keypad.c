@@ -89,3 +89,89 @@ int check_keypad_input_multiple(GPIO_TypeDef* ROW_gpio, GPIO_TypeDef* COL_gpio, 
 	}
 	return res;
 }
+
+void Keypad__construct(Keypad* self, GPIO_TypeDef* ROW_gpio, GPIO_TypeDef* COL_gpio, int ROW_pin, int COL_pin){
+	self->ROW_gpio = ROW_gpio;
+	self->COL_gpio = COL_gpio;
+	self->ROW_pin = ROW_pin;
+	self->COL_pin = COL_pin;
+
+	for(int i=0;i<4;i++){
+		for(int j=0;j<4;j++){
+			self->buttons[i][j] = 0;
+			self->last_buttons[i][j] = 0;
+		}
+	}
+}
+
+int Keypad__init(Keypad* self)
+{
+	if(init_keypad(self->ROW_gpio, self->COL_gpio, self->ROW_pin, self->COL_pin) != 0){
+		return -1;
+	}
+	return 0;
+}
+
+void Keypad__refresh(Keypad* self)
+{
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			self->last_buttons[i][j] = self->buttons[i][j];
+
+	int input = check_keypad_input_multiple(self->ROW_gpio, self->COL_gpio, self->ROW_pin, self->COL_pin);
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			self->buttons[i][j] = (input >> (i*4+j)) & 1;
+}
+
+char Keypad__getChar(Keypad* self)
+{
+	char chars[4][4] = {
+		{'1', '2', '3', 'A'},
+		{'4', '5', '6', 'B'},
+		{'7', '8', '9', 'C'},
+		{'*', '0', '#', 'D'}
+	};
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			if(self->buttons[i][j])
+				return chars[i][j];
+
+	return 0;
+}
+
+char Keypad__getCharPressed(Keypad* self)
+{
+	char chars[4][4] = {
+		{'1', '2', '3', 'A'},
+		{'4', '5', '6', 'B'},
+		{'7', '8', '9', 'C'},
+		{'*', '0', '#', 'D'}
+	};
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			if(self->buttons[i][j] && !self->last_buttons[i][j])
+				return chars[i][j];
+
+	return 0;
+}
+
+char Keypad__getCharReleased(Keypad* self)
+{
+	char chars[4][4] = {
+		{'1', '2', '3', 'A'},
+		{'4', '5', '6', 'B'},
+		{'7', '8', '9', 'C'},
+		{'*', '0', '#', 'D'}
+	};
+	
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			if(!self->buttons[i][j] && self->last_buttons[i][j])
+				return chars[i][j];
+
+	return 0;
+}

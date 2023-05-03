@@ -264,7 +264,7 @@ int SevenSeg__printNum(SevenSeg* self, int num)
 		send_7seg(self->gpio, self->DIN, self->CS, self->CLK, SEG_ADDRESS_DIGIT_0, SEG_DATA_DECODE_0);
 		current_digit++;
 	}
-	
+
 	// negative
 	int negative = 0;
 	if(num < 0)

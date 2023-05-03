@@ -4,6 +4,7 @@
 #include "keypad.h"
 #include "led_button.h"
 #include "timer.h"
+#include "speaker.h"
 
 // Define pins for 7seg
 #define SEG_gpio GPIOC
@@ -27,15 +28,15 @@
 
 // Define Counter timer
 #define COUNTER_timer TIM2
-#define TIME_SEC 10000 // maximum time displayed on 7seg
+#define TIME_SEC 5.23 // maximum time displayed on 7seg
 // Buzzer is fixed to PA0 due to its need for PWM signal
 // Can change to other ports if needed, but need to look up the reference
 
 // Use to decide which part of the code will run
 // Use define & ifdef to control
 // #define lab_modify_system_clock
-#define lab_counter
-//#define lab_music_keyboard
+// #define lab_counter
+#define lab_music_keyboard
 //#define lab_music_song
 
 int main(){
@@ -127,12 +128,89 @@ int main(){
 
 	Timer timer;
 	Timer__init(&timer, COUNTER_timer);
-	
+
+
 	while(1)
 	{
-		int time_msecs = Timer__get_msecs(&timer);
+		int time_msecs = Timer__get_msecs(&timer)-1000;
 		struct fraction num = {time_msecs/10, 100};
-		SevenSeg__printFraction(&seg7, num);
+		if(time_msecs <= TIME_SEC*1000)			SevenSeg__printFraction(&seg7, num);
+		else{
+			struct fraction upperBound = {TIME_SEC*100,100};
+			SevenSeg__printFraction(&seg7, upperBound);
+		}
+	}
+
+#endif
+
+#ifdef lab_music_keyboard
+
+	Speaker speaker;
+	Speaker__construct(&speaker, GPIOA, 0, TIM2);
+	Speaker__init(&speaker);
+
+	Keypad keypad;
+	Keypad__construct(&keypad, ROW_gpio, COL_gpio, ROW_pin, COL_pin);
+	Keypad__init(&keypad);
+
+	ToneFrequency tone;
+	ToneFrequency__construct(&tone);
+
+	SevenSeg seg7;
+	SevenSeg__init(&seg7, SEG_gpio, DIN_pin, CS_pin, CLK_pin);
+	SevenSeg__printNum(&seg7, 0);
+
+	while(1)
+	{
+		Keypad__refresh(&keypad);
+
+		char input = Keypad__getChar(&keypad);
+		
+		if(input == '1')
+		{
+			Speaker__play(&speaker, tone.C4);
+			SevenSeg__printNum(&seg7, 1);
+		}
+		else if(input == '2')
+		{
+			Speaker__play(&speaker, tone.D4);
+			SevenSeg__printNum(&seg7, 2);
+		}
+		else if(input == '3')
+		{
+			Speaker__play(&speaker, tone.E4);
+			SevenSeg__printNum(&seg7, 3);
+		}
+		else if(input == '4')
+		{
+			Speaker__play(&speaker, tone.F4);
+			SevenSeg__printNum(&seg7, 4);
+		}
+		else if(input == '5')
+		{
+			Speaker__play(&speaker, tone.G4);
+			SevenSeg__printNum(&seg7, 5);
+		}
+		else if(input == '6')
+		{
+			Speaker__play(&speaker, tone.A4);
+			SevenSeg__printNum(&seg7, 6);
+		}
+		else if(input == '7')
+		{
+			Speaker__play(&speaker, tone.B4);
+			SevenSeg__printNum(&seg7, 7);
+		}
+		else if(input == '8')
+		{
+			Speaker__play(&speaker, tone.C5);
+			SevenSeg__printNum(&seg7, 8);
+		}
+		else
+		{
+			Speaker__stop(&speaker);
+			SevenSeg__printNum(&seg7, 0);
+		}
 	}
 
 #endif
