@@ -23,11 +23,14 @@ typedef struct Speaker
     GPIO_TypeDef *gpio;
     int pin;
     TIM_TypeDef *timer;
+    double dutyCycle;
 }Speaker;
 
-void Speaker__construct(Speaker *self, GPIO_TypeDef *gpio, int pin, TIM_TypeDef *timer);
+void Speaker__construct(Speaker *self, GPIO_TypeDef *gpio, int pin, TIM_TypeDef *timer, double dutyCycle);
 int Speaker__init(Speaker *self);
 void Speaker__play(Speaker *self, double freq);
 void Speaker__stop(Speaker *self);
+void Speaker__adjustDutyCycle(Speaker *self, double offset);
+double Speaker__getDutyCycle(Speaker *self);
 
 #endif

@@ -12,11 +12,12 @@ void ToneFrequency__construct(ToneFrequency* self)
     self->C5 = 523.3;
 }
 
-void Speaker__construct(Speaker *self, GPIO_TypeDef *gpio, int pin, TIM_TypeDef *timer)
+void Speaker__construct(Speaker *self, GPIO_TypeDef *gpio, int pin, TIM_TypeDef *timer, double dutyCycle)
 {
     self->gpio = gpio;
     self->pin = pin;
     self->timer = timer;
+    self->dutyCycle = dutyCycle;
 }
 
 int Speaker__init(Speaker *self)
@@ -75,16 +76,36 @@ int Speaker__init(Speaker *self)
     timer_init(self->timer, 1, 20);
     PWM_channel_init();
     timer_start(self->timer);
+
+    return 0;
 }
 
 void Speaker__play(Speaker *self, double freq)
 {
-    double dutyCycle = 0.5;
     self->timer->ARR = (int)(40000000.0 / freq);
-    self->timer->CCR1 = (int)(dutyCycle * 40000000.0 / freq);
+    self->timer->CCR1 = (int)(self->dutyCycle * 40000000.0 / freq);
 }
 
 void Speaker__stop(Speaker *self)
 {
     self->timer->CCR1 = 0;
+}
+
+void Speaker__adjustDutyCycle(Speaker *self, double offset)
+{
+    self->dutyCycle += offset;
+    self->dutyCycle += 0.0000001;
+    if(self->dutyCycle > 0.9)
+    {
+        self->dutyCycle = 0.9;
+    }
+    else if(self->dutyCycle < 0.1)
+    {
+        self->dutyCycle = 0.1;
+    }
+}
+
+double Speaker__getDutyCycle(Speaker *self)
+{
+    return self->dutyCycle;
 }

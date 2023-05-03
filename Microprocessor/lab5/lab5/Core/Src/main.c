@@ -34,10 +34,10 @@
 
 // Use to decide which part of the code will run
 // Use define & ifdef to control
-// #define lab_modify_system_clock
+#define lab_modify_system_clock
 // #define lab_counter
-#define lab_music_keyboard
-//#define lab_music_song
+// #define lab_music_keyboard
+// #define lab_music_dutycycle
 
 int main(){
 	// Cause we want to use floating points we need to init FPU
@@ -146,7 +146,7 @@ int main(){
 #ifdef lab_music_keyboard
 
 	Speaker speaker;
-	Speaker__construct(&speaker, GPIOA, 0, TIM2);
+	Speaker__construct(&speaker, GPIOA, 0, TIM2, 0.5);
 	Speaker__init(&speaker);
 
 	Keypad keypad;
@@ -211,6 +211,61 @@ int main(){
 			Speaker__stop(&speaker);
 			SevenSeg__printNum(&seg7, 0);
 		}
+	}
+
+#endif
+
+#ifdef lab_music_dutycycle
+
+	Speaker speaker;
+	Speaker__construct(&speaker, GPIOA, 0, TIM2, 0.5);
+	Speaker__init(&speaker);
+
+	Keypad keypad;
+	Keypad__construct(&keypad, ROW_gpio, COL_gpio, ROW_pin, COL_pin);
+	Keypad__init(&keypad);
+
+	ToneFrequency tone;
+	ToneFrequency__construct(&tone);
+
+	SevenSeg seg7;
+	SevenSeg__init(&seg7, SEG_gpio, DIN_pin, CS_pin, CLK_pin);
+	SevenSeg__printNum(&seg7, 0.5);
+
+	while(1)
+	{
+		Keypad__refresh(&keypad);
+
+		char input = Keypad__getChar(&keypad);
+		
+		if(input == '1')
+			Speaker__play(&speaker, tone.C4);
+		else if(input == '2')
+			Speaker__play(&speaker, tone.D4);
+		else if(input == '3')
+			Speaker__play(&speaker, tone.E4);
+		else if(input == '4')
+			Speaker__play(&speaker, tone.F4);
+		else if(input == '5')
+			Speaker__play(&speaker, tone.G4);
+		else if(input == '6')
+			Speaker__play(&speaker, tone.A4);
+		else if(input == '7')
+			Speaker__play(&speaker, tone.B4);
+		else if(input == '8')
+			Speaker__play(&speaker, tone.C5);
+		else
+			Speaker__stop(&speaker);
+
+		char pressedInput = Keypad__getCharPressed(&keypad);
+
+		if(pressedInput == 'C')
+			Speaker__adjustDutyCycle(&speaker, 0.05);
+		else if(pressedInput == 'D')
+			Speaker__adjustDutyCycle(&speaker, -0.05);
+
+		struct fraction dutyCycle = {Speaker__getDutyCycle(&speaker) * 100, 100};
+		SevenSeg__printFraction(&seg7, dutyCycle);
 	}
 
 #endif
