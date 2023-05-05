@@ -26,11 +26,6 @@ void SystemClock_Config(int speed){
 		set_N = 40;
 		set_M = 0;
 	}
-	else if(speed==20){
-		set_R = 0;
-		set_N = 10;
-		set_M = 0;
-	}
 	else if(speed==16){
 		set_R = 0;
 		set_N = 8;
@@ -81,6 +76,14 @@ void SystemClock_Config(int speed){
 	while(!(((RCC->CFGR & RCC_CFGR_SWS_Msk)>>RCC_CFGR_SWS_Pos) == 3));    // Make sure system clock is ready
 }
 
+void SystemClock_Config_Interrupt(int speed, int load){
+	SystemClock_Config(speed);
+	SysTick->LOAD = load;
+	SysTick->CTRL |= (1 << SysTick_CTRL_CLKSOURCE_Pos);
+	SysTick->CTRL |= (1 << SysTick_CTRL_TICKINT_Pos);
+	SysTick->CTRL |= (1 << SysTick_CTRL_ENABLE_Pos);
+}
+
 void timer_enable(TIM_TypeDef *timer){
 	if(timer==TIM2){
 		RCC->APB1ENR1 |= RCC_APB1ENR1_TIM2EN;    // TIM2 clock enable
@@ -125,7 +128,6 @@ void GPIO_init_AF(){
 	GPIOA->AFR[0] &= ~GPIO_AFRL_AFSEL0_Msk;
 	GPIOA->AFR[0] |= (1 << GPIO_AFRL_AFSEL0_Pos);
 }
-
 void PWM_channel_init(){
 	// p.883 915 920 924
 	// PA0 for PWM
@@ -147,33 +149,49 @@ void PWM_channel_init(){
 	TIM2->PSC = 0;
 }
 
-void Timer__init(Timer* timer, TIM_TypeDef *timer_type)
+void SystemClock__construct(SystemClock* self, int speed, int counterMax)
 {
-	timer->timer = timer_type;
-	timer->msecs = -1;
-	timer_enable(timer_type);
-	timer_init(timer_type, 4000, 1000);
-	timer_start(timer_type);
+	self->speed = speed;
+	self->counterMax = counterMax;
 }
 
-int Timer__get_msecs(Timer* timer)
+void SystemClock__init(SystemClock* self)
 {
-	Timer__refresh(timer);
-	return timer->msecs;
-}
-
-void Timer__refresh(Timer* timer)
-{
-	if(timer->timer->SR & TIM_SR_UIF)
-	{
-		timer->msecs -= timer->msecs % 1000;
-		timer->msecs += 1000;
-		timer->msecs += timer->timer->CNT;
-		timer->timer->SR &= ~TIM_SR_UIF;
-	}
+	if(self->counterMax == 0 || self->counterMax == -1)
+		SystemClock_Config(self->speed / 1000000);
 	else
-	{
-		timer->msecs -= timer->msecs % 1000;
-		timer->msecs += timer->timer->CNT;
-	}
+		SystemClock_Config_Interrupt(self->speed / 1000000, self->counterMax);
+}
+
+void SystemClock__setSpeed(SystemClock* self, int speed)
+{
+	self->speed = speed;
+	SystemClock__init(self);
+}
+
+void SystemClock__setCounterMax(SystemClock* self, int counterMax)
+{
+	self->counterMax = counterMax;
+	SystemClock__init(self);
+}
+
+void SystemClock__setInterruptFrequency(SystemClock* self, double frequency)
+{
+	self->counterMax = self->speed / frequency;
+	SystemClock__init(self);
+}
+
+int SystemClock__getSpeed(SystemClock* self)
+{
+	return self->speed;
+}
+
+int SystemClock__getCounterMax(SystemClock* self)
+{
+	return self->counterMax;
+}
+
+double SystemClock__getInterruptFrequency(SystemClock* self)
+{
+	return self->speed / self->counterMax;
 }

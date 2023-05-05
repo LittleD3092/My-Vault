@@ -34,9 +34,9 @@
 
 // Use to decide which part of the code will run
 // Use define & ifdef to control
-#define lab_modify_system_clock
+// #define lab_modify_system_clock
 // #define lab_counter
-// #define lab_music_keyboard
+#define lab_music_keyboard
 // #define lab_music_dutycycle
 
 int main(){
