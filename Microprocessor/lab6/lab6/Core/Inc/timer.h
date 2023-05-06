@@ -29,5 +29,6 @@ void SystemClock__setInterruptFrequency(SystemClock* self, double frequency);
 int SystemClock__getSpeed(SystemClock* self);
 int SystemClock__getCounterMax(SystemClock* self);
 double SystemClock__getInterruptFrequency(SystemClock* self);
+void SystemClock__reset(SystemClock* self);
 
 #endif

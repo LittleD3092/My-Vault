@@ -128,3 +128,61 @@ int Button__is_released(Button* button){
 	button->state = Button__read(button);
 	return !button->state && button->last_state;
 }
+
+void ButtonInterrupt__construct(ButtonInterrupt* button, GPIO_TypeDef* gpio, int pin, int EXTI_IRQn){
+	Button__construct(&button->base, gpio, pin);
+	button->EXTI_IRQn = EXTI_IRQn;
+}
+
+int ButtonInterrupt__init(ButtonInterrupt* button)
+{
+	Button__init(&button->base);
+	// Enable SYSCFG Clock
+	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+
+	int gpioData = (&button->base)->gpio == GPIOA ? 0b0000 :
+	               (&button->base)->gpio == GPIOB ? 0b0001 :
+				   (&button->base)->gpio == GPIOC ? 0b0010 :
+				   (&button->base)->gpio == GPIOD ? 0b0011 :
+				   (&button->base)->gpio == GPIOE ? 0b0100 :
+				   (&button->base)->gpio == GPIOF ? 0b0101 :
+				   (&button->base)->gpio == GPIOG ? 0b0110 : 0b0111;
+
+	// select output gpio
+	int registerIndex = button->EXTI_IRQn / 4;
+	int offset = (button->EXTI_IRQn % 4) * 4;
+	SYSCFG->EXTICR[registerIndex] &= ~(0b0111 << offset);
+	SYSCFG->EXTICR[registerIndex] |= (gpioData << offset);
+
+	// enable interrupt
+	EXTI->IMR1 |= (1 << button->EXTI_IRQn);
+	
+	// enable falling edge trigger
+	EXTI->FTSR1 |= (1 << button->EXTI_IRQn);
+
+	// enable rising edge trigger
+	EXTI->RTSR1 |= (1 << button->EXTI_IRQn);
+
+	// enable NVIC
+	if(button->EXTI_IRQn == 0)                                  NVIC_EnableIRQ(EXTI0_IRQn);
+	else if(button->EXTI_IRQn == 1)                             NVIC_EnableIRQ(EXTI1_IRQn);
+	else if(button->EXTI_IRQn == 2)                             NVIC_EnableIRQ(EXTI2_IRQn);
+	else if(button->EXTI_IRQn == 3)                             NVIC_EnableIRQ(EXTI3_IRQn);
+	else if(button->EXTI_IRQn == 4)                             NVIC_EnableIRQ(EXTI4_IRQn);
+	else if(button->EXTI_IRQn >= 5 && button->EXTI_IRQn <= 9)   NVIC_EnableIRQ(EXTI9_5_IRQn);
+	else if(button->EXTI_IRQn >= 10 && button->EXTI_IRQn <= 15) NVIC_EnableIRQ(EXTI15_10_IRQn);
+	else                                                        return -1;
+}
+
+int ButtonInterrupt__is_pressed(ButtonInterrupt* button){
+	return button->base.state && !button->base.last_state;
+}
+
+int ButtonInterrupt__is_released(ButtonInterrupt* button){
+	return !button->base.state && button->base.last_state;
+}
+
+void ButtonInterrupt__callbackRefresh(ButtonInterrupt* button){
+	button->base.last_state = button->base.state;
+	button->base.state = Button__read(&button->base);
+}

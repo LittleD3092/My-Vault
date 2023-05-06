@@ -231,7 +231,6 @@ class ApproximateQAgent(PacmanQAgent):
         # Begin your code
         # get weights and feature
         # util.raiseNotDefined()
-        QValue = 0
         w = self.getWeights()
         featureVector = self.featExtractor.getFeatures(state, action)
 

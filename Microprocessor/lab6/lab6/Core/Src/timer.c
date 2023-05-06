@@ -195,3 +195,8 @@ double SystemClock__getInterruptFrequency(SystemClock* self)
 {
 	return self->speed / self->counterMax;
 }
+
+void SystemClock__reset(SystemClock* self)
+{
+	SysTick->VAL = 0;
+}

@@ -27,6 +27,7 @@ typedef struct Timer Timer;
 
 void Timer__init(Timer *timer, TIM_TypeDef *timer_type);
 int Timer__get_msecs(Timer *timer);
+// call this function at least once per second
 void Timer__refresh(Timer *timer);
 
 #endif

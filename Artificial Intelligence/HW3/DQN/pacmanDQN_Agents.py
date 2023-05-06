@@ -50,8 +50,10 @@ class PacmanDQN(PacmanUtils):
 
 		# init model
         if(model_trained == True):
-            self.policy_net = torch.load('pacman_policy_net.pt').to(self.device)
-            self.target_net = torch.load('pacman_target_net.pt').to(self.device)
+            # self.policy_net = torch.load('pacman_policy_net.pt').to(self.device)
+            self.policy_net = torch.load('pacman_policy_net.pt', map_location = self.device)
+            # self.target_net = torch.load('pacman_target_net.pt').to(self.device)
+            self.target_net = torch.load('pacman_target_net.pt', map_location = self.device)
         else:
             self.policy_net = DQN().to(self.device)
             self.target_net = DQN().to(self.device)

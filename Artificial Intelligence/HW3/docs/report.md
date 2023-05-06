@@ -1,26 +1,12 @@
 # Introduction to Artificial Intelligence HW3
 
-## Introduction
-
-- I don't know about any of the concepts now.
-- I use `python3.10`, while the specs require `python3.7`. I may need to fix it later.
-
-TODO: The following programs need to be modified in order to complete the homework.
-
-| Folder               | File                      |
-| -------------------- | ------------------------- |
-| `Adversarial_search` | `multiAgents.py`          |
-| `Q-learning`         | `valueIterationAgents.py` |
-|                      | `qlearningAgents.py`      |
-|                      | `featureExtractors.py`    |
-| `DQN`                | `DQN.py`                  |
-|                      | `pacmanDQN_Agent.py`      |
-
 ## Part 1: Adversarial Search
+
+### Problem 1: `depth` parameter
 
 I thought the `depth` means the number of moves (for both pacman and 2 ghosts to move, the total depth would be `3`), but I was wrong. For pacman and all the ghosts to move once, the depth would be `1`.
 
-Observation 1:
+### Observation 1: pacman commit suicide
 
 When running the following command, the pacman rushes to the closest ghost:
 
@@ -30,7 +16,7 @@ python pacman.py -p MinimaxAgent -l trappedClassic -a depth=3
 
 Note that when pacman notices that its death is inevitable, it will try suicide to prevent the score from decreasing. This is the reason why it rushes to the closest ghost in trapped case.
 
-Observation 2:
+### Observation 2: pacman avoid death even when trapped
 
 When running the following command, the pacman avoid death even when it is trapped by ghosts.
 
@@ -40,17 +26,146 @@ python pacman.py -p ExpectimaxAgent -l trappedClassic -a depth=3 -q -n 10
 
 This is because it believe there is a chance that the ghost will release it, and the pacman can grab more food. In fact, this strategy works better than `MinimaxAgent` in this map.
 
+### Implementation 1: class `MinimaxAgent`
+
+```python
+class MinimaxAgent(MultiAgentSearchAgent):
+    """
+    Your minimax agent (par1-1)
+    """
+    def getAction(self, gameState, agentIndex = 0):
+        """
+        Returns the minimax action from the current gameState using self.depth
+        and self.evaluationFunction.
+
+        Here are some method calls that might be useful when implementing minimax.
+
+        gameState.getLegalActions(agentIndex):
+        Returns a list of legal actions for an agent
+        agentIndex=0 means Pacman, ghosts are >= 1
+
+        gameState.getNextState(agentIndex, action):
+        Returns the child game state after an agent takes an action
+
+        gameState.getNumAgents():
+        Returns the total number of agents in the game
+
+        gameState.isWin():
+        Returns whether or not the game state is a winning state
+
+        gameState.isLose():
+        Returns whether or not the game state is a losing state
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+
+        # util.raiseNotDefined()
+
+        bestAction, evalValue = self.__getActionAndEval(gameState, self.depth * gameState.getNumAgents(), agentIndex)
+        # print("evalValue: ", evalValue)
+        return bestAction
+        
+        # End your code
+
+    def __getActionAndEval(self, gameState, depth, agentIndex):
+        # base case
+        if depth == 0 or gameState.isWin() or gameState.isLose():
+            return None, self.evaluationFunction(gameState)
+        
+        # pacman's turn
+        if agentIndex == 0: 
+            maxEval = float('-inf')
+            bestAction = None
+            for action in gameState.getLegalActions(agentIndex):
+                successor = gameState.getNextState(agentIndex, action)
+                _, eval = self.__getActionAndEval(successor, depth - 1, (agentIndex + 1) % gameState.getNumAgents())
+                if eval > maxEval:
+                    maxEval = eval
+                    bestAction = action
+            return bestAction, maxEval
+        # ghost's turn
+        else:
+            minEval = float('inf')
+            bestAction = None
+            for action in gameState.getLegalActions(agentIndex):
+                successor = gameState.getNextState(agentIndex, action)
+                _, eval = self.__getActionAndEval(successor, depth - 1, (agentIndex + 1) % gameState.getNumAgents())
+                if eval < minEval:
+                    minEval = eval
+                    bestAction = action
+            return bestAction, minEval
+```
+
+Because the `bestAction` that is required depend on `evalValue`, I return both of them in a tuple. Also, the function `getAction` can only return a single action, so I use a private function `__getActionAndEval` to do the recursion.
+
+### Implementation 2: class `ExpectimaxAgent`
+
+```python
+class ExpectimaxAgent(MultiAgentSearchAgent):
+    """
+      Your expectimax agent (part1-2)
+    """
+
+    def getAction(self, gameState, agentIndex = 0):
+        """
+        Returns the expectimax action using self.depth and self.evaluationFunction
+
+        All ghosts should be modeled as choosing uniformly at random from their
+        legal moves.
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+
+        # util.raiseNotDefined()
+
+        bestAction, evalValue = self.__getActionAndEval(gameState, self.depth * gameState.getNumAgents(), agentIndex)
+        # print("evalValue: ", evalValue)
+        return bestAction
+
+        # End your code
+
+    def __getActionAndEval(self, gameState, depth, agentIndex):
+        # base case
+        if depth == 0 or gameState.isWin() or gameState.isLose():
+            return None, self.evaluationFunction(gameState)
+        
+        # pacman's turn
+        if agentIndex == 0: 
+            maxEval = float('-inf')
+            bestAction = None
+            for action in gameState.getLegalActions(agentIndex):
+                successor = gameState.getNextState(agentIndex, action)
+                _, eval = self.__getActionAndEval(successor, depth - 1, (agentIndex + 1) % gameState.getNumAgents())
+                if eval > maxEval:
+                    maxEval = eval
+                    bestAction = action
+            return bestAction, maxEval
+        # ghost's turn
+        else:
+            averageEval = 0
+            legalActions = gameState.getLegalActions(agentIndex)
+            for action in legalActions:
+                successor = gameState.getNextState(agentIndex, action)
+                _, eval = self.__getActionAndEval(successor, depth - 1, (agentIndex + 1) % gameState.getNumAgents())
+                averageEval += eval / len(legalActions)
+            return None, averageEval
+
+better = scoreEvaluationFunction
+```
+
+My implementation of `ExpectimaxAgent` is similar to `MinimaxAgent`. I used the private function `__getActionAndEval` to do the recursion. The only difference is that the ghost's turn is to calculate the average of all possible evaluation values.
+
 ## Part 2: Q-learning
 
-Problem 1: Implementing Function `runValueIteration`
+### Problem 2: Implementing Function `runValueIteration`
 
 When I first saw the provided python script, I implemented the formula of values set $V$ and optimal policy set $\pi$ in member function `runValueIteration`. Then I realized that there is more member function below, and I make use of them to simplify my code.
 
-Problem 2: `nextState` parameter in method `mdp.getReward()` is confusing
+### Problem 3: `nextState` parameter in method `mdp.getReward()` is confusing
 
 Also, the `nextState` parameter in method `mdp.getReward()` confuses me. After seeing the implementation in `gridworld.py`, I find out that the parameters `action` and `nextState` are not used in this state and is provided due to convention.
 
-Problem 3: `cgi.escape()` method deprecated
+### Problem 4: `cgi.escape()` method deprecated
 
 While running the provided grading python script `autograder.py`, I get the following error:
 
@@ -123,3 +238,666 @@ try:
 except:
     message = cgi_escape(message)
 ```
+
+### Implementation 3: class `ValueIterationAgent`
+
+```python
+class ValueIterationAgent(ValueEstimationAgent):
+    """
+        * Please read learningAgents.py before reading this.*
+
+        A ValueIterationAgent takes a Markov decision process
+        (see mdp.py) on initialization and runs value iteration
+        for a given number of iterations using the supplied
+        discount factor.
+    """
+    def __init__(self, mdp, discount = 0.9, iterations = 100):
+        """
+          Your value iteration agent should take an mdp on
+          construction, run the indicated number of iterations
+          and then act according to the resulting policy.
+
+          Some useful mdp methods you will use:
+              mdp.getStates()
+              mdp.getPossibleActions(state)
+              mdp.getTransitionStatesAndProbs(state, action)
+              mdp.getReward(state, action, nextState)
+              mdp.isTerminal(state)
+        """
+        self.mdp = mdp
+        self.discount = discount
+        self.iterations = iterations
+        self.values = util.Counter() # A Counter is a dict with default 0
+        self.optimalPolicy = {}
+        self.runValueIteration()
+
+    def runValueIteration(self):
+        # Write value iteration code here
+        """
+            Precondition: A member self.values is a util.Counter()
+            Postcondition: self.values is a util.Counter() where
+                           self.values[state] is the value of the state
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        k = 0
+        while k < self.iterations:
+            updatedValues = util.Counter()
+            for state in self.mdp.getStates():
+                if self.mdp.isTerminal(state):
+                    continue
+                updatedValues[state] = max(self.getQValue(state, action) for action in self.mdp.getPossibleActions(state))
+            self.values = updatedValues
+            k += 1
+        # End your code
+
+
+    def getValue(self, state):
+        """
+          Return the value of the state (computed in __init__).
+        """
+        return self.values[state]
+
+
+    def computeQValueFromValues(self, state, action):
+        """
+          Compute the Q-value of action in state from the
+          value function stored in self.values.
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+
+        return (
+            self.mdp.getReward(state, action, self.mdp.getTransitionStatesAndProbs(state, action)) +
+            self.discount * sum(
+                prob * self.values[nextState]
+                for nextState, prob in self.mdp.getTransitionStatesAndProbs(state, action)
+            )
+        )
+
+        # End your code
+
+    def computeActionFromValues(self, state):
+        """
+          The policy is the best action in the given state
+          according to the values currently stored in self.values.
+
+          You may break ties any way you see fit.  Note that if
+          there are no legal actions, which is the case at the
+          terminal state, you should return None.
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+
+        #check for terminal
+        # util.raiseNotDefined() 
+
+        bestAction = None
+        bestValue = float('-inf')
+        for action in self.mdp.getPossibleActions(state):
+            value = self.getQValue(state, action)
+            if value > bestValue:
+                bestValue = value
+                bestAction = action
+
+        return bestAction
+
+        # End your code
+
+    def getPolicy(self, state):
+        """
+        The policy is the best action in the given state
+        according to the values computed by value iteration.
+        You may break ties any way you see fit.  Note that if
+        there are no legal actions, which is the case at the
+        terminal state, you should return None.
+        """
+        return self.computeActionFromValues(state)
+
+    def getAction(self, state):
+        "Returns the policy at the state (no exploration)."
+        return self.computeActionFromValues(state)
+
+    def getQValue(self, state, action):
+        """
+        The q-value of the state action pair
+        (after the indicated number of value iteration
+        passes).  Note that value iteration does not
+        necessarily create this quantity and you may have
+        to derive it on the fly.
+        """
+        return self.computeQValueFromValues(state, action)
+```
+
+#### Member Function `runValueIteration()`
+
+```python
+def runValueIteration(self):
+    # Write value iteration code here
+    """
+        Precondition: A member self.values is a util.Counter()
+        Postcondition: self.values is a util.Counter() where
+                        self.values[state] is the value of the state
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    k = 0
+    while k < self.iterations:
+        updatedValues = util.Counter()
+        for state in self.mdp.getStates():
+            if self.mdp.isTerminal(state):
+                continue
+            updatedValues[state] = max(self.getQValue(state, action) for action in self.mdp.getPossibleActions(state))
+        self.values = updatedValues
+        k += 1
+    # End your code
+```
+
+I refer to the following resources:
+[Value Iteration](https://artint.info/2e/html/ArtInt2e.Ch9.S5.SS2.html)
+
+The procedure `Value_iteration` shown in the above link does not use $Q$ while updating $V_k$, so I substitute the expression below to $Q$:
+
+$$R(s, a) + \gamma * \sum_{s'} P(s' \vert s, a)* V_{k-1}[s'] = Q_k$$
+
+#### Member Function `computeQValueFromValues()`
+
+```python
+    def computeQValueFromValues(self, state, action):
+        """
+          Compute the Q-value of action in state from the
+          value function stored in self.values.
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+
+        return (
+            self.mdp.getReward(state, action, self.mdp.getTransitionStatesAndProbs(state, action)) +
+            self.discount * sum(
+                prob * self.values[nextState]
+                for nextState, prob in self.mdp.getTransitionStatesAndProbs(state, action)
+            )
+        )
+
+        # End your code
+```
+
+I refer to the same website, and used the following formula:
+
+$$Q_{k + 1}(s, a) = R(s, a) + \gamma * \sum_{s'} P(s' \vert s, a) * V_k(s')$$
+
+#### Member Function `computeActionFromValues()`
+
+```python
+def computeActionFromValues(self, state):
+    """
+        The policy is the best action in the given state
+        according to the values currently stored in self.values.
+
+        You may break ties any way you see fit.  Note that if
+        there are no legal actions, which is the case at the
+        terminal state, you should return None.
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+
+    #check for terminal
+    # util.raiseNotDefined() 
+
+    bestAction = None
+    bestValue = float('-inf')
+    for action in self.mdp.getPossibleActions(state):
+        value = self.getQValue(state, action)
+        if value > bestValue:
+            bestValue = value
+            bestAction = action
+
+    return bestAction
+
+    # End your code
+```
+
+I refer to the same website, and used the statement in the procedure `Value_iteration`:
+
+$$
+\begin{array}{lll}
+\pi[s] &=& \argmax_a R(s, a) + \gamma * \sum_{s'} P(s' \vert s, a) * V_k[s'] \\
+&=& \argmax_a Q_{k + 1}(s, a)
+\end{array}
+$$
+
+I used a for loop to compare the $Q$ values and find the best action.
+
+### Implementation 4: class `QLearningAgent`
+
+```python
+class QLearningAgent(ReinforcementAgent):
+    """
+      Q-Learning Agent
+
+      Functions you should fill in:
+        - computeValueFromQValues
+        - computeActionFromQValues
+        - getQValue
+        - getAction
+        - update
+
+      Instance variables you have access to
+        - self.epsilon (exploration prob)
+        - self.alpha (learning rate)
+        - self.discount (discount rate)
+
+      Functions you should use
+        - self.getLegalActions(state)
+          which returns legal actions for a state
+    """
+    def __init__(self, **args):
+        "You can initialize Q-values here..."
+        ReinforcementAgent.__init__(self, **args)
+
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        self.qValues = util.Counter()
+        # End your code
+
+
+    def getQValue(self, state, action):
+        """
+          Returns Q(state,action)
+          Should return 0.0 if we have never seen a state
+          or the Q node value otherwise
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+        return self.qValues[(state, action)]
+        # End your code
+
+
+    def computeValueFromQValues(self, state):
+        """
+          Returns max_action Q(state,action)
+          where the max is over legal actions.  Note that if
+          there are no legal actions, which is the case at the
+          terminal state, you should return a value of 0.0.
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+        if len(self.getLegalActions(state)) == 0:
+            return 0.0
+
+        return max(
+            self.getQValue(state, action)
+            for action in self.getLegalActions(state)
+        )
+        # End your code
+
+    def computeActionFromQValues(self, state):
+        """
+          Compute the best action to take in a state.  Note that if there
+          are no legal actions, which is the case at the terminal state,
+          you should return None.
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+        bestValue = -float('inf')
+        bestAction = None
+        for action in self.getLegalActions(state):
+            value = self.getQValue(state, action)
+            if value > bestValue:
+                bestValue = value
+                bestAction = action
+        return bestAction
+        # End your code
+
+    def getAction(self, state):
+        """
+          Compute the action to take in the current state.  With
+          probability self.epsilon, we should take a random action and
+          take the best policy action otherwise.  Note that if there are
+          no legal actions, which is the case at the terminal state, you
+          should choose None as the action.
+
+          HINT: You might want to use util.flipCoin(prob)
+          HINT: To pick randomly from a list, use random.choice(list)
+        """
+        # Pick Action
+        legalActions = self.getLegalActions(state)
+        action = None
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+
+        if len(legalActions) == 0:
+            return None
+        
+        return (
+            random.choice(legalActions) 
+            if util.flipCoin(self.epsilon)
+            else self.getPolicy(state)
+        )
+        # End your code
+        
+
+    def update(self, state, action, nextState, reward):
+        """
+          The parent class calls this to observe a
+          state = action => nextState and reward transition.
+          You should do your Q-Value update here
+
+          NOTE: You should never call this function,
+          it will be called on your behalf
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+
+        if len(self.getLegalActions(nextState)) == 0: # terminal state
+            self.qValues[(state, action)] = (
+                (1 - self.alpha) * self.getQValue(state, action) +
+                self.alpha * reward
+            )
+            return
+
+        self.qValues[(state, action)] = (
+            (1 - self.alpha) * self.getQValue(state, action) +
+            self.alpha * (
+                reward + self.discount * max(
+                    self.getQValue(nextState, nextAction)
+                    for nextAction in self.getLegalActions(nextState)
+                )
+            )
+        )
+        # End your code
+
+    def getPolicy(self, state):
+        return self.computeActionFromQValues(state)
+
+    def getValue(self, state):
+        return self.computeValueFromQValues(state)
+```
+
+#### Member Function `__init__()`
+
+```python
+def __init__(self, **args):
+    "You can initialize Q-values here..."
+    ReinforcementAgent.__init__(self, **args)
+
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    self.qValues = util.Counter()
+    # End your code
+```
+
+I initialized member variable `qValues` as a `util.Counter()`.
+
+#### Member Function `getQValue()`
+
+```python
+def getQValue(self, state, action):
+    """
+        Returns Q(state,action)
+        Should return 0.0 if we have never seen a state
+        or the Q node value otherwise
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # util.raiseNotDefined()
+    return self.qValues[(state, action)]
+    # End your code
+```
+
+Because I initialized `qValues` as a `util.Counter()`, I can use the operator `[]` to get the value of a key. If the key does not exist, the value will be `0`, which satisfy the requirement of the state that we have never seen.
+
+#### Member Function `computeValueFromQValues()`
+
+```python
+def computeValueFromQValues(self, state):
+    """
+        Returns max_action Q(state,action)
+        where the max is over legal actions.  Note that if
+        there are no legal actions, which is the case at the
+        terminal state, you should return a value of 0.0.
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # util.raiseNotDefined()
+    if len(self.getLegalActions(state)) == 0:
+        return 0.0
+
+    return max(
+        self.getQValue(state, action)
+        for action in self.getLegalActions(state)
+    )
+    # End your code
+```
+
+For the terminal state, I used an if statement that checks the amount of legal actions. If there are no legal actions, I return `0.0`. Otherwise, I return the maximum value of all the Q-values of the legal actions.
+
+#### Member Function `computeActionFromQValues()`
+
+```python
+def computeActionFromQValues(self, state):
+    """
+        Compute the best action to take in a state.  Note that if there
+        are no legal actions, which is the case at the terminal state,
+        you should return None.
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # util.raiseNotDefined()
+    bestValue = -float('inf')
+    bestAction = None
+    for action in self.getLegalActions(state):
+        value = self.getQValue(state, action)
+        if value > bestValue:
+            bestValue = value
+            bestAction = action
+    return bestAction
+    # End your code
+```
+
+I used a for loop to iterate through all the legal actions. I used a variable `bestValue` to store the maximum value of all the Q-values of the legal actions. I used a variable `bestAction` to store the action that has the maximum value. I returned `bestAction` after the for loop.
+
+#### Member Function `getAction()`
+
+```python
+def getAction(self, state):
+    """
+        Compute the action to take in the current state.  With
+        probability self.epsilon, we should take a random action and
+        take the best policy action otherwise.  Note that if there are
+        no legal actions, which is the case at the terminal state, you
+        should choose None as the action.
+
+        HINT: You might want to use util.flipCoin(prob)
+        HINT: To pick randomly from a list, use random.choice(list)
+    """
+    # Pick Action
+    legalActions = self.getLegalActions(state)
+    action = None
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # util.raiseNotDefined()
+
+    if len(legalActions) == 0:
+        return None
+    
+    return (
+        random.choice(legalActions) 
+        if util.flipCoin(self.epsilon)
+        else self.getPolicy(state)
+    )
+    # End your code
+```
+
+I used an if statement to check if there are legal actions. If there are no legal actions, I returned `None`. Because it requires us to choose a random action with a probability of `self.epsilon`, I implemented it using `random.choice(legalActions)` and `flipCoin(self.epsilon)`. If `flipCoin(self.epsilon)` returns `True`, I returned a random action. Otherwise, I returned the best action using `self.getPolicy(state)`.
+
+#### Member Function `update()`
+
+```python
+def update(self, state, action, nextState, reward):
+    """
+        The parent class calls this to observe a
+        state = action => nextState and reward transition.
+        You should do your Q-Value update here
+
+        NOTE: You should never call this function,
+        it will be called on your behalf
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # util.raiseNotDefined()
+
+    if len(self.getLegalActions(nextState)) == 0: # terminal state
+        self.qValues[(state, action)] = (
+            (1 - self.alpha) * self.getQValue(state, action) +
+            self.alpha * reward
+        )
+        return
+
+    self.qValues[(state, action)] = (
+        (1 - self.alpha) * self.getQValue(state, action) +
+        self.alpha * (
+            reward + self.discount * max(
+                self.getQValue(nextState, nextAction)
+                for nextAction in self.getLegalActions(nextState)
+            )
+        )
+    )
+    # End your code
+```
+
+I refer to the formula in the wikipedia page:
+
+[Q-learning](https://en.wikipedia.org/wiki/Q-learning)
+
+$${\displaystyle Q^{new}(s_{t},a_{t})\leftarrow (1-\underbrace {\alpha } _{\text{learning rate}})\cdot \underbrace {Q(s_{t},a_{t})} _{\text{current value}}+\underbrace {\alpha } _{\text{learning rate}}\cdot {\bigg (}\underbrace {\underbrace {r_{t}} _{\text{reward}}+\underbrace {\gamma } _{\text{discount factor}}\cdot \underbrace {\max _{a}Q(s_{t+1},a)} _{\text{estimate of optimal future value}}} _{\text{new value (temporal difference target)}}{\bigg )}}$$
+
+Note that if the there is no legal actions, $\gamma$ and $\max_a Q(s_{t + 1}, a)$ need to be omitted. It is because that the terminal state has no next state, and the $Q$ should be $0$.
+
+### Implementation 5: class `ApproximateQAgent`
+
+```python
+class ApproximateQAgent(PacmanQAgent):
+    """
+       ApproximateQLearningAgent
+
+       You should only have to overwrite getQValue
+       and update.  All other QLearningAgent functions
+       should work as is.
+    """
+    def __init__(self, extractor='IdentityExtractor', **args):
+        self.featExtractor = util.lookup(extractor, globals())()
+        PacmanQAgent.__init__(self, **args)
+        self.weights = util.Counter()
+
+    def getWeights(self):
+        return self.weights
+
+    def getQValue(self, state, action):
+        """
+          Should return Q(state,action) = w * featureVector
+          where * is the dotProduct operator
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # get weights and feature
+        # util.raiseNotDefined()
+        QValue = 0
+        w = self.getWeights()
+        featureVector = self.featExtractor.getFeatures(state, action)
+
+        return sum(w[key] * featureVector[key] for key in featureVector)
+        # End your code
+
+    def update(self, state, action, nextState, reward):
+        """
+           Should update your weights based on transition
+        """
+        "*** YOUR CODE HERE ***"
+        # Begin your code
+        # util.raiseNotDefined()
+        correction = reward + self.discount * self.getValue(nextState) - self.getQValue(state, action)
+        w = self.getWeights()
+        featureVector = self.featExtractor.getFeatures(state, action)
+        for key in featureVector:
+            w[key] += self.alpha * correction * featureVector[key]
+
+        self.weights = w
+        # End your code
+
+
+    def final(self, state):
+        "Called at the end of each game."
+        # call the super-class final method
+        PacmanQAgent.final(self, state)
+```
+
+#### Member Function `getQValue()`
+
+```python
+def getQValue(self, state, action):
+    """
+        Should return Q(state,action) = w * featureVector
+        where * is the dotProduct operator
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # get weights and feature
+    # util.raiseNotDefined()
+    w = self.getWeights()
+    featureVector = self.featExtractor.getFeatures(state, action)
+
+    return sum(w[key] * featureVector[key] for key in featureVector)
+    # End your code
+```
+
+According to the formula provided in the comment, I implemented the function using `sum()` and a for loop to calculate the dot product of the weights and the feature vector.
+
+#### Member Function `update()`
+
+```python
+def update(self, state, action, nextState, reward):
+    """
+        Should update your weights based on transition
+    """
+    "*** YOUR CODE HERE ***"
+    # Begin your code
+    # util.raiseNotDefined()
+    correction = reward + self.discount * self.getValue(nextState) - self.getQValue(state, action)
+    w = self.getWeights()
+    featureVector = self.featExtractor.getFeatures(state, action)
+    for key in featureVector:
+        w[key] += self.alpha * correction * featureVector[key]
+
+    self.weights = w
+    # End your code
+```
+
+According to the slide I found:
+
+[Approximate Q-Learning](https://www.cs.swarthmore.edu/~bryce/cs63/s16/slides/3-25_approximate_Q-learning.pdf)
+
+The updated weights have the following formula:
+
+$$
+\begin{array}{rll}
+w_i & \leftarrow & w_i + \alpha [\text{correction}] f_i(s, a) \\
+\text{correction} &=& (R(s, a) + \gamma V(s')) - Q(s, a)
+\end{array}
+$$
+
+So I updated each weight using the formula and a for loop.
+
+## Question
+
+1. What is the difference between On-policy and Off-policy?
+   On-policy means that the agent uses the same policy to choose actions and to learn. Off-policy means that the agent uses two kinds of policies, one for choosing actions and one for learning.
+2. Briefly explain value-based, policy-based and Actor-Critic. Also, describe the value function $V^\pi (S)$.
+   

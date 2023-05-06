@@ -89,3 +89,167 @@ int check_keypad_input_multiple(GPIO_TypeDef* ROW_gpio, GPIO_TypeDef* COL_gpio, 
 	}
 	return res;
 }
+
+void Keypad__construct(Keypad* self, GPIO_TypeDef* ROW_gpio, GPIO_TypeDef* COL_gpio, int ROW_pin, int COL_pin){
+	self->ROW_gpio = ROW_gpio;
+	self->COL_gpio = COL_gpio;
+	self->ROW_pin = ROW_pin;
+	self->COL_pin = COL_pin;
+
+	for(int i=0;i<4;i++){
+		for(int j=0;j<4;j++){
+			self->buttons[i][j] = 0;
+			self->last_buttons[i][j] = 0;
+		}
+	}
+}
+
+int Keypad__init(Keypad* self)
+{
+	if(init_keypad(self->ROW_gpio, self->COL_gpio, self->ROW_pin, self->COL_pin) != 0){
+		return -1;
+	}
+	return 0;
+}
+
+void Keypad__refresh(Keypad* self)
+{
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			self->last_buttons[i][j] = self->buttons[i][j];
+
+	int input = check_keypad_input_multiple(self->ROW_gpio, self->COL_gpio, self->ROW_pin, self->COL_pin);
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			self->buttons[i][j] = (input >> (i*4+j)) & 1;
+}
+
+char Keypad__getChar(Keypad* self)
+{
+	char chars[4][4] = {
+		{'1', '2', '3', 'A'},
+		{'4', '5', '6', 'B'},
+		{'7', '8', '9', 'C'},
+		{'*', '0', '#', 'D'}
+	};
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			if(self->buttons[i][j])
+				return chars[i][j];
+
+	return 0;
+}
+
+char Keypad__getCharPressed(Keypad* self)
+{
+	char chars[4][4] = {
+		{'1', '2', '3', 'A'},
+		{'4', '5', '6', 'B'},
+		{'7', '8', '9', 'C'},
+		{'*', '0', '#', 'D'}
+	};
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			if(self->buttons[i][j] && !self->last_buttons[i][j])
+				return chars[i][j];
+
+	return 0;
+}
+
+char Keypad__getCharReleased(Keypad* self)
+{
+	char chars[4][4] = {
+		{'1', '2', '3', 'A'},
+		{'4', '5', '6', 'B'},
+		{'7', '8', '9', 'C'},
+		{'*', '0', '#', 'D'}
+	};
+	
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+			if(!self->buttons[i][j] && self->last_buttons[i][j])
+				return chars[i][j];
+
+	return 0;
+}
+
+void KeypadInterrupt__construct(KeypadInterrupt* self, GPIO_TypeDef* ROW_gpio, GPIO_TypeDef* COL_gpio, int ROW_pin, int COL_pin, int EXTI_IRQn)
+{
+	Keypad__construct(&self->base, ROW_gpio, COL_gpio, ROW_pin, COL_pin);
+	self->EXTI_IRQn = EXTI_IRQn;
+	self->currentOutputCol = 0;
+}
+
+int KeypadInterrupt__init(KeypadInterrupt* self)
+{
+	int statusCode = Keypad__init(&self->base);
+
+	// enable SYSCFG clock
+	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+	
+	int gpioData = (&self->base)->ROW_gpio == GPIOA ? 0b0000 :
+	                           				  GPIOB ? 0b0001 :
+											  GPIOC ? 0b0010 :
+											  GPIOD ? 0b0011 :
+											  GPIOE ? 0b0100 :
+											  GPIOF ? 0b0101 :
+											  GPIOG ? 0b0110 : 0b0111;
+	for(int interruptIndex = self->EXTI_IRQn; interruptIndex < self->EXTI_IRQn + 4; interruptIndex++)
+	{
+		// select output gpio
+		int registerIndex = interruptIndex / 4;
+		int offset = (interruptIndex % 4) * 4;
+		SYSCFG->EXTICR[registerIndex] &= ~(0b0111 << offset);
+		SYSCFG->EXTICR[registerIndex] |= (gpioData << offset);
+
+		// enable interrupt
+		EXTI->IMR1 |= (1 << interruptIndex);
+		
+		// enable falling edge trigger
+		EXTI->FTSR1 |= (1 << interruptIndex);
+
+		// enable rising edge trigger
+		EXTI->RTSR1 |= (1 << interruptIndex);
+
+		// enable NVIC
+		if(interruptIndex == 0)                               NVIC_EnableIRQ(EXTI0_IRQn);
+		else if(interruptIndex == 1)                          NVIC_EnableIRQ(EXTI1_IRQn);
+		else if(interruptIndex == 2)                          NVIC_EnableIRQ(EXTI2_IRQn);
+		else if(interruptIndex == 3)                          NVIC_EnableIRQ(EXTI3_IRQn);
+		else if(interruptIndex == 4)                          NVIC_EnableIRQ(EXTI4_IRQn);
+		else if(interruptIndex >= 5 && interruptIndex <= 9)   NVIC_EnableIRQ(EXTI9_5_IRQn);
+		else if(interruptIndex >= 10 && interruptIndex <= 15) NVIC_EnableIRQ(EXTI15_10_IRQn);
+		else                                                  return -1;
+	}
+	return statusCode;
+}
+
+void KeypadInterrupt__shiftOutput(KeypadInterrupt* self)
+{
+	reset_push(self->base.COL_gpio, self->currentOutputCol + self->base.COL_pin);
+	self->currentOutputCol = (self->currentOutputCol + 1) % 4;
+	set_push(self->base.COL_gpio, self->currentOutputCol + self->base.COL_pin);
+}
+
+void KeypadInterrupt__callbackRefresh(KeypadInterrupt* self, int rowPinOffset)
+{
+	Keypad__refresh(&self->base);
+}
+
+char KeypadInterrupt__getChar(KeypadInterrupt* self)
+{
+	return Keypad__getChar(&self->base);
+}
+
+char KeypadInterrupt__getCharPressed(KeypadInterrupt* self)
+{
+	return Keypad__getCharPressed(&self->base);
+}
+
+char KeypadInterrupt__getCharReleased(KeypadInterrupt* self)
+{
+	return Keypad__getCharReleased(&self->base);
+}

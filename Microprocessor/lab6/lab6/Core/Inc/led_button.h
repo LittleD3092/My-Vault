@@ -37,4 +37,15 @@ int Button__read(Button* button);
 int Button__is_pressed(Button* button);
 int Button__is_released(Button* button);
 
+typedef struct ButtonInterrupt
+{
+    Button base;
+    int EXTI_IRQn;
+} ButtonInterrupt;
+void ButtonInterrupt__construct(ButtonInterrupt* button, GPIO_TypeDef* gpio, int pin, int EXTI_IRQn);
+int ButtonInterrupt__init(ButtonInterrupt* button);
+int ButtonInterrupt__is_pressed(ButtonInterrupt* button);
+int ButtonInterrupt__is_released(ButtonInterrupt* button);
+void ButtonInterrupt__callbackRefresh(ButtonInterrupt* button);
+
 #endif
