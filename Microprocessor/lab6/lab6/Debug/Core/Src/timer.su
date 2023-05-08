@@ -16,3 +16,4 @@
 ../Core/Src/timer.c:184:5:SystemClock__getSpeed	16	static
 ../Core/Src/timer.c:189:5:SystemClock__getCounterMax	16	static
 ../Core/Src/timer.c:194:8:SystemClock__getInterruptFrequency	16	static
+../Core/Src/timer.c:199:6:SystemClock__reset	16	static

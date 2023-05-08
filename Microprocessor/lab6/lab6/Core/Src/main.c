@@ -37,6 +37,7 @@
 
 // Use to decide which part of the code will run
 // Use define & ifdef to control
+// #define lab_debug
 // #define lab_systick_blink
 // #define lab_systick_blink_change_freq
 // #define lab_interrupt_keypad
@@ -47,19 +48,43 @@
 #ifdef lab_interrupt_keypad
 void (*KeypadInterrupt__callback)(KeypadInterrupt*);
 KeypadInterrupt* KeypadInterrupt__self;
+SevenSeg* SevenSeg__self;
+int Map_CharToNum(char c)
+{
+	return c >= '0' && c <= '9' ? c - '0' : 
+	       c >= 'A' && c <= 'D' ? c - 'A' + 10 :
+		   c == '#' ? 14 :
+		   c == '*' ? 15 : -1;
+}
 #endif
 
 #ifdef lab_alarm
 // for alarm countdown
-int remainingTime = 0;
+double remainingTime = 0;
 // for music playing
 double musicCounterMs = 0;
+// for state transition
+int state = 1;
+// for alarm setting
+int enteredSeconds = 0;
+
 // callback function for keypad
 void (*KeypadInterrupt__callback)(KeypadInterrupt*);
 KeypadInterrupt* KeypadInterrupt__self;
 // callback function for button
 void (*ButtonInterrupt__callback)(ButtonInterrupt*);
 ButtonInterrupt* ButtonInterrupt__self;
+
+// for 7seg
+SevenSeg* SevenSeg__self;
+
+int Map_CharToNum(char c)
+{
+	return c >= '0' && c <= '9' ? c - '0' :
+	       c >= 'A' && c <= 'D' ? c - 'A' + 10 :
+		   c == '#' ? 14 :
+		   c == '*' ? 15 : -1;
+}
 #endif
 
 void SysTick_Handler() {
@@ -80,80 +105,178 @@ void SysTick_Handler() {
 
 #ifdef lab_interrupt_keypad
 	if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
-		KeyboardInterrupt__shiftOutput(KeypadInterrupt__self);
+		KeypadInterrupt__shiftOutput(KeypadInterrupt__self);
 #endif
 
 #ifdef lab_alarm
 	if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk){
 		// Update remaining time
-		remainingTime--;
+		remainingTime-=0.1;
 		if(remainingTime <= 0){
 			remainingTime = 0;
 		}
-	}
-	musicCounterMs += 1000.0 / 4000000.0;
-	if(musicCounterMs >= 60000){
-		musicCounterMs = 0;
+		if(remainingTime == 0 && state == 2){
+			state = 3;
+			musicCounterMs = 0;
+		}
+
+		musicCounterMs += 100;
+		if(musicCounterMs >= 3423){
+			musicCounterMs = 0;
+		}
+
+		KeypadInterrupt__shiftOutput(KeypadInterrupt__self);
 	}
 #endif
 }
 
-#if defined(lab_interrupt_keypad) || defined(lab_alarm)
-void EXIT3_IRQHandler()
+#ifdef lab_interrupt_keypad
+void EXTI3_IRQHandler()
 {
 	// Check if interrupt is from EXTI3
 	if(EXTI->PR1 & EXTI_PR1_PIF3){
 		// Clear interrupt
-		EXTI->PR1 |= EXTI_PR1_PIF3;
+		EXTI->PR1 = EXTI_PR1_PIF3;
 
 		// Call callback
 		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0)
+			SevenSeg__printNum(SevenSeg__self, input);
 	}
 }
 
-void EXIT4_IRQHandler()
+void EXTI4_IRQHandler()
 {
 	// Check if interrupt is from EXTI4
 	if(EXTI->PR1 & EXTI_PR1_PIF4){
 		// Clear interrupt
-		EXTI->PR1 |= EXTI_PR1_PIF4;
+		EXTI->PR1 = EXTI_PR1_PIF4;
 
 		// Call callback
 		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0)
+			SevenSeg__printNum(SevenSeg__self, input);
 	}
 }
 
-void EXIT9_5_IRQHandler()
+void EXTI9_5_IRQHandler()
 {
 	// Check if interrupt is from EXTI5
 	if(EXTI->PR1 & EXTI_PR1_PIF5){
 		// Clear interrupt
-		EXTI->PR1 |= EXTI_PR1_PIF5;
+		EXTI->PR1 = EXTI_PR1_PIF5;
 
 		// Call callback
 		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0)
+			SevenSeg__printNum(SevenSeg__self, input);
+
 	}
 	// Check if interrupt is from EXTI6
 	if(EXTI->PR1 & EXTI_PR1_PIF6){
 		// Clear interrupt
-		EXTI->PR1 |= EXTI_PR1_PIF6;
+		EXTI->PR1 = EXTI_PR1_PIF6;
 
 		// Call callback
 		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0)
+			SevenSeg__printNum(SevenSeg__self, input);
 	}
 }
 #endif
 
 #ifdef lab_alarm
-void EXIT0_IRQHandler()
+void EXTI1_IRQHandler()
 {
-	// Check if interrupt is from EXTI0
-	if(EXTI->PR1 & EXTI_PR1_PIF0){
+	// Check if interrupt is from EXTI1
+	if(EXTI->PR1 & EXTI_PR1_PIF1){
 		// Clear interrupt
-		EXTI->PR1 |= EXTI_PR1_PIF0;
+		EXTI->PR1 = EXTI_PR1_PIF1;
+
+		// execute state transition
+		if(state == 1)
+		{
+			state = 2;
+			remainingTime = enteredSeconds;
+		}
+		else if(state == 3)
+		{
+			state = 1;
+			enteredSeconds = 0;
+		}
+	}
+}
+
+void EXTI3_IRQHandler()
+{
+	// Check if interrupt is from EXTI3
+	if(EXTI->PR1 & EXTI_PR1_PIF3){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF3;
 
 		// Call callback
-		ButtonInterrupt__callback(ButtonInterrupt__self);
+		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0 && state == 1)
+		{
+			enteredSeconds = input;
+			SevenSeg__printNum(SevenSeg__self, input);
+		}
+	}
+}
+
+void EXTI4_IRQHandler()
+{
+	// Check if interrupt is from EXTI4
+	if(EXTI->PR1 & EXTI_PR1_PIF4){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF4;
+
+		// Call callback
+		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0 && state == 1)
+		{
+			enteredSeconds = input;
+			SevenSeg__printNum(SevenSeg__self, input);
+		}
+	}
+}
+
+void EXTI9_5_IRQHandler()
+{
+	// Check if interrupt is from EXTI5
+	if(EXTI->PR1 & EXTI_PR1_PIF5){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF5;
+
+		// Call callback
+		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0 && state == 1)
+		{
+			enteredSeconds = input;
+			SevenSeg__printNum(SevenSeg__self, input);
+		}
+
+	}
+	// Check if interrupt is from EXTI6
+	if(EXTI->PR1 & EXTI_PR1_PIF6){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF6;
+
+		// Call callback
+		KeypadInterrupt__callback(KeypadInterrupt__self);
+		int input = Map_CharToNum(KeypadInterrupt__getChar(KeypadInterrupt__self));
+		if(input >= 0 && state == 1)
+		{
+			enteredSeconds = input;
+			SevenSeg__printNum(SevenSeg__self, input);
+		}
 	}
 }
 #endif
@@ -161,6 +284,26 @@ void EXIT0_IRQHandler()
 int main(){
 	// Cause we want to use floating points we need to init FPU
 	FPU_init();
+
+#ifdef lab_debug
+
+	Button button;
+	Button__construct(&button, BUTTON_gpio, BUTTON_pin);
+	Button__init(&button);
+	Led led;
+	Led__construct(&led, LED_gpio, LED_pin);
+	Led__init(&led);
+
+	while(1){
+		if(Button__read(&button)){
+			Led__write(&led, 1);
+		}
+		else{
+			Led__write(&led, 0);
+		}
+	}
+
+#endif
 
 #ifdef lab_systick_blink
 
@@ -261,12 +404,13 @@ int main(){
 
 #ifdef lab_interrupt_keypad
 	SystemClock SystemClock;
-	SystemClock__construct(&SystemClock, 10000000, 10000); // interrupt every 0.001s
+	SystemClock__construct(&SystemClock, 10000000, 1000000); // interrupt every 0.001s
 	SystemClock__init(&SystemClock);
 
-	SevenSeg SevenSeg;
-	SevenSeg__construct(&SevenSeg, SEG_gpio, DIN_pin, CS_pin, CLK_pin);
-	SevenSeg__init(&SevenSeg);
+	SevenSeg sevenSeg;
+	SevenSeg__construct(&sevenSeg, SEG_gpio, DIN_pin, CS_pin, CLK_pin);
+	SevenSeg__init(&sevenSeg);
+	SevenSeg__self = &sevenSeg;
 
 	KeypadInterrupt keypad;
 	KeypadInterrupt__construct(&keypad, ROW_gpio, COL_gpio, ROW_pin, COL_pin, 3);
@@ -277,30 +421,21 @@ int main(){
 
 	while(1)
 	{
-		char c = KeypadInterrupt__getChar(&keypad);
-		SevenSeg__printNum(&SevenSeg, c == '0' ? 0 :
-		                              c == '1' ? 1 :
-									  c == '2' ? 2 :
-									  c == '3' ? 3 :
-									  c == '4' ? 4 :
-									  c == '5' ? 5 :
-									  c == '6' ? 6 :
-									  c == '7' ? 7 :
-									  c == '8' ? 8 :
-									  c == '9' ? 9 : 
-									  c == 'A' ? 10 :
-									  c == 'B' ? 11 :
-									  c == 'C' ? 12 :
-									  c == 'D' ? 13 :
-									  c == '#' ? 14 :
-									  c == '*' ? 15 : -1
-		);
+		// char c = KeypadInterrupt__getChar(&keypad);
+		// if(c != 0)
+		// {
+		// 	SevenSeg__printNum(&sevenSeg, Map_CharToNum(c));
+		// }
+		// else
+		// {
+		// 	SevenSeg__printNum(&sevenSeg, 0);
+		// }
 	}
 
 #endif
 #ifdef lab_alarm
 	SystemClock SystemClock;
-	SystemClock__construct(&SystemClock, 4000000, 4000000); // interrupt every 1s
+	SystemClock__construct(&SystemClock, 4000000, 400000); // interrupt every 0.1s
 	SystemClock__init(&SystemClock);
 
 	Speaker speaker;
@@ -312,6 +447,7 @@ int main(){
 	SevenSeg sevenSeg;
 	SevenSeg__construct(&sevenSeg, SEG_gpio, DIN_pin, CS_pin, CLK_pin);
 	SevenSeg__init(&sevenSeg);
+	SevenSeg__self = &sevenSeg;
 
 	KeypadInterrupt keypad;
 	KeypadInterrupt__construct(&keypad, ROW_gpio, COL_gpio, ROW_pin, COL_pin, 3);
@@ -321,7 +457,7 @@ int main(){
 	KeypadInterrupt__callback = &KeypadInterrupt__callbackRefresh;
 
 	ButtonInterrupt button;
-	ButtonInterrupt__construct(&button, BUTTON_gpio, BUTTON_pin, 0);
+	ButtonInterrupt__construct(&button, BUTTON_gpio, BUTTON_pin, 1);
 	ButtonInterrupt__init(&button);
 	// for interrupt callback
 	ButtonInterrupt__self = &button;
@@ -330,33 +466,22 @@ int main(){
 	while(1)
 	{
 		// enter number of seconds
-		int seconds = 0;
-		while(1)
+		while(state == 1)
 		{
-			if(ButtonInterrupt__is_pressed(&button))
-				break;
-			char c = KeypadInterrupt__getCharPressed(&keypad);
-			if(c >= '0' && c <= '9')
-				seconds = seconds * 10 + c - '0';
-			if(seconds > 99999999)
-				seconds = 99999999;
-			SevenSeg__printNum(&sevenSeg, seconds);
+			// SevenSeg__printNum(&sevenSeg, enteredSeconds);
 		}
 
 		// start alarm
-		remainingTime = seconds;
 		SystemClock__reset(&SystemClock);
-		while(remainingTime > 0)
+		while(state == 2)
+		{
 			SevenSeg__printNum(&sevenSeg, remainingTime);
+		}
 
 		// ring alarm
-		musicCounterMs = 0;
-		while(1)
+		while(state == 3)
 		{
-			if(ButtonInterrupt__is_pressed(&button))
-				break;
-			else
-				Speaker__playIphoneRingtone(&speaker, musicCounterMs);
+			Speaker__playIphoneRingtone(&speaker, musicCounterMs);
 		}
 	}
 #endif

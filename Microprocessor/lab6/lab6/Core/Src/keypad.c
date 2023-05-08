@@ -1,4 +1,5 @@
 #include "keypad.h"
+#include "helper_functions.h"
 
 // Mapping for key-press
 const int keypad[4][4] = {
@@ -209,7 +210,7 @@ int KeypadInterrupt__init(KeypadInterrupt* self)
 		EXTI->IMR1 |= (1 << interruptIndex);
 		
 		// enable falling edge trigger
-		EXTI->FTSR1 |= (1 << interruptIndex);
+		// EXTI->FTSR1 |= (1 << interruptIndex);
 
 		// enable rising edge trigger
 		EXTI->RTSR1 |= (1 << interruptIndex);
@@ -234,9 +235,18 @@ void KeypadInterrupt__shiftOutput(KeypadInterrupt* self)
 	set_push(self->base.COL_gpio, self->currentOutputCol + self->base.COL_pin);
 }
 
-void KeypadInterrupt__callbackRefresh(KeypadInterrupt* self, int rowPinOffset)
+void KeypadInterrupt__callbackRefresh(KeypadInterrupt* self)
 {
-	Keypad__refresh(&self->base);
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++)
+		{
+			self->base.last_buttons[i][j] = self->base.buttons[i][j];
+			self->base.buttons[i][j] = 0;
+		}
+	for(int i = 0; i < 4; i++)
+	{
+		self->base.buttons[i][self->currentOutputCol] = read_gpio(self->base.ROW_gpio, self->base.ROW_pin + i);
+	}
 }
 
 char KeypadInterrupt__getChar(KeypadInterrupt* self)

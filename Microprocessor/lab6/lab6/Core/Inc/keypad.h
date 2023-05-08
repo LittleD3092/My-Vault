@@ -39,7 +39,7 @@ typedef struct KeypadInterrupt
 void KeypadInterrupt__construct(KeypadInterrupt* self, GPIO_TypeDef* ROW_gpio, GPIO_TypeDef* COL_gpio, int ROW_pin, int COL_pin, int EXTI_IRQn);
 int KeypadInterrupt__init(KeypadInterrupt* self);
 void KeypadInterrupt__shiftOutput(KeypadInterrupt* self);
-void KeypadInterrupt__callbackRefresh(KeypadInterrupt* self, int rowPinOffset);
+void KeypadInterrupt__callbackRefresh(KeypadInterrupt* self);
 char KeypadInterrupt__getChar(KeypadInterrupt* self);
 char KeypadInterrupt__getCharPressed(KeypadInterrupt* self);
 char KeypadInterrupt__getCharReleased(KeypadInterrupt* self);

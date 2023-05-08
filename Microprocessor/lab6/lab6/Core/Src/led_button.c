@@ -158,7 +158,7 @@ int ButtonInterrupt__init(ButtonInterrupt* button)
 	EXTI->IMR1 |= (1 << button->EXTI_IRQn);
 	
 	// enable falling edge trigger
-	EXTI->FTSR1 |= (1 << button->EXTI_IRQn);
+	// EXTI->FTSR1 |= (1 << button->EXTI_IRQn);
 
 	// enable rising edge trigger
 	EXTI->RTSR1 |= (1 << button->EXTI_IRQn);
@@ -172,6 +172,8 @@ int ButtonInterrupt__init(ButtonInterrupt* button)
 	else if(button->EXTI_IRQn >= 5 && button->EXTI_IRQn <= 9)   NVIC_EnableIRQ(EXTI9_5_IRQn);
 	else if(button->EXTI_IRQn >= 10 && button->EXTI_IRQn <= 15) NVIC_EnableIRQ(EXTI15_10_IRQn);
 	else                                                        return -1;
+
+	return 0;
 }
 
 int ButtonInterrupt__is_pressed(ButtonInterrupt* button){

@@ -6,7 +6,7 @@
 ../Core/Src/timer.c:110:6:timer_start	16	static
 ../Core/Src/timer.c:113:6:timer_stop	16	static
 ../Core/Src/timer.c:119:6:GPIO_init_AF	4	static
-../Core/Src/timer.c:128:6:PWM_channel_init	4	static
-../Core/Src/timer.c:149:6:Timer__init	16	static
-../Core/Src/timer.c:158:5:Timer__get_msecs	16	static
-../Core/Src/timer.c:164:6:Timer__refresh	16	static
+../Core/Src/timer.c:129:6:PWM_channel_init	4	static
+../Core/Src/timer.c:150:6:Timer__init	16	static
+../Core/Src/timer.c:159:5:Timer__get_msecs	16	static
+../Core/Src/timer.c:165:6:Timer__refresh	16	static
