@@ -16,6 +16,9 @@ Link:
 - Combinational Circuits:
 	- [[Adder]]
 	- [[Subtractor]]
+- Registers and Counters
+	- [[Registers]]
+	- [[Counters]]
 
 ---
 

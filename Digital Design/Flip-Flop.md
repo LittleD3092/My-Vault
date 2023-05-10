@@ -68,7 +68,7 @@ Positive-edge-triggered circuits respond when the clock signal switches from low
 
 Negative-edge-triggered circuits respond on the transition from high to low.
 
-![[positive-edge-triggered D flip-flop.png]]
+[[D Flip-Flop]]
 
 # JK Flip-Flop
 
