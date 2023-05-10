@@ -1,4 +1,12 @@
 `timescale 100ms/10ms
+
+// input:
+//     clr_: clear, active low
+//     enb:  enable counting
+//     clk:  clock, trigger counting
+// output:
+//     count: 4-bit BCD counter
+//     TC: 1-bit terminal count, 1 when count = 9
 module BCD_counter(count,TC,clr_, enb, clk) ;
 output [3:0] count ;
 output TC ;
@@ -21,6 +29,13 @@ always @ (posedge clk or negedge clr_) // combinational+sequential
 			count = count + 1;
 endmodule
 
+// input: 
+//     clr_: clear, active low
+//     enb:  enable counting
+//     clk:  clock, trigger counting
+// output:
+//     count: 3-bit hex counter, max = 5
+//     TC: 1-bit terminal count, 1 when count = 5
 module Hex_counter(count,TC,clr_, enb, clk) ;
 output [2:0] count ;
 output TC ;
