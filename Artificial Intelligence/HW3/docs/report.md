@@ -895,9 +895,62 @@ $$
 
 So I updated each weight using the formula and a for loop.
 
+## Part 3: DQN
+
+Default value:
+
+```
+Started Pacman DQN algorithm
+Model has been trained
+Episode no = 1; won: True; Q(s,a) = 216.01706689055456; reward = 701.0; and epsilon = 0.0
+Episode no = 2; won: False; Q(s,a) = 222.80669538820243; reward = -25.0; and epsilon = 0.0
+Episode no = 3; won: True; Q(s,a) = 217.03599451244423; reward = 774.0; and epsilon = 0.0
+Episode no = 4; won: True; Q(s,a) = 202.03268532238192; reward = 694.0; and epsilon = 0.0
+Episode no = 5; won: True; Q(s,a) = 217.24104625010315; reward = 734.0; and epsilon = 0.0
+Episode no = 6; won: True; Q(s,a) = 214.2216257997232; reward = 680.0; and epsilon = 0.0
+Episode no = 7; won: True; Q(s,a) = 206.7581969510947; reward = 722.0; and epsilon = 0.0
+Episode no = 8; won: True; Q(s,a) = 225.9402518391309; reward = 746.0; and epsilon = 0.0
+Episode no = 9; won: True; Q(s,a) = 197.10807076515093; reward = 753.0; and epsilon = 0.0
+Episode no = 10; won: True; Q(s,a) = 223.64456788903996; reward = 780.0; and epsilon = 0.0
+Episode no = 11; won: True; Q(s,a) = 220.47638215817304; reward = 740.0; and epsilon = 0.0
+Episode no = 12; won: True; Q(s,a) = 196.55103740493072; reward = 710.0; and epsilon = 0.0
+Episode no = 13; won: True; Q(s,a) = 205.00495091788295; reward = 732.0; and epsilon = 0.0
+Episode no = 14; won: True; Q(s,a) = 224.9098148943664; reward = 714.0; and epsilon = 0.0
+Episode no = 15; won: True; Q(s,a) = 214.98720458260024; reward = 649.0; and epsilon = 0.0
+Episode no = 16; won: False; Q(s,a) = 196.27857422863997; reward = -78.0; and epsilon = 0.0
+Episode no = 17; won: True; Q(s,a) = 195.11727562904954; reward = 751.0; and epsilon = 0.0
+Episode no = 18; won: True; Q(s,a) = 220.1039622141997; reward = 736.0; and epsilon = 0.0
+Episode no = 19; won: True; Q(s,a) = 195.82433362574025; reward = 661.0; and epsilon = 0.0
+Episode no = 20; won: False; Q(s,a) = 196.50722106234508; reward = 66.0; and epsilon = 0.0
+Pacman emerges victorious! Score: 1750
+Episode no = 21; won: True; Q(s,a) = 222.21446340332105; reward = 776.0; and epsilon = 0.0
+Pacman emerges victorious! Score: 936
+Episode no = 22; won: True; Q(s,a) = 206.1169270432688; reward = 580.0; and epsilon = 0.0
+Pacman emerges victorious! Score: 1536
+Episode no = 23; won: True; Q(s,a) = 207.74529007906696; reward = 700.0; and epsilon = 0.0
+Pacman emerges victorious! Score: 1478
+Episode no = 24; won: True; Q(s,a) = 218.275580794811; reward = 664.0; and epsilon = 0.0
+Pacman died! Score: 452
+Episode no = 25; won: False; Q(s,a) = 220.98262327816673; reward = 48.0; and epsilon = 0.0
+Average Score: 1230.4
+Scores:        1750.0, 936.0, 1536.0, 1478.0, 452.0
+Win Rate:      4/5 (0.80)
+Record:        Win, Win, Win, Win, Loss
+```
+
+
+
 ## Question
 
 1. What is the difference between On-policy and Off-policy?
    On-policy means that the agent uses the same policy to choose actions and to learn. Off-policy means that the agent uses two kinds of policies, one for choosing actions and one for learning.
 2. Briefly explain value-based, policy-based and Actor-Critic. Also, describe the value function $V^\pi (S)$.
-   
+   Value-based methods use a value function or action-value function to determine the best action to take. Policy-based methods directly maps states to actions. Actor-Critic methods use both value-based and policy-based methods, where the actor is the policy-based method and the critic is the value-based method. The value function $V^\pi (S)$ is the expected return starting from state $S$ and following policy $\pi$.
+3. What is the difference between Monte-Carlo (MC) based approach and Temporal-difference (TD) approach for estimating $V^\pi (S)$?
+   Monte-Carlo methods calculates and update the value function after each episode, while Temporal-difference methods calculates and update the value function after each step.
+4. Describe State-action value function $Q^\pi(s, a)$ and the relationship between $V^\pi(S)$ in Q-learning.
+   $Q^\pi(s, a)$ is a function that returns the current estimate of the expected return starting from state $s$ and take action $a$. $V^\pi(S)$ is the expected return starting from state $S$ and following policy $\pi$. $V^\pi(S)$ is the maximum value of $Q^\pi(s, a)$ over all possible actions $a$.
+5. Describe following tips Target Network, Exploration and Replay Buffer using in Q-learning.
+   Target Network is a copy of the main network that is updated less frequently to stabilize the learning process. Exploration is the process of encouraging the agent to take random actions to explore the environment. Replay Buffer is a data structure that stores states, actions, rewards, and next states. Replay Buffer can be used to train the agent by randomly sampling from the buffer, and this can make more efficient use of the experience.
+6. Explain what is different between DQN and Q-learning.
+   DQN is a deep learning version of Q-learning. DQN uses a neural network to approximate the Q-function, while Q-learning uses a matrix to store the Q-function.
