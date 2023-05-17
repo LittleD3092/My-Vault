@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "lab7",
+			"path": "../lab7"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.tcc": "c",
+			"fstream": "c",
+			"iosfwd": "c",
+			"istream": "c",
+			"limits": "c",
+			"sstream": "c",
+			"stop_token": "c",
+			"streambuf": "c",
+			"stm32l476xx.h": "c"
+		}
+	}
+}
