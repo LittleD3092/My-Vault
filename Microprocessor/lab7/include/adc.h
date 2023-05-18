@@ -37,5 +37,6 @@ enum Direction
 void ADC__construct(ADC *adc, ADC_TypeDef *adc_, GPIO_TypeDef *gpio, int pin, int use_interrupt, int channel, int rank);
 int ADC__init(ADC *adc);
 int ADC__read(ADC *adc);
+void ADC__setTotalConversion(ADC *adc, int total);
 
 #endif

@@ -314,6 +314,12 @@ int SevenSeg__printNumUpper(SevenSeg* self, int num)
 
 	int digits = num_digits(num);
 	if(num < 0) digits++;
+	
+	// clear screen
+	for(int i = 4; i < 8 - digits; i++)
+	{
+		send_7seg(self->gpio, self->DIN, self->CS, self->CLK, SEG_ADDRESS_DIGIT_0+i, SEG_DATA_DECODE_BLANK);
+	}
 
 	for(int i = 8 - digits; i < 8; i++)
 	{

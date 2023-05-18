@@ -103,10 +103,10 @@ void ADC__construct(ADC *adc, ADC_TypeDef *adc_, GPIO_TypeDef *gpio, int pin, in
 int ADC__init(ADC *adc)
 {
 
-	RCC->AHB2ENR |= RCC_AHB2ENR_ADCEN;
 	
 	if(adc->gpio == GPIOC)
 	{
+		RCC->AHB2ENR |= RCC_AHB2ENR_ADCEN;
 		GPIOC->MODER &= ~(3 << (adc->pin * 2));
 		GPIOC->MODER |= 3 << (adc->pin * 2);
 		GPIOC->ASCR |= 1 << adc->pin;
@@ -144,4 +144,9 @@ int ADC__read(ADC *adc)
 	while (!(ADC1->ISR & ADC_ISR_EOC));
 
 	return ADC1->DR;
+}
+
+void ADC__setTotalConversion(ADC *adc, int total)
+{
+	adc->adc->SQR1 |= total << ADC_SQR1_L_Pos;
 }
