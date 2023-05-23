@@ -16,19 +16,6 @@ void timer_stop(TIM_TypeDef *timer);
 void GPIO_init_AF();
 void PWM_channel_init();
 
-// Custom object Timer
-struct Timer
-{
-    TIM_TypeDef *timer;
-    int msecs;
-};
-typedef struct Timer Timer;
-void Timer__construct(Timer *timer, TIM_TypeDef *timer_type);
-int Timer__init(Timer* timer);
-int Timer__get_msecs(Timer *timer);
-// call this function at least once per second
-void Timer__refresh(Timer *timer);
-
 typedef struct SystemClock {
     int speed; // in Hz
     int counterMax;

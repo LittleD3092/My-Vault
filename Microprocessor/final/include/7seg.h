@@ -20,6 +20,7 @@
 #define SEG_DATA_NON_DECODE_D		0b0111101
 #define SEG_DATA_NON_DECODE_E		0b1001111
 #define SEG_DATA_NON_DECODE_F		0b1000111
+#define SEG_DATA_NON_DECODE_H		0b0110111
 #define SEG_DATA_NON_DECODE_DASH	0b0000001
 #define SEG_DATA_NON_DECODE_BLANK	0b0000000
 
@@ -76,12 +77,6 @@ struct fraction{
 	int a, b;
 };
 
-struct fraction add(struct fraction x, struct fraction y);
-struct fraction sub(struct fraction x, struct fraction y);
-struct fraction mul(struct fraction x, struct fraction y);
-struct fraction div(struct fraction x, struct fraction y);
-struct fraction calc(int *data, int n);
-
 void display_fraction(GPIO_TypeDef* gpio, int DIN, int CS, int CLK, struct fraction x);
 
 // ---
@@ -99,7 +94,5 @@ void SevenSeg__construct(SevenSeg* self, GPIO_TypeDef* gpio, int DIN, int CS, in
 void SevenSeg__init(SevenSeg* self);
 int SevenSeg__printNum(SevenSeg* self, int num);
 void SevenSeg__printFraction(SevenSeg* self, struct fraction x);
-int SevenSeg__printNumUpper(SevenSeg* self, int num);
-int SevenSeg__printNumLower(SevenSeg* self, int num);
 
 #endif

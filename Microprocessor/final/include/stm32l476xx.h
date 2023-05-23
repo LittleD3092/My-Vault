@@ -18492,31 +18492,6 @@ typedef struct
 #define DFSDM1_IRQHandler              DFSDM1_FLT1_IRQHandler
 #define DFSDM2_IRQHandler              DFSDM1_FLT2_IRQHandler
 #define DFSDM3_IRQHandler              DFSDM1_FLT3_IRQHandler
-/** @defgroup ADC_Private_Constants ADC Private Constants
-  * @{
-  */
-
-#define ADC_CFGR_FIELDS_1  ((uint32_t)(ADC_CFGR_RES    | ADC_CFGR_ALIGN   |\
-                                       ADC_CFGR_CONT   | ADC_CFGR_OVRMOD  |\
-                                       ADC_CFGR_DISCEN | ADC_CFGR_DISCNUM |\
-                                       ADC_CFGR_EXTEN  | ADC_CFGR_EXTSEL))   /*!< ADC_CFGR fields of parameters that can be updated
-                                                                                  when no regular conversion is on-going */
-
-#define ADC_CFGR_FIELDS_2  ((uint32_t)(ADC_CFGR_DMACFG | ADC_CFGR_AUTDLY))   /*!< ADC_CFGR fields of parameters that can be updated when no conversion
-                                                                                 (neither regular nor injected) is on-going  */
-
-#define ADC_CFGR2_FIELDS  ((uint32_t)(ADC_CFGR2_ROVSE | ADC_CFGR2_OVSR  |\
-                                       ADC_CFGR2_OVSS | ADC_CFGR2_TROVS |\
-                                       ADC_CFGR2_ROVSM))                     /*!< ADC_CFGR2 fields of parameters that can be updated when no conversion
-                                                                                 (neither regular nor injected) is on-going  */
-
-#define ADC_CFGR_WD_FIELDS  ((uint32_t)(ADC_CFGR_AWD1SGL | ADC_CFGR_JAWD1EN | \
-                                        ADC_CFGR_AWD1EN | ADC_CFGR_AWD1CH))  /*!< ADC_CFGR fields of Analog Watchdog parameters that can be updated when no
-                                                                                  conversion (neither regular nor injected) is on-going  */
-
-#define ADC_OFR_FIELDS  ((uint32_t)(ADC_OFR1_OFFSET1 | ADC_OFR1_OFFSET1_CH | ADC_OFR1_OFFSET1_EN)) /*!< ADC_OFR fields of parameters that can be updated when no conversion
-                                                                                                        (neither regular nor injected) is on-going */
-
 
 #ifdef __cplusplus
 }

@@ -1,313 +1,384 @@
 #include "stm32l476xx.h"
-#include "adc.h"
-#include "fpu.h"
-#include "led_button.h"
-#include "7seg.h"
-#include "timer.h"
 #include "helper_functions.h"
-#include "servo.h"
+#include "7seg.h"
+#include "keypad.h"
+#include "led_button.h"
+#include "timer.h"
+#include "speaker.h"
 
-// #define PART1
-// #define PART2
-#define PART3
+// #define QUESTION6
+// #define QUESTION7
+#define QUESTION8
 
-#ifdef PART1
-
-#define LED_GPIO GPIOA
-#define LED_PIN 5
-
-#define BUTTON_GPIO GPIOC
-#define BUTTON_PIN 13
-
-#define ADC_ADC ADC1
-#define ADC_GPIO GPIOC
-#define ADC_PIN 0
-
+#ifdef QUESTION6
+// define seven segment gpio
 #define SEVENSEG_GPIO GPIOC
 #define SEVENSEG_DIN 3
 #define SEVENSEG_CS 4
 #define SEVENSEG_CLK 5
 
-void SysTick_Handler() {
-	if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk){
-		ADCStartConversion(ADC1);
+// Define pins for led (default use on-board led PA5)
+#define LED_gpio GPIOA
+#define LED_pin 5
+
+// Define pins for button (default use on-board button PC13)
+#define BUTTON_gpio GPIOC
+#define BUTTON_pin 13
+
+// custom object for button and built-in led
+Led built_in_led;
+ButtonInterrupt button;
+
+int state = 0; // 0: display HAHA 1: flash LED
+int seconds = 0;
+
+// check button interrupt
+void EXTI3_IRQHandler()
+{
+	// Check if interrupt is from EXTI3
+	if(EXTI->PR1 & EXTI_PR1_PIF3){
+		// Clear interrupt
+		EXTI->PR1 = 0;
+
+		// Display "HAHA"
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_3, SEG_DATA_NON_DECODE_H);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_2, SEG_DATA_NON_DECODE_A);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_1, SEG_DATA_NON_DECODE_H);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_0, SEG_DATA_NON_DECODE_A);
+        state = 0;
+        seconds = 0;
 	}
-	return;
 }
 
-void ADC1_2_IRQHandler(){
-	if(ADC1->ISR & ADC_ISR_EOC){
-		ADC1->ISR &= ADC_ISR_EOC;
-	}
+// check systick interrupt
+void SysTick_Handler()
+{
+    if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
+    {
+        if(state == 0)
+            seconds++;
+        else if(state == 1)
+            Led__toggle(&built_in_led);
+
+        if(seconds == 3)
+        {
+            state = 1;
+            seconds = 0;
+            send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_3, SEG_DATA_NON_DECODE_BLANK);
+            send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_2, SEG_DATA_NON_DECODE_BLANK);
+            send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_1, SEG_DATA_NON_DECODE_BLANK);
+            send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_0, SEG_DATA_NON_DECODE_0);
+        }
+    }
 }
 
 int main()
 {
-	FPU__enable();
-
-	SystemClock system_clock;
-	SystemClock__construct(&system_clock, 4000000, 4000000);
-	SystemClock__init(&system_clock);
-	
-	Led led;
-	Led__construct(&led, LED_GPIO, LED_PIN);
-	Led__init(&led);
-
-	Button button;
-	Button__construct(&button, BUTTON_GPIO, BUTTON_PIN);
-	Button__init(&button);
-
-	ADC adc;
-	ADC__construct(
-		&adc, 
-		ADC_ADC, 
-		ADC_GPIO, 
-		ADC_PIN
-	);
-	ADC__init(&adc);
-
-	SevenSeg seven_seg;
-	SevenSeg__construct(
-		&seven_seg, 
-		SEVENSEG_GPIO, 
-		SEVENSEG_DIN, 
-		SEVENSEG_CS, 
-		SEVENSEG_CLK
-	);
-	SevenSeg__init(&seven_seg);
-
-	Timer timer;
-	Timer__construct(&timer, TIM3);
-	Timer__init(&timer);
-
-	int last_time = 0;
-	while(1)
-	{
-		int current_time = Timer__get_msecs(&timer);
-		if(current_time - last_time > 1000)
-		{
-			last_time = current_time;
-			SevenSeg__printNum(&seven_seg, ADC__read(&adc));
-			// SevenSeg__printNum(&seven_seg, current_time);
-		}
-		delay_ms(1);
+    // initialize seven segment
+    if(init_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK) != 0){
+		// Fail to init 7seg
+		return -1;
 	}
+
+	// Set Decode Mode to non-decode mode
+	send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DECODE_MODE, 0x00);
+	// Set Scan Limit to four digits
+	send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_SCAN_LIMIT, 0x03);
+	// Wakeup 7seg
+	send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_SHUTDOWN, 0x01);
+
+    // initialize system clock, led, and button
+    SystemClock sys_clock;
+    SystemClock__construct(&sys_clock, 4000000, 4000000);
+    SystemClock__init(&sys_clock);
+
+    Led__construct(&built_in_led, LED_gpio, LED_pin);
+    Led__init(&built_in_led);
+
+    ButtonInterrupt__construct(&button, BUTTON_gpio, BUTTON_pin, 3);
+    ButtonInterrupt__init(&button);
+
+    while(1)
+    {
+    }
 }
 #endif
 
-#ifdef PART2
-#define LED_GPIO GPIOA
-#define LED_PIN 5
-
-#define BUTTON_GPIO GPIOC
-#define BUTTON_PIN 13
-
-#define ADC1_ADC ADC1
-#define ADC1_GPIO GPIOC
-#define ADC1_PIN 0
-#define ADC1_USE_INTERRUPT 1
-#define ADC1_CHANNEL 1
-#define ADC1_RANK 1
-
-#define ADC2_ADC ADC1
-#define ADC2_GPIO GPIOC
-#define ADC2_PIN 1
-#define ADC2_USE_INTERRUPT 1
-#define ADC2_CHANNEL 2
-#define ADC2_RANK 2
-
+#ifdef QUESTION7
 #define SEVENSEG_GPIO GPIOC
 #define SEVENSEG_DIN 3
 #define SEVENSEG_CS 4
 #define SEVENSEG_CLK 5
 
-int adc_input[2] = {0, 0};
-int adc_index = 0;
+// Define pins for keypad
+// If need to change need to also change EXTI_Setup and IRQHandler
+#define COL_gpio GPIOA
+#define COL_pin 6       // 6 7 8 9
+#define ROW_gpio GPIOB
+#define ROW_pin 3       // 3 4 5 6
 
-void SysTick_Handler() {
-	if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk){
-		ADCStartConversion(ADC1);
-	}
-	return;
-}
+// The code for each number. For display purpose.
+const int seven_seg_encoding[16] = {
+    SEG_DATA_NON_DECODE_0,
+    SEG_DATA_NON_DECODE_1,
+    SEG_DATA_NON_DECODE_2,
+    SEG_DATA_NON_DECODE_3,
+    SEG_DATA_NON_DECODE_4,
+    SEG_DATA_NON_DECODE_5,
+    SEG_DATA_NON_DECODE_6,
+    SEG_DATA_NON_DECODE_7,
+    SEG_DATA_NON_DECODE_8,
+    SEG_DATA_NON_DECODE_9,
+    SEG_DATA_NON_DECODE_A,
+    SEG_DATA_NON_DECODE_B,
+    SEG_DATA_NON_DECODE_C,
+    SEG_DATA_NON_DECODE_D,
+    SEG_DATA_NON_DECODE_E,
+    SEG_DATA_NON_DECODE_F
+};
 
-void ADC1_2_IRQHandler(){
-	if(ADC1->ISR & ADC_ISR_EOC){
-		ADC1->ISR &= ADC_ISR_EOC;
-		adc_input[adc_index] = ADC1->DR;
-		adc_index = (adc_index + 1) % 2;
-	}
-}
+Keypad keypad1;
 
 int main()
 {
-	FPU__enable();
-
-	SystemClock system_clock;
-	SystemClock__construct(&system_clock, 4000000, 400000);
-	SystemClock__init(&system_clock);
-	
-	Led led;
-	Led__construct(&led, LED_GPIO, LED_PIN);
-	Led__init(&led);
-
-	Button button;
-	Button__construct(&button, BUTTON_GPIO, BUTTON_PIN);
-	Button__init(&button);
-
-	ADC adc1, adc2;
-
-	ADC__construct(
-		&adc1, 
-		ADC1_ADC, 
-		ADC1_GPIO, 
-		ADC1_PIN,
-		ADC1_USE_INTERRUPT,
-		ADC1_CHANNEL,
-		ADC1_RANK
-	);
-	ADC__init(&adc1);
-	ADC__construct(
-		&adc2, 
-		ADC2_ADC, 
-		ADC2_GPIO, 
-		ADC2_PIN,
-		ADC2_USE_INTERRUPT,
-		ADC2_CHANNEL,
-		ADC2_RANK
-	);
-	ADC__init(&adc2);
-
-	ADC__setTotalConversion(&adc1, 2);
-
-	SevenSeg seven_seg;
-	SevenSeg__construct(
-		&seven_seg, 
-		SEVENSEG_GPIO, 
-		SEVENSEG_DIN, 
-		SEVENSEG_CS, 
-		SEVENSEG_CLK
-	);
-	SevenSeg__init(&seven_seg);
-
-	Timer timer;
-	Timer__construct(&timer, TIM3);
-	Timer__init(&timer);
-
-	while(1)
-	{
-		struct fraction voltage1 = {
-			adc_input[0] * 33 / 4095,
-			10
-		};
-		SevenSeg__printFraction(&seven_seg, voltage1);
-		SevenSeg__printNumUpper(&seven_seg, 1);
-
-		// SevenSeg__printNumUpper(&seven_seg, 1);
-		// SevenSeg__printNumLower(&seven_seg, adc_input[0]);
-
-		delay_ms(500);
-
-		struct fraction voltage2 = {
-			adc_input[1] * 33 / 4095,
-			10
-		};
-		SevenSeg__printFraction(&seven_seg, voltage2);
-		SevenSeg__printNumUpper(&seven_seg, 2);
-
-		// SevenSeg__printNumUpper(&seven_seg, 2);
-		// SevenSeg__printNumLower(&seven_seg, adc_input[1]);
-
-		delay_ms(500);
-
-		struct fraction delta_voltage = {
-			abs(adc_input[0] - adc_input[1]) * 33 / 4095,
-			10
-		};
-
-		SevenSeg__printFraction(&seven_seg, delta_voltage);
-
-		delay_ms(500);
+    if(init_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK) != 0){
+		// Fail to init 7seg
+		return -1;
 	}
+
+	// Set Decode Mode to non-decode mode
+	send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DECODE_MODE, 0x00);
+	// Set Scan Limit to four digits
+	send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_SCAN_LIMIT, 0x03);
+	// Wakeup 7seg
+	send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_SHUTDOWN, 0x01);
+
+    // initialize keypad
+    Keypad__construct(&keypad1, ROW_gpio, COL_gpio, ROW_pin, COL_pin);
+    Keypad__init(&keypad1);
+
+    // print "   0" on 7seg
+    send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_3, SEG_DATA_NON_DECODE_BLANK);
+    send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_2, SEG_DATA_NON_DECODE_BLANK);
+    send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_1, SEG_DATA_NON_DECODE_BLANK);
+    send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_0, seven_seg_encoding[0]);
+    while(1)
+    {
+        // state 1: input first operand
+        int operand1[2] = {0, 0};
+        char operator = ' ';
+        int reset = 0;
+        while(1)
+        {
+            Keypad__refresh(&keypad1);
+            char key = Keypad__getCharPressed(&keypad1);
+            if(key >= '0' && key <= '9' && operand1[0] == 0)
+            {
+                operand1[0] = operand1[1];
+                operand1[1] = key - '0';
+                send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_1, seven_seg_encoding[operand1[1]]);
+                send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_0, seven_seg_encoding[operand1[0]]);
+            }
+            else if(key == 'A')
+                operator = '+';
+            else if(key == 'B')
+                operator = '-';
+            else if(key == 'C')
+                operator = '*';
+            else if(key == 'D')
+                operator = '/';
+            else if(key == '*')
+                reset = 1;
+
+            if(reset == 1 || operator != ' ')    break;
+        }
+        // continue while loop on reset
+        if(reset == 1)    continue;
+
+        // print operator on 7seg
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_1, SEG_DATA_DECODE_BLANK);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_0, seven_seg_encoding[0]);
+
+        // state 2: input second operand
+        int operand2[2] = {0, 0};
+        int result = 0;
+        while(1)
+        {
+            Keypad__refresh(&keypad1);
+            char key = Keypad__getCharPressed(&keypad1);
+            if(key >= '0' && key <= '9' && operand2[0] == 0)
+            {
+                operand2[0] = operand2[1];
+                operand2[1] = key - '0';
+            }
+            else if(key == '#')
+            {
+                if(operator == '+')
+                    result = operand1[0] + operand1[1] * 16 + operand2[0] + operand2[1] * 16;
+                else if(operator == '-')
+                    result = operand1[0] + operand1[1] * 16 - operand2[0] - operand2[1] * 16;
+                else if(operator == '*')
+                    result = (operand1[0] + operand1[1] * 16) * (operand2[0] + operand2[1] * 16);
+                else if(operator == '/')
+                    result = (operand1[0] + operand1[1] * 16) / (operand2[0] + operand2[1] * 16);
+                break;
+            }
+        }
+
+        // state 3: output
+        int result_digit[4] = {result, 0, 0, 0};
+        
+        for(int i = 1; i <= 3; i++)
+        {
+            result_digit[i] = result_digit[i - 1] / 16;
+            result_digit[i - 1] %= 16;
+        }
+
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_3, seven_seg_encoding[result_digit[3]]);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_2, seven_seg_encoding[result_digit[2]]);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_1, seven_seg_encoding[result_digit[1]]);
+        send_7seg(SEVENSEG_GPIO, SEVENSEG_DIN, SEVENSEG_CS, SEVENSEG_CLK, SEG_ADDRESS_DIGIT_0, seven_seg_encoding[result_digit[0]]);
+    }
 }
 #endif
 
-#ifdef PART3
+#ifdef QUESTION8
+#define LED_GPIO GPIOA
+#define LED_PIN 0
+#define LED_COUNT 4
+
 #define SEVENSEG_GPIO GPIOC
 #define SEVENSEG_DIN 3
 #define SEVENSEG_CS 4
 #define SEVENSEG_CLK 5
 
-#define SERVO_GPIO GPIOA
-#define SERVO_PIN 0
-#define SERVO_TIM TIM2
+SevenSeg sevenseg;
+
+// Define pins for keypad
+// If need to change need to also change EXTI_Setup and IRQHandler
+#define COL_gpio GPIOA
+#define COL_pin 6       // 6 7 8 9
+#define ROW_gpio GPIOB
+#define ROW_pin 3       // 3 4 5 6
+
+// Declare led array, score and lighting index
+Led ledarray[4];
+int score = 0;
+int lighting_index = 0; // which led is now lighting
+
+// custom rand function
+int rand()
+{
+    static int seed = 0;
+    seed = (seed * 1103515245 + 12345) % 2147483647;
+    return seed;
+}
+
+// clear all leds, then light up one random led
+void SysTick_Handler()
+{
+    if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
+    {
+        for(int i = 0; i < LED_COUNT; i++)
+            Led__write(&ledarray[i], 0);
+        lighting_index = rand() % LED_COUNT;
+        Led__write(&ledarray[lighting_index % LED_COUNT], 1);
+    }
+}
+
+// add score if correct button is pressed
+// update lights
+void EXTI3_IRQHandler()
+{
+	// Check if interrupt is from EXTI3
+	if(EXTI->PR1 & EXTI_PR1_PIF3){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF3;
+
+		// Call callback
+		if(lighting_index == 0)
+            score+=5;
+
+        lighting_index = rand() % LED_COUNT;
+        Led__write(&ledarray[lighting_index % LED_COUNT], 1);
+
+        SevenSeg__printNum(&sevenseg, score);
+	}
+}
+
+// add score if correct button is pressed
+// update lights
+void EXTI4_IRQHandler()
+{
+	// Check if interrupt is from EXTI4
+	if(EXTI->PR1 & EXTI_PR1_PIF4){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF4;
+
+		// Call callback
+		if(lighting_index == 1)
+            score+=5;
+
+        lighting_index = rand() % LED_COUNT;
+        Led__write(&ledarray[lighting_index % LED_COUNT], 1);
+
+        SevenSeg__printNum(&sevenseg, score);
+	}
+}
+
+// add score if correct button is pressed
+// update lights
+void EXTI9_5_IRQHandler()
+{
+	// Check if interrupt is from EXTI5
+	if(EXTI->PR1 & EXTI_PR1_PIF5){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF5;
+
+		// Call callback
+		if(lighting_index == 2)
+            score+=5;
+
+        lighting_index = rand() % LED_COUNT;
+        Led__write(&ledarray[lighting_index % LED_COUNT], 1);
+
+        SevenSeg__printNum(&sevenseg, score);
+	}
+	// Check if interrupt is from EXTI6
+	if(EXTI->PR1 & EXTI_PR1_PIF6){
+		// Clear interrupt
+		EXTI->PR1 = EXTI_PR1_PIF6;
+
+		// Call callback
+		if(lighting_index == 3)
+            score+=5;
+
+        lighting_index = rand() % LED_COUNT;
+        Led__write(&ledarray[lighting_index % LED_COUNT], 1);
+
+        SevenSeg__printNum(&sevenseg, score);
+	}
+}
 
 int main()
 {
-	SevenSeg seven_seg;
-	SevenSeg__construct(
-		&seven_seg, 
-		SEVENSEG_GPIO, 
-		SEVENSEG_DIN, 
-		SEVENSEG_CS, 
-		SEVENSEG_CLK
-	);
-	SevenSeg__init(&seven_seg);
+    // Setup system clock, interrupt on each second.
+    SystemClock clock;
+    SystemClock__construct(&clock, 4000000, 4000000);
 
-	Servo servo;
-	Servo__construct(&servo, SERVO_GPIO, SERVO_PIN, SERVO_TIM);
-	Servo__init(&servo);
+    // Setup keypad and interrupt parameters
+    KeypadInterrupt keypad1;
+    KeypadInterrupt__construct(&keypad1, ROW_gpio, COL_gpio, ROW_pin, COL_pin, 3);
+    KeypadInterrupt__init(&keypad1);
 
-	Timer timer;
-	Timer__construct(&timer, TIM3);
-	Timer__init(&timer);
+    // Setup each led
+    for(int i = 0; i < LED_COUNT; i++)
+    {
+        Led__construct(&ledarray[i], LED_GPIO, LED_PIN + i);
+        Led__init(&ledarray[i]);
+    }
 
-	while(1)
-	{
-		int current_time_ms = Timer__get_msecs(&timer) % 8000;
-		SevenSeg__printNumLower(&seven_seg, servo.timer->CCR1);
-		SevenSeg__printNumUpper(&seven_seg, servo.timer->ARR);
-
-		if(current_time_ms < 1000)
-		{
-			Servo__write(&servo, 0);
-			// SevenSeg__printNumUpper(&seven_seg, 0);
-		}
-		else if(current_time_ms < 2000)
-		{
-			Servo__write(&servo, 45);
-			// SevenSeg__printNumUpper(&seven_seg, 45);
-		}
-		else if(current_time_ms < 3000)
-		{
-			Servo__write(&servo, 90);
-			// SevenSeg__printNumUpper(&seven_seg, 90);
-		}
-		else if(current_time_ms < 4000)
-		{
-			Servo__write(&servo, 135);
-			// SevenSeg__printNumUpper(&seven_seg, 135);
-		}
-		else if(current_time_ms < 5000)
-		{
-			Servo__write(&servo, 180);
-			// SevenSeg__printNumUpper(&seven_seg, 180);
-		}
-		else if(current_time_ms < 6000)
-		{
-			Servo__write(&servo, 135);
-			// SevenSeg__printNumUpper(&seven_seg, 135);
-		}
-		else if(current_time_ms < 7000)
-		{
-			Servo__write(&servo, 90);
-			// SevenSeg__printNumUpper(&seven_seg, 90);
-		}
-		else if(current_time_ms < 8000)
-		{
-			Servo__write(&servo, 45);
-			// SevenSeg__printNumUpper(&seven_seg, 45);
-		}
-	}
+    while(1)
+    {}
 }
 #endif

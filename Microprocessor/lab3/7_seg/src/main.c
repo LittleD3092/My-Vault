@@ -118,8 +118,6 @@ int main(){
 	send_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin, SEG_ADDRESS_SCAN_LIMIT, 0x07);
 	// Wakeup 7seg
 	send_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin, SEG_ADDRESS_SHUTDOWN, 0x01);
-	// Set brightness to 5/15
-	send_7seg(SEG_gpio, DIN_pin, CS_pin, CLK_pin, SEG_ADDRESS_INTENSITY, 0x05);
 
 	// setup button
 	if(init_button(BUTTON_gpio, BUTTON_pin) != 0){

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "final",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"7seg.h": "c",
+			"cstdlib": "c"
+		}
+	}
+}

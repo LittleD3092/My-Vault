@@ -149,43 +149,6 @@ void PWM_channel_init(){
 	TIM2->PSC = 0;
 }
 
-void Timer__construct(Timer* timer, TIM_TypeDef *timer_type)
-{
-	timer->timer = timer_type;
-	timer->msecs = -1;
-}
-
-int Timer__init(Timer* timer)
-{
-	timer_enable(timer->timer);
-	timer_init(timer->timer, 4000, 1000);
-	timer_start(timer->timer);
-	return 0;
-}
-
-int Timer__get_msecs(Timer* timer)
-{
-	Timer__refresh(timer);
-	return timer->msecs;
-}
-
-void Timer__refresh(Timer* timer)
-{
-	if(timer->timer->SR & TIM_SR_UIF)
-	{
-		timer->msecs -= timer->msecs % 1000;
-		timer->msecs += 1000;
-		timer->msecs += timer->timer->CNT;
-		timer->timer->SR &= ~TIM_SR_UIF;
-	}
-	else
-	{
-		timer->msecs -= timer->msecs % 1000;
-		timer->msecs += timer->timer->CNT;
-	}
-}
-
-// speed: MHz
 void SystemClock__construct(SystemClock* self, int speed, int counterMax)
 {
 	self->speed = speed;

@@ -1,6 +1,14 @@
-#include "stm32l476xx.h"
 #include "helper_functions.h"
 
+int read_gpio(GPIO_TypeDef* gpio, int pin){
+	return (gpio->IDR >> pin) & 1;
+}
+void set_gpio(GPIO_TypeDef* gpio, int pin){
+	gpio->BSRR |= (1 << pin);
+}
+void reset_gpio(GPIO_TypeDef* gpio, int pin){
+	gpio->BRR |= (1 << pin);
+}
 void toggle_output(GPIO_TypeDef* gpio, int pin){
 	if(read_gpio(gpio, pin)==0){
 		set_gpio(gpio, pin);
@@ -11,22 +19,25 @@ void toggle_output(GPIO_TypeDef* gpio, int pin){
 }
 
 void set_push(GPIO_TypeDef* gpio, int pin){
-	gpio->OTYPER |= (1 << pin);
-}
-void reset_push(GPIO_TypeDef* gpio, int pin){
 	gpio->OTYPER &= ~(1 << pin);
 }
-
-void timer_set_interrupt(TIM_TypeDef *timer){
-	timer->DIER |= TIM_DIER_UIE;
+void reset_push(GPIO_TypeDef* gpio, int pin){
+	gpio->OTYPER |= (1 << pin);
 }
 
-int gcd(int a, int b){
-	while((a %= b) && (b %= a));
-	return a + b;
+void FPU_init(){
+	// Setup FPU
+	SCB->CPACR |= (0xF << 20);
+	__DSB();
+	__ISB();
 }
-int lcm(int a, int b){
-	return a / gcd(a, b) * b;
+
+void delay_without_interrupt(float msec){
+	int loop_cnt = 500*msec;
+	while(loop_cnt){
+		loop_cnt--;
+	}
+	return;
 }
 
 int num_digits(int x){
@@ -41,10 +52,10 @@ int num_digits(int x){
 	return res;
 }
 
-void delay_without_interrupt(float msec){
-	int loop_cnt = 500*msec;
-	while(loop_cnt){
-		loop_cnt--;
-	}
-	return;
+int gcd(int a, int b){
+	while((a %= b) && (b %= a));
+	return a + b;
+}
+int lcm(int a, int b){
+	return a / gcd(a, b) * b;
 }
