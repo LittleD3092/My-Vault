@@ -24,9 +24,7 @@ Link:
 	- [[Loop]]
 	- [[Function]]
 
-**MIPS assemply language cheat sheet**:
-
-![[Pasted image 20230312164252.png]]
+**MIPS assemply language cheat sheet**: [[Computer-Organization/reference/MIPS_ISA_Sheet.pdf|MIPS_ISA_Sheet]]
 
 ## MIPS Fields
 

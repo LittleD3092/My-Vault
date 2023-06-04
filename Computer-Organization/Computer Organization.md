@@ -11,6 +11,8 @@ Link:
 - [[Instructions]]: Computer's language.
 - [[Translating Program]]
 - [[Data Representation]]
+- [[MIPS Implementation]]
+	- [[ALU (Arithmetic Logic Unit)]]
 
 ---
 

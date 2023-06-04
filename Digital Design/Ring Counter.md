@@ -1,18 +1,17 @@
 Tag: #digital-design 
-Previous: [[Digital Design]]
+Previous: [[Counters]]
 Link: 
 
 [TOC]
 
 ---
 
-Definition:
+- A ring counter is a circular shift register with only one bit set at any particular time. All other bits are 0.
+- An example of a four-bit ring counter:
 
-- A [[Registers|register]] that goes through a sequence of binary states.
-- A special type of [[Registers|register]].
-- Some counters:
-	- [[Ring Counter]]
-	- [[Johnson Counter]]
+![[Pasted image 20230527172555.png|500]]
+
+- A [[Johnson Counter|Johnson counter]] is a variation of ring counter.
 
 ---
 

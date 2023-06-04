@@ -110,6 +110,23 @@ Therefore, using [[AND]] gates and [[OR]] gates, the logic diagram is:
 
 ![[Pasted image 20230420141246.png|400]]
 
+# T Flip-Flop
+
+T flip-flop is a flip-flop that inverts its output when the input is true.
+
+![[Pasted image 20230523195836.png|200]]
+
+![[Pasted image 20230523195934.png|300]]
+
+Truth table:
+
+| $T$ | $Q$ | $Q_{\rm next}$ | Action |
+| --- | --- | -------------- | ------ |
+| 0   | 0   | 0              | Hold   |
+| 0   | 1   | 1              | Hold   |
+| 1   | 0   | 1              | Invert |
+| 1   | 1   | 0              | Invert | 
+
 ---
 
 # Reference

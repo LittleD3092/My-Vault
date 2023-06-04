@@ -12,6 +12,8 @@ State table is like a [[Truth Table]], with the form of the following:
 | ----- | ------------- | ---------- | ------ |
 | ...   | ...           | ...        | ...    | 
 
+- **Output** is the output of the next state (after transition).
+
 ---
 
 # Reference
