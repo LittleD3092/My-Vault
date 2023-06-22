@@ -36,6 +36,16 @@ For a computer to start running, it goes through the following steps:
 	- Some services are known as **system processes**, or **system daemons**.
 3. The system is booted.
 
+# What Operating System Do
+
+The operating system is responsible for the following activities in connection with process management:
+
+- Scheduling processes and threads on the CPUs.
+- Creating and deleting both user and system processes.
+- Suspending and resuming processes.
+- Providing mechanisms for process synchronization.
+- Providing mechanisms for process communication.
+
 ---
 
 # Reference
