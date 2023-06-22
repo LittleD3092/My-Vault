@@ -38,13 +38,22 @@ For a computer to start running, it goes through the following steps:
 
 # What Operating System Do
 
-The operating system is responsible for the following activities in connection with process management:
-
-- Scheduling processes and threads on the CPUs.
-- Creating and deleting both user and system processes.
-- Suspending and resuming processes.
-- Providing mechanisms for process synchronization.
-- Providing mechanisms for process communication.
+- **Process management**:
+	- Scheduling processes and threads on the CPUs.
+	- Creating and deleting both user and system processes.
+	- Suspending and resuming processes.
+	- Providing mechanisms for process synchronization.
+	- Providing mechanisms for process communication.
+- **Memory management**:
+	- Keeping track of which parts of memory are currently being used and who is using them.
+	- Deciding which process and data to move into and out of memory.
+	- Allocating and deallocating memory space as needed.
+- **File management**:
+	- Creating and deleting files.
+	- Creating and deleting directories to organize files.
+	- Supporting primitives for manipulating files and directories.
+	- Mapping files onto secondary storage.
+	- Backing up files on stable (nonvolatile) storage media.
 
 ---
 
