@@ -55,6 +55,70 @@ For a computer to start running, it goes through the following steps:
 	- Mapping files onto secondary storage.
 	- Backing up files on stable (nonvolatile) storage media.
 
+# Structures
+
+We can view operating system based on 3 aspects:
+
+- [[#Services]]
+- [[#Interfaces]]
+- [[#Components and Interconnections]]
+
+## Services
+
+![[Pasted image 20230623163107.png|500]]
+
+Some services:
+
+- **User Interface**: This can take several forms.
+	- **Command-line Interface** (CLI): Text commands.
+	- **Batch Interface**: The commands are saved as files, and the files are executed.
+	- **Graphical User Interface** (GUI): A window system with a pointing device to select menus and buttons.
+- **Program Execution**: Load the program into memory and run. The program must be able to end itself, either normally or abnormally.
+- **I/O Operations**: Control I/O devices such as CDs, DVDs, or screen.
+- **File-system Manipulation**: Create, delete, read, write and list files and directories.
+- **Communications**: Exchanging information with another process.
+	- This can be implemented by:
+		- **Shared Memory**: Two or more processes read and write to a shared section of memory.
+		- **Message Passing**: Packets of information are moved between processes by the operating system.
+- **Error Detection**: Detect components errors.
+	- Some errors for example:
+		- Memory error.
+		- Power failure.
+		- Parity error on disk.
+		- Connection failure on a network.
+		- Lack of paper in the printer.
+
+Another set of services exists for ensuring the efficient operation of the system itself.
+
+- **Resource allocation**: Allocates resources to multiple jobs or users.
+- **Accounting**: Keep track of the usage of individual users.
+- **Protection and Security**:
+	- Protects information from unauthorised processes.
+	- Protects system resources.
+	- Use authentications.
+	- Defending external I/O devices from invalid access attempts.
+
+## Interfaces
+
+Two fundamental approches for users to interface with the operating system is listed below:
+
+- **Command Interpreters**
+	- The interpreters are known as **shells**.
+	- The commands include create, delete, list, print, copy, execute, and so on.
+	- There are two ways to implement the commands:
+		- The code is built into the interpreter. 
+			1. User enters a command.
+			2. The interpreter jumps to the corresponding section and execute the code.
+		- The interpreter locate the file corresponding to the command. (Used by UNIX and most systems)
+			1. Note that the interpreter does not understand the code.
+			2. User enters a command.
+			3. Interpreter uses the command to identify a file to execute.
+			4. In this way, programmers can add new commands by creating new files with proper names.
+- **Graphical User Interfaces**
+	- Users use a mouse-based window-and-menu system.
+
+## Components and Interconnections
+
 ---
 
 # Reference
