@@ -55,7 +55,7 @@ For a computer to start running, it goes through the following steps:
 	- Mapping files onto secondary storage.
 	- Backing up files on stable (nonvolatile) storage media.
 
-# Structures
+# View of Operating System
 
 We can view operating system based on 3 aspects:
 
@@ -158,6 +158,20 @@ There is no best solutions to these requirements, but there are some principles:
 
 > For example, how a timer construct works is **mechanism**, and how long the timer should be set is **policy**.
 > The **mechanism** can be fixed, and **policy** may vary depending on the requirements.
+
+# Structure
+
+There are different kinds of structures. Some are divided into **modules**, some are not.
+
+## Simple Structure
+
+- Many operating systems do not have well-defined structures.
+- Such systems started as small and limited systems, then grew beyond its original scope.
+- Example: MS-DOS, original UNIX.
+
+## Layered Approach
+
+
 
 ---
 
