@@ -193,6 +193,54 @@ There are different kinds of structures. Some are divided into **modules**, some
 	- The communication is provided through [[Message Passing|message passing]].
 - Disadvantage: The performance can suffer due to increased system-function overhead.
 
+## Modules
+
+- Using **loadable kernel modules**.
+	- Has a set of core components.
+	- The core components links additional services via modules.
+- The best for now.
+- Example:
+	- Build CPU scheduling and memory management into the kernel.
+	- Add support for different file systems by loadable modules.
+- Similar, but more flexible compared to [[#Layered Approach]].
+
+![[Pasted image 20230626171104.png|400]]
+
+## Hybrid Systems
+
+- In practice, operating systems combine different structure, resulting in hybrid systems.
+- Example:
+	- Linux and Solaris are monolithic, because it provides very efficient performance.
+	- They are also modular, so that new functionality can be added.
+- Another example:
+	- Windows is monolithic, for performance reasons.
+	- It has some behavior of microkernels, providing support for separate subsystems.
+
+# Debugging
+
+- Note: debugging can also include **performance tuning**, by removing processing **bottlenecks**.
+
+## Failure Analysis
+
+For user processes:
+
+- If a process fails, most operating systems write the error information to a **log file**.
+- The operating system can also take a **core dump** and store it in a file.
+	- **Core dump**: A capture of the memory of the process.
+
+For operating system kernels:
+
+- A failure in the kernel is called a **crash**.
+- When a crash happens:
+	- Error information is saved to a log file.
+	- Memory state is saved to a **crash dump**.
+
+## Performance Tuning
+
+- The operating system produces **trace listings** of system behavior.
+	- Interesting events are logged with their time and important parameters.
+	- The trace listings are written to a file.
+
 ---
 
 # Reference
