@@ -241,6 +241,12 @@ For operating system kernels:
 	- Interesting events are logged with their time and important parameters.
 	- The trace listings are written to a file.
 
+# Process
+
+A process can be thought of as a program in execution.
+
+> [[Process]]
+
 ---
 
 # Reference
