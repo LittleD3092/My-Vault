@@ -1,4 +1,4 @@
-Tag: #operating-system 
+Tag: #operating-system #list 
 Previous: [[Operating System]]
 Link: 
 
@@ -57,22 +57,9 @@ waiting --"I/O or event completion"--> ready
 
 # Process Control Block
 
-- Each process is represented in the operating system by a **process control block (PCB)**.
-- Process control block is also called **task control block**.
+Each process is represented in the operating system by a **process control block (PCB)**.
 
-Process control block includes the following information:
-
-- [[#Process State]]: The state of the process.
-- [[Program Counter]]: Indicates the address of the next instruction.
-- **CPU Registers**: This must be saved so that the process can be continued after an interrupt.
-- **CPU-scheduling information**: Contains process priority, pointers to scheduling queues, and any other scheduling parameters.
-- **Memory-management information**: May include the value of the base and limit registers and the page tables, or the segment tables, depending on the memory system used by the operating system.
-- **Accounting information**: The amount of CPU and real time used, time limits, account numbers, job or process numbers.
-- **I/O status information**: The list of I/O devices allocated to the process, a list of open files.
-
-When CPU switch between processes $P_0$ and $P_1$:
-
-![[Pasted image 20230626213145.png|400]]
+> [[Process Control Block]]
 
 # Process Scheduling
 
@@ -254,9 +241,14 @@ If the parent did not invoke `wait` and instead terminated, the child processes 
 
 There are several reasons that we want cooperating processes:
 
-1. **Information sharing**: For shared files, for example.
-2. **Computation speedup**: We may run multiple subtasks in parallel and in multiple processing cores.
-3. **Modularity**: 
+1. **Information sharing**
+2. **Computation speedup**
+3. **Modularity**
+4. **Convenience**
+
+Cooperating processes require a mechanism called [[Interprocess Communication]].
+
+> [[Interprocess Communication]]
 
 ---
 
