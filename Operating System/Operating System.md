@@ -23,7 +23,9 @@ As above figure shows, a computer system can be divided into four components.
 - Application programs.
 - Users.
 
-# Computer System Operation
+# Basics of Operating System
+
+## Computer System Operation
 
 For a computer to start running, it goes through the following steps:
 
@@ -36,7 +38,7 @@ For a computer to start running, it goes through the following steps:
 	- Some services are known as **system processes**, or **system daemons**.
 3. The system is booted.
 
-# What Operating System Do
+## What Operating System Do
 
 - **Process management**:
 	- Scheduling processes and threads on the CPUs.
@@ -55,7 +57,7 @@ For a computer to start running, it goes through the following steps:
 	- Mapping files onto secondary storage.
 	- Backing up files on stable (nonvolatile) storage media.
 
-# View of Operating System
+## View of Operating System
 
 We can view operating system based on 3 aspects:
 
@@ -63,7 +65,7 @@ We can view operating system based on 3 aspects:
 - [[#Interfaces]]
 - [[#Components and Interconnections]]
 
-## Services
+### Services
 
 ![[Pasted image 20230623163107.png|500]]
 
@@ -98,7 +100,7 @@ Another set of services exists for ensuring the efficient operation of the syste
 	- Use authentications.
 	- Defending external I/O devices from invalid access attempts.
 
-## Interfaces
+### Interfaces
 
 Two fundamental approches for users to interface with the operating system is listed below:
 
@@ -117,21 +119,21 @@ Two fundamental approches for users to interface with the operating system is li
 - **Graphical User Interfaces**
 	- Users use a mouse-based window-and-menu system.
 
-### System Call
+#### System Call
 
 System calls provide an interface to the services.
 
 > [[System Call]]
 
-## Components and Interconnections
+### Components and Interconnections
 
-### System Programs
+#### System Programs
 
 [[System Programs|System programs]], also known as system utilities, provide a convenient environment for program development and execution.
 
 > [[System Programs]]
 
-### Design Factors
+#### Design Factors
 
 - The design may be affected by the choice of hardware and the type of system. Some factors:
 	- Batch
@@ -159,17 +161,17 @@ There is no best solutions to these requirements, but there are some principles:
 > For example, how a timer construct works is **mechanism**, and how long the timer should be set is **policy**.
 > The **mechanism** can be fixed, and **policy** may vary depending on the requirements.
 
-# Structure
+## Structure
 
 There are different kinds of structures. Some are divided into **modules**, some are not.
 
-## Simple Structure
+### Simple Structure
 
 - Many operating systems do not have well-defined structures.
 - Such systems started as small and limited systems, then grew beyond its original scope.
 - Example: MS-DOS, original UNIX.
 
-## Layered Approach
+### Layered Approach
 
 - One of the methods to make a system modular is the **layered approach**,
 - The operating system is broken into a number of layers.
@@ -182,7 +184,7 @@ There are different kinds of structures. Some are divided into **modules**, some
 	- The layers only uses functions, operations, and services from lower levels.
 - Disadvantage: The difficulty when defining the various layers.
 
-## Microkernels
+### Microkernels
 
 - As UNIX expanded, the kernel became large and difficult to manage.
 - This method structures the operating system by removing all nonessential components from the kernel and implementing them as system and user-level programs.
@@ -193,7 +195,7 @@ There are different kinds of structures. Some are divided into **modules**, some
 	- The communication is provided through [[Message Passing|message passing]].
 - Disadvantage: The performance can suffer due to increased system-function overhead.
 
-## Modules
+### Modules
 
 - Using **loadable kernel modules**.
 	- Has a set of core components.
@@ -206,7 +208,7 @@ There are different kinds of structures. Some are divided into **modules**, some
 
 ![[Pasted image 20230626171104.png|400]]
 
-## Hybrid Systems
+### Hybrid Systems
 
 - In practice, operating systems combine different structure, resulting in hybrid systems.
 - Example:
@@ -216,11 +218,11 @@ There are different kinds of structures. Some are divided into **modules**, some
 	- Windows is monolithic, for performance reasons.
 	- It has some behavior of microkernels, providing support for separate subsystems.
 
-# Debugging
+## Debugging
 
 - Note: debugging can also include **performance tuning**, by removing processing **bottlenecks**.
 
-## Failure Analysis
+### Failure Analysis
 
 For user processes:
 
@@ -235,7 +237,7 @@ For operating system kernels:
 	- Error information is saved to a log file.
 	- Memory state is saved to a **crash dump**.
 
-## Performance Tuning
+### Performance Tuning
 
 - The operating system produces **trace listings** of system behavior.
 	- Interesting events are logged with their time and important parameters.
@@ -246,6 +248,10 @@ For operating system kernels:
 A process can be thought of as a program in execution.
 
 > [[Process]]
+
+# Threads
+
+> [[Threads]]
 
 ---
 
