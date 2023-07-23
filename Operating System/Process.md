@@ -250,6 +250,10 @@ Cooperating processes require a mechanism called [[Interprocess Communication]].
 
 > [[Interprocess Communication]]
 
+# Process Synchronization
+
+> [[Process Synchronization]]
+
 ---
 
 # Reference
