@@ -1,4 +1,4 @@
-標籤: #DataStructure 
+標籤: #DataStructure #algorithm #network-science
 
 ---
 
@@ -300,6 +300,17 @@ Before we jump into the algorithms, we must know what ==relaxation== means. Rela
 if(d[u] + c(u, v) < d[v])
 	d[v] = d[u] + c(u, v) // update distance
 ```
+
+# Special Graphs
+
+This section lists some special graphs, and their given names.
+
+| Graph Name       | Explanation                                                           | Example                              |
+| ---------------- | --------------------------------------------------------------------- | ------------------------------------ |
+| Regular Graph    | Each vertex have same number of adjacent links.                       | ![[Pasted image 20230912231206.png]] |
+| Random Graph     | The vertices connect each other by probability.                       |                                      |
+| Lattice Graph    | A graph forming a regular tiling.                                     | ![[Pasted image 20230912231426.png]] |
+| Trivial Topology | The available sets of vertices contain only empty set and entire set. | Single vertex.                       | 
 
 ---
 
