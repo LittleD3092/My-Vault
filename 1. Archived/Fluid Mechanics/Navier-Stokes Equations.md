@@ -44,7 +44,7 @@ $$\left\{
 	\end{array}
 \right.$$
 
-Substitude the above expression into [[Fluid Motion#Differential Momentum Equation]]
+Substitute the above expression into [[Fluid Motion#Differential Momentum Equation]]
 
 $$
 \left\{
@@ -177,7 +177,7 @@ $$
 
 參考資料:
 
-Introductino to Fluid Mechanics, 10th edition
+Introduction to Fluid Mechanics, 10th edition
 
 ---
 

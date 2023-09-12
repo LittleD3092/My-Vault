@@ -545,7 +545,83 @@ grid_end_index = int(
 )
 ```
 
-#### 5.11.x. MIDI副檔名
+#### 5.11.2. 重複按下的按鍵
+
+考慮一種情況，依照時間順序分別發生以下事件：
+
+1. 按下第15個鍵
+2. 按下第15個鍵
+3. 放開第15個鍵
+4. 放開第15個鍵
+
+這種情況在真實情況中不可能發生，因為在一個鍵尚未放開的時候不可能再按下一次。但是在我們的資料集中有這種情形，因此我們必須要處理這類的情況。
+
+以下為修改過後的程式碼：
+
+```python
+if msg.velocity and msg.type=="note_on":
+	# update notes one
+	notes_on = np.hstack( (notes_on,note) )
+	start_events = np.hstack( (start_events,cur_time) )
+# note off
+else:
+	note_idx = np.where(notes_on==note)[0]
+	start_event = start_events[note_idx][0]
+	events.append(((start_event,cur_time,note)))
+	notes_on = np.delete(notes_on,note_idx[0]); start_events = np.delete(start_events,note_idx[0])
+```
+
+#### 5.11.3. 處理沒按下卻放開的event
+
+這類event較少出現，但是還是有。這種情形應該要忽略，因此我們可以用一個`try`包起來。以下是修改後的程式碼：
+
+```python
+# note on
+if msg.velocity and msg.type=="note_on":
+	# update notes one
+	notes_on = np.hstack( (notes_on,note) )
+	start_events = np.hstack( (start_events,cur_time) )
+# note off
+else:
+	try:
+		# print("notes_on:", notes_on)
+		# print("note:", note)
+		# print('start_events:', start_events)
+		note_idx = np.where(notes_on==note)[0]
+		# print("note_idx:", note_idx)
+		start_event = start_events[note_idx][0]
+		events.append(((start_event,cur_time,note)))
+		# print("removing note_idx:", note_idx[0])
+		notes_on = np.delete(notes_on,note_idx[0]); start_events = np.delete(start_events,note_idx[0])
+	except:
+		print("file:",filepath, "has a problem of note off")
+```
+
+#### 5.11.4. MIDI副檔名
+
+以下為原本的程式碼：
+
+```python
+tunes = [
+	t for t in os.listdir(work_dir) 
+	if t.split(".")[1] == "mid"
+]
+```
+
+可以看到他使用了`"."`來隔開檔名，並把第二段字串當作判斷副檔名的標準。在我們的資料集中，有些檔名包含點，譬如：
+
+```
+Bach, Johann Sebastian, Duetto No.3 in G major, BWV 804, 7Dc3en1ntpM.mid
+```
+
+其中的`No.3`就包含了點。這會導致原本的程式碼認為這個檔案不是MIDI檔，因此應該修改為以下程式碼：
+
+```python
+tunes = [
+	t for t in os.listdir(work_dir) 
+	if t.split(".")[1] == "mid"
+]
+```
 
 ## 6. Evaluation Metric
 
@@ -613,7 +689,9 @@ $$\text{perplexity} = \exp(-\sum_{i = 1}^{16} p_i \cdot \log(p_i))$$
 
 ## 8. Error Analysis
 
-#TODO
+由於訓練時間不足，並且我們沒有利用其他模型進行比較，因此我們僅能從樂理的角度下去討論我們的成果。雖然無法量化樂理的分析結果，但是我們可以從樂譜中看到模型成功理解樂理概念。
+
+在一些論文中，我們看到他們的誤差分析方法是用自己的模型與SOTA method比較。由於時間不夠，且人手也不足，因此我們沒有餘力再使用另一個模型與自己做比較。如果未來有機會的話，可以朝著這一塊來分析自己的模型。
 
 ## 9. Future Work
 
@@ -623,16 +701,84 @@ Bachsformer是別人寫的model，我們沿用了它並且嘗試建立環境。�
 
 考慮這一點，我們的模型無法在所有電腦上面輕鬆執行，因此未來我們應該把`bachsformer.yml`改善，讓其他系統在依照這個列表建立conda環境時也可以一鍵建立成功。
 
-### 9.2. 
+### 9.2. 嘗試修改內部卷積層
+
+在修改內部卷積層時，我們修改的參數與許多功能衝突，因此我們沒有辦法在時限內完成修改。
+
+我們相信現在的模型還可以經過fine-tune後出現更好的效果，因此我們未來可以嘗試進行fine-tune。
+
+### 9.3. 訓練資料的挑選
+
+這次我們僅考慮不同樂派或不同作曲家的曲子放進去訓練，但是在看到訓練結果後，我們發現訓練的方向有可能不對。
+
+從產生的曲子中，我們很難看出曲子與樂派有關聯性，並且音符的排列與和弦的種類與樂理相差甚遠。因此我們覺得在未來訓練上應該用以下幾種分類：
+
+- 使用相同和聲排列的樂曲（例如I–V–vi–iii–IV–I–IV–V、C–Am–F–G7等）
+- 有相同大調或小調的樂曲
+- 樂曲架構排列上相似（譬如A-B-A排列）
+
+### 9.4. 加長訓練時間
+
+為了在deadline前產生多個樂派的結果，我們僅使用最多10個epoch。但是在我們試過5個與10個後，我們發現增加epoch時我們的模型還有更多進步的空間。因此未來可以通過增加epoch來達成較好的效果。
+
+### 9.5. 深入了解Implementation
+
+我們在這次project只有了解到原理，並且看到相對應的實作架構，但我們不見得知道每一行程式碼代表的意思。未來如果需要自己架設模型，難免會需要自己implement訓練方法，因此未來了解minGPT與VQ_VAE的實作方法也非常有幫助。
 
 ## 10. Code
 
-#TODO
+Repository of code: [LittleD3092/creative-musician - Github](https://github.com/LittleD3092/creative-musician.git)
+URL: https://github.com/LittleD3092/creative-musician.git
 
 ## 11. Contribution of each member
 
-#TODO 
+| 成員   | 工作內容     | 比例 |
+| ------ | ------------ | ---- |
+| 王敬智 | paper閱讀    | 50%  |
+|        | dataset整理  |      |
+|        | 投影片製作   |      |
+|        | 報告內容撰寫 |      |
+|        | 模型訓練     |      |
+|        | 程式測試     |      |
+|        | 架構討論     |      |
+| 吳典謀 | paper閱讀    | 50%  | 
+|        | 報告內容撰寫 |      |
+|        | 投影片修飾   |      |
+|        | 程式碼修改   |      |
+|        | 架構討論     |      |
 
 ## 12. References
 
-#TODO 
+### 12.1. Related Papers:
+
+[1] Dhariwal, Prafulla, et al. "Jukebox: A generative model for music." arXiv preprint arXiv:2005.00341 (2020), https://arxiv.org/abs/2005.00341.
+
+[2] Han, Sangjun, Hyeongrae Ihm, and Woohyung Lim. "Symbolic Music Loop Generation with VQ-VAE." arXiv preprint arXiv:2111.07657 (2021), https://arxiv.org/abs/2111.07657.
+
+[3] Neves, Pedro, Jose Fornari, and João Florindo. "Generating music with sentiment using Transformer-GANs." arXiv preprint arXiv:2212.11134 (2022), https://arxiv.org/abs/2212.11134.
+
+[4] Van Den Oord, Aaron, and Oriol Vinyals. "Neural discrete representation learning." Advances in neural information processing systems 30 (2017), https://arxiv.org/abs/1711.00937v2.
+
+### 12.2. Introduction Networks:
+
+[5] “【機器學習2021】Transformer (上).” YouTube, 26 March 2021, https://www.youtube.com/watch?v=n9TlOhRjYoc.
+
+[6] “【機器學習2021】Transformer (下).” YouTube, 9 April 2021, https://www.youtube.com/watch?v=N6aRv06iv2g. 
+
+[7] “【DL】第 7 章 ：用于音乐生成的Transformers和 MuseGAN_music transformer_Sonhhxg_柒的博客.” CSDN博客, 8 March 2023, https://blog.csdn.net/sikh_0529/article/details/129371849#t12. 
+
+[8] “一起幫忙解決難題，拯救 IT 人的一天.” iT 邦幫忙::一起幫忙解決難題，拯救IT 人的一天, https://ithelp.ithome.com.tw/articles/10206869. 
+
+[9] “一起幫忙解決難題，拯救 IT 人的一天.” iT 邦幫忙::一起幫忙解決難題，拯救IT 人的一天, https://ithelp.ithome.com.tw/articles/10304388. 
+
+[10] “论文阅读- Jukebox: A Generative Model for Music_jukebox: a generative model for music prafulla_七元权的博客.” CSDN博客, 30 April 2021, https://blog.csdn.net/zjuPeco/article/details/116159855. 
+
+[11] “十分钟理解Transformer - 知乎.” 知乎专栏, https://zhuanlan.zhihu.com/p/82312421. 
+
+[12] “论文解读| Transformer 原理深入浅出- 知乎.” 知乎专栏, https://zhuanlan.zhihu.com/p/110219298. 
+
+[13] “帶你認識Vector-Quantized Variational AutoEncoder - 理論篇.” Medium, 28 April 2020, https://medium.com/ai-academy-taiwan/%E5%B8%B6%E4%BD%A0%E8%AA%8D%E8%AD%98vector-quantized-variational-autoencoder-%E7%90%86%E8%AB%96%E7%AF%87-49a1829497bb. 
+
+[14] “VQ-VAE/VQGAN及改良工作小汇总.” 知乎专栏, 28 September 2022, https://zhuanlan.zhihu.com/p/569120964. 
+
+[15] “What are Autoencoders?. 簡單介紹Autoencoder的原理，以及常見的應用。 | by Yu-Ru Tsai | Taiwan AI Academy.” Medium, 9 March 2019, https://medium.com/ai-academy-taiwan/what-are-autoencoders-175b474d74d1. 

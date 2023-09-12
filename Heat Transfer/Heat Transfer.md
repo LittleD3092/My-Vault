@@ -29,6 +29,14 @@ $$q = q_{\rm conv} + q_{\rm rad} = hA(T_s - T_\infty) + \varepsilon A \sigma (T_
 > - [[Newton's Law of Cooling]]
 > - [[Radiation]]
 
+# External Flow
+
+> [[External Flow]]
+
+# Internal Flow
+
+> [[Internal Flow]]
+
 ---
 
 參考資料:

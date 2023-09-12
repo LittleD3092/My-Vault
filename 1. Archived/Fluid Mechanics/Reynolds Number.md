@@ -19,6 +19,10 @@ If the Reynolds number is large, viscous effects will be small.
 If the Reynolds number is small, viscous effects will be dominant.
 If the Reynolds number is neither large nor small, both are important.
 
+# Meaning of Reynolds Number
+
+Reynolds number represents the ratio of inertia to viscous forces.
+
 ---
 
 參考資料:

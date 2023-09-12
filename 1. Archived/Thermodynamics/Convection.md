@@ -7,7 +7,7 @@
 - Two mechanisms:
 	- Random molecular motion.
 	- Macroscopic motion of fluid.
-- Recall that there is boundary layer:
+- Recall that there is [[Boundary Layer|boundary layer]]:
 	- ![[Pasted image 20230222201813.png]]
 - Rate equation: $q'' = h(T_s - T_\infty)$
 	- $h$: Convection heat transfer coefficient.
