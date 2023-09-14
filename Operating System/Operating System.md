@@ -40,6 +40,8 @@ For a computer to start running, it goes through the following steps:
 
 ## What Operating System Do
 
+The following three functions are called "The Three Pillars".
+
 - **Process management**:
 	- Scheduling processes and threads on the CPUs.
 	- Creating and deleting both user and system processes.
