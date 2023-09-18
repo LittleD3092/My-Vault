@@ -28,6 +28,49 @@ $$
 			y' &=& r\cos\theta\cos\phi + r\sin\theta\sin\phi
 		\end{array}
 	\right. \\
+	\implies & \left\{
+		\begin{array}{}
+			x' &=& x\sin\theta + y\cos\theta \\
+			y' &=& x\cos\theta + y\sin\theta
+		\end{array}
+	\right.
+\end{array}
+$$
+
+By the result above, we can see that the rotation about $z$ axis has transformation matrix:
+
+$${\bf R} = {\bf R}_z(\theta) = 
+\left[
+	\begin{array}{}
+		\cos\theta & -\sin\theta & 0 & 0 \\
+		\sin\theta & \cos\theta & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1
+	\end{array}
+\right]$$
+
+Similarly, the rotation about $x$ and $y$ axis has the following transformation matrix:
+
+![[Pasted image 20230918193557.png|200]]
+
+$$
+\begin{array}{}
+	{\bf R} = {\bf R}_x(\theta) = \left[
+		\begin{array}{}
+			1 & 0 & 0 & 0 \\
+			0 & \cos\theta & -\sin\theta & 0 \\
+			0 & \sin\theta & \cos\theta & 0 \\
+			0 & 0 & 0 & 1
+		\end{array}
+	\right] \\
+	{\bf R} = {\bf R}_y(\theta) = \left[
+		\begin{array}{}
+			\cos\theta & 0 & \sin\theta & 0 \\
+			0 & 1 & 0 & 0 \\
+			-\sin\theta & 0 & \cos\theta & 0 \\
+			0 & 0 & 0 & 1
+		\end{array}
+	\right]
 \end{array}
 $$
 

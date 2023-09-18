@@ -1,30 +1,26 @@
 Tag: #computer-graphics 
-Previous: 
+Previous: [[Computer Graphics]]
 Link: 
 
 [TOC]
 
 ---
 
-# Chapter 1: Graphics Systems
+![[Pasted image 20230918194417.png|200]]
 
-- [[Pinhole Camera]]
-- A realistic 3D view requires:
-	- 3D model
-	- Perspective
-	- Hidden surface removal
-	- Shading
-	- Shadow
-	- Textures
+The [[Transformation Matrix]] for scaling is as follows:
 
-# Chapter 2: Transformations
-
-- [[Transformation Matrix]]
-- [[Translation]]
-- [[Rotation]]
-- [[Scaling]]
-- [[Reflection]]
-- [[Inverse]]
+$$
+{\bf S} = {\bf S}(s_x, s_y, s_z) = 
+\left[
+	\begin{array}{}
+		s_x & 0 & 0 & 0 \\
+		0 & s_y & 0 & 0 \\
+		0 & 0 & s_z & 0 \\
+		0 & 0 & 0 & 1
+	\end{array}
+\right]
+$$
 
 ---
 

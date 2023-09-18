@@ -1,30 +1,14 @@
 Tag: #computer-graphics 
-Previous: 
+Previous: [[Computer Graphics]]
 Link: 
 
 [TOC]
 
 ---
 
-# Chapter 1: Graphics Systems
+Reflection is a special type of scaling. It corresponds to negative scaling factor.
 
-- [[Pinhole Camera]]
-- A realistic 3D view requires:
-	- 3D model
-	- Perspective
-	- Hidden surface removal
-	- Shading
-	- Shadow
-	- Textures
-
-# Chapter 2: Transformations
-
-- [[Transformation Matrix]]
-- [[Translation]]
-- [[Rotation]]
-- [[Scaling]]
-- [[Reflection]]
-- [[Inverse]]
+![[Pasted image 20230918201718.png|500]]
 
 ---
 
