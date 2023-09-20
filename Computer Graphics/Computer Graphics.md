@@ -25,6 +25,7 @@ Link:
 - [[Scaling]]
 - [[Reflection]]
 - [[Inverse]]
+- [[Shear]]
 
 ---
 
