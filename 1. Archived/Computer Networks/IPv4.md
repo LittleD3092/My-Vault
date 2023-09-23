@@ -67,7 +67,7 @@ The key fields in the IPv4 datagram are the following:
 
 ## Addressing Strategy
 
-- The internet assignment strategy is **Classless Interdomain Routing (CIDR)**.
+- The internet assignment strategy is **[[Classless Interdomain Routing]] (CIDR)**.
 	- An address of a subnet is in the form `a.b.c.d/x`.
 	- The most significant `x` bits of an address are called **prefix**.
 	- The ability to use a single prefix to advertise multiple networks is often referred to as **address aggregation**. (or **route aggregation** or **route summarization**).

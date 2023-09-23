@@ -14,7 +14,7 @@ Link:
 - Allow host to learn additional information.
 	- Subnet mask.
 	- The address of its first-hop router.
-	- The address of its local DNS server.
+	- The address of its local [[DNS]] server.
 - Is a **plug-and-play** or **zeroconf** protocol.
 
 For a newly arriving host, the DHCP protocol is a four-step process:
