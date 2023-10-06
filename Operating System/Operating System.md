@@ -6,6 +6,8 @@ Link:
 
 ---
 
+# Chapter 1: Introduction
+
 - Provide an environment for users to execute programs in a **convenient** and **efficient** way.
 - A program that manages computer hardware, as a **resource allocator**.
 
@@ -23,9 +25,9 @@ As above figure shows, a computer system can be divided into four components.
 - Application programs.
 - Users.
 
-# Basics of Operating System
+## Basics of Operating System
 
-## Computer System Operation
+### Computer System Operation
 
 For a computer to start running, it goes through the following steps:
 
@@ -38,7 +40,7 @@ For a computer to start running, it goes through the following steps:
 	- Some services are known as **system processes**, or **system daemons**.
 3. The system is booted.
 
-## What Operating System Do
+### What Operating System Do
 
 The following three functions are called "The Three Pillars".
 
@@ -58,6 +60,12 @@ The following three functions are called "The Three Pillars".
 	- Supporting primitives for manipulating files and directories.
 	- Mapping files onto secondary storage.
 	- Backing up files on stable (nonvolatile) storage media.
+
+## Interrupt
+
+> [[Interrupt]]
+
+# Chapter 2: System Structures
 
 ## View of Operating System
 
@@ -245,13 +253,13 @@ For operating system kernels:
 	- Interesting events are logged with their time and important parameters.
 	- The trace listings are written to a file.
 
-# Process
+# Chapter 3: Process
 
 A process can be thought of as a program in execution.
 
 > [[Process]]
 
-# Threads
+# Chapter 4: Threads
 
 > [[Threads]]
 
