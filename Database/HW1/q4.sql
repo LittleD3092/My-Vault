@@ -1,0 +1,5 @@
+SELECT year, COUNT(*) AS num_sets
+FROM sets
+WHERE year BETWEEN 1950 AND 2017
+GROUP BY year
+ORDER BY num_sets DESC;

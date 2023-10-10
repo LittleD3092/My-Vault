@@ -1,0 +1,388 @@
+          themes_name          |    colors_name    | total_quantity 
+-------------------------------+-------------------+----------------
+ 12V                           | Black             |           2520
+ 4.5V                          | Black             |           3243
+ 4 Juniors                     | White             |             48
+ 9V                            | Black             |           4122
+ Advent                        | Red               |            132
+ Advent Sub-Set                | Red               |            172
+ Adventurers                   | Black             |              9
+ Agents                        | Black             |           1391
+ Agori                         | Black             |             14
+ Airjitzu                      | Black             |            250
+ Airport                       | White             |           7104
+ Alien Conquest                | Light Bluish Gray |            497
+ Alpha Team                    | Black             |            293
+ Angry Birds                   | Light Bluish Gray |            559
+ Animals                       | White             |            137
+ An Unexpected Journey         | Reddish Brown     |            665
+ Aquanauts                     | Yellow            |            469
+ Aquaraiders I                 | Black             |            235
+ Aquaraiders II                | Black             |            738
+ Aquasharks                    | Black             |            283
+ Aquazone                      | Chrome Silver     |              9
+ Architecture                  | White             |           4646
+ Arctic                        | Black             |            681
+ Arctic Technic                | Light Gray        |            380
+ Atlantis                      | Black             |           1156
+ Avatar                        | Dark Bluish Gray  |            391
+ Avengers                      | Black             |           1995
+ Barraki                       | Black             |             85
+ Basic                         | Red               |           6077
+ Basic Model                   | Black             |            467
+ Basic Set                     | Red               |          20235
+ Basketball                    | Red               |            333
+ Batman                        | Black             |           7638
+ Battle Vehicles               | Black             |           1270
+ Belville                      | White             |             60
+ Ben 10                        | Dark Blue         |             17
+ Bionicle                      | Black             |           1063
+ Black Falcons                 | Light Gray        |            669
+ Black Knights                 | Black             |            865
+ Blacktron I                   | Black             |           1577
+ Blacktron II                  | Black             |            728
+ Boat                          | White             |           1176
+ Bohrok                        | Black             |            115
+ Bohrok-Kal                    | Light Gray        |             66
+ Bohrok Va                     | Black             |            170
+ Books                         | Black             |            336
+ Brickheadz                    | Black             |            355
+ Bricktober                    | Trans-Clear       |            243
+ Building                      | White             |           2929
+ Building Set with People      | Red               |           1516
+ Bulk Bricks                   | Black             |           1462
+ Cargo                         | Black             |           1020
+ Cars                          | Black             |           1215
+ Castle                        | Black             |           1244
+ Chamber of Secrets            | Black             |            513
+ Christmas                     | White             |           2083
+ City                          | Black             |           2381
+ Classic                       | White             |            756
+ Classic Basic                 | Red               |           2400
+ Classic Castle                | Yellow            |           1112
+ Classic Space                 | Light Gray        |           3076
+ Classic Town                  | Red               |              8
+ Clikits                       | Trans-Dark Pink   |            533
+ Coast Guard                   | White             |           1339
+ Collectible Minifigures       | Yellow            |             75
+ Competition                   | Black             |           3140
+ Constraction                  | Black             |            332
+ Construction                  | Black             |          16891
+ Control Lab                   | Dark Gray         |              1
+ Control Lab                   | Black             |              1
+ Cowboys                       | Black             |            792
+ Creator                       | White             |           7051
+ Creature                      | Black             |            814
+ Crusaders                     | Light Gray        |            283
+ Dark Forest                   | Black             |            301
+ Desert                        | Black             |            696
+ Designer Sets                 | Black             |           1796
+ DFB Minifigures               | White             |             47
+ Dimensions                    | Black             |           1147
+ Dino                          | Yellow            |            452
+ Dino 2010                     | Black             |            465
+ Dino Attack                   | Black             |            364
+ Dino Island                   | Light Gray        |            404
+ Dinosaurs                     | Light Gray        |             81
+ Discovery                     | Light Gray        |            893
+ Disney                        | White             |           1173
+ Disney Princess               | White             |           1102
+ Disney's Mickey Mouse         | Red               |            104
+ Divers                        | Black             |            886
+ Drome Racers                  | Black             |           1717
+ Duplo                         | Red               |           1292
+ Easter                        | Yellow            |            380
+ Educational and Dacta         | Yellow            |           1986
+ eLAB                          | Black             |            293
+ Elves                         | Black             |           1015
+ EV3                           | Black             |            776
+ Exo-Force                     | Black             |           3373
+ Expert Builder                | Light Gray        |           3311
+ Exploriens                    | White             |            743
+ Extreme Team                  | Black             |            525
+ Fabuland                      | Yellow            |            911
+ Factory                       | Black             |           2515
+ Fairy-Tale                    | White             |            691
+ Fantasy Era                   | Light Bluish Gray |           1593
+ Farm                          | Black             |           1736
+ Ferrari                       | Red               |           5255
+ Ferries                       | White             |           2159
+ Fire                          | Red               |           5875
+ FIRST LEGO League             | Black             |           8150
+ Food & Drink                  | White             |            646
+ Forestmen                     | Black             |            497
+ Freestyle                     | Yellow            |           3277
+ Friends                       | White             |           7458
+ Fright Knights                | Light Gray        |            422
+ Fusion                        | Tan               |            113
+ Futuron                       | White             |           1299
+ Galaxy Squad                  | Black             |            774
+ Game                          | Black             |           2220
+ Gas Station                   | White             |            389
+ Gear                          | White             |            534
+ Gears                         | Red               |            454
+ Ghostbusters                  | Black             |            117
+ Glatorian                     | Black             |             86
+ Glatorian Legends             | Black             |             91
+ Goblet of Fire                | Black             |            434
+ Golden Land                   | Dark Pink         |             80
+ Gravity Games                 | White             |            143
+ Guardians of the Galaxy       | Black             |            463
+ Halloween                     | Black             |            362
+ Harbor                        | Black             |           2309
+ Harry Potter                  | Black             |           1578
+ Heroes                        | Black             |            627
+ Hero Factory                  | Black             |            412
+ HO 1:87 Vehicles              | Black             |             24
+ Hobby Sets                    | Black             |           1907
+ Hockey                        | Black             |            421
+ Holiday                       | Brown             |            114
+ Homemaker                     | White             |           1532
+ Hospital                      | White             |           1769
+ Hydronauts                    | Black             |            325
+ Ice Planet 2002               | Blue              |            337
+ Imperial Armada               | Black             |            251
+ Imperial Soldiers             | Black             |            397
+ Indians                       | Black             |            371
+ Insectoids                    | Black             |            498
+ Inventor                      | Black             |            274
+ Iron Man                      | Black             |            139
+ Islanders                     | Black             |            386
+ Island Xtreme Stunts          | Black             |            291
+ Jumbo Bricks                  | Blue              |             13
+ Jungle                        | Black             |            417
+ Jungle Rescue                 | Reddish Brown     |            250
+ Juniors                       | White             |            568
+ Jurassic Park III             | Black             |             91
+ Jurassic World                | Dark Bluish Gray  |            609
+ Justice League                | Black             |            322
+ Key Chain                     | White             |             10
+ Kingdom of the Crystal Skull  | Dark Bluish Gray  |            541
+ Kingdoms                      | Light Bluish Gray |           1089
+ Knights Kingdom I             | Black             |            621
+ Knights Kingdom II            | Black             |           1691
+ Lamborghini                   | Black             |            675
+ Last Crusade                  | Light Bluish Gray |            203
+ Launch Command                | White             |            355
+ Learning                      | White             |            428
+ Legend Beasts                 | White             |            123
+ Legends of Chima              | Black             |           3377
+ LEGO Brand Store              | Black             |           1415
+ LEGO Exclusive                | Black             |              6
+ LEGO Ideas and CUUSOO         | Light Bluish Gray |           1837
+ Legoland                      | White             |            199
+ Legoland Parks                | Yellow            |            504
+ Life On Mars                  | Light Gray        |            483
+ Lion Knights                  | Light Gray        |            777
+ Mars Mission                  | Black             |           1727
+ Marvel                        | Black             |            605
+ Master Building Academy       | Black             |           2225
+ Matoran of Light              | Dark Bluish Gray  |             19
+ Matoran of Mahri Nui          | Black             |             53
+ Matoran of Mata Nui           | Black             |             61
+ Matoran of Metru Nui          | Dark Bluish Gray  |             66
+ Matoran of Voya Nui           | Black             |             34
+ Mindstorms                    | Black             |            836
+ Minecraft                     | Light Bluish Gray |           2303
+ Mini                          | Light Bluish Gray |           1090
+ Minifig Pack                  | Black             |              4
+ Minitalia                     | Red               |            691
+ Mission Deep Freeze           | Black             |            609
+ Mission Deep Sea              | Black             |            548
+ Mistika                       | Black             |             92
+ Model                         | Black             |           4031
+ Model Team                    | Light Gray        |           3246
+ Modular Buildings             | Light Bluish Gray |           6828
+ Monster Fighters              | Light Bluish Gray |           1526
+ Monthly Mini Model Build      | White             |            504
+ Mosaic                        | White             |           4973
+ M:Tron                        | Black             |            657
+ My Own Creation               | Light Gray        |            486
+ My Own Train                  | Black             |           1728
+ Nexo Knights                  | Black             |           2198
+ Ninja                         | Black             |            917
+ Ninjago                       | Black             |           9441
+ NXT                           | Black             |            840
+ Off-Road                      | Black             |           5894
+ Order of the Phoenix          | Light Bluish Gray |            266
+ Orient Expedition             | Black             |            564
+ Other                         | Light Bluish Gray |           2928
+ Outback                       | Light Gray        |            126
+ Paradisa                      | White             |           1008
+ Phantoka                      | Black             |             82
+ Pharaoh's Quest               | Tan               |            409
+ Pick A Model                  | Black             |            132
+ Piraka                        | Black             |             64
+ Pirates                       | Black             |           1272
+ Pirates I                     | Black             |           2730
+ Pirates II                    | Black             |            657
+ Pirates III                   | Black             |            474
+ Pirates of the Caribbean      | Black             |           1859
+ Planet Series 2               | Light Bluish Gray |             64
+ Planet Series 3               | Black             |             87
+ Planet Series 4               | Black             |             42
+ Playhouse                     | White             |            582
+ Playsets                      | Black             |           1290
+ Police                        | White             |           7571
+ Post Office                   | Red               |            114
+ Power Functions               | Light Bluish Gray |             19
+ Power Miners                  | Black             |            990
+ Power Racers                  | Black             |           2871
+ Prince of Persia              | Dark Bluish Gray  |            370
+ Prisoner of Azkaban           | Light Bluish Gray |            436
+ Promotional                   | White             |            416
+ Protectors                    | Black             |             97
+ Race                          | Black             |           5890
+ Racers                        | Black             |            154
+ Radio Control                 | Black             |            893
+ Rahaga                        | Black             |             44
+ Rahi                          | Black             |            897
+ Rahkshi                       | Dark Gray         |            198
+ Raiders of the Lost Ark       | Dark Bluish Gray  |            359
+ RC Train                      | Black             |           2402
+ RCX                           | Light Gray        |           2703
+ Recreation                    | White             |            884
+ Res-Q                         | Black             |            519
+ Riding Cycle                  | Black             |           2231
+ RoboForce                     | Black             |            473
+ RoboRiders                    | Black             |            756
+ Robot                         | Black             |            400
+ Rock Raiders                  | Black             |            317
+ Royal Knights                 | Light Gray        |            476
+ Scala                         | White             |             29
+ Scooby-Doo                    | Light Bluish Gray |            284
+ Sculptures                    | White             |           8917
+ Seasonal                      | White             |            238
+ Series 1                      | Black             |             97
+ Series 10 Minifigures         | Black             |             26
+ Series 11 Minifigures         | Black             |             30
+ Series 12 Minifigures         | Black             |             26
+ Series 13 Minifigures         | Black             |             24
+ Series 14 Minifigures         | Black             |             31
+ Series 15 Minifigures         | Black             |             27
+ Series 16 Minifigures         | Black             |             43
+ Series 17 Minifigures         | Black             |             61
+ Series 1 Minifigures          | Black             |             31
+ Series 2                      | Black             |            149
+ Series 2 Minifigures          | Black             |             40
+ Series 3                      | Black             |            157
+ Series 3 Minifigures          | Black             |             29
+ Series 4                      | Black             |            156
+ Series 4 Minifigures          | Black             |             31
+ Series 5                      | Black             |             91
+ Series 5 Minifigures          | Black             |             30
+ Series 6                      | Black             |            131
+ Series 6 Minifigures          | Black             |             30
+ Series 7                      | Light Bluish Gray |            102
+ Series 7 Minifigures          | Black             |             30
+ Series 8                      | White             |            164
+ Series 8 Minifigures          | Black             |             35
+ Series 9                      | Black             |            205
+ Series 9 Minifigures          | Black             |             29
+ Service Packs                 | Black             |           1573
+ Skull Spiders                 | Black             |             78
+ Skylines                      | Tan               |            483
+ Soccer                        | White             |           1905
+ Soft Bricks                   | Red               |             96
+ Sorcerer's Stone              | Light Gray        |            519
+ Space                         | Blue              |            810
+ Space Police I                | Black             |            710
+ Space Police II               | Black             |            541
+ Space Police III              | Black             |           1227
+ Space Port                    | White             |            819
+ Speed Champions               | Black             |           2049
+ Speedorz                      | Black             |            389
+ Speed Racer                   | Black             |            523
+ Speed Slammers                | Black             |            519
+ Spider-Man                    | Black             |           1156
+ Spider-Man 2                  | Black             |             40
+ SpongeBob SquarePants         | Red               |            521
+ Sports                        | White             |             65
+ Spybiotics                    | Black             |            628
+ Spyrius                       | Black             |            712
+ Stars                         | Dark Bluish Gray  |             18
+ Star Wars                     | Black             |           8935
+ Star Wars Clone Wars          | Light Bluish Gray |           5824
+ Star Wars Episode 1           | Light Bluish Gray |           2049
+ Star Wars Episode 2           | Light Bluish Gray |           1308
+ Star Wars Episode 3           | Light Bluish Gray |           2653
+ Star Wars Episode 4/5/6       | Light Bluish Gray |          20151
+ Star Wars Episode 7           | Dark Bluish Gray  |            903
+ Star Wars Episode 8           | Light Bluish Gray |             29
+ Star Wars Expanded Universe   | Dark Bluish Gray  |             62
+ Star Wars Expanded Universe   | Black             |             62
+ Star Wars Other               | Black             |           1617
+ Star Wars Rebels              | Light Bluish Gray |           2613
+ Star Wars Rogue One           | Light Bluish Gray |           1265
+ Station                       | White             |           1273
+ Stingrays                     | Black             |            261
+ Studios                       | Black             |            595
+ Super Heroes                  | Black             |            959
+ Superman                      | Black             |            286
+ Supplemental                  | Red               |           6816
+ Team GB                       | White             |             23
+ Technic                       | Black             |          18917
+ Teenage Mutant Ninja Turtles  | Light Bluish Gray |           1426
+ Temple of Doom                | Dark Bluish Gray  |            261
+ Thanksgiving                  | Reddish Brown     |            113
+ The Battle of the Five Armies | Dark Bluish Gray  |            324
+ The Desolation of Smaug       | Dark Bluish Gray  |            536
+ The Fellowship of the Ring    | Dark Bluish Gray  |            561
+ The Hobbit                    | Black             |              3
+ The Hobbit                    | Tan               |              3
+ The Hobbit                    | Reddish Brown     |              3
+ The LEGO Movie                | Black             |           2561
+ The LEGO Movie Series         | Black             |             31
+ The Lone Ranger               | Black             |            584
+ The Lord of the Rings         | Dark Bluish Gray  |             15
+ The Return of the King        | Black             |            786
+ The Simpsons                  | Black             |             32
+ The Two Towers                | Black             |           1781
+ Throwbot Slizer               | Black             |            472
+ Time Cruisers                 | Light Gray        |            507
+ Tiny Turbos                   | Black             |           3063
+ Titans                        | Black             |           1948
+ Toa                           | Black             |            210
+ Toa Hagah                     | Black             |             41
+ Toa Hordika                   | Dark Bluish Gray  |             72
+ Toa Inika                     | Black             |             65
+ Toa Mahri                     | Black             |             85
+ Toa Metru                     | Black             |             77
+ Toa Nuva                      | Black             |             96
+ Toa Okoto                     | Black             |            140
+ Tohunga                       | Black             |              9
+ Town                          | White             |           4300
+ Town Plan                     | White             |           2426
+ Toy Story                     | Black             |            439
+ Toy Story                     | Dark Bluish Gray  |            439
+ Track System                  | Black             |            368
+ Traffic                       | Black             |          12121
+ Train                         | Black             |            854
+ Trains                        | Dark Bluish Gray  |            640
+ Turaga                        | Black             |            170
+ UFO                           | Black             |            567
+ Ultimate Collector Series     | Black             |           1843
+ Ultra Agents                  | Black             |           1811
+ Unitron                       | Black             |            632
+ Universal Building Set        | Red               |           3117
+ Universe                      | White             |             24
+ Vahki                         | Black             |             88
+ Valentine                     | Red               |            330
+ Vehicle                       | Black             |             96
+ Vehicles                      | Black             |            193
+ Vikings                       | Black             |            639
+ Villains                      | Black             |            957
+ Visorak                       | Black             |             55
+ Warriors                      | Black             |            890
+ WeDo                          | White             |            138
+ Western                       | Chrome Gold       |             18
+ Williams F1                   | Black             |            962
+ Wolfpack                      | Light Gray        |            126
+ World City                    | Dark Gray         |            606
+ World Racers                  | Black             |            809
+ Xalax                         | Black             |             45
+ X-Men                         | Black             |            182
+ X-Pod                         | Black             |            113
+ Znap                          | Black             |            427
+(384 rows)
+

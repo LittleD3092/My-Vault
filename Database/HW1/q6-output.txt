@@ -1,0 +1,390 @@
+             name              |        avg_parts        
+-------------------------------+-------------------------
+ Wooden Box Set                | -1.00000000000000000000
+ Samsonite                     |  0.00000000000000000000
+ Key Chain                     |  0.18181818181818181818
+ Imperial Guards               |  1.00000000000000000000
+ Power Functions               |      1.8823529411764706
+ Control Lab                   |      2.0000000000000000
+ Planet Series 1               |      3.0000000000000000
+ Western                       |      3.0000000000000000
+ Value Packs                   |      3.1666666666666667
+ Minifig Pack                  |      3.5000000000000000
+ Classic Town                  |      3.8181818181818182
+ Indiana Jones                 |      4.0000000000000000
+ Series 14 Minifigures         |      5.3684210526315789
+ The Hobbit                    |      5.5000000000000000
+ DFB Minifigures               |      5.6470588235294118
+ Series 15 Minifigures         |      6.3684210526315789
+ Series 16 Minifigures         |      7.1764705882352941
+ Tohunga                       |      8.0000000000000000
+ The Simpsons                  |      8.7894736842105263
+ Series 10 Minifigures         |      9.3500000000000000
+ Series 5 Minifigures          |      9.5789473684210526
+ Series 9 Minifigures          |      9.5789473684210526
+ The LEGO Movie Series         |      9.5789473684210526
+ Series 1 Minifigures          |      9.7368421052631579
+ Series 3 Minifigures          |      9.7368421052631579
+ Series 2 Minifigures          |      9.7894736842105263
+ Series 11 Minifigures         |      9.8421052631578947
+ Advent Sub-Set                |      9.8854166666666667
+ Series 4 Minifigures          |     10.0000000000000000
+ Belville                      |     10.0689655172413793
+ Series 13 Minifigures         |     10.1052631578947368
+ Series 6 Minifigures          |     10.1052631578947368
+ Series 12 Minifigures         |     10.2105263157894737
+ Series 7 Minifigures          |     10.2631578947368421
+ Series 8 Minifigures          |     10.2631578947368421
+ Team GB                       |     11.0000000000000000
+ Jumbo Bricks                  |     11.0000000000000000
+ Gear                          |     11.1260162601626016
+ Scala                         |     12.8461538461538462
+ Series 17 Minifigures         |     12.8888888888888889
+ Xalax                         |     13.0625000000000000
+ Matoran of Light              |     13.1428571428571429
+ Agori                         |     14.8333333333333333
+ Adventurers                   |     15.0000000000000000
+ The Lord of the Rings         |     17.2500000000000000
+ Matoran of Mata Nui           |     18.4615384615384615
+ Stars                         |     18.8333333333333333
+ Ben 10                        |     19.0000000000000000
+ Aquazone                      |     20.0000000000000000
+ Collectible Minifigures       |     20.6875000000000000
+ Bohrok                        |     20.9230769230769231
+ Matoran of Voya Nui           |     21.0000000000000000
+ Dinosaurs                     |     23.0714285714285714
+ Turaga                        |     23.6923076923076923
+ HO 1:87 Vehicles              |     24.0000000000000000
+ Matoran of Metru Nui          |     24.4285714285714286
+ Bohrok Va                     |     24.5454545454545455
+ 4 Juniors                     |     26.0000000000000000
+ Service Packs                 |     26.6570247933884298
+ Vahki                         |     26.7333333333333333
+ Rahaga                        |     28.0000000000000000
+ Books                         |     28.1052631578947368
+ Basic Model                   |     28.1086956521739130
+ Clikits                       |     28.4761904761904762
+ Toa Metru                     |     30.9090909090909091
+ Fabuland                      |     30.9518072289156627
+ Toa Nuva                      |     31.3750000000000000
+ Matoran of Mahri Nui          |     31.4000000000000000
+ Train                         |     31.6853932584269663
+ Bohrok-Kal                    |     32.5000000000000000
+ Rahkshi                       |     33.4400000000000000
+ Toa                           |     34.0769230769230769
+ LEGO Exclusive                |     36.0000000000000000
+ Piraka                        |     36.4285714285714286
+ Toa Hagah                     |     36.6666666666666667
+ Toa Hordika                   |     37.5000000000000000
+ Toa Inika                     |     38.7500000000000000
+ Animals                       |     39.0000000000000000
+ Pick A Model                  |     39.2666666666666667
+ Monthly Mini Model Build      |     39.2876712328767123
+ Duplo                         |     39.6164383561643836
+ X-Pod                         |     40.6842105263157895
+ Series 4                      |     41.4615384615384615
+ City                          |     41.4634146341463415
+ Visorak                       |     42.0000000000000000
+ Western                       |     42.5000000000000000
+ Glatorian Legends             |     45.0000000000000000
+ Glatorian                     |     46.2857142857142857
+ Phantoka                      |     46.4285714285714286
+ Barraki                       |     47.1428571428571429
+ Series 6                      |     48.0000000000000000
+ Studios                       |     48.7735849056603774
+ Mistika                       |     49.4285714285714286
+ Post Office                   |     50.4000000000000000
+ Bionicle                      |     51.7536231884057971
+ Soft Bricks                   |     51.8000000000000000
+ RoboRiders                    |     52.1724137931034483
+ Holiday                       |     52.2500000000000000
+ Basketball                    |     53.0882352941176471
+ Toa Mahri                     |     53.5714285714285714
+ Heroes                        |     54.0909090909090909
+ Throwbot Slizer               |     55.0588235294117647
+ NXT                           |     55.2222222222222222
+ Food & Drink                  |     55.6451612903225806
+ Sports                        |     55.7500000000000000
+ Planet Series 2               |     55.7500000000000000
+ Constraction                  |     55.9500000000000000
+ Universe                      |     56.0000000000000000
+ Bulk Bricks                   |     56.5120000000000000
+ Series 1                      |     58.2222222222222222
+ Series 5                      |     58.3333333333333333
+ Planet Series 4               |     60.5000000000000000
+ Series 2                      |     61.2222222222222222
+ Series 7                      |     62.8888888888888889
+ Series 9                      |     63.8888888888888889
+ Hero Factory                  |     64.1111111111111111
+ Series 3                      |     64.4444444444444444
+ Gravity Games                 |     64.8181818181818182
+ Series 8                      |     65.3333333333333333
+ Castle                        |     66.7209302325581395
+ Fairy-Tale                    |     67.3720930232558140
+ WeDo                          |     67.4166666666666667
+ Pirates                       |     67.5400000000000000
+ Soccer                        |     68.7352941176470588
+ Easter                        |     69.4583333333333333
+ Protectors                    |     69.5000000000000000
+ Vehicle                       |     69.7500000000000000
+ Supplemental                  |     73.8266129032258065
+ Hockey                        |     74.0588235294117647
+ UFO                           |     75.0526315789473684
+ Disney's Mickey Mouse         |     76.3333333333333333
+ Villains                      |     76.6666666666666667
+ Extreme Team                  |     78.4285714285714286
+ Halloween                     |     78.7857142857142857
+ Island Xtreme Stunts          |     78.9230769230769231
+ My Own Train                  |     81.9302325581395349
+ Seasonal                      |     82.8000000000000000
+ Mini                          |     82.9245283018867925
+ Aquasharks                    |     83.1666666666666667
+ Rock Raiders                  |     84.0000000000000000
+ Insectoids                    |     84.1578947368421053
+ Mission Deep Sea              |     84.7058823529411765
+ Drome Racers                  |     86.5116279069767442
+ Racers                        |     86.6666666666666667
+ Golden Land                   |     87.6666666666666667
+ Toa Okoto                     |     88.3333333333333333
+ Orient Expedition             |     88.9642857142857143
+ Znap                          |     89.0000000000000000
+ LEGO Brand Store              |     89.1444444444444444
+ Life On Mars                  |     90.4230769230769231
+ Dimensions                    |     90.7931034482758621
+ Valentine                     |     91.3333333333333333
+ Blacktron II                  |     91.4285714285714286
+ Fright Knights                |     92.5625000000000000
+ Dino Island                   |     93.2631578947368421
+ Spider-Man 2                  |     94.5000000000000000
+ Legoland                      |     95.1250000000000000
+ Ninja                         |     95.3225806451612903
+ Knights Kingdom II            |     96.5072463768115942
+ Minitalia                     |     98.3125000000000000
+ Promotional                   |    100.0000000000000000
+ Thanksgiving                  |    100.6666666666666667
+ Star Wars Expanded Universe   |    102.0000000000000000
+ Space Port                    |    103.1428571428571429
+ Ice Planet 2002               |    106.1818181818181818
+ Speedorz                      |    106.9615384615384615
+ Gas Station                   |    107.2500000000000000
+ Recreation                    |    107.4878048780487805
+ Outback                       |    107.6000000000000000
+ Desert                        |    108.3076923076923077
+ Crusaders                     |    109.0000000000000000
+ Legoland Parks                |    111.3043478260869565
+ Legend Beasts                 |    111.6000000000000000
+ Hospital                      |    114.2093023255813953
+ Star Wars Episode 8           |    115.0000000000000000
+ Gears                         |    115.1111111111111111
+ Classic Space                 |    116.7303370786516854
+ Brickheadz                    |    119.7142857142857143
+ Space Police II               |    121.7500000000000000
+ Space                         |    123.2173913043478261
+ Technic                       |    123.4551724137931034
+ Wolfpack                      |    124.6666666666666667
+ Knights Kingdom I             |    125.0000000000000000
+ Lion Knights                  |    127.0000000000000000
+ Tiny Turbos                   |    128.5652173913043478
+ Superman                      |    129.0000000000000000
+ Futuron                       |    129.0526315789473684
+ 4.5V                          |    130.5227272727272727
+ Friends                       |    130.6282527881040892
+ Spyrius                       |    131.8888888888888889
+ Airjitzu                      |    132.0000000000000000
+ Paradisa                      |    132.0555555555555556
+ Town Plan                     |    132.0750000000000000
+ Playhouse                     |    132.6428571428571429
+ Power Racers                  |    132.9615384615384615
+ Juniors                       |    134.4545454545454545
+ Res-Q                         |    134.9000000000000000
+ Christmas                     |    134.9750000000000000
+ Iron Man                      |    137.6000000000000000
+ Boat                          |    139.0454545454545455
+ Aquanauts                     |    140.5000000000000000
+ 12V                           |    140.6600000000000000
+ Race                          |    143.1754385964912281
+ Black Knights                 |    143.9285714285714286
+ EV3                           |    144.0000000000000000
+ Skull Spiders                 |    145.0000000000000000
+ Speed Slammers                |    147.5000000000000000
+ Building Set with People      |    148.5312500000000000
+ Justice League                |    149.2727272727272727
+ Royal Knights                 |    149.4444444444444444
+ Homemaker                     |    149.6250000000000000
+ Alpha Team                    |    150.3333333333333333
+ Classic Basic                 |    151.7464788732394366
+ Indians                       |    152.2222222222222222
+ Pirates I                     |    154.9534883720930233
+ Titans                        |    155.5862068965517241
+ Fire                          |    158.4274809160305344
+ M:Tron                        |    159.8888888888888889
+ Sorcerer's Stone              |    163.1428571428571429
+ Police                        |    166.8850574712643678
+ Cars                          |    167.1176470588235294
+ Forestmen                     |    168.0000000000000000
+ Star Wars                     |    168.2464454976303318
+ Nexo Knights                  |    170.2571428571428571
+ Jurassic Park III             |    171.5000000000000000
+ Jungle                        |    173.5833333333333333
+ Station                       |    174.1500000000000000
+ Arctic                        |    177.0000000000000000
+ Aquaraiders I                 |    178.0000000000000000
+ Warriors                      |    178.2941176470588235
+ Stingrays                     |    179.0000000000000000
+ X-Men                         |    179.6666666666666667
+ Bricktober                    |    180.6250000000000000
+ Exploriens                    |    183.5555555555555556
+ Airport                       |    185.1976744186046512
+ Radio Control                 |    185.4615384615384615
+ Spider-Man                    |    186.4375000000000000
+ Riding Cycle                  |    188.2142857142857143
+ Coast Guard                   |    188.8750000000000000
+ Power Miners                  |    189.8260869565217391
+ Creator                       |    191.7871485943775100
+ World City                    |    193.1428571428571429
+ Time Cruisers                 |    193.8888888888888889
+ Super Heroes                  |    197.0434782608695652
+ Cowboys                       |    197.2307692307692308
+ Other                         |    199.3783783783783784
+ Hydronauts                    |    203.4000000000000000
+ Toy Story                     |    204.5333333333333333
+ Islanders                     |    205.0000000000000000
+ Cargo                         |    205.7500000000000000
+ Basic                         |    205.8113207547169811
+ Pharaoh's Quest               |    206.8888888888888889
+ Black Falcons                 |    208.0000000000000000
+ Launch Command                |    208.3333333333333333
+ Space Police I                |    211.3333333333333333
+ Ninjago                       |    213.8952879581151832
+ Imperial Soldiers             |    214.3333333333333333
+ Disney Princess               |    214.9629629629629630
+ Exo-Force                     |    215.8297872340425532
+ Prisoner of Azkaban           |    217.7272727272727273
+ Imperial Armada               |    219.0000000000000000
+ Star Wars Episode 7           |    219.2631578947368421
+ Disney                        |    219.5789473684210526
+ Designer Sets                 |    220.0714285714285714
+ Legends of Chima              |    221.0952380952380952
+ Alien Conquest                |    226.6000000000000000
+ Star Wars Other               |    226.7916666666666667
+ Chamber of Secrets            |    227.3000000000000000
+ Atlantis                      |    228.0434782608695652
+ Harbor                        |    229.2608695652173913
+ Game                          |    230.2363636363636364
+ Marvel                        |    230.8666666666666667
+ Fusion                        |    238.0000000000000000
+ Advent                        |    239.3333333333333333
+ Ferries                       |    240.0666666666666667
+ Mission Deep Freeze           |    240.1250000000000000
+ Freestyle                     |    242.5573770491803279
+ Dino Attack                   |    245.2000000000000000
+ Space Police III              |    246.0000000000000000
+ Spybiotics                    |    246.7500000000000000
+ Dark Forest                   |    249.6666666666666667
+ Robot                         |    249.8000000000000000
+ RoboForce                     |    250.0000000000000000
+ 9V                            |    250.1698113207547170
+ RCX                           |    250.4827586206896552
+ Expert Builder                |    252.2750000000000000
+ Star Wars Episode 1           |    253.5294117647058824
+ Pirates III                   |    254.7777777777777778
+ Jungle Rescue                 |    259.1666666666666667
+ Traffic                       |    261.2091503267973856
+ Divers                        |    262.4444444444444444
+ Star Wars Episode 3           |    264.1190476190476190
+ Guardians of the Galaxy       |    268.0000000000000000
+ Construction                  |    269.3608247422680412
+ Creature                      |    270.3333333333333333
+ Aquaraiders II                |    274.3333333333333333
+ Fantasy Era                   |    276.2142857142857143
+ Factory                       |    277.2926829268292683
+ Vehicles                      |    279.0000000000000000
+ Batman                        |    280.4946236559139785
+ Kingdoms                      |    287.7500000000000000
+ Star Wars Episode 2           |    289.1428571428571429
+ Planet Series 3               |    290.0000000000000000
+ Blacktron I                   |    290.5714285714285714
+ Inventor                      |    291.0000000000000000
+ Dino 2010                     |    292.0000000000000000
+ The Battle of the Five Armies |    293.3333333333333333
+ Last Crusade                  |    294.0000000000000000
+ Pirates II                    |    295.4545454545454545
+ World Racers                  |    296.2500000000000000
+ Harry Potter                  |    297.0384615384615385
+ Classic Castle                |    298.4285714285714286
+ Architecture                  |    300.6440677966101695
+ Competition                   |    302.6470588235294118
+ The Desolation of Smaug       |    303.5000000000000000
+ Scooby-Doo                    |    304.8333333333333333
+ Hobby Sets                    |    305.1666666666666667
+ Off-Road                      |    307.4772727272727273
+ Elves                         |    308.2333333333333333
+ Avengers                      |    310.0370370370370370
+ The Lone Ranger               |    310.2500000000000000
+ Prince of Persia              |    310.6666666666666667
+ Raiders of the Lost Ark       |    311.8000000000000000
+ Arctic Technic                |    312.2500000000000000
+ SpongeBob SquarePants         |    312.3571428571428571
+ Mars Mission                  |    313.5263157894736842
+ An Unexpected Journey         |    314.2222222222222222
+ Dino                          |    317.7142857142857143
+ Building                      |    318.5357142857142857
+ Town                          |    323.0142857142857143
+ Farm                          |    323.2777777777777778
+ Star Wars Rebels              |    323.3600000000000000
+ Star Wars Clone Wars          |    325.0735294117647059
+ Speed Champions               |    327.9130434782608696
+ The Fellowship of the Ring    |    329.4000000000000000
+ Teenage Mutant Ninja Turtles  |    335.0476190476190476
+ Star Wars Rogue One           |    340.7857142857142857
+ Classic                       |    343.0000000000000000
+ Kingdom of the Crystal Skull  |    347.2500000000000000
+ Unitron                       |    349.2500000000000000
+ Learning                      |    354.1666666666666667
+ RC Train                      |    357.8636363636363636
+ Speed Racer                   |    360.2500000000000000
+ Playsets                      |    361.9230769230769231
+ Galaxy Squad                  |    364.0000000000000000
+ Discovery                     |    364.7500000000000000
+ Monster Fighters              |    369.1333333333333333
+ Rahi                          |    373.2000000000000000
+ Pirates of the Caribbean      |    384.5882352941176471
+ Track System                  |    385.0000000000000000
+ Basic Set                     |    390.6575875486381323
+ The LEGO Movie                |    392.0689655172413793
+ Skylines                      |    395.0000000000000000
+ Angry Birds                   |    395.5000000000000000
+ Vikings                       |    398.2857142857142857
+ Jurassic World                |    404.5714285714285714
+ Universal Building Set        |    417.3235294117647059
+ Goblet of Fire                |    417.8000000000000000
+ Ferrari                       |    420.1562500000000000
+ Ultra Agents                  |    420.4666666666666667
+ Agents                        |    429.7692307692307692
+ Battle Vehicles               |    430.3333333333333333
+ Temple of Doom                |    448.0000000000000000
+ My Own Creation               |    454.6666666666666667
+ Educational and Dacta         |    473.2424242424242424
+ Minecraft                     |    508.9259259259259259
+ Master Building Academy       |    539.0000000000000000
+ The Return of the King        |    545.3333333333333333
+ Ghostbusters                  |    552.0000000000000000
+ Avatar                        |    562.0000000000000000
+ Trains                        |    580.6000000000000000
+ LEGO Ideas and CUUSOO         |    592.2352941176470588
+ Star Wars Episode 4/5/6       |    592.5270270270270270
+ Model                         |    628.5909090909090909
+ Model Team                    |    683.1875000000000000
+ Mindstorms                    |    708.6666666666666667
+ eLAB                          |    713.0000000000000000
+ Lamborghini                   |    770.0000000000000000
+ Williams F1                   |    787.5000000000000000
+ The Two Towers                |    869.2000000000000000
+ Order of the Phoenix          |    904.0000000000000000
+ FIRST LEGO League             |   1387.0000000000000000
+ Ultimate Collector Series     |   1680.3333333333333333
+ Sculptures                    |   1716.6956521739130435
+ Mosaic                        |   1843.2500000000000000
+ Modular Buildings             |   2350.5833333333333333
+(386 rows)
+

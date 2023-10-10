@@ -1,0 +1,14 @@
+       name        | num_parts 
+-------------------+-----------
+ Black             |    115176
+ White             |     66549
+ Light Bluish Gray |     55317
+ Red               |     50217
+ Dark Bluish Gray  |     43913
+ Yellow            |     38837
+ Blue              |     29857
+ Light Gray        |     25339
+ Reddish Brown     |     14168
+ Tan               |     13681
+(10 rows)
+
