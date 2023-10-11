@@ -1,13 +1,4 @@
 
-- [[#Question 1]]
-- [[#Question 2]]
-- [[#Question 3]]
-- [[#Question 4]]
-- [[#Question 5]]
-- [[#Question 6]]
-- [[#Question 7]]
-- [[#Question 8]]
-
 # Question 1
 
 1. The process of creating the “lego” databases (can be screenshot and/or SQL/non-SQL statements with text explanation) (8pts)
