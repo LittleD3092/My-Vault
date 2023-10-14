@@ -6,24 +6,19 @@ Link:
 
 ---
 
-# Steps
+Multi-programming means that a subset of all processes are stored in memory. 
 
-The interrupt can roughly be separated to 4 steps:
+![[Pasted image 20231014173601.png|200]]
 
-1. Interrupt happens.
-2. Registers and program counters are stored.
-3. Refer to vectored interrupt system.
-4. ISR ([[Interrupt Service Routine]]) is called.
+This method makes sure that CPU always have a process to execute.
 
-![[Pasted image 20231004201403.png]]
-
-![[Pasted image 20231014172443.png]]
+- [[Time Sharing]]
 
 ---
 
 # Reference
 
-Operating System Course Chapter 1, 13
+Operating System Course
 
 ---
 

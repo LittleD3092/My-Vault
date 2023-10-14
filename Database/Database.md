@@ -6,13 +6,19 @@ Link:
 
 ---
 
-# Basics
+# Chapter 1: Basics
 
 ## Architecture of Database System
 
 ![[Pasted image 20230914195151.png]]
 
 The figure above shows an abstract architecture of database.
+
+For a database to work, the following 3 things must be implemented:
+
+- [[Database Engine]]
+- [[Storage Manager]]
+- [[Query Processor]]
 
 ## Data Models
 
@@ -66,9 +72,19 @@ There are **two types** of DML, depending on whether user specifies the procedur
 - **Procedural DML**: Users specify what data is needed and how to get the data.
 - **Declarative DML**: Users specify what data is needed. The way of getting data is automatically determined.
 
-# SQL
+## SQL
 
 SQL is a language that is **DDL** and also **Declarative DML**.
+
+# Chapter 2: Relational Model
+
+- [[Relational Model]]
+- [[Relational Database]]
+	- [[Attribute]]
+	- [[Tuple]]
+	- [[Keys]]
+- [[Schema Diagram]]
+- [[Relational Algebra]]
 
 ---
 

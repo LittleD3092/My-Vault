@@ -65,6 +65,18 @@ The following three functions are called "The Three Pillars".
 
 > [[Interrupt]]
 
+## Direct Memory Access
+
+> [[Direct Memory Access]]
+
+## Synchronous I/O vs Asynchronous I/O
+
+> [[Synchronous and Asynchronous IO]]
+
+## Multi Programming
+
+> [[Multi Programming]]
+
 # Chapter 2: System Structures
 
 ## View of Operating System
