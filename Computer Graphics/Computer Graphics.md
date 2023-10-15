@@ -26,6 +26,7 @@ Link:
 - [[Reflection]]
 - [[Inverse]]
 - [[Shear]]
+- [[Hierarchical Structure]]
 
 ---
 
