@@ -1,16 +1,18 @@
-Tag: #computer-organization 
-Previous: [[Instructions]]
+Tag: #computer-organization #network-science 
+Previous: [[Instructions]], [[Network Science]]
 Link: 
 
 [TOC]
 
 ---
 
-# MIPS
+# Computer Organization
+
+## MIPS
 
 Loop written in MIPS assembly code is a part of script that is composed of labels, jumps, branches and other instructions. Here is an example: [[#Equal and Not Equal Condition Loop]]
 
-## Equal and Not Equal Condition Loop
+### Equal and Not Equal Condition Loop
 
 A traditinal loop in C:
 
@@ -32,7 +34,7 @@ Loop:   sll  $t1, $s3, 2    # $t1 = i * 4
 Exit:
 ```
 
-## Less Than and Greater Than Condition
+### Less Than and Greater Than Condition
 
 The above example shows how to write equal and not equal conditions. To use less than or greater than condition, you can use the following listed instructions `slt`, `slti` with `bne`, `be`.
 
@@ -43,11 +45,22 @@ The above example shows how to write equal and not equal conditions. To use less
 | Set less than unsigned           | `sltu destination_register, register1, register2` |                        |
 | Set less than immediate unsigned | `sltiu destination_register, register, constant`  |                        |
 
+# Network Science
+
+A loop is a walk that has the same start and end.
+
+The total number of loops of length $r$ is:
+
+$$L_r = \sum_{i = 1}^n [{\bf A}^r]_{ii} = {\rm Tr}({\bf A}^r)$$
+
+- $\rm Tr$: Trace of a matrix (sum of the main diagonal).
+
 ---
 
 # Reference
 
 Computer Organization and Design, 5th edition
+Network Science Course
 
 ---
 

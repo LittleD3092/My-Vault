@@ -21,6 +21,25 @@ Link:
 	- [[Dynamic Network]]
 - [[Planar Networks]]
 
+# Lecture 3: Mathematics of Networks
+
+- [[Density]]
+- Walk and path
+	- [[Walk]]
+	- [[Path]]
+- [[Loop]]
+- [[Diameter]]
+- Out-component and In-component
+	- [[Out-component]]
+	- [[In-component]]
+- [[Connectivity]]
+	- Node connectivity
+	- Edge connectivity
+	- [[Max-flow Min-cut Theorem]]
+- [[Cut Set]]
+	- [[Menger's Theorem]]
+- [[Laplacian Matrix]]
+
 ---
 
 # Reference

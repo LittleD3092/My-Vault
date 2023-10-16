@@ -209,12 +209,16 @@ There are different kinds of structures. Some are divided into **modules**, some
 ### Microkernels
 
 - As UNIX expanded, the kernel became large and difficult to manage.
-- This method structures the operating system by removing all nonessential components from the kernel and implementing them as system and user-level programs.
+- This method move as much from the kernel into "user" space.
 
-![[Pasted image 20230624152151.png|400]]
+![[Pasted image 20230624152151.png]]
 
 - The main function of the microkernel is to provide communication between programs and services in user space.
 	- The communication is provided through [[Message Passing|message passing]].
+- Advantage:
+	- Easier to extend.
+	- Easier to port new functions.
+	- More reliable and secure.
 - Disadvantage: The performance can suffer due to increased system-function overhead.
 
 ### Modules

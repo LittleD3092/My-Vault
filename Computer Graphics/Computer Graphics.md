@@ -28,6 +28,20 @@ Link:
 - [[Shear]]
 - [[Hierarchical Structure]]
 
+# Chapter 3: Projection
+
+- Common kinds of projections:
+
+| Parallel Projection                  | Perspective Projection               | Orthographic Projection              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| ![[Pasted image 20231016135900.png]] | ![[Pasted image 20231016135911.png]] | ![[Pasted image 20231016135935.png]] | 
+
+- [[Computer Viewing]]
+	- [[Clipping]]
+		- [[Viewing Volume]]
+			- [[Orthogonal Viewing Volume]]
+			- [[Perspective Viewing Volume]]
+
 ---
 
 # Reference

@@ -12,8 +12,8 @@ Link:
 
 A process contains:
 
-- **Text section**: The program code.
-- **Program counter**: The current activity, represented by value.
+- **Text section**: Executable binaries.
+- **Program counter and registers**: The current activity, represented by value.
 - **Stack**: Contains temporary data.
 - **Data section**: Global variables.
 - **Heap**: Memory that is dynamically allocated during run time.
