@@ -1,4 +1,5 @@
 標籤: #工程數學 
+Link: [[Determinant]]
 
 ---
 
