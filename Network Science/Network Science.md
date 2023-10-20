@@ -56,6 +56,10 @@ Link:
 # Lecture 4: Random Graphs
 
 - [[Random Graph]]
+- [[Clustering Coefficient]]
+	- [[Local Clustering Coefficient]]
+	- [[Global Clustering Coefficient]]
+	- [[Average Clustering Coefficient]]
 
 ---
 

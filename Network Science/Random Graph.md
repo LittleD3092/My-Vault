@@ -1,6 +1,6 @@
 Tag: #network-science 
 Previous: [[Network Science]]
-Link: 
+Link: [[Global Clustering Coefficient]]
 
 [TOC]
 
@@ -42,6 +42,15 @@ $$P(G) = \frac{1}{
 
 - $\left(\begin{array}{}n \\ 2\end{array}\right)$: The number of all possible edges.
 - $\left(\begin{array}{}\left(\begin{array}{}n \\ 2\end{array}\right) \\ m\end{array}\right)$: The number of possible graphs when choosing $m$ edges.
+
+The **[[Clustering Coefficient]]** of a random graph:
+
+$$C = \frac 1 n \frac{[\langle k^2\rangle - \langle k\rangle]}{\langle k \rangle^3}$$
+
+- $C$: [[Clustering Coefficient]].
+- $n$: Number of nodes.
+- $\langle k \rangle$: Average degree.
+- $\langle k^2 \rangle$: Average of degree squared.
 
 ## Representation 2: Node, Probability of Edge
 
@@ -96,6 +105,14 @@ $$
 	\right)p \\ 
 	& = & (n - 1)p
 \end{array}$$
+
+The **degree distribution**:
+
+$$p_k = e^{-c}\frac{c^k}{k!}$$
+
+The distribution above is [[Poisson Distribution]] (exponential relationship), therefore this graph is also called [[Poisson Random Graph]].
+
+![[Pasted image 20231020152119.png]]
 
 # Properties
 
