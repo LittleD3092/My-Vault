@@ -33,7 +33,7 @@ And following commands to create a user and grant access to the database previou
 CREATE USER littled3092 WITH ENCRYPTED PASSWORD 'password';
 
 -- give access to the user
-GRANT ALL PRIVILEGES ON DATABASE lego TO littled3092
+GRANT ALL PRIVILEGES ON DATABASE lego TO littled3092;
 GRANT ALL PRIVILEGES ON SCHEMA public TO littled3092;
 GRANT pg_read_server_files TO littled3092;
 ```
