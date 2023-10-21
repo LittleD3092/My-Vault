@@ -279,6 +279,13 @@ A process can be thought of as a program in execution.
 
 > [[Threads]]
 
+# Chapter 5: CPU Scheduling
+
+- [[CPU Scheduling]]
+	- [[CPU Scheduler]]
+		- [[Cooperative Scheduling]]
+		- [[Preemptive Scheduling]]
+
 ---
 
 # Reference
