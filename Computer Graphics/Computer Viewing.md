@@ -16,6 +16,7 @@ To render an object, the pipeline can be written as follows:
 	- [[Viewing Volume]]
 		- [[Orthogonal Viewing Volume]]
 		- [[Perspective Viewing Volume]]
+	- [[Cohen-Sutherland Algorithm]]
 
 ---
 

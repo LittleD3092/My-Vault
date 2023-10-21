@@ -14,11 +14,10 @@ Clipping is to delete the points that are
 
 to speed up the rendering process.
 
-# Viewing Volume
-
 - [[Viewing Volume]]
 	- [[Orthogonal Viewing Volume]]
 	- [[Perspective Viewing Volume]]
+- [[Cohen-Sutherland Algorithm]]
 
 ---
 
