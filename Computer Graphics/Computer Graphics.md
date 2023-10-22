@@ -37,11 +37,18 @@ Link:
 | ![[Pasted image 20231016135900.png]] | ![[Pasted image 20231016135911.png]] | ![[Pasted image 20231016135935.png]] | 
 
 - [[Computer Viewing]]
-	- [[Clipping]]
-		- [[Viewing Volume]]
-			- [[Orthogonal Viewing Volume]]
-			- [[Perspective Viewing Volume]]
-		- [[Cohen-Sutherland Algorithm]]
+
+# Chapter 4: Clipping
+
+- [[Clipping]]
+	- [[Viewing Volume]]
+		- [[Orthogonal Viewing Volume]]
+		- [[Perspective Viewing Volume]]
+	- [[Cohen-Sutherland Algorithm]]
+	- [[Polygon Clipping]]
+		- [[Tessellation and Convexity]]
+		- [[Sutherland-Hodgman Algorithm]]
+		- [[Cohen-Sutherland Algorithm#Cohen-Sutherland Method in 3D]]
 
 ---
 

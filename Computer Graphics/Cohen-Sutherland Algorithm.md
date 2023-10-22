@@ -28,6 +28,18 @@ Depending the position of the projected line, there will be 4 cases:
 | 3    | One endpoint is in the frame, the other one is out.                                      | ![[Pasted image 20231021145920.png]] |
 | 4    | Both of the endpoints are outside the frame, but not on the same side of the borderline. | ![[Pasted image 20231021145928.png]] | 
 
+# Cohen-Sutherland Method in 3D
+
+This method, different from the 2D one, uses **6-bit outcodes** to determine whether the line is in the [[Viewing Volume]].
+
+![[Pasted image 20231022171129.png]]
+
+There will generally be 3 cases for each bit in the outcode:
+
+- `outcode(A) == outcode(B) == 0`: Accept the line segment.
+- `outcode(A) && outcode(B) != 0`: Reject the line segment.
+- Other cases: Calculate intersection, then check the outcode again.
+
 ---
 
 # Reference
