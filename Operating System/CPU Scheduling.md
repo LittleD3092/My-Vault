@@ -21,6 +21,7 @@ In practice, the majority of CPU bursts are short. Therefore, we need a CPU sche
 	- [[Priority Scheduling]]
 	- [[Round Robin Scheduling]]
 	- [[Multilevel Queue Scheduling]]
+	- [[Multilevel Feedback Queue Scheduling]]
 
 ---
 

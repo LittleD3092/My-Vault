@@ -1,19 +1,18 @@
 Tag: #operating-system 
-Previous: [[CPU Scheduling]]
+Previous: [[Multiple-Processor Scheduling]]
 Link: 
 
 [TOC]
 
 ---
 
-There are many scheduling algorithms that choose who should be served first.
+![[Pasted image 20231023180442.png|400]]
 
-- [[First-Come, First-Served Scheduling]]
-- [[Shortest Job First Scheduling]]
-- [[Priority Scheduling]]
-- [[Round Robin Scheduling]]
-- [[Multilevel Queue Scheduling]]
-- [[Multilevel Feedback Queue Scheduling]]
+This method is also called **symmetric multiprocessing**.
+
+In this case, each **processor is self-scheduling** and has its **own private queue** of ready process.
+
+**Linux** use this way.
 
 ---
 

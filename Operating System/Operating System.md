@@ -291,7 +291,13 @@ A process can be thought of as a program in execution.
 		- [[Priority Scheduling]]
 		- [[Round Robin Scheduling]]
 		- [[Multilevel Queue Scheduling]]
+		- [[Multilevel Feedback Queue Scheduling]]
 - [[CPU Burst]]
+- [[Multiple-Processor Scheduling]]
+	- [[Partitioned Scheduling]]
+	- [[Global Scheduling]]
+	- [[Symmetric Multiprocessing]]
+	- [[Non-Uniform Memory Access]]
 
 ---
 
