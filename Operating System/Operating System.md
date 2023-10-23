@@ -285,12 +285,20 @@ A process can be thought of as a program in execution.
 	- [[CPU Scheduler]]
 		- [[Cooperative Scheduling]]
 		- [[Preemptive Scheduling]]
+	- [[Scheduling Algorithm]]
+		- [[First-Come, First-Served Scheduling]]
+		- [[Shortest Job First Scheduling]]
+		- [[Priority Scheduling]]
+		- [[Round Robin Scheduling]]
+		- [[Multilevel Queue Scheduling]]
+- [[CPU Burst]]
 
 ---
 
 # Reference
 
-Operating System Concepts, 9th edition
+- Silberschatz Abraham, Peter Baer Galvin, and Greg Gagne. Operating System Concepts. Ninth edition. John Wiley & Sons, Inc., n.d.
+- 張立平. “Introduction to Operating Systems, Chapter 5.” NCTU EC122[GF], October 11, 2023.
 
 ---
 

@@ -15,6 +15,12 @@ In practice, the majority of CPU bursts are short. Therefore, we need a CPU sche
 - [[CPU Scheduler]]
 	- [[Cooperative Scheduling]]
 	- [[Preemptive Scheduling]]
+- [[Scheduling Algorithm]]
+	- [[First-Come, First-Served Scheduling]]
+	- [[Shortest Job First Scheduling]]
+	- [[Priority Scheduling]]
+	- [[Round Robin Scheduling]]
+	- [[Multilevel Queue Scheduling]]
 
 ---
 
