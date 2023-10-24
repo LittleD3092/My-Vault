@@ -6,7 +6,7 @@ Link:
 
 ---
 
-Relational algebra is used to write a query in mathematical form. It contains 6 basic operators.
+Relational algebra is used to write a query in mathematical form. It contains following basic operators:
 
 - [[Select Operation]] $\sigma$
 - [[Project Operation]] $\Pi$
@@ -14,12 +14,15 @@ Relational algebra is used to write a query in mathematical form. It contains 6 
 - [[Join Operation]] $\bowtie$
 - [[Union Operation]] $\cup$
 - [[Intersect Operation]] $\cap$
+- [[Set Difference Operation]] $-$
+- [[Assignment Operation]] $\leftarrow$
+- [[Rename Operation]] $\rho$
 
 ---
 
 # Reference
 
-Database Course
+- Tseng, Yi-Ju. “Chapter 2: Introduction to Relational Model.” NYCU ED117[GF], October 12, 2023.
 
 ---
 

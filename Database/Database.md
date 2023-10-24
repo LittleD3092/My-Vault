@@ -85,12 +85,30 @@ SQL is a language that is **DDL** and also **Declarative DML**.
 	- [[Keys]]
 - [[Schema Diagram]]
 - [[Relational Algebra]]
+	- [[Select Operation]] $\sigma$
+	- [[Project Operation]] $\Pi$
+	- [[Cartesian Product]] $\times$
+	- [[Join Operation]] $\bowtie$
+	- [[Union Operation]] $\cup$
+	- [[Intersect Operation]] $\cap$
+	- [[Set Difference Operation]] $-$
+	- [[Assignment Operation]] $\leftarrow$
+	- [[Rename Operation]] $\rho$
+
+# Chapter 6: Entity-Relational Model
+
+- [[Entity-Relational Model]]
+	- [[Entity Set]]
+	- [[Relationship Set]]
+	- [[Attribute]]
+- [[Mapping Cardinality Constraint]]
 
 ---
 
 # Reference
 
-Database Course
+- Tseng, Yi-Ju. “Chapter 2: Introduction to Relational Model.” NYCU ED117[GF], October 12, 2023.
+- Tseng, Yi-Ju. “Chapter 6: Entity-Relational Model.” NYCU ED117[GF], October 12, 2023.
 
 ---
 
