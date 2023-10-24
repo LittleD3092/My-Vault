@@ -8,7 +8,7 @@ Link:
 
 There are many things to consider when we schedule multiple processors. Is there a queue global or each processor gets a queue? Do we give each processor a separate memory?
 
-Depending on the questions above, 4 types of scheduling can appear:
+Depending on the questions above, 4 **types of scheduling** can appear:
 
 - Global queue or separate queue:
 	- [[Partitioned Scheduling]]
@@ -17,11 +17,19 @@ Depending on the questions above, 4 types of scheduling can appear:
 	- [[Symmetric Multiprocessing]]
 	- [[Non-Uniform Memory Access]]
 
+There are also 2 properties that we need to consider:
+
+- [[Processor Affinity]]
+- [[Load Balancing]]
+	- [[Push Migration]]
+	- [[Pull Migration]]
+
 ---
 
 # Reference
 
 - 張立平. “Introduction to Operating Systems, Chapter 5.” NCTU EC122[GF], October 11, 2023.
+- 張立平. “Introduction to Operating Systems, Chapter 5, part 2.” NYCU EC122[GF], October 14, 2023.
 
 ---
 

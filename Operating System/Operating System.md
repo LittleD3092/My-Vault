@@ -294,10 +294,23 @@ A process can be thought of as a program in execution.
 		- [[Multilevel Feedback Queue Scheduling]]
 - [[CPU Burst]]
 - [[Multiple-Processor Scheduling]]
-	- [[Partitioned Scheduling]]
-	- [[Global Scheduling]]
-	- [[Symmetric Multiprocessing]]
-	- [[Non-Uniform Memory Access]]
+	- Scheduling categories:
+		- [[Partitioned Scheduling]]
+		- [[Global Scheduling]]
+		- [[Symmetric Multiprocessing]]
+		- [[Non-Uniform Memory Access]]
+	- Properties:
+		- [[Processor Affinity]]
+		- [[Load Balancing]]
+			- [[Push Migration]]
+			- [[Pull Migration]]
+- Multi-core and Multi-threading Processors
+	- [[Multi-core Processor]]
+	- [[Multi-thread Processor]]
+	- [[Hierarchical Scheduling Domains]]
+	- [[Light-Weight Process]]
+		- [[Process Contention Scope]]
+		- [[System Contention Scope]]
 
 ---
 
@@ -305,6 +318,7 @@ A process can be thought of as a program in execution.
 
 - Silberschatz Abraham, Peter Baer Galvin, and Greg Gagne. Operating System Concepts. Ninth edition. John Wiley & Sons, Inc., n.d.
 - 張立平. “Introduction to Operating Systems, Chapter 5.” NCTU EC122[GF], October 11, 2023.
+- 張立平. “Introduction to Operating Systems, Chapter 5, part 2.” NYCU EC122[GF], October 14, 2023.
 
 ---
 
