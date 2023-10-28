@@ -1,4 +1,4 @@
-標籤: #sql
+標籤: #sql 
 
 ---
 
@@ -37,6 +37,8 @@ SQL stands for "Standard Query Language". This language is used to interact with
 A query is a request to the management systems, telling them to create, read, update or delete something. 
 
 The idea of a query is to get the essential information from a bunch of data, only get you want.
+
+- [[Select Clause in SQL]]
 
 ## Key
 
@@ -164,7 +166,8 @@ DESCRIBE [table_name];
 
 參考資料:
 
-[SQL tutorial - youtube](https://youtu.be/HXV3zeQKqGY)
+- [SQL tutorial - youtube](https://youtu.be/HXV3zeQKqGY)
+- Tseng, Yi-Ju. “Introduction to Database Systems, Chapter 3: Introduction to SQL, Part 2.” Asynchronous Online Course, October 22, 2023.
 
 ---
 

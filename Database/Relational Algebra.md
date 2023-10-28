@@ -10,7 +10,7 @@ Relational algebra is used to write a query in mathematical form. It contains fo
 
 - [[Select Operation]] $\sigma$
 - [[Project Operation]] $\Pi$
-- [[Cartesian Product]] $\times$
+- [[Cartesian Product of Database]] $\times$
 - [[Join Operation]] $\bowtie$
 - [[Union Operation]] $\cup$
 - [[Intersect Operation]] $\cap$

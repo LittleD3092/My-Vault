@@ -87,7 +87,7 @@ SQL is a language that is **DDL** and also **Declarative DML**.
 - [[Relational Algebra]]
 	- [[Select Operation]] $\sigma$
 	- [[Project Operation]] $\Pi$
-	- [[Cartesian Product]] $\times$
+	- [[Cartesian Product of Database]] $\times$
 	- [[Join Operation]] $\bowtie$
 	- [[Union Operation]] $\cup$
 	- [[Intersect Operation]] $\cap$
@@ -102,6 +102,7 @@ SQL is a language that is **DDL** and also **Declarative DML**.
 	- [[Create Table in SQL]]
 	- [[Update Table in SQL]]
 	- [[Delete Table in SQL]]
+	- [[Select Clause in SQL]]
 
 # Chapter 6: Entity-Relational Model
 
@@ -118,6 +119,7 @@ SQL is a language that is **DDL** and also **Declarative DML**.
 - Tseng, Yi-Ju. “Chapter 2: Introduction to Relational Model.” NYCU ED117[GF], October 12, 2023.
 - Tseng, Yi-Ju. “Chapter 6: Entity-Relational Model.” NYCU ED117[GF], October 12, 2023.
 - Tseng, Yi-Ju. “Chapter 3: Introduction to SQL.” Asynchronous Online Course, October 15, 2023.
+- Tseng, Yi-Ju. “Introduction to Database Systems, Chapter 3: Introduction to SQL, Part 2.” Asynchronous Online Course, October 22, 2023.
 
 ---
 

@@ -6,7 +6,7 @@ Link:
 
 ---
 
-As stated in [[Cartesian Product#Join Operation]], join operation is a combo of [[Cartesian Product]] and [[Select Operation]].
+As stated in [[Cartesian Product of Database#Join Operation]], join operation is a combo of [[Cartesian Product of Database]] and [[Select Operation]].
 
 $$r \bowtie_\theta s = \sigma_\theta(r\times s)$$
 
