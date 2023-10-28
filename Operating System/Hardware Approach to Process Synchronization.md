@@ -12,7 +12,12 @@ Following list shows tools or methods that hardware provides for us to solve [[C
 
 - [[Interrupt Disabling for Process Synchronization|Interrupt Disabling]]
 - [[Atomic Instruction for Process Synchronization|Atomic Instruction]]
+	- [[TestAndSet Instruction]]
+	- [[Swap Instruction]]
 - [[Semaphores for Process Synchronization|Semaphores]]
+	- [[Mutex Lock]]
+	- [[Sequencing or Event]]
+	- [[Capacity Control]]
 
 ---
 

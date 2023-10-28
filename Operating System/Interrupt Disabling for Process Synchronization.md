@@ -6,7 +6,13 @@ Link:
 
 ---
 
+If we disable the interrupt of CPU, we can **prevent context switch**, and may solve [[Critical Section Problem|critical section problem]]. But this method raises some problems.
 
+The possible problems:
+
+- For uni-processor system: Masking interrupt will prevent the running process from being preempted.
+- For multiprocessor: Will not prevent other CPUs from entering a critical section.
+- This interrupt disabling instruction must be privilege instruction (or will be dangerous), and user processes won't be able to use it.
 
 ---
 

@@ -93,7 +93,12 @@ A process can be thought of as a program in execution.
 	- [[Hardware Approach to Process Synchronization|Hardware Approach]]
 		- [[Interrupt Disabling for Process Synchronization|Interrupt Disabling]]
 		- [[Atomic Instruction for Process Synchronization|Atomic Instruction]]
+			- [[TestAndSet Instruction]]
+			- [[Swap Instruction]]
 		- [[Semaphores for Process Synchronization|Semaphores]]
+			- [[Mutex Lock]]
+			- [[Sequencing or Event]]
+			- [[Capacity Control]]
 
 ---
 
