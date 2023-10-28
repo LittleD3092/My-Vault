@@ -49,6 +49,13 @@ Here are some examples of using semaphores to solve synchronization problem:
 - [[Jack and Rose Watch Movie Solved Using Semaphores|Jack and Rose Watch Movie]]
 - [[DMA Channel Assignment Solved Using Semaphore|DMA Channel Assignment]]
 
+Here are some classic (and hard) examples about semaphores:
+
+- [[Bounded-Buffer Problem with Semaphore|Bounded-Buffer Problem]]
+- [[Readers and Writers Problem with Semaphore|Readers and Writers Problem]]
+- [[Dining-Philosophers Problem with Semaphors|Dining-Philosophers Problem]]
+- [[Sleeping Barber Problem with Semaphor|Sleeping Barber Problem]]
+
 # Problems
 
 If not designed properly, some errors may occur:
@@ -61,6 +68,7 @@ If not designed properly, some errors may occur:
 
 - 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization.” NYCU EC122[GF], October 18, 2023.
 - 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 2.” NYCU EC122[GF], October 20, 2023.
+- 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 3.” NYCU EC122[GF], October 21, 2023.
 
 ---
 

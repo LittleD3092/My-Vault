@@ -20,6 +20,10 @@ Following list shows tools or methods that hardware provides for us to solve [[C
 	- [[Capacity Control]]
 	- [[Jack and Rose Watch Movie Solved Using Semaphores|Jack and Rose Watch Movie]]
 	- [[DMA Channel Assignment Solved Using Semaphore|DMA Channel Assignment]]
+	- [[Bounded-Buffer Problem with Semaphore|Bounded-Buffer Problem]]
+	- [[Readers and Writers Problem with Semaphore|Readers and Writers Problem]]
+	- [[Dining-Philosophers Problem with Semaphors|Dining-Philosophers Problem]]
+	- [[Sleeping Barber Problem with Semaphor|Sleeping Barber Problem]]
 	- [[Deadlock of Semaphore|Deadlock]]
 
 ---
@@ -28,6 +32,7 @@ Following list shows tools or methods that hardware provides for us to solve [[C
 
 - 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization.” NYCU EC122[GF], October 18, 2023.
 - 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 2.” NYCU EC122[GF], October 20, 2023.
+- 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 3.” NYCU EC122[GF], October 21, 2023.
 
 ---
 
