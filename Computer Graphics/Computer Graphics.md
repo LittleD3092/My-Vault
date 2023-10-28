@@ -59,12 +59,17 @@ Link:
 		- [[Diffuse Component of Phong Reflection Model|Diffuse component]]
 		- [[Specular Component of Phong Reflection Model|Specular component]]
 			- [[Shininess Coefficient of Phong Reflection Model|Shininess coefficient]]
+	- [[Polygonal Shading]]
+		- [[Flat Shading]]
+		- [[Gouraud Shading]]
+		- [[Phong Shading]]
 
 ---
 
 # Reference
 
 - 林奕成. “Introduction to Computer Graphics, Ch5 Shading.” NYCU EC114[GF], October 16, 2023.
+- 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 2.” NYCU EC114[GF], October 18, 2023.
 
 ---
 
