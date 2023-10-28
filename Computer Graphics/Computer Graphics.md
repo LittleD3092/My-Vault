@@ -50,11 +50,21 @@ Link:
 		- [[Sutherland-Hodgman Algorithm]]
 		- [[Cohen-Sutherland Algorithm#Cohen-Sutherland Method in 3D]]
 
+# Chapter 5: Shading
+
+- [[Shading]]
+	- [[Rendering Equation]]
+	- [[Phong Reflection Model]]
+		- [[Ambient Component of Phong Reflection Model|Ambient component]]
+		- [[Diffuse Component of Phong Reflection Model|Diffuse component]]
+		- [[Specular Component of Phong Reflection Model|Specular component]]
+			- [[Shininess Coefficient of Phong Reflection Model|Shininess coefficient]]
+
 ---
 
 # Reference
 
-Computer Graphics Course
+- 林奕成. “Introduction to Computer Graphics, Ch5 Shading.” NYCU EC114[GF], October 16, 2023.
 
 ---
 

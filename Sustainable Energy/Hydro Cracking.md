@@ -1,22 +1,12 @@
-Tag: #sustainable-energy
-Previous: 
+Tag: #sustainable-energy 
+Previous: [[Oil]]
 Link: 
 
 [TOC]
 
 ---
 
-# Chapter 1: Energy Basics
-
-- [[Base Load]]: Satisfy minimum demand.
-- [[Peaking Load]]: Run only when peak hours.
-- [[Intermediate Load]]: Load from mid-morning until the evening.
-
-# Chapter 2: Past, Present, and Future World Energy Use
-
-# Chapter 3: Fossil Fuel Resources and Use
-
-- [[Oil]]
+In this process, the hydrocarbon is exposed to hydrogen gas.
 
 ---
 

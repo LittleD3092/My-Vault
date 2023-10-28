@@ -61,11 +61,25 @@ Link:
 	- [[Global Clustering Coefficient]]
 	- [[Average Clustering Coefficient]]
 
+# Lecture 5: Small-world Models
+
+- [[Small-world Network]]
+	- [[Watts-Strogatz Small-world Model|Watts-Strogatz Model]]
+	- [[Newman-Watts Small-world Model|Newman-Watts Model]]
+	- [[Kleinberg's Small-wold Model|Kleinberg's Model]]
+	- [[Configuration Model]]
+
+# Lecture 6: Scale-free Networks
+
+- [[Scale-free Network]]
+	- [[Barabasi-Albert Model]]
+
 ---
 
 # Reference
 
-Network Science Course
+- Lou, Yang. “Network Science, Lecture 5: Small-World Models.” NYCU ED102[GF], October 17, 2023.
+- Lou, Yang. “Network Science, Lecture 6: Scale-Free Networks.” NYCU ED102[GF], October 17, 2023.
 
 ---
 

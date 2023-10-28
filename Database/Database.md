@@ -95,6 +95,14 @@ SQL is a language that is **DDL** and also **Declarative DML**.
 	- [[Assignment Operation]] $\leftarrow$
 	- [[Rename Operation]] $\rho$
 
+# Chapter 3: Introduction to SQL
+
+- [[SQL]]
+	- [[Domain Types of SQL]]
+	- [[Create Table in SQL]]
+	- [[Update Table in SQL]]
+	- [[Delete Table in SQL]]
+
 # Chapter 6: Entity-Relational Model
 
 - [[Entity-Relational Model]]
@@ -109,6 +117,7 @@ SQL is a language that is **DDL** and also **Declarative DML**.
 
 - Tseng, Yi-Ju. “Chapter 2: Introduction to Relational Model.” NYCU ED117[GF], October 12, 2023.
 - Tseng, Yi-Ju. “Chapter 6: Entity-Relational Model.” NYCU ED117[GF], October 12, 2023.
+- Tseng, Yi-Ju. “Chapter 3: Introduction to SQL.” Asynchronous Online Course, October 15, 2023.
 
 ---
 

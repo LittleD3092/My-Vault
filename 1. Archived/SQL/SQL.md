@@ -136,52 +136,13 @@ SHOW DATABASES
 
 # Data types
 
-The following data types are the basic data types that are often used while writing sql.
-
-| Data types      | Description                                                                                                                                                |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `INT`           | Integer with range -2147483648 to 2147483647                                                                                                               |
-| `DECIMAL(M, N)` | Floating point number, `M` is the total number of digits, `N` is the number of digits after point. <br> For example, `3.24` will have `M = 3` and `N = 2`. |
-| `VARCHAR(l)`    | A string with maximum length `l`.                                                                                                                          |
-| `BLOB`          | Binary large objects, such as pictures and files.                                                                                                          |
-| `DATE`          | A date in format `YYYY-MM-DD`.                                                                                                                             |
-| `TIMESTAMP`     | A time (with date) in format `YYYY-MM-DD HH:MM:SS`.                                                                                                        |
+- [[Domain Types of SQL]]
 
 # Manipulating Tables
 
 ## Create Tables
 
-To create table, you need to specify the name of the table, and put the name and [[#Data types]] of columns in parantheses.
-
-```sql
-CREATE TABLE [table_name](
-    [row_name_1] [data_type_1] PRIMARY KEY,
-    [row_name_2] [data_type_2],
-    [row_name_3] [data_type_3],
-    ...
-);
-```
-
-For example, we create a table with name `student` and has data `student_id`, `name`, and `major`:
-
-```sql
-CREATE TABLE student(
-    student_id INT PRIMARY KEY,
-    name       VARCHAR(20),
-	major      VARCHAR(20)
-);
-```
-
-Note that we can also specify `PRIMARY KEY` like this:
-
-```sql
-CREATE TABLE student(
-    student_id INT PRIMARY KEY,
-    name       VARCHAR(20),
-    major      VARCHAR(20),
-    PRIMARY KEY(student_id)
-);
-```
+- [[Create Table in SQL]]
 
 ## Show Information of a Table
 
@@ -193,20 +154,11 @@ DESCRIBE [table_name];
 
 ## Delete Table
 
-You can delete table using the following line:
-
-```sql
-DROP TABLE [table_name];
-```
+- [[Delete Table in SQL]]
 
 ## Add or Delete Column
 
-Sometimes we need to add or delete a column from our table. In this case, we use `ALTER TABLE [table_name]`, and specify the action after this.
-
-```sql
-ALTER TABLE [table_name] ADD [column_name] [data_type];
-ALTER TABLE [table_name] DROP COLUMN [column_name];
-```
+- [[Update Table in SQL]]
 
 ---
 

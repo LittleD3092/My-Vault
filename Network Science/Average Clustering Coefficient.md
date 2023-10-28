@@ -6,7 +6,7 @@ Link:
 
 ---
 
-Average clustering coefficient is an easier way to obtain a value approximately equal to [[Global Clustering Coefficient]]. In fact, in [[Watts-Strogatz Model]], average clustering coefficient is equal to the [[Global Clustering Coefficient]].
+Average clustering coefficient is an easier way to obtain a value approximately equal to [[Global Clustering Coefficient]]. In fact, in [[Watts-Strogatz Small-world Model]], average clustering coefficient is equal to the [[Global Clustering Coefficient]].
 
 Average clustering coefficient can be obtained by averaging the [[Local Clustering Coefficient]] of every node:
 
