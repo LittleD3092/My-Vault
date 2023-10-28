@@ -83,6 +83,18 @@ A process can be thought of as a program in execution.
 		- [[Process Contention Scope]]
 		- [[System Contention Scope]]
 
+# Chapter 6: Synchronization
+
+- [[Synchronization of Operating System|Synchronization]]
+	- [[Critical Section Problem]]
+		- [[Mutual Exclusion of Critical Section|Mutual Exclusion]]
+		- [[Progress of Critical Section|Progress]]
+		- [[Bounded Waiting of Critical Section|Bounded Waiting]]
+	- [[Hardware Approach to Process Synchronization|Hardware Approach]]
+		- [[Interrupt Disabling for Process Synchronization|Interrupt Disabling]]
+		- [[Atomic Instruction for Process Synchronization|Atomic Instruction]]
+		- [[Semaphores for Process Synchronization|Semaphores]]
+
 ---
 
 # Reference
@@ -90,6 +102,7 @@ A process can be thought of as a program in execution.
 - Silberschatz Abraham, Peter Baer Galvin, and Greg Gagne. Operating System Concepts. Ninth edition. John Wiley & Sons, Inc., n.d.
 - 張立平. “Introduction to Operating Systems, Chapter 5.” NCTU EC122[GF], October 11, 2023.
 - 張立平. “Introduction to Operating Systems, Chapter 5, part 2.” NYCU EC122[GF], October 14, 2023.
+- 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization.” NYCU EC122[GF], October 18, 2023.
 
 ---
 
