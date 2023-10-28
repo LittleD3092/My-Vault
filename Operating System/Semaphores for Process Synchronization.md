@@ -44,11 +44,23 @@ Semaphores are useful, and they have many usages:
 - [[Sequencing or Event]]
 - [[Capacity Control]]
 
+Here are some examples of using semaphores to solve synchronization problem:
+
+- [[Jack and Rose Watch Movie Solved Using Semaphores|Jack and Rose Watch Movie]]
+- [[DMA Channel Assignment Solved Using Semaphore|DMA Channel Assignment]]
+
+# Problems
+
+If not designed properly, some errors may occur:
+
+- [[Deadlock of Semaphore|Deadlock]]
+
 ---
 
 # Reference
 
 - 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization.” NYCU EC122[GF], October 18, 2023.
+- 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 2.” NYCU EC122[GF], October 20, 2023.
 
 ---
 

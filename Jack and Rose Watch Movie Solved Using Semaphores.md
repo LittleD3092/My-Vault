@@ -6,18 +6,23 @@ Link:
 
 ---
 
-This problem is about a fixed amount of processes can enter. It can be solved by setting **initial value of semaphore** $= \text{capacity}$.
+Jack and Rose are going to watch movie together, and they are meeting at the front of the theater. If someone arrived first, he or she needs to wait for the other person.
 
-The solution using semaphore to capacity control is similar to [[Critical Section Problem|critical section problem]], but in this solution we allow multiple processes enter:
+This can be solved using two semaphores, indicating who arrived.
 
 ```cpp
-P_i, P_j, P_k, ...
+R = 0; J = 0;
+jack()
 {
-	...
-	wait(sem);
-	...
-	signal(sem);
-	...
+	signal(J);
+	wait(R);
+	// watch movie
+}
+rose()
+{
+	signal(R);
+	wait(J);
+	// watch movie
 }
 ```
 
@@ -25,7 +30,6 @@ P_i, P_j, P_k, ...
 
 # Reference
 
-- 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization.” NYCU EC122[GF], October 18, 2023.
 - 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 2.” NYCU EC122[GF], October 20, 2023.
 
 ---
