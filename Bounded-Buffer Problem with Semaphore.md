@@ -6,7 +6,35 @@ Link:
 
 ---
 
+Bounded-buffer problem is about a reader and a sender accessing the same memory. The solution to this problem uses 3 semaphores:
 
+- `mutex`: To protect the buffer. Initial value is `1`.
+- `full`: Block when no items in the buffer. Initial value is `0`.
+- `empty`: Block when no free slots in the buffer. Initial value is `N` (number of available slots).
+
+```cpp
+// producer process
+do {
+	// produce an item
+	wait(empty);
+	wait(mutex);
+	// add the item to the buffer
+	signal(mutex);
+	signal(full);
+} while(true);
+
+// ---
+
+// consumer process
+do {
+	wait(full);
+	wait(mutex);
+	// remove an item from buffer
+	signal(mutex);
+	signal(empty);
+	// consume the removed item
+} while(true);
+```
 
 ---
 
