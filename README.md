@@ -32,3 +32,25 @@ To pull attachments missing, use `git lfs pull --include=""` to pull single file
 ```bash
 git lfs pull --include=filename
 ```
+
+# 3. Entry Points
+
+The lists of this section shows the root of some interesting topics.
+
+## 3.1. Active
+
+The list below shows the topics that are active and will be frequently added notes.
+
+- [[Computer Graphics]]
+- [[Database]]
+- [[How to Make Good Notes]]
+- [[Network Science]]
+- [[Operating System]]
+- [[SDN]]
+- [[Sustainable Energy]]
+
+## 3.2. Archived
+
+The list below shows the topics that are archived and will not be frequently updated.
+
+- [[Computer Networks Layers]]

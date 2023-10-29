@@ -25,7 +25,7 @@ Some common protocols:
 
 # Layers
 
-See note [[Layers]].
+See note [[Computer Networks Layers]].
 
 # TCP Services
 
