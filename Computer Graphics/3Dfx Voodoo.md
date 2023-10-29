@@ -1,12 +1,20 @@
 Tag: #computer-graphics 
-Previous: [[Polygonal Shading]]
+Previous: [[GPU]]
 Link: 
 
 [TOC]
 
 ---
 
+3Dfx Voodoo is one of the first true 3D game cards. It has the following pipeline:
 
+![[Pasted image 20231029142256.png]]
+
+There are few remarks:
+
+- Works by supplementing a 2D video card.
+- Did not do vertex transformations.
+- Did texture mapping and z-buffering.
 
 ---
 

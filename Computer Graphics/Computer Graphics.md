@@ -64,6 +64,19 @@ Link:
 		- [[Gouraud Shading]]
 		- [[Phong Shading]]
 
+# Chapter 6: GPU and Shaders
+
+- [[GPU]]
+	- [[3Dfx Voodoo]]
+	- [[GeForce 7500]]
+	- [[GeForce FX]]
+	- [[GPU Programmable Components]]
+		- [[Shader]]
+			- [[Vertex Shader]]
+			- [[Fragment Shader]]
+			- [[Geometry Shader]]
+		- [[GLSL Pipeline]]
+
 ---
 
 # Reference
