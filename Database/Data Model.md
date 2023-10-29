@@ -1,20 +1,25 @@
 Tag: #Database 
-Previous: [[Architecture of Database System]]
+Previous: [[Database]]
 Link: 
 
 [TOC]
 
 ---
 
-The database engine puts query processor, storage manager and disk storage together.
+Data models are the tools that describe
 
-![[Pasted image 20231011205309.png]]
+- The data.
+- The relationships between data.
+- Data semantics.
+- Data constraints.
+
+The most commonly used model is [[Relational Model|relational model]].
 
 ---
 
 # Reference
 
-Database Course
+1. 
 
 ---
 

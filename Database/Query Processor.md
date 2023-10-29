@@ -1,5 +1,5 @@
 Tag: #Database 
-Previous: [[Database]]
+Previous: [[Architecture of Database System]]
 Link: 
 
 [TOC]

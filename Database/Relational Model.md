@@ -1,5 +1,5 @@
 Tag: #Database 
-Previous: [[Database/Database]]
+Previous: [[Data Model]]
 Link: 
 
 [TOC]

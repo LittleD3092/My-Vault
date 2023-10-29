@@ -1,20 +1,26 @@
 Tag: #Database 
-Previous: [[Architecture of Database System]]
+Previous: [[Database]]
 Link: 
 
 [TOC]
 
 ---
 
-The database engine puts query processor, storage manager and disk storage together.
+![[Pasted image 20230914195151.png]]
 
-![[Pasted image 20231011205309.png]]
+The figure above shows an abstract architecture of database.
+
+For a database to work, the following 3 things must be implemented:
+
+- [[Database Engine]]
+- [[Storage Manager]]
+- [[Query Processor]]
 
 ---
 
 # Reference
 
-Database Course
+1. 
 
 ---
 

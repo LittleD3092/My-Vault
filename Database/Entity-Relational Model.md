@@ -9,8 +9,13 @@ Link:
 The entity-relational model has 3 basic concepts:
 
 - [[Entity Set]]
+	- [[Weak Entity Set]]
+		- [[Representing Weak Entity Set]]
+	- [[Strong Entity Set]]
+		- [[Representing Strong Entity Set]]
 - [[Relationship Set]]
 - [[Attribute]]
+	- [[Redundant Attribute]]
 
 ---
 

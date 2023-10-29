@@ -6,6 +6,8 @@
 
 ---
 
+SQL is both [[Data Manipulating Language|data manipulating language]] and [[Data Definition Language|data definition language]].
+
 # C.R.U.D
 
 CRUD stands for the main four operations of SQL:
@@ -142,25 +144,13 @@ SHOW DATABASES
 
 # Manipulating Tables
 
-## Create Tables
-
 - [[Create Table in SQL]]
-
-## Show Information of a Table
-
-Sometimes it is useful to show the information of a table because we may forget what format it is. The following line will print a description of a table, including the name and [[#Data types]] of all columns.
-
-```sql
-DESCRIBE [table_name];
-```
-
-## Delete Table
-
-- [[Delete Table in SQL]]
-
-## Add or Delete Column
-
+- [[Show Information of a Table in SQL]]
 - [[Update Table in SQL]]
+- [[Delete Table in SQL]]
+- [[Select Clause in SQL]]
+- [[Rename Operation in SQL]]
+- [[String Operation in SQL]]
 
 ---
 

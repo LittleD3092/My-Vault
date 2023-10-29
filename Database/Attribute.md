@@ -6,6 +6,8 @@ Link:
 
 ---
 
+- [[Redundant Attribute]]
+
 # Relational Model
 
 Attributes are the **columns** of the [[Relational Model]].

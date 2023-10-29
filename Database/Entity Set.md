@@ -19,6 +19,11 @@ $$
 
 Therefore, an entity set is a set of entities that have **same type and properties**.
 
+- [[Weak Entity Set]]
+	- [[Representing Weak Entity Set]]
+- [[Strong Entity Set]]
+	- [[Representing Strong Entity Set]]
+
 # Graphical Representation
 
 The graphical representation of an entity set is a rectangle, as follows:

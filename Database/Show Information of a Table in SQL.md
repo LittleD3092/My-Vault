@@ -1,20 +1,22 @@
 Tag: #Database 
-Previous: [[Architecture of Database System]]
+Previous: [[SQL]]
 Link: 
 
 [TOC]
 
 ---
 
-The database engine puts query processor, storage manager and disk storage together.
+Sometimes it is useful to show the information of a table because we may forget what format it is. The following line will print a description of a table, including the name and [[#Data types]] of all columns.
 
-![[Pasted image 20231011205309.png]]
+```sql
+DESCRIBE [table_name];
+```
 
 ---
 
 # Reference
 
-Database Course
+1. 
 
 ---
 
