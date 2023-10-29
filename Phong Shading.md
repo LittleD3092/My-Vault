@@ -1,22 +1,17 @@
 Tag: #computer-graphics 
-Previous: [[Computer Graphics]]
+Previous: [[Polygonal Shading]]
 Link: 
 
 [TOC]
 
 ---
 
-The list below is ways of rendering a polygon:
 
-- [[Flat Shading]]
-- [[Gouraud Shading]]
-- [[Phong Shading]]
 
 ---
 
 # Reference
 
-- 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 2.” NYCU EC114[GF], October 18, 2023.
 - 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
 
 ---

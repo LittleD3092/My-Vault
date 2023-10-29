@@ -10,12 +10,14 @@ For an object, there is light that strikes an object. The light is partially abs
 
 - [[Rendering Equation]]
 - [[Phong Reflection Model]]
+- [[Polygonal Shading]]
 
 ---
 
 # Reference
 
 - 林奕成. “Introduction to Computer Graphics, Ch5 Shading.” NYCU EC114[GF], October 16, 2023.
+- 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
 
 ---
 
