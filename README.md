@@ -48,6 +48,7 @@ The list below shows the topics that are active and will be frequently added not
 - [[Operating System]]
 - [[SDN]]
 - [[Sustainable Energy]]
+- [[Code Project Managing Tools]]
 
 ## 3.2. Archived
 
