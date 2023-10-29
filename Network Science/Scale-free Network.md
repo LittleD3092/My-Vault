@@ -11,6 +11,7 @@ A scale-free network has a power-law degree distribution, similar to the followi
 ![[Pasted image 20231028142741.png|400]]
 
 - [[Barabasi-Albert Model]]
+- [[Price's Model]]
 
 ---
 

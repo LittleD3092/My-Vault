@@ -73,6 +73,12 @@ Link:
 
 - [[Scale-free Network]]
 	- [[Barabasi-Albert Model]]
+	- [[Price's Model]]
+- [[Power Law Distribution]]
+	- [[Probability Distribution Function]]
+	- [[Cumulative Distribution Function]]
+	- [[Calculate Power Law Distribution]]
+	- [[Moment]]
 
 ---
 
@@ -80,6 +86,7 @@ Link:
 
 - Lou, Yang. “Network Science, Lecture 5: Small-World Models.” NYCU ED102[GF], October 17, 2023.
 - Lou, Yang. “Network Science, Lecture 6: Scale-Free Networks.” NYCU ED102[GF], October 17, 2023.
+- “Price’s Model.” In Wikipedia, August 27, 2023. https://en.wikipedia.org/w/index.php?title=Price%27s_model&oldid=1172421937.
 
 ---
 
