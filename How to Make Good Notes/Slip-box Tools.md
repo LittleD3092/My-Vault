@@ -1,25 +1,17 @@
-Tag: #how-to-make-good-notes
-Previous: 
+Tag: #how-to-make-good-notes 
+Previous: [[How to Make Good Notes]]
 Link: 
 
 [TOC]
 
 ---
 
-# Chapter 1: Everything You Need to Know
+The tools to start a slip-box is simple:
 
-- [[Slip-box]]
-
-# Chapter 2: Everything You Need To Do
-
-- [[Slip-box]]
-	- [[Zettelkasten Index]]
-
-# Chapter 3: Everything You Need to Have
-
-- [[Slip-box Tools]]
-
-# Chapter 4: A Few Things to Keep in Mind
+- **Something to write on (pen and paper)**: The writing method should not require any thoughts nor attention when writing.
+- **Reference management system**: For collecting the references while reading.
+- **Slip-box**: A program or any system that can implement linking.
+- **An editor**: For writing notes into main-box.
 
 ---
 
