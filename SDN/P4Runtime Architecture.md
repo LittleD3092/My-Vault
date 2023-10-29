@@ -1,15 +1,16 @@
 Tag: #SDN 
-Previous: [[P4 Language]]
+Previous: [[P4Runtime]]
 Link: 
 
 [TOC]
 
 ---
 
-P4Runtime is a tool for control plane, and it can be used to upload the data plane written by [[P4 Language|P4 language]] (<u>1</u>).
+The figure below is the architecture of [[P4Runtime]]: (<u>1</u>)
 
-- [[P4Runtime Architecture]]
-- [[P4Runtime Server]]
+![[Pasted image 20231029214445.png]]
+
+The device being controlled is the dark purple one. There may be one or more controllers, shown at the top. (<u>1</u>)
 
 ---
 

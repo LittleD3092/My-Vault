@@ -22,8 +22,8 @@ Following list shows tools or methods that hardware provides for us to solve [[C
 	- [[DMA Channel Assignment Solved Using Semaphore|DMA Channel Assignment]]
 	- [[Bounded-Buffer Problem with Semaphore|Bounded-Buffer Problem]]
 	- [[Readers and Writers Problem with Semaphore|Readers and Writers Problem]]
-	- [[Dining-Philosophers Problem with Semaphors|Dining-Philosophers Problem]]
-	- [[Sleeping Barber Problem with Semaphor|Sleeping Barber Problem]]
+	- [[Dining-Philosophers Problem with Semaphore|Dining-Philosophers Problem]]
+	- [[Sleeping Barber Problem with Semaphore|Sleeping Barber Problem]]
 	- [[Deadlock of Semaphore|Deadlock]]
 
 ---

@@ -6,9 +6,9 @@ Link:
 
 ---
 
-Deadlock means that two or more processes are waiting forever.
+Deadlock means that two or more processes are waiting forever. (<u>1</u>)
 
-For example, two processes with different order of semaphore implementation:
+For example, two processes with different order of semaphore implementation: (<u>1</u>)
 
 ```cpp
 // Process 0
@@ -28,13 +28,16 @@ signal(S);
 signal(Q);
 ```
 
-The code above might block, because process 0 may lock `S` and process 1 may lock `Q`. Then, both processes will wait for each other, causing the deadlock.
+The code above might block, because process 0 may lock `S` and process 1 may lock `Q`. Then, both processes will wait for each other, causing the deadlock. (<u>1</u>)
+
+- [[Conditions of Deadlock]]
+- [[Resource Allocation Graph]]
 
 ---
 
 # Reference
 
-- 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 2.” NYCU EC122[GF], October 20, 2023.
+1. 張立平. “Introduction to Operating Systems, Chapter 6: Synchronization, Part 2.” NYCU EC122[GF], October 20, 2023.
 
 ---
 

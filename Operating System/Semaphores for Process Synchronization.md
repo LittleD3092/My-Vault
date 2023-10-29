@@ -53,8 +53,8 @@ Here are some classic (and hard) examples about semaphores:
 
 - [[Bounded-Buffer Problem with Semaphore|Bounded-Buffer Problem]]
 - [[Readers and Writers Problem with Semaphore|Readers and Writers Problem]]
-- [[Dining-Philosophers Problem with Semaphors|Dining-Philosophers Problem]]
-- [[Sleeping Barber Problem with Semaphor|Sleeping Barber Problem]]
+- [[Dining-Philosophers Problem with Semaphore|Dining-Philosophers Problem]]
+- [[Sleeping Barber Problem with Semaphore|Sleeping Barber Problem]]
 
 # Problems
 

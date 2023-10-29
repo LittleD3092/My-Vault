@@ -1,15 +1,12 @@
 Tag: #SDN 
-Previous: [[P4 Language]]
+Previous: [[P4Runtime]]
 Link: 
 
 [TOC]
 
 ---
 
-P4Runtime is a tool for control plane, and it can be used to upload the data plane written by [[P4 Language|P4 language]] (<u>1</u>).
-
-- [[P4Runtime Architecture]]
-- [[P4Runtime Server]]
+[[P4Runtime]] is implemented as a server. It listens on [[TCP]] port 9559 by default. (<u>1</u>)
 
 ---
 
