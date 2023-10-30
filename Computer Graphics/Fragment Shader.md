@@ -6,15 +6,25 @@ Link:
 
 ---
 
-The fragment shader handles per-pixel functions, the blue part in the figure below.
+The fragment shader handles per-pixel functions, the blue part in the figure below. (<u>1</u>)
 
 ![[Pasted image 20231029143945.png]]
+
+The fragment shader is responsible for: (<u>2</u>)
+
+- Operation on interpolated value.
+- Texture access and operation.
+
+There are a few techniques that can be performed using fragment shader: (<u>2</u>)
+
+- [[Bump Mapping]]
 
 ---
 
 # Reference
 
-- 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
+1. 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
+2. 林奕成. “Introduction to Computer Graphics, Chapter 6: GPU and Shaders.” NYCU EC114[GF], October 30, 2023.
 
 ---
 

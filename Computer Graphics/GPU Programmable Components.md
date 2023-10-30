@@ -11,8 +11,11 @@ Graphic processors have the following components:
 - [[Shader]]
 	- [[Vertex Shader]]
 	- [[Fragment Shader]]
+		- [[Bump Mapping]]
 	- [[Geometry Shader]]
 - [[GLSL Pipeline]]
+	- [[GLSL Pipeline with Geometry Shader]]
+- [[Toon Shading]]
 
 ---
 

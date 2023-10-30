@@ -20,8 +20,11 @@ Here are a list of **important graphic cards**:
 	- [[Shader]]
 		- [[Vertex Shader]]
 		- [[Fragment Shader]]
+			- [[Bump Mapping]]
 		- [[Geometry Shader]]
 	- [[GLSL Pipeline]]
+		- [[GLSL Pipeline with Geometry Shader]]
+	- [[Toon Shading]]
 
 ---
 

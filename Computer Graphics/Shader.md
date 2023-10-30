@@ -10,6 +10,7 @@ Shader is a hardware programmable processor. There are many types of shaders, ea
 
 - [[Vertex Shader]]
 - [[Fragment Shader]]
+	- [[Bump Mapping]]
 - [[Geometry Shader]]
 
 ---

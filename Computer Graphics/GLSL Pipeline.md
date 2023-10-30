@@ -14,6 +14,8 @@ To write GLSL programs for [[Shader|shaders]], the programs are **separated from
 
 Note that you can use **multiple different shader codes** for different textures.
 
+- [[GLSL Pipeline with Geometry Shader]]
+
 ---
 
 # Reference
