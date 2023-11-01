@@ -1,4 +1,7 @@
 標籤: #arduino 
+Previous: [[Serial Tools]]
+
+---
 
 在序列埠視窗中，可以監控arduino的情況
 

@@ -18,11 +18,16 @@ Link:
 
 - [[Oil]]
 
+# Chapter 4: Environmental Consequences of Fossil Fuel Use
+
+- [[Green House Effect]]
+
 ---
 
 # Reference
 
 - 陳慶耀. “Sustainable Energy, Ch3 Fossil Fuel Resources and Use.” NYCU EE106[GF], October 14, 2023.
+- Dunlap, Richard A. Sustainable Energy, SI Edition, Second Edition. Second Edition. Cengage, n.d. Accessed November 1, 2023.
 
 ---
 

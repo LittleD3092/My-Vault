@@ -30,11 +30,15 @@ We can view operating system based on 3 aspects:
 
 There are different kinds of structures. Some are divided into **modules**, some are not.
 
-- [[Simple Structure of Operating System|Simple Structure]]
-- [[Layered Approach of Operating System|Layered Approach]]
-- [[Microkernel of Operating System|Microkernel]]
-- [[Modules of Operating System|Modules]]
-- [[Hybrid Operating System|Hybrid]]
+- [[Possible Operating System Structures]]
+	- [[Simple Structure of Operating System|Simple Structure]]
+	- [[Layered Approach of Operating System|Layered Approach]]
+	- [[Microkernel of Operating System|Microkernel]]
+	- [[Modules of Operating System|Modules]]
+	- [[Hybrid Operating System|Hybrid]]
+- [[User-Kernel Mode Separation]]
+	- [[Kernel Mode]]
+	- [[User Mode]]
 
 ## Debugging
 
@@ -44,11 +48,18 @@ There are different kinds of structures. Some are divided into **modules**, some
 
 A process can be thought of as a program in execution.
 
-> [[Process]]
+- [[Process]]
+	- [[Process State]]
+	- [[Process Control Block]]
+	- [[Process Scheduling]]
+		- [[Context Switch]]
+		- [[Process Scheduler]]
+	- [[Operations on Processes]]
+	- [[Process Synchronization]]
 
 # Chapter 4: Threads
 
-> [[Threads]]
+- [[Threads]]
 
 # Chapter 5: CPU Scheduling
 

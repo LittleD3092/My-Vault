@@ -1,5 +1,5 @@
 Tag: #operating-system 
-Previous: [[Operating System]]
+Previous: [[Possible Operating System Structures]]
 Link: 
 
 [TOC]

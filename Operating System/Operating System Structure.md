@@ -23,9 +23,16 @@ As above figure shows, a computer system can be divided into four components.
 - Application programs.
 - Users.
 
-## Basics of Operating System
+Operating systems provide a list of services:
 
-### Computer System Operation
+- [[Interrupt]]
+- [[Direct Memory Access]]
+- [[Synchronous and Asynchronous IO]]
+- [[Multi Programming]]
+
+# Basics of Operating System
+
+## Computer System Operation
 
 For a computer to start running, it goes through the following steps:
 
@@ -38,7 +45,7 @@ For a computer to start running, it goes through the following steps:
 	- Some services are known as **system processes**, or **system daemons**.
 3. The system is booted.
 
-### What Operating System Do
+## What Operating System Do
 
 The following three functions are called "The Three Pillars".
 
@@ -58,22 +65,6 @@ The following three functions are called "The Three Pillars".
 	- Supporting primitives for manipulating files and directories.
 	- Mapping files onto secondary storage.
 	- Backing up files on stable (nonvolatile) storage media.
-
-## Interrupt
-
-> [[Interrupt]]
-
-## Direct Memory Access
-
-> [[Direct Memory Access]]
-
-## Synchronous I/O vs Asynchronous I/O
-
-> [[Synchronous and Asynchronous IO]]
-
-## Multi Programming
-
-> [[Multi Programming]]
 
 ---
 

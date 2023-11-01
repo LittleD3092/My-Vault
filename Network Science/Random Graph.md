@@ -108,6 +108,13 @@ $$
 
 The **degree distribution**:
 
+$$p_k = \left(\begin{array}{}
+	{n - 1} \\
+	k
+\end{array}\right) p^k (1 - p)^{n - 1 - k}$$
+
+When $n \rightarrow \infty$, $p_k$ becomes:
+
 $$p_k = e^{-c}\frac{c^k}{k!}$$
 
 The distribution above is [[Poisson Distribution]] (exponential relationship), therefore this graph is also called [[Poisson Random Graph]].
