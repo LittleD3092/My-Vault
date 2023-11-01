@@ -21,6 +21,13 @@ Link:
 # Chapter 4: Environmental Consequences of Fossil Fuel Use
 
 - [[Green House Effect]]
+	- [[Green House Gas]]
+	- [[Solutions to Global Warming]]
+		- [[End Reliance to Fossil Fuels to Stop Global Warming|End Reliance to Fossil Fuels]]
+		- [[Increase Energy Efficiency to Stop Global Warming|Increase Energy Efficiency]]
+		- [[Use Sustainable Transportation to Stop Global Warming|Use Sustainable Transportation]]
+		- [[Build Sustainable Buildings to Stop Global Warming|Build Sustainable Buildings]]
+		- [[Better Forestry Management to Stop Global Warming|Better Forestry Management]]
 
 ---
 
