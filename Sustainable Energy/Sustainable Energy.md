@@ -14,9 +14,27 @@ Link:
 
 # Chapter 2: Past, Present, and Future World Energy Use
 
+- [[Factors for Choosing Energy]]
+	- [[Resource Limitations for Choosing Energy|Resource Limitations]]
+	- [[Technological Limitations for Choosing Energy|Technological Limitations]]
+	- [[Economic Factors for Choosing Energy|Economic Factors]]
+	- [[Social Factors for Choosing Energy|Social Factors]]
+	- [[Environmental Factors for Choosing Energy|Environmental Factors]]
+	- [[Political Factors for Choosing Energy|Political Factors]]
+
 # Chapter 3: Fossil Fuel Resources and Use
 
 - [[Oil]]
+- [[Forms of Energy]]
+	- [[Common Energy Conversion]]
+	- [[Solar Cell]]
+	- [[Fuel Cell]]
+- [[Steam Turbine]]
+	- [[Rankine Cycle]]
+- [[Gas Turbine]]
+	- [[Brayton Cycle]]
+- [[Combined Cycle]]
+- [[Integrated Gasification Combined Cycle]]
 
 # Chapter 4: Environmental Consequences of Fossil Fuel Use
 
@@ -28,6 +46,14 @@ Link:
 		- [[Use Sustainable Transportation to Stop Global Warming|Use Sustainable Transportation]]
 		- [[Build Sustainable Buildings to Stop Global Warming|Build Sustainable Buildings]]
 		- [[Better Forestry Management to Stop Global Warming|Better Forestry Management]]
+	- [[Calculating Solar Power and Temperature of a Planet]]
+- [[Stratosphere]]
+- [[Troposphere]]
+- [[Ozone]]
+	- [[Stratosphere Ozone]] (Upper atmosphere)
+	- [[Tropospheric Ozone]] (Ground-level ozone)
+	- [[Ozone Affect Human]]
+	- [[Ozone Affect Environment]]
 
 ---
 

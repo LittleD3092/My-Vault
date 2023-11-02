@@ -15,6 +15,7 @@ Green house effect is the temperature rise due to the released green house gases
 	- [[Use Sustainable Transportation to Stop Global Warming|Use Sustainable Transportation]]
 	- [[Build Sustainable Buildings to Stop Global Warming|Build Sustainable Buildings]]
 	- [[Better Forestry Management to Stop Global Warming|Better Forestry Management]]
+- [[Calculating Solar Power and Temperature of a Planet]]
 
 ---
 
