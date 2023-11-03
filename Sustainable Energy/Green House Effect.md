@@ -9,6 +9,7 @@ Link:
 Green house effect is the temperature rise due to the released green house gases. (<u>1</u>)
 
 - [[Green House Gas]]
+	- [[Global Warming Potential]]
 - [[Solutions to Global Warming]]
 	- [[End Reliance to Fossil Fuels to Stop Global Warming|End Reliance to Fossil Fuels]]
 	- [[Increase Energy Efficiency to Stop Global Warming|Increase Energy Efficiency]]

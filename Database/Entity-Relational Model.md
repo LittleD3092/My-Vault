@@ -17,6 +17,8 @@ The entity-relational model has 3 basic concepts:
 - [[Attribute]]
 	- [[Redundant Attribute]]
 
+![[Pasted image 20231103145310.png]]
+
 ---
 
 # Reference

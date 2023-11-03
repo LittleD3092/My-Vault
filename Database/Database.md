@@ -45,8 +45,14 @@ Link:
 	- [[Update Table in SQL]]
 	- [[Delete Table in SQL]]
 	- [[Select Clause in SQL]]
+		- [[Select Clause with Order by in SQL|Order by]]
+		- [[Select Clause with Where Clause in SQL| Where Clause]]
 	- [[Rename Operation in SQL]]
 	- [[String Operation in SQL]]
+	- Union, Intersect, and Except in SQL
+		- [[Union in SQL]]
+		- [[Intersect in SQL]]
+		- [[Except in SQL]]
 
 # Chapter 6: Entity-Relational Model
 
@@ -60,6 +66,17 @@ Link:
 	- [[Attribute]]
 		- [[Redundant Attribute]]
 - [[Mapping Cardinality Constraint]]
+
+# Chapter 7: Normalization
+
+- [[Issue of Unnormalized in Database]]
+	- [[Intersection Anomaly in Unnormalized Issues|Intersection Anomaly]]
+	- [[Deletion Anomaly in Unnormalized Issues|Deletion Anomaly]]
+	- [[Update Anomaly in Unnormalized Issues|Update Anomaly]]
+- [[Decomposition Of Unnormalized Table]]
+	- [[Lossy Decomposition of Unnormalized Tables|Lossy Decomposition]]
+	- [[Lossless Decomposition of Unnormalized Table|Lossless Decomposition]]
+- [[Relational Schema Design]]
 
 ---
 

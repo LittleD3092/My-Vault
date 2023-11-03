@@ -6,7 +6,7 @@ Link:
 
 ---
 
-P4 is a programming language for defining **data plane** in switches and routers. Note that the source file can be compiled into **P4Info**, and it can be uploaded to switches without the source file. (<u>2</u>)
+P4 is a programming language for defining **data plane** in switches and routers. Note that the source file can be compiled into **P4Info**, and it can be uploaded to switches. (<u>2</u>)
 
 - [[P4Runtime]]
 	- [[P4Runtime Architecture]]

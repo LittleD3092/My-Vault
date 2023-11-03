@@ -149,8 +149,14 @@ SHOW DATABASES
 - [[Update Table in SQL]]
 - [[Delete Table in SQL]]
 - [[Select Clause in SQL]]
+	- [[Select Clause with Order by in SQL|Order by]]
+	- [[Select Clause with Where Clause in SQL| Where Clause]]
 - [[Rename Operation in SQL]]
 - [[String Operation in SQL]]
+- Union, Intersect, and Except in SQL
+	- [[Union in SQL]]
+	- [[Intersect in SQL]]
+	- [[Except in SQL]]
 
 ---
 

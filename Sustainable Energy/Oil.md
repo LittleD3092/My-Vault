@@ -1,10 +1,13 @@
 Tag: #sustainable-energy 
-Previous: [[Sustainable Energy]]
+Previous: [[List of Fossil Fuels]]
 Link: 
 
 [TOC]
 
 ---
+
+- [[Shale Oil]]
+- [[Tar Oil]]
 
 # Location
 

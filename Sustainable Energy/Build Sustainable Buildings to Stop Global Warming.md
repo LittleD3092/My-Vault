@@ -6,7 +6,7 @@ Link:
 
 ---
 
-By adding insulation and and upgrading windows, we will reduce the energy used on appliances that controls the temperature indoor. (<u>1</u>)
+By adding insulation and upgrading windows, we will reduce the energy used on appliances that controls the temperature indoor. (<u>1</u>)
 
 ---
 

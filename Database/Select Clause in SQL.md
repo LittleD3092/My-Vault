@@ -31,6 +31,9 @@ SELECT *
 FROM instructor, teaches;
 ```
 
+- [[Select Clause with Order by in SQL|Order by]]
+- [[Select Clause with Where Clause in SQL|Where Clause]]
+
 ---
 
 # Reference

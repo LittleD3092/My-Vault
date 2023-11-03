@@ -24,7 +24,13 @@ Link:
 
 # Chapter 3: Fossil Fuel Resources and Use
 
-- [[Oil]]
+- [[List of Fossil Fuels]]
+	- [[Oil]]
+		- [[Shale Oil]]
+		- [[Tar Oil]]
+	- [[Natural Gas]]
+		- [[Shale Gas]]
+		- [[Gas Hydrate]]
 - [[Forms of Energy]]
 	- [[Common Energy Conversion]]
 	- [[Solar Cell]]
@@ -40,6 +46,7 @@ Link:
 
 - [[Green House Effect]]
 	- [[Green House Gas]]
+		- [[Global Warming Potential]]
 	- [[Solutions to Global Warming]]
 		- [[End Reliance to Fossil Fuels to Stop Global Warming|End Reliance to Fossil Fuels]]
 		- [[Increase Energy Efficiency to Stop Global Warming|Increase Energy Efficiency]]
@@ -54,6 +61,16 @@ Link:
 	- [[Tropospheric Ozone]] (Ground-level ozone)
 	- [[Ozone Affect Human]]
 	- [[Ozone Affect Environment]]
+- [[Pollutants from Fossil Fuels]]
+
+# Chapter 5: Some Basic Nuclear Physics
+
+- [[Alpha Decay]]
+	- [[Alpha Particle]]
+	- [[Calculating Energy Associated to Alpha Decay|Calculating Energy]]
+- [[Fissile Material]]
+	- [[Ronen Fissile Rule]]
+	- [[Determine Whether a Material is Fissile by Fission Barrier and Mass Energy Equivalence|Fission Barrier and Mass Energy Equivalence]]
 
 ---
 

@@ -15,6 +15,7 @@ SDN stands for software defined network. It uses a **flow table** for forwarding
 - [[SDN Table]]
 - [[SDN Match]]
 - [[SDN Action]]
+- [[List of Approaches to Runtime Control]]
 - Implementation:
 	- [[ryu SDN framework]]
 	- [[P4 Language]]
