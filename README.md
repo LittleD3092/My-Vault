@@ -50,6 +50,7 @@ The list below shows the topics that are active and will be frequently added not
 - [[Sustainable Energy]]
 - [[Code Project Managing Tools]]
 - [[Serial Tools]]
+- [[AWS Cloud]]
 
 ## 3.2. Archived
 
