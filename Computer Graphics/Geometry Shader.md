@@ -12,6 +12,8 @@ The geometry shader comes after vertex shader, and comes before rasterizer: (<u>
 
 Geometry shaders processes primitives, which is triangles, lines, or points. It is able to discard or emit new primitives. (<u>1</u>)
 
+- [[Why Single Pipeline can Handle Multiple Projections]]
+
 ---
 
 # Reference

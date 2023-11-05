@@ -12,6 +12,7 @@ Shader is a hardware programmable processor. There are many types of shaders, ea
 - [[Fragment Shader]]
 	- [[Bump Mapping]]
 - [[Geometry Shader]]
+	- [[Why Single Pipeline can Handle Multiple Projections]]
 
 ---
 

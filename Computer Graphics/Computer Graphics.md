@@ -53,6 +53,8 @@ Link:
 # Chapter 5: Shading
 
 - [[Shading]]
+	- [[Global Illumination]]
+	- [[Local Illumination]]
 	- [[Rendering Equation]]
 	- [[Phong Reflection Model]]
 		- [[Ambient Component of Phong Reflection Model|Ambient component]]
@@ -61,8 +63,11 @@ Link:
 			- [[Shininess Coefficient of Phong Reflection Model|Shininess coefficient]]
 	- [[Polygonal Shading]]
 		- [[Flat Shading]]
+			- [[Flat Shading and Fixed Pipeline Acceleration]]
 		- [[Gouraud Shading]]
+			- [[Gouraud Shading and Fixed Pipeline Acceleration]]
 		- [[Phong Shading]]
+			- [[Phong Shading and Fixed Pipeline Acceleration]]
 
 # Chapter 6: GPU and Shaders
 
@@ -76,6 +81,7 @@ Link:
 			- [[Fragment Shader]]
 				- [[Bump Mapping]]
 			- [[Geometry Shader]]
+				- [[Why Single Pipeline can Handle Multiple Projections]]
 		- [[GLSL Pipeline]]
 			- [[GLSL Pipeline with Geometry Shader]]
 		- [[Toon Shading]]

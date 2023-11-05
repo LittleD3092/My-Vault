@@ -10,7 +10,7 @@ For the transformations in [[Computer Graphics#Chapter 2 Transformations]], the 
 
 | Transformation  | Inverse                                                                                                                                        |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [[Translation]] | $${\bf T}^{-1}(d_x, d_y, d_z) = {\bf T}^{-d_x, -d_y, -d_z}$$                                                                                   |
+| [[Translation]] | $${\bf T}^{-1}(d_x, d_y, d_z) = {\bf T}(-d_x, -d_y, -d_z)$$                                                                                   |
 | [[Rotation]]    | $${\bf R}^{-1}(q) = {\bf R}(-q)$$ Since $\cos(-\theta) = \cos(\theta)$ and $\sin(-\theta) = -\sin(\theta)$, $${\bf R}^{-1}(q) = {\bf R}^T(q)$$ |
 | [[Scaling]]     | $${\bf S}^{-1}(s_x, s_y, s_z) = {\bf S}(1/s_x, 1/s_y, 1/s_z)$$                                                                                 | 
 

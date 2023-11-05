@@ -6,18 +6,21 @@ Link:
 
 ---
 
-The list below is ways of rendering a polygon:
+The list below is ways of rendering a polygon: (<u>1</u>)
 
 - [[Flat Shading]]
+	- [[Flat Shading and Fixed Pipeline Acceleration]]
 - [[Gouraud Shading]]
+	- [[Gouraud Shading and Fixed Pipeline Acceleration]]
 - [[Phong Shading]]
+	- [[Phong Shading and Fixed Pipeline Acceleration]]
 
 ---
 
 # Reference
 
-- 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 2.” NYCU EC114[GF], October 18, 2023.
-- 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
+1. 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 2.” NYCU EC114[GF], October 18, 2023.
+2. 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
 
 ---
 

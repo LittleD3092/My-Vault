@@ -22,6 +22,7 @@ Here are a list of **important graphic cards**:
 		- [[Fragment Shader]]
 			- [[Bump Mapping]]
 		- [[Geometry Shader]]
+			- [[Why Single Pipeline can Handle Multiple Projections]]
 	- [[GLSL Pipeline]]
 		- [[GLSL Pipeline with Geometry Shader]]
 	- [[Toon Shading]]

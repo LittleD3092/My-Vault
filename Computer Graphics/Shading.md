@@ -8,9 +8,21 @@ Link:
 
 For an object, there is light that strikes an object. The light is partially absorbed and partially scattered, and some are **reflected**. The reflected light determines the **color** and the **brightness** of the object.
 
+- [[Global Illumination]]
+- [[Local Illumination]]
 - [[Rendering Equation]]
 - [[Phong Reflection Model]]
+	- [[Ambient Component of Phong Reflection Model|Ambient component]]
+	- [[Diffuse Component of Phong Reflection Model|Diffuse component]]
+	- [[Specular Component of Phong Reflection Model|Specular component]]
+		- [[Shininess Coefficient of Phong Reflection Model|Shininess coefficient]]
 - [[Polygonal Shading]]
+	- [[Flat Shading]]
+		- [[Flat Shading and Fixed Pipeline Acceleration]]
+	- [[Gouraud Shading]]
+		- [[Gouraud Shading and Fixed Pipeline Acceleration]]
+	- [[Phong Shading]]
+		- [[Phong Shading and Fixed Pipeline Acceleration]]
 
 ---
 

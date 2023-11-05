@@ -13,6 +13,7 @@ Graphic processors have the following components:
 	- [[Fragment Shader]]
 		- [[Bump Mapping]]
 	- [[Geometry Shader]]
+		- [[Why Single Pipeline can Handle Multiple Projections]]
 - [[GLSL Pipeline]]
 	- [[GLSL Pipeline with Geometry Shader]]
 - [[Toon Shading]]

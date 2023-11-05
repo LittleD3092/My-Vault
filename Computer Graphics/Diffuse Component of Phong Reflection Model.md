@@ -6,11 +6,11 @@ Link:
 
 ---
 
-Diffuse component animates the light that is **scattered equally** in all directions. The reflected intensities vary with the direction of light, as the below figure shown:
+Diffuse component animates the light that is **scattered equally** in all directions. The reflected intensities vary with the direction of light, as the below figure shown: (<u>1</u>)
 
 ![[Pasted image 20231027232153.png]]
 
-The formula of diffuse component:
+The formula of diffuse component: (<u>1</u>)
 
 $${\bf l}_\text{diffuse} = {\bf K}_d \cdot {\bf l}_d({\bf n}\cdot {\bf l})$$
 
