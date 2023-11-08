@@ -9,6 +9,10 @@ Link:
 # Chapter 1: Basics
 
 - [[Architecture of Database System]]
+	- [[Data Independence]]
+	- [[Database Engine]]
+	- [[Storage Manager]]
+	- [[Query Processor]]
 - [[Data Model]]
 - Schemas and Instances
 	- [[Schema]]: type of data.

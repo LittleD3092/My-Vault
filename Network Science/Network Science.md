@@ -80,6 +80,21 @@ Link:
 	- [[Calculate Power Law Distribution]]
 	- [[Moment]]
 
+# Lecture 7: Community Structure
+
+- [[Community]]
+- [[Community Structure]]
+- [[Community Detection]]
+	- [[Modularity Maximization]]
+		- [[Assortative Mixing]]
+			- [[Intra-edges of Community Network]]
+			- [[Unordered Features]]
+			- [[Ordered Features]]
+			- [[Assortative Mixing with Unordered Features]]
+				- [[Actual Intra-edges of Network with Unordered Features]]
+					- [[Kronecker Delta]]
+				- [[Expected Intra-edges of Network with Unordered Features]]
+
 ---
 
 # Reference
