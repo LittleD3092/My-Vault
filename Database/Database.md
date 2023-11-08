@@ -46,7 +46,7 @@ Link:
 	- [[Delete Table in SQL]]
 	- [[Select Clause in SQL]]
 		- [[Select Clause with Order by in SQL|Order by]]
-		- [[Select Clause with Where Clause in SQL| Where Clause]]
+		- [[Select Clause with Where Clause in SQL|Where Clause]]
 	- [[Rename Operation in SQL]]
 	- [[String Operation in SQL]]
 	- Union, Intersect, and Except in SQL
