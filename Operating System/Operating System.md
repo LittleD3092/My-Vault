@@ -124,6 +124,12 @@ A process can be thought of as a program in execution.
 	- [[Conditions of Deadlock]]
 	- [[Resource Allocation Graph]]
 
+# Chapter 8: Memory Management
+
+- [[Paging]]
+	- [[External Fragmentation]]
+		- [[Compaction for Solving External Fragmentation]]
+
 ---
 
 # Reference
