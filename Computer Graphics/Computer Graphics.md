@@ -86,6 +86,15 @@ Link:
 			- [[GLSL Pipeline with Geometry Shader]]
 		- [[Toon Shading]]
 
+# Chapter 7: Rasterization
+
+- [[Rasterization]]
+	- [[Line Drawing Algorithms]]
+		- [[Digital Differential Analyzer]]
+			- [[Digital Differential Analyzer with Symmetry]]
+		- [[Bresenham's Algorithm]]
+	- [[Circle Drawing Algorithm]]
+
 ---
 
 # Reference

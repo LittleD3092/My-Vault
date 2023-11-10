@@ -94,6 +94,9 @@ Link:
 				- [[Actual Intra-edges of Network with Unordered Features]]
 					- [[Kronecker Delta]]
 				- [[Expected Intra-edges of Network with Unordered Features]]
+				- [[Simplification of Assortative Mixing with Unordered Features]]
+			- [[Assortative Mixing with Ordered Features]]
+				- [[Assortativity Coefficient for Ordered Features]]
 
 ---
 

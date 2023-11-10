@@ -12,11 +12,24 @@ The formula of assortative mixing uses two equations: (<u>1</u>)
 	- [[Kronecker Delta]]
 - [[Expected Intra-edges of Network with Unordered Features|Expected Intra-edges]] $$\frac 1 2 \sum_{ij}\frac{k_i k_j}{2m} \delta_{g_ig_j}$$
 
-Subtracting the above 2 equations, we get the difference of expected and actual intra-edges, which is "score": (<u>1</u>)
+Subtracting the above 2 equations, we get the difference of expected and actual intra-edges, which is "score" $Q$: (<u>1</u>)
 
 $$\frac 1 2 \sum_{ij} A_{ij}\delta_{g_ig_j} - \frac 1 2 \sum_{ij}\frac{k_i k_j}{2m}\delta_{g_ig_j} = \frac 1 2 \sum_{ij}\left(
 	A_{ij} - \frac{k_i k_j}{2m}
 \right)\delta_{g_i g_j}$$
+
+$$
+Q = \frac{1}{2m} \sum_{ij} \left(
+	A_{ij} - \frac{k_ik_j}{2m}
+\right) \delta_{g_ig_j}
+$$
+
+- $Q > 0$: More edges between same label.
+- $Q < 0$: More edges between different label.
+
+Related topics:
+
+- [[Simplification of Assortative Mixing with Unordered Features]]
 
 ---
 
