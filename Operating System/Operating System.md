@@ -129,6 +129,10 @@ A process can be thought of as a program in execution.
 - [[Paging]]
 	- [[External Fragmentation]]
 		- [[Compaction for Solving External Fragmentation]]
+	- [[Frame in Paging]]
+	- [[Page in Paging]]
+	- [[Variables for Paging]]
+	- [[Implementation for Paging]]
 
 ---
 

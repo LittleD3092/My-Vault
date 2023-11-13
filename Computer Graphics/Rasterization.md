@@ -13,6 +13,11 @@ Rasterization is a task of converting vector graphics into a raster image (pixel
 		- [[Digital Differential Analyzer with Symmetry]]
 	- [[Bresenham's Algorithm]]
 - [[Circle Drawing Algorithm]]
+	- [[Midpoint Circle Algorithm]]
+- [[Polygon Filling]]
+	- [[Odd-even Rule for Polygon Filling]]
+	- [[Non-zero Winding Rule for Polygon Filling]]
+	- [[Scanning Lines for Polygon Filling]]
 
 ---
 

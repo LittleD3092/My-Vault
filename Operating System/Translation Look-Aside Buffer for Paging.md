@@ -1,14 +1,18 @@
 Tag: #operating-system 
-Previous: [[External Fragmentation]]
+Previous: [[Implementation for Paging]]
 Link: 
 
 [TOC]
 
 ---
 
-Compaction is an intuitive solution to external fragmentation. (<u>1</u>)
+The translation look-aside buffer can be used to solve the 2-memory-access problem with [[Paging|paging]]. (<u>1</u>)
 
+The figure below shows that CPU first consults the translation look-aside buffer for cache, then if miss, it consults the actual page table. (<u>1</u>)
 
+![[Pasted image 20231110171109.png]]
+
+- [[Effective Access Time of Translation Look-Aside Buffer]]
 
 ---
 

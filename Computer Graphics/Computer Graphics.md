@@ -94,6 +94,18 @@ Link:
 			- [[Digital Differential Analyzer with Symmetry]]
 		- [[Bresenham's Algorithm]]
 	- [[Circle Drawing Algorithm]]
+		- [[Midpoint Circle Algorithm]]
+	- [[Polygon Filling]]
+		- [[Odd-even Rule for Polygon Filling]]
+		- [[Non-zero Winding Rule for Polygon Filling]]
+		- [[Scanning Lines for Polygon Filling]]
+
+# Chapter 8: Hidden Surface Removal
+
+- [[Hidden Surface Removal]]
+	- [[Back-face Removal]]
+	- [[Pairwise Testing for Hidden Surface Removal]]
+	- [[Painter's Algorithm]]
 
 ---
 

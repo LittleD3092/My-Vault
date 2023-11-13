@@ -1,15 +1,15 @@
 Tag: #operating-system 
-Previous: [[Operating System]]
+Previous: [[Paging]]
 Link: 
 
 [TOC]
 
 ---
 
-Paging is a technique to solve [[External Fragmentation|external fragmentation]]. (<u>1</u>)
+In [[Paging|paging]] technique, the physical memory is divided into fixed-sized blocks, called **frames**. Each frame has the following characteristics: (<u>1</u>)
 
-- [[External Fragmentation]]
-	- [[Compaction for Solving External Fragmentation]]
+- The size is the power of 2.
+- The size is between 512 bytes and 8192 bytes.
 
 ---
 
