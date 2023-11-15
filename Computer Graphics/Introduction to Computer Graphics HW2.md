@@ -135,6 +135,60 @@ unsigned int createProgram(unsigned int vertexShader, unsigned int fragmentShade
 
 ## 1.3. TODO#2: Load texture
 
+Following the TODO instruction, the loading texture part is done using a function `loadTexture`. Therefore the implementation of TODO#2 in the main function is:
+
+```c++
+/* TODO#2: Load texture
+ * Hint:
+ *       loadTexture
+ * Note:
+ *       penguin texture filename: "obj/penguin_diffuse.jpg"
+ *       board texture filename : "obj/surfboard_diffuse.jpg"
+ */
+unsigned int penguinTexture = loadTexture("obj/penguin_diffuse.jpg");
+unsigned int surfboardTexture = loadTexture("obj/surfboard_diffuse.jpg");
+```
+
+To complete the function `loadTexture`, following opengl functions should be used: (<u>1, 4, 5</u>)
+
+- `void glEnable(Glenum cap)`
+	- This function enables the texture.
+	- `cap`: Pass `GL_TEXTURE_2D` to enable textures.
+- `void glGenTextures(GLsizei n, GLuint* textures)`
+	- Specify the number of textures and store it in an unsigned integer array.
+	- `n`: Number of textures.
+	- `textures`: The array for storing textures.
+- `void glBindTexture(GLenum target, GLuint texture)`
+	- Bind a texture to a target.
+	- `target`: An enumerator, may pass value `GL_TEXTURE_1D`, `GL_TEXTURE_2D`, `GL_TEXTURE_3D`, or `GL_TEXTURE_1D_ARRAY`.
+	- `texture`: A texture object.
+- `void glTexParameteri(GLenum target, GLenum pname, GLint param)`
+	- This function sets the parameters used in textures.
+	- `target`: An enumerator, may pass value `GL_TEXTURE_1D`, `GL_TEXTURE_2D`, `GL_TEXTURE_3D`, or `GL_TEXTURE_1D_ARRAY`.
+	- `pname`: Specify a parameter. Following parameter can be used:
+		- `GL_TEXTURE_WRAP_S`: Specifies the wrapping mode for texture in the `S` direction. Some useful parameters are listed below:
+			- `GL_REPEAT`: Repeat the texture images if texture coordinates exceed 1.
+		- `GL_TEXTURE_WRAP_T`: Specifies the wrapping mode for texture in the `T` direction. Some useful parameters are listed below:
+			- `GL_REPEAT`: Repeat the texture images if texture coordinates exceed 1.
+		- `GL_TEXTURE_MIN_FILTER`: Because the texture coordinates have floating point value, we specify which texture pixel to map the texture coordinate to. The method of mapping is applied when the texture is scaled down (minified). Useful parameters are listed:
+			- `GL_NEAREST`: Pick the value that is nearest (in Manhattan distance).
+			- `GL_LINEAR`: Use the weighted average of the four texture elements that are closest to the current coordinate.
+		- `GL_TEXTURE_MAG_FILTER`: Because the texture coordinates have floating point value, we specify which texture pixel to map the texture coordinate to. The method of mapping is applied when the texture is scaled up (magnified). Useful parameters are listed:
+			- `GL_NEAREST`: Pick the value that is nearest (in Manhattan distance).
+			- `GL_LINEAR`: Use the weighted average of the four texture elements that are closest to the current coordinate.
+	- `param`: The parameter set. The available options are listed above.
+- `void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data)`
+	- Generate a two-dimensional texture image.
+	- `target`: An enumerator, may pass value `GL_TEXTURE_1D`, `GL_TEXTURE_2D`, `GL_TEXTURE_3D`, or `GL_TEXTURE_1D_ARRAY`.
+	- `level`: Specifies the level-of-detail number. `0` is the base image level.
+	- `internalformat`: Specifies what color components will be in the texture. `GL_RGB` is a useful value.
+	- `width`: Specifies the width of the texture image.
+	- `height`: Specifies the height of the texture image.
+	- `border`: Must be `0`.
+	- `format`: Specifies the format of `data`. `GL_RGB` is a useful value.
+	- `type`: Specifies the data type of the `data`. For RGB images, `GL_UNSIGNED_BYTE` is used.
+	- `data`: A pointer to the image data.
+
 
 
 # 2. Reference
@@ -142,3 +196,5 @@ unsigned int createProgram(unsigned int vertexShader, unsigned int fragmentShade
 1. Introduction to Computer Graphics TAs. “OpenGL Shader & GLSL, HW2 Tutorial.” NYCU EC114[GF], November 13, 2023.
 2. “glShaderSource - OpenGL 4 Reference Pages.” Accessed November 15, 2023. https://registry.khronos.org/OpenGL-Refpages/gl4/html/glShaderSource.xhtml.
 3. “openGL API glShaderSource详解_妙为的博客-CSDN博客.” Accessed November 15, 2023. https://blog.csdn.net/aoxuestudy/article/details/121945058.
+4. “glTexParameter - OpenGL 4 Reference Pages.” Accessed November 15, 2023. https://registry.khronos.org/OpenGL-Refpages/gl4/html/glTexParameter.xhtml.
+5. “glTexImage2D - OpenGL 4 Reference Pages.” Accessed November 15, 2023. https://registry.khronos.org/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml.
