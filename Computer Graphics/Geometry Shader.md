@@ -14,6 +14,9 @@ Geometry shaders processes primitives, which is triangles, lines, or points. It 
 
 Geometry shader has the following inputs and outputs: (<u>2</u>)
 
+- **Input**: One primitive.
+- **Output**: Can be more than one primitive.
+
 Related topics:
 
 - [[Why Single Pipeline can Handle Multiple Projections]]

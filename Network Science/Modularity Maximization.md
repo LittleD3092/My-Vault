@@ -21,6 +21,8 @@ This method assigns a score to each possible division of [[Community|communities
 		- [[Simplification of Assortative Mixing with Unordered Features]]
 	- [[Assortative Mixing with Ordered Features]]
 		- [[Assortativity Coefficient for Ordered Features]]
+- [[Node Moving-based Modularity Maximization Algorithm]]
+- [[Spectral Modularity Maximization Algorithm]]
 
 ---
 

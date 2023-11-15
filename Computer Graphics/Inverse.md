@@ -1,12 +1,12 @@
 Tag: #computer-graphics 
-Previous: [[Computer Graphics]]
+Previous: [[Computer Graphics/Computer Graphics]]
 Link: 
 
 [TOC]
 
 ---
 
-For the transformations in [[Computer Graphics#Chapter 2 Transformations]], the corresponding inverse transformation can be written as:
+For the transformations in [[Computer Graphics/Computer Graphics#Chapter 2 Transformations]], the corresponding inverse transformation can be written as:
 
 | Transformation  | Inverse                                                                                                                                        |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |

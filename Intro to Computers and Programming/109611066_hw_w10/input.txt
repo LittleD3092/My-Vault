@@ -1,0 +1,11 @@
+This is a sample string
+s
+s
+129th
+1234567890
+fcba73
+1234567890
+This is a simple string
+simple
+- This, a sample string.
+ ,.-

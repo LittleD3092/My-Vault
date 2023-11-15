@@ -15,6 +15,11 @@ The fragment shader is responsible for: (<u>2</u>)
 - Operation on interpolated value.
 - Texture access and operation.
 
+The fragment shader has the following input/output: (<u>3</u>)
+
+- **Input**: One pixel.
+- **Output**: One or no pixel.
+
 There are a few techniques that can be performed using fragment shader: (<u>2</u>)
 
 - [[Bump Mapping]]
@@ -25,6 +30,7 @@ There are a few techniques that can be performed using fragment shader: (<u>2</u
 
 1. 林奕成. “Introduction to Computer Graphics, Ch5 Shading Part 3.” NYCU EC114[GF], October 23, 2023.
 2. 林奕成. “Introduction to Computer Graphics, Chapter 6: GPU and Shaders.” NYCU EC114[GF], October 30, 2023.
+3. Introduction to Computer Graphics TAs. “OpenGL Shader & GLSL, HW2 Tutorial.” NYCU EC114[GF], November 13, 2023.
 
 ---
 

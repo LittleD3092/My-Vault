@@ -68,6 +68,7 @@ Link:
 			- [[Gouraud Shading and Fixed Pipeline Acceleration]]
 		- [[Phong Shading]]
 			- [[Phong Shading and Fixed Pipeline Acceleration]]
+- [[Introduction to Computer Graphics HW2]]
 
 # Chapter 6: GPU and Shaders
 
@@ -82,6 +83,9 @@ Link:
 				- [[Bump Mapping]]
 			- [[Geometry Shader]]
 				- [[Why Single Pipeline can Handle Multiple Projections]]
+			- [[Create Shader in OpenGL]]
+				- [[Create Shader Function for Creating Shader in OpenGL]]
+				- [[Create Program Function for Creating Shader in OpenGL]]
 		- [[GLSL Pipeline]]
 			- [[GLSL Pipeline with Geometry Shader]]
 		- [[Toon Shading]]

@@ -1,5 +1,5 @@
 Tag: #computer-graphics 
-Previous: [[Computer Graphics]]
+Previous: [[Computer Graphics/Computer Graphics]]
 Link: 
 
 [TOC]
@@ -23,6 +23,9 @@ Here are a list of **important graphic cards**:
 			- [[Bump Mapping]]
 		- [[Geometry Shader]]
 			- [[Why Single Pipeline can Handle Multiple Projections]]
+		- [[Create Shader in OpenGL]]
+			- [[Create Shader Function for Creating Shader in OpenGL]]
+			- [[Create Program Function for Creating Shader in OpenGL]]
 	- [[GLSL Pipeline]]
 		- [[GLSL Pipeline with Geometry Shader]]
 	- [[Toon Shading]]

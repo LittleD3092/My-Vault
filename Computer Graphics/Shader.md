@@ -13,6 +13,10 @@ Shader is a hardware programmable processor. There are many types of shaders, ea
 	- [[Bump Mapping]]
 - [[Geometry Shader]]
 	- [[Why Single Pipeline can Handle Multiple Projections]]
+- Crucial components for creating shader in OpenGL:
+	- [[Create Shader in OpenGL]]
+		- [[Create Shader Function for Creating Shader in OpenGL]]
+		- [[Create Program Function for Creating Shader in OpenGL]]
 
 ---
 
