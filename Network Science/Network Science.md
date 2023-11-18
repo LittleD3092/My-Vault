@@ -97,8 +97,25 @@ Link:
 				- [[Simplification of Assortative Mixing with Unordered Features]]
 			- [[Assortative Mixing with Ordered Features]]
 				- [[Assortativity Coefficient for Ordered Features]]
-		- [[Node Moving-based Modularity Maximization Algorithm]]
-		- [[Spectral Modularity Maximization Algorithm]]
+		- Solutions to modularity maximization of two groups:
+			- [[Node Moving-based Modularity Maximization Algorithm]]
+			- [[Spectral Modularity Maximization Algorithm]]
+		- Solutions to modularity maximization of multiple groups:
+			- [[Louvain Algorithm]]
+		- [[Resolution Limit of Assortative Mixing]]
+		- [[Betweenness-based Method]]
+		- [[Radicchi's Method]]
+			- [[Similarity of Node in Network]]
+				- [[Structural Equivalence]]
+				- [[Regular Equivalence]]
+				- [[Cosine Similarity]]
+
+# Lecture 8: Robustness and Resilience
+
+- [[Robustness and Resilience of a Network]]
+- [[Perlocation Theory]]
+	- [[Perlocation Threshold]]
+- [[Inverse Perlocation Theory]]
 
 ---
 

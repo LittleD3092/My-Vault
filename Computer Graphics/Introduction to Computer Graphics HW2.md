@@ -189,8 +189,6 @@ To complete the function `loadTexture`, following opengl functions should be use
 	- `type`: Specifies the data type of the `data`. For RGB images, `GL_UNSIGNED_BYTE` is used.
 	- `data`: A pointer to the image data.
 
-
-
 # 2. Reference
 
 1. Introduction to Computer Graphics TAs. “OpenGL Shader & GLSL, HW2 Tutorial.” NYCU EC114[GF], November 13, 2023.

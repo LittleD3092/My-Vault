@@ -26,6 +26,7 @@ $$
 
 - $Q > 0$: More edges between same label.
 - $Q < 0$: More edges between different label.
+- $m$: Number of nodes.
 
 Related topics:
 
