@@ -133,6 +133,13 @@ A process can be thought of as a program in execution.
 	- [[Page in Paging]]
 	- [[Variables for Paging]]
 	- [[Implementation for Paging]]
+	- [[Page Table]]
+		- [[Hierarchical Page Table]]
+		- [[Hashed Page Table]]
+		- [[Inverted Page Table]]
+- [[Locality of Reference]]
+	- [[Temporal Localities]]
+	- [[Spatial Localities]]
 
 ---
 

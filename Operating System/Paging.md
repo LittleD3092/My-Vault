@@ -17,6 +17,10 @@ Paging treats the physically fragmented free spaces logically contiguous, by usi
 - [[Variables for Paging]]
 - [[Implementation for Paging]]
 	- [[Translation Look-Aside Buffer for Paging]]
+- [[Page Table]]
+	- [[Hierarchical Page Table]]
+	- [[Hashed Page Table]]
+	- [[Inverted Page Table]]
 
 # Example
 
