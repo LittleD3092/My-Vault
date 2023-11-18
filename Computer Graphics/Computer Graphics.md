@@ -110,6 +110,14 @@ Link:
 	- [[Back-face Removal]]
 	- [[Pairwise Testing for Hidden Surface Removal]]
 	- [[Painter's Algorithm]]
+	- [[Depth Sort]]
+	- [[Image Space Approach]]
+	- [[Scan-Line Algorithm]]
+	- [[Z-Buffer Algorithm]]
+		- [[Z-Buffer]]
+	- [[Space Partitioning]]
+		- [[Octree]]
+		- [[BSP Tree]]
 
 ---
 

@@ -41,7 +41,7 @@ The lists of this section shows the root of some interesting topics.
 
 The list below shows the topics that are active and will be frequently added notes.
 
-- [[Computer Graphics/Computer Graphics]]
+- [[Computer Graphics]]
 - [[Database]]
 - [[How to Make Good Notes]]
 - [[Network Science]]
