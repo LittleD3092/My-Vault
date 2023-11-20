@@ -81,6 +81,12 @@ Link:
 	- [[Lossy Decomposition of Unnormalized Tables|Lossy Decomposition]]
 	- [[Lossless Decomposition of Unnormalized Table|Lossless Decomposition]]
 - [[Relational Schema Design]]
+- [[Normalization Process of Database]]
+	- [[First Normal Form]]
+	- [[Second Normal Form]]
+		- [[Partial Dependency of Database]]
+	- [[Third Normal Form]]
+	- [[Boyce-Codd Normal Form]]
 
 ---
 
