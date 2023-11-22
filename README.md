@@ -51,6 +51,8 @@ The list below shows the topics that are active and will be frequently added not
 - [[Code Project Managing Tools]]
 - [[Serial Tools]]
 - [[AWS Cloud]]
+- [[ROS Packages for Locolization]]
+- [[Probabilistic Robotics]]
 
 ## 3.2. Archived
 
