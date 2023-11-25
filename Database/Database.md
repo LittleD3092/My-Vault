@@ -87,6 +87,7 @@ Link:
 		- [[Partial Dependency of Database]]
 	- [[Third Normal Form]]
 	- [[Boyce-Codd Normal Form]]
+- [[Introduction to Database Systems HW2]]
 
 ---
 

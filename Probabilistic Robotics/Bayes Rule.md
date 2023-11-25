@@ -6,13 +6,17 @@ Link:
 
 ---
 
-The joint distribution of two random variables $X$ and $Y$ is:
+Bayes rule defines the relationship of [[Conditioned Probability|conditioned probability]] and its inverse:
 
-$$p(x, y) = p(X = x \text{ and } Y = y)$$
-
-If they are **independent**,
-
-$$p(x, y) = p(x)p(y)$$
+$$
+\begin{array}{}
+	p(x\vert y) &=& 
+	\displaystyle\frac{p(y \vert x)p(x)}{p(y)} &=&
+	\displaystyle
+	\frac{p(y\vert x)p(x)}{\sum_{x'}p(y\vert x')p(x')} & \text{for discrete} \\
+	
+\end{array}
+$$
 
 ---
 

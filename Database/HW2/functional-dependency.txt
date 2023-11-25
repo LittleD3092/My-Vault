@@ -1,0 +1,117 @@
+country_number
+{
+    country_name -> country_number
+}
+
+country
+{
+    two_letter_country_code -> country_name
+}
+
+continent
+{
+    continent_code -> continent_name
+}
+
+region
+{
+    region_code -> region_name
+}
+
+country_code_3to2
+{
+    three_letter_country_code -> two_letter_country_code
+}
+
+country_in_continent
+{
+    (two_letter_country_code, continent_code) -> 
+        two_letter_country_code
+    (two_letter_country_code, continent_code) -> 
+        continent_code
+}
+
+entry
+{
+    (country_code, date) -> region_code
+    (country_code, date) -> jurisdiction
+}
+
+containment_and_closure_policies
+{
+    (country_code, date) -> c1m_school_closing
+    (country_code, date) -> c1m_flag
+    (country_code, date) -> c2m_workplace_closing
+    (country_code, date) -> c2m_flag
+    (country_code, date) -> c3m_cancel_public_events
+    (country_code, date) -> c3m_flag
+    (country_code, date) -> c4m_restrictions_on_gatherings
+    (country_code, date) -> c4m_flag
+    (country_code, date) -> c5m_close_public_transport
+    (country_code, date) -> c5m_flag
+    (country_code, date) -> c6m_stay_at_home_requirements
+    (country_code, date) -> c6m_flag
+    (country_code, date) -> c7m_restrictions_on_internal_movement
+    (country_code, date) -> c7m_flag
+    (country_code, date) -> c8ev_international_travel_controls
+}
+
+economic_policies
+{
+    (country_code, date) -> e1_income_support
+    (country_code, date) -> e1_flag
+    (country_code, date) -> e2_debt_contract_relief
+    (country_code, date) -> e3_fiscal_measures
+    (country_code, date) -> e4_international_support
+}
+
+health_system_policies
+{
+    (country_code, date) -> h1_public_information_campaigns
+    (country_code, date) -> h1_flag
+    (country_code, date) -> h2_testing_policy
+    (country_code, date) -> h3_contact_tracing
+    (country_code, date) -> h4_emergency_investment_in_healthcare
+    (country_code, date) -> h5_investment_in_vaccines
+    (country_code, date) -> h6m_facial_coverings
+    (country_code, date) -> h6m_flag
+    (country_code, date) -> h7_vaccination_policy
+    (country_code, date) -> h7_flag
+    (country_code, date) -> h8m_protection_of_elderly_people
+    (country_code, date) -> h8m_flag
+}
+
+miscellaneous_policies
+{
+    (country_code, date) -> m1_wildcard
+}
+
+vaccination_policies
+{
+    (country_code, date) -> v1_vaccine_prioritization_summary
+    (country_code, date) -> v2a_vaccine_availability_summary
+    (country_code, date) -> v2b_vaccine_general_population_summary
+    (country_code, date) -> v2c_vaccine_at_risk_summary
+    (country_code, date) -> v2d_medically_clinically_vulnerable_non_elderly
+    (country_code, date) -> v2e_education
+    (country_code, date) -> v2f_frontline_workers_non_healthcare
+    (country_code, date) -> v2g_frontline_workers_healthcare
+    (country_code, date) -> v3_vaccine_financial_support_summary
+    (country_code, date) -> v4_mandatory_vaccination_summary
+}
+
+status
+{
+    (country_code, date) -> confirmed_cases
+    (country_code, date) -> confirmed_deaths
+    (country_code, date) -> majority_vaccinated
+    (country_code, date) -> population_vaccinated
+    (country_code, date) -> stringency_index
+    (country_code, date) -> stringency_index_for_display
+    (country_code, date) -> government_response_index_average
+    (country_code, date) -> government_response_index_for_display
+    (country_code, date) -> containment_health_index_average
+    (country_code, date) -> containment_health_index_for_display
+    (country_code, date) -> economic_support_index
+    (country_code, date) -> economic_support_index_for_display
+}

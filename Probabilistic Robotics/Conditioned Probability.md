@@ -1,24 +1,18 @@
-Tag: #probabilistic-robotics
-Previous: 
+Tag: #probabilistic-robotics 
+Previous: [[Probabilistic Robotics]]
 Link: 
 
 [TOC]
 
 ---
 
-# Chapter 1: Introduction
+The distribution of $X = x$ given that $Y = y$ can be represented as:
 
-- [[Uncertainty in Robotics]]
+$$p(x \vert y) = p(X = x\vert Y = y)$$
 
-# Chapter 2: Recursive State Estimation
+It can also be written using [[Joint Distribution|joint distribution]]:
 
-- Basic probabilities:
-	- [[Probability]]
-	- [[Normal Distribution]]
-		- [[Multivariate Normal Distribution]]
-	- [[Joint Distribution]]
-	- [[Conditioned Probability]]
-	- [[Bayes Rule]]
+$$p(x\vert y) = \frac{p(x, y)}{p(y)}$$
 
 ---
 
