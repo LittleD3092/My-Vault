@@ -1,0 +1,40 @@
+   continent   |                 country_name                  |    date    |  over_stringency_index   | highest_or_lowest 
+---------------+-----------------------------------------------+------------+--------------------------+-------------------
+ Africa        | Lesotho, Kingdom of                           | 2020-04-01 |     907.4000000000000000 | highest
+ Asia          | Timor-Leste, Democratic Republic of           | 2020-04-01 |     750.0000000000000000 | highest
+ Europe        | Georgia                                       | 2020-04-01 |      25.9259259259259262 | highest
+ North America | Belize                                        | 2020-04-01 | 525.00000000000000001050 | highest
+ Oceania       | Tonga, Kingdom of                             | 2020-04-01 |     935.2000000000000000 | highest
+ South America | Suriname, Republic of                         | 2020-04-01 | 249.54999999999999999626 | highest
+ Africa        | Congo, Republic of the                        | 2021-04-01 |     472.2000000000000000 | highest
+ Asia          | Tajikistan, Republic of                       | 2021-04-01 |     287.0000000000000000 | highest
+ Europe        | Faroe Islands                                 | 2021-04-01 |     481.5000000000000000 | highest
+ North America | Greenland                                     | 2021-04-01 |     370.4000000000000000 | highest
+ Oceania       | Fiji, Republic of the Fiji Islands            | 2021-04-01 |     490.7000000000000000 | highest
+ South America | Suriname, Republic of                         | 2021-04-01 |      13.3132432432432433 | highest
+ Africa        | Guinea, Republic of                           | 2022-04-01 |     463.0000000000000000 | highest
+ Asia          | Macao, Special Administrative Region of China | 2022-04-01 |     324.1000000000000000 | highest
+ Europe        | Faroe Islands                                 | 2022-04-01 |     111.1000000000000000 | highest
+ North America | El Salvador, Republic of                      | 2022-04-01 |     332.2000000000000000 | highest
+ Oceania       | Kiribati, Republic of                         | 2022-04-01 | 106.13750000000000000027 | highest
+ South America | Guyana, Co-operative Republic of              | 2022-04-01 |       5.1800000000000000 | highest
+ Africa        | South Africa, Republic of                     | 2020-04-01 |   0.91761549925484351755 | lowest
+ Asia          | Iran, Islamic Republic of                     | 2020-04-01 |   0.01953100699844479005 | lowest
+ Europe        | Spain, Kingdom of                             | 2020-04-01 |   0.01092119480614618244 | lowest
+ North America | United States of America                      | 2020-04-01 |   0.00319914241883157705 | lowest
+ Oceania       | Australia, Commonwealth of                    | 2020-04-01 |   0.19979983987189751804 | lowest
+ South America | Brazil, Federative Republic of                | 2020-04-01 |   0.12185427370387669313 | lowest
+ Africa        | Cameroon, Republic of                         | 2021-04-01 |   0.01473706251869578223 | lowest
+ Asia          | India, Republic of                            | 2021-04-01 |   0.00088742307970355701 | lowest
+ Europe        | France, French Republic                       | 2021-04-01 |   0.00178579672804986114 | lowest
+ North America | United States of America                      | 2021-04-01 |   0.00084979770333144797 | lowest
+ Oceania       | Papua New Guinea, Independent State of        | 2021-04-01 |   0.21681477783325012478 | lowest
+ South America | Brazil, Federative Republic of                | 2021-04-01 |   0.00096355922815759453 | lowest
+ Africa        | Botswana, Republic of                         | 2022-04-01 |   0.00233860881277660189 | lowest
+ Asia          | Mongolia                                      | 2022-04-01 |   0.00000000000000000000 | lowest
+ Europe        | France, French Republic                       | 2022-04-01 |   0.00013628130182056675 | lowest
+ North America | United States of America                      | 2022-04-01 |   0.00106509267319273276 | lowest
+ Oceania       | Australia, Commonwealth of                    | 2022-04-01 |   0.00074588068110742504 | lowest
+ South America | Brazil, Federative Republic of                | 2022-04-01 |   0.00137557483525340162 | lowest
+(36 rows)
+

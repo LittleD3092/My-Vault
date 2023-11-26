@@ -1,0 +1,48 @@
+   continent   |                country_name                 |    date    | stringency_index | max_or_min 
+---------------+---------------------------------------------+------------+------------------+------------
+ Africa        | Congo, Republic of the                      | 2020-04-01 |            97.22 | max
+ Asia          | India, Republic of                          | 2020-04-01 |           100.00 | max
+ Asia          | Georgia                                     | 2020-04-01 |           100.00 | max
+ Asia          | Jordan, Hashemite Kingdom of                | 2020-04-01 |           100.00 | max
+ Asia          | Sri Lanka, Democratic Socialist Republic of | 2020-04-01 |           100.00 | max
+ Asia          | Philippines, Republic of the                | 2020-04-01 |           100.00 | max
+ Europe        | Serbia, Republic of                         | 2020-04-01 |           100.00 | max
+ Europe        | Georgia                                     | 2020-04-01 |           100.00 | max
+ North America | Honduras, Republic of                       | 2020-04-01 |           100.00 | max
+ Oceania       | New Zealand                                 | 2020-04-01 |            96.30 | max
+ South America | Argentina, Argentine Republic               | 2020-04-01 |           100.00 | max
+ Africa        | Mauritius, Republic of                      | 2021-04-01 |            96.30 | max
+ Asia          | Timor-Leste, Democratic Republic of         | 2021-04-01 |            85.19 | max
+ Europe        | Greece, Hellenic Republic                   | 2021-04-01 |            87.96 | max
+ North America | Honduras, Republic of                       | 2021-04-01 |            82.41 | max
+ Oceania       | Papua New Guinea, Independent State of      | 2021-04-01 |            62.04 | max
+ South America | Venezuela, Bolivarian Republic of           | 2021-04-01 |            87.96 | max
+ Africa        | Seychelles, Republic of                     | 2022-04-01 |            56.48 | max
+ Asia          | Myanmar, Union of                           | 2022-04-01 |            78.70 | max
+ Europe        | Ukraine                                     | 2022-04-01 |            60.16 | max
+ North America | Dominica, Commonwealth of                   | 2022-04-01 |            59.41 | max
+ Oceania       | Vanuatu, Republic of                        | 2022-04-01 |            85.19 | max
+ South America | Suriname, Republic of                       | 2022-04-01 |            50.65 | max
+ Africa        | Burundi, Republic of                        | 2020-04-01 |            13.89 | min
+ Asia          | Tajikistan, Republic of                     | 2020-04-01 |            19.44 | min
+ Europe        | Belarus, Republic of                        | 2020-04-01 |            12.04 | min
+ North America | Nicaragua, Republic of                      | 2020-04-01 |            15.74 | min
+ Oceania       | Kiribati, Republic of                       | 2020-04-01 |            40.74 | min
+ South America | Guyana, Co-operative Republic of            | 2020-04-01 |            57.41 | min
+ Africa        | Tanzania, United Republic of                | 2021-04-01 |             8.33 | min
+ Asia          | Lao People's Democratic Republic            | 2021-04-01 |            16.67 | min
+ Europe        | Russian Federation                          | 2021-04-01 |            36.57 | min
+ North America | Nicaragua, Republic of                      | 2021-04-01 |            13.89 | min
+ Oceania       | Kiribati, Republic of                       | 2021-04-01 |            22.22 | min
+ Oceania       | New Zealand                                 | 2021-04-01 |            22.22 | min
+ Oceania       | Vanuatu, Republic of                        | 2021-04-01 |            22.22 | min
+ South America | Bolivia, Republic of                        | 2021-04-01 |            25.00 | min
+ Africa        | Gabon, Gabonese Republic                    | 2022-04-01 |            11.11 | min
+ Asia          | Mongolia                                    | 2022-04-01 |             0.00 | min
+ Europe        | Andorra, Principality of                    | 2022-04-01 |             8.33 | min
+ North America | Dominican Republic                          | 2022-04-01 |             8.33 | min
+ North America | Nicaragua, Republic of                      | 2022-04-01 |             8.33 | min
+ Oceania       | Fiji, Republic of the Fiji Islands          | 2022-04-01 |            32.42 | min
+ South America | Uruguay, Eastern Republic of                | 2022-04-01 |            14.82 | min
+(44 rows)
+

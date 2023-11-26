@@ -639,3 +639,179 @@ status
     (country_code, date) -> economic_support_index_for_display
 }
 ```
+
+6. The SQL statements (in .sql file) and output results of 4a (10pts)
+Ans:
+The SQL statements:
+```sql
+WITH stringency(continent, country_name, date, stringency) AS (
+    SELECT continent.continent_name, country.country_name, entry.date, status.stringency_index_for_display
+    FROM entry
+    JOIN status ON entry.country_code = status.country_code AND entry.date = status.date
+    JOIN country_code_3to2 ON entry.country_code = country_code_3to2.three_letter_country_code
+    JOIN country ON country_code_3to2.two_letter_country_code = country.two_letter_country_code
+    JOIN country_in_continent ON country_code_3to2.two_letter_country_code = country_in_continent.two_letter_country_code
+    JOIN continent ON country_in_continent.continent_code = continent.continent_code
+    WHERE entry.date = '2020-04-01' OR entry.date = '2021-04-01' OR entry.date = '2022-04-01' OR entry.date = '2022-12-01' OR entry.date = '2023-12-01'
+),
+max_temp_stringency(continent, date, stringency_index) AS (
+    SELECT stringency.continent AS continent, stringency.date AS date, MAX(stringency.stringency) AS stringency_index
+    FROM stringency
+    GROUP BY continent, date
+),
+max_stringency(continent, country_name, date, stringency_index) AS (
+    SELECT stringency.continent AS continent, stringency.country_name AS country_name, stringency.date AS date, stringency.stringency AS stringency_index
+    FROM stringency
+    JOIN max_temp_stringency ON stringency.continent = max_temp_stringency.continent AND stringency.date = max_temp_stringency.date AND stringency.stringency = max_temp_stringency.stringency_index
+),
+min_temp_stringency(continent, date, stringency_index) AS (
+    SELECT stringency.continent AS continent, stringency.date AS date, MIN(stringency.stringency) AS stringency_index
+    FROM stringency
+    GROUP BY continent, date
+),
+min_stringency(continent, country_name, date, stringency_index) AS (
+    SELECT stringency.continent AS continent, stringency.country_name AS country_name, stringency.date AS date, stringency.stringency AS stringency_index
+    FROM stringency
+    JOIN min_temp_stringency ON stringency.continent = min_temp_stringency.continent AND stringency.date = min_temp_stringency.date AND stringency.stringency = min_temp_stringency.stringency_index
+)
+(SELECT *, 'max' AS max_or_min FROM max_stringency) UNION 
+(SELECT *, 'min' AS max_or_min FROM min_stringency) ORDER BY max_or_min ASC, date ASC, continent ASC;
+```
+The output results:
+```
+   continent   |                country_name                 |    date    | stringency_index | max_or_min 
+---------------+---------------------------------------------+------------+------------------+------------
+ Africa        | Congo, Republic of the                      | 2020-04-01 |            97.22 | max
+ Asia          | India, Republic of                          | 2020-04-01 |           100.00 | max
+ Asia          | Georgia                                     | 2020-04-01 |           100.00 | max
+ Asia          | Jordan, Hashemite Kingdom of                | 2020-04-01 |           100.00 | max
+ Asia          | Sri Lanka, Democratic Socialist Republic of | 2020-04-01 |           100.00 | max
+ Asia          | Philippines, Republic of the                | 2020-04-01 |           100.00 | max
+ Europe        | Serbia, Republic of                         | 2020-04-01 |           100.00 | max
+ Europe        | Georgia                                     | 2020-04-01 |           100.00 | max
+ North America | Honduras, Republic of                       | 2020-04-01 |           100.00 | max
+ Oceania       | New Zealand                                 | 2020-04-01 |            96.30 | max
+ South America | Argentina, Argentine Republic               | 2020-04-01 |           100.00 | max
+ Africa        | Mauritius, Republic of                      | 2021-04-01 |            96.30 | max
+ Asia          | Timor-Leste, Democratic Republic of         | 2021-04-01 |            85.19 | max
+ Europe        | Greece, Hellenic Republic                   | 2021-04-01 |            87.96 | max
+ North America | Honduras, Republic of                       | 2021-04-01 |            82.41 | max
+ Oceania       | Papua New Guinea, Independent State of      | 2021-04-01 |            62.04 | max
+ South America | Venezuela, Bolivarian Republic of           | 2021-04-01 |            87.96 | max
+ Africa        | Seychelles, Republic of                     | 2022-04-01 |            56.48 | max
+ Asia          | Myanmar, Union of                           | 2022-04-01 |            78.70 | max
+ Europe        | Ukraine                                     | 2022-04-01 |            60.16 | max
+ North America | Dominica, Commonwealth of                   | 2022-04-01 |            59.41 | max
+ Oceania       | Vanuatu, Republic of                        | 2022-04-01 |            85.19 | max
+ South America | Suriname, Republic of                       | 2022-04-01 |            50.65 | max
+ Africa        | Burundi, Republic of                        | 2020-04-01 |            13.89 | min
+ Asia          | Tajikistan, Republic of                     | 2020-04-01 |            19.44 | min
+ Europe        | Belarus, Republic of                        | 2020-04-01 |            12.04 | min
+ North America | Nicaragua, Republic of                      | 2020-04-01 |            15.74 | min
+ Oceania       | Kiribati, Republic of                       | 2020-04-01 |            40.74 | min
+ South America | Guyana, Co-operative Republic of            | 2020-04-01 |            57.41 | min
+ Africa        | Tanzania, United Republic of                | 2021-04-01 |             8.33 | min
+ Asia          | Lao People's Democratic Republic            | 2021-04-01 |            16.67 | min
+ Europe        | Russian Federation                          | 2021-04-01 |            36.57 | min
+ North America | Nicaragua, Republic of                      | 2021-04-01 |            13.89 | min
+ Oceania       | Kiribati, Republic of                       | 2021-04-01 |            22.22 | min
+ Oceania       | New Zealand                                 | 2021-04-01 |            22.22 | min
+ Oceania       | Vanuatu, Republic of                        | 2021-04-01 |            22.22 | min
+ South America | Bolivia, Republic of                        | 2021-04-01 |            25.00 | min
+ Africa        | Gabon, Gabonese Republic                    | 2022-04-01 |            11.11 | min
+ Asia          | Mongolia                                    | 2022-04-01 |             0.00 | min
+ Europe        | Andorra, Principality of                    | 2022-04-01 |             8.33 | min
+ North America | Dominican Republic                          | 2022-04-01 |             8.33 | min
+ North America | Nicaragua, Republic of                      | 2022-04-01 |             8.33 | min
+ Oceania       | Fiji, Republic of the Fiji Islands          | 2022-04-01 |            32.42 | min
+ South America | Uruguay, Eastern Republic of                | 2022-04-01 |            14.82 | min
+(44 rows)
+```
+
+7. The SQL statements (in .sql file) and output results of 4b (10pts)
+Ans:
+The SQL statements:
+```sql
+WITH over_stringency_tttemp(continent, country_name, date, stringency, new_cases) AS (
+    SELECT continent.continent_name, country.country_name, entry.date, status.stringency_index_for_display, 
+        status.confirmed_cases - LAG(status.confirmed_cases, 1) OVER (PARTITION BY country.country_name ORDER BY status.date)
+    FROM entry
+    JOIN status ON entry.country_code = status.country_code AND entry.date = status.date
+    JOIN country_code_3to2 ON entry.country_code = country_code_3to2.three_letter_country_code
+    JOIN country ON country_code_3to2.two_letter_country_code = country.two_letter_country_code
+    JOIN country_in_continent ON country_code_3to2.two_letter_country_code = country_in_continent.two_letter_country_code
+    JOIN continent ON country_in_continent.continent_code = continent.continent_code
+), over_stringency_ttemp(continent, country_name, date, stringency, seven_day_avg) AS (
+    SELECT continent, country_name, date, stringency,
+        AVG(new_cases) OVER (PARTITION BY country_name ORDER BY date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)
+    FROM over_stringency_tttemp
+), over_stringency_temp(continent, country_name, date, stringency, seven_day_avg) AS (
+    SELECT continent, country_name, date, stringency,
+        CASE WHEN seven_day_avg = 0 THEN 0.1 ELSE seven_day_avg END
+    FROM over_stringency_ttemp
+    WHERE date = '2020-04-01' OR date = '2021-04-01' OR date = '2022-04-01' OR date = '2022-12-01'
+), over_stringency(continent, country_name, date, over_stringency_index) AS (
+    SELECT over_stringency_temp.continent, over_stringency_temp.country_name, over_stringency_temp.date, over_stringency_temp.stringency / over_stringency_temp.seven_day_avg
+    FROM over_stringency_temp
+), over_stringency_highest_temp (continent, date, over_stringency_index) AS (
+    SELECT over_stringency.continent, over_stringency.date, MAX(over_stringency.over_stringency_index)
+    FROM over_stringency
+    GROUP BY continent, date
+), over_stringency_highest (continent, country_name, date, over_stringency_index, highest_or_lowest) AS (
+    SELECT over_stringency.continent, over_stringency.country_name, over_stringency.date, over_stringency.over_stringency_index, 'highest'
+    FROM over_stringency
+    JOIN over_stringency_highest_temp ON over_stringency.continent = over_stringency_highest_temp.continent AND over_stringency.date = over_stringency_highest_temp.date AND over_stringency.over_stringency_index = over_stringency_highest_temp.over_stringency_index
+), over_stringency_lowest_temp (continent, date, over_stringency_index) AS (
+    SELECT over_stringency.continent, over_stringency.date, MIN(over_stringency.over_stringency_index)
+    FROM over_stringency
+    GROUP BY continent, date
+), over_stringency_lowest (continent, country_name, date, over_stringency_index, highest_or_lowest) AS (
+    SELECT over_stringency.continent, over_stringency.country_name, over_stringency.date, over_stringency.over_stringency_index, 'lowest'
+    FROM over_stringency
+    JOIN over_stringency_lowest_temp ON over_stringency.continent = over_stringency_lowest_temp.continent AND over_stringency.date = over_stringency_lowest_temp.date AND over_stringency.over_stringency_index = over_stringency_lowest_temp.over_stringency_index
+)
+(SELECT * FROM over_stringency_highest) UNION
+(SELECT * FROM over_stringency_lowest) ORDER BY highest_or_lowest ASC, date ASC, continent ASC;
+```
+The output results:
+```
+   continent   |                 country_name                  |    date    |  over_stringency_index   | highest_or_lowest 
+---------------+-----------------------------------------------+------------+--------------------------+-------------------
+ Africa        | Lesotho, Kingdom of                           | 2020-04-01 |     907.4000000000000000 | highest
+ Asia          | Timor-Leste, Democratic Republic of           | 2020-04-01 |     750.0000000000000000 | highest
+ Europe        | Georgia                                       | 2020-04-01 |      25.9259259259259262 | highest
+ North America | Belize                                        | 2020-04-01 | 525.00000000000000001050 | highest
+ Oceania       | Tonga, Kingdom of                             | 2020-04-01 |     935.2000000000000000 | highest
+ South America | Suriname, Republic of                         | 2020-04-01 | 249.54999999999999999626 | highest
+ Africa        | Congo, Republic of the                        | 2021-04-01 |     472.2000000000000000 | highest
+ Asia          | Tajikistan, Republic of                       | 2021-04-01 |     287.0000000000000000 | highest
+ Europe        | Faroe Islands                                 | 2021-04-01 |     481.5000000000000000 | highest
+ North America | Greenland                                     | 2021-04-01 |     370.4000000000000000 | highest
+ Oceania       | Fiji, Republic of the Fiji Islands            | 2021-04-01 |     490.7000000000000000 | highest
+ South America | Suriname, Republic of                         | 2021-04-01 |      13.3132432432432433 | highest
+ Africa        | Guinea, Republic of                           | 2022-04-01 |     463.0000000000000000 | highest
+ Asia          | Macao, Special Administrative Region of China | 2022-04-01 |     324.1000000000000000 | highest
+ Europe        | Faroe Islands                                 | 2022-04-01 |     111.1000000000000000 | highest
+ North America | El Salvador, Republic of                      | 2022-04-01 |     332.2000000000000000 | highest
+ Oceania       | Kiribati, Republic of                         | 2022-04-01 | 106.13750000000000000027 | highest
+ South America | Guyana, Co-operative Republic of              | 2022-04-01 |       5.1800000000000000 | highest
+ Africa        | South Africa, Republic of                     | 2020-04-01 |   0.91761549925484351755 | lowest
+ Asia          | Iran, Islamic Republic of                     | 2020-04-01 |   0.01953100699844479005 | lowest
+ Europe        | Spain, Kingdom of                             | 2020-04-01 |   0.01092119480614618244 | lowest
+ North America | United States of America                      | 2020-04-01 |   0.00319914241883157705 | lowest
+ Oceania       | Australia, Commonwealth of                    | 2020-04-01 |   0.19979983987189751804 | lowest
+ South America | Brazil, Federative Republic of                | 2020-04-01 |   0.12185427370387669313 | lowest
+ Africa        | Cameroon, Republic of                         | 2021-04-01 |   0.01473706251869578223 | lowest
+ Asia          | India, Republic of                            | 2021-04-01 |   0.00088742307970355701 | lowest
+ Europe        | France, French Republic                       | 2021-04-01 |   0.00178579672804986114 | lowest
+ North America | United States of America                      | 2021-04-01 |   0.00084979770333144797 | lowest
+ Oceania       | Papua New Guinea, Independent State of        | 2021-04-01 |   0.21681477783325012478 | lowest
+ South America | Brazil, Federative Republic of                | 2021-04-01 |   0.00096355922815759453 | lowest
+ Africa        | Botswana, Republic of                         | 2022-04-01 |   0.00233860881277660189 | lowest
+ Asia          | Mongolia                                      | 2022-04-01 |   0.00000000000000000000 | lowest
+ Europe        | France, French Republic                       | 2022-04-01 |   0.00013628130182056675 | lowest
+ North America | United States of America                      | 2022-04-01 |   0.00106509267319273276 | lowest
+ Oceania       | Australia, Commonwealth of                    | 2022-04-01 |   0.00074588068110742504 | lowest
+ South America | Brazil, Federative Republic of                | 2022-04-01 |   0.00137557483525340162 | lowest
+(36 rows)
+```
