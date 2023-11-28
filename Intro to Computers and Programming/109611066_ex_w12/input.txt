@@ -1,0 +1,7 @@
+5 6 4
+NAME       	StudentID  Chinese Math English ComputerScience
+Bob 		309553045    0      10     20        30
+Kevin	  	309551116   100    100     50       100
+Dave	       	309551110    59     80     43        70
+Steve		309552003    95     33     10        99
+Stuart         	309552052    80     40     70        80
