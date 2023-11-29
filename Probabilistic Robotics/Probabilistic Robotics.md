@@ -19,6 +19,10 @@ Link:
 	- [[Joint Distribution]]
 	- [[Conditioned Probability]]
 	- [[Bayes Rule]]
+	- [[Expectation]]
+	- [[Covariance]]
+	- [[Entropy of Random Variable]]
+	- [[Conditional Independence]]
 
 ---
 

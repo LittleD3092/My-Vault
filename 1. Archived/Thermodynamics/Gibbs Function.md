@@ -43,4 +43,4 @@ $$\therefore \underline{ TdS = dH - VdP }_{ \# }$$
 
 link:
 
-[[Entropy]]
+[[Entropy in Thermodynamics]]

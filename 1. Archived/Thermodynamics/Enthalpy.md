@@ -13,7 +13,7 @@ $$
 \right.
 $$
 
-# [[Entropy]] Change between states
+# [[Entropy in Thermodynamics]] Change between states
 
 > ![[Enthalpy Example.png]]
 > 1. Quasi Equilibrium

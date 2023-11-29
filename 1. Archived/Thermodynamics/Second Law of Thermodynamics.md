@@ -4,7 +4,7 @@
 
 1. Energy has quantity ([[First Law of Thermodynamics]], 量) as well as quality ([[Second Law of Thermodynamics]], 質)
 2. Actual process occurs in a certain direction (decreasing quality of energy), but not in the opposite direction
-3. [[Entropy]] (熵) always increases
+3. [[Entropy in Thermodynamics]] (熵) always increases
 $$dS \geq \frac{\delta Q}{T}$$
 
 > 因為 [[First Law of Thermodynamics]] 無法定義更深入的比較和能量移動，因此有 [[Second Law of Thermodynamics]]
