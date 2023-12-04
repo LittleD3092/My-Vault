@@ -6,13 +6,13 @@ Link:
 
 ---
 
-For multivariate normal distribution ($x$ is a multi-dimensional vector), the distributions is:
+For multivariate normal distribution ($\bf x$ is a multi-dimensional vector), the distributions is:
 
 $$p({\bf x}) = 
 \det(2\pi \Sigma)^{-\frac 1 2}
 \exp\left(
 	-\frac 1 2 ({\bf x} - \mu)^T
-	\Sigma^{-1}(x - \mu)
+	\Sigma^{-1}({\bf x} - \mu)
 \right)
 $$
 
