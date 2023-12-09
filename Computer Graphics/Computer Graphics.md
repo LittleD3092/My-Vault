@@ -89,6 +89,7 @@ Link:
 		- [[GLSL Pipeline]]
 			- [[GLSL Pipeline with Geometry Shader]]
 		- [[Toon Shading]]
+- [[Introduction to Computer Graphics HW3]]
 
 # Chapter 7: Rasterization
 
