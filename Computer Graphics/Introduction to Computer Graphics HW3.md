@@ -177,7 +177,128 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 ```
 
-# 2. Problems
+# 2. Blinn-Phong
+
+## 2.1. Vertex Shader
+
+```c++
+#version 330 core
+
+// TODO:
+// implement Blinn-Phong shading
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+layout (location = 2) in vec2 aTexCoords;
+
+out vec3 FragPos;
+out vec3 Normal;
+out vec2 TexCoords;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 perspective;
+
+void main()
+{
+    FragPos = vec3(model * vec4(aPos, 1.0));
+    Normal = mat3(transpose(inverse(model))) * aNormal;  
+    TexCoords = aTexCoords;
+    
+    gl_Position = perspective * view * vec4(FragPos, 1.0);
+}
+```
+
+- `model`: The transform matrix of the object.
+- `aPos`: The coordinate of the vertex in the model file.
+- `FragPos`: The world position of the vertex. Calculate using the formula below:
+
+$$\text{FragPos} = \text{model} \times \text{aPos}$$
+
+- `Normal`: The normals `aNormal` is transformed using the `model` matrix (removed translation).
+- `TexCoords`: The texture coordinates are passed directly, since texture is not processed in vertex shader.
+- `gl_Position`: The position for rasterize. This is set using the model-view-projection matrix.
+
+$$\text{gl\_Position} = \text{perspective} \times \text{view} \times \text{model} \times \left[ \begin{array}{} \text{aPos} & 0 \\ 0 & 1 \end{array} \right]$$
+
+## 2.2. Fragment Shader
+
+```c++
+#version 330 core
+
+// TODO:
+// implement Blinn-Phong shading
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+
+out vec4 FragColor;
+
+struct Material 
+{
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+    float shininess;
+};
+
+struct Light 
+{
+    vec3 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+
+uniform Material material;
+uniform Light light;
+uniform vec3 cameraPos;
+uniform sampler2D textureSampler;
+
+void main()
+{
+    // ambient
+    vec3 ambient = light.ambient * material.ambient;
+
+    // diffuse
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(light.position - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = light.diffuse * (diff * material.diffuse);
+
+    // specular
+    vec3 viewDir = normalize(cameraPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    vec3 specular = light.specular * (spec * material.specular);
+
+    vec3 result = ambient + diffuse + specular;
+    result = result * texture(textureSampler, TexCoords).rgb;
+    FragColor = vec4(result, 1.0);
+}
+```
+
+The Blinn-Phong shading has the following formula:
+
+$$
+\begin{array}{l}
+	{\bf l} &=& {\bf l}_\text{ambient} + {\bf l}_\text{diffuse} + {\bf l}_\text{specular} \\
+	&=& {\bf K}_a{\bf l}_a + {\bf K}_{d}{\bf l}_{d}({\bf l}\cdot {\bf n}) + {\bf K}_s{\bf l}_s({\bf v} \cdot {\bf r})^\alpha
+\end{array}
+$$
+
+- ${\bf l}_{\rm ambient}$: Variable `ambient` in the code.
+- ${\bf l}_{\rm diffuse}$: Variable `diffuse` in the code.
+- ${\bf l}_{\rm specular}$: Variable `specular` in the code.
+- ${\bf K}_a, {\bf K}_d, {\bf K}_s$: Variable `material` in the code.
+- ${\bf l}_a, {\bf l}_d, {\bf l}_s$: Variable `light` in the code.
+- $\bf l$: Variable `lightDir` in the code.
+- ${\bf n}$: Variable `norm` in the code.
+- $\bf v$: Variable `viewDir` in the code.
+- $\bf r$: Variable `reflectDir` in the code.
+- $\alpha$: Member variable `material.shininess` in the code.
+
+# 3. Problems
 
 ## 2.1. Object.h not detected
 

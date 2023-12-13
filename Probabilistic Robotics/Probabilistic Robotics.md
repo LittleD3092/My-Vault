@@ -23,6 +23,7 @@ Link:
 	- [[Covariance]]
 	- [[Entropy of Random Variable]]
 	- [[Conditional Independence]]
+- [[State of Robot]]
 
 ---
 
