@@ -268,6 +268,105 @@ void main()
 
     // specular
     vec3 viewDir = normalize(cameraPos - FragPos);
+    vec3 halfwayDir = normalize(lightDir + viewDir);
+    float spec = pow(max(dot(norm, halfwayDir), 0.0), material.shininess);
+    vec3 specular = light.specular * (spec * material.specular);
+
+    vec3 result = ambient + diffuse + specular;
+    result = result * texture(textureSampler, TexCoords).rgb;
+    FragColor = vec4(result, 1.0);
+}
+```
+
+The Phong reflection model has the following formula:
+
+$$
+\begin{array}{l}
+	{\bf l} &=& {\bf l}_\text{ambient} + {\bf l}_\text{diffuse} + {\bf l}_\text{specular} \\
+	&=& {\bf K}_a{\bf l}_a + {\bf K}_{d}{\bf l}_{d}({\bf l}\cdot {\bf n}) + {\bf K}_s{\bf l}_s({\bf v} \cdot {\bf r})^\alpha
+\end{array}
+$$
+
+Blinn-Phong shading replaces the ${\bf v} \cdot {\bf r}$ with ${\bf n} \cdot {\bf h}$, where $\bf h$ is the halfway vector:
+
+$${\bf h} = \frac{{\bf l + {\bf v}}}{\vert\vert {\bf l} + {\bf v} \vert\vert}$$
+
+- ${\bf l}$: The direction of light. `lightDir` in the code.
+- $\bf v$: The direction of viewer. `viewDir` in the code.
+- $\bf h$: The halfway vector. `halfwayDir` in the code.
+
+Therefore, the Blinn-Phong shading has the following formula:
+
+$$\begin{array}{l}
+	{\bf l} &=& {\bf l}_\text{ambient} + {\bf l}_\text{diffuse} + {\bf l}_\text{specular} \\
+	&=& {\bf K}_a{\bf l}_a + {\bf K}_{d}{\bf l}_{d}({\bf l}\cdot {\bf n}) + {\bf K}_s{\bf l}_s({\bf h} \cdot {\bf n})^\alpha
+\end{array}$$
+
+- ${\bf l}_{\rm ambient}$: Variable `ambient` in the code.
+- ${\bf l}_{\rm diffuse}$: Variable `diffuse` in the code.
+- ${\bf l}_{\rm specular}$: Variable `specular` in the code.
+- ${\bf K}_a, {\bf K}_d, {\bf K}_s$: Variable `material` in the code.
+- ${\bf l}_a, {\bf l}_d, {\bf l}_s$: Variable `light` in the code.
+- $\bf l$: Variable `lightDir` in the code.
+- ${\bf n}$: Variable `norm` in the code.
+- $\alpha$: Member variable `material.shininess` in the code.
+
+# 3. Gouraud
+
+## 3.1. Vertex Shader
+
+The vertex shader of Gouraud shading is the same as [[#2. Blinn-Phong]].
+
+## 3.2. Fragment Shader
+
+The fragment shader is similar to [[#2. Blinn-Phong]], but it uses the original Phong reflection model.
+
+```c++
+#version 330 core
+
+// TODO:
+// Implement Gouraud shading
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+
+out vec4 FragColor;
+
+struct Material 
+{
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+    float shininess;
+};
+
+struct Light 
+{
+    vec3 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+
+uniform Material material;
+uniform Light light;
+uniform vec3 cameraPos;
+uniform sampler2D textureSampler;
+
+void main()
+{
+    // ambient
+    vec3 ambient = light.ambient * material.ambient;
+
+    // diffuse
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(light.position - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = light.diffuse * (diff * material.diffuse);
+
+    // specular
+    vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     vec3 specular = light.specular * (spec * material.specular);
@@ -278,29 +377,77 @@ void main()
 }
 ```
 
-The Blinn-Phong shading has the following formula:
+Note that the calculation of specular is different, using the following formula:
 
-$$
-\begin{array}{l}
-	{\bf l} &=& {\bf l}_\text{ambient} + {\bf l}_\text{diffuse} + {\bf l}_\text{specular} \\
-	&=& {\bf K}_a{\bf l}_a + {\bf K}_{d}{\bf l}_{d}({\bf l}\cdot {\bf n}) + {\bf K}_s{\bf l}_s({\bf v} \cdot {\bf r})^\alpha
-\end{array}
-$$
+$${\bf l}_{\rm specular} = {\bf K}_s{\bf l}_s({\bf v} \cdot {\bf r})^\alpha$$
 
-- ${\bf l}_{\rm ambient}$: Variable `ambient` in the code.
-- ${\bf l}_{\rm diffuse}$: Variable `diffuse` in the code.
-- ${\bf l}_{\rm specular}$: Variable `specular` in the code.
-- ${\bf K}_a, {\bf K}_d, {\bf K}_s$: Variable `material` in the code.
-- ${\bf l}_a, {\bf l}_d, {\bf l}_s$: Variable `light` in the code.
-- $\bf l$: Variable `lightDir` in the code.
-- ${\bf n}$: Variable `norm` in the code.
-- $\bf v$: Variable `viewDir` in the code.
-- $\bf r$: Variable `reflectDir` in the code.
-- $\alpha$: Member variable `material.shininess` in the code.
+- ${\bf l}_{\rm specular}$: Specular component `specular`.
+- ${\bf K}_s$: Specular component of material `material.specular`.
+- ${\bf l}_s$: Specular component of light `light.specular`.
+- ${\bf v}$: Viewer direction `viewDir`.
+- ${\bf r}$: Reflect direction `reflectDir`.
 
-# 3. Problems
+# 4. Toon shading
 
-## 2.1. Object.h not detected
+## 4.1. Vertex shader
+
+The vertex shader of toon shading is the same as [[#2. Blinn-Phong]].
+
+## 4.2. Fragment shader
+
+The fragment shader calculates the dot product of normal vector `n` and light direction `l`. The result is the intensity `intensity`, and is used to determine the color `FragColor`:
+
+```c++
+#version 330 core
+
+// TODO:
+// Implement Toon shading
+in vec3 Normal;
+in vec3 FragPos;
+in vec2 TexCoords;
+
+out vec4 FragColor;
+
+struct Material
+{
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+    float shininess;
+};
+
+struct Light
+{
+    vec3 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+
+uniform Material material;
+uniform Light light;
+
+void main()
+{
+    float intensity;
+    vec3 n = normalize(Normal);
+    vec3 l = normalize(light.position - FragPos);
+    intensity = max(dot(n, l), 0.0);
+
+    if(intensity > 0.95)
+        FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    else if(intensity > 0.75)
+        FragColor = vec4(0.9, 0.8, 0.7, 1.0);
+    else if(intensity > 0.5)
+        FragColor = vec4(0.5, 0.3, 0.3, 1.0);
+    else
+        FragColor = vec4(0.2, 0.1, 0.1, 1.0);
+}
+```
+
+# 5. Problems
+
+## 5.1. Object.h not detected
 
 In the source file `main.cpp`, the include:
 
@@ -313,3 +460,6 @@ Is not recognized. I find out that the file is `object.h` in the `include` folde
 ```c++
 #include "object.h"
 ```
+
+# 6. Reference
+
