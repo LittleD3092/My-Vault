@@ -12,6 +12,15 @@ The perlocation theory suggest that there is a [[Perlocation Threshold|perlocati
 
 ![[Pasted image 20231118145121.png]]
 
+Related topics:
+
+- [[Perlocation Threshold]]
+- [[Perlocation Theory Example - Forest Fire]]
+- [[Clusters of Perlocation Theory]]
+	- [[Correlation Length]]
+- [[Perlocation Theory of Scale-free Network]]
+- [[Perlocation Theory of Random Graph]]
+
 ---
 
 # Reference
