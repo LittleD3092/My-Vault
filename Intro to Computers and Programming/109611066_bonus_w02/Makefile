@@ -9,4 +9,4 @@ run:
 verify:
 	python3 verify.py
 clean:
-	rm -rf 109611066_hw_01 a.out test.txt
+	rm -rf 109611066_hw_01 a.out test.txt 109611066_bonus_w02.zip
