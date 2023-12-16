@@ -56,6 +56,7 @@ int main()
                 }
                 else if(system.actionChoice == 3)
                 {
+                    system.actionChoice = 0;
                     break;
                 }
                 else

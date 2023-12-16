@@ -1,4 +1,4 @@
-all: compile run clean
+all: compile run
 compile:
 	gcc 109611066_main.cpp 109611066_function.cpp -o 109611066_main -I.
 run:

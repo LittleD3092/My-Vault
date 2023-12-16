@@ -488,10 +488,16 @@ void System__promptAction(System* system)
 
 void System__promptBranch(System* system, Branches* branches)
 {
-    printf("Please choose the branch (1-%d):\n", branches->length);
-    Branches__print(branches);
-    printf("\nEnter your choice (1-%d): ", branches->length);
-    scanf("%d", &(system->currentBranch));
+    while(1)
+    {
+        printf("Please choose the branch (1-%d):\n", branches->length);
+        Branches__print(branches);
+        printf("\nEnter your choice (1-%d): ", branches->length);
+        scanf("%d", &(system->currentBranch));
+        if(system->currentBranch >= 1 && system->currentBranch <= branches->length)
+            break;
+        printf("Invalid choice!\n");
+    }
 }
 
 int System__promptDate(System* system)
@@ -501,25 +507,31 @@ int System__promptDate(System* system)
 #else
     Date__copy(&(system->nowDate), 2023, 12, 5, 17);
 #endif
-    printf("\nThe current date is ");
-    Date__print(&(system->nowDate));
-    printf("\n");
-    printf("Available days:\n");
-    Date date;
-    Date__copy(&date, system->nowDate.year, system->nowDate.month, system->nowDate.day, system->nowDate.hour);
-    if(date.hour >= 23)
-        Date__addDay(&date, 1);
-    for(int i = 0; i < 7; i++)
-    {
-        printf("%d. ", i + 1);
-        Date__printWithoutHour(&date);
-        printf("\n");
-        Date__addDay(&date, 1);
-    }
-    Date__destruct(&date);
-    printf("\nEnter your choice (0 to end): ");
     int choice;
-    scanf("%d", &choice);
+    while(1)
+    {
+        printf("\nThe current date is ");
+        Date__print(&(system->nowDate));
+        printf("\n");
+        printf("Available days:\n");
+        Date date;
+        Date__copy(&date, system->nowDate.year, system->nowDate.month, system->nowDate.day, system->nowDate.hour);
+        if(date.hour >= 23)
+            Date__addDay(&date, 1);
+        for(int i = 0; i < 7; i++)
+        {
+            printf("%d. ", i + 1);
+            Date__printWithoutHour(&date);
+            printf("\n");
+            Date__addDay(&date, 1);
+        }
+        Date__destruct(&date);
+        printf("\nEnter your choice (0 to end): ");
+        scanf("%d", &choice);
+        if(choice >= 0 && choice <= 7)
+            break;
+        printf("Invalid choice!\n");
+    }
     if(choice == 0)
         return -1;
     Date__copy(&(system->currentDate), system->nowDate.year, system->nowDate.month, system->nowDate.day, system->nowDate.hour);
@@ -536,15 +548,27 @@ void System__promptHour(System* system)
         startHour = system->currentDate.hour + 1;
     if(system->currentDate.day != system->nowDate.day)
         startHour = 0;
-    printf("\nEnter hour (%d~23):", startHour);
-    scanf("%d", &(system->currentDate.hour));
+    while(1)
+    {
+        printf("\nEnter hour (%d~23):", startHour);
+        scanf("%d", &(system->currentDate.hour));
+        if(system->currentDate.hour >= startHour && system->currentDate.hour <= 23)
+            break;
+        printf("Invalid hour!\n");
+    }
     cleanInput();
 }
 
 int System__promptNumCustomers(System* system)
 {
-    printf("\nEnter number of customers (1~30, 0 to end):");
-    scanf("%d", &(system->currentNumCustomers));
+    while(1)
+    {
+        printf("\nEnter number of customers (1~30, 0 to end):");
+        scanf("%d", &(system->currentNumCustomers));
+        if(system->currentNumCustomers >= 0 && system->currentNumCustomers <= 30)
+            break;
+        printf("Invalid number of customers!\n");
+    }
     if(system->currentNumCustomers == 0)
         return -1;
     cleanInput();
@@ -561,8 +585,8 @@ void System__makeReservation(System* system, Branches* branches)
 
 void System__promptCancelReservation(System* system)
 {
-    printf("\nChoose the reservation to cancel (0: keep all reservations): ");
     int choice;
+    printf("\nChoose the reservation to cancel (0: keep all reservations): ");
     scanf("%d", &choice);
     if(choice == 0)
         return;
@@ -579,4 +603,5 @@ void System__promptCancelReservation(System* system)
             choice--;
         }
     }
+    printf("Invalid choice! Keeping all reservations.\n");
 }

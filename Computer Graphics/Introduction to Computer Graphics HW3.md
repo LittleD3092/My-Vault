@@ -1,8 +1,11 @@
+- 學號：109611066
+- 姓名：吳典謀
+
 # 1. TODO Parts in main
 
 ## 1.1. Create shaders and programs for each approach
 
-As in HW2, there are functions `createShader` and `createProgram` to create the programs for each approach. The only difference is that the functions can handle geometry shaders too. The functions `createShader` and `createProgram` have following definitions:
+As in HW2, there are functions `createShader` and `createProgram` to create the programs for each approach. The only difference in this assignment is that the function can handle geometry shaders too. The functions `createShader` and `createProgram` have following definitions:
 
 ```c++
 // Create a shader based on given filename and type.
@@ -14,7 +17,7 @@ unsigned int createShader(const char* filename, const char* type);
 unsigned int createProgram(unsigned int vertexShader, unsigned int geometryShader, unsigned int fragmentShader);
 ```
 
-Using the two functions above, we can create the program for each approach. I want to call `glUseProgram` in the `while` loop, therefore this part is not implemented here.
+Using the two functions above, we can create the program for each render effect. I want to call `glUseProgram` in the `while` loop, therefore it is not included in this part.
 
 ```c++
 /* TODO: Create vertex shader, geometry shader( for flat shading ),fragment shader, shader program for each shading approach 
@@ -445,9 +448,83 @@ void main()
 }
 ```
 
-# 5. Problems
+# 5. Border effect
 
-## 5.1. Object.h not detected
+## 5.1. Vertex shader
+
+The vertex shader of border effect is the same as [[#2. Blinn-Phong]].
+
+## 5.2. Fragment shader
+
+The fragment shader of border effect uses the angle between the normal `normal` and the view vector `viewDir`. I use dot product to calculate the ratio of texture color `textureColor` and border color `borderColor`. The result color is calculated using these colors and the ratio, using `mix` function.
+
+```c++
+#version 330 core
+
+// Advanced:
+// Implement Border effect
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+
+out vec4 FragColor;
+
+uniform vec3 cameraPos;
+uniform sampler2D textureSampler;
+
+void main()
+{
+    vec3 normal = normalize(Normal);
+    vec3 viewDir = normalize(cameraPos - FragPos);
+    vec4 borderColor = vec4(1.0, 1.0, 1.0, 1.0);
+
+    float ratio = 1 - max(dot(normal, viewDir), 0);
+    vec4 textureColor = texture(textureSampler, TexCoords);
+    FragColor = mix(textureColor, borderColor, ratio);
+}
+```
+
+# 6. Dissolve effect
+
+## 6.1. Vertex shader
+
+The vertex shader of dissolve effect is the same as [[#2. Blinn-Phong]].
+
+## 6.2. Fragment shader
+
+Since the `TexCoords` is passed, and it is normalized, it is convenient to use it as a indicator of the position of the pixel.
+
+I use `TexCoords.x` as the indicator, and compare it with `dissolveFactor`. If `TexCoords.x` is smaller than `dissolveFactor`, it is given a transparent color.
+
+```c++
+#version 330 core
+
+// Advanced:
+// Implement Dissolve effect
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+
+out vec4 FragColor;
+
+uniform sampler2D textureSampler;
+uniform float dissolveFactor;
+
+void main()
+{
+    vec4 texColor = texture(textureSampler, TexCoords);
+    if(TexCoords.x < dissolveFactor)
+        FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    else
+        FragColor = texColor;
+}
+```
+
+# 7. Problems
+
+## 7.1. Object.h not detected
 
 In the source file `main.cpp`, the include:
 
@@ -461,5 +538,120 @@ Is not recognized. I find out that the file is `object.h` in the `include` folde
 #include "object.h"
 ```
 
-# 6. Reference
+## 7.2. Assertion failed
 
+![[Pasted image 20231215232055.png]]
+
+When execute the program, an assertion is triggered about reading the file `Blinn-Phong.vert`.
+
+### 7.2.1. Solution 1: Using more explicit path
+
+Since this file name is the first call of `createShader` function, I suspect that I need to specify the relative path of `main.cpp` to the path of shader files.
+
+Therefore, I modified the `createShader` function to append `shaders/` before each filename:
+
+```c++
+char* filePath = new char[100];
+strcpy(filePath, "shaders/");
+strcat(filePath, filename);
+FILE* fp = fopen(filePath, "rb");
+```
+
+This solves the issue.
+
+## 7.3. Shader compilation failed
+
+![[Pasted image 20231215233611.png]]
+
+The first compile error is the name of `viewPos` should be `cameraPos`.
+
+The second compile error is due to the `in vec2 TexCoords[]` and `out vec2 TexCoords` have the same name. I renamed `out TexCoords` to `out gTexCoords[]`.
+
+---
+
+After fixing the issues listed above, new errors occur:
+
+![[Pasted image 20231215234959.png]]
+
+I change the statements to assignments:
+
+```c++
+vec3 faceNormal = normalize(cross(FragPos[1] - FragPos[0], FragPos[2] - FragPos[0]));
+vec3 facePos = (FragPos[0] + FragPos[1] + FragPos[2]) / 3.0;
+```
+
+---
+
+After fixing the above issues, the compiler complains about the output array does not have fixed size:
+
+![[Pasted image 20231215235523.png]]
+
+Therefore the output array is modified to:
+
+```c++
+out vec2 gTexCoords[3];
+```
+
+---
+
+Then it appears that the geometry shader can only output 1 `gTexCoords`, therefore the declaration of it is modified to:
+
+```c++
+out vec2 gTexCoords;
+```
+
+And its value is determined by the average:
+
+```c++
+gTexCoords = (TexCoords[0] + TexCoords[1] + TexCoords[2]) / 3.0;
+```
+
+## 7.4. The dissolve effect is not what is expected
+
+![[Pasted image 20231216000513.png]]
+
+As the graph showing, the dissolve effect has two problems:
+
+1. The dissolved part is colored black. I forgot to adjust the alpha component of the pixel, but the alpha component doesn't work even if I modify it.
+2. The direction of dissolve of left half deer and right half deer is different. In the graph, the left half deer dissolves from front, and the right half deer dissolves from the back.
+
+To solve the first problem, I use `discard` to discard the pixel instead of modifying the alpha component.
+
+To solve the second problem, I use the object space coordinates. The value used to compare with `dissolveFactor` is named `normalizedXPos`. It is calculated by the formula below:
+
+$$
+\text{normalizedXPos} = \frac{\text{ObjectSpacePos.x} - (-25.6985)}{22.7548 - (-25.6985)}
+$$
+
+- $-25.6985$: The lower bound of x position in the object file.
+- $22.7548$: The upper bound of x position in the object file.
+
+The modified fragment shader is shown below:
+
+```c++
+#version 330 core
+
+// Advanced:
+// Implement Dissolve effect
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+in vec3 ObjectSpacePos;
+
+out vec4 FragColor;
+
+uniform sampler2D textureSampler;
+uniform float dissolveFactor;
+
+void main()
+{
+    vec4 texColor = texture(textureSampler, TexCoords);
+    float xPosLowerBound = -25.6985;
+    float xPosUpperBound = 22.7548;
+    float normalizedXPos = (ObjectSpacePos.x - xPosLowerBound) / (xPosUpperBound - xPosLowerBound);
+    if(normalizedXPos < dissolveFactor)
+        discard;
+    FragColor = texColor;
+}
+```
