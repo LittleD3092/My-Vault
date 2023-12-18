@@ -113,6 +113,8 @@ Link:
 # Lecture 8: Robustness and Resilience
 
 - [[Robustness and Resilience of a Network]]
+	- [[Robustness of Scale-free Network]]
+	- [[Molly-Reed Criterion]]
 - [[Perlocation Theory]]
 	- [[Perlocation Threshold]]
 	- [[Perlocation Theory Example - Forest Fire]]
@@ -121,6 +123,13 @@ Link:
 	- [[Perlocation Theory of Scale-free Network]]
 	- [[Perlocation Theory of Random Graph]]
 - [[Inverse Perlocation Theory]]
+- [[Attacks on Networks]]
+	- [[Attack Tolerance]]
+- [[Cascading Failure]]
+	- [[Failure Propagation Model]]
+		- [[Subcritical and Supercritical of Failure Propagation Model]]
+	- [[Branching Model]]
+		- [[Subcritical and Supercritical of Branching Model]]
 
 ---
 
