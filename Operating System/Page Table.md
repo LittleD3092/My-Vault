@@ -10,6 +10,8 @@ Page table is a crucial component in [[Paging|paging]] technique. It maps the pa
 
 ![[Pasted image 20231110164721.png|400]]
 
+Related topics:
+
 - [[Hierarchical Page Table]]
 - [[Hashed Page Table]]
 - [[Inverted Page Table]]

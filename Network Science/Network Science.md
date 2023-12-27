@@ -131,6 +131,15 @@ Link:
 	- [[Branching Model]]
 		- [[Subcritical and Supercritical of Branching Model]]
 
+# Lecture 9: Spreading Phenomenon
+
+- [[Epidemic Modeling]]
+	- [[Compartmentalization of Epidemic Modeling]]
+	- [[Homogeneous Mixing of Epidemic Modeling]]
+- [[Susceptible-Infected Model]]
+- [[Susceptible-Infected-Susceptible Model]]
+- [[Susceptible-Infected-Recovered Model]]
+
 ---
 
 # Reference

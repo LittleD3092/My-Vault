@@ -72,6 +72,22 @@ Link:
 	- [[Ronen Fissile Rule]]
 	- [[Determine Whether a Material is Fissile by Fission Barrier and Mass Energy Equivalence|Fission Barrier and Mass Energy Equivalence]]
 
+# Chapter 10: Wind Energy
+
+- [[Betz's Law]]
+	- [[Betz Limit]]
+- [[Wind Turbine Power Equation]]
+
+# Chapter 11~15: Hydroelectric Energy, Ocean Energy, and Geothermal Energy
+
+- [[Hydroelectric Power Equation]]
+
+# Chapter 16: Biomass Energy
+
+- [[Biomass Energy Technology]]
+
+
+
 ---
 
 # Reference

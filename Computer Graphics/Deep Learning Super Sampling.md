@@ -1,22 +1,20 @@
 Tag: #computer-graphics 
-Previous: [[Hidden Surface Removal]]
+Previous: [[Anti-aliasing]]
 Link: 
 
 [TOC]
 
 ---
 
-We can use space partitioning to avoid rendering an object when it's unnecessary.
+DLSS uses convolutional autoencoder to create a higher resolution frame. (<u>1</u>)
 
-- [[Octree]]
-- [[BSP Tree]]
-	- [[Back-to-Front Render]]
+![[Pasted image 20231224192021.png]]
 
 ---
 
 # Reference
 
-1. 林奕成. “Introduction to Computer Graphics, Chapter 8: Hidden Surface.” NYCU EC114[GF], November 18, 2023.
+1. 林奕成, “Introduction to Computer Graphics, Chapter 9: Buffers and Mapping Techniques, part 3,” NYCU EC114[GF], Dec. 04, 2023.
 
 ---
 

@@ -141,6 +141,21 @@ A process can be thought of as a program in execution.
 	- [[Temporal Localities]]
 	- [[Spatial Localities]]
 
+# Chapter 9: Virtual Memory
+
+- [[Virtual Memory]]
+	- [[Demand Paging]]
+		- [[Valid-Invalid Bit of Page Table]]
+		- [[Handling Page Fault]]
+		- [[Effective Access Time of Demand Paging]]
+		- [[Page Replacement]]
+			- [[Victim Frame]]
+			- [[Dirty Bit of Page Table]]
+			- [[Page Replacement Policy]]
+				- [[FIFO Page Replacement]]
+				- [[Optimal Page Replacement]]
+				- [[Least-Recently Used Page Replacement]]
+
 ---
 
 # Reference
