@@ -72,6 +72,11 @@ Link:
 	- [[Ronen Fissile Rule]]
 	- [[Determine Whether a Material is Fissile by Fission Barrier and Mass Energy Equivalence|Fission Barrier and Mass Energy Equivalence]]
 
+# Chapter 8~9: Solar Energy
+
+- [[Solar Cell]]
+	- [[Concentrated PV System]]
+
 # Chapter 10: Wind Energy
 
 - [[Betz's Law]]
@@ -81,12 +86,24 @@ Link:
 # Chapter 11~15: Hydroelectric Energy, Ocean Energy, and Geothermal Energy
 
 - [[Hydroelectric Power Equation]]
+- [[Primary Forms of Ocean Energy]]
 
 # Chapter 16: Biomass Energy
 
 - [[Biomass Energy Technology]]
 
+# Chapter 20: Hydrogen
 
+- [[Ways of Hydrogen Production]]
+- [[Ways of Hydrogen Storage]]
+- [[Fuel Cell]]
+	- Types of fuel cells:
+		- [[Polymer Electrolyte Membrane Fuel Cells]] (PEM)
+		- [[Solid Oxide Fuel Cells]] (SOFCs)
+		- [[Molten Carbonate Fuel Cells]] (MCFCs)
+		- [[Alkaline Fuel Cells]] (AFCs)
+		- [[Phosphoric Acid Fuel Cells]] (PAFCs)
+	- [[Voltage of Fuel Cell]]
 
 ---
 

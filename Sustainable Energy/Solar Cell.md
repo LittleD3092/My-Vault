@@ -15,11 +15,20 @@ E["Electricity"]
 ER --> E
 ```
 
+- [[Concentrated PV System]]
+
+# Theory
+
+The following figure illustrates the principles of solar cells: (<u>2</u>)
+
+![[Pasted image 20231228150407.png|400]]
+
 ---
 
 # Reference
 
 1. 陳慶耀. “Sustainable Energy, Chapter 3: Fossil Fuel Energy and Basic Combustion.” NYCU EE106[GF], n.d.
+2. 陳慶耀, “Sustainable Energy, Chapter 8~9: Solar Energy,” Dec. 28, 2023.
 
 ---
 

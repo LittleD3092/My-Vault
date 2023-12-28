@@ -20,6 +20,25 @@ E["Electricity"]
 CE --> E
 ```
 
+Related topics:
+
+- Types of fuel cells:
+	- [[Polymer Electrolyte Membrane Fuel Cells]] (PEM)
+	- [[Solid Oxide Fuel Cells]] (SOFCs)
+	- [[Molten Carbonate Fuel Cells]] (MCFCs)
+	- [[Alkaline Fuel Cells]] (AFCs)
+	- [[Phosphoric Acid Fuel Cells]] (PAFCs)
+
+| Type  | Operating Temperature ($\degree \rm C$) | Usage |
+| ----- | --------------------------------------- | ----- |
+| PEM   | 60~100                                  | Passenger vehicles and backup power systems.      |
+| SOFCs | 600~1000                                        | Stationary power generation.      |
+| MCFCs | 600~1000                                        | Large-scale stationary power generation.      |
+| AFCs  | 90~100                                        | Cars, boats, and domestic combined heat and power.      |
+| PAFCs      | 175~200                                        | Stationary power generation.      |
+
+- [[Voltage of Fuel Cell]]
+
 ---
 
 # Reference
