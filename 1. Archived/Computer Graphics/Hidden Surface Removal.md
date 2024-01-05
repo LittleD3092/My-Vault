@@ -1,5 +1,5 @@
 Tag: #computer-graphics 
-Previous: [[Computer Graphics/Computer Graphics]]
+Previous: [[Computer Graphics]]
 Link: 
 
 [TOC]

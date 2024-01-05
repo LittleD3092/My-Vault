@@ -41,15 +41,11 @@ The lists of this section shows the root of some interesting topics.
 
 The list below shows the topics that are active and will be frequently added notes.
 
-- [[Computer Graphics]]
+- [[Freedom of Speech]]
 - [[Database]]
 - [[How to Make Good Notes]]
-- [[Network Science]]
 - [[Operating System]]
 - [[SDN]]
-- [[Sustainable Energy]]
-- [[Code Project Managing Tools]]
-- [[Serial Tools]]
 - [[AWS Cloud]]
 - [[ROS Packages for Locolization]]
 - [[Probabilistic Robotics]]
@@ -58,4 +54,9 @@ The list below shows the topics that are active and will be frequently added not
 
 The list below shows the topics that are archived and will not be frequently updated.
 
+- [[Serial Tools]]
+- [[Sustainable Energy]]
+- [[Network Science]]
+- [[Computer Graphics]]
+- [[Code Project Managing Tools]]
 - [[Computer Networks Layers]]

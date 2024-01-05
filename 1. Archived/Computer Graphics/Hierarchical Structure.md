@@ -1,12 +1,12 @@
 Tag: #computer-graphics 
-Previous: [[Computer Graphics/Computer Graphics]]
+Previous: [[Computer Graphics]]
 Link: 
 
 [TOC]
 
 ---
 
-As seen in [[Computer Graphics/Computer Graphics#Chapter 2 Transformations]], there are many transformations. When animating an object with a lot of **sub-components** (robot arm), deciding the transformation for each component is hard and aberrant.
+As seen in [[Computer Graphics#Chapter 2 Transformations]], there are many transformations. When animating an object with a lot of **sub-components** (robot arm), deciding the transformation for each component is hard and aberrant.
 
 **Hierarchical structure** can easily model objects with hierarchical sub-components. For example, a lamp:
 
