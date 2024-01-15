@@ -1,17 +1,19 @@
-Tag: 
-Previous: 
+Tag: #probabilistic-robotics 
+Previous: [[Probabilistic Robotics]]
 Link: 
 
 [TOC]
 
 ---
 
-A state of a robot $x_t$ contains the following variables:
+There are two types of interactions between the robot and its environment: (<u>1</u>)
 
-- The robot pose and the configuration of the robot's actuators, **kinematic state**.
-- The robot velocity and the velocities of its joints, **dynamic state**.
-- The location and features of surrounding objects in the environment, **landmarks**.
-- Other states such as battery level.
+1. **Sensor measurements**.
+2. **Control actions**.
+
+Related topics:
+
+- [[Data of Robots]]
 
 ---
 

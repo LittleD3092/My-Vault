@@ -23,7 +23,13 @@ Link:
 	- [[Covariance]]
 	- [[Entropy of Random Variable]]
 	- [[Conditional Independence]]
-- [[State of Robot]]
+- Terms and representation of robot:
+	- [[State of Robot]]
+	- [[Environment Interaction of Robots]]
+		- [[Data of Robots]]
+	- [[Probability of Robots]]
+	- [[Belief of Robots]]
+- [[Bayes Filters]]
 
 ---
 
