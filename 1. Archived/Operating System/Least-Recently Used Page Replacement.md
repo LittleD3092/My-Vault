@@ -6,9 +6,16 @@ Link:
 
 ---
 
-![[Pasted image 20231223213303.png]]
+![[Pasted image 20240115131132.png]]
 
-First-in-first-out replaces the page that came first.
+Least-recently used algorithms choose the page that is least recently used and replace them. (<u>1</u>)
+
+![[Pasted image 20240115131305.png|450]]
+
+An implementation contains two components:
+
+- **Hash table**: Take a page number as an index, save the address to the node in the list.
+- **Linked list**: Keep track of the order of lastly used. A node at the tail (or head) will be chosen as a **victim**.
 
 ---
 

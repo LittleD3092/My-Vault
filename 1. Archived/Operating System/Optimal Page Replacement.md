@@ -6,9 +6,9 @@ Link:
 
 ---
 
-![[Pasted image 20231223213303.png]]
+![[Pasted image 20240115130846.png]]
 
-First-in-first-out replaces the page that came first.
+This is a reference of what an optimal solution looks like. It is not applicable to real systems, because it requires the information about the future. (<u>1</u>)
 
 ---
 
