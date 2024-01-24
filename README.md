@@ -45,6 +45,8 @@ The list below shows the topics that are active and will be frequently added not
 - [[SDN]]
 - [[ROS Packages for Locolization]]
 - [[Probabilistic Robotics]]
+- [[Code Complete]]
+- [[Kali Linux]]
 
 ## 3.2. Archived
 

@@ -23,11 +23,15 @@ Link:
 
 # Chapter 5: Writing Is the Only Thing That Matters
 
+- The presentation and the production of knowledge cannot be separated. (<u>2</u>)
+
 ---
 
 # Reference
 
-- Ahrens, 1975- author., Sönke. How to Take Smart Notes : One Simple Technique to Boost Writing, Learning and Thinking–for Students, Academics and Nonfiction Book Writers. North Charleston, South Carolina : Createspace Independent Publishing Platform, n.d.
+1. Ahrens, 1975- author., Sönke. How to Take Smart Notes : One Simple Technique to Boost Writing, Learning and Thinking–for Students, Academics and Nonfiction Book Writers. North Charleston, South Carolina : Createspace Independent Publishing Platform, n.d.
+2. “Chapter 5: Writing Is the Only Thing That Matters,” in How to take smart notes : one simple technique to boost writing, learning and thinking–for students, academics and nonfiction book writers, North Charleston, South Carolina : Createspace Independent Publishing Platform,.
+
 
 ---
 
