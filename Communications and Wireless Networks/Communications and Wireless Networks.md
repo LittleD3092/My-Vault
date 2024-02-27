@@ -1,16 +1,19 @@
-Tag: 
+Tag: #communications-and-wireless-networks
 Previous: 
 Link: 
 
 ---
 
+# Lesson 1: Syllabus and Introduction
 
+- [[Computer Networks Layers]]
+- [[Wireless Networks]]
 
 ---
 
 # Reference
 
-1. 
+1. 成維華, “Microelectronics, Chapter 2: Basic Semiconductor Physics,” NYCU EE210, Feb. 22, 2024.
 
 ---
 

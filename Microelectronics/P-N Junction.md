@@ -1,16 +1,17 @@
-Tag: 
-Previous: 
+Tag: #microelectronics 
+Previous: [[Microelectronics]]
 Link: 
 
 ---
 
-
+- [[Energy Diagram of P-N Junction]]
+- [[Diffusion of P-N Junction]]
 
 ---
 
 # Reference
 
-1. 
+1. 成維華, “Microelectronics, Chapter 2: Basic Semiconductor Physics,” NYCU EE210, Feb. 22, 2024.
 
 ---
 

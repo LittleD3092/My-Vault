@@ -15,6 +15,11 @@ Link:
 
 - [[Bohr Model]]
 - [[Semiconductor]]
+	- [[Silicon]]
+		- [[Free Electron Density of Silicon]]
+- [[P-N Junction]]
+	- [[Energy Diagram of P-N Junction]]
+	- [[Diffusion of P-N Junction]]
 
 ---
 
