@@ -6,6 +6,7 @@ Link:
 
 - [[Energy Diagram of P-N Junction]]
 - [[Diffusion of P-N Junction]]
+- [[IV Characteristic of PN Junction]]
 
 ---
 

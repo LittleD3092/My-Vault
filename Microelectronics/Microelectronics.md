@@ -20,6 +20,10 @@ Link:
 - [[P-N Junction]]
 	- [[Energy Diagram of P-N Junction]]
 	- [[Diffusion of P-N Junction]]
+	- [[IV Characteristic of PN Junction]]
+- [[Depletion Region]]
+- [[Diffusion Current]]
+- [[Carrier Profile in Forward Bias]]
 
 ---
 

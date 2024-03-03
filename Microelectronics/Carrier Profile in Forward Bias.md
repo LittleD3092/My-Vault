@@ -4,15 +4,15 @@ Link:
 
 ---
 
-Charge particles tend to move from high energy region to low energy region. This phenomenon forms the [[Depletion Region|depletion region]]. (<u>1</u>)
+When a forward bias is applied to the depletion region, the [[Diffusion Current|diffusion current]] increases to supply the minority carriers. (<u>1</u>)
 
-![[Pasted image 20240229204044.png|300]]
+![[carrier-profile-with-and-without-forward-bias.png]]
 
 ---
 
 # Reference
 
-1. 成維華, “Microelectronics, Chapter 2: Basic Semiconductor Physics,” NYCU EE210, Feb. 22, 2024.
+1. 成維華, “Microelectronics, Chapter 2: Basic Semiconductor Physics, part 2,” NYCU EE210, Feb. 26, 2024.
 
 ---
 

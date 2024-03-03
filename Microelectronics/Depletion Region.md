@@ -4,9 +4,9 @@ Link:
 
 ---
 
-Charge particles tend to move from high energy region to low energy region. This phenomenon forms the [[Depletion Region|depletion region]]. (<u>1</u>)
+![[depletion-region-with-time.png]]
 
-![[Pasted image 20240229204044.png|300]]
+As the particles diffuse, the depletion region is formed. (<u>1</u>)
 
 ---
 

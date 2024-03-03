@@ -4,9 +4,11 @@ Link:
 
 ---
 
-Charge particles tend to move from high energy region to low energy region. This phenomenon forms the [[Depletion Region|depletion region]]. (<u>1</u>)
+Diffusion current is the current that forms across the [[Depletion Region|depletion region]]. (<u>1</u>)
 
-![[Pasted image 20240229204044.png|300]]
+The current is present because of the concentration gradient of electrons and holes: (<u>1</u>)
+
+![[concentration-of-electrons-and-holes-in-depletion-region.png|400]]
 
 ---
 
