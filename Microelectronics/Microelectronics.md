@@ -24,6 +24,11 @@ Link:
 - [[Depletion Region]]
 - [[Diffusion Current]]
 - [[Carrier Profile in Forward Bias]]
+- [[Reverse Breakdown]]
+
+# Chapter 3: Diode Circuits
+
+- [[Diode-Capacitor with Load Resistor]]
 
 ---
 
