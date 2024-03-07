@@ -41,6 +41,7 @@ The lists of this section shows the root of some interesting topics.
 
 The list below shows the topics that are active and will be frequently added notes.
 
+- [[Statistics]]
 - [[Network Systems Capstone]]
 - [[Microelectronics]]
 - [[Digital Computer Electronics]]

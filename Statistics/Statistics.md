@@ -17,6 +17,18 @@ Link:
 	- [[Mechanistic Model]]
 	- [[Empirical Model]]
 
+# Chapter 2: Data Summary and Presentation
+
+- Data Summary:
+	- [[Sample Mean]]
+	- [[Population Mean]]
+	- [[Sample Variance]]
+	- [[Population Variance]]
+	- [[Sample Standard Deviation]]
+- Presentation:
+	- [[Stem-and-Leaf Diagram]]
+	- [[Histogram]]
+
 # Chapter 3: Random Variables and Probability Distribution
 
 - [[Random Variables]]
