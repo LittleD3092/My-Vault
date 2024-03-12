@@ -23,7 +23,7 @@ Link:
 - [[Translation]]
 - [[Rotation]]
 - [[Scaling]]
-- [[Reflection]]
+- [[Reflection - Transformation]]
 - [[Inverse]]
 - [[Shear]]
 - [[Hierarchical Structure]]

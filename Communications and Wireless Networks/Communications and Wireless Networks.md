@@ -23,6 +23,33 @@ Link:
 		- [[Carrier-Sense Multiple Access]]
 - [[Medium Access Control]]
 
+# Lesson 3: PHY Basics
+
+- [[Signal Power]]
+	- Absolute value:
+		- [[Decibel-Milliwatts]]
+		- [[Decibel-Watts]]
+		- [[Milliwatts]]
+	- Relative value:
+		- [[Decibel]]
+- [[Gaussian Distribution]]
+	- [[Notation of Gaussian Distribution]]
+		- [[Standard Normal Deviate]]
+- [[Signal Average Power]]
+- [[Path Loss]]
+	- Effects that cause path loss:
+		- [[Free-space Loss - Path Loss|Free-space Loss]]
+		- [[Refraction|Refraction]]
+		- [[Diffraction|Diffraction]]
+		- [[Reflection - Path Loss|Reflection]]
+		- [[Aperture-medium Coupling Loss|Aperture-medium Coupling Loss]]
+		- [[Absorption - Path Loss|Absorption]]
+- [[Multipath Effect]]
+	- [[LoS Multipath]]
+	- [[NLoS Multipath]]
+- [[Orthogonal]]
+	- [[Proof of Sine and Cosine are Orthogonal]]
+
 ---
 
 # Reference

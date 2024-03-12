@@ -39,6 +39,10 @@ A method to use projections to transform an ordinary basis into an [[Orthonormal
 
 [[Gram-Schmidt Orthogonalization]]
 
+# Sine and Cosine
+
+- [[Proof of Sine and Cosine are Orthogonal]]
+
 ---
 
 參考資料:
