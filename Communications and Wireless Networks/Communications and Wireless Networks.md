@@ -59,6 +59,14 @@ Link:
 - [[Frequency-Shift Keying]]
 - [[Amplitude-Shift Keying]]
 
+# Lesson 5: Autorate and Detection
+
+- [[Modulation and Coding Scheme]]
+	- [[Modulation Order]]
+- [[Rate Adaption Algorithm]]
+- [[Signal-to-noise Ratio]]
+- [[Preamble of a WiFi Frame]]
+
 ---
 
 # Reference
