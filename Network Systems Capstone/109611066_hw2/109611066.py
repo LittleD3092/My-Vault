@@ -233,8 +233,13 @@ class switch:
         self.update_mac([packet.src_mac, income_port])
 
         # forward the packet or broadcast
-        if packet.dst_mac in self.mac_table:
-            self.send(self.mac_table[packet.dst_mac], packet)
+        if packet.dst_mac == 'ffff':
+            for i in range(self.port_n):
+                if i != income_port:
+                    self.send(i, packet)
+        elif packet.dst_mac in self.mac_table:
+            if income_port != self.mac_table[packet.dst_mac]:
+                self.send(self.mac_table[packet.dst_mac], packet)
         else:
             for i in range(self.port_n):
                 if i != income_port:

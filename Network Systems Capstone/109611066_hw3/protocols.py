@@ -1,193 +1,191 @@
 import random
 
-def simulation(setting, protocol="aloha", one_persistent=False, show_history=False):
-    if protocol not in ["aloha", "slotted_aloha", "csma", "csma_cd"]:
-        return 0
+# A class to store hosts' information
+# Usage:
+#     hosts = Hosts(10) # create 10 hosts
+#     hosts[0] # get the first host
+#     hosts[0]["status"] # get the status of the first host
+# Fields in each host:
+#    id: host id, start from 0 and end at num-1
+#    status: 
+#        0: standby, 1: send, 2: resend
+#    action_to_do: 
+#        0: standby, 1: send, 2: resend, 3: stop sending
+#    packet_num: the number of remaining packets to send
+#    remain_length: the remaining time to send the current packet
+#    wait_time: the time to wait to send the next packet
+#    collision: whether the host has a collision
+#    success_num: the number of successful transmissions
+#    collision_num: the number of collisions
+#    history: the history of host's actions
+#    pending_packets: the packets to send
+class Hosts:
+    # A class for a sequence of packets, with time to send
+    class Packets:
+        # Preconditions:
+        #    timestamps: a list of integers representing 
+        #                the time to send
+        # Postconditions:
+        #    Initialize the packets with the time to send
+        def __init__(self, timestamps = []):
+            self.timestamps = timestamps
+
+        # A [] operator to get the packet by index
+        # Preconditions:
+        #    key: an integer
+        # Postconditions:
+        #    Return the packet with the given index key
+        def __getitem__(self, key):
+            return self.timestamps[key]
+        
+        # Set the timestamps
+        # Preconditions:
+        #    timestamps: a list of integers representing
+        #                the time to send
+        # Postconditions:
+        #    The timestamps are set to the given timestamps
+        def set_timestamps(self, timestamps):
+            self.timestamps = timestamps
+        
+        # Get the time of the next packet
+        # Postconditions:
+        #    Return the time of the next packet
+        def time_of_next_packet(self):
+            return self.timestamps[0]
+        
+        # Pop the first packet
+        # Postconditions:
+        #    The first packet is removed
+        def pop(self):
+            self.timestamps.pop(0)
+
+        # Check if the pending packets list is empty
+        # Postconditions:
+        #    Return True if the list is empty, False otherwise
+        def is_empty(self):
+            return len(self.timestamps) == 0
     
-    hosts = [
-        {
-            "id": i,
-            "status": 0,         # 0: standby, 1: send, 2: resend
-            "action_to_do": 0,   # 0: standby, 1: send, 2: resend, 3: stop sending
-            "packet_num": 0,   
-            "remain_length": 0,  # remain time to sending
-            "wait_time": 0,      # time wait to send
-            "collision": False,
-            "success_num": 0,
-            "collision_num": 0,
-            "history": "",       # record history of host's actions
-        }
-        for i in range(setting.host_num)
-    ]
+    # A class for a single host
+    class Host:
+        # Preconditions:
+        #    id: an integer
+        # Postconditions:
+        #    Initialize the host with the given id
+        def __init__(self, id):
+            self.id = id
+            self.status = 0
+            self.action_to_do = 0
+            self.packet_num = 0
+            self.remain_length = 0
+            self.wait_time = 0
+            self.collision = False
+            self.success_num = 0
+            self.collision_num = 0
+            self.history = ""
+            self.pending_packets = self.Packets()
 
-    packets_times = setting.gen_packets() # Generate packets for each host
+        # Preconditions:
+        #    index: a string representing the field name
+        # Postconditions:
+        #    Return the value of the field with the given index
+        def __getitem__(self, index):
+            return getattr(self, index)
 
-    total_idle_time = 0
-    for t in range(setting.total_time):
-        history = ["." for i in range(setting.host_num)]
+        # Wait for the random time
+        # Postconditions:
+        #    The host is waiting for the random time
+        def wait(self):
+            if self.wait_time > 0:
+                self.wait_time -= 1
         
-        ### Generate packets for each host
-        for h in hosts:
-            if len(packets_times[h["id"]]) > 0 and packets_times[h["id"]][0] == t:
-                packets_times[h["id"]].pop(0)
-                h["packet_num"] += 1
-
-        ### Decide whether each host should send a packet
-        for h in hosts:
-            h["action_to_do"] = h["status"]
-            
-            if h["status"] == 0:
-                if h["wait_time"] > 0:
-                    h["wait_time"] -= 1
-
-                elif h["packet_num"] > 0:
-                    if protocol == "xxx":        # TODO:  change "xxx" to the correct protocol name
-                        h["action_to_do"] = 1
-                        h["remain_length"] = setting.packet_time
-                    
-                    elif protocol == "xxx" and t % setting.packet_time == 0:  # TODO:  change "xxx" to the correct protocol name
-                        h["action_to_do"] = 1       
-                        h["remain_length"] = setting.packet_time
-                    
-                    elif protocol == "xxx" or protocol == "xxx":  # TODO:  change "xxx" to the correct protocol name
-                        others_sending = False
-                        for others in hosts:
-                            if others["id"] == h["id"]:
-                                continue
-                            if (
-                                setting.link_delay >= 0
-                                and t > (setting.link_delay + 1)
-                                and (
-                                    others["history"][t - (setting.link_delay + 1)] == "-"
-                                    or others["history"][t - (setting.link_delay + 1)] == "<"
-                                )
-                            ):
-                                others_sending = True
-                        
-                        if not others_sending:
-                            h["action_to_do"] = 1
-                            h["remain_length"] = setting.packet_time
-                        else:
-                            if not one_persistent:
-                                h["wait_time"] = random.randint(0, setting.max_collision_wait_time)
-            
-            elif h["status"] == 1 and protocol == "xxx":    # TODO:  change "xxx" to the correct protocol name
-                others_sending = False
-                for others in hosts:
-                    if others["id"] == h["id"]:
-                        continue
-                    if (
-                        setting.link_delay >= 0
-                        and t > (setting.link_delay + 1)
-                        and (
-                            others["history"][t - (setting.link_delay + 1)] == "-"
-                            or others["history"][t - (setting.link_delay + 1)] == "<"
-                        )
-                    ):
-                        others_sending = True
-                if others_sending:
-                    h["action_to_do"] = 3
-            
-            elif h["status"] == 2 and protocol == "xxx" and t % setting.packet_time == 0: # TODO:  change "xxx" to the correct protocol name
-                r = random.random()
-                if r < setting.p_resend:
-                    h["action_to_do"] = 1
-                    h["remain_length"] = setting.packet_time
+        # Plan to send the packet
+        # Postconditions:
+        #    The host plans to send the packet
+        def plan_to_send(self):
+            self.action_to_do = 1
+            self.remain_length = self.setting.packet_length
         
-        ### Perform the action decided in the previous step
-        for h in hosts:
-            if h["action_to_do"] == 3:  # stop sending
-                h["collision"] = False
-                h["remain_length"] = 0
-                h["collision_num"] += 1
-                h["wait_time"] = random.randint(0, setting.max_collision_wait_time)
-                history[h["id"]] = "|"
-                h["status"] = 0
-            else:
-                h["status"] = h["action_to_do"]
+    # Preconditions:
+    #    setting: a Setting object
+    # Postconditions:
+    #    Initialize the hosts with setting.host_num hosts
+    def __init__(self, setting):
+        self.hosts = [
+            {
+                "id": i,
+                "status": 0,         # 0: standby, 1: send, 2: resend
+                "action_to_do": 0,   # 0: standby, 1: send, 2: resend, 3: stop sending
+                "packet_num": 0,   
+                "remain_length": 0,  # remain time to sending
+                "wait_time": 0,      # time wait to send
+                "collision": False,
+                "success_num": 0,
+                "collision_num": 0,
+                "history": "",       # record history of host's actions
+                "pending_packets": self.Packets()
+            }
+            for i in range(setting.host_num)
+        ]
+        self.setting = setting
+        timestamps_for_all_hosts = setting.gen_packets()
+        for i in range(setting.host_num):
+            self.hosts[i]["pending_packets"].set_timestamps(timestamps_for_all_hosts[i])
 
-        ### Check for collisions and idle time
-        sending_list = []
-        is_idle_time = True
-        for h in hosts:
-            if h["status"] == 1:
-                sending_list.append(h)
-                is_idle_time = False
-            if history[h["id"]] != ".":
-                is_idle_time = False
-                
-        if len(sending_list) > 1:
-            for h in sending_list:
+    # A [] operator to get the host by index
+    # Preconditions:
+    #    key: an integer
+    # Postconditions:
+    #    Return the host with the given index key
+    def __getitem__(self, key):
+        return self.hosts[key]
+    
+    # Check whether there are any collisions among the hosts
+    # Postconditions:
+    #    Return True if there are any collisions, False otherwise
+    #    Also set the collision field of each sending host to True 
+    #    if there is a collision
+    def check_collision(self):
+        sending_hosts = [h for h in self.hosts if h["status"] == 1]
+        if len(sending_hosts) > 1:
+            for h in sending_hosts:
                 h["collision"] = True
-        if is_idle_time:
-            total_idle_time += 1
-
-        ###  Update the host's status and history
-        for h in hosts:
-            if h["status"] == 1:
-                if len(h["history"]) == 0 or (h["history"][-1] != "<" and h["history"][-1] != "-"):
-                    history[h["id"]] = "<"
-                else:
-                    history[h["id"]] = "-"
-                h["remain_length"] -= 1
-                if h["remain_length"] <= 0:
-                    if h["collision"]:
-                        if protocol == "slotted_aloha":
-                            h["status"] = 2 # resend 
-                        else:
-                            h["wait_time"] = random.randint(0, setting.max_collision_wait_time)
-                            h["status"] = 0 # standby
-                        h["collision_num"] += 1
-                        history[h["id"]] = "|"
-                    else:
-                        h["status"] = 0
-                        h["success_num"] += 1
-                        h["packet_num"] -= 1
-                        history[h["id"]] = ">"
-                    h["collision"] = False
-            h["history"] += history[h["id"]]
-
-    ### Print the history of each host
-    if show_history:
-        packets_times = setting.gen_packets()
-        for h in hosts:
-            s = ""
-            for t in range(setting.total_time):
-                if len(packets_times[h["id"]]) > 0 and packets_times[h["id"]][0] == t:
-                    s += "V"
-                    packets_times[h["id"]].pop(0)
-                else:
-                    s += " "
-            print(f"    {s}")
-            print(f"h{h['id']}: {h['history']}")
-    
-    ### Calculate the success rate, idle rate, and collision rate      
-    total_success_num = 0
-    for h in hosts:
-        total_success_num += h["success_num"]
-    total_success_time = total_success_num * setting.packet_time
-    total_collision_time = setting.total_time - total_success_time - total_idle_time
-    return (
-        total_success_time / setting.total_time,
-        total_idle_time / setting.total_time,
-        total_collision_time / setting.total_time,
-    )
-
+            return True
+        return False
 
 def aloha(setting, show_history=False):
-    return simulation(setting, "aloha", show_history=show_history)
+    hosts = Hosts(setting)
+    total_idle_time = 0
 
+    # Iterate through the time
+    for t in range(setting.time):
+        # put due packets in the queue
+        hosts.update()
+
+        # determine the action
+        for h in hosts:
+            if h["status"] == 0:
+                if h["wait_time"] > 0:
+                    h.wait()
+                elif h["packet_num"] > 0:
+                    h.plan_to_send()
+
+        hosts.apply()
+
+        # check collision
+        hosts.check_collision()
+        if hosts.is_idle():
+            total_idle_time += 1
+
+        # 
 
 def slotted_aloha(setting, show_history=False):
-    return simulation(setting, "slotted_aloha", show_history=show_history)
-
+    # TODO: implement slotted aloha
+    pass
 
 def csma(setting, one_persistent=False, show_history=False):
-    return simulation(
-        setting, "csma", one_persistent=one_persistent, show_history=show_history
-    )
+    # TODO: implement csma
+    pass
 
 def csma_cd(setting, one_persistent=False, show_history=False):
-    return simulation(
-        setting, "csma_cd", one_persistent=one_persistent, show_history=show_history
-    )
+    # TODO: implement csma_cd
+    pass
