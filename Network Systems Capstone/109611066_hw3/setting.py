@@ -38,12 +38,12 @@ class Setting:
         self.link_delay = link_delay
 
         if max_collision_wait_time is None:
-            self.max_collision_wait_time = coefficient  # TODO: this is not complete, change this (hint: add two parameters)
+            self.max_collision_wait_time = coefficient * self.host_num * self.packet_time  # TODO: this is not complete, change this (hint: add two parameters)
         else:
             self.max_collision_wait_time = max_collision_wait_time
 
         if p_resend is None:
-            self.p_resend = 1 / coefficient  # TODO: this is not complete, change this (hint: add one parameters)
+            self.p_resend = 1 / (coefficient * self.host_num)  # TODO: this is not complete, change this (hint: add one parameters)
         else:
             self.p_resend = p_resend
 
