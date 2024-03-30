@@ -129,6 +129,36 @@ switch(config)# exit
 switch# write memory
 ```
 
+- For `CSCC-intranet-Sw`:
+
+```
+switch(config)# interface range Fa 0/3 - 24
+switch(config-if-range)# shutdown
+switch(config-if-range)# exit
+switch(config)# exit
+switch# write memory
+```
+
+- For `CS-Core`:
+
+```
+switch(config)# interface range Gi 1/0/5 - 23 , Gi 1/1/1 - 4
+switch(config-if-range)# shutdown
+switch(config-if-range)# exit
+switch(config)# exit
+switch# write memory
+```
+
+- For `EC321-Sw`:
+
+```
+switch(config)# interface range Fa 0/3 - 24 , Gi 0/1 - 2
+switch(config-if-range)# shutdown
+switch(config-if-range)# exit
+switch(config)# exit
+switch# write memory
+```
+
 # Reference
 
 1. [[Save Cisco Switch Configuration]]
