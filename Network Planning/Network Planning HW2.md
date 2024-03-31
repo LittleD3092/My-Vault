@@ -159,6 +159,540 @@ switch(config)# exit
 switch# write memory
 ```
 
+## 2.6. Disable cdp for edge devices
+
+- Only set no cdp for downward devices. Do not set as default.
+- To NYCU IT is NOT an edge device, since it is a upward device.
+
+Commands:
+
+- For `CSCC-PCRoom-Sw`:
+
+```
+CSCC-PCRoom-Sw(config)# interface range Fa 0/1 - 2 , Fa 0/11 - 12 , Fa 0/20
+CSCC-PCRoom-Sw(config-if-range)# no cdp enable
+CSCC-PCRoom-Sw(config-if-range)# exit
+CSCC-PCRoom-Sw(config)# exit
+CSCC-PCRoom-Sw# write memory
+```
+
+- For `CSCC-Lab1-Sw`:
+
+```
+CSCC-Lab1-Sw(config)# interface range Fa 0/1 - 2
+CSCC-Lab1-Sw(config-if-range)# no cdp enable
+CSCC-Lab1-Sw(config-if-range)# exit
+CSCC-Lab1-Sw(config)# exit
+CSCC-Lab1-Sw# write memory
+```
+
+- For `CSCC-Lab2-Sw`:
+
+```
+CSCC-Lab2-Sw(config)# interface range Fa 0/1
+CSCC-Lab2-Sw(config-if-range)# no cdp enable
+CSCC-Lab2-Sw(config-if-range)# exit
+CSCC-Lab2-Sw(config)# exit
+CSCC-Lab2-Sw# write memory
+```
+
+- For `CSCC-intranet-Sw`:
+
+```
+CSCC-intranet-Sw(config)# interface range Fa 0/1 - 2
+CSCC-intranet-Sw(config-if-range)# no cdp enable
+CSCC-intranet-Sw(config-if-range)# exit
+CSCC-intranet-Sw(config)# exit
+CSCC-intranet-Sw# write memory
+```
+
+- For `EC321-Sw`:
+
+```
+EC321-Sw(config)# interface Fa 0/2
+EC321-Sw(config-if)# no cdp enable
+EC321-Sw(config-if)# exit
+EC321-Sw(config)# exit
+EC321-Sw# write memory
+```
+
+# 3. VLAN setting
+
+Requirements:
+
+- Naming:
+	- Lab1: `VLAN101`
+	- Lab2-1 & Lab2-2: `VLAN102`
+	- Management: `VLAN30`
+	- 324: `VLAN324`
+	- 316: `VLAN316`
+	- 321: `VLAN321`
+- Links between switches are trunk.
+- For each trunk, only allow minimum VLAN.
+
+Commands:
+
+- For `CSCC-PCRoom-Sw`:
+
+```
+CSCC-PCRoom-Sw(config)# vlan 324
+CSCC-PCRoom-Sw(config-vlan)# name VLAN324
+CSCC-PCRoom-Sw(config-vlan)# exit
+CSCC-PCRoom-Sw(config)# interface range Fa 0/1 - 2
+CSCC-PCRoom-Sw(config-if-range)# switchport mode access
+CSCC-PCRoom-Sw(config-if-range)# switchport access vlan 324
+CSCC-PCRoom-Sw(config-if-range)# exit
+
+CSCC-PCRoom-Sw(config)# vlan 316
+CSCC-PCRoom-Sw(config-vlan)# name VLAN316
+CSCC-PCRoom-Sw(config-vlan)# exit
+CSCC-PCRoom-Sw(config)# interface range Fa 0/11 - 12
+CSCC-PCRoom-Sw(config-if-range)# switchport mode access
+CSCC-PCRoom-Sw(config-if-range)# switchport access vlan 316
+CSCC-PCRoom-Sw(config-if-range)# exit
+
+CSCC-PCRoom-Sw(config)# vlan 30
+CSCC-PCRoom-Sw(config-vlan)# name VLAN30
+CSCC-PCRoom-Sw(config-vlan)# exit
+CSCC-PCRoom-Sw(config)# vlan 321
+CSCC-PCRoom-Sw(config-vlan)# name VLAN321
+CSCC-PCRoom-Sw(config-vlan)# exit
+CSCC-PCRoom-Sw(config)# interface Fa 0/20
+CSCC-PCRoom-Sw(config-if)# switchport trunk native vlan 321
+CSCC-PCRoom-Sw(config-if)# switchport trunk allowed vlan 30,321
+CSCC-PCRoom-Sw(config-if)# switchport mode trunk
+CSCC-PCRoom-Sw(config-if)# exit
+
+CSCC-PCRoom-Sw(config)# interface Gi 0/1
+CSCC-PCRoom-Sw(config-if)# switchport trunk allowed vlan 324,316,321,30
+CSCC-PCRoom-Sw(config-if)# switchport mode trunk
+CSCC-PCRoom-Sw(config-if)# exit
+CSCC-PCRoom-Sw(config)# exit
+
+CSCC-PCRoom-Sw# write memory
+```
+
+- `CSCC-Lab1-Sw`:
+
+```
+CSCC-Lab1-Sw(config)# vlan 101
+CSCC-Lab1-Sw(config-vlan)# name VLAN101
+CSCC-Lab1-Sw(config-vlan)# exit
+CSCC-Lab1-Sw(config)# interface Fa 0/1
+CSCC-Lab1-Sw(config-if)# switchport mode access
+CSCC-Lab1-Sw(config-if)# switchport access vlan 101
+CSCC-Lab1-Sw(config-if)# exit
+
+CSCC-Lab1-Sw(config)# vlan 102
+CSCC-Lab1-Sw(config-vlan)# name VLAN102
+CSCC-Lab1-Sw(config-vlan)# exit
+CSCC-Lab1-Sw(config)# interface Fa 0/2
+CSCC-Lab1-Sw(config-if)# switchport mode access
+CSCC-Lab1-Sw(config-if)# switchport access vlan 102
+CSCC-Lab1-Sw(config-if)# exit
+
+CSCC-Lab1-Sw(config)# vlan 30
+CSCC-Lab1-Sw(config-vlan)# name VLAN30
+CSCC-Lab1-Sw(config-vlan)# exit
+CSCC-Lab1-Sw(config)# interface Gi 0/1
+CSCC-Lab1-Sw(config-if)# switchport trunk allowed vlan 101,102,30
+CSCC-Lab1-Sw(config-if)# switchport mode trunk
+CSCC-Lab1-Sw(config-if)# exit
+CSCC-Lab1-Sw(config)# exit
+
+CSCC-Lab1-Sw# write memory
+```
+
+- `CSCC-Lab2-Sw`:
+
+```
+CSCC-Lab2-Sw(config)# vlan 102
+CSCC-Lab2-Sw(config-vlan)# name VLAN102
+CSCC-Lab2-Sw(config-vlan)# exit
+CSCC-Lab2-Sw(config)# interface Fa 0/1
+CSCC-Lab2-Sw(config-if)# switchport mode access
+CSCC-Lab2-Sw(config-if)# switchport access vlan 102
+CSCC-Lab2-Sw(config-if)# exit
+
+CSCC-Lab2-Sw(config)# vlan 30
+CSCC-Lab2-Sw(config-vlan)# name VLAN30
+CSCC-Lab2-Sw(config-vlan)# exit
+CSCC-Lab2-Sw(config)# interface range Gi 0/1 - 2
+CSCC-Lab2-Sw(config-if-range)# switchport trunk allowed vlan 102,30
+CSCC-Lab2-Sw(config-if-range)# switchport mode trunk
+CSCC-Lab2-Sw(config-if-range)# exit
+
+CSCC-Lab2-Sw# write memory
+```
+
+- `CSCC-intranet-Sw`:
+
+```
+CSCC-intranet-Sw(config)# vlan 102
+CSCC-intranet-Sw(config-vlan)# name VLAN102
+CSCC-intranet-Sw(config-vlan)# exit
+CSCC-intranet-Sw(config)# interface Fa 0/1
+CSCC-intranet-Sw(config-if)# switchport mode access
+CSCC-intranet-Sw(config-if)# switchport access vlan 102
+CSCC-intranet-Sw(config-if)# exit
+
+CSCC-intranet-Sw(config)# vlan 30
+CSCC-intranet-Sw(config-vlan)# name VLAN30
+CSCC-intranet-Sw(config-vlan)# exit
+CSCC-intranet-Sw(config)# interface Fa 0/2
+CSCC-intranet-Sw(config-if)# switchport mode access
+CSCC-intranet-Sw(config-if)# switchport access vlan 30
+CSCC-intranet-Sw(config-if)# exit
+
+CSCC-Lab2-Sw(config)# interface Gi 0/1
+CSCC-Lab2-Sw(config-if)# switchport trunk allowed vlan 102,30
+CSCC-Lab2-Sw(config-if)# switchport mode trunk
+CSCC-Lab2-Sw(config-if)# exit
+
+CSCC-Lab2-Sw(config)# interface Gi 0/2
+CSCC-Lab2-Sw(config-if)# switchport trunk allowed vlan 102,30
+CSCC-Lab2-Sw(config-if)# switchport mode trunk
+CSCC-Lab2-Sw(config-if)# exit
+CSCC-Lab2-Sw(config)# exit
+
+CSCC-intranet-Sw# write memory
+```
+
+- `EC321-Sw`:
+
+```
+EC321-Sw(config)# vlan 321
+EC321-Sw(config-vlan)# name VLAN321
+EC321-Sw(config-vlan)# exit
+EC321-Sw(config)# vlan 30
+EC321-Sw(config-vlan)# name VLAN30
+EC321-Sw(config-vlan)# exit
+
+EC321-Sw(config)# interface Fa 0/2
+EC321-Sw(config-if)# switchport access vlan 321
+EC321-Sw(config-if)# switchport mode access
+EC321-Sw(config-if)# exit
+
+EC321-Sw(config)# interface Fa 0/1
+EC321-Sw(config-if)# switchport trunk native vlan 321
+EC321-Sw(config-if)# switchport trunk allowed vlan 30,321
+EC321-Sw(config-if)# switchport mode trunk
+EC321-Sw(config-if)# exit
+EC321-Sw(config)# exit
+
+EC321-Sw# write memory
+```
+
+- `CS-Core`:
+
+```
+CS-Core(config)# vlan 30
+CS-Core(config-vlan)# name VLAN30
+CS-Core(config-vlan)# exit
+
+CS-Core(config)# vlan 324
+CS-Core(config-vlan)# name VLAN324
+CS-Core(config-vlan)# exit
+CS-Core(config)# vlan 316
+CS-Core(config-vlan)# name VLAN316
+CS-Core(config-vlan)# exit
+CS-Core(config)# vlan 321
+CS-Core(config-vlan)# name VLAN321
+CS-Core(config-vlan)# exit
+CS-Core(config)# interface Gi 1/0/4
+CS-Core(config-if)# switchport trunk allowed vlan 324,316,321,30
+CS-Core(config-if)# switchport mode trunk
+CS-Core(config-if)# exit
+
+CS-Core(config)# vlan 101
+CS-Core(config-vlan)# name VLAN101
+CS-Core(config-vlan)# exit
+CS-Core(config)# vlan 102
+CS-Core(config-vlan)# name VLAN102
+CS-Core(config-vlan)# exit
+CS-Core(config)# interface Gi 1/0/1
+CS-Core(config-if)# switchport trunk allowed vlan 101,102,30
+CS-Core(config-if)# switchport mode trunk
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface Gi 1/0/2
+CS-Core(config-if)# switchport trunk allowed vlan 102,30
+CS-Core(config-if)# switchport mode trunk
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface Gi 1/0/3
+CS-Core(config-if)# switchport trunk allowed vlan 102,30
+CS-Core(config-if)# switchport mode trunk
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface Gi 1/0/24
+CS-Core(config-if)# switchport trunk allowed vlan 324,316,321,101,102,30
+CS-Core(config-if)# switchport mode trunk
+CS-Core(config-if)# exit
+CS-Core(config)# exit
+
+CS-Core# write memory
+```
+
+# 4. Switch IP Address & Gateway
+
+Commands:
+
+- For `CSCC-PCRoom-Sw`:
+
+```
+CSCC-PCRoom-Sw(config)# vlan 30
+CSCC-PCRoom-Sw(config-vlan)# name VLAN30
+CSCC-PCRoom-Sw(config-vlan)# exit
+CSCC-PCRoom-Sw(config)# interface vlan 30
+CSCC-PCRoom-Sw(config-if)# ip address 140.113.10.10 255.255.255.0
+CSCC-PCRoom-Sw(config-if)# no shutdown
+CSCC-PCRoom-Sw(config-if)# exit
+CSCC-PCRoom-Sw(config)# ip default-gateway 140.113.10.254
+CSCC-PCRoom-Sw(config)# exit
+CSCC-PCRoom-Sw# write memory
+```
+
+- For `CSCC-intranet-Sw`:
+
+```
+CSCC-intranet-Sw(config)# vlan 30
+CSCC-intranet-Sw(config-vlan)# name VLAN30
+CSCC-intranet-Sw(config-vlan)# exit
+CSCC-intranet-Sw(config)# interface vlan 30
+CSCC-intranet-Sw(config-if)# ip address 140.113.10.11 255.255.255.0
+CSCC-intranet-Sw(config-if)# no shutdown
+CSCC-intranet-Sw(config-if)# exit
+CSCC-intranet-Sw(config)# ip default-gateway 140.113.10.254
+CSCC-intranet-Sw(config)# exit
+CSCC-intranet-Sw# write memory
+```
+
+- For `CSCC-Lab1-Sw`:
+
+```
+CSCC-Lab1-Sw(config)# vlan 30
+CSCC-Lab1-Sw(config-vlan)# name VLAN30
+CSCC-Lab1-Sw(config-vlan)# exit
+CSCC-Lab1-Sw(config)# interface vlan 30
+CSCC-Lab1-Sw(config-if)# ip address 140.113.10.12 255.255.255.0
+CSCC-Lab1-Sw(config-if)# no shutdown
+CSCC-Lab1-Sw(config-if)# exit
+CSCC-Lab1-Sw(config)# ip default-gateway 140.113.10.254
+CSCC-Lab1-Sw(config)# exit
+CSCC-Lab1-Sw# write memory
+```
+
+- For `CSCC-Lab2-Sw`:
+
+```
+CSCC-Lab2-Sw(config)# vlan 30
+CSCC-Lab2-Sw(config-vlan)# name VLAN30
+CSCC-Lab2-Sw(config-vlan)# exit
+CSCC-Lab2-Sw(config)# interface vlan 30
+CSCC-Lab2-Sw(config-if)# ip address 140.113.10.13 255.255.255.0
+CSCC-Lab2-Sw(config-if)# no shutdown
+CSCC-Lab2-Sw(config-if)# exit
+CSCC-Lab2-Sw(config)# ip default-gateway 140.113.10.254
+CSCC-Lab2-Sw(config)# exit
+CSCC-Lab2-Sw# write memory
+```
+
+- For `EC321-Sw`:
+
+```
+EC321-Sw(config)# vlan 30
+EC321-Sw(config-vlan)# name VLAN30
+EC321-Sw(config-vlan)# exit
+EC321-Sw(config)# interface vlan 30
+EC321-Sw(config-if)# ip address 140.113.10.14 255.255.255.0
+EC321-Sw(config-if)# no shutdown
+EC321-Sw(config-if)# exit
+EC321-Sw(config)# ip default-gateway 140.113.10.254
+EC321-Sw(config)# exit
+EC321-Sw# write memory
+```
+
+- For `CS-Core`:
+
+```
+CS-Core(config)# interface vlan 30
+CS-Core(config-if)# ip address 140.113.10.254 255.255.255.0
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface vlan 101
+CS-Core(config-if)# ip address 140.113.20.1 255.255.255.224
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface vlan 102
+CS-Core(config-if)# ip address 140.113.20.33 255.255.255.224
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface vlan 324
+CS-Core(config-if)# ip address 140.113.24.254 255.255.255.0
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface vlan 316
+CS-Core(config-if)# ip address 140.113.16.254 255.255.255.0
+CS-Core(config-if)# exit
+
+CS-Core(config)# interface vlan 321
+CS-Core(config-if)# ip address 140.113.21.254 255.255.255.0
+CS-Core(config-if)# exit
+CS-Core(config)# ip routing
+CS-Core(config)# exit
+CS-Core# write memory
+```
+
+# 5. STP
+
+## 5.1. Set rapid-pvst
+
+For each switch, use `rapid-pvst`:
+
+```
+Switch(config)# spanning-tree mode rapid-pvst
+```
+
+## 5.2. Portfast
+
+For `CSCC-PCRoom-Sw`:
+
+```
+interface range Fa 0/1 - 2 , Fa 0/11 - 12 , Fa 0/20
+spanning-tree portfast
+exit
+exit
+write memory
+```
+
+For `CSCC-Lab1-Sw`:
+
+```
+interface range Fa 0/1 - 2
+spanning-tree portfast
+exit
+exit
+write memory
+```
+
+For `CSCC-Lab2-Sw`:
+
+```
+interface Fa 0/1
+spanning-tree portfast
+exit
+exit
+write memory
+```
+
+For `CSCC-intranet-Sw`:
+
+```
+interface range Fa 0/1 - 2
+spanning-tree portfast
+exit
+exit
+write memory
+```
+
+For `EC321-Sw`:
+
+```
+interface Fa 0/2
+spanning-tree portfast
+exit
+exit
+write memory
+```
+
+## 5.3. BPDU Guard
+
+For `CSCC-PCRoom-Sw`:
+
+```
+interface range Fa 0/1 - 2 , Fa 0/11 - 12 , Fa 0/20
+spanning-tree bpduguard enable
+exit
+exit
+write memory
+```
+
+For `CSCC-Lab1-Sw`:
+
+```
+interface range Fa 0/1 - 2
+spanning-tree bpduguard enable
+exit
+exit
+write memory
+```
+
+For `CSCC-Lab2-Sw`:
+
+```
+interface Fa 0/1
+spanning-tree bpduguard enable
+exit
+exit
+write memory
+```
+
+For `CSCC-intranet-Sw`:
+
+```
+interface range Fa 0/1 - 2
+spanning-tree bpduguard enable
+exit
+exit
+write memory
+```
+
+For `EC321-Sw`:
+
+```
+interface range Fa 0/1 - 2
+spanning-tree bpduguard enable
+exit
+exit
+write memory
+```
+
+## 5.4. Set root
+
+For `CS-Core`, in configure terminal:
+
+```
+spanning-tree vlan 1,30,101,102,316,321,324 root primary
+```
+
+# 6. CS-Core
+
+## 6.1. Set default route
+
+For `CS-Core`, in configure terminal:
+
+```
+ip route 0.0.0.0 0.0.0.0 140.113.1.1
+```
+
+## 6.2. Upstream interface
+
+For `CS-Core`, in configure terminal:
+
+```
+interface Gi 1/0/24
+no switchport
+ip address 140.113.1.2 255.255.255.252
+lldp transmit
+lldp receive
+no shutdown
+exit
+ip default-gateway 140.113.1.1
+exit
+write memory
+```
+
 # Reference
 
 1. [[Save Cisco Switch Configuration]]
