@@ -61,15 +61,8 @@ $$i_D \cong I_{ s } \exp\left(
 
 # Diode Model
 
-## Ideal Diode
-
-![[ideal diode.png|250]]
-
-## Practical Diode (Piecewise-Linear Diode Models)
-
-![[practical diode.png|250]]
-
-$v_{ th }$: Threshold Voltage, $0.7V$
+- [[Ideal Diode]]
+- [[Practical Diode]]
 
 # Rectifier Circuit
 

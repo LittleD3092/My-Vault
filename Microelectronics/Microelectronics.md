@@ -28,6 +28,9 @@ Link:
 
 # Chapter 3: Diode Circuits
 
+- [[Diode]]
+	- [[Ideal Diode]]
+	- [[Practical Diode]]
 - [[Diode-Capacitor with Load Resistor]]
 
 ---
