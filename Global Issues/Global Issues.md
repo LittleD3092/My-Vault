@@ -6,9 +6,34 @@ Link:
 
 # 1. Global Issues & Actors
 
+- [[Contemporary World]]
+- [[Key Actors in Global Society]]
+	- [[Sovereign State]]
+	- [[Intergovernmental Organizations]]
+	- [[Non-governmental Organizations]]
+	- [[Multinational Corporations]]
+	- [[Terrorist Groups]]
+	- [[International Criminal Cartels]]
+	- [[Pre-State Groups]]
+		- [[Nation]]
+		- [[Religious Group]]
+
 # 2. Non-governmental Organizations
 
+- [[Non-governmental Organizations]]
+	- [[Functions of NGO]]
+	- [[Successful Cases of NGO]]
+		- [[ICBL]]
+		- [[ICAN]]
+	- [[Tactics of NGO]]
+
 # 3. Multinational Corporations
+
+- [[Multinational Corporations]]
+	- [[History of MNCs]]
+	- [[Foreign Direct Investment]]
+	- [[Pros and Cons of Multinational Corporations]]
+	- [[Corporate Social Responsibility]]
 
 # 4. Intergovernmental Organizations
 

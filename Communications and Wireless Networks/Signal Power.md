@@ -10,6 +10,8 @@ Link:
 	- [[Milliwatts]]
 - Relative value:
 	- [[Decibel]]
+- [[Convert dBm to Watts]]
+- [[Convert Milliwatts to dBm]]
 
 ---
 

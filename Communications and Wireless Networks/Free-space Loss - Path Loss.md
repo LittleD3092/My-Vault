@@ -11,7 +11,7 @@ The formula is: (<u>1</u>)
 $$\frac{P_r}{P_t} = D_tD_r 
 \left(
 	\frac{\lambda}{4\pi d}
-\right)^2$$
+\right)^2 \qquad\text{(in Watt)}$$
 
 - $P_r$: Radio wave power received.
 - $P_t$: Radio wave power transmitted.
@@ -19,6 +19,10 @@ $$\frac{P_r}{P_t} = D_tD_r
 - $D_r$: Directivity of the receiving antenna.
 - $\lambda$: Signal wavelength.
 - $d$: The distance between antennas.
+
+$$
+\text{PL}_{\rm dB} = 20\log_{10}G_tG_r\frac{4\pi df}{c}
+$$
 
 ---
 
