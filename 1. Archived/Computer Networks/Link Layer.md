@@ -15,6 +15,7 @@ Link:
 - **Node**: Any device that runs a link-layer protocol.
 - **Links**: The channels that connect adjacent nodes.
 - **Link-layer frame**: The encapsulated **datagram**.
+- **Task**: Transfer a datagram to an adjacent node over a link.
 
 ## Services
 

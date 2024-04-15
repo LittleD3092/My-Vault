@@ -20,10 +20,6 @@ $$\frac{P_r}{P_t} = D_tD_r
 - $\lambda$: Signal wavelength.
 - $d$: The distance between antennas.
 
-$$
-\text{PL}_{\rm dB} = 20\log_{10}G_tG_r\frac{4\pi df}{c}
-$$
-
 ---
 
 # Reference
