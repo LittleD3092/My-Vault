@@ -12,7 +12,7 @@
 
 # row
 
-需要在 [[Preamble]] 裡面 include package
+需要在 [[Preamble (latex)]] 裡面 include package
 
 ```latex
 \usepackage{multirow}
@@ -36,5 +36,5 @@
 link:
 
 [[Table & Tabular Environments]]
-[[Preamble]]
+[[Preamble (latex)]]
 [[Document Environment]]

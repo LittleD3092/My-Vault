@@ -16,6 +16,7 @@ Related topics:
 - [[Variance of Continuous Random Variables]]
 - [[Standard Deviation of Continuous Random Variables]]
 - [[Normal Distribution]]
+	- [[Standard Normal Random Variable]]
 
 ---
 

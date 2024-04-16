@@ -15,8 +15,8 @@ $$\frac{P_r}{P_t} = D_tD_r
 
 - $P_r$: Radio wave power received.
 - $P_t$: Radio wave power transmitted.
-- $D_t$: Directivity of the transmitting antenna.
-- $D_r$: Directivity of the receiving antenna.
+- $D_t$: Directivity of the transmitting antenna. Or the gain $G_t$.
+- $D_r$: Directivity of the receiving antenna. Or the gain $G_r$.
 - $\lambda$: Signal wavelength.
 - $d$: The distance between antennas.
 

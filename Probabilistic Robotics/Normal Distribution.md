@@ -22,6 +22,10 @@ The distribution can be represented as $\mathcal{N}(x; \mu, \sigma^2)$.
 
 - [[Multivariate Normal Distribution]]
 
+Subtopics:
+
+- [[Standard Normal Random Variable]]
+
 ---
 
 # Reference

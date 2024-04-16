@@ -19,4 +19,4 @@
 
 link:
 
-[[Preamble]]
+[[Preamble (latex)]]

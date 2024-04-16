@@ -44,6 +44,9 @@ Link:
 	- [[DIFS]]
 - [[Hidden Terminal Problem]]
 - [[EDCA]]
+- RTS and CTS:
+	- [[RTS]]
+	- [[CTS]]
 
 # Lesson 3: PHY Basics
 
@@ -71,6 +74,9 @@ Link:
 	- [[NLoS Multipath]]
 - [[Orthogonal]]
 	- [[Proof of Sine and Cosine are Orthogonal]]
+- [[Constellation Diagram]]
+- [[AWGN]]
+- [[Shannon's Formula]]
 
 # Lesson 4: Modulation
 
@@ -80,14 +86,27 @@ Link:
 - [[Phase-Shift Keying]]
 - [[Frequency-Shift Keying]]
 - [[Amplitude-Shift Keying]]
+- [[Quadrature Amplitude Modulation]]
+- [[FEC]]
 
 # Lesson 5: Autorate and Detection
 
 - [[Modulation and Coding Scheme]]
 	- [[Modulation Order]]
 - [[Rate Adaption Algorithm]]
-- [[Signal-to-noise Ratio]]
+	- Receiver Based:
+		- [[RBAR]]
+		- [[OAR]]
+	- Transmitter Based:
+		- [[SampleRate]]
+		- [[RRAA]]
+- [[SNR]]
 - [[Preamble of a WiFi Frame]]
+
+# Lesson 6: Equalization and Detection
+
+- [[Preamble of a WiFi Frame]]
+- [[Channel Coherence Time]]
 
 ---
 

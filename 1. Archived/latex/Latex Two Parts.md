@@ -4,7 +4,7 @@
 
 Latex 文件包含兩個區塊，和 html 的 head 和 body 有點像
 
-- [[Preamble]]
+- [[Preamble (latex)]]
 - [[Document Environment]]
 
 ---
