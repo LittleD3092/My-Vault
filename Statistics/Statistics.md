@@ -31,8 +31,12 @@ Link:
 
 # Chapter 3: Random Variables and Probability Distribution
 
+![[Pasted image 20240417212141.png]]
+
 - [[Random Variables]]
 	- [[Discrete Random Variables]]
+		- [[Probability Mass Function]]
+		- [[Cumulative Distribution Function of Discrete Random Variables]]
 	- [[Continuous Random Variables]]
 		- [[Probability Density Function]]
 		- [[Cumulative Distribution Function]]
@@ -41,6 +45,29 @@ Link:
 		- [[Standard Deviation of Continuous Random Variables]]
 		- [[Normal Distribution]]
 			- [[Standard Normal Random Variable]]
+- [[Bernoulli Trials]]
+- [[Binomial Distribution]]
+- [[Poisson Process]]
+	- [[Poisson Distribution]]
+	- [[Exponential Distribution]]
+
+# Chapter 4: Decision Making for a Single Sample
+
+- [[Point Estimation]]
+	- [[Bias]]
+	- [[MVUE]]
+	- [[Mean Square Error]]
+- [[Statistical Hypotheses]]
+	- [[One-sided Hypotheses]]
+	- [[Two-sided Hypotheses]]
+	- [[Null Hypotheses]]
+	- [[Alternative Hypotheses]]
+	- [[Steps of Testing a Hypotheses]]
+	- [[Type I Error]]
+	- [[Type II Error]]
+	- [[Power of Statistical Test]]
+	- [[P-Value]]
+	- [[Sample Size Formula]]
 
 ---
 

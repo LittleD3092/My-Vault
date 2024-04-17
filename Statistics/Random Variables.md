@@ -13,6 +13,8 @@ $$X = \text{total number of heads observed}$$
 Related topics:
 
 - [[Discrete Random Variables]]
+	- [[Probability Mass Function]]
+	- [[Cumulative Distribution Function of Discrete Random Variables]]
 - [[Continuous Random Variables]]
 	- [[Probability Density Function]]
 	- [[Cumulative Distribution Function]]

@@ -8,6 +8,9 @@ A discrete random variable has a countable number, and there are **no something 
 
 For example, the number of defective products in a factory. (<u>1</u>)
 
+- [[Probability Mass Function]]
+- [[Cumulative Distribution Function of Discrete Random Variables]]
+
 ---
 
 # Reference
