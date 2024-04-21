@@ -457,6 +457,7 @@ if VERBOSE_FOR_DEMO_RUN
     fprintf('Empirical packet delivery rate of QAM64: %f.\n\n', empirical_PDR_QAM64);
 end
 
+% N: number of bits
 % total_bits_transferred = N * theoretical_PDR;
 % total_time_s = sample_duration_s * (N / bits_per_sample);
 % throughput = total_bits_transferred / total_time_s;
