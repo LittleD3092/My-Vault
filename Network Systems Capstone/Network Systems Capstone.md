@@ -8,6 +8,14 @@ Link:
 	- [[CFG Expression of Network Filter]]
 	- [[Tree Expression of Network Filter]]
 
+# Final Project
+
+- [[Entropy Detection Method]]
+	- [[Shannon Entropy]]
+- [[Distributed Denial of Service Attack]]
+	- [[Signature-Based Detection]]
+	- [[Anomaly Detection]]
+
 ---
 
 # Reference
