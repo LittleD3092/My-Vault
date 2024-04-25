@@ -6,6 +6,11 @@ Link:
 
 Entropy detection method is a method to detect [[Distributed Denial of Service Attack]] (DDoS). (<u>1</u>)
 
+- This method calculate the distribution of some attributes (IP addresses or TTL) in the packet's headers using [[Shannon Entropy|Shannon entropy]].
+- When the [[Shannon Entropy|Shannon entropy]] is **large**, the attribute is **more distributed**. When the entropy is small, 
+
+Subtopics: (<u>1</u>)
+
 - [[Shannon Entropy]]
 
 ---

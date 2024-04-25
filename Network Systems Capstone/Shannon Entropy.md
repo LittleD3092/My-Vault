@@ -4,7 +4,14 @@ Link:
 
 ---
 
+Shannon entropy is the measure of uncertainty using a random variable $X$. It has the following formula: (<u>1</u>)
 
+$$H(X) = \sum_i P(x_i)\log_b P(x_i)$$
+
+- The formula above is for finite samples.
+- $H(X)$: The Shannon entropy of random variable $X$.
+- $P(x_i)$: The probability of $X = x_i$.
+- $b$: Can be $2, 10$ or $e$, depending on the resulting unit of entropy. For $2$, the unit is bits.
 
 ---
 
