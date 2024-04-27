@@ -205,13 +205,13 @@ function [best_scheme] = best_modulation_scheme(d, l)
     noise_power_dBm = -90;
     noise_power_W = 10^(noise_power_dBm/10) * 1e-3;
     SNR = P_rx_W / noise_power_W;
+    SNR_dB = 10 * log10(SNR);
     
-    if SNR > 31
+    if SNR_dB > 31
         BER = [0; 0; 0; 0];
     else
-        SNR_floor = floor(SNR);
-        delta = SNR - SNR_floor;
-        BER = SNR_BER(:, SNR_floor) * (1 - delta) + SNR_BER(:, SNR_floor + 1) * delta;
+        SNR_dB_rounded = round(SNR_dB);
+        BER = SNR_BER(:, SNR_dB_rounded);
     end
 
     PDR = (1 - BER) .^ l;
@@ -223,11 +223,11 @@ function [best_scheme] = best_modulation_scheme(d, l)
     best_scheme = modulation_schemes(best_scheme_index);
 end
 
-fprintf('| Distance (m) / Packet Length (bits) | 500 | 1000 | 2000 | 4000 | 8000 |\n');
-fprintf('| --- | --- | --- | --- | --- | --- |\n');
+fprintf('| Distance (m) / Packet Length (bits) | 100 | 2000 | 4000 |\n');
+fprintf('| --- | --- | --- | --- |\n');
 for d = 50:50:600
     fprintf('| %d |', d);
-    for l = [500, 1000, 2000, 4000, 8000]
+    for l = [100, 2000, 4000]
         best_scheme = best_modulation_scheme(d, l);
         fprintf(' %s |', best_scheme);
     end
@@ -237,24 +237,24 @@ end
 
 We can get the theoretical best modulation scheme table:
 
-| Distance (m) / Packet Length (bits) | 500    | 1000   | 2000   | 4000   | 8000   |
-| ----------------------------------- | ------ | ------ | ------ | ------ | ------ |
-| 50                                  | 64-QAM | 64-QAM | 64-QAM | 64-QAM | 64-QAM |
-| 100                                 | 64-QAM | 64-QAM | 64-QAM | 64-QAM | 64-QAM |
-| 150                                 | 64-QAM | 64-QAM | 64-QAM | 64-QAM | 64-QAM |
-| 200                                 | QPSK   | QPSK   | QPSK   | QPSK   | QPSK   |
-| 250                                 | QPSK   | QPSK   | QPSK   | QPSK   | QPSK   |
-| 300                                 | QPSK   | QPSK   | QPSK   | QPSK   | QPSK   |
-| 350                                 | BPSK   | BPSK   | BPSK   | BPSK   | BPSK   |
-| 400                                 | BPSK   | BPSK   | BPSK   | BPSK   | BPSK   |
-| 450                                 | BPSK   | BPSK   | BPSK   | BPSK   | BPSK   |
-| 500                                 | BPSK   | BPSK   | BPSK   | BPSK   | BPSK   |
-| 550                                 | BPSK   | BPSK   | BPSK   | BPSK   | BPSK   |
-| 600                                 | BPSK   | BPSK   | BPSK   | BPSK   | BPSK   |
+| Distance (m) / Packet Length (bits) | 100  | 2000 | 4000 |
+| ----------------------------------- | ---- | ---- | ---- |
+| 50                                  | QPSK | QPSK | QPSK |
+| 100                                 | QPSK | QPSK | QPSK |
+| 150                                 | QPSK | QPSK | QPSK |
+| 200                                 | QPSK | QPSK | QPSK |
+| 250                                 | QPSK | QPSK | QPSK |
+| 300                                 | QPSK | QPSK | QPSK |
+| 350                                 | QPSK | BPSK | BPSK |
+| 400                                 | QPSK | BPSK | BPSK |
+| 450                                 | QPSK | BPSK | BPSK |
+| 500                                 | BPSK | BPSK | BPSK |
+| 550                                 | BPSK | BPSK | BPSK |
+| 600                                 | BPSK | BPSK | BPSK |
 
-The empirical rate seems to have worse noise than the theoretical result. We can see that the theoretical best modulation switched to QPSK when the distance comes to 200m, but empirical test suggest that we should switch to QPSK when the distance is 150m.
+At a short distance, the table suggests using QPSK. Then at 350m, the table suggests that we use BPSK.
 
-This is due to the noise being amplified in the demodulation process, where the symbols $y$ is divided by channel $h$. In the theoretical table, we did not consider the effect of channel $h$.
+Compared to the empirical result, the table is more conservative on close distance. Also, it is slightly more optimistic on 300m.
 
 ## 2.2. What I have learned
 

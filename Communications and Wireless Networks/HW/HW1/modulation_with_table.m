@@ -35,13 +35,13 @@ function [best_scheme] = best_modulation_scheme(d, l)
     noise_power_dBm = -90;
     noise_power_W = 10^(noise_power_dBm/10) * 1e-3;
     SNR = P_rx_W / noise_power_W;
+    SNR_dB = 10 * log10(SNR);
     
-    if SNR > 31
+    if SNR_dB > 31
         BER = [0; 0; 0; 0];
     else
-        SNR_floor = floor(SNR);
-        delta = SNR - SNR_floor;
-        BER = SNR_BER(:, SNR_floor) * (1 - delta) + SNR_BER(:, SNR_floor + 1) * delta;
+        SNR_dB_rounded = round(SNR_dB);
+        BER = SNR_BER(:, SNR_dB_rounded);
     end
 
     PDR = (1 - BER) .^ l;
@@ -53,11 +53,11 @@ function [best_scheme] = best_modulation_scheme(d, l)
     best_scheme = modulation_schemes(best_scheme_index);
 end
 
-fprintf('| Distance (m) / Packet Length (bits) | 500 | 1000 | 2000 | 4000 | 8000 |\n');
-fprintf('| --- | --- | --- | --- | --- | --- |\n');
+fprintf('| Distance (m) / Packet Length (bits) | 100 | 2000 | 4000 |\n');
+fprintf('| --- | --- | --- | --- |\n');
 for d = 50:50:600
     fprintf('| %d |', d);
-    for l = [500, 1000, 2000, 4000, 8000]
+    for l = [100, 2000, 4000]
         best_scheme = best_modulation_scheme(d, l);
         fprintf(' %s |', best_scheme);
     end
