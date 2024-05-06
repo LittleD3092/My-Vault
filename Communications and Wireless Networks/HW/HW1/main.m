@@ -515,7 +515,7 @@ function plot_constellation(symbols, title_str)
 end
 
 % BPSK with 40m
-d = 40;
+d = 600;
 [P_rx_W, ~] = calculate_received_power(d);
 h_scaled = generate_scaled_channel(P_rx_W);
 received_symbols_BPSK = transmit_symbol(symbols_BPSK, h_scaled, noise);
@@ -523,7 +523,7 @@ received_symbols_BPSK = transmit_symbol(symbols_BPSK, h_scaled, noise);
 plot_constellation(symbols_BPSK_prime, 'BPSK Constellation with 40m');
 
 % QPSK with 20m
-d = 20;
+d = 400;
 [P_rx_W, ~] = calculate_received_power(d);
 h_scaled = generate_scaled_channel(P_rx_W);
 received_symbols_QPSK = transmit_symbol(symbols_QPSK, h_scaled, noise);
@@ -531,7 +531,7 @@ received_symbols_QPSK = transmit_symbol(symbols_QPSK, h_scaled, noise);
 plot_constellation(symbols_QPSK_prime, 'QPSK Constellation with 20m');
 
 % QAM16 with 10m
-d = 10;
+d = 200;
 [P_rx_W, ~] = calculate_received_power(d);
 h_scaled = generate_scaled_channel(P_rx_W);
 received_symbols_QAM16 = transmit_symbol(symbols_QAM16, h_scaled, noise);
@@ -539,7 +539,7 @@ received_symbols_QAM16 = transmit_symbol(symbols_QAM16, h_scaled, noise);
 plot_constellation(symbols_QAM16_prime, 'QAM16 Constellation with 10m');
 
 % QAM64 with 5m
-d = 5;
+d = 100;
 [P_rx_W, ~] = calculate_received_power(d);
 h_scaled = generate_scaled_channel(P_rx_W);
 received_symbols_QAM64 = transmit_symbol(symbols_QAM64, h_scaled, noise);
