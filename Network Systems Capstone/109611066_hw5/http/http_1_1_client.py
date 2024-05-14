@@ -17,8 +17,10 @@ class HTTPClient:
         # TODO: Generate the string in HTTP/1.1 format, excluding the body, based on the dictionary "headers".
         # headers_str = ?
         # E.g., headers_str = "header1: 1\r\nheader2: 2\r\n"
-        for key, value in headers.items():
-            headers_str += f"{key}: {value}\r\n"
+        headers_str = ""
+        if headers:
+            for key, value in headers.items():
+                headers_str += f"{key}: {value}\r\n"
         
         # TODO: Format the string in HTTP/1.1 format, excluding the body and encode the string to bytes.
         # request = ?
@@ -38,8 +40,10 @@ class HTTPClient:
         # TODO: Generate the string in HTTP/1.1 format, excluding the body, based on the dictionary "headers".
         # headers_str = ?
         # E.g., headers_str = "header1: 1\r\nheader2: 2\r\n"
-        for key, value in headers.items():
-            headers_str += f"{key}: {value}\r\n"
+        headers_str = ""
+        if headers:
+            for key, value in headers.items():
+                headers_str += f"{key}: {value}\r\n"
         
         # TODO: Format the string in HTTP/1.1 format, excluding the body and encode the string to bytes.
         # request = ?
@@ -50,7 +54,7 @@ class HTTPClient:
             # TODO: Append the bytes with body.
             # request = ?
             # E.g., request = b"GET / HTTP/1.1\r\nheader1: 1\r\nheader2: 2\r\n\r\nthis is body"
-            request += body.encode()
+            request += body
 
         return self.__send_request(address, request, stream)
     

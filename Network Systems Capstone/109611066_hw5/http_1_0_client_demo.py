@@ -5,8 +5,8 @@ import xml.etree.ElementTree as ET
 import json
     
 if __name__ == '__main__':
-    server_ip = "10.0.2.15"
-    sid = "123"
+    server_ip = "10.0.2.4"
+    sid = "109611066"
     client = HTTPClient()
 
     target_path = "./target"

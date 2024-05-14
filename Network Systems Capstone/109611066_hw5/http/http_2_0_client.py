@@ -17,10 +17,14 @@ class Connection:
         # TODO: Create a thread to handle the bytes received from the server.
         # self.recv_thread = threading.Thread(target=self.__recv_loop)
         # self.recv_thread.start()
+        self.recv_thread = threading.Thread(target=self.__recv_loop)
+        self.recv_thread.start()
         
         # TODO: Create a thread to handle the frames to be sent to the server.
         # self.send_thread = threading.Thread(target=self.__send_loop)
         # self.send_thread.start()
+        self.send_thread = threading.Thread(target=self.__send_loop)
+        self.send_thread.start()
         
 
     def send_request(self, request):
@@ -38,6 +42,7 @@ class Connection:
         else:
             # TODO: Send headers
             # Call self.__send_headers(stream_id, headers, end_stream=True)
+            self.__send_headers(stream_id, headers, end_stream=True)
             
         response = response_2.Response_2(stream_id)
         self.recv_streams[stream_id] = response
@@ -56,7 +61,10 @@ class Connection:
         # TODO: Generate the string of the headers frame payload in HTTP/2 format based on the dictionary "headers".
         # headers_str = ?
         # E.g., headers_str = "header1: 1\r\nheader2: 2\r\n"
-        
+        headers_str = ""
+        if headers:
+            for key, value in headers.items():
+                headers_str += f"{key}: {value}\r\n"
         
         if end_stream:
             flags = 1
@@ -72,6 +80,9 @@ class Connection:
             # TODO: Generate a data frame in HTTP/2 format, the payload should be limited to chunk_size.
             # Hint: payload=body[:chunk_size]
             # Hint: After creating a data frame, set the body to body[chunk_size:].
+            payload = body[:chunk_size]
+            body = body[chunk_size:]
+            frame = http_2_frame.create_data_frame(stream_id, payload)
             
             self.send_streams[stream_id].append(frame) 
         frame = http_2_frame.create_data_frame(stream_id, body, flags=1)
@@ -88,7 +99,8 @@ class Connection:
                         # TODO: Pop the leftmost frame from self.send_streams[key] and send it.
                         # Hint: Use popleft()
                         # Call self.client_socket.sendall(frame.to_bytes())
-                        
+                        frame = self.send_streams[key].popleft()
+                        self.client_socket.sendall(frame.to_bytes())
                         
                         if frame.flags == 1:
                             end_streams.append(key)
@@ -115,6 +127,7 @@ class Connection:
 
             # TODO: Merge the bytes with recv_buffer and recv_bytes.
             # Call recv_bytes = self.recv_buffer + recv_bytes
+            recv_bytes = self.recv_buffer + recv_bytes
             
             # parse request
             frames, remain_bytes = http_2_frame.bytes_to_frames(recv_bytes)
@@ -125,7 +138,7 @@ class Connection:
                     if frame.stream_id in self.recv_streams:
                         self.recv_streams[frame.stream_id].append_body(frame.payload)
                 # TODO: Check frame.type is 1(headers frame)
-                
+                if frame.type == 1:
                     response = parser.parse_response_2(frame.stream_id, frame.payload)
                     if response:
                         if frame.stream_id in self.recv_streams:
@@ -134,7 +147,8 @@ class Connection:
                                 self.recv_streams[frame.stream_id].status = response.status
                         else:
                             # TODO: Add the response to self.recv_streams using the key frame.stream_id.
-                            
+                            self.recv_streams[frame.stream_id] = response
+
                 if frame.flags == 1:
                     if frame.stream_id in self.recv_streams:
                         self.recv_streams[frame.stream_id].complete = True
@@ -156,7 +170,10 @@ class HTTPClient:
 
         # TODO: Set headers with ":method", ":path", ":scheme", and ":authority".
         # Hint: These four headers correspond to "GET", resource, scheme, and f"{address[0]}:{address[1]}".
-        
+        headers[":method"] = "GET"
+        headers[":path"] = resource
+        headers[":scheme"] = scheme
+        headers[":authority"] = f"{address[0]}:{address[1]}"
 
         request = {
             'headers': headers

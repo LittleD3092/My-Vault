@@ -28,7 +28,8 @@ class RequestHandler():
         # TODO: Create a thead to handle the request.
         # Call self.thread = threading.Thread(target=self.__handle_request)
         # Call self.thread.start()
-        
+        self.thread = threading.Thread(target=self.__handle_request)
+        self.thread.start()
 
     def __bad_request_response(self):
         response = {
@@ -87,7 +88,7 @@ class RequestHandler():
         # TODO: Complete the response handling for requests with the path '/hello'.
         # Hint: You can refer to __do_get().
         # TODO: Check paht is '/hello'
-        
+        if path == "/hello":
             if 'content-type' in headers and headers['content-type'] == 'application/json':
                 try:
                     body = self.request.get_full_body()
@@ -102,7 +103,10 @@ class RequestHandler():
                     # stauts: "200 OK"
                     # body: f"Hello {post_data['id']}!"
                     # headers: 'Content-Type': 'text/plain', 'Content-Length': len(body)
-                    
+                    response['status'] = "200 OK"
+                    response["headers"] = {'Content-Type': 'text/plain'}
+                    response['body'] = f"Hello {post_data['id']}!".encode()
+                    response['headers']['Content-Length'] = len(response['body'])
                 else:
                     response['status'] = "200 OK"
                     response["headers"] = {'Content-Type': 'text/plain'}
@@ -227,7 +231,8 @@ class ClientHandler():
         # TODO: Create a thead to handle the client.
         # Call self.recv_thread = threading.Thread(target=self.__recv_loop)
         # Call self.recv_thread.start()
-        
+        self.recv_thread = threading.Thread(target=self.__recv_loop)
+        self.recv_thread.start()
 
     def close(self):
         self.alive = False
@@ -258,7 +263,7 @@ class ClientHandler():
 
             # TODO: Merge the bytes with recv_buffer and recv_bytes.
             # Call recv_bytes = self.recv_buffer + recv_bytes
-            
+            recv_bytes = self.recv_buffer + recv_bytes
 
             # parse request
             frames, remian_bytes = http_2_frame.bytes_to_frames(recv_bytes)
@@ -269,17 +274,17 @@ class ClientHandler():
                     if frame.stream_id in self.recv_streams:
                         self.recv_streams[frame.stream_id].append_body(frame.payload)
                 # TODO: Check frame.type is 1(headers frame)
-                
+                if frame.type == 1:
                     request = parser.parse_request_2(frame.stream_id, frame.payload)
                     already_exsit = False
                     if frame.stream_id in self.recv_streams:
                         already_exsit = True
                     if request and not already_exsit:
                         # TODO: Add the request to self.recv_streams using the key frame.stream_id.
-                        
+                        self.recv_streams[frame.stream_id] = request
 
                         # TODO: Create a RequestHandler with the request and append it to self.request_handler_deque.
-                        
+                        request_handler = RequestHandler(self, request)
                     else:
                         request_handler = RequestHandler(self, None)
 
@@ -312,7 +317,7 @@ class HTTPServer():
 
                 # TODO: Generate a ClientHander to hande request
                 # Call client_handler = ClientHandler(client, address, self.args)
-                
+                client_handler = ClientHandler(client, address, self.args)
 
                 for handler in reversed(self.handler_list):
                     if not handler.alive:

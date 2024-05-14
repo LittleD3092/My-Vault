@@ -20,6 +20,8 @@ $$\frac{P_r}{P_t} = D_tD_r
 - $\lambda$: Signal wavelength.
 - $d$: The distance between antennas.
 
+> The above formula is also called [[Friis Free-space Model]].
+
 ---
 
 # Reference

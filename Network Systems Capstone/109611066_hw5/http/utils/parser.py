@@ -75,7 +75,7 @@ def parse_response_2(stream_id, raw_bytes):
     """
     # TODO: Split the raw_bytes into a list of bytes
     # E.g., lines = [b":status: 200 OK", b"Content-Type: text/plain", b"Content-Length: 4096"]
-    
+    lines = raw_bytes.split(b"\r\n")
 
     # Initialize an empty dictionary to store the headers
     headers = {}
@@ -83,7 +83,11 @@ def parse_response_2(stream_id, raw_bytes):
     # Hint: Header keys should be converted to lowercase.
     # Hint: Bytes should be decoded using decode() to obtain a string.
     # E.g., headers = {":status": "200 OK", "content-type": "text/plain", "content-length": "4096"}
-    
+    for line in lines:
+        if line == b"":
+            break
+        key, value = line.decode().split(": ")
+        headers[key.lower()] = value
             
     # Check valid or not
     if ':status' not in headers:
@@ -104,7 +108,7 @@ def parse_request_2(stream_id, raw_bytes):
     """
     # TODO: Split the raw_bytes into a list of bytes
     # E.g., lines = [b":method: GET", b"path: /", b":scheme: http", b":authority: 127.0.0.1:8080"]
-    
+    lines = raw_bytes.split(b"\r\n")
 
     # Initialize an empty dictionary to store the headers
     headers = {}
@@ -112,7 +116,11 @@ def parse_request_2(stream_id, raw_bytes):
     # Hint: Header keys should be converted to lowercase.
     # Hint: Bytes should be decoded using decode() to obtain a string.
     # E.g., headers = {":method": "GET", ":path": "/", ":scheme": "http", ":authority": "127.0.0.1:8080"}
-    
+    for line in lines:
+        if line == b"":
+            break
+        key, value = line.decode().split(": ")
+        headers[key.lower()] = value
     
     # Check valid or not
     if ':method' not in headers or ":path" not in headers or ":scheme" not in headers or ":authority" not in headers:
