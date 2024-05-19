@@ -5,14 +5,18 @@ from ryu.controller.handler import set_ev_cls
 from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
-from ryu.lib.packet import ipv4
-from ryu.lib.packet import in_proto
+from ryu.lib import hub
+from collections import defaultdict, Counter
+import time
+import math
+from enum import Enum
 
-FILTER_TABLE_1 = 5
-FILTER_TABLE_2 = 10
-FOWARD_TABLE = 20
+class AlgorithmType(Enum):
+    BASIC = 1
+    CUMULATIVE = 2
+    TIME_BASED = 3
 
-USE_ALT_FILTER_TABLE_2 = True
+algo_type = AlgorithmType.BASIC
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -21,70 +25,15 @@ class SimpleSwitch13(app_manager.RyuApp):
         super(SimpleSwitch13, self).__init__(*args, **kwargs)
         # 新增一個儲存 Host MAC 的資料結構，類別為 dict(字典)
         self.mac_to_port = {}
+        self.packet_count = defaultdict(Counter)
 
-    def add_default_table(self, datapath):
-        ofproto = datapath.ofproto
-        parser = datapath.ofproto_parser
-        inst = [parser.OFPInstructionGotoTable(FILTER_TABLE_1)]
-        mod = parser.OFPFlowMod(datapath=datapath, table_id=0, instructions=inst)
-        datapath.send_msg(mod)
+        # Keep track of all datapaths to send flow stats requests
+        self.datapaths = {}
+        
+        # Start a thread that periodically sends stats request
+        self.monitor_thread = hub.spawn(self._monitor)
 
-    def add_filter_table_1(self, datapath):
-        # If the packet is an ICMP packet, go to filter table 2
-        ofproto = datapath.ofproto
-        parser = datapath.ofproto_parser
-        match = parser.OFPMatch(eth_type=0x0800, ip_proto=in_proto.IPPROTO_ICMP)
-        inst = [parser.OFPInstructionGotoTable(FILTER_TABLE_2)]
-        mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_1, match=match, instructions=inst, priority=10)
-        datapath.send_msg(mod)
-
-        # Otherwise, go to forward table
-        match = parser.OFPMatch()
-        inst = [parser.OFPInstructionGotoTable(FOWARD_TABLE)]
-        mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_1, match=match, instructions=inst, priority=0)
-        datapath.send_msg(mod)
-
-    def add_filter_table_2(self, datapath):
-        if USE_ALT_FILTER_TABLE_2 == False:
-            # If the packet comes from port_3 or port_4,
-            # drop the packet
-            ofproto = datapath.ofproto
-            parser = datapath.ofproto_parser
-            match = parser.OFPMatch(in_port=3)
-            inst = []
-            mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_2, match=match, instructions=inst, priority=10)
-            datapath.send_msg(mod)
-
-            match = parser.OFPMatch(in_port=4)
-            inst = []
-            mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_2, match=match, instructions=inst, priority=10)
-            datapath.send_msg(mod)
-
-            # Otherwise, go to forward table
-            match = parser.OFPMatch()
-            inst = [parser.OFPInstructionGotoTable(FOWARD_TABLE)]
-            mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_2, match=match, instructions=inst, priority=0)
-            datapath.send_msg(mod)
-        else: # USE_ALT_FILTER_TABLE_2 == True
-            # If the packet comes from port_1 or port_2,
-            # go to forward table
-            ofproto = datapath.ofproto
-            parser = datapath.ofproto_parser
-            match = parser.OFPMatch(in_port=1)
-            inst = [parser.OFPInstructionGotoTable(FOWARD_TABLE)]
-            mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_2, match=match, instructions=inst, priority=10)
-            datapath.send_msg(mod)
-
-            match = parser.OFPMatch(in_port=2)
-            inst = [parser.OFPInstructionGotoTable(FOWARD_TABLE)]
-            mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_2, match=match, instructions=inst, priority=10)
-            datapath.send_msg(mod)
-
-            # Otherwise, drop the packet
-            match = parser.OFPMatch()
-            inst = []
-            mod = parser.OFPFlowMod(datapath=datapath, table_id=FILTER_TABLE_2, match=match, instructions=inst, priority=0)
-            datapath.send_msg(mod)
+        self.start_time = time.time()
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -103,11 +52,6 @@ class SimpleSwitch13(app_manager.RyuApp):
         # 把 Table-Miss FlowEntry 設定至 Switch，並指定優先權為 0 (最低)
         self.add_flow(datapath, 0, match, actions)
 
-        # Add tables
-        self.add_default_table(datapath)
-        self.add_filter_table_1(datapath)
-        self.add_filter_table_2(datapath)
-
     def add_flow(self, datapath, priority, match, actions):
         # 取得與 Switch 使用的 IF 版本 對應的 OF 協定及 parser
         ofproto = datapath.ofproto
@@ -120,8 +64,7 @@ class SimpleSwitch13(app_manager.RyuApp):
 
         # FlowMod Function 可以讓我們對 Switch 寫入由我們所定義的 Flow Entry
         mod = parser.OFPFlowMod(datapath=datapath, priority=priority,
-                                match=match, table_id = FOWARD_TABLE,
-                                instructions=inst)
+                                match=match, instructions=inst)
         # 把定義好的 FlowEntry 送給 Switch
         datapath.send_msg(mod)
 
@@ -179,3 +122,73 @@ class SimpleSwitch13(app_manager.RyuApp):
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
                                   in_port=in_port, actions=actions, data=data)
         datapath.send_msg(out)
+
+    # Keep track of all datapaths that are connected or disconnected
+    @set_ev_cls(ofp_event.EventOFPStateChange, [MAIN_DISPATCHER, CONFIG_DISPATCHER])
+    def _state_change_handler(self, ev):
+        datapath = ev.datapath
+        if ev.state == MAIN_DISPATCHER:
+            self.datapaths[datapath.id] = datapath
+        elif ev.state == CONFIG_DISPATCHER:
+            if datapath.id in self.datapaths:
+                del self.datapaths[datapath.id]
+
+    # Periodically send stats request to all datapaths
+    def _monitor(self):
+        while True:
+            for dp in self.datapaths.values():
+                self._request_stats(dp)
+            hub.sleep(10)
+
+    # Send stats request to datapath
+    def _request_stats(self, datapath):
+        self.logger.info('send stats request: %016x', datapath.id)
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+
+        req = parser.OFPFlowStatsRequest(datapath)
+        datapath.send_msg(req)
+
+    # Handle flow stats reply
+    @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
+    def _flow_stats_reply_handler(self, ev):
+        body = ev.msg.body
+
+        for stat in sorted(
+            [flow for flow in body if flow.priority == 1],
+            key=lambda flow: (
+                flow.match['in_port'], 
+                flow.match['eth_dst']
+            )
+        ):
+            dpid = ev.msg.datapath.id
+            src = stat.match['eth_src']
+            self.packet_count[dpid][src] += stat.packet_count
+
+        # Call DDoS detection function after updating packet count
+        self.detect_ddos(ev.msg.datapath)
+
+    # DDoS detection function
+    def detect_ddos(self, datapath):
+        current_time = time.time()
+        self.logger.info('------------------------------------')
+        self.logger.info('Current time: %f', current_time - self.start_time)
+        if current_time - self.start_time > 10:
+            self.start_time = current_time
+            for dpid in self.packet_count:
+                if algo_type == AlgorithmType.BASIC:
+                    entropy = self.calculate_basic_entropy(self.packet_count[dpid])
+                self.logger.info('Entropy of switch %d: %f', dpid, entropy)
+                self.packet_count = defaultdict(Counter)
+
+    # Calculate entropy of packet count
+    def calculate_basic_entropy(self, packet_count):
+        total_packets = sum(packet_count.values())
+        if total_packets == 0:
+            return 0
+        
+        entropy = 0
+        for count in packet_count.values():
+            probability = count / total_packets
+            entropy += -probability * math.log2(probability)
+        return entropy

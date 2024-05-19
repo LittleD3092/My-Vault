@@ -16,7 +16,7 @@ Link:
 - [[Distributed Denial of Service Attack]]
 	- [[Signature-Based Detection]]
 	- [[Anomaly Detection]]
-- [[Final Project Report]]
+- [[Final Project Proposal]]
 
 ---
 

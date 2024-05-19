@@ -54,9 +54,15 @@ Mirkovic and Reiher (<u>2</u>) provided a taxonomy of DDoS attacks and defense m
 
 ---
 
-
+In addition to entropy-based methods, machine learning approaches have also been researched. Xin et al. (<u>3</u>) reviewed machine learning and deep learning methods for cybersecurity, including anomaly detection. Their study highlighted the potential of machine learning algorithms in detecting DDoS attacks. While the focus of this project is on entropy-based detection methods, machine learning techniques could be explored in future research to enhance the detection accuracy and robustness.
 
 # 4. Methodology
+
+This section describes the methodology for implementing and evaluating the three entropy-based detection methods for DDoS attacks. The methods include Basic Entropy Detection, Cumulative Entropy Detection, and Time-Based Entropy Detection. The implementation will be carried out using Python and Ryu, an open-source SDN controller. The network environment will be simulated using Mininet to generate traffic and test the algorithms. The network environment consists of normal and malicious hosts, a DDoS-protected switch, and a server.
+
+## 4.1 Network Topology
+
+The network topology includes multiple normal hosts, multiple malicious hosts, a switch, and a server. The exact topology is included in the Introduction section.
 
 # 5. Results
 
@@ -68,3 +74,4 @@ Mirkovic and Reiher (<u>2</u>) provided a taxonomy of DDoS attacks and defense m
 
 1. Li, Liying, Jianying Zhou, and Ning Xiao. “DDoS Attack Detection Algorithms Based on Entropy Computing.” In Information and Communications Security, edited by Sihan Qing, Hideki Imai, and Guilin Wang, 4861:452–66. Lecture Notes in Computer Science. Berlin, Heidelberg: Springer Berlin Heidelberg, 2007. https://doi.org/10.1007/978-3-540-77048-0_35.
 2. Mirkovic, Jelena, and Peter Reiher. “A Taxonomy of DDoS Attack and DDoS Defense Mechanisms.” ACM SIGCOMM Computer Communication Review 34 (May 16, 2004). https://doi.org/10.1145/997150.997156.
+3. “Machine Learning and Deep Learning Methods for Cybersecurity | IEEE Journals & Magazine | IEEE Xplore.” Accessed May 19, 2024. https://ieeexplore.ieee.org/abstract/document/8359287.
