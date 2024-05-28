@@ -4,9 +4,9 @@ from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER
 from ryu.controller.handler import set_ev_cls
 from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet
-from ryu.lib.packet import ethernet
+from ryu.lib.packet import ethernet, ipv4, arp, ipv6
 from ryu.lib import hub
-from collections import defaultdict, Counter
+from collections import defaultdict, Counter, deque
 import time
 import math
 from enum import Enum
@@ -16,7 +16,7 @@ class AlgorithmType(Enum):
     CUMULATIVE = 2
     TIME_BASED = 3
 
-algo_type = AlgorithmType.BASIC
+algo_type = AlgorithmType.TIME_BASED
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -27,6 +27,9 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.mac_to_port = {}
         self.packet_count = defaultdict(Counter)
 
+        # Keep track of previous packet count
+        self.prev_packet_count = defaultdict(Counter)
+
         # Keep track of all datapaths to send flow stats requests
         self.datapaths = {}
         
@@ -34,6 +37,17 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.monitor_thread = hub.spawn(self._monitor)
 
         self.start_time = time.time()
+
+        # Parameters for cumulative entropy calculation
+        self.prev_y = 0
+
+        # Parameters for time-based DDoS detection
+        self.n_elements = 10
+        self.t_interval = 1
+        self.time_based_vector = deque([-1] * self.n_elements, maxlen=self.n_elements)
+
+        # If the file already exists, clear its contents
+        open('entropy.txt', 'w').close()
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -85,6 +99,11 @@ class SimpleSwitch13(app_manager.RyuApp):
         dst = eth.dst            # 得到封包目的端 MAC address
         src = eth.src            # 得到封包來源端 MAC address
 
+        if pkt.get_protocols(ethernet.ethernet)[0].ethertype == 0x0800:
+            ipv4_src = pkt.get_protocols(ipv4.ipv4)[0].src
+        else:
+            ipv4_src = None
+
         dpid = datapath.id       # Switch 的 datapath id (獨一無二的 ID)
         
         # 如果 MAC 表內不曾儲存過這個 Switch 的 MAC，則幫他新增一個預設值
@@ -93,7 +112,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         #     mac_to_port = {'1': {'AA:BB:CC:DD:EE:FF': 2}, '2': {}}
         self.mac_to_port.setdefault(dpid, {})
 
-        self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
+        # self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
 
         # 我們擁有來源端 MAC 與 in_port 了，因此可以學習到 src MAC 要往 in_port 送
         self.mac_to_port[dpid][src] = in_port
@@ -108,11 +127,9 @@ class SimpleSwitch13(app_manager.RyuApp):
         # 把剛剛的 out_port 作成這次封包的處理動作
         actions = [parser.OFPActionOutput(out_port)]
 
-        # 如果沒有讓 switch flooding，表示目的端 mac 有學習過
-        # 因此使用 add_flow 讓 Switch 新增 FlowEntry 學習此筆規則
-        if out_port != ofproto.OFPP_FLOOD:
-            match = parser.OFPMatch(in_port=in_port, eth_dst=dst)
-            self.add_flow(datapath, 1, match, actions)
+        if ipv4_src is not None:
+            match = parser.OFPMatch(in_port=in_port, eth_dst=dst, ipv4_src=ipv4_src, eth_type=0x0800)
+            self.add_flow(datapath, 2, match, actions)
 
         data = None
         if msg.buffer_id == ofproto.OFP_NO_BUFFER:
@@ -138,7 +155,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         while True:
             for dp in self.datapaths.values():
                 self._request_stats(dp)
-            hub.sleep(10)
+            hub.sleep(self.t_interval)
 
     # Send stats request to datapath
     def _request_stats(self, datapath):
@@ -153,17 +170,34 @@ class SimpleSwitch13(app_manager.RyuApp):
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
     def _flow_stats_reply_handler(self, ev):
         body = ev.msg.body
+        dpid = ev.msg.datapath.id
+
+        # Initialize or reset packet count for current switch
+        current_packet_count = Counter()
 
         for stat in sorted(
-            [flow for flow in body if flow.priority == 1],
+            [flow for flow in body if flow.priority == 2],
             key=lambda flow: (
                 flow.match['in_port'], 
-                flow.match['eth_dst']
+                flow.match['eth_dst'],
+                flow.match['ipv4_src']
             )
         ):
-            dpid = ev.msg.datapath.id
-            src = stat.match['eth_src']
-            self.packet_count[dpid][src] += stat.packet_count
+            if 'ipv4_src' not in stat.match:
+                continue
+            ipv4_src = stat.match['ipv4_src']
+            current_packet_count[ipv4_src] += stat.packet_count
+
+        # Calculate the difference in packet count
+        for src, count in current_packet_count.items():
+            # Skip ip address of the server
+            if src == '10.0.0.10':
+                continue
+            previous_count = self.prev_packet_count[dpid][src]
+            self.packet_count[dpid][src] += count - previous_count
+
+        # Update previous packet count
+        self.prev_packet_count[dpid] = current_packet_count
 
         # Call DDoS detection function after updating packet count
         self.detect_ddos(ev.msg.datapath)
@@ -172,14 +206,24 @@ class SimpleSwitch13(app_manager.RyuApp):
     def detect_ddos(self, datapath):
         current_time = time.time()
         self.logger.info('------------------------------------')
-        self.logger.info('Current time: %f', current_time - self.start_time)
-        if current_time - self.start_time > 10:
+        self.logger.info('Current time: %f', time.time())
+        if current_time - self.start_time >= self.t_interval:
             self.start_time = current_time
             for dpid in self.packet_count:
                 if algo_type == AlgorithmType.BASIC:
                     entropy = self.calculate_basic_entropy(self.packet_count[dpid])
-                self.logger.info('Entropy of switch %d: %f', dpid, entropy)
-                self.packet_count = defaultdict(Counter)
+                    self.logger.info('Entropy of switch %d: %f', dpid, entropy)
+                    self.write_entropy(current_time, entropy)
+                elif algo_type == AlgorithmType.CUMULATIVE:
+                    entropy = self.calculate_cumulative_entropy(self.packet_count[dpid])
+                    self.logger.info('Cumulative entropy of switch %d: %f', dpid, entropy)
+                    self.write_entropy(current_time, entropy)
+                elif algo_type == AlgorithmType.TIME_BASED:
+                    summation = self.detect_time_based_ddos(self.packet_count[dpid])
+                    self.logger.info('Summation of switch %d: %f', dpid, summation)
+                    self.write_entropy(current_time, summation)
+            # Reset packet count after detecting DDoS
+            self.packet_count = defaultdict(Counter)
 
     # Calculate entropy of packet count
     def calculate_basic_entropy(self, packet_count):
@@ -190,5 +234,44 @@ class SimpleSwitch13(app_manager.RyuApp):
         entropy = 0
         for count in packet_count.values():
             probability = count / total_packets
-            entropy += -probability * math.log2(probability)
+            print(f'Probability: {probability}')
+            if probability == 0:
+                entropy += 0
+            else:
+                entropy += -probability * math.log2(probability)
         return entropy
+    
+    # Calculate cumulative entropy of packet count
+    def calculate_cumulative_entropy(self, packet_count):
+        alpha = 2
+        X = self.calculate_basic_entropy(packet_count)
+        Z = X - 2 * alpha
+        y = max(self.prev_y + Z, 0)
+        self.prev_y = y
+        return y
+    
+    # Detect DDoS attack based on time
+    def detect_time_based_ddos(self, packet_count):
+        alpha = 2
+        entropy = self.calculate_basic_entropy(packet_count)
+        z_value = entropy - 2 * alpha
+        self.update_time_based_vector(z_value)
+
+        return sum(self.time_based_vector)
+    
+    # Update time-based vector
+    def update_time_based_vector(self, z_value):
+        if z_value > 0:
+            self.time_based_vector.append(1)
+        elif z_value < 0:
+            self.time_based_vector.append(-1)
+        else:
+            self.time_based_vector.append(
+                self.time_based_vector[-1]
+            )
+
+    # Write the entropy value to a file
+    def write_entropy(self, time, entropy):
+        with open('entropy.txt', 'a') as f:
+            f.write('%f %f\n' % (time, entropy))
+            f.close()
