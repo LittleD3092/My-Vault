@@ -73,3 +73,27 @@ v_{\rm old} & \text{otherwise}
 \right.
 \end{array}
 $$
+
+---
+
+Basic Entropy
+
+| Paper Results             | Project Results     |
+| ------------------------- | ------------------- |
+| ![[paper-basic.png]]      | ![[basic.png]]      |
+
+---
+
+Cumulative Entropy
+
+| Paper Results             | Project Results     |
+| ------------------------- | ------------------- |
+| ![[paper-cumulative.png]] | ![[cumulative.png]] |
+
+---
+
+Time-Based
+
+| Paper Results             | Project Results     |
+| ------------------------- | ------------------- |
+| ![[paper-time-based.png]] | ![[time-based.png]] |

@@ -16,7 +16,7 @@ class AlgorithmType(Enum):
     CUMULATIVE = 2
     TIME_BASED = 3
 
-algo_type = AlgorithmType.TIME_BASED
+algo_type = AlgorithmType.CUMULATIVE
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
