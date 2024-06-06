@@ -68,6 +68,24 @@ Link:
 	- [[Power of Statistical Test]]
 	- [[P-Value]]
 	- [[Sample Size Formula]]
+- [[Hypothesis Testing]]
+	- [[Hypothesis Testing on a Binomial Distribution]]
+	- [[Hypothesis Testing on the Mean]]
+		- [[T-Test on the Mean]]
+		- [[Z-Test on the Mean]]
+
+# Chapter 5: Decision Making for Two Samples
+
+- [[Hypothesis Testing]]
+	- [[Z-test on the Difference in Means]] (Variance Known)
+	- [[Pooled T-test]] (Variance Unknown, but $\sigma_1 = \sigma_2$)
+	- [[Welch's T-test]] (Variance Unknown, but $\sigma_1 \neq \sigma_2$)
+	- [[Paired T-test]] (If the observations are collected in pairs)
+	- [[F Distribution Test]] (Test whether $\sigma_1 = \sigma_2$)
+- Sample Size Choosing
+	- [[Sample Size Choosing with Two Samples Testing]]
+	- [[Sample Size Choosing with Confidence Interval]]
+- [[Confidence Interval on the Difference in Means of Two Samples]]
 
 ---
 
