@@ -20,4 +20,4 @@ link:
 
 [[Text Justification (Alignment)]]
 [[Line Break]]
-[[Preamble]]
+[[Preamble (latex)]]

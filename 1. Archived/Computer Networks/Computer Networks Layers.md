@@ -13,14 +13,15 @@ There are five layers:
 - [[Application]]
 - [[Transport]]
 - [[Networks]]
-- [[1. Archived/Computer Networks/Link|Link]]
+- [[Link Layer|Link Layer]]
 - Physical
 
 ---
 
 參考資料:
 
-Computer Networking, A Top-Down Approach, 8th edition
+1. Computer Networking, A Top-Down Approach, 8th edition
+2. C.-J. Lin, “Principles of Communications and Wireless Networks, Lesson 1: Syllabus and Introduction,” NYCU EC114, Feb. 21, 2024.
 
 ---
 

@@ -28,4 +28,4 @@
 link:
 
 [[Paper Sizes]]
-[[Preamble]]
+[[Preamble (latex)]]

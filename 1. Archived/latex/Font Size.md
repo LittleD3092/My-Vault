@@ -2,7 +2,7 @@
 
 ---
 
-在 [[Preamble]] 中可以設定字體大小
+在 [[Preamble (latex)]] 中可以設定字體大小
 
 ```latex
 \documentclass[10pt]{article}

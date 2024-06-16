@@ -14,7 +14,7 @@ This method has a disadvantage, that on the tail (right section of the graph), e
 
 ![[Pasted image 20231029174739.png]]
 
-Or we can use [[Cumulative Distribution Function|cumulative distribution function]] (<u>1</u>), which solves the tail problem.
+Or we can use [[Cumulative Distribution Function in Network Science|cumulative distribution function]] (<u>1</u>), which solves the tail problem.
 
 ---
 

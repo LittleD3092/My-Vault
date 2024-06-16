@@ -2,7 +2,7 @@
 
 ---
 
-in [[Preamble]] 
+in [[Preamble (latex)]] 
 ```latex
 \usepackage{hyperref}
 ```

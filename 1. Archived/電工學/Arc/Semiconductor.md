@@ -2,6 +2,12 @@
 
 ---
 
+- 與金屬不同，半導體使用共價鍵（covalent bonds）。
+
+Related topics:
+
+- [[Silicon]]
+
 # Generation and Recombination
 
 半導體本身在低溫時不導電，在受到熱時（或者任何能量）就會有電子躍遷變成 Free Electron ，並且產生 [[#Hole]] ，稱為 [[#Generation]] ，而電子回到電洞稱為 [[#Recombination]]

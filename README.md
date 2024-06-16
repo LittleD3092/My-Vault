@@ -41,9 +41,14 @@ The lists of this section shows the root of some interesting topics.
 
 The list below shows the topics that are active and will be frequently added notes.
 
+- [[Global Issues]]
+- [[Statistics]]
+- [[Network Systems Capstone]]
+- [[Microelectronics]]
+- [[Digital Computer Electronics]]
+- [[Communications and Wireless Networks]]
 - [[How to Make Good Notes]]
 - [[SDN]]
-- [[ROS Packages for Locolization]]
 - [[Probabilistic Robotics]]
 - [[Code Complete]]
 - [[Kali Linux]]
@@ -52,6 +57,7 @@ The list below shows the topics that are active and will be frequently added not
 
 The list below shows the topics that are archived and will not be frequently updated.
 
+- [[ROS Packages for Locolization]]
 - [[AWS Cloud]]
 - [[Operating System]]
 - [[Database]]

@@ -4,7 +4,7 @@
 
 在 latex 中，使用中括號的數值都是選用的數值
 
-譬如 [[Preamble]] 中的
+譬如 [[Preamble (latex)]] 中的
 
 ```latex
 \documentclass[10pt]{article}

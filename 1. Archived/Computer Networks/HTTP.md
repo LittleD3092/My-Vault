@@ -13,61 +13,17 @@
 - ==Web browsers== implement the client side of HTTP, ==web servers== implement the server side.
 - Because HTTP server maintains no information about the clients, HTTP is said to be a ==stateless protocol==.
 
-# Non-Persistent and Persistent Connections
+Subtopics:
 
-## Non-Persistent Connections
-
-1. Initiates TCP connection.
-2. Client sends request to server.
-3. Server respondes with `home.index` file.
-4. Server tells TCP to close the TCP connection.
-5. The client receives the response message. TCP connection closed. Client found that  there are 10 references in `home.index` file.
-6. For each reference, do step 1~5.
-
-![[Pasted image 20221029052044.png|500]]
-
-The time ==RTT (round-trip time)== is illustrated in the figure above. For the steps above, we need total of 22 RTTs to get the webpage.
-
-## Persistent Connections
-
-We can see that [[#Non-Persistent Connections]] have a problem that a brand-new connection must be established and maintained for *each requested object*.
-
-With HTTP/1.1 persistent connections, the server leaves the TCP connection open after sending a response. Subsequent requests and responses between the same client and server can be sent over the same connection. 
-
-In this way, the problem is solved. The total time is reduced to 12 RTTs.
+- [[Non-Persistent HTTP]]
+- [[Persistent HTTP]]
+- [[HTTP Request Message]]
 
 # Message Format
 
 ## Request Message
 
-```
-GET /somedir/page.html HTTP/1.1
-Host: www.someschool.edu
-Connection: close
-User-agent: Mozilla/5.0
-Accept-language: fr
-```
 
-- The first line is called the ==request line==.
-	- There are three fields: method field, URL field, and HTTP version field.
-	- The method field can have the following value:
-		- `GET`: The browser requests an object.
-		- `POST`: Used when filling a form.
-		- `HEAD`: Server will respond without the object requested.
-		- `PUT`: Upload an object to a specific path on a specific web server.
-		- `DELETE`: Delete an object on a web server.
-- The subsequent lines are called the ==header lines==.
-	- `Host` specifies the host on which the object resides.
-		- This line is required by proxy servers.
-	- `Connection`: Tells server whether to close TCP connection after response.
-	- `User-agent`: The browser type.
-	- `Accept-language`: Specify the language that the user prefers to receive. `fr` means French.
-
-A general format of the request message:
-
-![[Pasted image 20221029053911.png|500]]
-
-> The "Entity body" is used for `POST` method.
 
 ## Response Message
 

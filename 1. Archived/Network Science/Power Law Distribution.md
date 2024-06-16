@@ -14,7 +14,7 @@ There are 2 methods (<u>1</u>):
 
 - Plot graphs (<u>1</u>):
 	- [[Probability Distribution Function]] (<u>2</u>)
-	- [[Cumulative Distribution Function]] (<u>2</u>)
+	- [[Cumulative Distribution Function in Network Science]] (<u>2</u>)
 - Calculate values directly (<u>1</u>):
 	- [[Calculate Power Law Distribution]]
 

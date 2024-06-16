@@ -76,7 +76,7 @@ Link:
 	- [[Price's Model]]
 - [[Power Law Distribution]]
 	- [[Probability Distribution Function]]
-	- [[Cumulative Distribution Function]]
+	- [[Cumulative Distribution Function in Network Science]]
 	- [[Calculate Power Law Distribution]]
 	- [[Moment]]
 
