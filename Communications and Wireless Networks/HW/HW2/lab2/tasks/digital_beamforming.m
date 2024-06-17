@@ -71,9 +71,9 @@ x_hat = H_eq \ y;
 
 % TODO5: Calculate deoding errors and SNR (|x|/|x-x'|)
 % Hint: The difference between the transmitted and estimated signals
-error_power_noW = sum(abs(x - x_hat_noW).^2, 2);
-error_power = sum(abs(x - x_hat).^2, 2);
-signal_power = sum(abs(x).^2, 2);
+error_power_noW = mean(abs(x - x_hat_noW).^2, 2);
+error_power = mean(abs(x - x_hat).^2, 2);
+signal_power = mean(abs(x).^2, 2);
 
 error_dBm_noW = 10 .* log10(error_power_noW);
 error_dBm = 10 .* log10(error_power);
