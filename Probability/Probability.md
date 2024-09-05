@@ -26,6 +26,18 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 - [[Sample Space]] $\Omega$
 	- [[Countably Infinite Case]]
 	- [[Continuous Case]]
+- [[Event]]
+- [[Set]]
+	- [[Universal Set]] $\Omega$
+	- [[Element]]
+	- [[Subset]]
+	- [[Empty Set]] $\varnothing$
+	- [[Complement]] $S^c$
+	- [[Union]] $S \cup T$
+	- [[Intersection]] $S \cap T$
+	- [[Difference]] $S - T$
+	- [[Disjoint]]
+	- [[Mutually Exclusive]]
 
 ---
 

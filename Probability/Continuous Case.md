@@ -4,7 +4,11 @@ Link:
 
 ---
 
+A continuous sample space means that there is an interval with infinite outcomes. 
 
+For example, the arrival time of a train can be anytime between no delay to 1 hour:
+
+![[Pasted image 20240905223712.png|300]]
 
 ---
 
