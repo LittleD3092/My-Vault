@@ -41,6 +41,12 @@ The lists of this section shows the root of some interesting topics.
 
 The list below shows the topics that are active and will be frequently added notes.
 
+- [[Probability]]
+
+## 3.2. Archived
+
+The list below shows the topics that are archived and will not be frequently updated.
+
 - [[Global Issues]]
 - [[Statistics]]
 - [[Network Systems Capstone]]
@@ -52,11 +58,6 @@ The list below shows the topics that are active and will be frequently added not
 - [[Probabilistic Robotics]]
 - [[Code Complete]]
 - [[Kali Linux]]
-
-## 3.2. Archived
-
-The list below shows the topics that are archived and will not be frequently updated.
-
 - [[ROS Packages for Locolization]]
 - [[AWS Cloud]]
 - [[Operating System]]

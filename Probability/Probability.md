@@ -1,4 +1,4 @@
-Tag: #probabilistic-robotics 
+Tag: #probabilistic-robotics #probability
 Previous: [[Probabilistic Robotics]]
 Link: 
 
@@ -15,6 +15,17 @@ $$p(X = x)$$
 For example, flipping a coin have probability:
 
 $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
+
+# Links
+
+## Lecture 1 - Probability Model
+
+- [[Randomness]]
+	- [[Principle of Indifference]]
+	- [[Partial Observability]]
+- [[Sample Space]] $\Omega$
+	- [[Countably Infinite Case]]
+	- [[Continuous Case]]
 
 ---
 
