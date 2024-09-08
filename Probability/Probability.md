@@ -38,6 +38,7 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Difference]] $S - T$
 	- [[Disjoint]]
 	- [[Mutually Exclusive]]
+- [[Combine Union and Intersection with Infinite Sets]]
 
 ---
 
