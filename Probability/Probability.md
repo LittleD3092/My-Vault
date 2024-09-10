@@ -40,6 +40,10 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Mutually Exclusive]]
 - [[Combine Union and Intersection with Infinite Sets]]
 
+## Lecture 2 - Probability Axioms and Continuity of Probability Function
+
+- [[Probability Axioms]]
+
 ---
 
 # Reference
