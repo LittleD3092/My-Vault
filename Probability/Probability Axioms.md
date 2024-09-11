@@ -8,7 +8,7 @@ A probability assignment is valid if:
 
 1. **Non-negativity**: $P(A) \geq 0$, for any event $A$.
 2. **Total probability** $=1$: $P(\Omega) = 1$
-3. If $A_1, A_2, \dots$ is an infinite sequence of mutually exclusive events, then $$P(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty P(A_i)$$
+3. **Countable Additivity** If $A_1, A_2, \dots$ is an infinite sequence of mutually exclusive events, then $$P(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty P(A_i)$$
 
 # Some Properties Derived from Axioms
 
