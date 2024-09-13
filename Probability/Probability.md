@@ -38,6 +38,21 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Difference]] $S - T$
 	- [[Disjoint]]
 	- [[Mutually Exclusive]]
+- [[Combine Union and Intersection with Infinite Sets]]
+
+## Lecture 2 - Probability Axioms and Continuity of Probability Function
+
+- [[Probability Axioms]]
+
+## Lecture 3 - Continuity of Probability Function and Conditional Probability
+
+- [[Probability Function]]
+	- [[Continuity of Probability Function]]
+		- [[Increasing Sequence of Events]]
+		- [[Decreasing Sequence of Events]]
+		- [[Determine Increasing or Decreasing Sequence]]
+	- [[Conditional Probability]]
+- [[Continuity of Functions]]
 
 ---
 
