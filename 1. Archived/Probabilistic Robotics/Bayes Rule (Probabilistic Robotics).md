@@ -1,4 +1,4 @@
-Tag: #probabilistic-robotics 
+Tag: #probabilistic-robotics
 Previous: [[Probabilistic Robotics]]
 Link: 
 
@@ -6,7 +6,7 @@ Link:
 
 ---
 
-Bayes rule defines the relationship of [[Conditioned Probability|conditioned probability]] $p(x\vert y)$ and its inverse $p(y\vert x)$:
+Bayes rule defines the relationship of [[Conditional Probability]] $p(x\vert y)$ and its inverse $p(y\vert x)$. 
 
 $$
 \begin{array}{l}

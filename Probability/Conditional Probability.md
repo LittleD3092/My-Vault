@@ -14,6 +14,11 @@ $$
 P(A\vert B) = \frac{P(A\cap B)}{P(B)}
 $$
 
+- Tools for conditional probability:
+	- [[Multiplication Rule]]
+	- [[Total Probability Theorem]]
+	- [[Bayes Rule (Probability)]]
+
 # Theorem from [[Probability Axioms]]
 
 Conditional probability also follows [[Probability Axioms]].
@@ -27,6 +32,7 @@ Conditional probability also follows [[Probability Axioms]].
 # Reference
 
 1. Hsieh, Ping-Chun. “515512: Probability Lecture 3 - Continuity of Probability Function and Conditional Probability.” NYCU EC016, September 11, 2024.
+2. Hsieh, Ping-Chun. “515512: Probability Lecture 4 - Conditional Probability.” NYCU EC016, September 13, 2024.
 
 ---
 

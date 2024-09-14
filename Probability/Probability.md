@@ -54,6 +54,14 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Conditional Probability]]
 - [[Continuity of Functions]]
 
+## Lecture 4 - Conditional Probability
+
+- [[Conditional Probability]]
+	- 3 useful tools:
+		- [[Multiplication Rule]]
+		- [[Total Probability Theorem]]
+		- [[Bayes Rule (Probability)]]
+
 ---
 
 # Reference
