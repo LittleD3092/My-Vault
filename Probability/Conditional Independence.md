@@ -21,6 +21,13 @@ $$
 \right.
 $$
 
+# Multiple Events
+
+Note that conditional independence also applies to multiple events.
+
+> Let $B$ be an event with $P(B) > 0$. Then, events $A_1, A_2, \dots, A_n$ are said to be conditionally independent if
+> $$P(\bigcap_{i \in S}A_i \vert B) = \prod_{i \in S} P(A_i \vert B), \text{ for every } S\subseteq \{1, 2, \dots, n\}$$
+
 ---
 
 # Reference

@@ -62,6 +62,18 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 		- [[Total Probability Theorem]]
 		- [[Bayes Rule (Probability)]]
 
+## Lecture 5 - Conditional Probability, Combinatorics, and Random Variables
+
+- Review
+	- [[Conditional Probability]]
+		- 3 useful tools:
+			- [[Multiplication Rule]]
+			- [[Total Probability Theorem]]
+			- [[Bayes Rule (Probability)]]
+- [[Pairwise Independence of Events]]
+	- [[Independence of Multiple Events]]
+	- [[Conditional Independence]]
+
 ---
 
 # Reference
