@@ -42,6 +42,7 @@ The lists of this section shows the root of some interesting topics.
 The list below shows the topics that are active and will be frequently added notes.
 
 - [[Probability]]
+- [[Operations Management]]
 
 ## 3.2. Archived
 
