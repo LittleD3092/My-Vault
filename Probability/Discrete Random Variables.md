@@ -1,4 +1,4 @@
-Tag: #statistics 
+Tag: #statistics #probability 
 Previous: [[Random Variables]]
 Link: 
 
@@ -10,6 +10,8 @@ For example, the number of defective products in a factory. (<u>1</u>)
 
 - [[Probability Mass Function]]
 - [[Cumulative Distribution Function of Discrete Random Variables]]
+- [[Bernoulli Random Variables]]
+- [[Binomial Random Variables]]
 
 ---
 
