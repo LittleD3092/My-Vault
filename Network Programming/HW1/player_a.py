@@ -24,6 +24,9 @@ class Network_tools:
             s.close()
         return local_ip
 
+    def is_private_ip(self, ip):
+        return ipaddress.ip_address(ip).is_private
+
     def get_network_ips(self, local_ip):
         # Derive the network range based on the local IP and default subnet
         # This example assumes a /24 subnet
@@ -38,6 +41,9 @@ class Network_tools:
 
     def scan_network(self):
         local_ip = self.get_local_ip()
+
+        if not self.is_private_ip(local_ip):
+            return []
         
         network_ips = self.get_network_ips(local_ip)
         active_ips = []
