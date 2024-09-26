@@ -6,4 +6,6 @@ c109611066 HELLO # reply of search
 
 c109611066 INVITE # invite
 c109611066 ACCEPT # accept
+
+c109611066 PORT <port> # port
 ```
