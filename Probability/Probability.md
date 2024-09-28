@@ -74,6 +74,17 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Independence of Multiple Events]]
 	- [[Conditional Independence]]
 
+## Lecture 6 - Random Variables
+
+- [[Random Variables]]
+	- [[Function of a Random Variable]]
+	- [[Discrete Random Variables]]
+		- [[Cumulative Distribution Function of Discrete Random Variables]]
+		- [[Probability Mass Function]]
+		- [[Bernoulli Random Variables]]
+		- [[Binomial Random Variables]]
+	- [[Continuous Random Variables]]
+
 ---
 
 # Reference
