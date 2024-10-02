@@ -85,6 +85,12 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 		- [[Binomial Random Variables]]
 	- [[Continuous Random Variables]]
 
+## Lecture 7 - Discrete Random Variables
+
+- [[Combination]]
+- [[Binomial Random Variables]]
+- [[Poisson Random Variables]]
+
 ---
 
 # Reference
