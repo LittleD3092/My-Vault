@@ -1,0 +1,3 @@
+講者這次分享了他的研究領域，包含了Music Signal Transcription、Virtual Musician、Computational Music Analysis、Computational Musicology、Music and Brain Signals與Real-time Music Information Retrieval。Music Signal Transcription可以將音訊轉換為MIDI檔案。Virtual Musician是指從音訊轉換為一個虛擬的演奏動作。Computational Music Analysis用AI探討音樂的文化、歷史與理論等方面，並且利用這些方面試著創造音樂。Computational Musicology研究了音樂的技法，譬如古琴的哪些聲音對應到了哪種彈奏的技法。Music and Brain Signals嘗試從腦波的訊號轉換為那個人正在聽的音樂，了解腦中的哪些部份可能跟音樂有關。Real-time Music Information Retrieval可以在真人演奏時，AI可以即時分析並且提供伴奏。
+
+這次的演講讓我大開眼界，我在人工智慧概論的課程期末專題是做音樂生成的，不過我沒有想到與音樂有關的研究可以這麼多元。我對於Real-time Music Information Retrieval這個應用領域很感興趣，這個應用領域可以解決很多音樂家在演奏時的問題，譬如需要伴奏的演奏家一起排練。如果再延伸，這個應用領域也可以應用在音樂教學上，讓學生可以有伴奏，提供更多練習機會。
