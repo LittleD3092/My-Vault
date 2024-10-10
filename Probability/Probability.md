@@ -91,6 +91,18 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 - [[Binomial Random Variables]]
 - [[Poisson Random Variables]]
 
+## Lecture 8 - Discrete Random Variables, Entropy, and Expected Value
+
+- [[Geometric Random Variables]]
+
+## Lecture 9 - Discrete Random Variables, Entropy, and Expected Value
+
+- [[Discrete Uniform Random Variables]]
+- [[Shannon Entropy]]
+- [[Expected Value]]
+	- [[St Petersburg Paradox]]
+	- [[Alternative Expression of Expected Value]]
+
 ---
 
 # Reference

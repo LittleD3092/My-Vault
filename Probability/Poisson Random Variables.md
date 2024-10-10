@@ -51,11 +51,70 @@ $$
 P(X = k) = \frac{\lambda^k}{k!} e^{-\lambda}
 $$
 
+## 2. Satisfy Total Probability Axiom
+
+Do we have $\displaystyle\sum_{n = 0}^\infty P(X = n) = 1$?
+
+---
+
+$$
+\begin{array}{l}
+	& \displaystyle \sum_{n = 0}^\infty \frac{e^{-\lambda T} (\lambda T)^n}{n!} \\
+    = & e^{-\lambda T} \displaystyle \sum_{n = 0}^\infty \frac{(\lambda T)^n}{n!} \\
+    = & \displaystyle e^{-\lambda T} 
+    \left(
+        \underbrace{1 + \frac{\lambda T}{1!} + \frac{(\lambda T)^2}{2!} + \dots}_{
+            \text{Taylor expansion of } e^{\lambda T}
+        }
+    \right) \\
+    = & e^{-\lambda T} e^{\lambda T} \\
+    = & 1
+\end{array}
+$$
+
+## 3. Sum of Independent Poisson Random Variables
+
+Let $N_1$ and $N_2$ be the number of total bits trasmitted by AP1 and AP2 in a time interval $T$, respectively.
+
+- Suppose $N_1$ and $N_2$ are independent.
+- $N_1 \sim \text{Poisson}(\lambda_1 T)$ and $N_2 \sim \text{Poisson}(\lambda_2 T)$.
+- Let $Z$ be the total received bits. Then, what is the PMF of $Z$?
+
+---
+
+PMF of $Z$ is:
+
+$$
+\begin{array}{rrl}
+    P(Z = n) &=& \displaystyle \sum_{m = 0}^n P(N_1 = m) P(N_2 = n - m) \\
+    &=& \displaystyle \sum_{m = 0}^n \left(
+        \frac{e^{-\lambda_1 T} (\lambda_1 T)^m}{m!}
+    \right) \cdot \left(
+        \frac{e^{-\lambda_2 T} (\lambda_2 T)^{n - m}}{(n - m)!}
+    \right) \\
+    && \displaystyle \text{Recall that } C^n_m = \frac{n!}{m! (n - m)!}\\
+    &=& \displaystyle \frac{e^{-\lambda_1 T} e^{-\lambda_2 T}}{n!} \sum_{m = 0}^n
+    \frac{
+        n! (\lambda_1 T)^m (\lambda_2 T)^{n - m}
+    }{
+        m! (n - m)!
+    } \\
+    && \displaystyle
+    \text{By the binomial expansion, } \\
+    && \displaystyle
+    (x + y)^n = \sum_{m = 0}^n C^n_m x^m y^{n - m} \\
+    &=& \displaystyle 
+    \frac{e^{-(\lambda_1 + \lambda_2) T} ((\lambda_1 + \lambda_2) T)^n}{n!} \\
+    & \implies & Z \sim \text{Poisson}(\lambda_1 + \lambda_2, T)
+\end{array}
+$$
+
 ---
 
 # Reference
 
 1. P.-C. Hsieh, “515512: Probability Lecture 7 - Discrete Random Variables,” NYCU EC016, Sep. 27, 2024.
+2. P.-C. Hsieh, “515512: Probability Lecture 8 - Discrete Random Variables, Entropy, and Expected Value,” NYCU EC016, Oct. 04, 2024.
 
 ---
 
