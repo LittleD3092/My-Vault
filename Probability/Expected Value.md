@@ -19,6 +19,8 @@ $$
 
 - [[St Petersburg Paradox]]
 - [[Alternative Expression of Expected Value]]
+- [[Law of the Unconscious Statistician]]
+- [[Linearity of Expected Values]]
 
 ---
 

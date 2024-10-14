@@ -103,6 +103,15 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[St Petersburg Paradox]]
 	- [[Alternative Expression of Expected Value]]
 
+## Lecture 10 - Expected Value and Moments
+
+- [[Expected Value]]
+	- [[St Petersburg Paradox]]
+	- [[Alternative Expression of Expected Value]]
+	- [[Law of the Unconscious Statistician]]
+	- [[Linearity of Expected Values]]
+- [[Variance]]
+
 ---
 
 # Reference
