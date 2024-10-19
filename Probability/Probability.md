@@ -112,6 +112,13 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Linearity of Expected Values]]
 - [[Variance]]
 
+## Lecture 11 - Moments and Continuous Random Variables
+
+- [[Existence of Moments]]
+	- [[Riemann Rearrangement Theorem]]
+- [[Expected Value and Variance List]]
+- [[Probability Density Function]]
+
 ---
 
 # Reference
