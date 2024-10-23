@@ -1,5 +1,5 @@
-Tag: #statistics 
-Previous: [[Random Variables]]
+Tag: #statistics #probability 
+Previous: [[Random Variables]], [[Probability]]
 Link: 
 
 ---

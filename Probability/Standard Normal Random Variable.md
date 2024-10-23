@@ -1,5 +1,5 @@
-Tag: #statistics 
-Previous: [[Normal Distribution]]
+Tag: #statistics #probability 
+Previous: [[Normal Distribution]], [[Probability]]
 Link: 
 
 ---
@@ -12,9 +12,30 @@ $$
 Z = \frac{X - \mu}{\sigma}
 $$
 
+A random variable $X$ is called standard normal if its PDF is
+
+$$
+f_X(x) = \frac{1}{\sqrt{2\pi}} \cdot \exp\left(
+	\frac{-x^2}{2}
+\right), \qquad \text{for all }x \in \mathbb R
+$$
+
+The CDF of a standard normal random variable $X$ is
+
+$$
+\Phi(t) := P(X \leq t) = \int_{-\infty}^t
+\frac{1}{\sqrt{2\pi}} \exp\left(
+	\frac{-x^2}{2}
+\right)dx
+$$
+
+![[Pasted image 20241022195925.png]]
+
+- [[From Standard Normal to Normal]]
+
 # Example
 
-## Example 1
+## Example 1: Looking up chart
 
 > What is $P(X \leq x)$? (<u>1</u>)
 
@@ -31,7 +52,7 @@ $$
 
 By using the above process, we can now check on the chart with calculated $z$.
 
-## Example 2
+## Example 2: Tolerance
 
 > The diameter of a shaft in a storage drive is normally distributed with mean $0.2508$ inch and standard deviation $0.0005$ inch. The specifications on the shaft are $0.2500\pm 0.0015 \ \text{inch}$. What proportion of shafts conforms to specifications? (<u>1</u>)
 

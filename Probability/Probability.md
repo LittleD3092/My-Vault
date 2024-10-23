@@ -119,6 +119,22 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 - [[Expected Value and Variance List]]
 - [[Probability Density Function]]
 
+## Lecture 12 - Continuous Random Variables
+
+- [[Continuous Random Variables]]
+- [[Probability Density Function]]
+- [[From CDF to PDF]]
+- [[Uniform Random Variables]]
+	- [[Inverse Transform Sampling]]
+- [[Standard Normal Random Variable]]
+	- [[From Standard Normal to Normal]]
+- [[Normal Random Variables]]
+
+## Lecture 13 - Continuous Random Variables, Expectation, and Joint Distributions
+
+- [[Normal Random Variables]]
+- [[Exponential Random Variables]]
+
 ---
 
 # Reference
