@@ -10,7 +10,7 @@ $$
 \lim_{n \rightarrow \infty} f(x_n) = f(\lim_{n \rightarrow \infty} x_n)
 $$
 
-For probability function, there are two convergent sequence:
+For probability function, there are two convergent sequence, listed below. In the notes listed below, there are proofs that prove each of them is continuous.
 
 - [[Increasing Sequence of Events]]
 - [[Decreasing Sequence of Events]]

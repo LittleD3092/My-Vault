@@ -39,7 +39,7 @@ Here are some properties of CDF: (<u>2</u>)
 
 1. $F_X(t)$ is non-decreasing.
 2. $\displaystyle \lim_{t \rightarrow \infty} F_X(t) = 1$.
-3. $\displaystyle \lim_{t \rightarrow \infty} F_X(t) = 0$.
+3. $\displaystyle \lim_{t \rightarrow -\infty} F_X(t) = 0$.
 4. $F_X(t)$ is right-continuous, $F_X(t^+) = F_X(t)$.
 
 ---
