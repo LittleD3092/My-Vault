@@ -10,6 +10,8 @@ A Bernoulli trial is an event that has only two possible outcomes (often called 
 - Multiple trials are independent.
 - Probability of a success on each trial is constant.
 
+> See [[Expected Value and Variance List]].
+
 ---
 
 # Reference

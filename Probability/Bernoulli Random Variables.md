@@ -17,6 +17,8 @@ P(X = k) =
 \right.
 $$
 
+> See [[Expected Value and Variance List]].
+
 ---
 
 # Reference
