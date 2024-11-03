@@ -136,6 +136,83 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 - [[Normal Random Variables]]
 - [[Exponential Random Variables]]
 
+## Lecture 14 - Joint Distributions
+
+- [[Expected Value]]
+	- [[St Petersburg Paradox]]
+	- [[Alternative Expression of Expected Value]]
+	- [[Law of the Unconscious Statistician]]
+	- [[Linearity of Expected Values]]
+- [[Fubini's Theorem]]
+- [[Joint Cumulative Distribution Function]]
+	- [[Marginal Cumulative Distribution Function]]
+- [[Joint Probability Mass Function]]
+	- [[Marginal Probability Mass Function]]
+
+$$
+\begin{array}{}
+	\begin{array}{}
+		\text{Joint PMF} \\
+		P(X=x, Y=y)
+	\end{array} & \underrightarrow{
+		\begin{array}{l}
+			\displaystyle P(X=x) = \\ \displaystyle \sum_y P_{XY}(x, y) \\
+			\displaystyle P(Y=y) = \\ \displaystyle \sum_{x} P_{XY}(x, y)
+		\end{array}
+	} &
+	\begin{array}{}
+		\text{Marginal PMF} \\
+		P(X=x), P(Y=y)
+	\end{array} \\ \\
+	\left.
+		\begin{array}{r}
+			P(X \leq t, Y \leq u) = \\
+			\sum_{
+				\begin{array}{}
+					x: x \leq t \\
+					y: y \leq u
+				\end{array}
+			} P(X=x, Y=y)
+		\end{array}
+	\right\downarrow \left\uparrow 
+		\begin{array}{l}
+			P(X=x, Y=y) = \\
+			F_{XY}(x, y) - F_{XY}(x^-, y) \\
+			-F_{XY}(x, y^-) + F_{XY}(x^-, y^-)
+		\end{array}
+	\right. && 
+	\left.
+		\begin{array}{r}
+			F_X(t) = \\
+			\sum_{x:x \in t} P(X=x)
+		\end{array}
+	\right \downarrow
+	\left \uparrow
+		\begin{array}{l}
+		P(X=x) = \\
+		F_X(t) - F_X(t^-)
+		\end{array}
+	\right. \\ \\
+	\begin{array}{}
+		\text{Joint CDF} \\
+		F_{XY}(t, u)
+	\end{array} &
+	\underrightarrow{
+		\begin{array}{}
+			F_X(t) = F_{XY} (t, \infty) \\
+			F_Y(t) = F_{XY}(\infty, u)
+		\end{array}
+	} & 
+	\begin{array}{}
+		\text{Marginal CDF} \\
+		F_X(t), F_Y(u)
+	\end{array}
+\end{array}
+$$
+
+- [[Joint Probability Density Function]]
+	- [[Marginal Probability Density Function]]
+
 ---
 
 # Reference
