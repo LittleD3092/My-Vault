@@ -1,0 +1,28 @@
+{
+	"nodes":[
+		{"id":"86dd603b3376acae","x":-120,"y":-40,"width":660,"height":280,"type":"text","text":"0: Not logged in\n```\nconn.send(\"\\033[1;36mWelcome to the lobby server!\\n\".encode())\nconn.send(\"(1) Register\\n\".encode())\nconn.send(\"(2) Login\\n\".encode())\nconn.send(\"(3) Show players\\n\".encode())\nconn.send(\"(4) Exit\\n\".encode())\nconn.send(\"Enter your choice: INPUT NO_ENDL\\n\".encode())\n```"},
+		{"id":"d75378a32145146b","x":660,"y":-40,"width":553,"height":127,"type":"text","text":"1: Enter username for register\n```\nconn.send(\"Enter username: INPUT NO_ENDL\\n\".encode())\n```"},
+		{"id":"72aecf1b6607cc97","x":1320,"y":-36,"width":553,"height":120,"type":"text","text":"2: Enter password for register\n```\nconn.send(\"Enter password: INPUT NO_ENDL\\n\".encode())\n```"},
+		{"id":"44098d85ea4412d5","x":660,"y":140,"width":553,"height":140,"type":"text","text":"3: Enter username for login\n```\nconn.send(\"Enter username: INPUT NO_ENDL\\n\".encode())\n```"},
+		{"id":"ed291a8dabb9a022","type":"text","text":"4: Enter password for login\n```\nconn.send(\"Enter password: INPUT NO_ENDL\\n\".encode())\n```","x":1320,"y":140,"width":553,"height":140},
+		{"id":"17673da7b900729b","type":"text","text":"5: Logged in\n```\nconn.send(f\"Logged in as {username}\\n\".encode())\n```\nShow all players\n```\nconn.send(\"\\033[1;36mWhat would you like to do today?\\n\".encode())\nconn.send(\"(1) Create room\\n\".encode())\nconn.send(\"(2) Join room\\n\".encode())\nconn.send(\"(3) Exit\\n\".encode())\nconn.send(\"Enter your choice: INPUT NO_ENDL\\n\".encode())\n```","x":2100,"y":140,"width":700,"height":420},
+		{"id":"dcfeb7cab4e1e944","x":2100,"y":-26,"width":553,"height":100,"type":"text","text":"```\nconn.send(\"Account created successfully!\\n\".encode())\n```"},
+		{"id":"a9bbae3c7294ee85","x":660,"y":340,"width":250,"height":100,"type":"text","text":"Show all players"},
+		{"id":"a9aecb86a8ff23ae","x":660,"y":560,"width":250,"height":60,"type":"text","text":"Exit"},
+		{"id":"6a1d2b32c3e49b32","x":2880,"y":140,"width":480,"height":210,"type":"text","text":"6: Creating room\n```\n\\033[1;36mSelect a game:\\n\n(1) Battleship\\n\n(2) Checkers\\n\n```"},
+		{"id":"52e721a231a38567","x":3460,"y":140,"width":250,"height":60,"type":"text","text":"7: "}
+	],
+	"edges":[
+		{"id":"135dde0e715dcc9d","fromNode":"86dd603b3376acae","fromSide":"right","toNode":"d75378a32145146b","toSide":"left","label":"1"},
+		{"id":"26e2acb4e4f88b87","fromNode":"86dd603b3376acae","fromSide":"right","toNode":"44098d85ea4412d5","toSide":"left","label":"2"},
+		{"id":"6a7ce8e487765981","fromNode":"d75378a32145146b","fromSide":"right","toNode":"72aecf1b6607cc97","toSide":"left","label":"any"},
+		{"id":"bdc486f69479136a","fromNode":"72aecf1b6607cc97","fromSide":"right","toNode":"dcfeb7cab4e1e944","toSide":"left","label":"any"},
+		{"id":"08f4759934513eb9","fromNode":"dcfeb7cab4e1e944","fromSide":"top","toNode":"86dd603b3376acae","toSide":"top"},
+		{"id":"d33d217f3414914e","fromNode":"44098d85ea4412d5","fromSide":"right","toNode":"ed291a8dabb9a022","toSide":"left","label":"any"},
+		{"id":"1b67847ab1700182","fromNode":"ed291a8dabb9a022","fromSide":"right","toNode":"17673da7b900729b","toSide":"left","label":"match a player"},
+		{"id":"de1e07d202afab92","fromNode":"86dd603b3376acae","fromSide":"right","toNode":"a9bbae3c7294ee85","toSide":"left","label":"3"},
+		{"id":"4000a998d626f83e","fromNode":"86dd603b3376acae","fromSide":"right","toNode":"a9aecb86a8ff23ae","toSide":"left","label":"4"},
+		{"id":"b4a9c9efb7882326","fromNode":"a9bbae3c7294ee85","fromSide":"bottom","toNode":"86dd603b3376acae","toSide":"bottom"},
+		{"id":"bd7236b983d4db6a","fromNode":"17673da7b900729b","fromSide":"right","toNode":"6a1d2b32c3e49b32","toSide":"left","label":"1"}
+	]
+}
