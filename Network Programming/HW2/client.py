@@ -5,6 +5,9 @@ import random
 import ipaddress
 from queue import Queue
 import os
+import traceback
+
+LOBBY_PORT = 11066
 
 class Network_tools:
     def get_local_ip(self):
@@ -252,7 +255,7 @@ class BattleShip:
             self.print_board(board, opponent_board, current_player, tcp_server)
 
             row, col = self.get_move(current_player, tcp_server)
-            if row == None and col == None:
+            if row != None and col != None:
                 hit = self.make_move(opponent_board, row, col)
                 if hit:
                     print("\033[0:35m" + f"Player-{current_player}" + "\033[0;31m" + " hit" + "\033[0m" + " a ship at " + "\033[0;33m" + f"{chr(col+ord('A'))}{row}" + "\033[0m" + ".")
@@ -276,6 +279,7 @@ class BattleShip:
                 print("\033[0;35m" + f"Player-{opponent_player}" + "\033[0m" + " wins!")
                 tcp_server.send("\033[0;35m" + f"Player-{opponent_player}" + "\033[0m" + " wins!")
                 tcp_server.send("GAME_END")
+                break
 
             if not hit:
                 self.turn += 1
@@ -342,15 +346,16 @@ class TCP_client:
             if '\n' not in self.buffer:
                 self.buffer += self.sock.recv(4096).decode(encoding="utf-16")
 
-            if len(self.buffer.split('\n')) == 1:
-                msg = self.buffer
-                self.buffer = ''
-            else:
+            if '\n' in self.buffer:
                 msg, self.buffer = self.buffer.split('\n', 1)
+                msg.strip('\ufeff')
+            else:
+                msg = ''
 
             return msg
         except Exception as e:
             print(f"Error in TCP_client.receive: {e}")
+            traceback.print_exc()
 
 class TCP_server:
     def __init__(self, my_ip, my_port):
@@ -408,6 +413,7 @@ def connect_io_server(ip, port):
                 if msg == 'END':
                     end = True
                     print('Closing lobby connection...')
+                    print('Press ENTER to exit.')
                     break
 
                 # Check for game start triggers
@@ -449,6 +455,7 @@ def connect_io_server(ip, port):
                         print(msg)
         except Exception as e:
             print(f"Error in lobby_receive_thread: {e}")
+            traceback.print_exc()
 
     def game_receive_thread(game_agent, game_obj = None):
         try:
@@ -460,13 +467,13 @@ def connect_io_server(ip, port):
                         time.sleep(1)
                         continue
 
-                    if msg == 'GAME_END':
+                    if 'GAME_END' in msg:
                         print("Game session ended. Returning to lobby.")
                         game_client = None
                         game_server = None
                         tcp_client.send("GAME_END")
                         break
-
+                    
                     print(msg)
             elif type(game_agent) == TCP_server:
                 game_obj.main(game_agent)
@@ -478,11 +485,16 @@ def connect_io_server(ip, port):
                 raise Exception("In game_receive_thread: Invalid game agent type")
         except Exception as e:
             print(f"Error in game_receive_thread: {e}")
+            traceback.print_exc()
 
     thread = threading.Thread(target=lobby_receive_thread)
     thread.start()
     while True:
         option = input()
+
+        if end:
+            break
+
         if game_client != None:
             game_client.send(option)
         elif game_server != None:
@@ -491,4 +503,4 @@ def connect_io_server(ip, port):
             tcp_client.send(option)
 
 if __name__ == "__main__":
-    connect_io_server('127.0.0.1', 11066)
+    connect_io_server('127.0.0.1', LOBBY_PORT)
