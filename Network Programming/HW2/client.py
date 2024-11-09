@@ -337,7 +337,9 @@ class TCP_client:
         self.sock.close()
 
     def send(self, msg: str):
-        if msg[-1] != '\n':
+        if msg == '':
+            msg = '\n'
+        elif msg[-1] != '\n':
             msg += '\n'
         self.sock.send(msg.encode(encoding="utf-16"))
 
@@ -435,6 +437,7 @@ def connect_io_server(ip, port):
                         print(f"Game {game} started as client.")
                     elif splitted_msg[2] == "SERVER":
                         game_server = TCP_server('0.0.0.0', 0)
+                        time.sleep(1)
                         # Send ip and port to lobby
                         tcp_client.send(f"IP {game_server.ip} PORT {game_server.port}")
                         print(f"Sent IP {game_server.ip} PORT {game_server.port} to lobby")
@@ -450,9 +453,14 @@ def connect_io_server(ip, port):
                         print(f"Game {game} started as server.")
                     else:
                         raise Exception(f"In lobby_receive_thread: Invalid game type {splitted_msg[2]}")
+                elif splitted_msg[0] == "PING":
+                    pass
                 else:
                     if game_server == None and game_client == None:
                         print(msg)
+        except KeyboardInterrupt:
+            end = True
+            print('Closing lobby connection...')
         except Exception as e:
             print(f"Error in lobby_receive_thread: {e}")
             traceback.print_exc()
@@ -483,24 +491,33 @@ def connect_io_server(ip, port):
                 tcp_client.send("GAME_END")
             else:
                 raise Exception("In game_receive_thread: Invalid game agent type")
+        except KeyboardInterrupt:
+            end = True
+            print('Closing game connection...')
         except Exception as e:
             print(f"Error in game_receive_thread: {e}")
             traceback.print_exc()
 
     thread = threading.Thread(target=lobby_receive_thread)
     thread.start()
-    while True:
-        option = input()
 
-        if end:
-            break
+    try:
+        while True:
+            option = input()
 
-        if game_client != None:
-            game_client.send(option)
-        elif game_server != None:
-            game_obj.local_input(option)
-        else:
-            tcp_client.send(option)
+            if end:
+                break
+
+            if game_client != None:
+                game_client.send(option)
+            elif game_server != None:
+                game_obj.local_input(option)
+            else:
+                tcp_client.send(option)
+    except KeyboardInterrupt:
+        end = True
+        print('Closing lobby connection...')
+        del tcp_client
 
 if __name__ == "__main__":
     connect_io_server('127.0.0.1', LOBBY_PORT)

@@ -48,6 +48,8 @@ class PlayerDB:
     def login(self, username, password):
         if username not in self.players:
             return False
+        elif username == '':
+            return False
         return self.players.get(username) == password
     
 class LobbyServer:
@@ -85,6 +87,11 @@ class LobbyServer:
 
         # set of connections
         self.conns = {}
+
+        # pending invitations
+        # key: username of the invited player
+        # value: a list of usernames of the inviting players
+        self.invitations = {}
 
     def __del__(self):
         if self.__dict__.get("conns") is not None:
@@ -172,13 +179,14 @@ class LobbyServer:
                         if len(players) == 1:
                             room_list_str += f"    Room \033[0;35m{room}\033[0m is willing to play \033[0;35m{self.rooms_game[room]}\033[0m\n"
                         else:
-                            room_list_str += f"    Room {room} is now playing {self.rooms_game[room]}\n"
-                    for player in players:
-                        room_list_str += f"        {player}\n"
+                            room_list_str += f"    Room \033[0;35m{room}\033[0m is now playing \033[0;35m{self.rooms_game[room]}\033[0m\n"
+                        for player in players:
+                            room_list_str += f"        {player}\n"
             except Exception as e:
                 print(f"Error occurred while getting room list: {e} (type: {type(e).__name__})")
                 print("self.rooms:", self.rooms)
                 print("self.rooms_game:", self.rooms_game)
+                traceback.print_exc()
             return room_list_str
         
         def broadcast_room_list(exclude_player=None):
@@ -188,6 +196,66 @@ class LobbyServer:
                     continue
                 ihandler = InputHandler(conn)
                 ihandler.send(room_list_str)
+
+        def broadcast_player_list(exclude_player=None):
+            player_list_str = get_player_list()
+            for player, conn in self.conns.items():
+                if player == exclude_player:
+                    continue
+                ihandler = InputHandler(conn)
+                ihandler.send(player_list_str)
+        
+        def get_invitation_message(inviters):
+            invitation_message = f"There are invitations from the following players:\n"
+            index = 'a'
+            for inviter in inviters:
+                invitation_message += f"    ({index}) {inviter}\n"
+                index = chr(ord(index) + 1)
+
+                # 'r' is reserved for rejecting all invitations
+                if index == 'r':
+                    index = chr(ord(index) + 1)
+            invitation_message += "    (r) Reject all invitations\n"
+            invitation_message += "Do you want to accept the invitation? (Enter the letter)"
+            return invitation_message
+        
+        # return True if the player accepted the invitation
+        # return False if the player rejected the invitation
+        def process_invitation(option, username, ihandler):
+            try:
+                index = ord(option) - ord('a')
+                if option == 'r':
+                    self.invitations.pop(username)
+                    ihandler.send("All invitations are rejected.")
+                    return False
+                elif index >= len(self.invitations[username]):
+                    ihandler.send(INVALID_INPUT)
+                    return False
+                inviter = self.invitations[username][index]
+                self.invitations.pop(username)
+                # Get the room number
+                room = None
+                for r, players in self.rooms.items():
+                    if inviter in players:
+                        room = r
+                        break
+                if room is None:
+                    raise Exception(f"Room not found for the inviter {inviter}")
+                self.rooms[room].add(username)
+                self.player_status[username] = WAITING
+                broadcast_player_list(username)
+                return True
+            except Exception as e:
+                print(f"Error occurred while processing invitation: {e} (type: {type(e).__name__})")
+                print(f"self.invitations: {self.invitations}")
+                traceback.print_exc()
+                return False
+
+        def get_room_from_player(player):
+            for room, players in self.rooms.items():
+                if player in players:
+                    return room
+            return None
 
         ihandler = InputHandler(conn)
 
@@ -227,7 +295,10 @@ class LobbyServer:
                                 tmp_username = ihandler.get_line()
                                 ihandler.send(PROMPT_PASSWORD)
                                 password = ihandler.get_line()
-                                if not self.player_db.register(tmp_username, password) or tmp_username in self.player_status:
+                                if tmp_username == '' or password == '':
+                                    ihandler.send(INVALID_INPUT)
+                                    continue
+                                elif not self.player_db.register(tmp_username, password) or tmp_username in self.player_status:
                                     ihandler.send(USER_EXISTS)
                                     continue
                                 else:
@@ -256,6 +327,7 @@ class LobbyServer:
                                     self.player_status[username] = IDLE
                                     tmp_conn = self.conns.pop(f"{addr[0]}:{addr[1]}")
                                     self.conns[username] = tmp_conn
+                                    broadcast_player_list(username)
                                     ihandler.send(get_player_list())
                                     ihandler.send(get_room_list())
                                     break
@@ -299,60 +371,115 @@ class LobbyServer:
                 INVITATION_PROMPT = "Enter the username of the player you want to invite:"
 
                 # Select room or create room
-                print(f"username: {username}, enter select/create room step")
+                print(f"username: \033[0;35m{username}\033[0m, enter select/create room step")
                 while True:
                     ihandler.send(SELECT_OR_CREATE_ROOM)
                     choice = ihandler.get_line()
                     if choice == "1":
                         while True:
                             ihandler.send(SELECT_ROOM_PROMPT)
-                            room = int(ihandler.get_line())
+                            room = ihandler.get_line()
+
+                            # handle invitation
+                            if room >= 'a' and room <= 'z':
+                                accept_invitation = process_invitation(room, username, ihandler)
+                                if accept_invitation:
+                                    break
+                                else:
+                                    continue
+
+                            if room == "":
+                                ihandler.send(INVALID_INPUT)
+                                continue
+
+                            room = int(room)
                             if room not in self.rooms.keys():
                                 ihandler.send("Room does not exist. Please try again.")
                                 print("self.rooms:", self.rooms)
                                 continue
+                            elif self.rooms_type[room] == "Private":
+                                ihandler.send("Room is private. Please try again.")
+                                continue
+                            elif len(self.rooms[room]) == 2:
+                                ihandler.send("Room is full. Please try again.")
+                                continue
                             else:
                                 self.rooms[room].add(username)
                                 self.player_status[username] = WAITING
+                                broadcast_player_list(username)
+                                # opponents = [player for player in self.rooms[room] if player != username]
+                                # for opponent in opponents:
+                                #     ihandler_opponent = InputHandler(self.conns[opponent])
+                                #     ihandler_opponent.send(f"\033[0;35m{username}\033[0m joined the room. \033[1;36mPRESS ENTER TO START THE GAME\033[0m")
+                                
                                 break
                     elif choice == "2":
-                        self.player_status[username] = WAITING
                         while True:
                             ihandler.send(GAME_TYPE_PROMPT)
                             game_type = ihandler.get_line()
-                            room = max(self.rooms.keys(), default=0) + 1
-                            self.rooms[room] = {username}
                             if game_type == "1":
-                                self.rooms_game[room] = "Battleship"
+                                game_type = "Battleship"
                                 break
                             elif game_type == "2":
-                                self.rooms_game[room] = "Checkers"
+                                game_type = "Checkers"
                                 break
+                            # accept invitation
+                            elif game_type >= 'a' and game_type <= 'z':
+                                accept_invitation = process_invitation(game_type, username, ihandler)
+                                if accept_invitation:
+                                    break
+                                else:
+                                    continue
                             else:
                                 ihandler.send(INVALID_INPUT)
                                 continue
+                        if self.player_status[username] == WAITING:
+                            break
                         while True:
                             ihandler.send(ROOM_TYPE_PROMPT)
                             room_type = ihandler.get_line()
+
                             if room_type == "1":
+                                room = max(self.rooms.keys(), default=0) + 1
+                                self.rooms[room] = {username}
                                 self.player_status[username] = WAITING
+                                broadcast_player_list(username)
                                 self.rooms_type[room] = "Public"
+                                self.rooms_game[room] = game_type
+                                broadcast_room_list()
                                 break
                             elif room_type == "2":
+                                room = max(self.rooms.keys(), default=0) + 1
+                                self.rooms[room] = {username}
                                 self.player_status[username] = WAITING
+                                broadcast_player_list(username)
                                 self.rooms_type[room] = "Private"
+                                self.rooms_game[room] = game_type
                                 break
+                            elif room_type >= 'a' and room_type <= 'z':
+                                accept_invitation = process_invitation(room_type, username, ihandler)
+                                if accept_invitation:
+                                    break
+                                else:
+                                    continue
                             else:
                                 ihandler.send(INVALID_INPUT)
                                 continue
-                        broadcast_room_list()
+                    elif choice >= 'a' and choice <= 'z': # Accept invitation
+                        accept_invitation = process_invitation(choice, username, ihandler)
+                        if accept_invitation:
+                            break
+                        else:
+                            continue
                     else:
                         ihandler.send(INVALID_INPUT)
                         continue
                     break
 
                 # Waiting for other players
-                print(f"username: {username}, enter waiting for other players step")
+                choice = None
+                print(f"username: \033[0;35m{username}\033[0m, enter waiting for other players step")
+                room = get_room_from_player(username)
                 if len(self.rooms[room]) == 1:
                     ihandler.send(ROOM_WAITING_PROMPT)
                 while len(self.rooms[room]) < 2:
@@ -362,21 +489,47 @@ class LobbyServer:
                         invited_player = ihandler.get_line()
                         if invited_player not in self.player_status:
                             ihandler.send("Player does not exist. Please try again.")
+                            ihandler.send(ROOM_WAITING_PROMPT)
                             continue
                         if self.player_status[invited_player] != IDLE:
-                            ihandler.send("Player is not available. Please try again.")
+                            ihandler.send("\033[0;31mPlayer is not available. Please try again.\033[0m")
+                            ihandler.send(ROOM_WAITING_PROMPT)
                             continue
-                        self.rooms[room].add(invited_player)
-                        self.player_status[invited_player] = WAITING
+
+                        # Send invitation to the invited player
+                        ihandler_invited = InputHandler(self.conns[invited_player])
+                        if invited_player not in self.invitations:
+                            self.invitations[invited_player] = [username]
+                        ihandler_invited.send(get_invitation_message(self.invitations[invited_player]))
+                        ihandler.send(f"Invitation sent to {invited_player}.")
+                        while True:
+                            # Check if the invited player joined the room
+                            if self.rooms[room] == {username, invited_player}:
+                                ihandler.send(f"{invited_player} joined the room.")
+                                break
+                            # Check if the invited player rejected the invitation
+                            if invited_player not in self.invitations:
+                                ihandler.send(f"{invited_player} rejected the invitation.")
+                                ihandler.send(ROOM_WAITING_PROMPT)
+                                break
+                            if invited_player in self.invitations and username not in self.invitations[invited_player]:
+                                ihandler.send(f"{invited_player} rejected the invitation.")
+                                ihandler.send(ROOM_WAITING_PROMPT)
+                                break
+                            time.sleep(1)
+
                     elif choice is None:
                         time.sleep(1)
+                        ihandler.send("PING")
                         continue
+                    elif choice == '':
+                        pass
                     else:
                         ihandler.send(INVALID_INPUT)
                         continue
 
                 # Game start
-                print(f"username: {username}, enter game start step")
+                print(f"username: \033[0;35m{username}\033[0m, enter game start step")
                 sorted_players = sorted(self.rooms[room])
                 if self.rooms_game[room] == "Battleship":
                     if sorted_players[0] == username:
@@ -403,24 +556,28 @@ class LobbyServer:
                         ihandler.send("START Battleship CLIENT")
                 # change the status to IN_GAME
                 self.player_status[username] = IN_GAME
+                broadcast_player_list(username)
 
                 # Wait for the game to end
-                print(f"username: {username}, enter waiting for game end step")
+                print(f"username: \033[0;35m{username}\033[0m is in game")
                 while True:
                     msg = ihandler.get_line()
                     if msg == "GAME_END":
                         self.player_status[username] = IDLE
+                        broadcast_player_list(username)
                         if room in self.rooms.keys():
                             self.rooms.pop(room)
                             self.rooms_game.pop(room)
                             self.rooms_type.pop(room)
                         ihandler.send("Thank you for playing!")
+                        time.sleep(1)
                         ihandler.send(get_player_list())
                         broadcast_room_list(username)
                         break
         
         except BrokenPipeError:
             print(f"Connection from \033[0;35m{addr}\033[0m closed.")
+            # traceback.print_exc()
             conn.close()
             if username in self.conns.keys():
                 self.conns.pop(username)
@@ -428,6 +585,26 @@ class LobbyServer:
                 self.player_status.pop(f"{addr[0]}:{addr[1]}")
             if username in self.player_status:
                 self.player_status.pop(username)
+                print(f"\033[0;35m{username}\033[0m is removed from the player_status.")
+            if username in self.invitations:
+                self.invitations.pop(username)
+            for inviter, invited_players in self.invitations.items():
+                if username in invited_players:
+                    invited_players.remove(username)
+                if len(invited_players) == 0:
+                    self.invitations.pop(inviter)
+
+            rooms_to_remove = []
+            for room, players in self.rooms.items():
+                if username in players:
+                    players.remove(username)
+                    if len(players) == 0:
+                        rooms_to_remove.append(room)
+            for room in rooms_to_remove:
+                self.rooms.pop(room)
+                self.rooms_game.pop(room)
+                self.rooms_type.pop(room)
+            
             return
 
         except Exception as e:
@@ -440,6 +617,21 @@ class LobbyServer:
                 self.player_status.pop(f"{addr[0]}:{addr[1]}")
             if username in self.player_status:
                 self.player_status.pop(username)
+                broadcast_player_list(username)
+            if username in self.invitations:
+                self.invitations.pop(username)
+            for inviter, invited_players in self.invitations.items():
+                if username in invited_players:
+                    invited_players.remove(username)
+                if len(invited_players) == 0:
+                    self.invitations.pop(inviter)
+            for room, players in self.rooms.items():
+                if username in players:
+                    players.remove(username)
+                    if len(players) == 0:
+                        self.rooms.pop(room)
+                        self.rooms_game.pop(room)
+                        self.rooms_type.pop(room)
             return
 
 
