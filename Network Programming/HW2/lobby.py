@@ -155,18 +155,20 @@ class LobbyServer:
                 if not msg.endswith('\n'):
                     msg += '\n'
                 if isinstance(msg, str):
-                    msg = msg.encode(encoding="utf-16")
+                    msg = msg.encode(encoding="utf-16", errors="surrogatepass")
                     self.conn.send(msg)
 
         def get_player_list():
             player_list = "\033[1;36mPlayer List\033[0m\n"
+            if len(self.player_status) == 0:
+                player_list += "    Currently, no players are online.\n"
             for player, status in self.player_status.items():
                 if status == ANONYMOUS:
                     continue
                 elif status == IDLE:
                     player_list += f"    \033[0;36m\uf444 \033[0m{player} [idle]\n"
                 elif status == WAITING:
-                    player_list += f"    \033[0;32m\uf444 \033[0m{player} [in room]\n"
+                    player_list += f"    \033[0;32m\uf444 \033[0m{player} [waiting]\n"
                 elif status == IN_GAME:
                     player_list += f"    \033[0;30m\uf444 \033[0m{player} [in game]\n"
             return player_list
@@ -174,6 +176,8 @@ class LobbyServer:
         def get_room_list():
             room_list_str = "\033[1;36mRoom List\033[0m\n"
             try:
+                if len(self.rooms) == 0:
+                    room_list_str += "    No public rooms waiting for players.\n"
                 for room, players in self.rooms.items():
                     if self.rooms_type[room] == "Public":
                         if len(players) == 1:
@@ -276,13 +280,14 @@ class LobbyServer:
         USER_EXISTS = "\033[0;31mUsername already exists. Please try again.\033[0m"
         USER_NOT_FOUND = "\033[0;31mUsername not found. Please try again.\033[0m"
         USER_ALREADY_LOGGED_IN = "\033[0;31mUser is already logged in. Please try again.\033[0m"
-        LOGIN_FAILED = "\033[0;31mYour username or password is incorrect. Please try again.\033[0m"
+        LOGIN_FAILED = "\033[0;31mYour password is incorrect. Please try again.\033[0m"
 
         username = f"{addr[0]}:{addr[1]}"
 
         try:
             while True:
-                print(f"username: {username}, enter the lobby")
+                logout = False
+                print(f"username: \033[0;35m{username}\033[0m, enter the lobby")
                 while True:
                     if self.player_status[username] == ANONYMOUS:
                         print(f"username: {username}, enter login/register step")
@@ -351,17 +356,20 @@ class LobbyServer:
                     \033[1;36mDo you want to join a room or create a room?\033[0m
                     (1) Join a room
                     (2) Create a room
+                    (3) Logout
                     Enter your choice:""")
                 SELECT_ROOM_PROMPT = "Enter the room number:"
                 GAME_TYPE_PROMPT = textwrap.dedent("""\
                     \033[1;36mSelect the game type:\033[0m
                     (1) Battleship
                     (2) Checkers
+                    (3) Logout
                     Enter your choice:""")
                 ROOM_TYPE_PROMPT = textwrap.dedent("""\
                     \033[1;36mSelect the room type:\033[0m
                     (1) Public
                     (2) Private
+                    (3) Logout
                     Enter your choice:""")
                 ROOM_WAITING_PROMPT = textwrap.dedent("""\
                     \033[1;36mWaiting for other players...\033[0m
@@ -375,6 +383,7 @@ class LobbyServer:
                 while True:
                     ihandler.send(SELECT_OR_CREATE_ROOM)
                     choice = ihandler.get_line()
+                    join_failed = False
                     if choice == "1":
                         while True:
                             ihandler.send(SELECT_ROOM_PROMPT)
@@ -394,15 +403,19 @@ class LobbyServer:
 
                             room = int(room)
                             if room not in self.rooms.keys():
-                                ihandler.send("Room does not exist. Please try again.")
+                                ihandler.send("Room does not exist.")
                                 print("self.rooms:", self.rooms)
-                                continue
+                                join_failed = True
+                                break
                             elif self.rooms_type[room] == "Private":
-                                ihandler.send("Room is private. Please try again.")
-                                continue
+                                ihandler.send("Room is private.")
+                                join_failed = True
+                                break
                             elif len(self.rooms[room]) == 2:
-                                ihandler.send("Room is full. Please try again.")
-                                continue
+                                ihandler.send("Room is full.")
+                                ihandler.send(get_room_list())
+                                join_failed = True
+                                break
                             else:
                                 self.rooms[room].add(username)
                                 self.player_status[username] = WAITING
@@ -423,6 +436,9 @@ class LobbyServer:
                             elif game_type == "2":
                                 game_type = "Checkers"
                                 break
+                            elif game_type == "3":
+                                logout = True
+                                break
                             # accept invitation
                             elif game_type >= 'a' and game_type <= 'z':
                                 accept_invitation = process_invitation(game_type, username, ihandler)
@@ -434,6 +450,8 @@ class LobbyServer:
                                 ihandler.send(INVALID_INPUT)
                                 continue
                         if self.player_status[username] == WAITING:
+                            break
+                        if logout:
                             break
                         while True:
                             ihandler.send(ROOM_TYPE_PROMPT)
@@ -456,6 +474,9 @@ class LobbyServer:
                                 self.rooms_type[room] = "Private"
                                 self.rooms_game[room] = game_type
                                 break
+                            elif room_type == "3":
+                                logout = True
+                                break
                             elif room_type >= 'a' and room_type <= 'z':
                                 accept_invitation = process_invitation(room_type, username, ihandler)
                                 if accept_invitation:
@@ -465,6 +486,9 @@ class LobbyServer:
                             else:
                                 ihandler.send(INVALID_INPUT)
                                 continue
+                    elif choice == "3":
+                        logout = True
+                        break
                     elif choice >= 'a' and choice <= 'z': # Accept invitation
                         accept_invitation = process_invitation(choice, username, ihandler)
                         if accept_invitation:
@@ -474,7 +498,25 @@ class LobbyServer:
                     else:
                         ihandler.send(INVALID_INPUT)
                         continue
+                    
+                    if join_failed:
+                        continue
+                    
                     break
+
+
+
+                if logout:
+                    # remove the player from the player_status
+                    self.player_status.pop(username)
+                    broadcast_player_list(username)
+                    if username in self.invitations.keys():
+                        self.invitations.pop(username)
+                    self.conns.pop(username)
+                    username = f"{addr[0]}:{addr[1]}"
+                    self.player_status[username] = ANONYMOUS
+                    self.conns[username] = conn
+                    continue
 
                 # Waiting for other players
                 choice = None
@@ -500,6 +542,8 @@ class LobbyServer:
                         ihandler_invited = InputHandler(self.conns[invited_player])
                         if invited_player not in self.invitations:
                             self.invitations[invited_player] = [username]
+                        else:
+                            self.invitations[invited_player].append(username)
                         ihandler_invited.send(get_invitation_message(self.invitations[invited_player]))
                         ihandler.send(f"Invitation sent to {invited_player}.")
                         while True:
@@ -531,29 +575,28 @@ class LobbyServer:
                 # Game start
                 print(f"username: \033[0;35m{username}\033[0m, enter game start step")
                 sorted_players = sorted(self.rooms[room])
-                if self.rooms_game[room] == "Battleship":
-                    if sorted_players[0] == username:
-                        ihandler.send("START Battleship SERVER")
-                        
-                        # read the server's ip and port
-                        msg_ip_port = ihandler.get_line()
-                        msg_ip_port = msg_ip_port.strip().split(' ')
-                        if msg_ip_port[0] == 'IP':
-                            server_ip = msg_ip_port[1]
-                        else:
-                            raise Exception(f"Invalid message received when reading game server's IP: {msg_ip_port}")
-                        if msg_ip_port[2] == 'PORT':
-                            server_port = int(msg_ip_port[3])
-                        else:
-                            raise Exception("Invalid message received when reading game server's port")
-                        
-                        # send server's ip and port to the client
-                        client_conn = self.conns[sorted_players[1]]
-                        ihandler_client = InputHandler(client_conn)
-                        ihandler_client.send(f"IP {server_ip} PORT {server_port}")
-                        
-                    elif sorted_players[1] == username:
-                        ihandler.send("START Battleship CLIENT")
+                if sorted_players[0] == username:
+                    ihandler.send(f"START {self.rooms_game[room]} SERVER")
+                    
+                    # read the server's ip and port
+                    msg_ip_port = ihandler.get_line()
+                    msg_ip_port = msg_ip_port.strip().split(' ')
+                    if msg_ip_port[0] == 'IP':
+                        server_ip = msg_ip_port[1]
+                    else:
+                        raise Exception(f"Invalid message received when reading game server's IP: {msg_ip_port}")
+                    if msg_ip_port[2] == 'PORT':
+                        server_port = int(msg_ip_port[3])
+                    else:
+                        raise Exception("Invalid message received when reading game server's port")
+                    
+                    # send server's ip and port to the client
+                    client_conn = self.conns[sorted_players[1]]
+                    ihandler_client = InputHandler(client_conn)
+                    ihandler_client.send(f"IP {server_ip} PORT {server_port}")
+                    
+                elif sorted_players[1] == username:
+                    ihandler.send(f"START {self.rooms_game[room]} CLIENT")
                 # change the status to IN_GAME
                 self.player_status[username] = IN_GAME
                 broadcast_player_list(username)
