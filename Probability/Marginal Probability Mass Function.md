@@ -1,5 +1,5 @@
 Tag: #probability 
-Previous: [[Joint Probability Mass Function]]
+Previous: [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
 Link: 
 
 ---

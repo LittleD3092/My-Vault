@@ -1,5 +1,5 @@
 Tag: #probability 
-Previous: [[Probability]]
+Previous: [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
 Link: 
 
 ---
@@ -10,7 +10,41 @@ $$
 P((X, Y) \in B) = \int\int_B f_{XY}(x, y)dxdy
 $$
 
-- [[Marginal Probability Density Function]]
+# Examples
+
+## 1. Proof from Joint CDF to Joint PDF
+
+Prove that
+
+$$
+f_{XY}(x, y) = \frac{\partial^2}{\partial x \partial y} F_{XY}(x, y)
+$$
+
+---
+
+The area of $f_{XY}(x, y)$ is:
+
+![[Pasted image 20241112152656.png|200]]
+
+$$
+\begin{array}{rl}
+	f_{XY}(x, y) &=& \displaystyle
+	\lim_{\Delta x, \Delta y \to 0}
+	\frac{P(x < X \leq x + \Delta x, \quad y < Y \leq y + \Delta y)}{\Delta x \Delta y} \\
+	&=& 
+	\displaystyle
+	\lim_{\Delta x, \Delta y \to 0} \frac{F_{XY}(x + \Delta x, y + \Delta y) - F_{XY}(x, y + \Delta y) - F_{XY}(x + \Delta x, y) + F_{XY}(x, y)}{\Delta x \Delta y} \\
+	&=& \displaystyle\lim_{\Delta y \to 0} \frac{1}{\Delta y} \left(
+		\lim_{\Delta x \to 0} \frac{(F_{XY}(x + \Delta x, y + \Delta y) - F_{XY}(x, y + \Delta y)) - (F_{XY}(x + \Delta x, y) - F_{XY}(x, y))}{\Delta x}
+	\right) \\
+	&=& \displaystyle
+	\lim_{\Delta y \to 0} \frac{1}{\Delta y} \left(
+		\frac{\partial}{\partial x} F_{XY}(x, y + \Delta y) - \frac{\partial }{\partial x} F_{XY}(x, y)
+	\right) \\
+	&=& \displaystyle
+	\frac{\partial}{\partial y} \frac{\partial}{\partial x} F_{XY}(x, y)
+\end{array}
+$$
 
 ---
 

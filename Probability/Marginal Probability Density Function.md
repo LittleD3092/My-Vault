@@ -1,5 +1,5 @@
 Tag: #probability 
-Previous: [[Probability]]
+Previous: [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
 Link: 
 
 ---
@@ -13,7 +13,53 @@ $$
 \end{array}
 $$
 
+# Examples
+
+## 1. Joint PDF to Marginal PDF
+
+Let random variables $X$ and $Y$ be
+
+$$
+f(x, y) = \left\{
+	\begin{array}{l}
+		\displaystyle
+		\frac 3 2 (x^2 + y^2), & \text{if } 0 < x < 1 \text{ and } 0 < y < 1 \\
+		0, & \text{otherwise}
+	\end{array}
+\right.
+$$
+
+What is the marginal PDF of $X$?
+
 ---
+
+$$
+\begin{array}{l}
+	f_X(x) &=& 
+	\displaystyle
+	\int_{-\infty}^\infty f(x, y) dy \\
+	&=& \left\{
+		\begin{array}{l}
+			\displaystyle \int_0^1 \frac 3 2 (x^2 + y^2) dy, & \text{if } 0 < x < 1 \\
+			0, & \text{otherwise}
+		\end{array}
+	\right. \\
+	&=& \left\{
+		\begin{array}{l}
+			\displaystyle \left.
+				\frac 3 2 x^2 y + \frac 1 2 y^3
+			\right\vert_0^1, & \text{if 0 < x < 1}  \\
+			0, & \text{otherwise}
+		\end{array}
+	\right. \\
+	&=& \left\{
+		\begin{array}{l}
+			\displaystyle \frac{3}{2}x^2 + \frac 1 2, & \text{if } 0 < x < 1 \\
+			0, & \text{otherwise}
+		\end{array}
+	\right.
+\end{array}
+$$
 
 # Reference
 

@@ -1,5 +1,5 @@
 Tag: #probability 
-Previous: [[Joint Cumulative Distribution Function]]
+Previous: [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
 Link: 
 
 ---

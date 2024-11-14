@@ -1,5 +1,5 @@
 Tag: #probability 
-Previous: [[Probability]]
+Previous: [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
 Link: 
 
 ---
@@ -11,8 +11,6 @@ Let $X, Y$ be two discrete random variables defined on the same sample space $\O
 $$
 p_{XY}(x, y) = P(X=x, Y=y)
 $$
-
-- [[Marginal Probability Mass Function]]
 
 ---
 
