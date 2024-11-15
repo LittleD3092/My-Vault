@@ -1,5 +1,5 @@
 Tag: #probability 
-Previous: [[Probability]]
+Previous: [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
 Link: 
 
 ---
@@ -9,8 +9,6 @@ Joint CDF defines the CDF on multiple random variables. Let $X$ and $Y$ be two r
 $$
 F_{XY}(t, u) = P(X \leq t, Y \leq u), \qquad \forall t, u \in \mathbb R
 $$
-
-- [[Marginal Cumulative Distribution Function]]
 
 # Example
 
