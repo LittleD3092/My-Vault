@@ -212,7 +212,7 @@ Therefore, you should avoid accessing private member from base class and use pub
 
 # Protected
 
-`protected` is a qualifier as `private` and `public` is. If you use `protected` as a qualifier, the member variable or function acts like it is private, except that it can be accessed by derived class (recall that `private` members are not accessable by derived class).
+`protected` is a qualifier as `private` and `public` is. If you use `protected` as a qualifier, the member variable or function acts like it is private, except that it can be accessed by derived class (recall that `private` members are not accessible by derived class).
 
 Many, but not all, programming authorities say it is bad style to use protected member variables because doing so compromises the principle of hiding the class implementation. Therefore you should think twice before using it.
 
