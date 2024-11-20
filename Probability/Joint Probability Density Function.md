@@ -46,11 +46,36 @@ $$
 \end{array}
 $$
 
+## 2. Joint PDF is the product of the marginal PDFs under independence
+
+If two continuous random variables $X, Y$ are **independent**, then the joint PDF satisfies that
+
+$$f_{XY}(t, u) = f_X(t) \cdot f_Y(u)$$
+
+Prove the above property.
+
+---
+
+$$
+\begin{array}{l}
+	f_{XY}(t, u) &=& 
+	\displaystyle
+	\left.
+		\frac{\partial^2}{\partial X \partial Y} F_{XY}(x, y)
+	\right\vert_{x=t, y=u} \\
+	&&\text{By independence of } X, Y\\
+	&=& \displaystyle
+	\frac{\partial^2}{\partial X\partial Y}(F_X(x)\vert_{x=t} \cdot F_Y(y)\vert_{y=u}) \\
+	&=& (f_X(x) \vert_{x=t}) \cdot (f_Y(y)\vert_{y=u})
+\end{array}
+$$
+
 ---
 
 # Reference
 
 1. Hsieh, Ping-Chun. “515512: Probability Lecture 14 - Joint Distributions.” NYCU EC016, November 1, 2024.
+2. Hsieh, Ping-Chun. “515512: Probability Lecture 15 - Joint Distributions and Sum of Independent Random Variables.” NYCU EC016, November 6, 2024.
 
 ---
 

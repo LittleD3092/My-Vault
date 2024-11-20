@@ -37,7 +37,56 @@ Let random variable $Z \sim \mathcal N (\mu, \sigma^2)$. What is the MGF of $Z$,
 
 ---
 
-
+$$
+\begin{array}{rl}
+	f_Z(z) &=& \displaystyle
+	\frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(
+		- \frac{(x - \mu)^2}{2\sigma^2}
+	\right) \\
+	M_Z(t) &=& E[e^{tz}] \\
+	&=& \displaystyle
+	\int_{-\infty}^\infty e^{tz} \cdot \frac{1}{\sqrt{2\pi \sigma^2}} \cdot \exp\left(
+		-\frac{(z - \mu)^2}{2\sigma^2} 
+	\right)dz \\
+	&=& \displaystyle
+	\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi \sigma^2}} \cdot \exp\left(
+		-\frac{z^2 - 2zu + \mu^2 - 2\sigma^2 tz}{2\sigma^2}
+	\right)dz \\
+	&=& \displaystyle
+	\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi \sigma^2}} \cdot \exp\left(
+		-\frac{z^2-(2u + 2\sigma^2 t)z + \mu^2}{2\sigma^2}
+	\right)dz \\
+	&=& \displaystyle 
+	\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(
+		-\frac{(z - (\mu + \sigma^2 t))^2 + \mu^2 - (\mu + \sigma^2 t)^2}{2\sigma^2}
+	\right)dz \\
+	&=& \displaystyle
+	\int_{-\infty}^\infty 
+	\underbrace{
+		\frac{1}{\sqrt{2\pi \sigma^2}} \cdot \exp
+		\left(
+			-\frac{(z - (\mu + \sigma^2 t))^2}{2\sigma^2}
+		\right)
+	}_{\text{PDF of } \mathcal N (\mu + \sigma^2 t, \sigma^2)}
+	\exp\left(
+		-\frac{\mu^2 - (\mu + \sigma^2 t)^2}{2\sigma^2}
+	\right)dz \\
+	&=& \displaystyle
+	\exp\left(
+		-\frac{\mu^2 - (\mu + \sigma^2 t)^2}{2\sigma^2}
+	\right) \\
+	&=& 
+	\displaystyle
+	\exp\left(
+		-\frac{\mu^2 - (\mu^2 + 2\mu \sigma^2 t + \sigma^4 t^2)}{2\sigma^2}
+	\right) \\
+	&=& 
+	\displaystyle
+	\exp\left(
+		\mu t + \frac 1 2\sigma^2 t^2
+	\right)
+\end{array}
+$$
 
 ---
 

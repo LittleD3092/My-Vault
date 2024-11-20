@@ -151,6 +151,16 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 	- [[Marginal Probability Mass Function]]
 	- [[Joint Probability Density Function]]
 	- [[Marginal Probability Density Function]]
+
+## Lecture 15 - Joint Distributions and Sum of Independent Random Variables
+
+- [[Joint Distributions Relationships.canvas|Joint Distributions Relationships]]
+	- [[Joint Cumulative Distribution Function]]
+	- [[Marginal Cumulative Distribution Function]]
+	- [[Joint Probability Mass Function]]
+	- [[Marginal Probability Mass Function]]
+	- [[Joint Probability Density Function]]
+	- [[Marginal Probability Density Function]]
 - [[Convolution Theorem]]
 - [[Moment Generating Function]]
 
