@@ -164,6 +164,11 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 - [[Convolution Theorem]]
 - [[Moment Generating Function]]
 
+## Lecture 16 - Moment Generating Functions
+
+- [[Moment Generating Function]]
+	- [[Taylor Series]]
+
 ---
 
 # Reference
