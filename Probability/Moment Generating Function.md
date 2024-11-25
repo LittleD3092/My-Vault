@@ -24,18 +24,18 @@ Moment generating function is useful because of the three properties it has: (<u
 
 The following chart shows some common distributions and their corresponding MGF: (<u>2</u>)
 
-| Distribution                       | Moment-generating function \( M_X(t) \)                   |
-| ---------------------------------- | --------------------------------------------------------- |
-| Degenerate $$ \delta_a $$          | $$ e^{ta} $$                                              |
-| Bernoulli $$ P(X = 1) = p $$       | $$ 1 - p + p e^t $$                                       |
-| Geometric $$ (1 - p)^{k-1} p $$    | $$ \frac{pe^t}{1 - (1-p)e^t}, \; \forall t < -\ln(1-p) $$ |
-| Binomial $$ B(n, p) $$             | $$ (1 - p + pe^t)^n $$                                    |
-| Negative Binomial $$ NB(r, p) $$   | $$ \frac{(1 - p)^r}{(1 - pe^t)^r} $$                      |
-| Poisson $$ Poisson(\lambda) $$     | $$ e^{\lambda(e^t - 1)} $$                                |
-| Uniform (continuous) $$ U(a, b) $$ | $$ \frac{e^{tb} - e^{ta}}{t(b - a)} $$                    |
-| Uniform (discrete) $$ DU(a, b) $$  | $$ \frac{e^{at} - e^{(b+1)t}}{(b - a + 1)(1 - e^t)} $$    |
-| Laplace $$ L(\mu, b) $$            | $$ \frac{e^{t\mu}}{1 - b^2t^2}, \; \vert t \vert < 1/b $$ |
-| Normal $$ N(\mu, \sigma^2) $$      | $$ e^{t\mu + \frac{1}{2}\sigma^2t^2} $$                   |
+| Distribution                                                                              | Moment-generating function \( M_X(t) \)                   |
+| ----------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Discrete $$ \delta_a $$where $a$ is a possible value, and $p$ is the probability of $X=a$ | $$ pe^{ta} $$                                             |
+| Bernoulli $$ P(X = 1) = p $$                                                              | $$ 1 - p + p e^t $$                                       |
+| Geometric $$ (1 - p)^{k-1} p $$                                                           | $$ \frac{pe^t}{1 - (1-p)e^t}, \; \forall t < -\ln(1-p) $$ |
+| Binomial $$ B(n, p) $$                                                                    | $$ (1 - p + pe^t)^n $$                                    |
+| Negative Binomial $$ NB(r, p) $$                                                          | $$ \frac{(1 - p)^r}{(1 - pe^t)^r} $$                      |
+| Poisson $$ Poisson(\lambda) $$                                                            | $$ e^{\lambda(e^t - 1)} $$                                |
+| Uniform (continuous) $$ U(a, b) $$                                                        | $$ \frac{e^{tb} - e^{ta}}{t(b - a)} $$                    |
+| Uniform (discrete) $$ DU(a, b) $$                                                         | $$ \frac{e^{at} - e^{(b+1)t}}{(b - a + 1)(1 - e^t)} $$    |
+| Laplace $$ L(\mu, b) $$                                                                   | $$ \frac{e^{t\mu}}{1 - b^2t^2}, \; \vert t \vert < 1/b $$ |
+| Normal $$ N(\mu, \sigma^2) $$                                                             | $$ e^{t\mu + \frac{1}{2}\sigma^2t^2} $$                   |
 
 # Examples
 
