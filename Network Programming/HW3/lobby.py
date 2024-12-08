@@ -596,6 +596,10 @@ class LobbyServer:
             games = games_folder.get_raw_game_list()
             num_of_games = len(games)
 
+            if num_of_games == 0:
+                prompt += "    \033[0;31mNo games are available.\033[0m\n"
+                return prompt
+            
             index = 0
             for game in games:
                 prompt += f"({index + 1}) {game}\n"
@@ -786,8 +790,12 @@ class LobbyServer:
                             games = self.games_folder.get_raw_game_list()
                             num_of_games = len(games)
                             ihandler.send(get_game_type_prompt(self.games_folder))
+
+                            if num_of_games == 0:
+                                break
+
                             game_type = ihandler.get_line()
-                            if int(game_type) >= 1 and int(game_type) <= num_of_games:
+                            if game_type.isdecimal() and int(game_type) >= 1 and int(game_type) <= num_of_games:
                                 game_type = games[int(game_type) - 1]
 
                                 # check client game version
@@ -796,7 +804,7 @@ class LobbyServer:
                                 if request.startswith("DOWNLOAD"):
                                     download_game(ihandler, game_type)
                                 break
-                            elif int(game_type) == num_of_games + 1:
+                            elif game_type.isdecimal() and int(game_type) == num_of_games + 1:
                                 logout = True
                                 break
                             # accept invitation
@@ -816,6 +824,8 @@ class LobbyServer:
                             break
                         if logout:
                             break
+                        if num_of_games == 0:
+                            continue
                         while True:
                             ihandler.send(ROOM_TYPE_PROMPT)
                             room_type = ihandler.get_line()
