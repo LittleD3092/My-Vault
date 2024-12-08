@@ -385,12 +385,25 @@ class LobbyServer:
                         break
                 if room is None:
                     ihandler.send("The inviter has closed the room.")
+                    self.invitations[username].remove(inviter)
+                    if len(self.invitations[username]) == 0:
+                        self.invitations.pop(username)
                     return False
                 elif len(self.rooms[room]) == 2:
                     ihandler.send("The room is full.")
+                    self.invitations[username].remove(inviter)
+                    if len(self.invitations[username]) == 0:
+                        self.invitations.pop(username)
                     return False
                 self.rooms[room].append(username)
                 self.player_status[username] = WAITING
+                
+                # Check client for game version
+                ihandler.send(f"DOWNLOAD {self.rooms_game[room]} VERSION {self.games_folder.get_game_version(self.rooms_game[room])}")
+                request = ihandler.get_line()
+                if request.startswith("DOWNLOAD"):
+                    download_game(ihandler, self.rooms_game[room])
+
                 broadcast_player_list(username)
                 self.invitations.pop(username)
                 return True
@@ -753,6 +766,12 @@ class LobbyServer:
                             else:
                                 self.rooms[room].append(username)
                                 self.player_status[username] = WAITING
+
+                                ihandler.send(f"DOWNLOAD {self.rooms_game[room]} VERSION {self.games_folder.get_game_version(self.rooms_game[room])}")
+                                request = ihandler.get_line()
+                                if request.startswith("DOWNLOAD"):
+                                    download_game(ihandler, self.rooms_game[room])
+
                                 broadcast_player_list(username)
                                 broadcast_room_list(username)
 
@@ -770,6 +789,12 @@ class LobbyServer:
                             game_type = ihandler.get_line()
                             if int(game_type) >= 1 and int(game_type) <= num_of_games:
                                 game_type = games[int(game_type) - 1]
+
+                                # check client game version
+                                ihandler.send(f"DOWNLOAD {game_type} VERSION {self.games_folder.get_game_version(game_type)}")
+                                request = ihandler.get_line()
+                                if request.startswith("DOWNLOAD"):
+                                    download_game(ihandler, game_type)
                                 break
                             elif int(game_type) == num_of_games + 1:
                                 logout = True
