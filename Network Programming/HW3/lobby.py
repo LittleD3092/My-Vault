@@ -15,6 +15,8 @@ IN_GAME = 3
 
 CLEAN_DATA_RUN = False
 
+invitation_mutex = threading.Lock()
+
 class PlayerDB:
     def __init__(self) -> None:
         self.filename = "players.json"
@@ -210,7 +212,8 @@ class LobbyServer:
         # pending invitations
         # key: username of the invited player
         # value: a list of usernames of the inviting players
-        self.invitations = {}
+        with invitation_mutex:
+            self.invitations = {}
 
         # games folder
         self.games_folder = LobbyGamesFolder()
@@ -368,49 +371,52 @@ class LobbyServer:
             if option == '':
                 return False
             try:
-                index = ord(option) - ord('a')
-                if option == 'r':
-                    self.invitations.pop(username)
-                    ihandler.send("All invitations are rejected.")
-                    return False
-                elif index >= len(self.invitations[username]):
-                    ihandler.send(INVALID_INPUT)
-                    return False
-                inviter = self.invitations[username][index]
-                # Get the room number
-                room = None
-                for r, players in self.rooms.items():
-                    if inviter in players:
-                        room = r
-                        break
-                if room is None:
-                    ihandler.send("The inviter has closed the room.")
-                    self.invitations[username].remove(inviter)
-                    if len(self.invitations[username]) == 0:
+                with invitation_mutex:
+                    index = ord(option) - ord('a')
+                    if option == 'r':
                         self.invitations.pop(username)
-                    return False
-                elif len(self.rooms[room]) == 2:
-                    ihandler.send("The room is full.")
-                    self.invitations[username].remove(inviter)
-                    if len(self.invitations[username]) == 0:
-                        self.invitations.pop(username)
-                    return False
-                self.rooms[room].append(username)
-                self.player_status[username] = WAITING
-                
-                # Check client for game version
-                ihandler.send(f"DOWNLOAD {self.rooms_game[room]} VERSION {self.games_folder.get_game_version(self.rooms_game[room])}")
-                request = ihandler.get_line()
-                if request.startswith("DOWNLOAD"):
-                    download_game(ihandler, self.rooms_game[room])
+                        ihandler.send("All invitations are rejected.")
+                        return False
+                    elif index >= len(self.invitations[username]):
+                        ihandler.send(INVALID_INPUT)
+                        return False
+                    inviter = self.invitations[username][index]
+                    # Get the room number
+                    room = None
+                    for r, players in self.rooms.items():
+                        if inviter in players:
+                            room = r
+                            break
+                    if room is None:
+                        ihandler.send("The inviter has closed the room.")
+                        self.invitations[username].remove(inviter)
+                        if len(self.invitations[username]) == 0:
+                            self.invitations.pop(username)
+                        return False
+                    elif len(self.rooms[room]) == 2:
+                        ihandler.send("The room is full.")
+                        self.invitations[username].remove(inviter)
+                        if len(self.invitations[username]) == 0:
+                            self.invitations.pop(username)
+                        return False
+                    self.rooms[room].append(username)
+                    self.player_status[username] = WAITING
+                    
+                    # Check client for game version
+                    ihandler.send(f"DOWNLOAD {self.rooms_game[room]} VERSION {self.games_folder.get_game_version(self.rooms_game[room])}")
+                    request = ihandler.get_line()
+                    if request.startswith("DOWNLOAD"):
+                        download_game(ihandler, self.rooms_game[room])
 
-                broadcast_player_list(username)
-                self.invitations.pop(username)
+                    broadcast_player_list(username)
+                    self.invitations.pop(username)
+
                 return True
             except Exception as e:
-                print(f"Error occurred while processing invitation: {e} (type: {type(e).__name__})")
-                print(f"self.invitations: {self.invitations}")
-                traceback.print_exc()
+                with invitation_mutex:
+                    print(f"Error occurred while processing invitation: {e} (type: {type(e).__name__})")
+                    print(f"self.invitations: {self.invitations}")
+                    traceback.print_exc()
                 return False
 
         def get_room_from_player(player):
@@ -420,12 +426,13 @@ class LobbyServer:
             return None
         
         def open_invitation_window(username, ihandler):
-            if username not in self.invitations:
-                ihandler.send("You have no invitations.")
-                return
-            inviters = self.invitations[username]
-            invitation_message = get_invitation_message(inviters)
-            ihandler.send(invitation_message)
+            with invitation_mutex:
+                if username not in self.invitations:
+                    ihandler.send("You have no invitations.")
+                    return
+                inviters = self.invitations[username]
+                invitation_message = get_invitation_message(inviters)
+                ihandler.send(invitation_message)
             accept = process_invitation(ihandler.get_line(), username, ihandler)
             return accept
         
@@ -467,27 +474,32 @@ class LobbyServer:
                         continue
 
                     # send invitation
-                    ihandler_invited = InputHandler(self.conns[invited_player])
-                    if invited_player not in self.invitations:
-                        self.invitations[invited_player] = [username]
-                    else:
-                        self.invitations[invited_player].append(username)
-                    ihandler_invited.send(f"\033[0;30m[INVITATION] {username} invited you to join the room. Press (a) to open intitation window.\033[0m")
-                    ihandler.send(f"Invitation sent to {invited_player}.")
-                    while True:
-                        # Check if the invited player joined the room
-                        if self.rooms[room] == {username, invited_player}:
-                            ihandler.send(f"{invited_player} joined the room.")
-                            break
-                        # Check if the invited player rejected the invitation
+                    with invitation_mutex:
+                        ihandler_invited = InputHandler(self.conns[invited_player])
+
                         if invited_player not in self.invitations:
-                            ihandler.send(f"{invited_player} rejected the invitation.")
-                            ihandler.send(ROOM_WAITING_PROMPT)
-                            break
-                        if invited_player in self.invitations and username not in self.invitations[invited_player]:
-                            ihandler.send(f"{invited_player} rejected the invitation.")
-                            ihandler.send(ROOM_WAITING_PROMPT)
-                            break
+                            self.invitations[invited_player] = [username]
+                        else:
+                            self.invitations[invited_player].append(username)
+                        ihandler_invited.send(f"\033[0;30m[INVITATION] {username} invited you to join the room. Press (a) to open intitation window.\033[0m")
+                        ihandler.send(f"Invitation sent to {invited_player}.")
+                    
+                    while True:
+                        with invitation_mutex:
+                            # Check if the invited player joined the room
+                            if username in self.rooms[room] and invited_player in self.rooms[room]:
+                                ihandler.send(f"{invited_player} joined the room.")
+                                break
+                            # Check if the invited player rejected the invitation
+                            if invited_player not in self.invitations:
+                                ihandler.send(f"{invited_player} rejected the invitation.")
+                                ihandler.send(ROOM_WAITING_PROMPT)
+                                break
+                            if invited_player in self.invitations and username not in self.invitations[invited_player]:
+                                ihandler.send(f"{invited_player} rejected the invitation.")
+                                ihandler.send(ROOM_WAITING_PROMPT)
+                                break
+
                         time.sleep(1)
                     has_input = True
                 elif choice == "2": # Leave room
@@ -893,8 +905,9 @@ class LobbyServer:
                     self.player_status.pop(username)
                     broadcast_notification(f"{username} logged out.", username)
                     broadcast_player_list(username)
-                    if username in self.invitations.keys():
-                        self.invitations.pop(username)
+                    with invitation_mutex:
+                        if username in self.invitations.keys():
+                            self.invitations.pop(username)
                     self.conns.pop(username)
                     username = f"{addr[0]}:{addr[1]}"
                     self.player_status[username] = ANONYMOUS
@@ -1024,13 +1037,15 @@ class LobbyServer:
             if username in self.player_status:
                 self.player_status.pop(username)
                 print(f"\033[0;35m{username}\033[0m is removed from the player_status.")
-            if username in self.invitations:
-                self.invitations.pop(username)
-            for inviter, invited_players in self.invitations.items():
-                if username in invited_players:
-                    invited_players.remove(username)
-                if len(invited_players) == 0:
-                    self.invitations.pop(inviter)
+            
+            with invitation_mutex:
+                if username in self.invitations:
+                    self.invitations.pop(username)
+                for inviter, invited_players in self.invitations.items():
+                    if username in invited_players:
+                        invited_players.remove(username)
+                    if len(invited_players) == 0:
+                        self.invitations.pop(inviter)
 
             rooms_to_remove = []
             for room, players in self.rooms.items():
@@ -1056,13 +1071,14 @@ class LobbyServer:
             if username in self.player_status:
                 self.player_status.pop(username)
                 broadcast_player_list(username)
-            if username in self.invitations:
-                self.invitations.pop(username)
-            for inviter, invited_players in self.invitations.items():
-                if username in invited_players:
-                    invited_players.remove(username)
-                if len(invited_players) == 0:
-                    self.invitations.pop(inviter)
+            with invitation_mutex:
+                if username in self.invitations:
+                    self.invitations.pop(username)
+                for inviter, invited_players in self.invitations.items():
+                    if username in invited_players:
+                        invited_players.remove(username)
+                    if len(invited_players) == 0:
+                        self.invitations.pop(inviter)
             for room, players in self.rooms.items():
                 if username in players:
                     players.remove(username)

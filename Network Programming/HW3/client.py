@@ -9,8 +9,8 @@ import traceback
 import json
 import importlib
 
-# LOBBY_IP = 'linux1.cs.nycu.edu.tw'
-LOBBY_IP = 'localhost'
+LOBBY_IP = 'linux1.cs.nycu.edu.tw'
+# LOBBY_IP = 'localhost'
 LOBBY_PORT = 11066
 CLEAN_DATA_RUN = False
 
