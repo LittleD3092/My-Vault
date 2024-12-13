@@ -6,6 +6,7 @@ LOCAL_PATH=.
 .PHONY: upload ssh1 ssh2 ssh3 ssh4
 
 upload:
+	ssh $(SFTP_USER)@$(word 1,$(SFTP_HOSTS)) "rm -rf $(SFTP_PATH)"
 	scp -r $(LOCAL_PATH) $(SFTP_USER)@$(word 1,$(SFTP_HOSTS)):$(SFTP_PATH)
 
 ssh1:

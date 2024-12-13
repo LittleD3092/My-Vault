@@ -9,8 +9,8 @@ import traceback
 import json
 import importlib
 
-# LOBBY_IP = 'linux1.cs.nycu.edu.tw'
-LOBBY_IP = 'localhost'
+LOBBY_IP = 'linux1.cs.nycu.edu.tw'
+# LOBBY_IP = 'localhost'
 LOBBY_PORT = 11066
 CLEAN_DATA_RUN = False
 
@@ -239,6 +239,10 @@ class ClientGamesFolder:
             f.writelines(game_code)
         self.update_game_info(game_name, filename, version)
 
+class GameBugException(Exception):
+    def __init__(self, message):
+        self.message = message
+
 def connect_io_server(ip, port):
     tcp_client = TCP_client('0.0.0.0', 0, ip, port)
     game_client = None
@@ -293,6 +297,19 @@ def connect_io_server(ip, port):
                     game_version = splitted_msg[splitted_msg.index("VERSION") + 1]
                     game_filename = splitted_msg[splitted_msg.index("FILENAME") + 1]
                     game_folder.update_game_info(game_name, game_filename, game_version)
+                    continue
+
+                # Check for game downloading triggers
+                if msg.startswith("DOWNLOAD"):
+                    game_name = msg.split(' ')[1]
+                    version = msg.split(' ')[3]
+                    if not game_folder.exists(game_name) or game_folder.game_version[game_name] != version:
+                        print("Local game not found. Downloading game...")
+                        tcp_client.send("DOWNLOAD " + game_name)
+                        download_game(game_name, version)
+                        print(f"Game {game_name} downloaded.")
+                    else:
+                        tcp_client.send("PING")
                     continue
 
                 # Check login/logout triggers
@@ -389,7 +406,13 @@ def connect_io_server(ip, port):
                     
                     print(msg)
             elif type(game_agent) == TCP_server:
-                game_obj.main(game_agent)
+                try:
+                    game_obj.main(game_agent)
+                except Exception as e:
+                    print(f"\033[0;31mError when running game: {e}\033[0m")
+                    game_agent.send(f"\033[0;31mError when running game: {e}\033[0m")
+                    game_agent.send("GAME_END")
+                    raise GameBugException(f"Error when running game: {e}")
                 game_client = None
                 game_server = None
                 print("Game session ended. Returning to lobby.")
@@ -399,6 +422,10 @@ def connect_io_server(ip, port):
         except KeyboardInterrupt:
             end = True
             print('Closing game connection...')
+        except GameBugException as e:
+            game_client = None
+            game_server = None
+            tcp_client.send("GAME_END")
         except Exception as e:
             print(f"Error in game_receive_thread: {e}")
             traceback.print_exc()
