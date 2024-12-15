@@ -4,11 +4,12 @@ Link:
 
 ---
 
-| Random Variable                     | Expected Value   | Variance                  |
-| ----------------------------------- | ---------------- | ------------------------- |
-| $X \sim \text{Bernoulli}(p)$        | $E[X]=p$         | $\text{Var}[X]=p(1-p)$    |
-| $X \sim \text{Binomial}(n, p)$      | $E[X]=np$        | $\text{Var}[X]=np(1-p)$   |
-| $X \sim \text{Poisson}(\lambda, T)$ | $E[X]=\lambda T$ | $\text{Var}[X]=\lambda T$ |
+| Random Variable                     | Expected Value                  | Variance                                        |
+| ----------------------------------- | ------------------------------- | ----------------------------------------------- |
+| $X \sim \text{Bernoulli}(p)$        | $E[X]=p$                        | $\text{Var}[X]=p(1-p)$                          |
+| $X \sim \text{Binomial}(n, p)$      | $E[X]=np$                       | $\text{Var}[X]=np(1-p)$                         |
+| $X \sim \text{Poisson}(\lambda, T)$ | $E[X]=\lambda T$                | $\text{Var}[X]=\lambda T$                       |
+| $X \sim \text{Geometric}(p)$        | $E[X] = \displaystyle\frac 1 p$ | $\text{Var}[X] = \displaystyle \frac{1 - p}{p}$ |
 
 # Examples
 

@@ -117,7 +117,7 @@ $$p(X = \text{"head"}) = p(X = \text{"tail"}) = \frac 1 2$$
 
 - [[Existence of Moments]]
 	- [[Riemann Rearrangement Theorem]]
-- [[Expected Value and Variance List]]
+- [[Expected Value and Variance List]], or Standard Deviation List
 - [[Probability Density Function]]
 
 ## Lecture 12 - Continuous Random Variables
